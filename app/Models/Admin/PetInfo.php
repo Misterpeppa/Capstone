@@ -2,8 +2,10 @@
 
 namespace App\Models\Admin;
 
+use GuzzleHttp\Client;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PetInfo extends Model
 {
@@ -11,6 +13,7 @@ class PetInfo extends Model
     protected $table = 'pet_info';
 
     protected $fillable = [
+        'owner_id',
         'name',
         'age',
         'birthdate',
@@ -19,4 +22,9 @@ class PetInfo extends Model
         'gender',
         'weight'
     ];
+
+    public function owner(): BelongsTo 
+    {
+        return $this->belongsTo(Client::class, 'owner_id');
+    }
 }
