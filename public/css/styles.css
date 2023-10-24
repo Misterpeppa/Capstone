@@ -1,0 +1,4359 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  user-select: none;
+  background: #EFEFEF;
+  font-family: 'Inter', sans-serif;
+}
+
+nav{
+  background: #EFEFEF;
+/* Shadow-L */
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.10), 0px 4px 6px -2px rgba(28, 28, 28, 0.05);
+}
+
+.navbar-collapse {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+      display: flex;
+      flex-direction: column;
+  }
+}
+
+
+
+.my_profile{
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  border-left: 1px solid rgba(28, 28, 28, 0.50);
+  border-bottom: 1px solid rgba(28, 28, 28, 0.50);
+  border-right: 1px solid rgba(28, 28, 28, 0.50);
+  background: #F9F9F9;
+}
+.my_profile_main_content{
+  display: flex;
+  padding: 40px 70px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+  flex: 1 0 0;
+  align-self: stretch;
+  border-left: 1px solid rgba(28, 28, 28, 0.50);
+}
+  
+.my_profile_profile_content{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  align-self: stretch;
+  
+}
+.my_profile_profile_container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  align-self: stretch;
+  border: none;
+  background: #F9F9F9;
+}
+.my_profile_personalInfo_container{
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 20px;
+align-self: stretch;
+}
+.my_profile_personalInfo{
+  display: flex;
+  padding: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  border-radius: var(--radius-s, 8px);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.my_profile_container_header{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: stretch;
+}
+.my_profile_container_header h2{
+  color: #1C1C1C;
+  font-family: Inter;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.my_profile_form_details{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  align-self: stretch;
+}
+.my_profie_form_details_row{
+  width: 100%;
+  height: 100%;
+}
+/*SIDE BAR BORDERLINE (2 COLS SEPARATOR LINE)*/
+.my_profile_custom-sidebar{
+  display: flex;
+  width: 390px;
+  padding: 24px 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+.my_profile_card-body{
+  width: 100%;
+}
+
+/*SIDE BAR NAV ITEMS*/
+.my_profile_custom-sidebar ul{
+  width: 100%;
+}
+.list-group-item.nav-item{/*SA MY_PROFILE PA RIN TO*/
+  display: flex;
+  height: 20px;
+  padding: 20px 14px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-radius: var(--radius-s, 8px);
+  border: none;
+  color: rgba(28, 28, 28, 0.50);
+  font-family: Inter;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.list-group-item.nav-item:hover{
+  display: flex;
+  height: 20px;
+  padding: 20px 14px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-radius: var(--radius-s, 8px);
+  border: none;
+  background: #ECECEC;
+  color: rgba(28, 28, 28, 0.70);
+  font-family: Inter;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.list-group-item.nav-item.active{
+  display: flex;
+  height: 20px;
+  padding: 20px 14px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-radius: var(--radius-s, 8px);
+  border: none;
+  background: #E4E4E4;
+  color: #1C1C1C;
+  font-family: Inter;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+
+.my_profile_text {
+  margin-left: 10px;
+  flex: 1; /* Allow the text to take up available space */
+}
+
+.hidden {/*SA MY_PROFILE PA RIN TO*/
+  display: none;
+}
+#notifications_content,#pass_and_secu_content {
+  display: none;
+}
+
+.my_profile_card-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  align-self: stretch;
+}
+.my_profile_header h1{
+  color: #000;
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.my_profile_profilepic-container {
+  display: inline-block;
+}
+
+.my_profile_user-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.my_profile_edit-icon {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  color: #FFF;
+  background-color: #FFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.my_profile_icon_container {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  border: 0.5px solid rgba(0, 0, 0, 0.15);
+  background: var(--colors-actions-action-neut, #F9F9F9);
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+#personalInfoEditIcon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+
+.my_profile_email_text_notif_container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  align-self: stretch;
+}
+
+.my_profile_email_notification_container{
+  display: flex;
+  padding: 16px 24px 24px 24px;
+  align-items: flex-start;
+  gap: 24px;
+  align-self: stretch;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.my_profile_email_notification_left_column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+}
+.my_profile_email_notification_right_column{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+.my_profile_email_notif_options{
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  gap: 4px;
+}
+.my_profile_email_notif_options h6, .my_profile_email_notif_options h6{
+  align-self: stretch;
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.my_profile_email_notif_options p, .my_profile_email_notif_options p{
+  align-self: stretch;
+  color: rgba(0, 0, 0, 0.70);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.my_profile_email_notification_left_column h5, .my_profile_text_notification_left_column h5{
+  color: #000;
+  font-family: Inter;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.my_profile_email_notification_left_column p, .my_profile_text_notification_left_column p{
+  color: rgba(0, 0, 0, 0.50);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 220px;
+}
+.my_profile_text_notification_container{
+  display: flex;
+  padding: 16px 24px 24px 24px;
+  align-items: flex-start;
+  gap: 24px;
+  align-self: stretch;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.my_profile_text_notification_left_column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+}
+.my_profile_text_notification_right_column{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+.my_profile_text_notif_options{
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+
+.switch {
+  top: 5px;
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider.round {
+  border-radius: 4px;
+}
+
+.slider.round:before {
+  border-radius: 20%;
+  height: 20px;
+  width: 20px;
+}
+
+
+input:checked + .slider {
+  background-color: #045B62;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #045B62;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+
+
+
+
+
+
+
+
+.my_profile_pass_and_secu_container{
+  border: none; background: none;
+}
+.my_profile_pass_and_secu_content{
+  width: 100%;
+}
+.my_profile_pass_and_secu_options{
+  display: flex;
+  padding: 24px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-radius: var(--radius-s, 8px);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.my_profile_pass_and_secu_option{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+}
+.my_profile_pass_and_secu_option h1{
+  color: #1C1C1C;
+  font-family: Inter;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.my_profile_pass_and_secu_option p{
+  color: rgba(28, 28, 28, 0.50);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 370px;
+}
+.my_profile_change_pass{
+  display: flex;
+  height: 20px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-spacing-m, 24px);
+  border-radius: var(--radius-s, 8px);
+  border: 0.5px solid rgba(0, 0, 0, 0.15);
+  background: var(--colors-actions-action-neut, #F9F9F9);
+
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  color: #1C1C1C;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.my_profile_change_pass:hover{
+  border-radius: var(--radius-s, 8px);
+  border: 0.5px solid rgba(0, 0, 0, 0.15);
+  background: var(--colors-actions-action-neut-hover, #ECECEC);
+
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  color: #1C1C1C;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.my_profile_change_pass:active{
+  border-radius: var(--radius-s, 8px);
+  background: var(--colors-actions-action-neut-active, #ECECEC);
+
+  /* Button Active */
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+  color: #1C1C1C;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.my_profile_delete_button{
+  display: flex;
+  height: 20px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-spacing-m, 24px);
+  border-radius: var(--radius-s, 8px);
+  border: 0.5px solid rgba(0, 0, 0, 0.15);
+  background: var(--colors-actions-action-neut, #F9F9F9);
+  
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  color: #DA534F;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.my_profile_delete_button:hover{
+  flex-shrink: 0;
+  border-radius: var(--radius-s, 8px);
+  border: 0.5px solid rgba(0, 0, 0, 0.15);
+  background: var(--colors-actions-action-neut-hover, #ECECEC);
+
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  color: #DA534F;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.my_profile_delete_button:active{
+  border-radius: var(--radius-s, 8px);
+  background: var(--colors-actions-action-neut-active, #ECECEC);
+  /* Button Active */
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+  color: #DA534F;
+  text-align: center;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+
+.custom-save-btn {
+  display: none;
+  --stylized-start-color: #48A0A7;
+  --stylized-end-color: #086971;
+  background: linear-gradient(75deg, var(--stylized-start-color) 32.75%, var(--stylized-end-color) 100%);
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  text-decoration: none;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-family: 'Inter';
+  font-style: normal;
+  text-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.10);
+  font-size: 14px;
+  font-family: Inter;
+  font-weight: 700;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  width: 100%;
+  max-width: 130px;
+  position: relative;
+  bottom: -10px;
+}
+.custom-save-btn:hover {
+  --stylized-start-color: #086971;
+  --stylized-end-color: #48A0A7;
+  background: linear-gradient(75deg, var(--stylized-start-color) 32.75%, var(--stylized-end-color) 100%);
+  color: white;
+}
+
+
+
+
+/* START NG CSS PARA SA SIGN IN PAGE*/
+.signin_bg_img {
+  min-height: 100%;
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: blur(2px); /* Adjust the blur amount as desired */
+  opacity: 0.8; /* Adjust the opacity to control the transparency */
+}
+.signin_bg_img img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  height: auto;
+  filter: blur(2px); /* Adjust the blur amount as desired */
+}
+.signin_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #045B62;
+  opacity: 0.7; /* Adjust the overlay opacity to make it transparent */
+  z-index: 1; /* Bring the overlay in front of the image */
+}
+.signin_col{
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+  background-color: rgba(255, 255, 255, 0.8); /* Adjust the alpha value for the desired opacity */
+  background: #F2F2F2;
+  padding: 20px;
+}
+.signin_form_header{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+}
+.signin_heading{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+}
+.signin_heading h1{
+  align-self: stretch;
+  color: #1C1C1C;
+  font-family: Inter;
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 136.5%; /* 51.87px */
+}
+.signin_heading p{
+  align-self: stretch;
+  color: rgba(28, 28, 28, 0.70);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 136.5%; /* 21.84px */
+}
+.signin_input_container {
+  position: relative;
+  margin-bottom: 20px;
+}
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-control:focus + .placeholder-label,
+.form-control:not(:placeholder-shown) + .placeholder-label {
+  top: 5px;
+  font-size: 10px;
+  color: #999;
+}
+  
+.placeholder-label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  color: #999;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer; /* Add cursor pointer for clickable behavior */
+}
+
+/* Adjust the position for the input icon when input has content or is focused */
+.form-control:focus + .input-icon,
+.form-control:not(:placeholder-shown) + .input-icon {
+  top: 50%;
+  right: 35px; /* Adjust the right distance as needed */
+  transform: translateY(-50%);
+}
+.input-icon svg {
+  display: block;
+  width: 20px; /* Adjust the icon size as needed */
+  height: 20px;
+}
+
+
+  /* Hide the original placeholder */
+.form-control::placeholder {
+  opacity: 0;
+}
+.signin_remember_me{
+  gap: 10px;
+}
+.signin_remember_me p{
+  margin: 0;
+  color: #1C1C1C;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.signin_forgot a{
+  color: #1C1C1C;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-decoration: none;
+}
+
+.signin_create_acc a{
+  display: flex;
+  height: 60px;
+  padding: 16px 1px;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-spacing-m, 24px);
+  border-radius: var(--radius-s, 8px);
+  color: var(--colors-actions-action, #045B62);
+  text-align: center;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-decoration: none;
+}
+.signin_custom_signin_btn {
+  display: inline-flex;
+  height: 30px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  border-radius: var(--spacing-spacing-xxs, 8px);
+  background: var(--stylized, radial-gradient(48.44% 55.36% at 50.00% 76.79%, #48A0A7 0%, #086971 100%));
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  color: #FFF;
+  text-align: center;
+  text-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.10);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.signin_custom_signin_btn:active{
+  background: #045B62;
+  color: #FFF;
+  /* Button Active */
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+  /* Responsive styles */
+  @media (max-width: 767px) {
+    .row {
+        flex-direction: column;
+    }
+  
+    .col-md-8.order-md-1.order-2,
+    .col-md-4.order-md-2.order-1 {
+        order: 0;
+    }
+    
+  }
+  
+  @media (max-width: 500px) {
+    .signin_form-control,
+    .btn {
+        width: 100%;
+    }
+  }
+.sign_in_switch {
+  position: relative;
+  width: 50px;
+  height: 20px;
+  margin: 0;
+}
+  
+.sign_in_switch input {
+  display: none;
+}
+  
+.sign_in_slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+  
+.sign_in_slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 15px;
+  left: 3px;
+   bottom: 2px;
+   background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+input:checked + .sign_in_slider {
+  background-color: #045B62;
+}
+  
+input:focus + .sign_in_slider {
+  box-shadow: 0 0 1px #045B62;
+}
+  
+input:checked + .sign_in_slider:before {
+  -webkit-transform: translateX(27px);
+  -ms-transform: translateX(27px);
+  transform: translateX(27px);
+}
+  
+.sign_in_slider.round {
+    border-radius: 4px;
+}
+  
+.sign_in_slider.round:before {
+  border-radius: 20%;
+}
+  
+.sign_in_switch input {
+  display: none;
+}
+/*END NG CSS PARA SA SIGN IN PAGE*/
+
+
+/*START NG CSS PARA SA SIGN UP PAGE*/
+.signup_bg-img {
+  min-height: 100%;
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: blur(2px);
+  /* Adjust the blur amount as desired */
+  opacity: 0.8;
+  /* Adjust the opacity to control the transparency */
+}
+
+.signup_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #045B62;
+  opacity: 0.7;
+  /* Adjust the overlay opacity to make it transparent */
+  z-index: 1;
+  /* Bring the overlay in front of the image */
+}
+
+.signup_bg-img img {
+  position: relative;
+  width: 100%;
+  height: auto;
+  filter: blur(2px);
+  /* Adjust the blur amount as desired */
+}
+
+.signup_col {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+  background-color: rgba(255, 255, 255, 0.8);
+  /* Adjust the alpha value for the desired opacity */
+  background: #f2f2f2;
+  padding: 20px;
+}
+
+.signup_form_header_right {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center;
+  gap: 8px;
+  height: 100%; /* Ensure the container takes the full height */
+}
+
+.signup_form_header_right p {
+  margin: 0; /* Reset any default margins */
+  color: rgba(28, 28, 28, 0.70);
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center; /* Center the text horizontally */
+  flex: 1; /* Allow the <p> element to take up remaining space */
+}
+.signup_welcome h1{
+  color: #1C1C1C;
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 136.5%; /* 51.87px */
+}
+
+.signup_welcome p{
+  color: rgba(28, 28, 28, 0.70);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 136.5%; /* 21.84px */
+}
+.signup_input_container{
+  position: relative;
+}
+
+.error-icon {
+  position: absolute;
+  top: 20%;
+  right: 10px;
+  flex-shrink: 0;
+  display: none;
+}
+
+.signup_form_control.error-input ~ .error-icon {
+  display: block;
+}
+
+
+.signup_form_control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 38px;
+}
+
+
+
+.signup_form_control input[type="text"]:hover {
+  /* Hover state styles */
+  border-radius: 8px;
+  border: 1px solid #48A0A7;
+}
+
+.signup_form_control input[type="text"]:disabled {
+  /* Disabled state styles */
+  border-radius: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.30);
+  background: #F9F9F9;
+}
+.signup_form_control input[type="text"]{
+  /* Default state styles */
+  width: 100%;
+  border-radius: 8px;
+  background: #F9F9F9;
+  padding-left: 10px; /* Added padding to provide space on the left */
+  font-size: 14px; /* Adjust the font size as needed */
+  height: 32px;
+}
+
+/* Add blue border on click */
+.signup_form_control input[type="text"]:focus,
+.signup_form_control input[type="text"]:active {
+  border: 2px solid #48A0A7; /* Blue border */
+  outline: none; /* Remove default outline */
+  border-radius: 8px;
+}
+.signup_form_control {
+  display: flex;
+  align-items: center; /* Vertically center the label and input */
+  margin-bottom: 10px; /* Add spacing between form rows */
+}
+
+.error-input {
+  border-radius: var(--radius-s, 0px);
+  border: 2px solid red; /* Add your preferred error state styling */
+  border-radius: 8px;
+}
+
+.error-message {
+  display: none;
+  color: red; /* Adjust error message color as needed */
+  font-size: 10px; /* Customize font size */
+}
+
+
+.signup_form_control:focus + .signup_placeholder_label,
+.signup_form_control:not(:placeholder-shown) + .signup_placeholder_label {
+  top: -2px;
+  font-size: 10px;
+  color: #999;
+}
+
+
+.signup_placeholder_label {
+  position: absolute;
+  top: 10%;
+  left: 10px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  color: #999;
+}
+
+/* Hide the original placeholder */
+.signup_form_control::placeholder {
+  opacity: 0;
+}
+
+.signup_btn {
+  display: inline-flex;
+  height: 30px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  border-radius: var(--spacing-spacing-xxs, 8px);
+  background: var(--stylized, radial-gradient(48.44% 55.36% at 50.00% 76.79%, #48A0A7 0%, #086971 100%));
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  color: #FFF;
+  text-align: center;
+  text-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.10);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.signup_btn:hover {
+  border-radius: var(--spacing-spacing-xxs, 8px);
+  background: var(--hover-stylized, linear-gradient(75deg, #086971 32.29%, #48A0A7 100%));
+  color: #FFF;
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+
+.signup_logo-container {
+  display: flex;
+  width: 265px;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Update the logo size */
+.signup_logo img {
+  max-width: 150px; /* Adjust the maximum width of the logo as needed */
+  height: auto;
+}
+
+.signup_signin-btn {
+  display: flex;
+  height: 30px;
+  padding: 10px 18px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: var(--spacing-spacing-xxs, 8px);
+  border: 0.5px solid rgba(0, 0, 0, 0.15);
+  background: var(--colors-actions-action-neut, #F9F9F9);
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  color: #1C1C1C;
+  text-align: center;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.signup_signin-btn:hover {
+color: #1C1C1C;
+border-radius: var(--spacing-spacing-xxs, 8px);
+border: 0.5px solid rgba(0, 0, 0, 0.15);
+background: var(--colors-actions-action-neut-hover, #ECECEC);
+/* Shadow-xs */
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.signup_signin-btn:active{
+border-radius: var(--spacing-spacing-xxs, 8px);
+background: var(--colors-actions-action-neut-active, #ECECEC);
+
+/* Button Active */
+box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+
+@media (max-width: 768px) {
+  .signup_input_container {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .signup_form_control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .signup_btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .signup_custom_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+}
+/*END NG CSS PARA SA SIGN UP PAGE*/
+
+
+/* card{width: 100%; } SA MY_PROFILE PA RIN TO wag muna gagalawin*/
+
+/*START NG CSS PARA SA APPOINTMENT PAGE*/
+
+
+.navbar{
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.10);
+}
+
+.navbar-collapse {
+  text-align: center;
+}
+
+.navbar-collapse {
+  text-align: center;
+}
+  
+.appointment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px; /* Use min-height instead of height */
+  max-height: 1400px;
+  background-color: #EFEFEF;
+  /* Update the styles for the form */
+  padding: 10px; /* Add some padding around the form */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+/*YUNG CONTAINER NG TATLONG FORMS*/
+.Appointment_forms_container {
+  position: relative;
+  width: 1000px;
+  margin: 20px 0;
+  padding: 30px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  max-height: 1200px;
+}
+.Appointment_form_heading{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-spacing-s, 2px);
+}
+.Appointment_form_heading h1{
+  align-self: stretch;
+  color: #1C1C1C;
+  text-align: center;
+  font-family: Inter;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Appointment_form_heading h2{
+  color: #045B62;
+  text-align: center;
+  font-family: Inter;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+/*PROGRESS LINE NA MAY CIRCLE*/
+.Appointment_multisteps-form__progress {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+.Appointment_multisteps-form__progress-btn {
+  transition-property: all;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  position: relative;
+  padding-top: 20px;
+  color: rgba(108, 117, 125, 0.7);
+  text-indent: -9999px;
+  border: 2px solid transparent; /* Updated to set border to transparent */
+  border-radius: 50%;
+  background-color: transparent;
+  outline: none !important;
+  cursor: pointer;
+}
+
+@media (min-width: 500px) {
+  .Appointment_multisteps-form__progress-btn {
+    text-indent: 0;
+  }
+}
+
+.Appointment_multisteps-form__progress-btn:before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: block;
+  width: 13px;
+  height: 13px;
+  content: '';
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  transition: all 0.15s linear 0s, -webkit-transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+  transition: all 0.15s linear 0s, transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+  transition: all 0.15s linear 0s, transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s, -webkit-transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #045B62;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+.Appointment_multisteps-form__progress-btn:after {
+  position: absolute;
+  top: 5px;
+  left: calc(-50% - 13px / 2);
+  transition-property: all;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  display: block;
+  width: 100%;
+  height: 2px;
+  content: '';
+  background-color: #045B62;
+  z-index: 1;
+}
+
+.Appointment_multisteps-form__progress-btn:first-child:after {
+  display: none;
+}
+
+.Appointment_multisteps-form__progress-btn.js-active {
+  color: #045B62;
+}
+
+.Appointment_multisteps-form__progress-btn.js-active:before {
+  -webkit-transform: translateX(-50%) scale(1.2);
+  transform: translateX(-50%) scale(1.2);
+  background-color: #045B62;
+}
+
+/*YUNG MGA STEP-FORMS*/
+.Appointment_step-form {
+  display: none;
+  max-height: 900px;
+}
+
+.Appointment_step-form p{
+  font-size: 12px; /* Adjust the font size as needed */
+  color: #FF0000; /* Red color for required indicator */
+  pointer-events: none;
+}
+
+.Appointment_form-row {
+  margin-bottom: 10px;
+}  
+
+.Appointment_form-bottom {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+  /* Responsive styles */
+@media (max-width: 768px) {
+  .form-row {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-row .col {
+    width: 100%;
+    margin-right: 0;
+  }
+  
+  .Appointment_form-bottom {
+    justify-content: space-between;
+  }
+  
+  .row {
+    flex-wrap: wrap;
+  }
+  
+  .row .col {
+    width: 100%;
+  }
+  
+  .step-form {
+    padding-bottom: 20px;
+  }
+}
+  
+.Appointment_forms-bottom-btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.Appointment_input-field {
+  position: relative;
+}
+
+.Appointment_error-input {
+  border-radius: var(--radius-s, 0px);
+  border: 2px solid red; /* Add your preferred error state styling */
+}
+
+
+.Appointment_input-field .svg-icon {
+  position: absolute;
+  top: 38%;
+  right: 5px;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none; /* Prevent the SVG from interfering with input interactions */
+  fill: #ccc; /* Color of the SVG icon */
+}
+
+.Appointment_input-field input[type="text"]:hover {
+  /* Hover state styles */
+  border-radius: 8px;
+  border: 1px solid #48A0A7;
+}
+
+.Appointment_input-field input[type="text"]:disabled {
+  /* Disabled state styles */
+  border-radius: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.30);
+  background: #F9F9F9;
+}
+.Appointment_input-field input[type="text"]{
+  /* Default state styles */
+  width: 100%;
+  border-radius: 8px;
+  background: #F9F9F9;
+  padding-left: 10px; /* Added padding to provide space on the left */
+  font-size: 14px; /* Adjust the font size as needed */
+  height: 32px;
+}
+
+/* Add blue border on click */
+.Appointment_input-field input[type="text"]:focus,
+.Appointment_input-field input[type="text"]:active {
+  border: 2px solid #48A0A7; /* Blue border */
+  outline: none; /* Remove default outline */
+  border-radius: 8px;
+}
+.Appointment_input {
+  display: flex;
+  align-items: center; /* Vertically center the label and input */
+  margin-bottom: 10px; /* Add spacing between form rows */
+}
+
+.Appointment_input label {
+  flex: 0 0 auto; /* Let the label take its natural width */
+  margin-right: 10px; /* Add spacing between label and input */
+  margin-top: 5px;
+}
+
+
+/*START NG CSS FOR NEXT, SUBMIT, AT PREVIOUS BUTTON SA APPOINTMENT FORMS*/
+.Appointment_custom-btn {
+  display: inline-flex;
+  height: 36px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-spacing-m, 24px);
+  flex-shrink: 0;
+  border-radius: var(--radius-s, 8px);
+  background: var(--colors-actions-action, #045B62);
+
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  color: #FFF;
+  text-align: center;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+  
+.Appointment_custom-btn:disabled {
+  display: inline-flex;
+  height: 36px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-spacing-m, 24px);
+  flex-shrink: 0;
+  border-radius: var(--radius-s, 8px);
+  opacity: 0.7;
+  background: var(--colors-actions-action, #045B62);
+  color: #FFF;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  cursor: not-allowed;
+}
+  
+  
+.Appointment_custom-btn:enabled:hover {
+  display: inline-flex;
+  height: 36px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-spacing-m, 24px);
+  flex-shrink: 0;
+  border-radius: var(--radius-s, 8px);
+  background: var(--colors-actions-action-hover, #004D53);
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  color: #FFF;
+  text-align: center;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+  
+.Appointment_custom-btn:enabled:active {
+  display: inline-flex;
+  height: 36px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-spacing-m, 24px);
+  flex-shrink: 0;
+  border-radius: var(--radius-s, 8px);
+  background: var(--colors-actions-action-active, #004D53);
+
+  /* Button Active */
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+  color: #FFF;
+  text-align: center;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+  
+.Appointment_custom-btn:enabled:hover {
+  border-radius: var(--radius-s, 8px);
+  background: var(--colors-actions-action-neut-hover, #004D53);
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+
+
+  
+
+.Appointment_custom-prev-btn {
+  border-radius: var(--radius-s, 8px);
+  border: 0.5px solid rgba(0, 0, 0, 0.15);
+  background: var(--colors-actions-action-neut, #F9F9F9);
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 700;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  width: 100px;
+}
+
+.Appointment_custom-prev-btn:hover {
+  border-radius: var(--radius-s, 8px);
+  border: 0.5px solid rgba(0, 0, 0, 0.15);
+  background: var(--colors-actions-action-neut-hover, #ECECEC);
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  color: #1C1C1C;
+}
+/*END NG CSS FOR NEXT, SUBMIT, AT PREVIOUS BUTTON*/
+
+    
+/* custom-modal.css */
+
+/* Remove the default modal box-shadow and border */
+.custom-modal .modal-content {
+  display: inline-flex;
+  box-shadow: none;
+  border: none;
+  display: inline-flex;
+  padding: 25px 30px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-radius: 10px;
+  background: #F5F5F5;
+  backdrop-filter: blur(10px); /* Add a slight blur effect to the background */
+}
+
+/* Center the modal vertically and horizontally */
+.custom-modal .modal-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: 0;
+}
+
+/* Center the modal header content */
+.custom-modal .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: none;
+  padding: 0; /* Remove padding to reduce space */
+}
+
+.custom-modal .modal-header img{
+  width: 140px;
+  height: 140px;
+}
+/* Style the success icon */
+.custom-modal .success-icon {
+  width: 50px; /* Adjust the width as needed */
+  height: 50px; /* Adjust the height as needed */
+}
+
+/* Style the success heading */
+.custom-modal .success-heading {
+  color: #1C1C1C;
+  font-family: Inter;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+/* Style the success message paragraph */
+.custom-modal .success-message {
+  color: #1C1C1C;
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+/* Style the footer buttons */
+.custom-modal .modal-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  align-self: stretch;
+  border-top: none;
+}
+
+.custom-modal .custom-newAppointment {
+  display: flex;
+  height: 52px;
+  width: 45%;
+  padding: 16px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-spacing-m, 12px);
+  border-radius: var(--spacing-spacing-xxs, 8px);
+  color: #1C1C1C;
+  font-family: Inter;
+  font-size: 14px;
+}
+.custom-modal .custom-newAppointment:hover {
+  color: #1C1C1C;
+  border-radius: var(--spacing-spacing-xxs, 8px);
+  background: var(--colors-actions-action-neut-hover, #ECECEC);
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+
+.custom-modal .custom-viewAppointment {
+  display: flex;
+  height: 52px;
+  width: 45%;
+  padding: 16px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-spacing-m, 12px);
+  border-radius: var(--radius-s, 8px);
+  background: var(--colors-actions-action, #045B62);
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  color: #fff;
+  font-family: Inter;
+  font-size: 14px;
+}
+.custom-modal .custom-viewAppointment:hover {
+  color: #FFF;
+  background: var(--colors-actions-action-hover, #004D53);
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  border-radius: var(--radius-s, 8px);
+}
+
+/* Additional styles to center the modal on the screen */
+.custom-modal .modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.custom-modal .modal-dialog {
+  max-width: 500px; /* Adjust the maximum width of the modal as needed */
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+.Appointment_frame383{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  align-self: stretch;
+}
+
+.Appointment_Details_Confirmation_Container_form3,.Appointment_Details_Confirmation_Container_form2 {
+  display: flex;
+  padding: 14px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--spacing-spacing-s, 16px);
+  align-self: stretch;
+  border-radius: var(--radius-s, 8px);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  min-height: 100px;
+  max-height: 210px;
+}
+.Appointment_Details_Confirmation {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  min-height: 50px;
+  max-height: 210px;
+}
+.Appointment_Deets_Heading h1{
+  flex: 1 0 0;
+  color: #000;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.Appointment_frame369, .Appointment_frame226{
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
+  align-self: stretch;
+}
+
+.Appointment_petName,.Appointment_species,.Appointment_breed,.Appointment_service,.Appointment_Date,.Appointment_Time  {
+  width: 160px;
+}
+.Appointment_petName p, .Appointment_species p, .Appointment_breed p, .Appointment_service p, .Appointment_Date p, .Appointment_Time p{
+  margin: 0;
+  width: 180px;
+  height: 24px;
+  color: rgba(28, 28, 28, 0.50);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Appointment_petName span, .Appointment_species span, .Appointment_breed span, .Appointment_service span, .Appointment_Date span, .Appointment_Time span{
+  margin-top: 4px; /* Adjust as needed */
+  width: 180px;
+  color: #1C1C1C;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+
+}
+
+
+    
+.Appointment_lalagyan {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  max-height: 800px;
+}
+
+
+.Appointment_wrapper{
+  width: 390px;
+  height: 390px;
+  margin-left: 50px;
+}
+
+
+.Appointment_wrapper header{
+  display: flex;
+  align-items: center;
+  padding: 25px 30px 10px;
+  justify-content: center;
+}
+.Appointment_icons{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.icons span{
+  height: 38px;
+  width: 38px;
+  margin: 0 1px;
+  cursor: pointer;
+  color: #878787;
+  text-align: center;
+  line-height: 38px;
+  font-size: 1.9rem;
+  user-select: none;
+  border-radius: 50%;
+}
+
+.icons span:last-child{
+  margin-right: -10px;
+}
+.icons span:hover{
+  background: #f2f2f2;
+}
+.Appointment_icons p{
+  color: #1C1C1C;
+font-family: Inter;
+font-size: 28px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.Appointment_calendar{
+  height: 200px;
+  width: 350px;
+  justify-content: center;
+}
+.Appointment_calendar_header label {
+  margin-left: 10px;
+  left: 10px; /* Adjust as needed */
+  font-size: 12px; /* Adjust the font size as needed */
+  color: #FF0000; /* Red color for required indicator */
+  pointer-events: none;
+}
+.Appointment_calendar ul{
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  text-align: center;
+}
+.Appointment_calendar ul li{
+  height: 10px;
+}
+.Appointment_calendar li{
+  color: #333;
+  width: calc(100% / 7);
+  font-size: 1.07rem;
+}
+.Appointment_calendar .weeks li{
+  font-weight: 500;
+  cursor: default;
+}
+.Appointment_calendar .days li{
+  z-index: 1;
+  cursor: pointer;
+  position: relative;
+  margin-top: 30px;
+}
+/*START NG CALENDAR DAYS*/
+.days li.inactive{
+  color: #aaa;
+}
+.days li.active{
+  color: #fff;
+}
+/* Remove the styles for .days li.active::before and .days li.selected::before */
+.days li::before {
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 50%;
+  height: 40px;
+  width: 40px;
+  z-index: -1;
+  border-radius: 50%;
+  transform: translate(-50%, -30%);
+}
+
+.days li.active::before,
+.days li.selected::before {
+  background-clip: content-box;
+  padding: 2px;
+}
+
+.days li.selected::before {
+  background: #BEE7BD;
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  border: 1px solid #48A0A7;
+}
+
+.days li:not(.active):hover::before {
+  background: #f2f2f2;
+}
+/* Add cursor style for disabled days */
+.days li.disabled {
+  cursor: not-allowed;
+  color: #ccc; /* Change the color to your desired color */
+}
+
+
+
+/*END NG CALENDAR DAYS*/
+
+.Appointment_time-picker {
+  width: 390px;
+  height: 390px;
+  text-align: start;
+  margin-right: 50px;
+}
+
+.Appointment_time-picker-header label {
+  margin-left: 10px;
+  left: 10px; /* Adjust as needed */
+  font-size: 12px; /* Adjust the font size as needed */
+  color: #FF0000; /* Red color for required indicator */
+  pointer-events: none;
+}
+.Appointment_time-picker-header h2{
+  font-weight: 700;
+  font-size: 14px;
+  margin-left: 20px;
+}
+.Appointment_time-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  list-style: none;
+  padding: 0 35px;
+  margin-top: 20px;
+}
+.Appointment_time-option {
+  display: flex;
+  height: 44px;
+  width: 124px;
+}
+.Appointment_time-option input[type="radio"] {
+  display: none;
+}
+.Appointment_time-option label {
+  flex-grow: 1;
+  padding: 5px;
+  border: 1px solid #D9D9D9;
+  background-color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Appointment_time-option input[type="radio"]:checked + label {
+  background-color: #48A0A7;
+  color: #ffffff;
+}
+.fc-day-number {
+  font-size: 12px;
+}
+.fc-day-grid-container {
+  overflow: hidden !important;
+}
+.booked-appointment {
+  background: rgba(227, 99, 99, 0.3);
+  color: #ffffff;
+  cursor: not-allowed;
+}
+.fc-row {
+  min-height: calc((100% - 10px) / 2);
+}
+.booked-appointment {
+  cursor: not-allowed;
+}
+
+
+/*END NG CSS PARA SA APPOINTMENT PAGE*/
+
+
+
+/*START NG CSS PARA SA APPOINTMENT LIST*/
+main{
+  background-color: #EFEFEF;
+  /* Update the styles for the form */
+  min-height: 550px; /* Use min-height instead of height */
+  max-height: 900px;
+}
+  
+
+.appointmentList_custom-container {
+  display: flex;
+  padding: var(--spacing-spacing-l, 32px) var(--spacing-spacing-m, 24px) var(--spacing-spacing-m, 24px) var(--spacing-spacing-m, 24px);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-spacing-m, 24px);
+  min-height: 400px; /* Use min-height instead of height */
+  max-height: 700px;
+  border-radius: 0px 0px 8px 8px;
+  border-left: 0.5px solid rgba(28, 28, 28, 0.50);
+  border-bottom: 0.5px solid rgba(28, 28, 28, 0.50);
+  border-right: 0.5px solid rgba(28, 28, 28, 0.50);
+  background: var(--colors-main-neutral-dark, #F9F9F9);
+  box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+}
+.appointmentList_custom-tab{
+  display: flex;
+  padding: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
+  border-radius: var(--spacing-spacing-xxs, 8px);
+  border: 0.8px solid rgba(28, 28, 28, 0.50);
+  background: var(--colors-main-neutral-dark, #F9F9F9);
+  width: 100%;
+  min-height: 200px; /* Use min-height instead of height */
+  max-height: 650px;
+}
+.appointmentList_nav_tabs {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  border: none;
+}
+/* Custom nav-link styles for tabs */
+.appointmentList_nav_tabs .nav-link {
+  display: flex;
+  height: 56px;
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 12px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  transition: all 0.2s ease; /* Add transition for smooth effects */
+  background: none; /* Reset the initial background */
+  color: rgba(28, 28, 28, 0.50); /* Initial text color */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+/* Style for the hover state */
+.appointmentList_nav_tabs .nav-link:hover {
+  color: var(--colors-actions-action, #045B62);
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border-radius: var(--radius-s, 8px);
+  background: var(--colors-actions-action-sec-hover, #A5C2C3);
+
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+
+}
+
+/* Style for the active state */
+.appointmentList_nav_tabs .nav-link.active {
+  background: var(--colors-main-secondary-dark, #ADCDCE);
+  color: #045B62; /* Active text color */
+}
+
+
+.appointmentList_content_header{
+  display: flex;
+  padding-left: 0px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+.appointmentList_header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.appointmentList_header h1{
+  color: #000;
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.appointmentList_header p{
+  color: rgba(0, 0, 0, 0.50);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.appointmentList_custom_button{
+  display: inline-flex;
+  height: 60px;
+  padding: 16px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-spacing-m, 24px);
+  flex-shrink: 0;
+  border-radius: var(--spacing-spacing-xxs, 8px);
+  background: var(--colors-actions-action, #045B62);
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  color: #FFF;
+  text-align: center;
+  text-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.10);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.appointmentList_custom_button:active {
+  color: #FFF;
+  border-radius: var(--spacing-spacing-xxs, 8px);
+  background: var(--colors-actions-action-active, #004D53);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+/* Apply styles on button hover */
+.appointmentList_custom_button:hover {
+  color: #FFF;
+  border-radius: var(--spacing-spacing-xxs, 8px);
+  background: var(--colors-actions-action-hover, #004D53);
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.counter {
+  display: inline-block;
+  background-color: yellow; /* Add a background color for visibility */
+}
+
+.counter-upcoming, .counter-recent{
+  display: flex;
+width: 25px;
+height: 25px;
+padding: 5px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 30px;
+background: rgba(28, 28, 28, 0.15);
+}
+
+.appointmentList_appointment_table {
+  width: 100%;
+}
+
+.appointmentList_appointment_table td, .appointmentList_appointment_table th {
+  padding: 10px;
+  text-align: center;
+}
+
+.appointmentList_action_button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.appointmentList_action-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  min-width: 100px;
+}
+
+.show-menu .action-menu {
+  display: flex;
+}
+
+.actions-column {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  flex: 1 0 0;
+}
+
+.appointmentList_tab_content{
+  width: 100%;
+}
+/*END NG CSS PARA SA APPOINTMENT LIST*/
+
+
+/*START NG CSS PARA SA ADMIN PET INFO PAGE*/
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 180px;
+  padding: 24px 20px;
+  border-right: 1px solid #FFF;
+  background: #F5F5F5;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  transition: width 0.6s ease, padding 0.6s ease, max-width 0.6s ease; /* Add padding and max-width to the transition */
+  overflow: hidden; /* Hide overflowing content when collapsed */
+}
+.logo {
+  display: flex;
+  padding-left: var(--spacing-spacing-xs, 0px);
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+.logo img {
+  width: 55px;
+  height: 60px;
+}
+.sidebar_arrow{
+  display: flex;
+  padding: 10px 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  background: none;
+}
+
+.rotate180 {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+.sidebar_group{
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content when collapsed */
+  align-self: stretch;
+}
+.first_group {
+  display: flex;
+  padding-top: var(--spacing-spacing-xs, 12px);
+  flex-direction: column;
+  align-self: stretch;
+  align-items: center; /* Center the content when collapsed */
+}
+.sidebar_break{
+  height: 0px;
+  align-self: stretch;
+  stroke-width: 1px;
+  stroke: rgba(0, 0, 0, 0.30);
+  stroke-width: 0.5px;
+}
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  align-items: center; /* Center the content when collapsed */
+}
+.first_group  a, .sidebar_group  a {
+  width: 100%;
+  text-decoration: none;
+}
+
+.first_group li, .sidebar_group li {
+  display: flex;
+  height: 26px;
+  padding: 10px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  text-decoration: none;
+}
+.first_group li:hover, .sidebar_group li:hover{
+  border-radius: var(--radius-s, 8px);
+  border: 0.5px solid rgba(0, 0, 0, 0.15);
+  background: var(--colors-actions-action-neut-hover, #ECECEC);
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.first_group li.active, .sidebar_group li.active{
+  border-radius: var(--radius-s, 8px);
+  background: var(--colors-actions-action-sec, #ADCDCE);
+  /* Shadow-xs */
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.first_group li span,
+.sidebar_group li span {
+  color: rgba(28, 28, 28, 0.50);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  align-items: center; /* Add this line to vertically center the content */
+}
+.first_group li:hover span,
+.sidebar_group li:hover span {
+  color: rgba(28, 28, 28, 0.70);
+}
+.first_group li.active span,
+.sidebar_group li.active span {
+color: #004D53;
+}
+.sidebar li.active svg path {
+  stroke: #004D53;
+}
+
+.sidebar hr {
+  margin: 10px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+.sidebar {
+  /* Your existing styles */
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 40px; /* Set the collapsed width */
+}
+.content {
+flex-grow: 1;
+display: flex;
+flex-direction: column;
+background-color: #E8F0F0;
+overflow: auto;
+width: 1366px;
+max-width: 100%;
+max-height: 300vh;
+}
+.rectangle {
+display: flex;
+justify-content: flex-end;
+align-items: center;
+direction: row;
+height: 70px;
+width: 100%;
+border-bottom: 1px solid #FFF;
+background: #F7F7F7;
+box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+gap: 10px;
+}
+.icon-button{
+display: flex;
+padding: 10px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+flex-shrink: 0;
+border-radius: 30px;
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.icon-notification{
+  display: flex;
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.user{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 40px;
+}
+.frame202{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.frame417{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.icon-arrow{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.dropdown-menu {
+display: none;
+position: absolute;
+background: #FFFFFF;
+box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+padding: 10px;
+height: 20px;
+width: 50px;
+top: 50px;
+}
+.dropdown-menu ul {
+list-style: none; /* Remove bullet points */
+padding: 0;
+margin: 0;
+}
+
+.dropdown-menu li {
+margin: 0;
+padding: 0;
+}
+
+.dropdown-menu a {
+text-decoration: none; /* Remove underline */
+color: #333; /* Text color */
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.dropdown-menu a:hover {
+color: #1C1C1C; /* Text color on hover */
+}
+
+.main_content {
+padding: 25px;
+}
+
+.admin_petInfo_heading_and_add_pet_btn{
+display: flex;
+width: 100%;
+padding-left: var(--radius-xs, 0px);
+justify-content: space-between;
+align-items: center;
+}
+.admin_petInfo_heading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.admin_petInfo_heading p{
+    color: #000;
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.addRecordButton{
+    display: flex;
+    height: 60px;
+    padding: 16px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-spacing-m, 24px);
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-actions-action, #045B62);
+
+    /* Shadow-xs */
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+    color: #FFF;
+    text-align: center;
+    text-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.10);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.admin_petInfo_pet_records_container{
+display: flex;
+padding: var(--spacing-spacing-m, 24px);
+flex-direction: column;
+align-items: flex-start;
+gap: var(--spacing-spacing-s, 16px);
+border-radius: var(--radius-s, 8px);
+background: #F9F9F9;
+box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.10), 0px 4px 6px -2px rgba(28, 28, 28, 0.05);
+}
+.container_header{
+display: flex;
+justify-content: space-between;
+align-items: center;
+align-self: stretch;
+}
+.container_left_header{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+}
+
+.filter_btn, .sort_btn{
+display: flex;
+height: 60px;
+min-width: 120px;
+padding: 0px var(--spacing-spacing-m, 24px) 0px var(--spacing-spacing-s, 16px);
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-m, 24px);
+border-radius: var(--spacing-spacing-xxs, 8px);
+border: 0.5px solid rgba(0, 0, 0, 0.15);
+background: var(--colors-actions-action-neut, #F9F9F9);
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.filter_btn:hover, .sort_btn:hover{
+border-radius: var(--radius-s, 8px);
+border: 0.5px solid rgba(0, 0, 0, 0.15);
+background: var(--colors-actions-action-neut-hover, #ECECEC);
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.filter_btn:active, .sort_btn:active{
+border-radius: var(--radius-s, 8px);
+background: var(--colors-actions-action-neut-active, #ECECEC);
+box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.filter_btn_base, .sort_btn_base{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-xxs, 8px);
+color: #1C1C1C;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.filter_btn_base svg, .sort_btn_base svg{
+width: var(--spacing-spacing-m, 24px);
+height: var(--spacing-spacing-m, 24px);
+}
+.search_container{
+display: flex;
+width: 272px;
+height: 40px;
+padding: 8px 16px;
+justify-content: space-between;
+align-items: center;
+border-radius: var(--spacing-spacing-xxs, 8px);
+border: 0.5px solid rgba(0, 0, 0, 0.15);
+background: #FFF;
+box-shadow: 0px 1px 3px 0px rgba(28, 28, 28, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+}
+.search_container:focus-within {
+outline: none;
+border: 1px solid #48A0A7;
+}
+.search_input{
+display: flex;
+height: 28px;
+padding: 10px 10px;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-m, 4px);
+border-radius: var(--spacing-spacing-xxs, 8px);
+border: none;
+background: transparent;
+}
+.search_input:focus{
+outline: none;
+border: none;
+background: transparent;
+}
+.search_input::placeholder {
+opacity: 1;
+color: rgba(28, 28, 28, 0.50);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
+.admin_petInfo_pet_card {
+display: flex;
+flex-wrap: wrap; /* Allow items to wrap to the next row */
+gap: var(--spacing-spacing-s, 16px);
+align-self: stretch;
+}
+
+.admin_petInfo_pet_record_item {
+display: flex;
+padding: 24px;
+align-items: flex-start;
+gap: var(--spacing-spacing-l, 32px);
+flex: 1 0 0;
+border-radius: var(--radius-s, 8px);
+border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+
+.admin_petInfo_pet_picture{
+    display: flex;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+.admin_petInfo_pet_details{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    flex: 1 0 0;
+    width: 100%;
+}
+.admin_petInfo_pet_details_petName_moreBtn{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+}
+.admin_petInfo_pet_details_header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1 0 0;
+    height: 50px;
+    width: 100%; /* Add this line to make it fit the width */
+}
+.admin_petInfo_pet_details_header h1{
+    color: #000;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.admin_petInfo_pet_details_header p{
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.admin_petInfo_more_button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.admin_petInfo_frame426{
+    display: flex;
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    border: none;
+    background-color: transparent;
+}
+.admin_petInfo_frame383{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: var(--spacing-spacing-s, 16px);
+align-self: stretch;
+
+height: 20px;
+}
+.admin_petInfo_frame226{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    width: 100%;
+    height: 100%;
+}
+.admin_petInfo_frame369{
+    display: flex;
+justify-content: space-between;
+align-items: flex-start;
+align-self: stretch;
+}
+.admin_petInfo_frame216{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+flex: 1 0 0;
+}
+.admin_petInfo_frame218{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+flex: 1 0 0;
+}
+.admin_petInfo_frame219{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+flex: 1 0 0;
+}
+/* MENU OPTION*/
+/* Add position: relative to the container of the button */
+.admin_petInfo_more_button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative; /* Add this */
+}
+
+/* Add position: absolute and top: -100% to the menu */
+.admin_petInfo_menu_options {
+    display: none;
+    width: 130px;
+    position: absolute; /* Add this */
+    top: 80%; /* Add this */
+    right: 30px; /* Adjust this as needed */
+    background-color: #FFF; /* Adjust the background color as needed */
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px -2px rgba(28, 28, 28, 0.05);
+    padding: 10px;
+    z-index: 1; /* Set a higher z-index to make sure the menu appears above other elements */
+}
+
+.admin_petInfo_menu_options ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.admin_petInfo_menu_options li {
+    margin-bottom: 8px;
+}
+
+.admin_petInfo_menu_options a {
+    text-decoration: none;
+    color: rgba(28, 28, 28, 0.50);
+    font-weight: bold;
+}
+
+.admin_petInfo_menu_options a:hover {
+    color: rgba(28, 28, 28, 0.70);
+}
+
+
+/*MODA*/
+
+/* Styling for the modal */
+.admin_petInfo_addPetmodal {
+display: flex;
+justify-content: center;
+align-items: center;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+z-index: 9999;
+}
+
+.admin_petInfo_modal-content {
+    display: flex;
+    width: 800px;
+    padding: 24px;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-l, 32px);
+    border-radius: var(--radius-s, 8px);
+background: var(--colors-main-neutral-light, #F5F5F5);
+
+/* Shadow-m */
+box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+}
+
+.admin_petInfo_frame490{
+    display: flex;
+justify-content: space-between;
+align-items: center;
+align-self: stretch;
+}
+.admin_petInfo_frame523{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+align-self: stretch;
+
+}
+
+.form-input{
+    display: flex;
+    height: 5px;
+    padding: 20px 30px 20px 20px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-radius: var(--radius-s, 8px);
+    border: 0.5px solid rgba(0, 0, 0, 0.30);
+    background: #FFF;
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.form_inpput, .admin_petInfo_selectselect{
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-spacing-xs, 12px);
+    flex: 1 0 0;
+    border: none;
+    outline: none; /* This will remove the outline when the element is focused */
+    /* Optionally, you can add more styles to customize the appearance */
+    padding: 8px; /* Add padding to improve visual appearance */
+    font-size: 16px; /* Set font size for better readability */
+    /* You can add more styles here as needed */
+}
+.form_inpput[type="text"], .form_inpput[type="number"], .form_inpput[type="date"] {
+    border: none;
+    outline: none; /* This will remove the outline when the element is focused */
+}
+
+.frame46, .frame47, .frame48{
+    display: flex;
+align-items: flex-start;
+gap: 12px;
+align-self: stretch;
+}
+
+.frame47 .frame47input{
+    display: flex;
+    height: 5px;
+    padding: 20px 30px 20px 20px;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 0 0;
+}
+.frame48 .frame48input{
+    display: flex;
+    height: 5px;
+    padding: 20px 30px 20px 20px;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 0 0;
+}
+.input-width{
+    display: flex;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+flex: 1 0 0;
+}
+.modal button {
+    margin-top: 10px;
+}
+.frame494{
+    display: flex;
+justify-content: space-between;
+align-items: center;
+align-self: stretch;
+}
+.save_button{
+display: flex;
+height: 60px;
+min-width: 100px;
+padding: 16px var(--spacing-spacing-m, 24px);
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-m, 24px);
+border-radius: var(--spacing-spacing-xxs, 8px);
+background: var(--colors-actions-action, #045B62);
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.save_button_base{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+color: var(--colors-main-neutral, #FFF);
+text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.clear_button{
+display: flex;
+height: 60px;
+min-width: 100px;
+padding: 16px var(--spacing-spacing-m, 24px);
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-m, 24px);
+border-radius: var(--spacing-spacing-xxs, 8px);
+border: 0.5px solid rgba(0, 0, 0, 0.15);
+background: var(--colors-actions-action-neut, #F9F9F9);
+
+/* Shadow-xs */
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.clear_button_base{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+color: #1C1C1C;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.admin_petInfo_pet_record_modal {
+  display: flex;
+  padding: var(--spacing-spacing-m, 24px);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-spacing-s, 16px);
+  border-radius: var(--radius-s, 8px);
+  background: #F9F9F9;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.10), 0px 4px 6px -2px rgba(28, 28, 28, 0.05);
+
+  /* Set a fixed height and add overflow-y to show scrollbar when necessary */
+  max-height: calc(100vh - 48px); /* Adjust the padding value */
+  overflow-y: auto; /* Show scrollbar when content exceeds the height */
+  /* Style the scrollbar track */
+  scrollbar-width: thin; /* Set the width of the scrollbar track */
+  scrollbar-color: transparent transparent; /* Set the color of the thumb and track */
+  overflow-x: hidden;
+}
+.admin_petInfo_pet_record_modal::-webkit-scrollbar {
+  width: 6px; /* Set the width of the scrollbar */
+}
+
+.admin_petInfo_pet_record_modal::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3); /* Color of the thumb */
+  border-radius: 3px; /* Rounded corners for the thumb */
+}
+
+.admin_petInfo_pet_record_modal::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.6); /* Color of the thumb on hover */
+}
+
+.admin_petInfo_pet_record_modal::-webkit-scrollbar-track {
+  background-color: transparent; /* Color of the track */
+}
+
+.admin_petInfo_pet_record_modal::-webkit-scrollbar-track:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Color of the track on hover */
+}
+
+.admin_petInfo_modal_header{
+    display: flex;
+    padding-left: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+}
+
+.admin_petInfo_pet_record_modal .admin_petInfo_PetRecordItem{
+display: flex;
+padding: 24px;
+align-items: flex-start;
+gap: var(--spacing-spacing-xl, 64px);
+align-self: stretch;
+border-radius: var(--radius-s, 8px);
+}
+
+.admin_petInfo_pet_record_modal .admin_petInfo_frame522{
+display: flex;
+align-items: flex-start;
+gap: var(--spacing-spacing-xl, 64px);
+flex: 1 0 0;
+}
+.admin_petInfo_pet_record_modal .admin_petInfo_PetRecordItem .admin_petInfo_icon_button{
+display: flex;
+width: 40px;
+height: 40px;
+padding: 10px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 30px;
+border: 0.5px solid rgba(0, 0, 0, 0.15);
+background: var(--colors-actions-action-neut, #F9F9F9);
+
+/* Shadow-xs */
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.admin_petInfo_pet_record_modal  .admin_petInfo_picture{
+display: flex;
+width: 136px;
+height: 136px;
+justify-content: center;
+align-items: center;
+border-radius: 100px;
+}
+.admin_petInfo_pet_record_modal .admin_petInfo_frame484{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 32px;
+flex: 1 0 0;
+}
+.admin_petInfo_pet_record_modal  .admin_petInfo_frame482{
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.admin_petInfo_pet_record_modal .admin_petInfo_frame483{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: var(--spacing-spacing-s, 16px);
+align-self: stretch;
+}
+.admin_petInfo_pet_record_modal  .admin_petInfo_frame482 .admin_petInfo_frame485{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 8px;
+}
+.admin_petInfo_pet_record_modal .admin_petInfo_frame483 .admin_petInfo_frame370{
+display: flex;
+align-items: flex-start;
+gap: 20px;
+align-self: stretch;
+}
+.tab-content {
+display: flex;
+flex-direction: column;
+gap: 16px;
+align-items: flex-start;
+width: 100%;
+}
+.tab-pane{
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    gap: 10px;
+}
+.pet_info_nav_and_addBtn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+.petInfo_nav_tabs {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+.petInfo_nav_button{
+    display: none;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+        border-radius: 30px;
+    border: 0.5px solid rgba(0, 0, 0, 0.15);
+    background: var(--colors-actions-action-neut, #F9F9F9);
+
+    /* Shadow-xs */
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.petInfo_nav_item {
+    cursor: pointer;
+    display: flex;
+    height: 56px;
+    padding: 4px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border-radius: var(--radius-s, 8px);
+
+    /* Shadow-xs */
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+    color: rgba(28, 28, 28, 0.50);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.petInfo_nav_item:hover {
+    display: flex;
+    height: 56px;
+    padding: 4px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-actions-action-sec-hover, #A5C2C3);
+
+    /* Shadow-xs */
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+    color: var(--colors-actions-action, #045B62);
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.petInfo_nav_item.active{
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-actions-action-sec, #ADCDCE);
+
+    /* Shadow-xs */
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+    color: var(--colors-actions-action, #045B62);
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.admin_petInfo_records{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: var(--spacing-spacing-l, 32px);
+flex: 1 0 0;
+}
+
+.admin_petInfo_records_owner_info_heading{
+display: flex;
+align-items: center;
+gap: 8px;
+}
+.pet_name_breed{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 8px;
+}
+.pet_name_breed h1{
+align-self: stretch;
+color: #000;
+font-family: Inter;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin: 0;
+}
+.pet_name_breed p{
+align-self: stretch;
+color: #000;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+margin: 0;
+}
+.admin_petInfo_records_owner_info_body{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-spacing-s, 8px);
+    align-self: stretch;
+}
+
+.admin_petInfo_records_owner_info_body p{
+    color: rgba(28, 28, 28, 0.50);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.admin_petInfo_records_frame226{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    align-self: stretch;
+}
+.admin_petInfo_records_frame216{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+}
+.admin_petInfo_records_frame217{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+}
+.admin_petInfo_records_frame218{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex: 0 0 auto;
+    width: 20px;
+}
+
+.tab-divider {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #ccc;
+    width: 100%;
+}
+
+.admin_petInfo_records_health_concerns{
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+}
+.admin_petInfo_records_health_concerns_heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+}
+.admin_petInfo_records_health_concerns_heading h1{
+    color: #1C1C1C;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.admin_petInfo_records_health_concerns_body{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-spacing-m, 24px);
+    align-self: stretch;
+}
+.admin_petInfo_records_health_concerns_body p{
+    color: rgba(28, 28, 28, 0.50);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+
+.admin_petInfo_records_history_frame226{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    align-self: stretch;
+}
+.admin_petInfo_records_history_rame369{
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+}
+.admin_petInfo_records_history_frame216{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+}
+.admin_petInfo_records_history_frame217{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+}
+
+.add_diagnosis_Modal, .add_health_information_modal, .discard_changes_modal, .successChange_modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+.add_diagnosis_Modal_content, .add_health_information_modal_content{
+    display: flex;
+    width: 500px;
+    padding: 24px;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-l, 32px);
+    border-radius: var(--radius-s, 8px);
+background: var(--colors-main-neutral-light, #F5F5F5);
+
+/* Shadow-m */
+box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+}
+.add_diagnosis_Modal_content_header, .add_health_information_modal_content_header, .discard_icon_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+.add_diagnosis_Modal_content_header p, .add_health_information_modal_content_header p{
+    color: #000;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.add_diagnosis_close_btn, .add_health_information_close_btn, .add_condition_close_btn, .add_vaccine_close_btn, .add_surgery_close_btn{
+border: none;
+background-color: transparent;
+}
+
+
+.add_diagnosis_input_fields ,.add_health_information_input_fields, .add_condition_input_fields, .add_vaccine_input_fields, .add_surgery_input_fields{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+align-self: stretch;
+}
+.diagnosis_fields, .vaccine_fields, .surgery_fields{
+display: flex;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+align-self: stretch;
+}
+.vaccine_fields_vax_status{
+display: flex;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+align-self: stretch;
+}
+
+.add_health_info_buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+.add_condition_clearForm, .add_health_info_clearForm, .add_vaccine_clearForm, .cancel_edit{
+display: flex;
+height: 56px;
+min-width: 100px;
+padding: 16px var(--spacing-spacing-m, 24px);
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-m, 24px);
+border-radius: var(--spacing-spacing-xxs, 8px);
+border: 0.5px solid rgba(0, 0, 0, 0.15);
+background: var(--colors-actions-action-neut, #F9F9F9);
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.clear_button:hover, .add_condition_clearForm:hover, .add_health_info_clearForm:hover, .add_vaccine_clearForm:hover, .cancel_edit:hover{
+border-radius: var(--radius-s, 8px);
+border: 0.5px solid rgba(0, 0, 0, 0.15);
+background: var(--colors-actions-action-neut-hover, #ECECEC);
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.clear_button:active, .add_condition_clearForm:active, .add_health_info_clearForm:active, .add_vaccine_clearForm:active, .cancel_edit:active{
+border-radius: var(--radius-s, 8px);
+background: var(--colors-actions-action-neut-active, #ECECEC);
+box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.add_condition_clearForm_base, .add_health_info_clearForm_base, .add_vaccine_clearForm_base, .cancel_edit_base{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+color: #1C1C1C;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.modal-close{
+  border: none;
+  background-color: none;
+}
+
+.add_diagnosis_submit, .add_vaccine_submit, .add_surgery_submit, .save_edit{
+display: flex;
+height: 56px;
+min-width: 100px;
+padding: 16px var(--spacing-spacing-m, 24px);
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-m, 24px);
+border-radius: var(--spacing-spacing-xxs, 8px);
+background: var(--colors-actions-action, #045B62);
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.save_button:hover, .add_diagnosis_submit:hover, .add_vaccine_submit:hover, .add_surgery_submit:hover, .save_edit:hover{
+border-radius: var(--radius-s, 8px);
+background: var(--colors-actions-action-hover, #004D53);
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.save_button:active, .add_diagnosis_submit:active, .add_vaccine_submit.active, .add_surgery_submit:active, .save_edit:active{
+border-radius: var(--radius-s, 8px);
+background: var(--colors-actions-action-active, #004D53);
+box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.add_diagnosis_submit_base, .add_vaccine_submit_base, .add_surgery_submit_base, .save_edit_base{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+color: var(--colors-main-neutral, #FFF);
+text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.admin_petInfo_backButton{
+display: flex;
+height: 56px;
+min-width: 100px;
+padding: 16px var(--spacing-spacing-m, 24px);
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-m, 24px);
+border-radius: var(--spacing-spacing-xxs, 8px);
+border: none;
+background: transparent;
+}
+.admin_petInfo_backButton:hover{
+border-radius: var(--radius-s, 8px);
+color: var(--colors-actions-action-hover, #004D53);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.admin_petInfo_backButton:active{
+box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+color: var(--colors-actions-action-active, #004D53);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.admin_petInfo_backButton_base{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+color: var(--colors-actions-action, #045B62);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.condition_input_row{
+display: flex;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+align-self: stretch;
+}
+.ownerInfo, .health_concerns{
+display: flex;
+padding: var(--spacing-spacing-m, 24px);
+flex-direction: column;
+align-items: flex-start;
+align-self: stretch;
+border-radius: var(--radius-s, 8px);
+border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.ownerInfo_header, .health_concerns_header{
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+align-self: stretch;
+}
+.ownerInfo_header h1, .health_concerns_header h1{
+color: #1C1C1C;
+font-family: Inter;
+font-size: 21px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.ownerInfo_details, .health_concerns_details{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: var(--spacing-spacing-m, 24px);
+align-self: stretch;
+}
+.ownerInfo_name_address, .ownerInfo_email_contact, .health_concerns_allergies_conditions, .health_concerns_medications{
+display: flex;
+align-items: center;
+gap: 20px;
+align-self: stretch;
+}
+.ownerName, .ownerAddress, .ownerEmail, .ownerContact, .pet_allergies, .pet_conditions, .pet_medications{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+flex: 1 0 0;
+}
+.ownerName h1, .ownerAddress h1, .ownerEmail h1, .ownerContact h1, .pet_allergies h1, .pet_conditions h1, .pet_medications h1{
+width: 150px;
+color: rgba(28, 28, 28, 0.50);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+margin: 0;
+}
+.ownerName p, .ownerAddress p, .ownerEmail p, .ownerContact p, .pet_allergies p, .pet_conditions p, .pet_medications p{
+align-self: stretch;
+color: #1C1C1C;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+margin: 0;
+}
+.emr_header_container{
+display: flex;
+max-width: 1536px;
+padding-left: var(--radius-xs, 0px);
+justify-content: space-between;
+align-items: center;
+}
+.emr_header{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+}
+.emr_header h1{
+color: #000;
+font-family: Inter;
+font-size: 28px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+thead{
+display: flex;
+height: 60px;
+padding: 0px var(--spacing-spacing-l, 32px);
+align-items: center;
+gap: 40px;
+align-self: stretch;
+border-radius: var(--radius-xs, 4px);
+}
+thead tr{
+display: flex;
+align-items: center;
+flex: 1 0 0;
+}
+thead tr th{
+display: flex;
+width: 150px;
+padding: 0px var(--spacing-spacing-s, 16px);
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+color: rgba(28, 28, 28, 0.50);
+text-align: center;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+text-transform: uppercase;
+}
+.med_histo_empty, .immu_histo_empty, .surgery_histo_empty{
+display: flex;
+padding: 60px 120px;
+flex-direction: column;
+align-items: center;
+gap: var(--spacing-spacing-m, 24px);
+align-self: stretch;
+border-radius: var(--radius-s, 8px);
+border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.med_histo_heading, .immu_histo_heading, .surgery_histo_heading{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: var(--spacing-spacing-s, 16px);
+align-self: stretch;
+}
+.med_histo_heading_text, .immu_histo_heading_text, .surgery_histo_heading_text{
+display: flex;
+width: 574px;
+flex-direction: column;
+align-items: center;
+gap: 1px;
+}
+.med_histo_heading_text h1, .immu_histo_heading_text h1, .surgery_histo_heading_text h1{
+align-self: stretch;
+color: #045B62;
+text-align: center;
+font-family: Inter;
+font-size: 28px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.med_histo_paragraph_text, .immu_histo_paragraph_text, .surgery_histo_paragraph_text{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10px;
+align-self: stretch;
+}
+.med_histo_paragraph_text p, .immu_histo_paragraph_text p, .surgery_histo_paragraph_text p{
+color: rgba(28, 28, 28, 0.70);
+text-align: center;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.Add_diagnosis_rec, .Add_vaccine_rec, .Add_surgery_rec{
+display: flex;
+height: 56px;
+min-width: 120px;
+padding: 0px var(--spacing-spacing-m, 24px) 0px var(--spacing-spacing-s, 16px);
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-m, 24px);
+border-radius: var(--spacing-spacing-xxs, 8px);
+background: var(--colors-actions-action, #045B62);
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.Add_diagnosis_rec_base, .Add_vaccine_rec_base, .Add_surgery_rec_base{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-xxs, 8px);
+color: var(--colors-main-neutral, #FFF);
+text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.Add_diagnosis_rec:hover, .Add_vaccine_rec:hover, .Add_surgery_rec:hover{
+border-radius: var(--radius-s, 8px);
+background: var(--colors-actions-action-hover, #004D53);
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.Add_diagnosis_rec:active, .Add_vaccine_rec:active, .Add_surgery_rec:active{
+border-radius: var(--radius-s, 8px);
+background: var(--colors-actions-action-active, #004D53);
+box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.Add_diagnosis_rec_base .Add_vaccine_rec_base svg{
+width: var(--spacing-spacing-m, 24px);
+height: var(--spacing-spacing-m, 24px);
+filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.10));
+}
+.medhisto_Table{
+display: none;
+padding: var(--spacing-spacing-xxs, 8px) 0px;
+flex-direction: column;
+align-items: flex-start;
+gap: var(--spacing-spacing-s, 16px);
+align-self: stretch;
+border-radius: var(--radius-s, 8px);
+border: 0.8px solid rgba(0, 0, 0, 0.30);
+}
+.immu_histo_table{
+display: none;
+padding: var(--spacing-spacing-xxs, 8px) 0px;
+flex-direction: column;
+align-items: flex-start;
+gap: var(--spacing-spacing-s, 16px);
+align-self: stretch;
+border-radius: var(--radius-s, 8px);
+border: 0.8px solid rgba(0, 0, 0, 0.30);
+}
+.surgery_histo{
+display: none;
+padding: var(--spacing-spacing-xxs, 8px) 0px;
+flex-direction: column;
+align-items: flex-start;
+gap: var(--spacing-spacing-s, 16px);
+align-self: stretch;
+border-radius: var(--radius-s, 8px);
+border: 0.8px solid rgba(0, 0, 0, 0.30);
+}
+.cancel_pet{
+background: transparent;
+border: none;
+}
+.edit_pet_information{
+display: none;
+flex-direction: column;
+align-items: flex-start;
+gap: var(--spacing-spacing-s, 16px);
+}
+.edit_pet_header_container{
+display: none;
+max-width: 1536px;
+padding-left: var(--radius-xs, 0px);
+justify-content: space-between;
+align-items: center;
+}
+.edit_pet_header{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+}
+.edit_pet_header h1{
+color: #000;
+font-family: Inter;
+font-size: 28px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.edit_pet_container{
+display: flex;
+padding-bottom: var(--spacing-spacing-m, 0px);
+flex-direction: column;
+align-items: flex-start;
+align-self: stretch;
+border-radius: var(--radius-s, 8px);
+background: #F9F9F9;
+
+/* Shadow-L */
+box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.10), 0px 4px 6px -2px rgba(28, 28, 28, 0.05);
+}
+.edit_pet_container_back_container{
+display: flex;
+padding-left: var(--spacing-spacing-s, 0px);
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+align-self: stretch;
+}
+.edit_pet_back{
+display: flex;
+height: 60px;
+min-width: 100px;
+padding: 16px var(--spacing-spacing-m, 24px);
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-m, 24px);
+background: transparent;
+border: none;
+}
+.edit_pet_back_base{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+color: var(--colors-actions-action, #045B62);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.edit_pet_content{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: var(--spacing-spacing-m, 24px);
+align-self: stretch;
+}
+.pet_content_container{
+display: flex;
+padding-left: var(--spacing-spacing-l, 0px);
+align-items: flex-start;
+gap: var(--spacing-spacing-m, 24px);
+align-self: stretch;
+}
+.pet_content_container img{
+width: 100px;
+height: 100px;
+margin-left: 24px;
+border-radius: 150px;
+background: lightgray 50% / cover no-repeat;
+}
+.edit_pet_form{
+display: flex;
+padding: 0px var(--spacing-spacing-m, 24px);
+flex-direction: column;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+flex: 1 0 0;
+}
+.edit_buttons{
+display: flex;
+padding: 0px var(--spacing-spacing-m, 24px);
+justify-content: flex-end;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+align-self: stretch;
+margin-bottom: 16px;
+}
+.discard_changes_modalmodal_content, .successChange_modal_content{
+position: fixed; /* Change to fixed positioning */
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+display: flex;
+width: 420px;
+padding: var(--spacing-spacing-m, 24px);
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-s, 16px);
+border-radius: var(--radius-s, 8px);
+background: #F5F5F5;
+}
+.discard_icon{
+display: flex;
+width: 50px;
+height: 50px;
+padding: 10px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 830px;
+background: #F4C7C6;
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.discard_icon svg{
+width: var(--spacing-spacing-l, 32px);
+height: var(--spacing-spacing-l, 32px);
+flex-shrink: 0;
+}
+.discard_changes_message{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+align-self: stretch;
+}
+.discard_changes_message h1{
+align-self: stretch;
+color: #1C1C1C;
+font-family: Inter;
+font-size: 21px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin: 0;
+}
+.discard_changes_message p{
+align-self: stretch;
+color: rgba(28, 28, 28, 0.70);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.discard_changes_btns{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-xxs, 8px);
+align-self: stretch;
+}
+.cancel_button{
+display: flex;
+height: 56px;
+min-width: 100px;
+padding: 16px var(--spacing-spacing-m, 24px);
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-m, 24px);
+flex: 1 0 0;
+border-radius: var(--radius-s, 8px);
+border: 0.5px solid rgba(0, 0, 0, 0.15);
+background: var(--colors-actions-action-neut, #F9F9F9);
+
+/* Shadow-xs */
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.cancel_button:hover{
+border-radius: var(--radius-s, 8px);
+border: 0.5px solid rgba(0, 0, 0, 0.15);
+background: var(--colors-actions-action-neut-hover, #ECECEC);
+
+/* Shadow-xs */
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.cancel_button:active{
+border-radius: var(--radius-s, 8px);
+background: var(--colors-actions-action-neut-active, #ECECEC);
+
+/* Button Active */
+box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.cancel_button_base{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+color: #1C1C1C;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.discard_button{
+display: flex;
+height: 56px;
+min-width: 100px;
+padding: 16px var(--spacing-spacing-m, 24px);
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-m, 24px);
+flex: 1 0 0;
+border-radius: var(--spacing-spacing-xxs, 8px);
+background: #DA534F;
+
+/* Shadow-xs */
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.discard_button_base{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+color: var(--colors-main-neutral, #FFF);
+text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.discard_button:hover{
+border-radius: var(--radius-s, 8px);
+background: var(--colors-main-danger-dark, #C33834);
+
+/* Shadow-xs */
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.discard_button:active{
+border-radius: var(--radius-s, 8px);
+background: var(--colors-main-danger, #DA534F);
+
+/* Button Active */
+box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.success_icon_container{
+display: flex;
+align-items: center;
+gap: 10px;
+align-self: stretch;
+}
+.success_icon{
+display: flex;
+width: 50px;
+height: 50px;
+padding: 10px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 830px;
+background: #BEE7BD;
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.success_icon svg{
+width: var(--spacing-spacing-l, 32px);
+height: var(--spacing-spacing-l, 32px);
+flex-shrink: 0;
+}
+.success_message{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: var(--spacing-spacing-xxs, 8px);
+align-self: stretch;
+}
+.success_message h1{
+align-self: stretch;
+color: #1C1C1C;
+font-family: Inter;
+font-size: 21px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin: 0;
+}
+.success_message p{
+align-self: stretch;
+color: rgba(28, 28, 28, 0.70);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+margin: 0;
+}
+
+
+
+.input_container {
+  position: relative;
+  width: 100%;
+  
+}
+input, select{
+  height: 56px;
+  width: 280px;
+  border: solid 1px #1C1C1C;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 16px;
+  font-size: 8px;
+  
+}
+textarea {
+  height: 60px; /* Adjust the height as needed */
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 16px;
+  resize: none; /* Disable manual resizing of the textarea */
+  line-height: 20px; /* Adjust line height to control the number of lines displayed */
+}
+
+.label {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+input, select, textarea, .label .text {
+  font-family: 'Inter';
+  font-size: 14px;
+  width: 100%;
+}
+
+.label .text {
+  transition: all 0.15s ease-out;
+  color: grey;
+}
+
+input:focus:not(.search_input), select:focus ,textarea:focus{
+  outline: none;
+  border: 2px solid #48A0A7;
+}
+
+input:focus + .label .text, :not(input[value=""]) + .label .text {
+  font-size: 14px;
+  transform: translate(0, -90%);
+  background-color: white;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+textarea:focus + .label .text, textarea:not(:empty) + .label .text {
+  font-size: 14px;
+  transform: translate(0, -90%);
+  background-color: white;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+input:focus + .label .text, textarea:focus + .label .text{
+  color: #48A0A7;
+}
+
+/* Hide the original placeholder */
+input::placeholder:not(#breed::placeholder), textarea::placeholder{
+    opacity: 0;
+}
+input:focus::placeholder, textarea:focus::placeholder {
+  opacity: 1;
+}
+.animal_breed{
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-spacing-xs, 12px);
+  align-self: stretch;
+}
+
+
+  .Appointment_custom_btn {
+    display: flex;
+    height: 56px;
+    min-width: 100px;
+    padding: 16px var(--spacing-spacing-m, 24px);
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-spacing-m, 24px);
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-actions-action, #045B62);
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+    color: var(--colors-main-neutral, #FFF);
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  .Appointment_custom_btn:disabled{
+    border-radius: var(--radius-s, 8px);
+    opacity: 0.7;
+    background: var(--colors-actions-action, #045B62);
+  }
+  .Appointment_custom_btn:hover{
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-actions-action-hover, #004D53);
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  }
+  .Appointment_custom_btn:active{
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-actions-action-active, #004D53);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+  }
+  .Appointment_custom_btn_base{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-spacing-xs, 12px);
+    color: var(--colors-main-neutral, #FFF);
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+
+  
+
+  .Appointment_custom_prev_btn {
+    display: flex;
+    height: 56px;
+    min-width: 100px;
+    padding: 16px var(--spacing-spacing-m, 24px);
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-spacing-m, 24px);
+    border-radius: var(--radius-s, 8px);
+    background: transparent;
+    border: none;
+  }
+  .Appointment_custom_prev_btn_base{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-spacing-xs, 12px);
+    color: var(--colors-actions-action, #045B62);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.custom-modal .modal-content {
+  display: inline-flex;
+  box-shadow: none;
+  border: none;
+  display: inline-flex;
+  padding: 25px 30px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-radius: 10px;
+  background: #F5F5F5;
+  backdrop-filter: blur(10px); /* Add a slight blur effect to the background */
+}
+
+/* Center the modal vertically and horizontally */
+.custom-modal .modal-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: 0;
+}
+
+/* Center the modal header content */
+.modal-header {
+display: flex;
+align-items: center;
+gap: 10px;
+align-self: stretch;
+border-bottom: none;
+}
+
+.modal-icon_container{
+display: flex;
+width: 50px;
+height: 50px;
+padding: 10px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 830px;
+background: #BEE7BD;
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.modal-icon_container svg{
+width: var(--spacing-spacing-l, 32px);
+height: var(--spacing-spacing-l, 32px);
+flex-shrink: 0;
+}
+.modal_text{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: var(--spacing-spacing-xxs, 8px);
+align-self: stretch;
+}
+.modal_text h1{
+align-self: stretch;
+color: #1C1C1C;
+font-family: Inter;
+font-size: 21px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.modal_text p{
+align-self: stretch;
+color: rgba(28, 28, 28, 0.70);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
+/* Style the footer buttons */
+.custom-modal .modal-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  align-self: stretch;
+  border-top: none;
+}
+
+.custom_cancel {
+display: flex;
+height: 56px;
+min-width: 100px;
+padding: 16px var(--spacing-spacing-m, 24px);
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-m, 24px);
+flex: 1 0 0;
+border-radius: var(--radius-s, 8px);
+border: 0.5px solid rgba(0, 0, 0, 0.15);
+background: var(--colors-actions-action-neut, #F9F9F9);
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.custom_cancel_base{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+color: #1C1C1C;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.custom_cancel:hover{
+border-radius: var(--radius-s, 8px);
+border: 0.5px solid rgba(0, 0, 0, 0.15);
+background: var(--colors-actions-action-neut-hover, #ECECEC);
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.custom_cancel:active{
+border-radius: var(--radius-s, 8px);
+background: var(--colors-actions-action-neut-active, #ECECEC);
+box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.custom_confirm{
+display: flex;
+height: 56px;
+min-width: 100px;
+padding: 16px var(--spacing-spacing-m, 24px);
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-m, 24px);
+flex: 1 0 0;
+border-radius: var(--spacing-spacing-xxs, 8px);
+background: #5BB85A;
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.custom_confirm:hover{
+border-radius: var(--radius-s, 8px);
+background: var(--colors-main-success-dark, #329631);
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.custom_confirm:active{
+border-radius: var(--radius-s, 8px);
+background: var(--colors-main-success, #5BB85A);
+box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.custom_confirm_base{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+color: var(--colors-main-neutral, #FFF);
+text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+/* Additional styles to center the modal on the screen */
+.custom-modal .modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.custom-modal .modal-dialog {
+  max-width: 500px; /* Adjust the maximum width of the modal as needed */
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+
+
+
+.alert-danger{
+  font-size: 12px;
+}
