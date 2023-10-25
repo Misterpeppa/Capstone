@@ -6,6 +6,7 @@ use App\Models\admin\VaxInfo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PetRecord extends Model
 {
@@ -15,10 +16,9 @@ class PetRecord extends Model
     protected $fillable = [
         'owner_id',
         'pet_id',
-        'condition_id',
-        'allergy',
-        'vax_id',
-        'vax_history'
+        'allergies',
+        'existing_condtion',
+        'current_medication',
     ];
 
     public function owner(): BelongsTo
@@ -31,14 +31,18 @@ class PetRecord extends Model
         return $this->belongsTo(PetInfo::class, 'pet_id');
     }
 
-    public function condition(): BelongsTo
+    public function VaxHistory(): HasMany
     {
-        return $this->belongsTo(Condition::class, 'condition_id');
+        return $this->hasMany(VaxHistory::class, 'petrecord_id');
     }
 
-    public function allergy(): BelongsTo
+    public function MedHistory(): HasMany
     {
-        return $this->belongsTo(Allergy::class, 'allergy_id');
+        return $this->hasMany(MedHistory::class, 'petrecord_id');
+    }
+    public function SurgHistory(): HasMany
+    {
+        return $this->hasMany(SurgHistory::class, 'petrecord_id');
     }
 
 }
