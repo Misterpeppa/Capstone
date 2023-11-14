@@ -4,160 +4,127 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin\MedBatch;
 use App\Models\Admin\VitInfo;
 use App\Models\Admin\MedInfo;
+use App\Models\Admin\VaxBatch;
 use App\Models\Admin\VaxInfo;
+use App\Models\Admin\VitBatch;
+use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Foundation\Vite;
 
 class InvController extends Controller
 {
-    public function save(Request $request)
-    {
-    $item_name = $request->input('item_name');
-    $quantity = $request->input('quantity');
-    $price = $request->input('price');
-    $product_code = $request->input('product_code');
-    $date_stocked = $request->input('date_stocked');
-    $manufacturing_date = $request->input('manufacturing_date');
-    $batch_no = $request->input('batch_no');
-    $product_type = $request->input('product_type');
-
-    // Validation logic for common input fields
-    $validatedData = $request->validate([
-        'item_name' => 'required|string',
-        'quantity' => 'required|integer',
-        'price' => 'required|numeric',
-        'product_code' => 'required|numeric',
-        'date_stocked' => 'required|date',
-        'manufacturing_date' => 'required|date',
-        'batch_no' => 'required|numeric',
-        'product_type' => 'required|in:vaccine,medicine,vitamin',
-    ]);
-
-    // Determine the product type selected
-    $productType = $validatedData['product_type'];
-
-    // Validate and process the fields specific to each product type
-    switch ($productType) {
-        case 'vaccine':
-            $vaccineData = $request->validate([
-                'effects' => 'required|string',
-                'vax_exp' => 'required|date',
-            ]);
-
-            VaxInfo::create(array_merge($validatedData, $vaccineData));
-            break;
-
-        case 'medicine':
-            $medicineData = $request->validate([
-                'uses' => 'required|string',
-                'side_effects' => 'required|string',
-                'med_exp' => 'required|date',
-            ]);
-
-            MedInfo::create(array_merge($validatedData, $medicineData));
-            break;
-
-        case 'vitamin':
-            $vitData = $request->validate([
-                'vit_exp' => 'required|date',
-            ]);
-
-            VitInfo::create(array_merge($validatedData, $vitData));
-            break;
-
-        default:
-            // Handle invalid product type (optional)
-            break;
-    }
-
-    // Redirect or return a response indicating success
-    return redirect()->view('/inventory');
-
-    }
-
     public function show()
     {
         $vax_info = VaxInfo::all();
         $med_info = MedInfo::all();
         $vit_info = VitInfo::all();
+        $med_batch = MedBatch::all();
+        $vax_batch = VaxBatch::all();
+        $vit_batch = VitBatch::all();
 
         $productInfo = $vax_info->union($med_info)->union($vit_info);
 
-        return view('admin/inventory', compact('productInfo', 'vax_info', 'med_info', 'vit_info'));
+        return view('admin/inventory', compact('productInfo', 'vax_info', 'med_info', 'vit_info', 'med_batch', 'vax_batch', 'vit_batch'));
     }
 
     public function store(Request $request)
     {
-       $productType = $request->input('product_type');
-        // Depending on the product_type, create and store data in the respective table
+        $validatedData = $request->all();
+
+        $productType = $request->input('product_type');
+    
+        // Use a switch statement to handle different product types
         switch ($productType) {
             case 'Medicine':
-                $med_info = new MedInfo;
-                $med_info->item_name = $request->input('item_name');
-                $med_info->quantity = $request->input('quantity');
-                $med_info->price = $request->input('price');
-                $med_info->product_code = $request->input('product_code');
-                $med_info->date_stocked = $request->input('date_stocked');
-                $med_info->expiration_date = $request->input('expiration_date');
-                $med_info->manufacturing_date = $request->input('manufacturing_date');
-                $med_info->batch_no = $request->input('batch_no');
-                $med_info->product_type = $productType;
-                $med_info->save();
+                $medInfo = new MedInfo($validatedData);
+                $medInfo->save();
+    
+                $medBatchData = [
+                    'batch_no' => $validatedData['batch_no'],
+                    'product_code' => $validatedData['product_code'],
+                    'manufacturing_date' => $validatedData['manufacturing_date'],
+                    'expiration_date' => $validatedData['expiration_date'],
+                    'date_stocked' => $validatedData['date_stocked'],
+                ];
+    
+                $medBatch = new MedBatch($medBatchData);
+                $medInfo->medBatch()->save($medBatch);
+    
                 break;
-            case 'Vitamin':
-                $vit_info = new VitInfo;
-                $vit_info->item_name = $request->input('item_name');
-                $vit_info->quantity = $request->input('quantity');
-                $vit_info->price = $request->input('price');
-                $vit_info->product_code = $request->input('product_code');
-                $vit_info->date_stocked = $request->input('date_stocked');
-                $vit_info->expiration_date = $request->input('expiration_date');
-                $vit_info->manufacturing_date = $request->input('manufacturing_date');
-                $vit_info->batch_no = $request->input('batch_no');
-                $vit_info->product_type = $productType;
-                $vit_info->save();
-                break;
+    
             case 'Vaccine':
-                $vax_info = new VaxInfo;
-                $vax_info->item_name = $request->input('item_name');
-                $vax_info->quantity = $request->input('quantity');
-                $vax_info->price = $request->input('price');
-                $vax_info->product_code = $request->input('product_code');
-                $vax_info->date_stocked = $request->input('date_stocked');
-                $vax_info->expiration_date = $request->input('expiration_date');
-                $vax_info->manufacturing_date = $request->input('manufacturing_date');
-                $vax_info->batch_no = $request->input('batch_no');
-                $vax_info->product_type = $productType;
-                $vax_info->save();
+                // Handle Vitamin data and save to VitInfo and VitBatch tables
+                $vaxInfo = new VaxInfo($validatedData);
+                $vaxInfo->save();
+
+                $vaxBatchData = [
+                    'batch_no' => $validatedData['batch_no'],
+                    'product_code' => $validatedData['product_code'],
+                    'manufacturing_date' => $validatedData['manufacturing_date'],
+                    'expiration_date' => $validatedData['expiration_date'],
+                    'date_stocked' => $validatedData['date_stocked']
+                ];
+
+                $vaxBatch = new VaxBatch($vaxBatchData);
+                $vaxInfo->vaxBatch()->save($vaxBatch);
+
+                break;
+    
+            case 'Vitamin':
+                // Handle Vaccine data and save to VaxInfo and VaxBatch tables
+                $vitInfo = new VitInfo($validatedData);
+                $vitInfo->save();
+
+                $vitBatchData = [
+                    'batch_no' => $validatedData['batch_no'],
+                    'product_code' => $validatedData['product_code'],
+                    'manufacturing_date' => $validatedData['manufacturing_date'],
+                    'expiration_date' => $validatedData['expiration_date'],
+                    'date_stocked' => $validatedData['date_stocked']
+                ];
+
+                $vitBatch = new VitBatch($vitBatchData);
+                $vitInfo->vitBatch()->save($vitBatch);
+
+                break;
+            default:
+                // Handle the default case (if necessary)
                 break;
         }
-        return redirect()->back();
+         return redirect()->back();
     }
 
     public function viewProduct($product_type, $id)
     {
         switch( $product_type) {
             case 'Medicine':
-                $productInfo = MedInfo::find($id);
+                $productInfo = MedInfo::findOrFail($id);
+                $productBatch = MedBatch::find($id);
                 break;
             case 'Vaccine':
                 $productInfo = VaxInfo::find($id);
+                $productBatch =VaxBatch::find($id);
                 break;
             case 'Vitamin':
                 $productInfo = VitInfo::find($id);
+                $productBatch = VitBatch::find($id);
                 break;
             default:
              return response()->json(['error' => 'Invalid Product Type']);
         }
-        return response()->json($productInfo);
+        return response()->json([
+            'productInfo' => $productInfo,
+            'productBatch' => $productBatch,
+        ]);    
     }
 
     public function editProduct($product_type, $id)
     {
         switch ($product_type) {
             case 'medicine':
-                $medInfo = MedInfo::find($id);
+                $productInfo = MedInfo::find($id);
                 break;
             case 'vaccine':
                 $productInfo = VaxInfo::find($id);
@@ -177,13 +144,14 @@ class InvController extends Controller
         // Depending on the product_type, create and store data in the respective table
         switch ($product_type) {
             case 'Medicine':
-                $product = MedInfo::find($id);
-                break;
-            case 'Vitamin':
-                $product = VitInfo::find($id);
+                $product = MedBatch::find($id);
+                $quantity = MedInfo::find($id);
                 break;
             case 'Vaccine':
-                $product = VaxInfo::find($id);
+                $product = VaxBatch::find($id);
+                break;
+            case 'Vitamin':
+                $product = VitBatch::find($id);
                 break;
             default:
                 // Handle the case where the product type is not recognized, e.g., show an error or redirect
@@ -196,6 +164,9 @@ class InvController extends Controller
         $product->manufacturing_date = $request->input('manufacturing_date');
         $product->batch_no = $request->input('batch_no');
         $product->save();
+        $quantity->quantity = $request->input('quantity');
+        $quantity->save();
+
 
         // Redirect to a page after successful update
         return redirect()->route('admin_inv');
@@ -215,3 +186,46 @@ class InvController extends Controller
     }
 
 }
+    //    $productType = $request->input('product_type');
+    //     // Depending on the product_type, create and store data in the respective table
+    //     switch ($productType) {
+    //         case 'Medicine':
+    //             $med_info = new MedInfo;
+    //             $med_info->item_name = $request->input('item_name');
+    //             $med_info->quantity = $request->input('quantity');
+    //             $med_info->price = $request->input('price');
+    //             $med_info->product_code = $request->input('product_code');
+    //             $med_info->date_stocked = $request->input('date_stocked');
+    //             $med_info->expiration_date = $request->input('expiration_date');
+    //             $med_info->manufacturing_date = $request->input('manufacturing_date');
+    //             $med_info->batch_no = $request->input('batch_no');
+    //             $med_info->product_type = $productType;
+    //             $med_info->save();
+    //             break;
+    //         case 'Vitamin':
+    //             $vit_info = new VitInfo;
+    //             $vit_info->item_name = $request->input('item_name');
+    //             $vit_info->quantity = $request->input('quantity');
+    //             $vit_info->price = $request->input('price');
+    //             $vit_info->product_code = $request->input('product_code');
+    //             $vit_info->date_stocked = $request->input('date_stocked');
+    //             $vit_info->expiration_date = $request->input('expiration_date');
+    //             $vit_info->manufacturing_date = $request->input('manufacturing_date');
+    //             $vit_info->batch_no = $request->input('batch_no');
+    //             $vit_info->product_type = $productType;
+    //             $vit_info->save();
+    //             break;
+    //         case 'Vaccine':
+    //             $vax_info = new VaxInfo;
+    //             $vax_info->item_name = $request->input('item_name');
+    //             $vax_info->quantity = $request->input('quantity');
+    //             $vax_info->price = $request->input('price');
+    //             $vax_info->product_code = $request->input('product_code');
+    //             $vax_info->date_stocked = $request->input('date_stocked');
+    //             $vax_info->expiration_date = $request->input('expiration_date');
+    //             $vax_info->manufacturing_date = $request->input('manufacturing_date');
+    //             $vax_info->batch_no = $request->input('batch_no');
+    //             $vax_info->product_type = $productType;
+    //             $vax_info->save();
+    //             break;
+    //     }

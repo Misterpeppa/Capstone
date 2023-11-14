@@ -21,7 +21,8 @@ class Clients extends Authenticatable
         'suffix',
         'gender',
         'birthdate',
-        'email', 
+        'email',
+        'phone',
         'password',
     ];
 

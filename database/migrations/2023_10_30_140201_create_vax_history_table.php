@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('owner_info', function (Blueprint $table) {
+        Schema::create('vax_history', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('phone');
-            $table->string('email');
+            $table->unsignedBigInteger('vax_id');
+            $table->unsignedBigInteger('petrecord_id');
+            $table->date('vaccination_date');
             $table->timestamps();
+
+            $table->foreign('vax_id')->references('id')->on('vax_info');
+            $table->foreign('petrecord_id')->references('id')->on('pet_record');
         });
     }
 
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('owner_info');
+        Schema::dropIfExists('vax_history');
     }
 };

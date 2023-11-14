@@ -79,6 +79,7 @@ Route::get('/admin/inventory/view/vitamin/{id}', [InvController::class, 'viewVit
 
 
 Route::get('admin/client', [ClientController::class, 'show'])->name('admin_client');
+Route::post('admin/client', [ClientController::class, 'store'])->name(('client.store'));
 
 
 

@@ -20,50 +20,37 @@ class UserAuthController extends Controller
         return view('user/signup');
     }
 
-    public function signup(Request $request): RedirectResponse
+    public function signup(Request $request)
     {   
-        $name = $request->input('name');
         $email = $request->input('email');
+        $phone = $request->input('phone');
         $password = $request->input('password');
-        
-        $ErrorMessage = [
-            'first_name.alpha' => 'The first name should only contain alphabetic characters.',
-            'last_name.alpha' => 'The last name should only contain alphabetic characters.',
-        ];
-        // Validate form data
-        $validated = Validator::make($request->all(), [
-            'first_name' => 'required|alpha',
-            'last_name' => 'required|alpha',
-            'email' => 'required|email|unique:clients,email', // Add 'unique:users,email' rule
-            'password' => ['required', new Password],
-            'password_confirmation' => 'required|same:password',
-        ],$ErrorMessage);
-
-        if ($validated->fails()) {
-            return redirect()->back()
-                ->withErrors($validated)
-                ->withInput();
-        }
-
-        $validatedData = $validated->validated();
-
-        $firstName = ucfirst($validatedData['first_name']);
-        $lastName = ucfirst($validatedData['last_name']);
+        $first_name = $request->input('first_name');
+        $middle_name = $request->input('middle_name');
+        $last_name = $request->input('last_name');
+        $suffix = $request->input('suffix');
+        $gender = $request->input('gender');
+        $birthdate = $request->input('birthdate');
 
         // Create a new client
         $clients = new Clients();
-        $clients->first_name = $firstName;
-        $clients->last_name = $lastName;
-        $clients->email = $validatedData['email'];
-        $clients->password = bcrypt($validatedData['password']);
+        $clients->first_name = $first_name;
+        $clients->middle_name = $middle_name;
+        $clients->last_name = $last_name;
+        $clients->suffix = $suffix;
+        $clients->gender = $gender;
+        $clients->birthdate = $birthdate;
+        $clients->email = $email;
+        $clients->phone = $phone;
+        $clients->password = bcrypt($password);
         $clients->save();
         
 
         // Dispatch the Registered event
-        event(new Registered($clients));
+        //event(new Registered($clients));
 
         // Log in the user
-        //Auth::login($clients);
+        Auth::login($clients);
 
         // Redirect to a success page or perform any additional actions
         return redirect('/user/signin');
@@ -109,6 +96,6 @@ class UserAuthController extends Controller
     {
         Auth::logout();
 
-        return view('/user/signin');
+        return redirect('/user/signin');
     }
 }

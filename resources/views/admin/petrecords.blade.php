@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
     <title>Pet Records</title>
+    <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
     <link href="/css/styles.css" rel="stylesheet">
 </head>
 
@@ -98,10 +99,10 @@
                                     <!-- Form inputs -->
                                
                                 <div class="input_container">
-                                    <select class="admin_petInfo_select" id="name" name="name" placeholder="Owner Name">
+                                    <select class="admin_petInfo_select" id="name" name="owner_id" placeholder="Owner Name">
                                         <option value=""disabled selected>Select Owner: </option>
                                         @foreach ($owners as $owners)
-                                            <option value="">{{ $owners->first_name}} {{ $owners->last_name }}</option>
+                                            <option value="{{ $owners->id }}">{{ $owners->first_name }} {{ $owners->middle_name }} {{ $owners->last_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -146,7 +147,7 @@
                                     </div>  
                                     
                                     <div class="input_container">
-                                        <input type="text" id="pet_age" name="pet_age" value="" aria-labelledby="label-pet_age" required disabled/>
+                                        <input type="text" id="pet_age" name="pet_age" value="" aria-labelledby="label-pet_age" required readonly/>
                                         <label class="label" for="pet_age" id="label-pet_age">
                                             
                                         </label>
@@ -273,17 +274,17 @@
                             </div>
                         </div>
                     </div>
-                    
+                    @foreach($petrecord as $petrecord)
                     <div class="admin_petInfo_pet_card">
                         <div class="admin_petInfo_pet_record_item">
                             <div class="admin_petInfo_pet_picture">
                                 <img src="#" alt="Pet Picture">
                             </div>
-                            <div class="admin_petInfo_pet_details">
+                            <div class="admin_petInfo_pet_details" data-container-id="{{ $petrecord->id }}" >
                                 <div class="admin_petInfo_pet_details_petName_moreBtn">
                                     <div class="admin_petInfo_pet_details_header">
-                                        <h1>Pet Name</h1> <!--Change into actual pet name-->
-                                        <p>Breed</p> <!--Change into actual breed-->
+                                        <h1>{{ $petrecord->pet->name }}</h1> <!--Change into actual pet name-->
+                                        <p>{{ $petrecord->pet->breed }}</p> <!--Change into actual breed-->
                                     </div>
 
                                     <div class="admin_petInfo_more_button">
@@ -296,7 +297,7 @@
                                         </button>
                                         <div class="admin_petInfo_menu_options" id="admin_petInfo_menu_options"style="display: none;">
                                             <ul>
-                                                <li><a href="#" class="edit-option" onclick="togglePetRecord()">View Record</a></li>
+                                                <li><a href="#" class="view-button" data-container-id="{{ $petrecord->id }}" onclick="togglePetRecord()">View Record</a></li>
                                                 <li><a href="#" class="archive-option">Archive</a></li>
                                             </ul>
                                         </div>
@@ -305,70 +306,28 @@
                                 <div class="admin_petInfo_records_owner_info_body">
                                     <div class="admin_petInfo_records_frame226"> <!--ginanito ko muna kase laravel error nalabas sa screen ko kapag di ganito-->
                                         <div class="admin_petInfo_records_frame216">
-                                            <p>Owner: </p> <!--lagay ng code dito para sa pagshow ng name after nung P-->
+                                            <p>
+                                                Owner: {{ $petrecord->owner->first_name }} {{ $petrecord->owner->middle_name }} {{ $petrecord->owner->last_name }} {{ $petrecord->owner->suffix }}
+                                            </p> <!--lagay ng code dito para sa pagshow ng name after nung P-->
                                         </div>  
                                         
                                     </div>
                                     <div class="admin_petInfo_records_frame369">
                                         <div class="admin_petInfo_records_frame216">
-                                            <p>Email: </p> <!--lagay ng code dito para sa pagshow ng name after nung P-->                         
+                                            <p>Email: {{ $petrecord->owner->email }}</p> <!--lagay ng code dito para sa pagshow ng name after nung P-->                         
                                         </div>  
                                         <div class="admin_petInfo_records_frame217">
-                                        <p>Contact Number: </p> <!--lagay ng code dito para sa pagshow ng address after nung P-->
+                                        <p>Contact Number: {{ $petrecord->owner->phone }}</p> <!--lagay ng code dito para sa pagshow ng address after nung P-->
                                         </div>
                                     </div>
                                 </div>  
-                            </div>  
+                            </div>
                         </div> 
                         <!-- YUNG CARD LIKE NA CONTAINER NG MGA PET RECORDS NA NADADAGDAGAN DEPENDE KUNG ILAN INADD NG USER OR ADMIN-->
 
-                        <div class="admin_petInfo_pet_record_item">
-                            <div class="admin_petInfo_pet_picture">
-                                <img src="#" alt="Pet Picture">
-                            </div>
-                            <div class="admin_petInfo_pet_details">
-                                <div class="admin_petInfo_pet_details_petName_moreBtn">
-                                    <div class="admin_petInfo_pet_details_header">
-                                        <h1>Pet Name</h1> <!--Change into actual pet name-->
-                                        <p>Breed</p> <!--Change into actual breed-->
-                                    </div>
-
-                                    <div class="admin_petInfo_more_button">
-                                        <button class="admin_petInfo_frame426" id="admin_petInfo_frame426">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                                                <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62" />
-                                                <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62" />
-                                                <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62" />
-                                            </svg>
-                                        </button>
-                                        <div class="admin_petInfo_menu_options" id="admin_petInfo_menu_options" style="display: none;">
-                                            <ul>
-                                                <li><a href="#" class="edit-option" onclick="togglePetRecord()">View Record</a></li>
-                                                <li><a href="#" class="archive-option">Archive</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="admin_petInfo_records_owner_info_body">
-                                    <div class="admin_petInfo_records_frame226"> <!--ginanito ko muna kase laravel error nalabas sa screen ko kapag di ganito-->
-                                        <div class="admin_petInfo_records_frame216">
-                                            <p>Owner: </p> <!--lagay ng code dito para sa pagshow ng name after nung P-->
-                                        </div>  
-                                        
-                                    </div>
-                                    <div class="admin_petInfo_records_frame369">
-                                        <div class="admin_petInfo_records_frame216">
-                                            <p>Email: </p> <!--lagay ng code dito para sa pagshow ng name after nung P-->                         
-                                        </div>  
-                                        <div class="admin_petInfo_records_frame217">
-                                        <p>Contact Number: </p> <!--lagay ng code dito para sa pagshow ng address after nung P-->
-                                        </div>
-                                    </div>
-                                </div>  
-                            </div>  
-                        </div>                                                 
+                                                 
                     </div> 
-                
+                    @endforeach  
                 </div>
 
                 
@@ -1833,7 +1792,38 @@ aElements.forEach(function (aElement) {
     submitButton.addEventListener('click', showAddSuccessModal);
 
 </script>
+<script>
+    // Listen for button clicks with the class "view-record-button"
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.classList.contains('view-button')) {
+            // Get the container ID from the data attribute
+            const containerId = e.target.getAttribute('data-container-id');
 
+            // You can now use the containerId to open the detailed view or perform any other action.
+            console.log('Clicked on the View Record button in container with ID:', containerId);
+        }
+    });
+    $(document).ready(function() {
+        $('.view-button').click(function() {
+                var containerId = $(this).data('container-id');
+                
+                // Make an AJAX request to retrieve data
+                $.ajax({
+                    type: 'GET',
+                    url: `/admin/petrecord/viewRecord/${id}`,
+                    success: function(data) {
+                        // Update the HTML elements with the retrieved data
+                        $('.ownerName p').text(data.productInfo.first_name);
+                       
+                    },
+                    error: function(xhr) {
+                        // Handle errors
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+    })
+</script>
 
 
 

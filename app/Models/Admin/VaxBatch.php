@@ -7,22 +7,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class VaxHistory extends Model
+class VaxBatch extends Model
 {
     use HasFactory;
-    protected $table = 'vax_history';
+    protected $table = 'vax_batch';
     protected $fillable = [
         'vax_id',
-        'petrecord_id',
-        'vaccination_date'
+        'batch_no',
+        'product_code',
+        'manufacturing_date',
+        'expiration_date',
+        'date_stocked'
     ];
 
-    public function vax(): BelongsTo
+    public function Vax(): BelongsTo
     {
         return $this->belongsTo(VaxInfo::class, 'vax_id');
-    }
-    public function PetRecord(): BelongsTo
-    {
-        return $this->belongsTo(PetRecord::class, 'petrecord_id');
     }
 }

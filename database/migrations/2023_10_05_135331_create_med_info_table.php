@@ -16,15 +16,10 @@ return new class extends Migration
             $table->id();
             $table->string('item_name');
             $table->integer('quantity');
-            $table->string('uses');
-            $table->string('side_effects');
-            $table->integer('price');
-            $table->date('expiration_date');
+            $table->string('uses')->nullable();
+            $table->string('side_effects')->nullable();
+            $table->integer('price')->nullable();
             $table->string('product_type');
-            $table->integer('product_code');
-            $table->integer('batch_no');
-            $table->date('manufacturing_date');
-            $table->date('date_stocked');
             $table->timestamps();
         });
     }

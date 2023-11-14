@@ -98,7 +98,7 @@ class AppointmentController extends Controller
 
     public function list()
     {
-        $user = Auth::guard('client')->id();        // Get the currently authenticated user
+        $user = Auth::guard('clients')->id();        // Get the currently authenticated user
         $appointments = AppointmentPending::where('user_id', $user)->get();
 
     return view('user/appointmentlist', compact('appointments'));

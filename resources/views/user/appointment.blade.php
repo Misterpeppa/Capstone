@@ -1,742 +1,284 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-bs-theme="light" lang="en">
+
 <head>
-    <title>Appointment Forms</title>
-    @include('includes.head')  
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">  
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <meta charset="utf-8">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Appointment</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/typicons.min.css') }}">
+     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
 </head>
-<body>
-   @include('includes.user_header')
-    <main class="appointment">
-      <div class="Appointment_forms_container">
-        <div class="Appointment_form_heading d-flex flex-column text-center">
-          <h1>BOOK AN</h1>
-          <h2>APPOINTMENT</h2>
-          <p>Please input complete and accurate details to secure a slot for your appointment.</p>
-        </div>
-        <div class="Appointment_multisteps-form__progress">
-          <a class="btn Appointment_multisteps-form__progress-btn js-active" role="button" title="Form-1"></a>
-          <a class="btn Appointment_multisteps-form__progress-btn" role="button" title="Form-2"></a>
-          <a class="btn Appointment_multisteps-form__progress-btn" role="button" title="Form-3"></a>
-        </div>
 
-        <form id="form-1" class="Appointment_step-form mt-3">
-          <h2>APPOINTMENT PREFERENCES</h2>
-
-
-
-          <div class="appointment_preferences">
-              <div class="input_container mb-3">
-                <input type="text" name="petName" id="petName" placeholder="Pet Name" required oninput="restrictToAlphabetAndSpace(this)" onblur="checkInput(this)" data-id="petName" onclick="hideIconOnClick(this)">
-                <div class="error-message" id="error-petName">Please enter pet name.</div>
-
-              </div>
-
-              <div class="form-row animal_breed mb-3">
-                <div class="col">
-                  <div class="input_container">
-                    <select name="animal" id="animal" required onchange="checkInput(this)" onblur="checkInput(this)" data-id="animal" onclick="hideIconOnClick(this)" >
-                      <option value="" disabled selected>Select a species</option>
-                      <option value="Cat">Cat</option>
-                      <option value="Dog">Dog</option>
-                    </select>
-                    <div class="error-message" id="error-animal">Please select a species.</div>
-                  </div>
-                </div>
-
-                <div class="col">
-                  <div class="input_container">
-                    <div class="input_container">
-                      <input type="text" name="breed" id="breed" disabled placeholder="Select a species first" required onblur="checkInput(this)" data-id="breed" onclick="hideIconOnClick(this)" disabled>
-                      <div class="error-message" id="error-breed">Please select a breed.</div>
-                      <datalist id="breed-list"></datalist>
+<body class="d-flex flex-column align-items-center" style="max-width: 1920px;background: #EFEFEF;">
+    <nav class="navbar navbar-expand-md bg-body d-flex py-3" style="max-width: 1920px;background: #EFEFEF;box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.10), 0px 4px 6px -2px rgba(28, 28, 28, 0.05);width: 100%;">
+        <div class="container">
+            <div class="d-flex align-items-center clinic_logo"><img src="{{ asset('assets/img/dogs_cats.png') }}" style="width: 63.913px;height: 60px;">
+                <p class="fw-bold" style="color: #000;font-size: 20px;font-family: Inter;--bs-body-font-weight: 700;width: 200px;margin: 0px;">Tagapo Dogs &amp; Cats Veterinary Clinic</p>
+            </div><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-3" style="background: #EFEFEF;"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-3">
+                <ul class="navbar-nav mx-auto" style="font-family: Inter;--bs-body-font-weight: 700;">
+                    <li class="nav-item"><a class="nav-link active" href="{{ route('landing') }}" style="color: #1C1C1C;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('appointment.list') }}" style="color: #1C1C1C;">Appointments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color: #1C1C1C;">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color: #1C1C1C;">About Us</a></li>
+                </ul>
+                <div id="user" class="user">
+                    <div class="notif_container" style="display: flex;padding: 5px;justify-content: center;align-items: center;gap: 10px;"><i class="icon ion-android-notifications-none"></i></div>
+                    <div class="d-flex justify-content-end align-items-center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor">
+                            <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
+                            <path d="M256 112c-48.6 0-88 39.4-88 88C168 248.6 207.4 288 256 288s88-39.4 88-88C344 151.4 304.6 112 256 112zM256 240c-22.06 0-40-17.95-40-40C216 177.9 233.9 160 256 160s40 17.94 40 40C296 222.1 278.1 240 256 240zM256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 464c-46.73 0-89.76-15.68-124.5-41.79C148.8 389 182.4 368 220.2 368h71.69c37.75 0 71.31 21.01 88.68 54.21C345.8 448.3 302.7 464 256 464zM416.2 388.5C389.2 346.3 343.2 320 291.8 320H220.2c-51.36 0-97.35 26.25-124.4 68.48C65.96 352.5 48 306.3 48 256c0-114.7 93.31-208 208-208s208 93.31 208 208C464 306.3 446 352.5 416.2 388.5z"></path>
+                        </svg>
+                        <div class="dropdown"><a class="dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" href="#">&nbsp;Username</a>
+                            <div class="dropdown-menu flex-column"><a class="dropdown-item d-xl-flex justify-content-xl-center" href="#">My Profile</a><a class="dropdown-item d-xl-flex justify-content-xl-center" href="#">My Pets</a><a class="dropdown-item d-xl-flex justify-content-xl-center" href="#">Settings</a><br class="break"><a class="dropdown-item d-xl-flex justify-content-xl-center" href="#">Logout</a></div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="input_container mb-5">
-                <select name="service" id="service" required onchange="checkInput(this)">
-                    <option value="" disabled selected>Select a service</option>
-                    <option value="Check-up">Check-up</option>
-                    <option value="Deworming">Deworming</option>
-                    <option value="Laboratory Exam">Laboratory Exam</option>
-                    <option value="Surgery">Surgery</option>
-                    <option value="Vaccination">Vaccination</option>
-                </select>
-                <div class="error-message" id="error-service">Please select a service.</div>
-            </div>
-
-
-            </div>
-        
-          <div class="form-row Appointment_form-bottom">
-            <button id="nextButton" class="next Appointment_custom_btn" type="button" disabled>
-              <div class="Appointment_custom_btn_base">
-                Next
-              </div>
-            </button>
-          </div>
-        </form>
-
-        <form id="form-2" class="Appointment_step-form mt-3">
-          <!-- Form 2 -->
-          <div class="Appointment_Details_Confirmation_Container_form2 mb-5"><!-- Div to show pet information -->
-            <div class="Appointment_Details_Confirmation">
-              <div class="Appointment_Deets_Heading">
-                <h1>Appointment Preferences</h1>
-              </div>
-              <div class="Appointment_frame383">            
-                <div class="Appointment_frame226">
-                  <div class="Appointment_petName">
-                    <p>Pet Name: </p>
-                    <span id="display-petName"></span>
-                  </div>
-                  <div class="Appointment_species">
-                    <p>Species: </p>
-                    <span id="display-species"></span>
-                  </div>
-                  <div class="Appointment_breed">
-                    <p>Breed: </p>
-                    <span id="display-breed"></span>
-                  </div>
-                  <div class="Appointment_service">
-                    <p>Service: </p>
-                    <span id="display-service"></span>
-                  </div>
-                </div>
-              </div>
-            </div>                                      
-          </div>
-          <div class="row">
-            <div class="Appointment_lalagyan">
-              
-              <div class="Appointment_wrapper mt-5">
-
-                <div class="Appointment_calendar_header">
-                  <label for="calendar">Select a date *</label>
-                </div>
-                <header>
-                  
-                  <div class="Appointment_icons">
-                    <span id="prev"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none">
-                      <path d="M7 13.5794L2.40683 8.98622C1.86439 8.44378 1.86439 7.55614 2.40683 7.0137L7 2.42053" stroke="#1C1C1C" stroke-width="3" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
-                    </svg></span>
-
-                    <p class="current-date"></p>
-
-                    <span id="next"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="19" viewBox="0 0 10 19" fill="none">
-                      <path d="M2.40234 14.2388L6.99551 9.64565C7.53795 9.1032 7.53795 8.21557 6.99551 7.67312L2.40234 3.07996" stroke="#1C1C1C" stroke-width="3" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
-                    </svg></span>
-                  </div>
-                </header>
-                <div class="Appointment_calendar">
-                  
-                  <ul class="Appointment_weeks">
-                    <li>Sun</li>
-                    <li>Mon</li>
-                    <li>Tue</li>
-                    <li>Wed</li>
-                    <li>Thu</li>
-                    <li>Fri</li>
-                    <li>Sat</li>
-                  </ul>
-                  <ul class="days"></ul>
-                </div>
-              </div>
-              <div class="Appointment_time-picker mt-5 mb-5">
-                <div class="Appointment_time-picker-header">
-                  <label for="time-options">Select a time *</label>
-                </div>
-                <div class="Appointment_time-options" id="time-options">
-                  <ul class="Appointment_time-options">
-                    <li class="Appointment_time-option">
-                      <input type="radio" id="time1" name="time" value="09:00 AM">
-                      <label for="time1">09:00 AM</label>
-                    </li>
-                    <li class="Appointment_time-option">
-                      <input type="radio" id="time2" name="time" value="09:30 AM">
-                      <label for="time2">09:30 AM</label>
-                    </li>
-                    <li class="Appointment_time-option">
-                      <input type="radio" id="time3" name="time" value="10:00 AM">
-                      <label for="time3">10:00 AM</label>
-                    </li>
-                    <li class="Appointment_time-option">
-                      <input type="radio" id="time4" name="time" value="10:30 AM">
-                      <label for="time4">10:30 AM</label>
-                    </li>
-                    <li class="Appointment_time-option">
-                      <input type="radio" id="time5" name="time" value="11:00 AM">
-                      <label for="time5">11:00 AM</label>
-                    </li>
-                    <li class="Appointment_time-option">
-                      <input type="radio" id="time6" name="time" value="11:30 AM">
-                      <label for="time6">11:30 AM</label>
-                    </li>
-                    <li class="Appointment_time-option">
-                      <input type="radio" id="time7" name="time" value="01:00 PM">
-                      <label for="time7">01:00 PM</label>
-                    </li>
-                    <li class="Appointment_time-option">
-                      <input type="radio" id="time8" name="time" value="01:30 PM">
-                      <label for="time8">01:30 PM</label>
-                    </li>
-                    <li class="Appointment_time-option">
-                      <input type="radio" id="time9" name="time" value="02:00 PM">
-                      <label for="time9">02:00 PM</label>
-                    </li>
-                    <li class="Appointment_time-option">
-                      <input type="radio" id="time10" name="time" value="02:30 PM">
-                      <label for="time10">02:30 PM</label>
-                    </li>
-                    <li class="Appointment_time-option">
-                      <input type="radio" id="time11" name="time" value="03:00 PM">
-                      <label for="time11">03:00 PM</label>
-                    </li>
-                    <li class="Appointment_time-option">
-                      <input type="radio" id="time12" name="time" value="03:30 PM">
-                      <label for="time12">03:30 PM</label>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="form-row Appointment_forms-bottom-btns mb-3">
-            <button class="previous Appointment_custom_prev_btn" type="button">
-              <div class="Appointment_custom_prev_btn_base">
-                Previous
-              </div> 
-            </button>
-            <button id="nextButton" class="Next Appointment_custom_btn" type="button" disabled>
-              <div class="Appointment_custom_btn_base">
-                Next
-              </div> 
-            </button>
-          </div>
-        </form>
-
-        <form id="form-3" class="Appointment_step-form mt-3" action="{{ route('appointments.store') }}" method="POST">
-          @csrf
-          <div class="Appointment_Details_Confirmation_Container_form3 mb-5"><!-- Div to show pet information -->
-            <div class="Appointment_Details_Confirmation">
-              <div class="Appointment_Deets_Heading">
-                <h1>Appointment Details Confirmation</h1>
-              </div>
-              <div class="Appointment_frame383">            
-                <div class="Appointment_frame226">
-                  <div class="Appointment_petName">
-                    <p>Pet Name: </p>
-                    <span id="display-petName-summary"></span>
-                  </div>
-                  <div class="Appointment_species">
-                    <p>Species: </p>
-                    <span id="display-species-summary" name="petType" ></span>
-                    <input type="hidden" name="petType" id="input-petType">
-                  </div>
-                  <div class="Appointment_breed">
-                    <p>Breed: </p>
-                    <span id="display-breed-summary" name="breed" ></span>
-                    <input type="hidden" name="breed" id="input-breed">
-                  </div>
-                </div>
-
-                <div class="Appointment_frame369">
-                  <div class="Appointment_service">
-                    <p>Service: </p>
-                    <span id="display-service-summary" name="service" ></span>
-                    <input type="hidden" name="service" id="input-service">
-                  </div>
-                  <div class="Appointment_Date">
-                    <p>Date: </p>
-                    <span id="appointment-date-summary" name="appointmentDate" ></span>
-                    <input type="hidden" name="appointmentDate" id="input-appointmentDate">
-                  </div>
-                  <div class="Appointment_Time">
-                    <p>Time: </p>
-                    <span id="appointment-time-summary" name="appointmentTime" ></span>
-                    <input type="hidden" name="appointmentTime" id="input-appointmentTime">
-                  </div>
-                </div>
-              </div>
-            </div>                                      
-          </div>
-
-          <div class="form-row Appointment_forms-bottom-btns">
-            <button class="previous Appointment_custom_prev_btn" type="button">
-              <div class="Appointment_custom_prev_btn_base">
-                Previous
-              </div> 
-            </button>
-              <button id="Appointment_custom_btn" class="Appointment_custom_btn" type="button">
-                <div class="Appointment_custom_btn_base">
-                  Submit
-                </div>
-              </button>             
-          </div>
-
-          <div class="modal fade custom-modal" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-icon_container">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                        <g clip-path="url(#clip0_4552_21079)">
-                        <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </g>
-                        <defs>
-                        <clipPath id="clip0_4552_21079">
-                            <rect width="32" height="32" fill="white"/>
-                        </clipPath>
-                        </defs>
-                    </svg>
                 </div>
             </div>
-            <div class="modal-body modal_text">
-              <h1 class="success-heading">Complete appointment?</h1>
-              <p class="success-message">Please make sure that all details are correct before proceeding.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="custom_cancel" id="custom_cancel">
-                <div class="custom_cancel_base">Cancel</div>
-              </button>
-              <button type="submit" class="custom_confirm" id="custom_confirm">
-                <div class="custom_confirm_base">Confirm</div>
-              </button>
-            </div>
-          </div>
         </div>
-      </div>
-
-
-          
-
-      </form>
-
-      <div class="modal fade custom-modal" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="successModalLabel">
-                <img src="{{ asset('img/success.png') }}" alt="Success Icon" class="success-icon">
-              </h5>
+    </nav>
+    <div class="container-fluid d-flex flex-column" style="margin-bottom: 30px;height: 100%;">
+        <div class="row d-flex flex-column align-self-center" style="width: 100%;height: 100%;">
+            <div class="col-10 d-flex flex-column align-items-center align-self-center" style="padding: var(--spacing-spacing-l, 32px);gap: var(--spacing-spacing-m, 24px);border-radius: 0px 0px 8px 8px;border: 0.5px solid rgba(28, 28, 28, 0.50);background: #F9F9F9;border-top: none;box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);">
+                <div class="d-flex flex-column align-items-center">
+                    <div class="d-flex flex-column align-items-start">
+                        <h1 class="text-center align-self-stretch" style="color: #1C1C1C;font-size: 36px;font-family: Inter;">BOOK AN</h1>
+                        <h1 class="text-center" style="color: #045B62;font-size: 50px;--bs-body-font-weight: 700;font-family: Inter;">APPOINTMENT</h1>
+                    </div>
+                    <p class="text-center" style="color: #1c1c1c;font-size: 20px;font-family: Inter;--bs-body-font-weight: 500;">Please input complete and accurate details to secure a slot for your appointment.</p>
+                </div>
+                <section class="multi_step_section">
+                    <div id="multple-step-form-n" class="multiple-step-form-n overflow-visible">
+                        <div id="progress-bar-button" class="multisteps-form" style="padding-top: 10px;">
+                            <div class="multisteps-form__progress"><a class="btn link-success multisteps-form__progress-btn js-active" role="button" title="1" style="--bs-success:#045B62;--bs-success-rgb:4,91,98;"></a><a class="btn link-success multisteps-form__progress-btn" role="button" title="2" style="--bs-success: #045B62;--bs-success-rgb: 4,91,98;"></a><a class="btn link-success multisteps-form__progress-btn" role="button" title="User Info" style="--bs-success: #045B62;--bs-success-rgb: 4,91,98;"></a></div>
+                        </div>
+                        <div id="multistep-start-row" class="row" style="display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 25px;align-self: stretch;">
+                            <div id="multistep-start-column" class="col-12 col-lg-8 m-auto" style="width: 100%;">
+                                <form id="main-form" class="multisteps-form__form">
+                                    <div class="d-flex flex-column justify-content-center align-items-center align-self-stretch multisteps-form__panel js-active" id="single-form-next" data-animation="scaleIn" style="gap: 25px;">
+                                        <h3 class="text-start multisteps-form__title" style="align-self: stretch;color: #1C1C1C;font-family: Inter;font-size: 21px;font-style: normal;font-weight: 700;line-height: normal;">APPOINTMENT PREFERENCES</h3>
+                                        <div id="form-content" class="multisteps-form__content" style="display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 25px;align-self: stretch;max-height: 1500px;">
+                                            <div id="form_fields" class="form_fields">
+                                                <div style="margin-bottom: 10px;width: 100%;">
+                                                    <div class="form-floating col-12 col-sm-6" style="display: flex;height: 64px;padding: 20px;justify-content: space-between;align-items: center;align-self: stretch;border-radius: var(--radius-s, 8px);border: 0.5px solid rgba(0, 0, 0, 0.30);background: #FFF;box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);width: 100%;"><input class="focus-ring focus-ring-light form-control petName" type="text" id="petName" maxlength="30" minlength="1" placeholder="Pet name " required="" style="display:flex;align-items:center;gap:var(--spacing-spacing-xs, 12px);flex:1 0 0;border:none;"><label class="form-label" for="petName" style="color: rgba(28, 28, 28, 0.50);font-family: Inter;font-size: 16px;font-style: normal;font-weight: 500;line-height: normal;">Pet Name</label><div id="petNameError" class="error-message">Please enter a pet name</div></div>
+                                                </div>
+                                                <div class="d-flex" style="width: 100%;">
+                                                    <div style="display: flex;align-items: flex-start;align-content: flex-start;gap: 12px var(--spacing-spacing-xs, 12px);align-self: stretch;flex-wrap: wrap;width: 100%; margin-bottom: 10px;">
+                                                        <div style="display: flex;flex-direction: column;align-items: flex-start;gap: var(--spacing-spacing-xs, 12px);flex: 1 0 0;">
+                                                            <div id="dog_cat_btn" style="display: flex;align-items: flex-start;gap: var(--spacing-spacing-xs, 12px);align-self: stretch;">
+                                                                <div class="custom-control custom-radio" style="display: flex;height: 64px;padding: 0px var(--spacing-spacing-s, 16px) 0px var(--spacing-spacing-m, 24px);justify-content: space-between;align-items: center;flex: 1 0 0;box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);border-radius: var(--radius-s, 8px);border: 0.5px solid rgba(0, 0, 0, 0.30);background: #FFF;"><label class="form-label custom-control-label" id="Dog" for="dog" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Dog</label><input type="radio" id="dog" class="custom-control-input" style="display: flex;width: 22px;height: 22px;justify-content: center;align-items: center;border-radius: 8px;background: var(--colors-main-neutral-light, #F5F5F5);box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;" name="pet"></div>
+                                                                <div class="custom-control custom-radio" style="display: flex;height: 64px;padding: 0px var(--spacing-spacing-s, 16px) 0px var(--spacing-spacing-m, 24px);justify-content: space-between;align-items: center;flex: 1 0 0;box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);border-radius: var(--radius-s, 8px);border: 0.5px solid rgba(0, 0, 0, 0.30);background: #FFF;"><label class="form-label custom-control-label" id="Cat" for="cat" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Cat</label><input type="radio" id="cat" class="custom-control-input" style="display: flex;width: 22px;height: 22px;justify-content: center;align-items: center;border-radius: 8px;background: var(--colors-main-neutral-light, #F5F5F5);box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;" name="pet"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="input-grp-single" style="display: flex;align-items: flex-start;gap: var(--spacing-spacing-xs, 12px);flex: 1 0 0;position: relative;"><select class="focus-ring focus-ring-light form-select" disabled="" id="breed" required="" style="display:flex;height:64px;padding:20px;justify-content:space-between;align-items:center;flex:1 0 0;border-radius:var(--radius-s, 8px);border:0.5px solid rgba(0, 0, 0, 0.30);"></select><div id="breedError" class="error-message" style="display: none;">Please select a breed</div></div>
+                                                    </div>
+                                                </div>
+                                                <div style="margin-bottom: 10px;width: 100%;">
+                                                    <div class="focus-ring" id="input-grp-single" style="display: flex;height: 64px;padding: 20px;justify-content: space-between;align-items: center;align-self: stretch;display: flex;height: 64px;padding: 20px;justify-content: space-between;align-items: center;align-self: stretch;border-radius: var(--radius-s, 8px);border: 0.5px solid rgba(0, 0, 0, 0.30);background: #FFF;box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);position: relative;"><select id="surgery-type" class="focus-ring focus-ring-light form-select" style="display: flex;align-items: center;gap: var(--spacing-spacing-xs, 12px);flex: 1 0 0;border: none;color: rgba(28, 28, 28, 0.50);font-family: 'Inter';font-size: 16px;line-height: normal;--bs-body-font-weight: 500;" name="surgery-type" required >
+                                                    <option value="none" selected>Select Surgery</option>
+                                                    <option value="Neuter">Neuter</option>
+                                                    <option value="Tooth Extraction">Tooth Extraction</option>
+                                                </select><div id="surgeryTypeError" class="error-message" style="display: none;">Please select a surgery</div></div>
+                                                </div>
+                                                <div id="input-grp-single" class="form-floating" style="display: flex;height: 100px;min-height: 100px;padding: 20px 20px 12px 20px;flex-direction: column;justify-content: space-between;align-items: flex-start;align-self: stretch;border-radius: var(--radius-s, 8px);border: 0.5px solid rgba(0, 0, 0, 0.30);background: #FFF;box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);"><textarea class="focus-ring focus-ring-light form-control" id="floatingTextarea" style="display: flex;align-items: flex-start;gap: var(--spacing-spacing-xs, 12px);flex: 1 0 0;align-self: stretch;border: none;" maxlength="50" minlength="1" required="" placeholder="Leave a comment here"></textarea><label class="form-label" for="floatingTextarea" style="color: rgba(28, 28, 28, 0.50);font-family: Inter;font-size: 16px;font-style: normal;font-weight: 500;line-height: normal;">Additional Notes</label></div>
+                                            </div><button class="btn add_form" id="add_form" type="button" style="display:flex;width:56px;height:56px;padding:10px;justify-content:center;align-items:center;gap:10px;border-radius:30px;border:0.5px solid rgba(0, 0, 0, 0.15);background:var(--colors-actions-action-neut, #F9F9F9);box-shadow:0px 1px 2px 0px rgba(28, 28, 28, 0.05);"><i class="typcn typcn-plus"></i></button>
+                                        </div><div id="next-button" class="d-flex button-row mt-4" style="display: flex;justify-content: flex-end;align-items: center;gap: 813px;align-self: stretch;"><button id="next_btn" class="btn btn-primary border-primary ml-auto js-btn-next" onClick="updateAppointmentDetails()" type="button" title="Next" style="color: var(--colors-main-neutral, #FFF);text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;display: inline-flex;height: 56px;min-width: 100px;padding: var(--spacing-spacing-s, 16px) var(--spacing-spacing-m, 24px);justify-content: center;align-items: center;gap: var(--spacing-spacing-m, 24px);flex-shrink: 0;border-radius: var(--radius-s, 8px);background: var(--colors-actions-action, #045B62);box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);--bs-primary: #045B62;--bs-primary-rgb: 4,91,98;" disabled>Next</button></div>
+                                    </div>
+                                    <div id="single-form-next-prev" class="multisteps-form__panel" data-animation="scaleIn" style="display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 25px;align-self: stretch;">
+                                        <div style="display: flex;flex-direction: column;align-items: flex-start;gap: 52px;align-self: stretch;">
+                                            <div style="display: flex;padding: var(--spacing-spacing-m, 24px);align-items: flex-start;gap: var(--spacing-spacing-s, 16px);align-self: stretch;border-radius: var(--radius-s, 8px);border: 1px solid rgba(0, 0, 0, 0.25);">
+                                                <div id="details_container" class="details_container" style="display: flex;flex-direction: column;align-items: flex-start;gap: var(--spacing-spacing-s, 16px);flex: 1 0 0;">
+                                                    <div class="d-flex justify-content-between align-items-center align-self-stretch">
+                                                        <h1 style="flex: 1 0 0;color: #000;font-family: Inter;font-size: 21px;font-style: normal;font-weight: 700;line-height: normal;">APPOINTMENT PREFERENCES</h1>
+                                                    </div>
+                                                    <div class="d-flex flex-column align-self-stretch appointment_details" id="appointment_details" style="align-items: flex-start;gap: var(--spacing-spacing-m, 24px);">
+                                                        <div class="d-flex align-items-center align-self-stretch petName_type_breed" id="petName_type_breed" style="gap: 20px;">
+                                                            <div class="d-flex flex-column align-items-start pet_Detail" id="petName_Detail" style="gap: 10px;flex: 1 0 0;">
+                                                                <h1>Pet Name</h1>
+                                                                <p>Pet Name</p>
+                                                            </div>
+                                                            <div class="d-flex flex-column align-items-start pet_Detail" id="petType_Detail" style="gap: 10px;flex: 1 0 0;">
+                                                                <h1>Pet Type</h1>
+                                                                <p>Pet Type</p>
+                                                            </div>
+                                                            <div class="d-flex flex-column align-items-start pet_Detail" id="petBreed_Detail" style="gap: 10px;flex: 1 0 0;">
+                                                                <h1>Breed</h1>
+                                                                <p>Breed</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex align-self-stretch surgery_type_notes" id="surgery_type_notes" style="align-items: flex-start;gap: 20px;">
+                                                            <div class="d-flex flex-column align-items-start pet_Detail" id="surgery_type_Detail" style="gap: 10px;flex: 1 0 0;">
+                                                                <h1>Surgery Type</h1>
+                                                                <p>Surgery Type</p>
+                                                            </div>
+                                                            <div class="d-flex flex-column align-items-start pet_Detail" id="additional_Notes_detail" style="gap: 10px;flex: 1 0 0;">
+                                                                <h1>Additional Notes</h1>
+                                                                <p>Additional Notes</p>
+                                                            </div>
+                                                            <div class="d-flex flex-column align-items-start blank" id="blank" style="gap: 10px;flex: 1 0 0;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex flex-column align-items-start align-self-stretch multisteps-form__content" id="form-content-1" style="gap: 25px;">
+                                                <div class="d-flex justify-content-between align-items-start align-self-stretch calendar_time_container">
+                                                    <div class="d-flex flex-column align-self-stretch calendar_container" style="width: 546.5px;align-items: flex-start;gap: 25px;">
+                                                        <div class="d-flex flex-column align-items-start align-self-stretch Appointment_wrapper" style="gap: var(--spacing-spacing-s, 16px);">
+                                                            <div class="d-flex justify-content-between align-items-center align-self-stretch Appointment_icons"><span id="prev" class="prev_month"><i class="typcn typcn-chevron-left"></i></span>
+                                                                <p class="text-center current-date"></p><span id="next" class="next_month"><i class="typcn typcn-chevron-right"></i></span>
+                                                            </div>
+                                                            <div class="d-flex flex-column justify-content-center align-items-center align-self-stretch Appointment_calendar">
+                                                                <ul class="text-start Appointment_weeks">
+                                                                    <li style="height: 10px;">Sun</li>
+                                                                    <li style="height: 10px;">Mon</li>
+                                                                    <li style="height: 10px;">Tue</li>
+                                                                    <li style="height: 10px;">Wed</li>
+                                                                    <li style="height: 10px;">Thu</li>
+                                                                    <li style="height: 10px;">Fri</li>
+                                                                    <li style="height: 10px;">Sat</li>
+                                                                </ul>
+                                                                <ul class="days"></ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="selected_fullyBooked" style="display: flex;padding: 10px 30px;align-items: center;gap: 20px;align-self: stretch;">
+                                                            <div class="selected_Calendar_date" style="display: flex;padding: 20px;flex-direction: column;justify-content: center;align-items: center;gap: 10px;border-radius: var(--radius-s, 8px);background: rgba(0, 0, 0, 0.10);">
+                                                                <p style="color: #045B62;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 700;line-height: normal;margin: 0;">Selected</p>
+                                                            </div>
+                                                            <div class="fully_booked" style="display: flex;padding: 20px;flex-direction: column;justify-content: center;align-items: center;gap: 10px;border-radius: var(--radius-s, 8px);background: rgba(218, 83, 79, 0.50);">
+                                                                <p style="color: #B82319;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin: 0;">Fully Booked</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-none flex-column align-items-center Appointment_time_options" id="Appointment_time_options">
+                                                        <p id="selected_date" class="selected_date"></p>
+                                                        <div class="d-flex justify-content-center align-items-start time_options_container" id="time_options_container">
+                                                            <ul class="d-flex flex-column justify-content-center align-items-center time_options" id="time_options">
+                                                                <li class="Appointment_time-option"><input type="radio" id="time_1" name="time" value="10:00 AM"><label class="form-label" for="time_1">10:00 AM</label></li>
+                                                                <li class="Appointment_time-option"><input type="radio" id="time_2" name="time" value="10:30 AM"><label class="form-label" for="time_2">10:30 AM</label></li>
+                                                                <li class="Appointment_time-option"><input type="radio" id="time_3" name="time" value="11:00 AM"><label class="form-label" for="time_3">11:00 AM</label></li>
+                                                            </ul>
+                                                            <ul class="d-flex flex-column justify-content-center align-items-center time_options" id="time_options-1">
+                                                                <li class="Appointment_time-option"><input type="radio" id="time_-4" name="time" value="01:00 PM"><label class="form-label" for="time_4">01:00 PM</label></li>
+                                                                <li class="Appointment_time-option"><input type="radio" id="time_-5" name="time" value="01:30 PM"><label class="form-label" for="time_5">01:30 PM</label></li>
+                                                                <li class="Appointment_time-option"><input type="radio" id="time_-6" name="time" value="02:00 PM"><label class="form-label" for="time_6">02:00 PM</label></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="next-prev-buttons" class="button-row d-flex mt-4" style="justify-content: space-between;align-items: center;align-self: stretch;"><button class="btn btn btn-primary js-btn-prev" id="prev_button" type="button" title="Prev" style="display: flex;height: 56px;min-width: 100px;padding: 16px var(--spacing-spacing-m, 24px);justify-content: center;align-items: center;gap: var(--spacing-spacing-m, 24px);background: transparent;border-radius: var(--radius-s, 8px);border: none;color: var(--colors-actions-action, #045B62);font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;">Previous</button><button class="btn btn-primary disabled border-primary disabled ml-auto js-btn-next" id="next_button" type="button" title="Next" style="color:var(--colors-main-neutral, #FFF);text-shadow:0px 2px 2px rgba(0, 0, 0, 0.10);font-family:Inter;font-size:16px;font-style:normal;font-weight:600;line-height:normal;display:inline-flex;height:56px;min-width:100px;padding:var(--spacing-spacing-s, 16px) var(--spacing-spacing-m, 24px);justify-content:center;align-items:center;gap:var(--spacing-spacing-m, 24px);flex-shrink:0;border-radius:var(--radius-s, 8px);background:var(--colors-actions-action, #045B62);box-shadow:0px 1px 2px 0px rgba(28, 28, 28, 0.05);--bs-primary:#045B62;--bs-primary-rgb:4,91,98;" disabled="">Next</button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="single-form-next-prev-1" class="multisteps-form__panel" data-animation="scaleIn" style="display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 25px;align-self: stretch;">
+                                        <div id="form-content-2" class="multisteps-form__content" style="display: flex;flex-direction: column;align-items: flex-start;gap: 25px;align-self: stretch;">
+                                            <div class="d-flex flex-column align-items-start align-self-stretch details_confirmation" id="details_confirmation">
+                                                <p class="confirmation_details">APPOINTMENT DETAILS CONFIRMATION</p>
+                                                <div class="d-flex flex-column align-items-start align-self-stretch details" id="details">
+                                                    <div class="d-flex align-items-center align-self-stretch details_confirmation_1strow" id="details_confirmation_1strow">
+                                                        <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                            <h1>Pet Name</h1>
+                                                            <p id="confirm_Pet_Name" class="confirm_Pet_Name">Pet Name</p>
+                                                        </div>
+                                                        <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                            <h1>Pet Type</h1>
+                                                            <p id="confirm_Pet_type" class="confirm_Pet_type">Pet Type</p>
+                                                        </div>
+                                                        <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                            <h1>Breed</h1>
+                                                            <p id="confirm_breed" class="confirm_breed">Breed</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex align-items-start align-self-stretch details_confirmation_2ndrow" id="details_confirmation_2ndrow">
+                                                        <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                            <h1>Surgery Type</h1>
+                                                            <p id="confirm_surgery_Type" class="confirm_surgery_Type">Surgery Type</p>
+                                                        </div>
+                                                        <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                            <h1>Additional Notes</h1>
+                                                            <p id="confirm_additional_Notes" class="confirm_additional_Notes">Additional Notes</p>
+                                                        </div>
+                                                        <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                            <p></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex align-items-start align-self-stretch details_confirmation_3rdrow" id="details_confirmation_3rdrow">
+                                                        <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                            <h1>Date</h1>
+                                                            <p class="confirm_date">Date</p>
+                                                        </div>
+                                                        <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                            <h1>Time</h1>
+                                                            <p class="confirm_time">Time</p>
+                                                        </div>
+                                                        <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                            <p></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center align-self-stretch button-row d-flex mt-4" id="next-prev-buttons-1"><button class="btn btn btn-primary js-btn-prev" type="button" title="Prev" style="display: flex;height: 56px;min-width: 100px;padding: 16px var(--spacing-spacing-m, 24px);justify-content: center;align-items: center;gap: var(--spacing-spacing-m, 24px);background: transparent;border-radius: var(--radius-s, 8px);border: none;color: var(--colors-actions-action, #045B62);font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;">Previous</button><button id="book_appointment" class="btn border-primary btn btn-primary ml-auto js-btn-book" onclick="showModal()" type="button" title="Next" style="color: var(--colors-main-neutral, #FFF);text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;display: inline-flex;height: 56px;min-width: 100px;padding: var(--spacing-spacing-s, 16px) var(--spacing-spacing-m, 24px);justify-content: center;align-items: center;gap: var(--spacing-spacing-m, 24px);flex-shrink: 0;border-radius: var(--radius-s, 8px);background: var(--colors-actions-action, #045B62);box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);--bs-primary: #045B62;--bs-primary-rgb: 4,91,98;">Book Appointment</button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-            <div class="modal-body text-center">
-              <h3 class="success-heading">SUCCESS!</h3>
-              <p class="success-message">Your appointment has been made! Please make sure to arrive 15 minutes before your scheduled time.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn custom-newAppointment" data-dismiss="modal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <g clip-path="url(#clip0_2114_8716)" filter="url(#filter0_d_2114_8716)">
-                  <path d="M12 5V19M5 12H19" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-                <defs>
-                  <filter id="filter0_d_2114_8716" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                    <feOffset dy="2"/>
-                    <feGaussianBlur stdDeviation="1"/>
-                    <feComposite in2="hardAlpha" operator="out"/>
-                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2114_8716"/>
-                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2114_8716" result="shape"/>
-                  </filter>
-                  <clipPath id="clip0_2114_8716">
-                    <rect width="24" height="24" fill="white"/>
-                  </clipPath>
-                </defs>
-              </svg>New Appointment</button>
-              <button type="button" class="btn custom-viewAppointment" data-dismiss="modal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <g clip-path="url(#clip0_1917_11628)">
-                <path d="M16 3V7M8 3V7M4 11H20M11 15H12V18M4 7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H18C18.5304 5 19.0391 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V19C20 19.5304 19.7893 20.0391 19.4142 20.4142C19.0391 20.7893 18.5304 21 18 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V7Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </g>
-              <defs>
-                <clipPath id="clip0_1917_11628">
-                  <rect width="24" height="24" fill="white"/>
-                </clipPath>
-              </defs>
-            </svg>View Appointments</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div><div class="modal fade" id="consent_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="consent-content">
+            <div class="consent-icon-header">
+                <div class="icon-container"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <g clip-path="url(#clip0_5136_18516)">
+                    <path d="M16 10.6667V16M16 21.3333H16.0133M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 12.8174 26.7357 9.76516 24.4853 7.51472C22.2348 5.26428 19.1826 4 16 4C12.8174 4 9.76516 5.26428 7.51472 7.51472C5.26428 9.76516 4 12.8174 4 16Z" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_5136_18516">
+                      <rect width="32" height="32" fill="white"/>
+                    </clipPath>
+                  </defs>
+                </svg></div>
+                </div>
+                <div class="consent-title"><h1>Informed Consent and Acknowledgement</h1><p>Before scheduling your pet's surgery, please carefully read and acknowledge the following:</p></div>
+                <div class="consent-text"><p><span class="custom-style">1. Understanding the Procedure:</span> I understand that my pet will undergo a surgical procedure as recommended by the veterinarian. I have received information about the procedure, its risks, and its benefits.</p>
 
+                    <p><span class="custom-style">2. Health Status:</span> I confirm that I have provided accurate information about my pet's health, including any known medical conditions, allergies, or medications.</p>
 
+                    <p><span class="custom-style">3. Financial Responsibility:</span> I acknowledge that I am responsible for the cost of the surgical procedure and any related services. I have discussed the estimated costs with the clinic.</p>
+
+                    <p><span class="custom-style">4. Postoperative Care:</span> I understand that postoperative care is essential for my pet's recovery. I will follow the post-surgery care instructions provided by the clinic.</p>
+
+                    <p><span class="custom-style">5. Emergency Contact:</span> I have provided a valid emergency contact person and phone number in case of unforeseen circumstances during or after the surgery.</p>
+
+                    <p>By clicking "I Agree," I confirm that I have read, understood, and agree to the terms and conditions mentioned above. I consent to my pet undergoing the scheduled surgery.</p>
+
+                    <p>Please note that your agreement is required to proceed with scheduling the surgery for your pet.</p></div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn disagree" data-dismiss="modal"><div class="disagree_base">I Disagree</div></button>
+                    <button type="button" class="btn agree"><div class="agree_base">I Agree</div></button>
+                </div>
+            </div>
+        </div>
     </div>
-  </main>
-
-
-    <footer class="d-flex align-items-center" style="background: rgba(4,91,98,0.1);height: 200px;">
-        <div class="d-flex" style="height: 200px;">
-            <div class="col d-lg-flex d-xl-flex d-xxl-flex justify-content-xl-start align-items-xl-center"><img class="flex-md-shrink-0 flex-lg-shrink-0 flex-xl-shrink-0 flex-xxl-shrink-0" src="{{ asset('img/dogs&cats.png') }}" width="167" height="149"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-        </div>
-    </footer>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('js/calendar.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script>
-  // Wait for the document to be ready
-  document.addEventListener("DOMContentLoaded", function () {
-    // Get references to the <span> elements
-    const petTypeSpan = document.getElementById("display-species-summary");
-    const breedSpan = document.getElementById("display-breed-summary");
-    const appointmentTypeSpan = document.getElementById("display-service-summary");
-    const appointmentDateSpan = document.getElementById("appointment-date-summary");
-    const appointmentTimeSpan = document.getElementById("appointment-time-summary");
-
-    // Get references to the hidden <input> elements
-    const petTypeInput = document.getElementById("input-petType");
-    const breedInput = document.getElementById("input-breed");
-    const appointmentTypeInput = document.getElementById("input-service");
-    const appointmentDateInput = document.getElementById("input-appointmentDate");
-    const appointmentTimeInput = document.getElementById("input-appointmentTime");
-
-    // Set the values of the hidden <input> elements to the values from the <span> elements
-    document.getElementById("form-3").addEventListener("submit", function () {
-      petTypeInput.value = petTypeSpan.innerText;
-      breedInput.value = breedSpan.innerText;
-      appointmentTypeInput.value = appointmentTypeSpan.innerText;
-      appointmentDateInput.value = appointmentDateSpan.innerText;
-      appointmentTimeInput.value = appointmentTimeSpan.innerText;
-    });
-  });
-  </script>
-
-    <script>
-      function checkInput(inputElement) {
-        const inputValue = inputElement.value.trim();
-        const inputId = inputElement.getAttribute("data-id");
-        const errorMessage = document.getElementById(`error-${inputId}`);
-
-        if (inputValue === "") {
-          inputElement.classList.add("Appointment_error-input"); // Corrected class name
-          errorMessage.style.display = "block";
-        } else {
-          inputElement.classList.remove("Appointment_error-input"); // Corrected class name
-          errorMessage.style.display = "none";
-        }
-      }
-    </script>
-
-    
-  <script>
-    document.getElementById("form-").addEventListener("submt", function(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-
-    fetch('/appointment', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => {
-        if (response.ok) {
-            return response.json(); // Return JSON data if response is OK
-        } else {
-            throw new Error('Server response was not OK'); // Throw an error if response is not OK
-        }
-    })
-    .then(data => {
-        console.log('Response from server:', data);
-        // Handle the response data as needed
-        $('#successModal').modal('show'); // Show the modal after receiving a successful response
-    })
-    .catch(error => {
-        console.error('Error sending data:', error);
-        // Handle errors
-    });
-  });
-
-
-    // Code to handle modal buttons (View Appointment and New Appointment) goes here
-    document.addEventListener("DOMContentLoaded", function() {
-        const newAppointmentButton = document.querySelector(".custom-newAppointment");
-        const viewAppointmentsButton = document.querySelector(".custom-viewAppointment");
-
-        newAppointmentButton.addEventListener("click", function() {
-            // Redirect to the new appointment creation page
-            window.location.href = "#";
-        });
-
-        viewAppointmentsButton.addEventListener("click", function() {
-            // Redirect to the page displaying appointments
-            window.location.href = "#";
-        });
-    });
-  </script>
-
-    
-    <script>
-
-    $(document).ready(function() {
-      var currentForm = 1;
-      showForm(currentForm);
-      updateProgress(currentForm);
-
-      $('.next').click(function(event) {
-        event.preventDefault();
-        if (currentForm < 3) {
-          if (currentForm === 1 && !isForm1Complete()) {
-            return; // Prevent moving to Form 2 if Form 1 is incomplete
-          }
-          if (currentForm === 2 && !isForm2Complete()) {
-            return; // Prevent moving to Form 3 if Form 2 is incomplete
-          }
-          currentForm++;
-          showForm(currentForm);
-          updateProgress(currentForm);
-        }
-      });
-
-      $('.Next').click(function(event) {
-        event.preventDefault();
-        if (currentForm < 3) {
-          if (currentForm === 2 && !isForm2Complete()) {
-            return; // Prevent moving to Form 3 if Form 2 is incomplete
-          }
-          currentForm++;
-          showForm(currentForm);
-          updateProgress(currentForm);
-        }
-      });
-
-      $('.previous').click(function(event) {
-        event.preventDefault();
-        if (currentForm > 1) {
-          currentForm--;
-          showForm(currentForm);
-          updateProgress(currentForm);
-        }
-      });
-
-
-
-      function showForm(formIndex) {
-        $('.Appointment_step-form').hide();
-        $('#form-' + formIndex).show();
-      }
-
-      // Function to check Form 1 completion
-      function isForm1Complete() {
-          var allFieldsCompleted = true;
-          $('#form-1 [required]').each(function() {
-              if ($(this).is('input') && $(this).val() === '') {
-                  allFieldsCompleted = false;
-                  return false; // Exit the loop early
-              } else if ($(this).is('select') && !$(this).val()) {
-                  allFieldsCompleted = false;
-                  return false; // Exit the loop early
-              }
-          });
-          $('.next').prop('disabled', !allFieldsCompleted);
-          return allFieldsCompleted;
-      }
-
-      // Check Form 1 completion on input change
-      $('#form-1 [required]').on('input change', function() {
-          isForm1Complete();
-      });
-
-          // Function to check Form 2 completion
-          function isForm2Complete() {
-              var selectedDate = selectedDayElement != null; // Check if a day is selected
-              var selectedTime = $('input[name="time"]:checked').length > 0; // Check if a time is selected
-              var form2Complete = selectedDate && selectedTime;
-              $('.Next').prop('disabled', !form2Complete);
-              return form2Complete;
-          }
-
-          // Check Form 2 completion on input change
-          $('#form-2 .selected, #form-2 input[type="radio"]:checked').on('change', function() {
-              isForm2Complete();
-          });
-
-          function updateProgress(formIndex) {
-            // Remove 'js-active' class from all progress buttons and lines
-            $('.Appointment_multisteps-form__progress-btn').removeClass('js-active');
-            $('.Appointment_multisteps-form__progress-line').removeClass('js-active-line');
-
-            // Add 'js-active' class to progress buttons and lines up to the current form
-            for (var i = 1; i <= formIndex; i++) {
-              $('.Appointment_multisteps-form__progress-btn[title="Form-' + i + '"]').addClass('js-active');
-              if (i < formIndex) {
-                $('.Appointment_multisteps-form__progress-line[title="Form-' + i + '"]').addClass('js-active-line');
-              }
-            }
-          }
-
-          // Get references to the input elements in form-1
-          const petNameInput = document.getElementById('petName');
-          const speciesInput = document.getElementById('animal');
-          const breedInput = document.getElementById('breed');
-          const serviceInput = document.getElementById('service');
-          const timeInputs = document.querySelectorAll('input[name="time"]');
-          
-
-
-          // Get references to the display spans
-          const displayPetName = document.getElementById('display-petName');
-          const displayPetNameSummary = document.getElementById('display-petName-summary');
-          const displaySpecies = document.getElementById('display-species');
-          const displaySpeciesSummary = document.getElementById('display-species-summary');
-          const displayBreed = document.getElementById('display-breed');
-          const displayBreedSummary = document.getElementById('display-breed-summary');
-          const displayService = document.getElementById('display-service');
-          const displayServiceSummary = document.getElementById('display-service-summary');
-          const displaySelectedDay = document.getElementById('appointment-date-summary');
-          const displayTime = document.getElementById('appointment-time-summary');
-    
-          
-
-          // Add an event listener to update the display spans when the inputs change
-          petNameInput.addEventListener('input', updateDisplay);
-          speciesInput.addEventListener('input', updateDisplay);
-          breedInput.addEventListener('input', updateDisplay);
-          serviceInput.addEventListener('input', updateDisplay);
-          timeInputs.forEach(input => {
-            input.addEventListener('change', updateDisplay);
-          });
-
-          function updateDisplay() {
-            displayPetName.textContent = petNameInput.value || 'Pet\'s Name';
-            displaySpecies.textContent = speciesInput.value || 'Species';
-            displayBreed.textContent = breedInput.value || 'Breed';
-            displayService.textContent = serviceInput.value || 'Service';
-            displayPetNameSummary.textContent = petNameInput.value || 'Pet\'s Name';
-            displaySpeciesSummary.textContent = speciesInput.value || 'Species';
-            displayBreedSummary.textContent = breedInput.value || 'Breedd';
-            displayServiceSummary.textContent = serviceInput.value || 'Service';
-            // Update the selected day display span
-            if (selectedDayElement && !selectedDayElement.classList.contains('disabled')) {
-                displaySelectedDay.textContent = `${months[currMonth]} ${selectedDayElement.textContent}, ${currYear}`;
-            } else {
-                displaySelectedDay.textContent = '';
-            }
-
-            // Find the selected radio button
-            const selectedInput = document.querySelector('input[name="time"]:checked');
-            // Update the display span with the value of the selected radio button
-            displayTime.textContent = selectedInput ? selectedInput.value : ''; 
-            isForm2Complete();  
-          }
-
-    });
-    </script>
-
-    <script>
-      function searchBreed(inputElement) {
-    const datalist = document.getElementById("breed-list");
-    const inputValue = inputElement.value.toLowerCase();
-
-    const options = datalist.querySelectorAll("option");
-    options.forEach(option => {
-        const optionValue = option.value.toLowerCase();
-        if (optionValue.includes(inputValue)) {
-            option.style.display = "block";
-        } else {
-            option.style.display = "none";
-        }
-    });
-}
-
-    </script>
-  <script>
-    $(document).ready(function() {
-      var breedOptions = {
-        Cat:[
-      'Abyssinian', 'American Bobtail', 'American Curl', 'American Shorthair', 'American Wirehair','Balinese', 'Bengal', 'Birman', 'Bombay', 'British Shorthair', 'Burmese', 'Chartreux', 'Chausie','Cornish Rex', 'Cymric', 'Devon Rex', 'Egyptian Mau', 'Exotic Shorthair', 'Havana Brown', 'Himalayan','Japanese Bobtail', 'Javanese', 'Korat', 'LaPerm', 'Maine Coon', 'Manx', 'Munchkin', 'Nebelung',
-      'Norwegian Forest', 'Ocicat', 'Oriental', 'Persian', 'Pixiebob', 'Ragamuffin', 'Ragdoll','Russian Blue', 'Savannah', 'Scottish Fold', 'Selkirk Rex', 'Siamese', 'Siberian', 'Singapura','Snowshoe', 'Somali', 'Sphynx', 'Tonkinese', 'Turkish Angora', 'Turkish Van'
-    ],
-
-    Dog:[
-      'Afghan Hound', 'Akita', 'Alaskan Malamute', 'American Bulldog', 'American Eskimo Dog','American Foxhound', 'American Pit Bull Terrier', 'American Staffordshire Terrier', 'Aspin','Australian Cattle Dog', 'Australian Shepherd', 'Basset Hound', 'Beagle', 'Bearded Collie',
-      'Bernese Mountain Dog', 'Bichon Frise', 'Bloodhound', 'Border Collie', 'Boston Terrier','Boxer', 'Brittany', 'Bulldog', 'Bullmastiff', 'Cairn Terrier', 'Cavalier King Charles Spaniel','Chesapeake Bay Retriever', 'Chihuahua', 'Chinese Crested', 'Chow Chow', 'Cocker Spaniel',
-      'Collie', 'Dachshund', 'Dalmatian', 'Doberman Pinscher', 'English Bulldog', 'English Cocker Spaniel','English Setter', 'French Bulldog', 'German Shepherd', 'Golden Retriever', 'Great Dane', 'Greyhound','Havanese', 'Irish Setter', 'Italian Greyhound', 'Jack Russell Terrier', 'Labrador Retriever',
-      'Lhasa Apso', 'Maltese', 'Mastiff', 'Miniature Pinscher', 'Newfoundland', 'Old English Sheepdog','Papillon', 'Pekingese', 'Pomeranian', 'Poodle', 'Portuguese Water Dog', 'Pug', 'Rottweiler','Saint Bernard', 'Samoyed', 'Schnauzer', 'Scottish Terrier', 'Shetland Sheepdog', 'Shih Tzu',
-      'Siberian Husky', 'Staffordshire Bull Terrier', 'Weimaraner', 'West Highland White Terrier',
-      'Yorkshire Terrier'
-    ],
-
-    };
-
-      $('#animal').change(function() {
-        var selectedAnimal = $(this).val();
-        var breedInput = $('#breed');
-        var breedList = $('#breed-list');
-        breedInput.val('');
-
-        if (selectedAnimal in breedOptions) {
-          breedList.empty();
-
-          breedOptions[selectedAnimal].forEach(function(option) {
-            breedList.append($('<option></option>').val(option).text(option));
-          });
-
-          breedInput.prop('disabled', false);
-          breedInput.attr('list', 'breed-list');
-        } else {
-          breedInput.prop('disabled', true);
-          breedInput.removeAttr('list');
-        }
-      });
-    });
-  </script>
-
-
-<script>
-        //para sa pet name input valdiation
-        function restrictToAlphabetAndSpace(inputElement) {
-            // Remove any non-alphabet and non-space characters
-            inputElement.value = inputElement.value.replace(/[^a-zA-Z ]/g, '');
-        }
-    </script>
-
-<script>
-    $(document).ready(function() {
-        // Assuming you have a reference to the modal element with an id 'confirmModal'
-        var confirmModal = $('#confirmModal');
-
-        // Function to show the modal
-        function showConfirmModal() {
-            if (confirmModal) {
-                confirmModal.modal('show'); // Use Bootstrap's modal method to show the modal
-            }
-        }
-
-        // Add a click event listener to the "Submit" button with id 'Appointment_custom_btn'
-        var submitButton = document.getElementById('Appointment_custom_btn');
-        if (submitButton) {
-            submitButton.addEventListener('click', showConfirmModal);
-        }
-
-        // Add a click event listener to the "Cancel" button inside the modal
-        $('#custom_cancel').on('click', function() {
-            if (confirmModal) {
-                confirmModal.modal('hide'); // Use Bootstrap's modal method to hide the modal
-            }
-        });
-
-        // Add a click event listener to the "Confirm" button inside the modal
-        $('#custom_confirm').on('click', function() {
-            // Assuming you have a reference to the form with id 'form-3'
-            var form = document.getElementById('form-3');
-            if (form) {
-                form.submit(); // Submit the form
-                confirmModal.modal('hide'); // Close the modal after submitting the form
-            }
-        });
-    });
-
-
-  </script>
-
-
+    <footer style="display: flex;padding: 48px 100px;align-items: center;gap: 108px;background: rgba(4, 91, 98, 0.10);width: 100%;"><img src="{{ asset('assets/img/dogs_cats.png') }}" style="width: 159.783px;height: 150px;flex-shrink: 0;"></footer>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/appointmentforms.js"></script>
+    <script src="/assets/js/calendar.js"></script>
+    <script src="/assets/js/Multi-step-form-script.js"></script>
 </body>
+
 </html>

@@ -374,13 +374,16 @@
                                 </thead>
                                 <tbody id="inventoryTableBody" class="inventoryTableBody">
                                 @foreach($med_info as $medInfo)
+                                @php
+                                    $medBatch = $med_batch->where('med_id', $medInfo->id)->first();
+                                @endphp
                                 <tr data-row-id="{{ $medInfo->id }}">
                                     <td><input type="checkbox"></td>
                                     <td>{{ $medInfo->item_name }}</td>
                                     <td>{{ $medInfo->product_type }}</td>
                                     <td>{{ $medInfo->quantity }}</td>
-                                    <td>{{ $medInfo->date_stocked }}</td>
-                                    <td>{{ $medInfo->expiration_date }}</td>
+                                    <td>{{ $medBatch->date_stocked }}</td>
+                                    <td>{{ $medBatch->expiration_date }}</td>
                                     <td>
                                         <div class="dropdown">
                                             <button class="dropbtn">Actions</button>
@@ -435,13 +438,16 @@
                                 </tr>
                                 @endforeach<!-- Add this section inside the <tbody> element of your table -->
                                 @foreach($vit_info as $vitInfo)
+                                @php
+                                    $vitBatch = $vit_batch->where('vit_id', $vitInfo->id)->first();
+                                @endphp
                                 <tr data-row-id="{{ $vitInfo->id }}">
                                     <td><input type="checkbox"></td>
                                     <td>{{ $vitInfo->item_name }}</td>
                                     <td>{{ $vitInfo->product_type }}</td>
                                     <td>{{ $vitInfo->quantity }}</td>
-                                    <td>{{ $vitInfo->date_stocked }}</td>
-                                    <td>{{ $vitInfo->expiration_date }}</td>
+                                    <td>{{ $vitBatch->date_stocked }}</td>
+                                    <td>{{ $vitBatch->expiration_date }}</td>
                                     <td>
                                         <div class="dropdown">
                                             <button class="dropbtn">Actions</button>
@@ -494,13 +500,17 @@
                                 </tr>
                                 @endforeach
                                 @foreach($vax_info as $vaxInfo)
+                                    @php
+                                        $vaxBatch = $vax_batch->where('vax_id', $vaxInfo->id)->first();
+                                    @endphp
                                     <tr data-row-id="{{ $vaxInfo->id }}">
                                         <td><input type="checkbox"></td>
                                         <td>{{ $vaxInfo->item_name }}</td>
                                         <td>{{ $vaxInfo->product_type }}</td>
                                         <td>{{ $vaxInfo->quantity }}</td>
-                                        <td>{{ $vaxInfo->date_stocked }}</td>
-                                        <td>{{ $vaxInfo->expiration_date }}</td>
+                           
+                                        <td>{{ $vaxBatch->date_stocked }}</td>
+                                        <td>{{ $vaxBatch->expiration_date }}</td>
                                         <td>
                                         <div class="dropdown">
                                             <button class="dropbtn">Actions</button>
@@ -2308,17 +2318,16 @@
                 // Make an AJAX request to retrieve data
                 $.ajax({
                     type: 'GET',
-                    url: `/admin/inventory/view/${product_type}/${id}`, // Replace with your route
+                    url: `/admin/inventory/view/${product_type}/${id}`,
                     success: function(data) {
                         // Update the HTML elements with the retrieved data
-                        $('.info_header_base h1').text(data.item_name);
-                        $('.info_header_base p').text(data.product_type);
-                        $('.batch_number p').text(data.batch_no);
-                        $('.product_code p').text(data.product_code);
-                        $('.manufactured_date p').text(data.manufacturing_date);
-                        $('.expiration_date p').text(data.expiration_date);
-                        $('.date_stocked p').text(data.date_stocked);
-
+                        $('.info_header_base h1').text(data.productInfo.item_name);
+                        $('.info_header_base p').text(data.productInfo.product_type);
+                        $('.batch_number p').text(data.productBatch.batch_no);
+                        $('.product_code p').text(data.productBatch.product_code);
+                        $('.manufactured_date p').text(data.productBatch.manufacturing_date);
+                        $('.expiration_date p').text(data.productBatch.expiration_date);
+                        $('.date_stocked p').text(data.productBatch.date_stocked);
                     },
                     error: function(xhr) {
                         // Handle errors

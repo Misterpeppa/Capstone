@@ -9,6 +9,7 @@ use App\Models\Admin\Allergy;
 use App\Models\Admin\Condition;
 use App\Models\Admin\OwnerInfo;
 use App\Models\Admin\PetInfo;
+use App\Models\Admin\PetRecord;
 use App\Models\User\Clients;
 
 
@@ -16,7 +17,9 @@ class EMRController extends Controller
 {
     public function show(){
         $owners = Clients::all();
-        return view('/admin/petrecords', compact('owners'));
+        $petrecord = PetRecord::with('pet', 'owner')->get();
+        
+        return view('/admin/petrecords', compact('owners', 'petrecord'));
     }
 
     public function pet(Request $request){
@@ -30,6 +33,15 @@ class EMRController extends Controller
         $pet_infos->gender = $request->input('gender');
         $pet_infos->weight = $request->input('weight');
         $pet_infos->save();
+
+        $petId = $pet_infos->id;
+        $ownerId = $request->input('owner_id');
+
+        $petrecord = new PetRecord([
+            'pet_id' => $petId,
+            'owner_id' => $ownerId
+        ]);
+        $petrecord->save();
 
         return redirect()->back();
     }
@@ -61,20 +73,6 @@ class EMRController extends Controller
         $petInfo->weight = $request->input('weight');
         $petInfo->save();
 
-        $allergy = new Allergy();
-        $allergy->allergy_name = $request->input('allergies');
-        $allergy->reaction = $request->input('reaction');
-        $allergy->severity = $request->input('severity');
-        $allergy->save();
-
-        $condition = new Condition;
-        $condition->diagnosis = $request->input('diagnosis');
-        $condition->med_name = $request->input('med_name');
-        $condition->uses = $request->input('uses');
-        $condition->side_effects = $request->input('side_effects');
-        $condition->save();
-
-        
         $ownerInfo = new OwnerInfo();
         $ownerInfo->name = $request->input('ownerName');
         $ownerInfo->phone = $request->input('phone');
@@ -104,28 +102,6 @@ class EMRController extends Controller
 
         return redirect()->back();
     }
-
-    private function allergySave(Request $request)
-    {
-        $allergy = new Allergy();
-        $allergy->allergy_name = $request->input('allergies');
-        $allergy->reaction = $request->input('reaction');
-        $allergy->severity = $request->input('severity');
-        $allergy->save();
-
-        return redirect()->back();
-    }
-
-    private function conditionSave(Request $request)
-    {
-        $condition = new Condition;
-        $condition->diagnosis = $request->input('diagnosis');
-        $condition->med_name = $request->input('med_name');
-        $condition->uses = $request->input('uses');
-        $condition->side_effects = $request->input('side_effects');
-        $condition->save();
-    }
-
 
     public function infoShow()
     {

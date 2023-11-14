@@ -3,6 +3,7 @@
 namespace App\Models\admin;
 
 use App\Models\Admin\PetRecord;
+use App\Models\Admin\VaxBatch;
 use App\Models\Admin\VaxHistory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,16 +19,15 @@ class VaxInfo extends Model
         'quantity',
         'effects',
         'price',
-        'expiration_date',
-        'batch_no',
-        'manufacturing_date',
-        'date_stocked',
         'product_type',
-        'product_code'
     ];
 
     public function VaxHistory(): HasMany
     {
         return $this->hasMany(VaxHistory::class, 'vax_id');
+    }
+    public function VaxBatch(): HasMany
+    {
+        return $this->hasMany(VaxBatch::class, 'vax_id');
     }
 }

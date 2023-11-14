@@ -2,8 +2,10 @@
 
 namespace App\Models\admin;
 
+use App\Models\Admin\VitBatch;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class VitInfo extends Model
 {
@@ -14,12 +16,12 @@ class VitInfo extends Model
         'item_name',
         'quantity',
         'price',
-        'batch_no',
-        'expiration_date',
-        'batch_no',
-        'manufacturing_date',
-        'date_stocked',
         'product_type',
-        'product_code'
     ];
+
+    public function VitBatch(): HasMany
+    {
+        return $this->hasMany(VitBatch::class, 'vit_id');
+    }
+    
 }

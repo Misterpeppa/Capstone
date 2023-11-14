@@ -404,20 +404,21 @@
                                                 </svg>
                                             </div>
                                         </div>
-                                        <form class="new_client_content" action="#">
+                                        <form action="{{ route('client.store') }}" method="POST" class="new_client_content" action="#">
+                                            @csrf
                                             <img src="/img/new_client.png" alt="Pet logo">
                                             <!-- Client Name -->
 
                                             <div class="new_input_row">
                                                 <div class="input_container">
-                                                    <input type="text" id="fname"  name="fname"  value="" aria-labelledby="label-fname" required/>
+                                                    <input type="text" id="fname"  name="first_name"  value="" aria-labelledby="label-fname" required/>
                                                     <label class="label" for="fname" id="label-fname">
                                                       <div class="text">First Name</div>
                                                     </label>
                                                 </div>        
 
                                                 <div class="input_container">
-                                                    <input type="text" id="lname"  name="lname"  value="" aria-labelledby="label-lname" required/>
+                                                    <input type="text" id="lname"  name="last_name"  value="" aria-labelledby="label-lname" required/>
                                                     <label class="label" for="lname" id="label-lname">
                                                       <div class="text">Last Name</div>
                                                     </label>
@@ -538,14 +539,15 @@
                             </svg> Back</button>
 
                         </div>
+                        @foreach ($clientInfo as $clientInfo)
                         <div class="client_profile_info">
                             <div class="client_profile">
                                 <img src="/img/Portrait_Placeholder 2.png" alt="Client Photo">
                                 <div class="client_details">
                                     <div class="client_name_box">
                                         <div class="client_name">
-                                            <h1></h1>
-                                            <h2></h2>
+                                            <h1>{{ $clientInfo->first_name }}</h1>
+                                            <h2>{{ $clientInfo->last_name }}</h2>
                                             <h3></h3>
                                         </div>
                                     </div>
@@ -553,11 +555,11 @@
                                         <div class="client_info">
                                             <div class="email_address">
                                                 <h1>Email Address</h1>
-                                                <p></p>
+                                                <p>{{ $clientInfo->email }}</p>
                                             </div>
                                             <div class="phone_number">
                                                 <h1>Phone Number</h1>
-                                                <p></p>
+                                                <p>{{ $clientInfo->phone }}</p>
                                             </div>
                                             <div class="address">
                                                 <h1>Address</h1>
@@ -585,7 +587,7 @@
                             </button>
 
                         </div>
-                        
+                        @endforeach
                         <div class="client_pets_container">
                             <div class="container_header">
                                 <div class="container_left_header">

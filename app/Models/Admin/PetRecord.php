@@ -2,7 +2,8 @@
 
 namespace App\Models\Admin;
 
-use App\Models\admin\VaxInfo;
+use App\Models\User\Clients;
+use App\Models\Admin\PetInfo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -23,7 +24,7 @@ class PetRecord extends Model
 
     public function owner(): BelongsTo
     {
-        return $this->belongsTo(Client::class, 'owner_id');
+        return $this->belongsTo(Clients::class, 'owner_id');
     }
 
     public function pet(): BelongsTo

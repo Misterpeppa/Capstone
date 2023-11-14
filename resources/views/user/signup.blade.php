@@ -2,310 +2,218 @@
 <html data-bs-theme="light" lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Customer Sign Up</title>
-    @include('includes.head')
-    <!-- Add Bootstrap CSS link -->
     <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+
 </head>
 
 <body>
-
-    <section class="container-fluid signup-wrapper">
-        <div class="signup_bg-img">
-            <div class="signup_overlay"></div>
-            <img src="{{ asset('img/clientclinic.jpg') }}" alt="Logo" class="img-fluid">
-        </div>
-
-        <div class="row justify-content-center align-items-center ">
-            <div class="col-md-4 col-sm-10 col-12 signup_col mt-5 mb-5">
-                <div class="d-flex flex-row align-items-center justify-content-between align-self-stretch mb-3">
-                    <div class="signup_logo_container">
-                        <div class="signup_logo">
-                            <img src="{{ asset('img/Frame%20416.png') }}" class="img-fluid" alt="Logo">
-                        </div>
-                    </div>
-
-                    <div class="signup_form_header_right">
-                        <p>Already a user?</p>
-                        <a class="btn signup_signin-btn" role="button" href="{{ route('client.signin') }}">Sign In</a>
-                    </div>
-                </div>
-
-                <div class="signup_welcome text-start mb-1">
-                    <h1>Welcome to the family</h1>
-                    <p>Register your account</p>
-                </div>
-                <form class="signup_custom_container" id="signup_Form" method="POST" action="{{ route('client.signup') }}">
-                    @csrf
-
-                    <div class="mb-3">
-                        <div class="signup_input_container">
-                            <input class="signup_form_control" type="text" name="first_name" id="first_name" placeholder=" " value="{{ old('first_name') }}" onblur="checkInput(this)" data-id="first_name" onclick="hideIconOnClick(this)"maxlength="50">
-                            <label class="signup_placeholder_label" for="first_name">First Name</label>
-                            <div class="error-message" id="error-first_name">Please enter your first name.</div>
-                            <svg class="error-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                <g clip-path="url(#clip0_1917_11669)">
-                                    <path d="M12 8V12M12 16H12.01M9.103 2H14.897C15.2911 1.99995 15.6814 2.07756 16.0455 2.22838C16.4096 2.3792 16.7404 2.60029 17.019 2.879L21.12 6.979C21.3993 7.25791 21.6207 7.58917 21.7717 7.95382C21.9227 8.31846 22.0003 8.70932 22 9.104V14.898C22 15.2921 21.9224 15.6824 21.7716 16.0465C21.6208 16.4106 21.3997 16.7414 21.121 17.02L17.021 21.121C16.7423 21.4 16.4114 21.6214 16.0471 21.7724C15.6828 21.9233 15.2923 22.001 14.898 22.001H9.103C8.70883 22.0009 8.31854 21.9232 7.95443 21.7722C7.59033 21.6212 7.25955 21.3999 6.981 21.121L2.88 17.021C2.60087 16.7422 2.37946 16.4111 2.22846 16.0466C2.07746 15.6822 1.99982 15.2915 2 14.897V9.103C1.99995 8.7089 2.07756 8.31865 2.22838 7.95455C2.3792 7.59045 2.60029 7.25963 2.879 6.981L6.979 2.88C7.25791 2.60075 7.58917 2.37927 7.95382 2.22827C8.31846 2.07726 8.70932 1.99969 9.104 2H9.103Z" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_1917_11669">
-                                        <rect width="24" height="24" fill="white"/>
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                        </div>
-                    </div>
-
-                    
-                    @error('first_name')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-
-                    <div class="mb-3">
-                        <div class="signup_input_container">
-                            <input class="signup_form_control" type="text" name="last_name" id="last_name" placeholder=" " value="{{ old('last_name') }}" onblur="checkInput(this)" data-id="last_name" onclick="hideIconOnClick(this)" maxlength="50">
-                            <label class="signup_placeholder_label" for="last_name">Last Name</label>
-                            <div class="error-message" id="error-last_name">Please enter your last name.</div>
-                            <svg class="error-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                <g clip-path="url(#clip0_1917_11669)">
-                                    <path d="M12 8V12M12 16H12.01M9.103 2H14.897C15.2911 1.99995 15.6814 2.07756 16.0455 2.22838C16.4096 2.3792 16.7404 2.60029 17.019 2.879L21.12 6.979C21.3993 7.25791 21.6207 7.58917 21.7717 7.95382C21.9227 8.31846 22.0003 8.70932 22 9.104V14.898C22 15.2921 21.9224 15.6824 21.7716 16.0465C21.6208 16.4106 21.3997 16.7414 21.121 17.02L17.021 21.121C16.7423 21.4 16.4114 21.6214 16.0471 21.7724C15.6828 21.9233 15.2923 22.001 14.898 22.001H9.103C8.70883 22.0009 8.31854 21.9232 7.95443 21.7722C7.59033 21.6212 7.25955 21.3999 6.981 21.121L2.88 17.021C2.60087 16.7422 2.37946 16.4111 2.22846 16.0466C2.07746 15.6822 1.99982 15.2915 2 14.897V9.103C1.99995 8.7089 2.07756 8.31865 2.22838 7.95455C2.3792 7.59045 2.60029 7.25963 2.879 6.981L6.979 2.88C7.25791 2.60075 7.58917 2.37927 7.95382 2.22827C8.31846 2.07726 8.70932 1.99969 9.104 2H9.103Z" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_1917_11669">
-                                        <rect width="24" height="24" fill="white"/>
-                                    </clipPath>
-                                </defs>
-                            </svg>
-
-                        </div>
-                    </div>
-                    @error('last_name')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-
-                    <div class="mb-3">
-                        <div class="signup_input_container">
-                            <input class="signup_form_control" type="text" name="email" id="email" placeholder=" " onblur="checkInput(this)" data-id="email" onclick="hideIconOnClick(this)">
-                            <label class="signup_placeholder_label" for="email">Email</label>
-                            <div class="error-message" id="error-email">Please enter your email.</div>
-                            <svg class="error-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                <g clip-path="url(#clip0_1917_11669)">
-                                    <path d="M12 8V12M12 16H12.01M9.103 2H14.897C15.2911 1.99995 15.6814 2.07756 16.0455 2.22838C16.4096 2.3792 16.7404 2.60029 17.019 2.879L21.12 6.979C21.3993 7.25791 21.6207 7.58917 21.7717 7.95382C21.9227 8.31846 22.0003 8.70932 22 9.104V14.898C22 15.2921 21.9224 15.6824 21.7716 16.0465C21.6208 16.4106 21.3997 16.7414 21.121 17.02L17.021 21.121C16.7423 21.4 16.4114 21.6214 16.0471 21.7724C15.6828 21.9233 15.2923 22.001 14.898 22.001H9.103C8.70883 22.0009 8.31854 21.9232 7.95443 21.7722C7.59033 21.6212 7.25955 21.3999 6.981 21.121L2.88 17.021C2.60087 16.7422 2.37946 16.4111 2.22846 16.0466C2.07746 15.6822 1.99982 15.2915 2 14.897V9.103C1.99995 8.7089 2.07756 8.31865 2.22838 7.95455C2.3792 7.59045 2.60029 7.25963 2.879 6.981L6.979 2.88C7.25791 2.60075 7.58917 2.37927 7.95382 2.22827C8.31846 2.07726 8.70932 1.99969 9.104 2H9.103Z" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_1917_11669">
-                                        <rect width="24" height="24" fill="white"/>
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                        </div>
-                    </div>
-                    @if ($errors->has('email'))
-                        <div class="alert alert-danger" role="alert">
-                            {{ $errors->first('email') }}
-                        </div>
-                    @endif
-                    <div class="mb-3">
-                        <div class="signup_input_container">
-                            <input class="signup_form_control" type="password" name="password" id="password" placeholder=" " onblur="checkInput(this)" data-id="password" onclick="hideIconOnClick(this)" maxlength="50">
-                            <label class="signup_placeholder_label" for="password">Password</label>
-                            <div class="error-message" id="error-password">Please enter your password.</div>
-                            <div class="input-icon" id="password-toggle">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="password-toggle">
-                                    <g opacity="0.5" clip-path="url(#clip0_1917_11666)">
-                                    <path d="M21 9C18.6 11.667 15.6 13 12 13C8.4 13 5.4 11.667 3 9M3 15L5.5 11.2M20.9998 14.976L18.5078 11.2M9 17L9.5 13M15 17L14.5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_1917_11666">
-                                            <rect width="24" height="24" fill="white"/>
-                                        </clipPath>
-                                    </defs>
-                                </svg>
+    <div class="container d-flex justify-content-center" style="padding-right: 0px;padding-left: 0px;flex-shrink: 0;margin-top: 50px;margin-bottom: 50px;">
+        <div class="row g-0">
+            <div class="col-12">
+                <div class="d-flex justify-content-center align-items-center row">
+                    <div id="step-1" class="step active">
+                        <div class="justify-content-between vet_logo_btn_container">
+                            <div class="vet_logo"><img src="{{ asset('assets/img/dogs_cats.png') }}">
+                                <h1>Tagapo Dogs &amp; Cats Veterinary Clinic</h1>
+                            </div>
+                            <div class="signup_already_user_container">
+                                <h1>Already a user?</h1><button id="sign_in" class="sign_in" type="button">Sign In</button>
                             </div>
                         </div>
-                    </div>
-                    @if ($errors->has('password'))
-                        <div class="alert alert-danger" role="alert">
-                            {{ $errors->first('password') }}
-                        </div>
-                    @endif
-                    
-                    <div class="mb-3">
-                        <div class="signup_input_container">
-                            <input class="signup_form_control" type="password" name="password_confirmation" id="password_confirmation" placeholder=" " onblur="checkInput(this)" data-id="password_confirmation" onclick="hideIconOnClick(this)" maxlength="50">
-                            <label class="signup_placeholder_label" for="password_confirmation">Repeat Password</label>
-                            <div class="error-message" id="error-password_confirmation">Please repeat your password.</div>
-                            <div class="input-icon" id="password-confirm-toggle">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="password-toggle">
-                                    <g opacity="0.5" clip-path="url(#clip0_1917_11666)">
-                                        <path d="M21 9C18.6 11.667 15.6 13 12 13C8.4 13 5.4 11.667 3 9M3 15L5.5 11.2M20.9998 14.976L18.5078 11.2M9 17L9.5 13M15 17L14.5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_1917_11666">
-                                            <rect width="24" height="24" fill="white"/>
-                                        </clipPath>
-                                    </defs>
-                                </svg>
+                        <div class="signup_form_container">
+                            <div class="heading">
+                                <h1>Welcome to the family</h1>
+                                <p>Register your account.</p>
                             </div>
                         </div>
+                        <form id="form-1" class="signup_custom_container" >
+                            <div class="signup_inputs_container">
+                                <div class="input-group"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <g opacity="0.5" clip-path="url(#clip0_5236_308)">
+                                    <path d="M3 7C3 6.46957 3.21071 5.96086 3.58579 5.58579C3.96086 5.21071 4.46957 5 5 5H19C19.5304 5 20.0391 5.21071 20.4142 5.58579C20.7893 5.96086 21 6.46957 21 7M3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7M3 7L12 13L21 7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_5236_308">
+                                    <rect width="24" height="24" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                                </svg></span>
+                                    <div class="form-floating">
+                                        <input id="email" name="email" class="form-control" type="email" placeholder="Email Address" data-id="email" onblur="checkInput(this)" onclick="hideErrorOnInputClick('error-email')"/>
+                                <label class="form-label" for="email">Email Address</label><div class="error-message" id="error-email">Please enter your email.</div></div>
+                                </div>
+                                <div class="input-group"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <g opacity="0.5" clip-path="url(#clip0_5236_957)">
+                                            <path d="M5 4H9L11 9L8.5 10.5C9.57096 12.6715 11.3285 14.429 13.5 15.5L15 13L20 15V19C20 19.5304 19.7893 20.0391 19.4142 20.4142C19.0391 20.7893 18.5304 21 18 21C14.0993 20.763 10.4202 19.1065 7.65683 16.3432C4.8935 13.5798 3.23705 9.90074 3 6C3 5.46957 3.21071 4.96086 3.58579 4.58579C3.96086 4.21071 4.46957 4 5 4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5236_957">
+                                            <rect width="24" height="24" fill="white"/>
+                                            </clipPath>
+                                        </defs>
+                                        </svg></span>
+                                        <div class="form-floating">
+                                            <input id="phone_number" name="phone" class="form-control" type="tel" placeholder="Phone Number" data-id="phone_number" onblur="checkInput(this)" onclick="hideErrorOnInputClick('error-phone_number')" />
+                                        <label class="form-label" for="phone_number">Phone Number</label><div class="error-message" id="error-phone_number">Please enter your phone number.</div></div>
+                                        </div>
+                                        <div class="input-group"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <g opacity="0.5" clip-path="url(#clip0_5236_14313)">
+                                            <path d="M8 11V7C8 5.93913 8.42143 4.92172 9.17157 4.17157C9.92172 3.42143 10.9391 3 12 3C13.0609 3 14.0783 3.42143 14.8284 4.17157C15.5786 4.92172 16 5.93913 16 7V11M5 13C5 12.4696 5.21071 11.9609 5.58579 11.5858C5.96086 11.2107 6.46957 11 7 11H17C17.5304 11 18.0391 11.2107 18.4142 11.5858C18.7893 11.9609 19 12.4696 19 13V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21H7C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19V13ZM11 16C11 16.2652 11.1054 16.5196 11.2929 16.7071C11.4804 16.8946 11.7348 17 12 17C12.2652 17 12.5196 16.8946 12.7071 16.7071C12.8946 16.5196 13 16.2652 13 16C13 15.7348 12.8946 15.4804 12.7071 15.2929C12.5196 15.1054 12.2652 15 12 15C11.7348 15 11.4804 15.1054 11.2929 15.2929C11.1054 15.4804 11 15.7348 11 16Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5236_14313">
+                                            <rect width="24" height="24" fill="white"/>
+                                            </clipPath>
+                                        </defs>
+                                        </svg></span>
+                                        <div class="align-self-stretch form-floating">
+                                            <input id="password" name="password" class="form-control" type="password" placeholder="Password" data-id="password" onblur="checkInput(this)" onclick="hideErrorOnInputClick('error-password')" /><label class="form-label" for="password">Password</label><div class="error-message" id="error-password">Please enter your password.</div></div>
+                                        </div>
+                                        <div class="input-group"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <g opacity="0.5" clip-path="url(#clip0_5236_14313)">
+                                            <path d="M8 11V7C8 5.93913 8.42143 4.92172 9.17157 4.17157C9.92172 3.42143 10.9391 3 12 3C13.0609 3 14.0783 3.42143 14.8284 4.17157C15.5786 4.92172 16 5.93913 16 7V11M5 13C5 12.4696 5.21071 11.9609 5.58579 11.5858C5.96086 11.2107 6.46957 11 7 11H17C17.5304 11 18.0391 11.2107 18.4142 11.5858C18.7893 11.9609 19 12.4696 19 13V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21H7C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19V13ZM11 16C11 16.2652 11.1054 16.5196 11.2929 16.7071C11.4804 16.8946 11.7348 17 12 17C12.2652 17 12.5196 16.8946 12.7071 16.7071C12.8946 16.5196 13 16.2652 13 16C13 15.7348 12.8946 15.4804 12.7071 15.2929C12.5196 15.1054 12.2652 15 12 15C11.7348 15 11.4804 15.1054 11.2929 15.2929C11.1054 15.4804 11 15.7348 11 16Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_5236_14313">
+                                            <rect width="24" height="24" fill="white"/>
+                                            </clipPath>
+                                        </defs>
+                                        </svg></span>
+                                    <div class="align-self-stretch form-floating"><input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" data-id="password_confirmation" onblur="checkPasswordMatch()" onclick="hideErrorOnInputClick('error-password_confirmation')" /><label class="form-label" for="password_confirmation">Repeat Password</label><div class="error-message" id="error-password_confirmation">Please enter your password first.</div><div id="error-password_confirmation_1" class="error-message">Password does not match.</div></div>
+                                </div>
+                            </div>
+                            <button id="next_btn" class="disabled border-success next_btn" type="submit" style="--bs-success: #004D53;--bs-success-rgb: 0,77,83;" disabled>
+                            Next
+                            </button>
+                        </form>
                     </div>
-                    @if ($errors->has('password_confirmation'))
-                        <div class="alert alert-danger" role="alert">
-                            {{ $errors->first('password_confirmation') }}
+                    <div id="step-2" class="step">
+                        <div class="justify-content-between signup_header" id="signup_header"><button id="signup_back_btn" class="signup_back_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                        <g clip-path="url(#clip0_5236_7807)" filter="url(#filter0_d_5236_7807)">
+                            <path d="M5.5 12H19.5M5.5 12L11.5 18M5.5 12L11.5 6" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        <defs>
+                            <filter id="filter0_d_5236_7807" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                            <feOffset dy="2"/>
+                            <feGaussianBlur stdDeviation="1"/>
+                            <feComposite in2="hardAlpha" operator="out"/>
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5236_7807"/>
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_5236_7807" result="shape"/>
+                            </filter>
+                            <clipPath id="clip0_5236_7807">
+                            <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
+                            </clipPath>
+                        </defs>
+                        </svg> Back
+                        </button></div>
+                        <div class="signup_form_container">
+                            <div class="heading">
+                                <h1>Introduce yourself</h1>
+                                <p>Providing your basic info can help us get to know you more.</p>
+                            </div>
                         </div>
-                    @endif
-                    <!-- @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
+                        <form class="signup_custom_container" method="POST" action="{{ route('client.signup') }}" >
+                            @csrf
+                            <div class="signup_inputs_container">
+                                    <input type="hidden" id="Hform2Email" name="email">
+                                    <input type="hidden" id="Hform2Phone" name="phone">
+                                    <input type="hidden" id="Hform2Password" name="password">
+
+                                <div class="input-group fName_lname">
+                                    <div class="form-floating"><input name="first_name" id="first_name" class="form-control" type="text" placeholder="First Name" data-id="first_name" onblur="checkInput(this)" onclick="hideErrorOnInputClick('error-first_name')"/><label class="form-label" for="first_name">First Name</label><div class="error-message" id="error-first_name">Please enter your first name.</div></div>
+                                    <div class="form-floating"><input name="middle_name" id="middle_name" class="form-control last_name" type="text" placeholder="Middle Name"  data-id="middle_name" onblur="checkInput(this)" onclick="hideErrorOnInputClick('error-middle_name')" /><label class="form-label" for="middle_name">Middle Name</label><div class="error-message" id="error-middle_name">Please enter your middle name.</div></div>
+                                </div>
+                                <div class="input-group lname_suffix">
+                                    <div class="form-floating"><input name="last_name" id="last_name" class="form-control" type="text" placeholder="Last Name" data-id="last_name" onblur="checkInput(this)" onclick="hideErrorOnInputClick('error-last_name')"/><label class="form-label" for="last_name">Last Name</label><div class="error-message" id="error-last_name">Please enter your last name.</div></div>
+                                    <div class="form-floating">
+                                        <select class="form-select" name="suffix" id="suffix">
+                                            <option value="none" selected="">Select a suffix (optional)</option>
+                                            <option value="I">I</option>
+                                            <option value="II">II</option>
+                                            <option value="III">III</option>
+                                            <option value="IV">IV</option>
+                                            <option value="Other">Other</option>
+                                        </select><label class="form-label" for="suffix">Suffix</label></div>
+                                    <div class="form-floating specify_suffix"><input id="specify_suffix" class="form-control" type="text" placeholder="Specify suffix" data-id="specify_suffix" onblur="checkInput(this)" onclick="hideErrorOnInputClick('error-specify_suffix')"/><label class="form-label" for="specify_suffix">Specify Suffix</label><div class="error-message" id="error-specify_suffix">Please enter your suffix.</div></div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="align-self-stretch form-floating">
+                                        <select class="form-select" name="gender" id="gender">
+                                            <option value="none" selected="">Gender (optional)</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Non-Binary">Non-Binary</option>
+                                            <option value="none">Prefer not to say</option>
+                                        </select><label class="form-label" for="gender">Gender</label></div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="align-self-stretch form-floating" id="birthdate-container"><input class="form-control" type="date" name="birthdate" id="birthdate" placeholder=" " onblur="checkInput(this)" data-id="birthdate" onclick="hideIconOnClick(this)"><label class="form-label" for="birthdate">Birthdate</label><div class="error-message" id="error-birthdate">Please enter your birthdate.</div></div>
+                                </div>
+                            </div>
+                                <button id="signup_btn" class="disabled border-success signup_btn" type="submit" style="--bs-success: #004D53;--bs-success-rgb: 0,77,83;" disabled>Sign Up
+                            </button>
+                        </form>
                     </div>
-                    @endif -->
-
-                    
-
-                    <div class="mb-1">
-                        <button class="btn signup_btn w-100" type="submit">Sign Up</button>
-                    </div>
-                </form>
-
+                </div>
             </div>
         </div>
-    </section>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </div>
+    <div class="signup_bg-img">
+        <div class="signup_overlay"></div><img class="img-fluid" src="{{ asset('img/clientclinic.jpg') }}" width="100%" style="position: relative;">
+    </div>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/appointmentforms.js"></script>
+    <script src="/assets/js/calendar.js"></script>
+    <script src="/assets/js/Multi-step-form-script.js"></script>
+    <script src="/assets/js/signup.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-        function checkInput(inputElement) {
-            const inputValue = inputElement.value.trim();
-            const inputId = inputElement.getAttribute("data-id");
-            const errorMessage = document.getElementById(`error-${inputId}`);
-            const errorIcon = document.querySelector(`.error-icon[data-id="${inputId}"]`);
+        $(document).ready(function() {
+            // Handle form submission for Form 1
+            $('#form-1').submit(function(e) {
+                e.preventDefault(); // Prevent the default form submission behavior
 
-            if (inputValue === "") {
-                inputElement.classList.add("error-input");
-                errorMessage.style.display = "block";
-                errorIcon.style.display = "block"; // Show the icon in error state
-            } else {
-                inputElement.classList.remove("error-input");
-                errorMessage.style.display = "none";
-                errorIcon.style.display = "none"; // Hide the icon when input has content
-            }
-        }
-        function hideIconOnClick(inputElement) {
-            const inputId = inputElement.getAttribute("data-id");
-            const errorIcon = document.querySelector(`.error-icon[data-id="${inputId}"]`);
+                // Capture data from Form 1
+                var form1Email = $('#email').val();
+                var form1Phone = $('#phone_number').val();
+                var form1Password = $('#password').val();
 
-            errorIcon.style.display = "none"; // Hide the icon immediately when clicking the input
-        }
-    </script>
+                // Populate corresponding fields in Form 2
+                $('#form2Email').text(form1Email);
+                $('#form2Phone').text(form1Phone);
+                $('#form2Password').text(form1Password);
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const passwordInput = document.getElementById('password');
-            const passwordConfirmInput = document.getElementById('password_confirmation');
-            const passwordToggle = document.getElementById('password-toggle');
-            const passwordConfirmToggle = document.getElementById('password-confirm-toggle');
+                $('#Hform2Email').val(form1Email);
+                $('#Hform2Phone').val(form1Phone);
+                $('#Hform2Password').val(form1Password);
 
-            passwordToggle.addEventListener('click', togglePasswordVisibility.bind(null, passwordInput, passwordToggle));
-            passwordConfirmToggle.addEventListener('click', togglePasswordVisibility.bind(null, passwordConfirmInput, passwordConfirmToggle));
-        });
-
-        function togglePasswordVisibility(input, toggleIcon) {
-            if (input.type === 'password') {
-                input.type = 'text';
-                toggleIcon.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <g clip-path="url(#clip0_1917_11689)">
-                        <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_1917_11689">
-                                <rect width="24" height="24" fill="white"/>
-                            </clipPath>
-                        </defs>
-                    </svg>
-                `;
-            } else {
-                input.type = 'password';
-                toggleIcon.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <g clip-path="url(#clip0_1917_11666)">
-                        <path d="M21 9C18.6 11.667 15.6 13 12 13C8.4 13 5.4 11.667 3 9M3 15L5.5 11.2M20.9998 14.976L18.5078 11.2M9 17L9.5 13M15 17L14.5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_1917_11666">
-                                <rect width="24" height="24" fill="white"/>
-                            </clipPath>
-                        </defs>
-                    </svg>
-                `;
-            }
-        }
-    </script>
-
-        <script>
-            const fnameInput = document.getElementById('first_name');
-
-            // Add an input event listener to the input field
-            fnameInput.addEventListener('input', function () {
-                // Use a regular expression to match alphabetic characters and spaces
-                const regex = /^[a-zA-Z\s]+$/;
-
-                // Get the current input value
-                const inputValue = fnameInput.value;
-
-                // Test if the input matches the regular expression
-                if (!regex.test(inputValue)) {
-                    // If it doesn't match, clear the input field
-                    fnameInput.value = '';
-                }
             });
 
-            const lnameInput = document.getElementById('last_name');
-
-            // Add an input event listener to the input field
-            lnameInput.addEventListener('input', function () {
-                // Use a regular expression to match alphabetic characters and spaces
-                const regex = /^[a-zA-Z\s]+$/;
-
-                // Get the current input value
-                const inputValue = lnameInput.value;
-
-                // Test if the input matches the regular expression
-                if (!regex.test(inputValue)) {
-                    // If it doesn't match, clear the input field
-                    lnameInput.value = '';
-                }
+            // Handle form submission for Form 2
+            $('#submitBtn').click(function() {
+                // Simulate submitting Form 2 (you can replace this with your actual form submission logic)
+                $('#form2').submit();
             });
-
-            // Get the email input element by its ID
-        const emailInput = document.getElementById('email');
-
-        // Add an input event listener to the input field
-        emailInput.addEventListener('input', function () {
-            // Use a regular expression to validate the email format for Gmail
-            const regex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
-
-            // Get the current input value
-            const inputValue = emailInput.value;
-
-            // Test if the input matches the regular expression
-            if (!regex.test(inputValue)) {
-                // If it doesn't match, set a custom error message or clear the input field
-                emailInput.setCustomValidity('Please enter a valid Gmail address (e.g., example@gmail.com)');
-            } else {
-                // If it matches, clear any custom error message
-                emailInput.setCustomValidity('');
-            }
         });
-        </script>
-
-
-
+    </script>
 </body>
 
 </html>

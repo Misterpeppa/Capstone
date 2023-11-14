@@ -5,8 +5,8 @@
     <title>Appointment List</title>
     @include('includes.head')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/appointmentList.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styles2.css') }}">  
+    <link rel="stylesheet" href="{{ asset('css/user/appointmentList.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">  
 </head>
 
 
@@ -19,7 +19,7 @@
                     <h1>My Appointments</h1>
                     <p>View your upcoming and pass appointments here.</p>
                 </div>
-                <a href="{{ route('appointment.back') }}" class="btn appointmentList_custom_button" type="button">
+                <a href="{{ route('appointment.form') }}" class="btn appointmentList_custom_button" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <g clip-path="url(#clip0_2295_6343)" filter="url(#filter0_d_2295_6343)">
                     <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

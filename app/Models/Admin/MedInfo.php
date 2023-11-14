@@ -2,6 +2,7 @@
 
 namespace App\Models\admin;
 
+use App\Models\Admin\MedBatch;
 use App\Models\Admin\MedHistory;
 use App\Models\Admin\SurgHistory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,12 +20,7 @@ class MedInfo extends Model
         'uses',
         'side_effects',
         'price',
-        'expiration_date',
-        'batch_no',
-        'manufacturing_date',
-        'date_stocked',
         'product_type',
-        'product_code'
     ];
 
     public function MedHistory(): HasMany
@@ -35,4 +31,9 @@ class MedInfo extends Model
     {
         return $this->hasMany(SurgHistory::class, 'med_id');
     }
+    public function MedBatch(): HasMany
+    {
+        return $this->hasMany(MedBatch::class, 'med_id');
+    }
+
 }
