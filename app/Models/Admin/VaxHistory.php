@@ -21,7 +21,7 @@ class VaxHistory extends Model
     {
         return $this->belongsTo(VaxInfo::class, 'vax_id');
     }
-    public function PetRecord(): BelongsTo
+    public function petRecord(): BelongsTo
     {
         return $this->belongsTo(PetRecord::class, 'petrecord_id');
     }

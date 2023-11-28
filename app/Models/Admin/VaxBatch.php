@@ -20,7 +20,7 @@ class VaxBatch extends Model
         'date_stocked'
     ];
 
-    public function Vax(): BelongsTo
+    public function vax(): BelongsTo
     {
         return $this->belongsTo(VaxInfo::class, 'vax_id');
     }

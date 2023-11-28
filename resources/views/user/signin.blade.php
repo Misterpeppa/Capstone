@@ -77,7 +77,7 @@
                     <div class="d-flex flex-row justify-content-between">
                         <div class="d-flex flex-row align-items-center justify-content-center signin_remember_me">
                             <label class="sign_in_switch">
-                                <input type="checkbox">
+                                <input type="checkbox" name="remember" >
                                 <span class="sign_in_slider round"></span>
                             </label>
                             <p>Remember me</p>
@@ -101,6 +101,14 @@
             </div>
         </div>
     </section>
+    @if(session('reload'))
+        <script>
+            // Reload the page after a short delay
+            setTimeout(function() {
+                location.reload(true);
+            }, 500); // 500 milliseconds delay, adjust as needed
+        </script>
+    @endif
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

@@ -109,10 +109,12 @@ const errorEmail = document.getElementById('error-email');
 emailInput.addEventListener('blur', function () {
     if (emailInput.value.trim() === '') {
         errorEmail.style.display = 'block';
+        emailInput.classList.add('is-invalid');
         emailInput.classList.add('error-border');
     } else {
         errorEmail.style.display = 'none';
-        emailInput.classList.add('error-border');
+        emailInput.classList.remove('is-invalid');
+        emailInput.classList.remove('error-border');
     }
 });
 
@@ -122,9 +124,11 @@ const errorPhone = document.getElementById('error-phone_number');
 phoneInput.addEventListener('blur', function () {
     if (phoneInput.value.trim() === '') {
         errorPhone.style.display = 'block';
+        phoneInput.classList.add('is-invalid');
         phoneInput.classList.add('error-border');
     } else {
         errorPhone.style.display = 'none';
+         phoneInput.classList.remove('is-invalid');
         phoneInput.classList.remove('error-border');
     }
 });
@@ -135,9 +139,11 @@ const errorPassword = document.getElementById('error-password');
 passwordInput.addEventListener('blur', function () {
     if (passwordInput.value.trim() === '') {
         errorPassword.style.display = 'block';
+        passwordInput.classList.add('is-invalid');
         passwordInput.classList.add('error-border');
     } else {
         errorPassword.style.display = 'none';
+        passwordInput.classList.remove('is-invalid');
         passwordInput.classList.remove('error-border');
     }
 });
@@ -150,9 +156,11 @@ const errorPasswordMatch = document.getElementById('error-password_confirmation_
 passwordConfirmInput.addEventListener('blur', function () {
     if (passwordConfirmInput.value.trim() === '') {
         errorPasswordConfirm.style.display = 'block';
+        passwordConfirmInput.classList.add('is-invalid');
         passwordConfirmInput.classList.add('error-border');
     } else {
         errorPasswordConfirm.style.display = 'none';
+        passwordConfirmInput.classList.remove('is-invalid');
         passwordConfirmInput.classList.remove('error-border');
     }
 });

@@ -23,7 +23,11 @@ class Clients extends Authenticatable
         'birthdate',
         'email',
         'phone',
+    ];
+
+    protected $hidden = [
         'password',
+        'rememeber_token',
     ];
 
     public function appointmentPending(): HasMany

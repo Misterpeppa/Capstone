@@ -45,7 +45,12 @@ class EMRController extends Controller
 
         return redirect()->back();
     }
+    
+    public function viewRecord($id){
+        $petrecord = PetRecord::find($id);
 
+        return view('/admin/petrecords', compact('petrecord'));
+    }
 
     public function store(Request $request){
         // Retrieve the form data from the request

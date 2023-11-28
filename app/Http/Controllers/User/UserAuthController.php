@@ -17,6 +17,10 @@ class UserAuthController extends Controller
 {
     public function showSignup()
     {
+        if (Auth::guard('clients')->check()) {
+            // Redirect to the home page or another appropriate route
+            return redirect()->route('landing');
+        }
         return view('user/signup');
     }
 
@@ -50,7 +54,7 @@ class UserAuthController extends Controller
         //event(new Registered($clients));
 
         // Log in the user
-        Auth::login($clients);
+        //Auth::login($clients);
 
         // Redirect to a success page or perform any additional actions
         return redirect('/user/signin');
@@ -69,8 +73,9 @@ class UserAuthController extends Controller
     ]);
 
     $credentials = $request->only('email', 'password');
-
-    if (Auth::guard('clients')->attempt($credentials)) {
+    $remember_token = $request->has('remember');
+    
+    if (Auth::guard('clients')->attempt($credentials, $remember_token)) {
         // Authentication passed
         $request->session()->regenerate();
        
@@ -92,10 +97,14 @@ class UserAuthController extends Controller
     }
     }
 
-    public function logout()
+    public function logout(Request $request): RedirectResponse
     {
-        Auth::logout();
+        Auth::guard('clients')->logout();
 
-        return redirect('/user/signin');
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/user/signin')->with('reload', true);    
     }
 }

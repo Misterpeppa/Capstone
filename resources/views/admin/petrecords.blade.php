@@ -349,7 +349,7 @@
                             </div>
                             <div class="admin_petInfo_records">
                                 <div class="admin_petInfo_records_owner_info_heading">
-                                    <div class="pet_name_breed">
+                                    <div class="pet_name_breed" id="petInfo">
                                         <h1>Pet Name dito</h1>
                                     <p>Pet breed dito</p>
                                     </div>
@@ -357,16 +357,16 @@
                                 </div>
                                 <div class="admin_petInfo_records_owner_info_body">
                                     <div class="admin_petInfo_records_frame226">
-                                        <div class="admin_petInfo_records_frame216">
+                                        <div class="admin_petInfo_records_frame216" id="petInfoAge">
                                             <p>Age: </p> <!--lagay ng code dito para sa pagshow ng name after nung P-->
                                         </div>  
-                                        <div class="admin_petInfo_records_frame216">
+                                        <div class="admin_petInfo_records_frame216" id="petInfoBirthdate">
                                             <p>Birthdate: </p> <!--lagay ng code dito para sa pagshow ng Address after nung P-->
                                         </div>  
-                                        <div class="admin_petInfo_records_frame216">
+                                        <div class="admin_petInfo_records_frame216" id="petInfoWeight">
                                             <p>Weight: </p> <!-- dito yung weight ng pet-->
                                         </div>
-                                        <div class="admin_petInfo_records_frame216">
+                                        <div class="admin_petInfo_records_frame216" id="petInfoGender">
                                             <p>Gender: </p> <!--Gender ng pet-->
                                         </div>
                                     </div>
@@ -420,7 +420,7 @@
                                 </div>
                                 <div class="ownerInfo_details">
                                     <div class="ownerInfo_name_address">
-                                        <div class="ownerName">
+                                        <div class="ownerName" id="ownerName">
                                             <h1>Name</h1>
                                             <p>dito yung name na lilitaw</p>
                                         </div>
@@ -430,11 +430,11 @@
                                         </div>
                                     </div>
                                     <div class="ownerInfo_email_contact">
-                                        <div class="ownerEmail">
+                                        <div class="ownerEmail" id="ownerEmail">
                                             <h1>Email</h1>
                                             <p>dito yung email na lalabas</p>
                                         </div>
-                                        <div class="ownerContact">
+                                        <div class="ownerContact" id="ownerPhone">
                                             <h1>Contact Number</h1>
                                             <p>dito contact number na lalabas</p>
                                         </div>
@@ -1813,7 +1813,13 @@ aElements.forEach(function (aElement) {
                     url: `/admin/petrecord/viewRecord/${id}`,
                     success: function(data) {
                         // Update the HTML elements with the retrieved data
-                        $('.ownerName p').text(data.productInfo.first_name);
+                        $('#petInfo h1').text(data.petrecord.name);
+                        $('#petInfo p').text(data.petrecord.breed);
+                        $('#petInfoAge p').text(data.petrecord.age);
+                        $('#petInfoBirthdate p').text(data.petrecord.birthdate);
+                        $('#petInfoWeight p').text(data.petrecord.weight);
+                        $('#petInfoGender p').text(data.petrecord.gender);
+
                        
                     },
                     error: function(xhr) {

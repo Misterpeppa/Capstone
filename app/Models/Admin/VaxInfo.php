@@ -22,11 +22,11 @@ class VaxInfo extends Model
         'product_type',
     ];
 
-    public function VaxHistory(): HasMany
+    public function vaxHistory(): HasMany
     {
         return $this->hasMany(VaxHistory::class, 'vax_id');
     }
-    public function VaxBatch(): HasMany
+    public function vaxBatch(): HasMany
     {
         return $this->hasMany(VaxBatch::class, 'vax_id');
     }

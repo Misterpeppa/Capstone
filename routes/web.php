@@ -33,7 +33,7 @@ Route::middleware(['guest'])->group(function () {
     
     Route::get('/user/signin',[UserAuthController::class, 'showSignin'])->name('client.signin');
     Route::post('/user/signin', [UserAuthController::class, 'authenticate'])->name('client.auth');
-    Route::post('/user/logout', [UserAuthController::class, 'logout'])->name('client.logout');
+    Route::get('/user/logout', [UserAuthController::class, 'logout'])->name('client.logout');
     // Route::get('/user/forgotpassword', 'ForgotPasswordController');
 
 });
@@ -66,6 +66,7 @@ Route::post('/admin/appointment/reject/{id}', 'AppointmentController@reject');
 
 Route::get('/admin/emr', [EMRController::class, 'show'])->name('admin_emr');
 Route::post('/admin/emr/petrecord', [EMRController::class, 'pet'])->name('emr.pet');
+Route::get('/admin/emr/view/{id}', [EMRController::class, 'viewRecord']);
 Route::post('/admin/emr/vaxhistory', [EMRController::class, 'vaxhistory']);
 
 

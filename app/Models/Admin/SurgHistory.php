@@ -19,7 +19,7 @@ class SurgHistory extends Model
         'surgery_date'
     ];
 
-    public function PetRecord(): BelongsTo
+    public function petRecord(): BelongsTo
     {
         return $this->belongsTo(PetRecord::class, 'petrecord_id');
     }

@@ -19,7 +19,7 @@ class VitInfo extends Model
         'product_type',
     ];
 
-    public function VitBatch(): HasMany
+    public function vitBatch(): HasMany
     {
         return $this->hasMany(VitBatch::class, 'vit_id');
     }

@@ -13,6 +13,7 @@ class MedBatch extends Model
     protected $table = 'med_batch';
     protected $fillable = [
         'med_id',
+        'quantity',
         'batch_no',
         'product_code',
         'manufacturing_date',

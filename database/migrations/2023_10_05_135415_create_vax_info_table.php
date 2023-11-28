@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('item_name');
             $table->integer('quantity');
-            $table->string('uses')->nullable();
-            $table->string('side_effects')->nullable();
+            $table->string('prod_desc')->nullable();
             $table->integer('price')->nullable();
             $table->string('product_type');
             $table->timestamps();

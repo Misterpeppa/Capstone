@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('vax_id');
             $table->integer('batch_no');
-            $table->integer('product_code');
+            $table->bigInteger('product_code')->default(12);
             $table->date('manufacturing_date');
             $table->date('expiration_date');
             $table->date('date_stocked');
             $table->timestamps();
 
-            $table->foreign('vax_id')->references('id')->on('vax_info');
+            $table->foreign('vax_id')->references('id')->on('vax_info')->onDelete('cascade');
         });
     }
 

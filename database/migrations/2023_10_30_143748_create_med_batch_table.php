@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('med_id');
             $table->integer('batch_no');
-            $table->integer('product_code');
+            $table->bigInteger('product_code')->default(12);
             $table->date('manufacturing_date');
             $table->date('expiration_date');
             $table->date('date_stocked');
             $table->timestamps();
 
-            $table->foreign('med_id')->references('id')->on('med_info');
+            $table->foreign('med_id')->references('id')->on('med_info')->onDelete('cascade');
         });
     }
 

@@ -20,8 +20,18 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+            switch ($guard) {
+                case 'web':
+                    if (Auth::guard($guard)->check()) {
+                        return redirect(RouteServiceProvider::HOME);
+                    }
+                    break;
+                case 'clients':
+                    if (Auth::guard($guard)->check()) {
+                        return redirect('/user/landing'); // Adjust the redirection URL for the 'clients' guard
+                    }
+                    break;
+                // Add more cases for additional guards as needed
             }
         }
 

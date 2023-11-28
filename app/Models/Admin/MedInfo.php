@@ -23,15 +23,15 @@ class MedInfo extends Model
         'product_type',
     ];
 
-    public function MedHistory(): HasMany
+    public function medHistory(): HasMany
     {
         return $this->hasMany(MedHistory::class, 'med_id');
     }
-    public function SurgHistory(): HasMany
+    public function surgHistory(): HasMany
     {
         return $this->hasMany(SurgHistory::class, 'med_id');
     }
-    public function MedBatch(): HasMany
+    public function medBatch(): HasMany
     {
         return $this->hasMany(MedBatch::class, 'med_id');
     }
