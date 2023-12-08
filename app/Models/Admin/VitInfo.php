@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\admin;
+namespace App\Models\Admin;
 
 use App\Models\Admin\VitBatch;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

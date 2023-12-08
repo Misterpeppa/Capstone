@@ -1,93 +1,45 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Models\User\Clients;
 use Illuminate\Auth\Events\Verified;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Support\Facades\Password;
+use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
-
-class EmailController extends Controller
+class EmailController
 {
+    use VerifiesEmails, HandlesAuthorization;
+
+    protected $redirectTo = '/user/signin'; // Change this to your desired route
 
     /**
-     * Show the email verification notice.
+     * Override the default verify method to use the custom model.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function show()
+    public function verify(Request $request)
     {
-        return view('auth.verify-email');
-    }
+        $user = Clients::find($request->route('id'));
 
-    /**
-     * Mark the authenticated user's email address as verified.
-     *
-     * @param \Illuminate\Foundation\Auth\EmailVerificationRequest $request
-     * @return \Illuminate\Http\Response
-     */
-    public function verify(EmailVerificationRequest $request, $id)
-    {
-        $client = Clients::find($id);
-
-        if (!$client) {
-            // Handle the case where the client with the specified ID is not found.
-            return redirect()->route('not_found');
+        if (!$user || !hash_equals((string) $request->route('hash'), sha1($user->getEmailForVerification()))) {
+            throw new AuthorizationException;
         }
 
-        if ($client->hasVerifiedEmail()) {
-            return redirect('/');
+        if ($user->hasVerifiedEmail()) {
+            return redirect($this->redirectPath());
         }
 
-        if ($client->markEmailAsVerified()) {
-            event(new Verified($client));
+        if ($user->markEmailAsVerified()) {
+            event(new Verified($user));
         }
 
-        return redirect('/')->with('verified', true);
+        return redirect($this->redirectPath())->with('verified', true);
     }
 
-    /**
-     * Resend the email verification notification.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function resend(Request $request, $id)
-    {
-        $client = Clients::find($id);
-
-        if (!$client) {
-            // Handle the case where the client with the specified ID is not found.
-            return redirect()->back()->with('error', 'Client not found.');
-        }
-
-        if ($client->hasVerifiedEmail()) {
-            return redirect('/')->with('info', 'Your email address is already verified.');
-        }
-
-        $client->sendEmailVerificationNotification();
-
-        return back()->with('resent', true);
-    }
-
-    public function forgotpassword()
-    {
-        return view();
-    }
-
-    public function resetpassword(Request $request)
-    {
-        $request->validate(['email' => 'required|email']);
-
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
-
-        return $status === Password::RESET_LINK_SENT
-            ? back()->with(['status' => __($status)])
-            : back()->withErrors(['email' => __($status)]);
-    
-    }
+    // The rest of the controller methods...
 }

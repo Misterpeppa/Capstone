@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\admin;
+namespace App\Models\Admin;
 
 use App\Models\Admin\MedBatch;
 use App\Models\Admin\MedHistory;

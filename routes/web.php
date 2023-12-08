@@ -8,6 +8,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\User\UserAuthController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Auth\EmailController;
 use Carbon\Cli\Invoker;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +33,8 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/user/signup', [UserAuthController::class, 'showSignup']);
     Route::post('/user/signup', [UserAuthController::class, 'signup'])->name('client.signup');
     
-    Route::get('/user/signin',[UserAuthController::class, 'showSignin'])->name('client.signin');
+    Route::get('/user/signin', [UserAuthController::class, 'showSignin'])->name('client.signin');
+    Route::get('user/verify-email/{id}/{url}', [EmailController::class, 'verify'])->name('custom-verification');
     Route::post('/user/signin', [UserAuthController::class, 'authenticate'])->name('client.auth');
     Route::get('/user/logout', [UserAuthController::class, 'logout'])->name('client.logout');
     // Route::get('/user/forgotpassword', 'ForgotPasswordController');
@@ -87,3 +89,7 @@ Route::post('admin/client', [ClientController::class, 'store'])->name(('client.s
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
