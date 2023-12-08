@@ -24,7 +24,7 @@
 <body>
   <main class="d-flex flex-row container-fluid" style="padding: 0;">
   <div id="sidebarArrow" class="sidebar sidebar_collapsed">
-            <div class="logo"><a id="logo_link" class="logo_link" href="#"><img src="assets/img/dogs&cats.png" alt="Clinic Logo"></a><button id="sidebar_arrow" class="sidebar_arrow" type="button" onclick="toggleSidebar()"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none" class="arrow-svg">
+            <div class="logo"><a id="logo_link" class="logo_link" href="#"><img src="/img/dogs&cats.png" alt="Clinic Logo"></a><button id="sidebar_arrow" class="sidebar_arrow" type="button" onclick="toggleSidebar()"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none" class="arrow-svg">
         <path d="M6 12L1.88453 7.88384C1.3985 7.39773 1.3985 6.60227 1.88453 6.11616L6 2" stroke="#004D53" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"></path>
     </svg></button></div>
             <div class="items_and_button">
@@ -63,7 +63,7 @@
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg><a href="#">Appointments</a></li>
+</svg><a href="{{ route('admin_appointment') }}">Appointments</a></li>
                     </ul>
                     <hr class="line_separator">
                     <ul class="list-inline second_group">
@@ -81,7 +81,7 @@
     </clipPath>
   </defs>
 </svg>
-<a href="#">Pet Records</a></li>
+<a href="{{ route('admin_emr') }}">Pet Records</a></li>
                         <li class="list-inline-item"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_5274_11645)">
     <path d="M3 21V19C3 17.9391 3.42143 16.9217 4.17157 16.1716C4.92172 15.4214 5.93913 15 7 15H11C12.0609 15 13.0783 15.4214 13.8284 16.1716C14.5786 16.9217 15 17.9391 15 19V21M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88M21 21V19C20.9949 18.1172 20.6979 17.2608 20.1553 16.5644C19.6126 15.868 18.8548 15.3707 18 15.15M5 7C5 8.06087 5.42143 9.07828 6.17157 9.82843C6.92172 10.5786 7.93913 11 9 11C10.0609 11 11.0783 10.5786 11.8284 9.82843C12.5786 9.07828 13 8.06087 13 7C13 5.93913 12.5786 4.92172 11.8284 4.17157C11.0783 3.42143 10.0609 3 9 3C7.93913 3 6.92172 3.42143 6.17157 4.17157C5.42143 4.92172 5 5.93913 5 7Z" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -102,7 +102,7 @@
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg><a href="#">Inventory</a></li>
+</svg><a href="{{ route('admin_client') }}">Inventory</a></li>
                     </ul>
                     <hr class="line_separator">
                     <ul class="list-inline third_group">
@@ -191,42 +191,42 @@
                     </defs>
                   </svg> Back</span></button></div>
             <div class="product_info_container">
-              <div class="product_info"><img src="assets/img/image%209.png">
+              <div class="product_info">
                 <div class="product_details">
                   <div class="prod_detail_head">
                     <div class="prod_head_info">
-                      <h1>Rabbies</h1>
-                      <p>Vaccine</p>
+                      <h1></h1>
+                      <p></p>
                     </div>
                   </div>
                   <div class="prod_detail_body">
                     <div class="batchno_barcode">
                       <div class="batch_number">
                         <h1>Batch Number</h1>
-                        <p>Paragraph</p>
+                        <p></p>
                       </div>
                       <div class="bar_code">
                         <h1>Product Code</h1>
-                        <p>Paragraph</p>
+                        <p></p>
                       </div>
                     </div>
                     <div class="manu_expi_stocked_date">
                       <div class="manufactured_date">
                         <h1>Manufactured Date</h1>
-                        <p>Paragraph</p>
+                        <p></p>
                       </div>
                       <div class="expiration_date">
                         <h1>Expiration Date</h1>
-                        <p>Paragraph</p>
+                        <p></p>
                       </div>
                       <div class="date_stocked">
                         <h1>Date Stocked</h1>
-                        <p>Paragraph</p>
+                        <p></p>
                       </div>
                     </div>
                     <div class="product_Description">
-                      <h1>Heading</h1>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed odio feugiat, ullamcorper metus in, imperdiet ligula. Duis suscipit viverra lectus et semper. Mauris eleifend cursus pulvinar. Nunc cursus dui eu velit scelerisque viverra nec vitae velit. Nullam hendrerit erat fermentum ornare finibus.</p>
+                      <h1>Product Description</h1>
+                      <p></p>
                     </div>
                   </div>
                 </div><button class="btn edit_prod_detail" id="edit_prod_detail" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -245,16 +245,13 @@
           <div id="InventoryContainer" class="InventoryContainer">
             <div class="container_header">
               <div class="left_part_product_header">
-                <div class="search_container"><input type="search" class="search_input" placeholder="Search Product"></div><button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <g clip-path="url(#clip0_5284_15912)">
-                        <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_5284_15912">
-                          <rect width="24" height="24" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg> Filter by</span></button><button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <div class="search_container"><input type="search" class="search_input" placeholder="Search Product"></div>
+                <button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <g clip-path="url(#clip0_5284_15912)"><path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />                      </g>
+                      <defs><clipPath id="clip0_5284_15912"><rect width="24" height="24" fill="white" /></clipPath></defs>
+                    </svg> Filter by</span>
+                </button>
+                <button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                       <g clip-path="url(#clip0_5284_15919)">
                         <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                       </g>
@@ -384,6 +381,7 @@
                   <td>{{ $medInfo->quantity }}</td>
                   <td>{{ $medBatch->date_stocked }}</td>
                   <td>{{ $medBatch->expiration_date }}</td>
+                  <td></td>
                   <td>
                    <div class="dropdown">
                     <button class="dropbtn">Actions</button>
@@ -411,7 +409,7 @@
                        </clipPath>
                       </defs>
                       </svg>View</div></button>
-                     <button data-action="Edit" id='editButton' data-product-type="{{ $medInfo->product_type }}" data-product-id="{{ $medInfo->id }}">
+                     <button data-action="Edit" id="editButton" data-product-type="{{ $medInfo->product_type }}" data-product-id="{{ $medInfo->id }}">
                       <div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                       <g clip-path="url(#clip0_4467_23582)">
                        <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -450,11 +448,13 @@
                   <td>{{ $vitInfo->quantity }}</td>
                   <td>{{ $vitBatch->date_stocked }}</td>
                   <td>{{ $vitBatch->expiration_date }}</td>
+                  <td></td>
                   <td>
                    <div class="dropdown">
                     <button class="dropbtn">Actions</button>
                     <div class="dropdown-content" id="dropdown-content">
-                     <button data-action="AddStock" id="addStock"><div class="action_button_text" id="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <button data-action="AddStock" id="addStock" data-product-type="{{ $vitInfo->product_type }}" data-product-id="{{ $vitInfo->id }}">
+                      <div class="action_button_text" id="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                       <g clip-path="url(#clip0_4467_23446)">
                        <path d="M9 12H15M12 9V15M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </g>
@@ -475,7 +475,7 @@
                        </clipPath>
                       </defs>
                       </svg>View</div></button>
-                     <button data-action="Edit"  id='editButton' data-product-type="{{ $vitInfo->product_type }}" data-product-id="{{ $vitInfo->id }}">
+                     <button data-action="Edit"  id="editButton" data-product-type="{{ $vitInfo->product_type }}" data-product-id="{{ $vitInfo->id }}">
                       <div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                       <g clip-path="url(#clip0_4467_23582)">
                        <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -512,23 +512,24 @@
                   <td>{{ $vaxInfo->item_name }}</td>
                   <td>{{ $vaxInfo->product_type }}</td>
                   <td>{{ $vaxInfo->quantity }}</td>
-               
                   <td>{{ $vaxBatch->date_stocked }}</td>
                   <td>{{ $vaxBatch->expiration_date }}</td>
+                  <td></td>
                   <td>
                   <div class="dropdown">
                    <button class="dropbtn">Actions</button>
                    <div class="dropdown-content" id="dropdown-content">
-                    <button data-action="AddStock" id="addStock"><div class="action_button_text" id="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                     <g clip-path="url(#clip0_4467_23446)">
-                      <path d="M9 12H15M12 9V15M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                     </g>
-                     <defs>
-                      <clipPath id="clip0_4467_23446">
-                      <rect width="24" height="24" fill="white"/>
-                      </clipPath>
-                     </defs>
-                     </svg>Add Stock</div></button>
+                   <button data-action="AddStock" id="addStock" data-product-type="{{ $vaxInfo->product_type }}" data-product-id="{{ $vaxInfo->id }}">
+                      <div class="action_button_text" id="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <g clip-path="url(#clip0_4467_23446)">
+                       <path d="M9 12H15M12 9V15M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </g>
+                      <defs>
+                       <clipPath id="clip0_4467_23446">
+                       <rect width="24" height="24" fill="white"/>
+                       </clipPath>
+                      </defs>
+                      </svg>Add Stock</div></button>
                      <button data-action="View" class="viewButton" data-product-type="{{ $vaxInfo->product_type }}" data-product-id="{{ $vaxInfo->id }}" ><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                      <g clip-path="url(#clip0_1917_11689)">
                       <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -540,7 +541,7 @@
                       </clipPath>
                      </defs>
                      </svg>View</div></button>
-                    <button data-action="Edit"  id='editButton' data-product-type="{{ $vaxInfo->product_type }}" data-product-id="{{ $vaxInfo->id }}">
+                    <button data-action="Edit"  id="editButton" data-product-type="{{ $vaxInfo->product_type }}" data-product-id="{{ $vaxInfo->id }}">
                      <div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                      <g clip-path="url(#clip0_4467_23582)">
                       <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -638,9 +639,13 @@
                     </defs>
                   </svg> Back</span></button></div>
             <div class="prod_detail_body">
-              <form class="mb-3 prod_detail_fields_container">
+              @foreach([$medInfo, $vaxInfo, $vitInfo] as $productInfo)
+              <form action="{{ route('product.edit', ['product_type'=>$productInfo->product_type, 'id'=>$productInfo->id]) }}" method="POST" class="mb-3 prod_detail_fields_container" id="edit_prod_form">
+              @endforeach
+                @csrf
+                @method('PUT')
                 <div class="new_input_row">
-                  <div class="form-floating"><select class="form-select form-select" data-id="product-categ" id="product-categ-3">
+                  <div class="form-floating"><select name="produt_type" class="form-select form-select" data-id="product-categ" id="product-categ-3">
                       <option value="none" selected="">Select a Product</option>
                       <option value="Medicine">Medicine</option>
                       <option value="Vaccine">Vaccine</option>
@@ -648,42 +653,45 @@
                     </select><label class="form-label form-label" for="product-categ">Product Category</label>
                     <div id="error-product_categ-3" class="error-message"><span>Please select a category.</span></div>
                   </div>
-                  <div class="form-floating"><select class="form-select form-select" data-id="product_name" id="product_name-3">
+                  <div class="form-floating"><select name="item_name" class="form-select form-select" data-id="product_name" id="product_name-3">
                       <option value="none" selected="">Select a Product Name</option>
                     </select><label class="form-label form-label" for="product_name">Product Name</label>
                     <div id="error-product_name-3" class="error-message"><span>Please select product name.</span></div>
                   </div>
-                  <div class="form-floating"><input class="form-control form-control" type="text" data-id="product_code" id="product_code-3" placeholder="Product Code"><label class="form-label form-label" for="product_code">Product Code</label>
+                  <div class="form-floating"><input class="form-control form-control" type="text" name="product_code" id="product_code" data-id="product_code" id="product_code-3" placeholder="Product Code"><label class="form-label form-label" for="product_code">Product Code</label>
                     <div class="error-message" id="error-product_code-3"><span>Please enter product code.</span></div>
                   </div>
-                  <div class="form-floating"><input class="form-control form-control" type="text" data-id="batch_number" id="batch_number-3" placeholder="Batch Number"><label class="form-label form-label" for="batch_number">Batch Number</label>
+                  <div class="form-floating"><input class="form-control form-control" type="text" name="batch_no" id="batch_number" data-id="batch_number" id="batch_number-3" placeholder="Batch Number"><label class="form-label form-label" for="batch_number">Batch Number</label>
                     <div class="error-message" id="error-batch_number-3"><span>Please enter batch number.</span></div>
                   </div>
                 </div>
                 <div class="new_input_row">
-                  <div class="form-floating" style="width:100%;"><input class="form-control form-control" data-id="manufactured_date" id="manufactured_date-3" placeholder="Manufactured Date" type="date"><label class="form-label form-label" for="manufactured_date">Manufactured Date</label>
+                  <div class="form-floating" style="width:100%;"><input class="form-control form-control" name="manufacturing_date" id="manufactured_date" data-id="manufactured_date" id="manufactured_date-3" placeholder="Manufactured Date" type="date"><label class="form-label form-label" for="manufactured_date">Manufactured Date</label>
                     <div class="error-message" id="error-manufactured_date-3"><span>Please enter the manufactured date.</span></div>
                   </div>
-                  <div class="form-floating" style="width:100%;"><input class="form-control form-control" data-id="expiration_date" id="expiration_date-3" placeholder="Expiration Date" type="date"><label class="form-label form-label" for="expiration_date">Expiration Date</label>
+                  <div class="form-floating" style="width:100%;"><input class="form-control form-control" name="expiration_date" id="expiration_date" data-id="expiration_date" id="expiration_date-3" placeholder="Expiration Date" type="date"><label class="form-label form-label" for="expiration_date">Expiration Date</label>
                     <div class="error-message" id="error-expiration_date-3"><span>Please enter the expiration date.</span></div>
                   </div>
-                  <div class="form-floating" style="width:100%;"><input class="form-control form-control" data-id="datestocked" id="datestocked-3" placeholder="Expiration Date" type="date"><label class="form-label form-label" for="datestocked">Date Stocked</label>
+                  <div class="form-floating" style="width:100%;"><input class="form-control form-control" name="date_stocked" id="datestocked" data-id="datestocked" id="datestocked-3" placeholder="Expiration Date" type="date"><label class="form-label form-label" for="datestocked">Date Stocked</label>
                     <div class="error-message" id="error-datestocked-3"><span>Please enter the date stocked.</span></div>
                   </div>
                 </div>
-                <div class="form-floating" style="width:100%;"><textarea class="form-control" id="prod_description-3" data-id="prod_description" placeholder="Product Description"></textarea><label class="form-label form-label" for="prod_description">Product Description</label>
+                <div class="form-floating" style="width:100%;"><textarea class="form-control" id="prod_description" name="prod_desc" data-id="prod_description" placeholder="Product Description"></textarea><label class="form-label form-label" for="prod_description">Product Description</label>
                   <div id="error-prod_description-3" class="error-message"><span>Please enter product description.</span></div>
                 </div>
                 <div class="quantity_input_container_edit">
                   <h1>Quantity</h1>
                   <div class="form-floating">
-                    <div class="quantity_input"><button class="quantity_minus" type="button" onclick="decrementQuantity()">-</button><input type="number" aria-labelledby="label-quantity" class="input_quantity" data-id="quantity" id="quantity-3" min="0" name="quantity" required="" value="0"><button class="quantity_add" type="button" onclick="incrementQuantity()">+</button>
+                    <div class="quantity_input"><button class="quantity_minus" type="button" onclick="decrementQuantity()">-</button>
+                    <input type="number" aria-labelledby="label-quantity" class="input_quantity" data-id="quantity" id="quantity" min="0" name="quantity" required="" value="0">
+                    <button class="quantity_add" type="button" onclick="incrementQuantity()">+</button>
                       <div id="error-quantity-3" class="error-message"><span>Please input a quantity value more than 0.</span></div>
                     </div>
                   </div>
                 </div>
-              </form>
-              <div class="mb-3 prod_detail_fields_buttons"><button class="btn cancel_edit" id="cancel_edit" type="button"><span class="cancel_edit_base">Cancel</span></button><button class="btn edit_save_changes" id="edit_save_changes" type="button"><span class="edit_save_changes_base">Save Changes</span></button></div>
+              <div class="mb-3 prod_detail_fields_buttons"><button class="btn cancel_edit" id="cancel_edit" type="button"><span class="cancel_edit_base">Cancel</span></button>
+              <button class="btn edit_save_changes" id="edit_save_changes" type="submit"><span class="edit_save_changes_base">Save Changes</span></button></div>
+            </form>
             </div>
           </div>
         </div>
@@ -738,7 +746,10 @@
               <div class="quantity_input_container">
                 <h1>Quantity</h1>
                 <div class="form-floating">
-                  <div class="quantity_input"><button class="quantity_minus" type="button" onclick="decrementQuantity()">-</button><input type="number" aria-labelledby="label-quantity" class="input_quantity" data-id="quantity" id="quantity" min="0" name="quantity" required="" value="0"><button class="quantity_add" type="button" onclick="incrementQuantity()">+</button>
+                  <div class="quantity_input">
+                    <button class="quantity_minus" type="button" onclick="decrementQuantity()">-</button>
+                    <input type="number" aria-labelledby="label-quantity" class="input_quantity" data-id="quantity" id="quantity" min="0" name="quantity" required="" value="0">
+                    <button class="quantity_add" type="button" onclick="incrementQuantity1()">+</button>
                     <div id="error-quantity" class="error-message"><span>Please input a quantity value more than 0.</span></div>
                   </div>
                 </div>
@@ -759,11 +770,11 @@
           <h1 class="modal-title">Add New Product</h1><button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
         </div>
         <div class="modal-body">
-          <form method="POST" action="{{ route('inv.store') }}">
+          <form id="add_product_form1" method="POST" action="{{ route('inv.store') }}" >
             @csrf
             <div class="mb-3 input_container">
               <div class="new_input_row">
-                <div class="form-floating"><select class="form-select form-select" data-id="product-categ" id="product-categ-1">
+                <div class="form-floating"><select class="form-select form-select" name="product_type" data-id="product-categ" id="product-categ-1">
                     <option value="none" selected="">Select a product</option>
                     <option value="Medicine">Medicine</option>
                     <option value="Vaccine">Vaccine</option>
@@ -771,44 +782,46 @@
                   </select><label class="form-label form-label" for="product-categ">Product Category</label>
                   <div id="error-product_categ-1" class="error-message"><span>Please select a category.</span></div>
                 </div>
-                <div class="form-floating"><select class="form-select form-select" data-id="product_name" id="product_name-1">
+                <div class="form-floating"><select class="form-select form-select" name="item_name" data-id="product_name" id="product_name-1">
                     <option value="none" selected="">Select a Product Name</option>
                   </select><label class="form-label form-label" for="product_name">Product Name</label>
                   <div id="error-product_name-1" class="error-message"><span>Please select product name.</span></div>
                 </div>
-                <div class="form-floating"><input class="form-control form-control" type="text" data-id="product_code" id="product_code-1" placeholder="Product Code"><label class="form-label form-label" for="product_code">Product Code</label>
+                <div class="form-floating"><input class="form-control form-control" type="text" name="product_code" data-id="product_code" id="product_code-1" placeholder="Product Code"><label class="form-label form-label" for="product_code">Product Code</label>
                   <div class="error-message" id="error-product_code-1"><span>Please enter product code.</span></div>
                 </div>
-                <div class="form-floating"><input class="form-control form-control" type="text" data-id="batch_number" id="batch_number-1" placeholder="Batch Number"><label class="form-label form-label" for="batch_number">Batch Number</label>
+                <div class="form-floating"><input class="form-control form-control" type="text" name="batch_no" data-id="batch_number" id="batch_number-1" placeholder="Batch Number"><label class="form-label form-label" for="batch_number">Batch Number</label>
                   <div class="error-message" id="error-batch_number-1"><span>Please enter batch number.</span></div>
                 </div>
               </div>
               <div class="new_input_row">
-                <div class="form-floating" style="width:100%;"><input class="form-control form-control" data-id="manufactured_date" id="manufactured_date-1" placeholder="Manufactured Date" type="date"><label class="form-label form-label" for="manufactured_date">Manufactured Date</label>
+                <div class="form-floating" style="width:100%;"><input class="form-control form-control" name="manufacturing_date" data-id="manufactured_date" id="manufactured_date-1" placeholder="Manufactured Date" type="date"><label class="form-label form-label" for="manufactured_date">Manufactured Date</label>
                   <div class="error-message" id="error-manufactured_date-1"><span>Please enter the manufactured date.</span></div>
                 </div>
-                <div class="form-floating" style="width:100%;"><input class="form-control form-control" data-id="expiration_date" id="expiration_date-1" placeholder="Expiration Date" type="date"><label class="form-label form-label" for="expiration_date">Expiration Date</label>
+                <div class="form-floating" style="width:100%;"><input class="form-control form-control" name="expiration_date" data-id="expiration_date" id="expiration_date-1" placeholder="Expiration Date" type="date"><label class="form-label form-label" for="expiration_date">Expiration Date</label>
                   <div class="error-message" id="error-expiration_date-1"><span>Please enter the expiration date.</span></div>
                 </div>
-                <div class="form-floating" style="width:100%;"><input class="form-control form-control" data-id="datestocked" id="datestocked-1" placeholder="Expiration Date" type="date"><label class="form-label form-label" for="datestocked">Date Stocked</label>
+                <div class="form-floating" style="width:100%;"><input class="form-control form-control" name="date_stocked" data-id="datestocked" id="datestocked-1" placeholder="Expiration Date" type="date"><label class="form-label form-label" for="datestocked">Date Stocked</label>
                   <div class="error-message" id="error-datestocked-1"><span>Please enter the date stocked.</span></div>
                 </div>
               </div>
-              <div class="form-floating" style="width:100%;"><textarea class="form-control" id="prod_description-1" data-id="prod_description" placeholder="Product Description"></textarea><label class="form-label form-label" for="prod_description">Product Description</label>
+              <div class="form-floating" style="width:100%;"><textarea class="form-control" id="prod_description-1" name="prod_desc" data-id="prod_description" placeholder="Product Description"></textarea><label class="form-label form-label" for="prod_description">Product Description</label>
                 <div id="error-prod_description-1" class="error-message"><span>Please enter product description.</span></div>
               </div>
               <div class="quantity_input_container">
                 <h1>Quantity</h1>
                 <div class="form-floating">
-                  <div class="quantity_input"><button class="quantity_minus" type="button" onclick="decrementQuantity1()">-</button><input type="number" aria-labelledby="label-quantity" class="input_quantity" data-id="quantity" id="quantity-1" min="0" name="quantity" required="" value="0"><button class="quantity_add" type="button" onclick="incrementQuantity1()">+</button>
+                  <div class="quantity_input"><button class="quantity_minus" type="button" onclick="decrementQuantity1()">-</button>
+                  <input type="number" aria-labelledby="label-quantity" class="input_quantity" data-id="quantity" id="quantity-1" min="0" name="quantity" required="" value="0"><button class="quantity_add" type="button" onclick="incrementQuantity1()">+</button>
                     <div id="error-quantity-1" class="error-message"><span>Please input a quantity value more than 0.</span></div>
                   </div>
                 </div>
               </div>
             </div>
-          </form>
         </div>
-        <div class="modal-footer add_product_button"><button class="btn clear_form" type="button" role="button" aria-label="Clear Form" onclick="clearForm1()"><span class="clear_form_base">Clear Form</span></button><button class="btn disabled submit_product" id="submit_product-1" type="button" disabled=""><span class="submit_product_base">Submit</span></button></div>
+        <div class="modal-footer add_product_button"><button class="btn clear_form" type="button" role="button" aria-label="Clear Form" onclick="clearForm1()"><span class="clear_form_base">Clear Form</span></button>
+        <button class="btn disabled submit_product" id="submit_product-1" type="submit" disabled=""><span class="submit_product_base">Submit</span></button></div>
+        </form>
       </div>
     </div>
   </div>
@@ -819,37 +832,48 @@
           <h1 class="modal-title">Add Stock</h1><button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
         </div>
         <div class="modal-body">
-          <form>
+          @foreach([$medInfo, $vaxInfo, $vitInfo] as $productInfo)
+          <form action="{{ route('product.stock', ['product_type'=>$productInfo->product_type, 'id'=>$productInfo->id]) }}" method="POST" id="add_stock_form">
+          @endforeach
+            @csrf
+            <input type="hidden" name="product_type" id="product_type">
+            <input type="hidden" name="id" id="product_id">
             <div class="mb-3 stock_input_container">
-              <div class="stock_image_container"><img src="assets/img/image%209.png" /><span class="product_name">Product Name</span></div>
+              <div class="stock_image_container"><span class="product_name">Product Name</span></div>
               <div class="new_input_row">
-                <div class="form-floating batch_number"><input id="batch_number-2" class="form-control form-control" type="text" data-id="batch_number" placeholder="Batch Number" /><label class="form-label form-label" for="batch_number">Batch Number</label>
+                <div class="form-floating batch_number"><input id="batch_number" name="batch_no" class="form-control form-control" type="text" data-id="batch_number" placeholder="Batch Number" /><label class="form-label form-label" for="batch_number">Batch Number</label>
                   <div id="error-batch_number-2" class="error-message"><span>Please enter batch number.</span></div>
                 </div>
               </div>
               <div class="new_input_row">
-                <div class="form-floating" style="width: 100%;"><input id="manufactured_date-2" class="form-control form-control" data-id="manufactured_date" placeholder="Manufactured Date" type="date" /><label class="form-label form-label" for="manufactured_date">Manufactured Date</label>
+                <div class="form-floating" style="width: 100%;"><input id="manufactured_date-1" name="manufacturing_date" class="form-control form-control" data-id="manufactured_date" placeholder="Manufactured Date" type="date" /><label class="form-label form-label" for="manufactured_date">Manufactured Date</label>
                   <div id="error-manufactured_date-2" class="error-message"><span>Please enter the manufactured date.</span></div>
                 </div>
-                <div class="form-floating" style="width: 100%;"><input id="expiration_date-2" class="form-control form-control" data-id="expiration_date" placeholder="Expiration Date" type="date" /><label class="form-label form-label" for="expiration_date">Expiration Date</label>
+                <div class="form-floating" style="width: 100%;"><input id="expiration_date" name="expiration_date" class="form-control form-control" data-id="expiration_date" placeholder="Expiration Date" type="date" /><label class="form-label form-label" for="expiration_date">Expiration Date</label>
                   <div id="error-expiration_date-2" class="error-message"><span>Please enter the expiration date.</span></div>
                 </div>
-                <div class="form-floating" style="width: 100%;"><input id="datestocked-2" class="form-control form-control" data-id="datestocked" placeholder="Expiration Date" type="date" /><label class="form-label form-label" for="datestocked">Date Stocked</label>
+                <div class="form-floating" style="width: 100%;"><input id="datestocked" name="date_stocked" class="form-control form-control" data-id="datestocked" placeholder="Expiration Date" type="date" /><label class="form-label form-label" for="datestocked">Date Stocked</label>
                   <div id="error-datestocked-2" class="error-message"><span>Please enter the date stocked.</span></div>
                 </div>
               </div>
               <div class="quantity_input_container">
                 <h1>Quantity</h1>
                 <div class="form-floating">
-                  <div class="quantity_input"><button class="quantity_minus" type="button">-</button><input id="quantity-2" class="input_quantity" type="number" aria-labelledby="label-quantity" data-id="quantity" min="0" name="quantity" required value="0" /><button class="quantity_add" type="button">+</button>
+                  <div class="quantity_input">
+                    <button class="quantity_minus" onclick="decrementQuantity()" type="button">-</button>
+                    <input id="quantity" class="input_quantity" type="number" aria-labelledby="label-quantity" data-id="quantity" min="0" name="quantity" required value="0" />
+                    <button class="quantity_add" onclick="incrementQuantity()" type="button">+</button>
                     <div id="error-quantity-2" class="error-message"><span>Please input a quantity value more than 0.</span></div>
                   </div>
                 </div>
               </div>
             </div>
-          </form>
-        </div>
-        <div class="modal-footer add_stock_buttons"><button class="btn cancel_btn" type="button" role="button" aria-label="Cancel"><span class="cancel_btn_base">Cancel</span></button><button id="add_stock" class="btn add_stock" type="button" onclick="closeAddStockModal()"><span class="add_stock_base">Add Stock</span></button></div>
+          </div>
+          <div class="modal-footer add_stock_buttons">
+            <button class="btn cancel_btn" type="button" role="button" aria-label="Cancel"><span class="cancel_btn_base">Cancel</span></button>
+            <button id="add_stock" class="btn add_stock" type="submit" ><span class="add_stock_base">Add Stock</span></button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -926,6 +950,126 @@
       </div>
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.viewButton').click(function() {
+        var rowId = $(this).closest('tr').data('row-id');
+        const product_type = $(this).data('product-type');
+        const id = $(this).data('product-id');
+        
+        // Make an AJAX request to retrieve data
+        $.ajax({
+          type: 'GET',
+          url: `/admin/inventory/view/${product_type}/${id}`,
+          success: function(data) {
+            // Update the HTML elements with the retrieved data
+            $('.prod_head_info h1').text(data.productInfo.item_name);
+            $('.prod_head_info p').text(data.productInfo.product_type);
+            $('.batch_number p').text(data.productBatch.batch_no);
+            $('.bar_code p').text(data.productBatch.product_code);
+            $('.manufactured_date p').text(data.productBatch.manufacturing_date);
+            $('.expiration_date p').text(data.productBatch.expiration_date);
+            $('.date_stocked p').text(data.productBatch.date_stocked);
+            $('.product_Description p').text(data.productInfo.prod_desc);
+          },
+          error: function(xhr) {
+            // Handle errors
+            console.log(xhr.responseText);
+          }
+        });
+      });
+      $('#editButton').click(function() {
+        // Get data attributes from the button
+        const productType = $(this).data('product-type');
+        const productId = $(this).data('product-id');
+
+        const form = $(this).closest('tr').find('.edit_prod_form');
+        // Set the values in the form fields
+        form.find('.productTypeInput').val(productType);
+        form.find('.productIdInput').val(productId);
+
+                $.ajax({
+          type: 'GET',
+          url: `/admin/inventory/view/${product_type}/${id}`,
+          success: function(data) {
+            // Update the HTML elements with the retrieved data
+            $('.prod_head_info h1').text(data.productInfo.item_name);
+            $('.prod_head_info p').text(data.productInfo.product_type);
+            $('.batch_number p').text(data.productBatch.batch_no);
+            $('.bar_code p').text(data.productBatch.product_code);
+            $('.manufactured_date p').text(data.productBatch.manufacturing_date);
+            $('.expiration_date p').text(data.productBatch.expiration_date);
+            $('.date_stocked p').text(data.productBatch.date_stocked);
+            $('.product_Description p').text(data.productInfo.prod_desc);
+          },
+          error: function(xhr) {
+            // Handle errors
+            console.log(xhr.responseText);
+          }
+        });
+      });
+      $('#addStock').click(function() {
+        // Get data attributes from the button
+        const productType = $(this).data('product-type');
+        const productId = $(this).data('product-id');
+
+        // Create a FormData object to send data to the server
+        const formData = new FormData();
+        formData.append('product_type', productType);
+        formData.append('id', productId);
+
+        // Perform an AJAX request to the server
+        $.ajax({
+            url: `/admin/inventory/addStock/${product_type}/${id}`,  // Adjust the URL to your actual route
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                // Handle success, e.g., update the UI
+                console.log('Stock added successfully');
+            },
+            error: function () {
+                // Handle errors, e.g., display an error message
+                console.error('Error adding stock');
+            }
+        });
+
+      });
+
+    });
+    
+    document.querySelectorAll('#editButton').forEach(button => {
+      button.addEventListener('click', function () {
+        // Extract data from the button's data attributes
+        const productType = this.getAttribute('data-product-type');
+        const productId = this.getAttribute('data-product-id');
+
+        // Set the form's action based on the data
+        const editForm = document.querySelector('#edit_prod_form');
+        editForm.action = `/admin/inventory/edit/${productType}/${productId}`;
+
+        // Optionally, you can also populate form fields based on the data
+        document.querySelector('#edit-product-type').value = productType;
+        document.querySelector('#edit-product-id').value = productId;
+      });
+    });
+
+    document.querySelectorAll('#addStock').forEach(button => {
+      button.addEventListener('click', function () {
+        // Extract data from the button's data attributes
+        const productType = this.getAttribute('data-product-type');
+        const productId = this.getAttribute('data-product-id');
+
+        // Set the form's action based on the data
+        const addStockForm = document.querySelector('#add_stock_form');
+        addStockForm.action = `/admin/inventory/addStock/${productType}/${productId}`;
+
+      });
+    });
+
+  </script>
   <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
   <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('assets/js/appointmentforms.js') }}"></script>

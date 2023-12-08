@@ -17,8 +17,7 @@ class MedInfo extends Model
     protected $fillable = [
         'item_name',
         'quantity',
-        'uses',
-        'side_effects',
+        'prod_desc',
         'price',
         'product_type',
     ];

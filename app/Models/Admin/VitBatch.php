@@ -13,6 +13,7 @@ class VitBatch extends Model
     protected $table = 'vit_batch';
     protected $fillable = [
         'vit_id',
+        'quantity',
         'batch_no',
         'product_code',
         'manufacturing_date',

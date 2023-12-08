@@ -13,6 +13,7 @@ class VaxBatch extends Model
     protected $table = 'vax_batch';
     protected $fillable = [
         'vax_id',
+        'quantity',
         'batch_no',
         'product_code',
         'manufacturing_date',

@@ -31,7 +31,7 @@
                                 <h1>Tagapo Dogs &amp; Cats Veterinary Clinic</h1>
                             </div>
                             <div class="signup_already_user_container">
-                                <h1>Already a user?</h1><button id="sign_in" class="sign_in" type="button">Sign In</button>
+                                <h1>Already a user?</h1><a href="{{ route('client.signin') }}"><button id="sign_in" class="sign_in" type="button">Sign In</button></a>
                             </div>
                         </div>
                         <div class="signup_form_container">
@@ -151,7 +151,11 @@
                                             <option value="IV">IV</option>
                                             <option value="Other">Other</option>
                                         </select><label class="form-label" for="suffix">Suffix</label></div>
-                                    <div class="form-floating specify_suffix"><input id="specify_suffix" class="form-control" type="text" placeholder="Specify suffix" data-id="specify_suffix" onblur="checkInput(this)" onclick="hideErrorOnInputClick('error-specify_suffix')"/><label class="form-label" for="specify_suffix">Specify Suffix</label><div class="error-message" id="error-specify_suffix">Please enter your suffix.</div></div>
+                                    <div class="form-floating specify_suffix">
+                                        <input id="specify_suffix" class="form-control" name="specify_suffix" type="text" placeholder="Specify suffix" data-id="specify_suffix" onblur="checkInput(this)" onclick="hideErrorOnInputClick('error-specify_suffix')"/>
+                                        <label class="form-label" for="specify_suffix">Specify Suffix</label>
+                                        <div class="error-message" id="error-specify_suffix">Please enter your suffix.</div>
+                                    </div>
                                 </div>
                                 <div class="input-group">
                                     <div class="align-self-stretch form-floating">

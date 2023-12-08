@@ -17,7 +17,7 @@ class VaxInfo extends Model
     protected $fillable = [
         'item_name',
         'quantity',
-        'effects',
+        'prod_desc',
         'price',
         'product_type',
     ];

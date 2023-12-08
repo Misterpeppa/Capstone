@@ -4,12 +4,13 @@ namespace App\Models\User;
 
 use App\Models\Admin\PetInfo;
 use App\Models\Admin\PetRecord;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Clients extends Authenticatable
+class Clients extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
     protected $guard = 'clients';
@@ -23,6 +24,7 @@ class Clients extends Authenticatable
         'birthdate',
         'email',
         'phone',
+        'email_verified_at'
     ];
 
     protected $hidden = [
@@ -49,5 +51,19 @@ class Clients extends Authenticatable
     public function petRecord(): HasMany
     {
         return $this->hasMany(PetRecord::class, 'user_id');
+    }
+    public function clients($id)
+    {
+        return $this->find($id);
+    }
+    public function hasVerifiedEmail()
+    {
+        return $this->email_verified_at !== null;
+    }
+    public function markEmailAsVerified()
+    {
+        return $this->forceFill([
+            'email_verified_at' => $this->freshTimestamp(),
+        ])->save();
     }
 }

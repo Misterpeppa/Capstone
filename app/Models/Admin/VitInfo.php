@@ -15,6 +15,7 @@ class VitInfo extends Model
     protected $fillable = [
         'item_name',
         'quantity',
+        'prod_desc',
         'price',
         'product_type',
     ];

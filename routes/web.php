@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\ClientController;
 use Carbon\Cli\Invoker;
 use Faker\Guesser\Name;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,7 @@ Route::middleware(['clients'])->group(function () {
 
 Route::get('/admin/signup', [AdminAuthController::class, 'show']);
 Route::post('/admin/signup',[AdminAuthController::class, 'store']);
+Auth::routes(['verify' => true]);
 
 Route::get('/admin/signin', [AdminAuthController::class, 'show']);
 Route::post('/admin/signin',[AdminAuthController::class, 'store']);
@@ -72,8 +74,9 @@ Route::post('/admin/emr/vaxhistory', [EMRController::class, 'vaxhistory']);
 
 Route::get('/admin/inventory', [InvController::class, 'show'])->name('admin_inv');
 Route::post('/admin/inventory', [InvController::class, 'store'])->name('inv.store');
+Route::post('/admin/inventory/addStock/{product_type}/{id}', [InvController::class, 'addStock'])->name('product.stock');
 Route::get('/admin/inventory/view/{product_type}/{id}', [InvController::class, 'viewProduct']);
-Route::patch('/admin/inventory/edit/{product_type}/{id}', [InvController::class, 'updateProduct'])->name('product.edit');
+Route::match(['put', 'patch'],'/admin/inventory/edit/{product_type}/{id}', [InvController::class, 'updateProduct'])->name('product.edit');
 Route::get('/admin/inventory/view/medicine/{id}', [InvController::class, 'viewMed']);
 Route::get('/admin/inventory/view/vaccine/{id}', [InvController::class, 'viewVax']);
 Route::get('/admin/inventory/view/vitamin/{id}', [InvController::class, 'viewVit']);

@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     };
 
-   
+  }); 
     // Add an event listener for the buttons inside dropdown-content
     document
       .querySelectorAll(".dropdown-content button")
@@ -201,7 +201,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     });
-  });
 
   function addBlurListener(input, error) {
     input.addEventListener("blur", function () {
@@ -251,17 +250,11 @@ document.addEventListener("DOMContentLoaded", function () {
   addBlurListener(batch_numberInput1, errorBatch_number1);
 
   const manufactured_dateInput = document.getElementById("manufactured_date");
-  const errorManufactured_date = document.getElementById(
-    "error-manufactured_date"
-  );
+  const errorManufactured_date = document.getElementById("error-manufactured_date");
   addBlurListener(manufactured_dateInput, errorManufactured_date);
 
-  const manufactured_dateInput1 = document.getElementById(
-    "manufactured_date-1"
-  );
-  const errorManufactured_date1 = document.getElementById(
-    "error-manufactured_date-1"
-  );
+  const manufactured_dateInput1 = document.getElementById("manufactured_date-1");
+  const errorManufactured_date1 = document.getElementById("error-manufactured_date-1");
   addBlurListener(manufactured_dateInput1, errorManufactured_date1);
 
   const expiration_dateInput = document.getElementById("expiration_date");
@@ -333,13 +326,14 @@ function submitFormData(formData) {
     $.ajax({
       url: '/admin/inventory', 
       method: 'GET', 
-      success: function (response) {
-          if (response.dataExists) {
+      success: function (dataExists) {
+          if (dataExists) {
               // If there is data, hide the empty state container
               $("#empty_state_container").hide();
 
               // Show the product table and apply the display: flex property
               $("#product_table_container").show();
+              split_btn.style.display = "flex";
           }
 
           // Other logic to handle and display the data as needed
@@ -490,16 +484,22 @@ function submitFormData(formData) {
   const today = new Date();
   const todayString = today.toISOString().split("T")[0];
   manufactured_dateInput.max = todayString;
+  manufactured_dateInput1.max = todayString;
   expiration_dateInput.min = todayString;
+  expiration_dateInput1.min = todayString;
   datestockedInput.max = todayString;
+  datestockedInput1.max = todayString;
 
   // Function to handle date selection for manufactured_date
   function handleManufacturedDateSelection() {
     const selectedDate = manufactured_dateInput.value;
-    if (isFutureDate(selectedDate)) {
+    const selectedDate1 = manufactured_dateInput1.value;
+    if (isFutureDate(selectedDate && selectedDate1)) {
       alert("Please select a previous date for Manufactured Date.");
       manufactured_dateInput.value = ""; // Clear the input value
       manufactured_dateInput.focus(); // Set focus back to the input
+      manufactured_dateInput1.value = "";
+      manufactured_dateInput1.focus();
       return false;
     }
     // Set the default minimum date for datestocked to the manufactured_date
@@ -510,10 +510,13 @@ function submitFormData(formData) {
   // Function to handle date selection for expiration_date
   function handleExpirationDateSelection() {
     const selectedDate = expiration_dateInput.value;
-    if (isPastOrToday(selectedDate)) {
+    const selectedDate1 = expiration_dateInput1.value;
+    if (isPastOrToday(selectedDate && selectedDate1)) {
       alert("Invalid! Product has already expired.");
       expiration_dateInput.value = ""; // Clear the input value
       expiration_dateInput.focus(); // Set focus back to the input
+      expiration_dateInput1.value = "";
+      expiration_dateInput1.focus();
       return false;
     }
     return true;
@@ -522,15 +525,18 @@ function submitFormData(formData) {
   // Function to handle date selection for datestocked
   function handleDateStockedSelection() {
     const selectedDate = dateStockedInput.value;
+    const selectedDate1 = datestockedInput1.value;
     if (
-      isFutureDate(selectedDate) ||
-      selectedDate < manufactured_dateInput.value
+      (isFutureDate(selectedDate) ||selectedDate < manufactured_dateInput.value) ||
+      (isFutureDate(selectedDate1) || selectedDate1 <manufactured_dateInput1.value)
     ) {
       alert(
         "Please select a date after Manufactured Date and up to the current date for Date Stocked."
       );
       datestockedInput.value = ""; // Clear the input value
       datestockedInput.focus(); // Set focus back to the input
+      datestockedInput1.value = "";
+      datestockedInput1.focus();
       return false;
     }
     return true;
@@ -551,18 +557,23 @@ function submitFormData(formData) {
 // Function to restrict "batch_number" input to numbers 1 to 3
 function restrictBatchNumberInput(inputElement) {
   inputElement.addEventListener('input', function () {
-      const inputValue = parseInt(this.value, 10);
-  
-      // Check if the input value is not a number or is outside the range 1 to 3
-      if (isNaN(inputValue) || inputValue < 1 || inputValue > 10) {
-      this.value = ''; // Clear the input value
+    const inputValue = this.value.trim(); // Remove leading and trailing whitespaces
+    const numericValue = parseInt(inputValue, 10);
+
+    // Check if the input value is a valid number
+    if (!isNaN(numericValue) && inputValue !== '' && numericValue >= 1 && numericValue <= 10) {
+        this.value = numericValue; // Keep the numeric value
+      } else {
+        this.value = ''; // Clear the input value
       }
-  });
+    });
   }
   // Get the "batch_number" input element by its ID
   const batchNumberInput = document.getElementById('batch_number');
+  const batchNumberInput1 = document.getElementById('batch_number-1');
   // Call the function to restrict input to numbers 1 to 3
   restrictBatchNumberInput(batchNumberInput);
+  restrictBatchNumberInput(batchNumberInput1);
 
 function validationProductCode(inputElement) {
     inputElement.addEventListener('input', function () {
@@ -579,7 +590,11 @@ function validationProductCode(inputElement) {
     })
 }
 const productCodeInput = document.getElementById('product_code');
+const productCodeInput1 = document.getElementById('product_code-1');
+
 validationProductCode(productCodeInput);
+validationProductCode(productCodeInput1);
+
   // Add event listeners to the manufactured_date input
   manufactured_dateInput.addEventListener("blur", function () {
     if (!handleManufacturedDateSelection()) {
@@ -911,3 +926,47 @@ var editProdDetailButton = document.getElementById("edit_prod_detail");
 
 // Add event listener to the edit_prod_detail button
 editProdDetailButton.addEventListener("click", handleEditProdDetailClick);
+
+// Get a reference to the "SelectAll" checkbox
+const selectAllCheckbox = document.getElementById('SelectAll');
+
+// Get a reference to the table body
+const tableBody = document.getElementById('inventoryTableBody');
+
+// Function to handle the "SelectAll" checkbox
+function handleSelectAll() {
+  const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = selectAllCheckbox.checked;
+  });
+}
+
+// Assuming you have a form with the id "product_form"
+// $("#add_product_form1").submit(function (event) {
+//   // Prevent the default form submission
+//   event.preventDefault();
+
+//   // Make your AJAX request
+//   $.ajax({
+//       type: 'POST',
+//       url: '/admin/inventory', // Replace with your actual endpoint
+//       data: $(this).serialize(),
+//       success: function (response) {
+//           // Show the success message
+//           $("#add_product_success").show();
+
+//           // Hide the success message after 2000 milliseconds (2 seconds)
+//           setTimeout(function () {
+//               $("#add_product_success").hide();
+//           }, 2000);
+
+//           setTimeout(function () {
+//             location.reload();
+//         }, 2000);
+//       },
+//       error: function (error) {
+//           // Handle errors if needed
+//           console.error('Error submitting product:', error);
+//       }
+//   });
+// });
