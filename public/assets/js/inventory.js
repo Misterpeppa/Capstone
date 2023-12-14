@@ -941,32 +941,4 @@ function handleSelectAll() {
   });
 }
 
-// Assuming you have a form with the id "product_form"
-// $("#add_product_form1").submit(function (event) {
-//   // Prevent the default form submission
-//   event.preventDefault();
 
-//   // Make your AJAX request
-//   $.ajax({
-//       type: 'POST',
-//       url: '/admin/inventory', // Replace with your actual endpoint
-//       data: $(this).serialize(),
-//       success: function (response) {
-//           // Show the success message
-//           $("#add_product_success").show();
-
-//           // Hide the success message after 2000 milliseconds (2 seconds)
-//           setTimeout(function () {
-//               $("#add_product_success").hide();
-//           }, 2000);
-
-//           setTimeout(function () {
-//             location.reload();
-//         }, 2000);
-//       },
-//       error: function (error) {
-//           // Handle errors if needed
-//           console.error('Error submitting product:', error);
-//       }
-//   });
-// });

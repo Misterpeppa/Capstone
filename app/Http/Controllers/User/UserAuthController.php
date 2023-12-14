@@ -38,6 +38,12 @@ class UserAuthController extends Controller
         $gender = $request->input('gender');
         $birthdate = $request->input('birthdate');
 
+        $emailExists = Clients::where('email', $request->email)->exists();
+
+        if ($emailExists) {
+            return redirect()->back()->withErrors(['email' => 'The email has already been taken.']);
+        }
+
         $request->validate([
             // Add any validation rules you need
             'suffix' => 'required',
@@ -64,14 +70,14 @@ class UserAuthController extends Controller
         $clients->save();
 
         Notification::send($clients, new VerifyEmail);
-        // Dispatch the Registered event
-        //event(new Registered($clients));
+        
+        event(new Registered($clients));
 
         // Log in the user
         //Auth::login($clients);
 
         // Redirect to a success page or perform any additional actions
-        return redirect('/user/signin');
+        return redirect()->route('client.signup')->with('success', 'User registered successfully');
     }
 
     public function showSignin()
@@ -122,3 +128,49 @@ class UserAuthController extends Controller
         return redirect('/user/signin')->with('reload', true);    
     }
 }
+
+// switch (count($validatedData['breed'])) {
+//     case 1:
+//         AppointmentPending::create([
+//             'user_id' => $clientId, // Use the same $clientId for all records
+//             'petType' => $validatedData['petType'][0],
+//             'breed' => $validatedData['breed'][0],
+//             'appointmentType' => $validatedData['appointmentType'][0],
+//             'appointmentDate' => $validatedData['appointmentDate'][0],
+//             'appointmentTime' => $validatedData['appointmentTime'][0],
+//         ]);
+//         break;
+
+//     case 2:
+//         for ($i = 0; $i < 2; $i++) {
+//             if (isset($validatedData['breed'][$i])) {
+//                 AppointmentPending::create([
+//                     'user_id' => $clientId, // Use the same $clientId for all records
+//                     'petType' => $validatedData['petType'][$i],
+//                     'breed' => $validatedData['breed'][$i],
+//                     'appointmentType' => $validatedData['appointmentType'][$i],
+//                     'appointmentDate' => $validatedData['appointmentDate'][$i],
+//                     'appointmentTime' => $validatedData['appointmentTime'][$i],
+//                 ]);
+//             }
+//         }
+//         break;
+
+//     case 3:
+//         for ($i = 0; $i < 3; $i++) {
+//             if (isset($validatedData['breed'][$i])) {
+//                 AppointmentPending::create([
+//                     'user_id' => $clientId, // Use the same $clientId for all records
+//                     'petType' => $validatedData['petType'][$i],
+//                     'breed' => $validatedData['breed'][$i],
+//                     'appointmentType' => $validatedData['appointmentType'][$i],
+//                     'appointmentDate' => $validatedData['appointmentDate'][$i],
+//                     'appointmentTime' => $validatedData['appointmentTime'][$i],
+//                 ]);
+//             }
+//         }
+//         break;
+//     default:
+//         // Handle unexpected number of pets
+//         break;
+// }

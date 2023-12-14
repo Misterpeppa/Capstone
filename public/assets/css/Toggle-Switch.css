@@ -9,7 +9,7 @@
   display: none;
 }
 
-.sign_in_slider {
+.slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -20,36 +20,28 @@
   -webkit-transition: .4s;
   transition: .4s;
 }
-  
-.sign_in_slider:before {
+
+.slider:before {
   position: absolute;
   content: "";
-  height: 16px;
-  width: 15px;
-  left: 3px;
-   bottom: 2px;
-   background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
-input:checked + .sign_in_slider {
-  background-color: #045B62;
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
 }
-  
-input:focus + .sign_in_slider {
-  box-shadow: 0 0 1px #045B62;
+
+.slider.round {
+  border-radius: 34px;
 }
-  
-input:checked + .sign_in_slider:before {
-  -webkit-transform: translateX(27px);
-  -ms-transform: translateX(27px);
-  transform: translateX(27px);
+
+.slider.round:before {
+  border-radius: 50%;
 }
-  
-.sign_in_slider.round {
-    border-radius: 4px;
-}
-  
-.sign_in_slider.round:before {
-  border-radius: 20%;
-}
+

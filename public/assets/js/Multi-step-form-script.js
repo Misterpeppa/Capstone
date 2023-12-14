@@ -87,7 +87,7 @@ const setActivePanel = activePanelNum => {
 
       elem.classList.add('js-active');
 
-      setFormHeight(elem);
+      setFormHeight();
 
     }
   });
@@ -105,8 +105,16 @@ const formHeight = activePanel => {
 
 const setFormHeight = () => {
   const activePanel = getActivePanel();
+  const activePanelNum = Array.from(DOMstrings.stepFormPanels).indexOf(activePanel);
 
-  formHeight(activePanel);
+  let totalHeight = 0;
+  DOMstrings.stepFormPanels.forEach((elem, index) => {
+    if (index <= activePanelNum) {
+      totalHeight += elem.offsetHeight;
+    }
+  });
+
+  DOMstrings.stepsForm.style.height = `${totalHeight}px`;
 };
 
 //STEPS BAR CLICK FUNCTION
@@ -177,8 +185,8 @@ const setAnimationType = newType => {
 //selector onchange - changing animation
 const animationSelect = document.querySelector('.pick-animation__select');
 
-animationSelect.addEventListener('change', () => {
-  const newAnimationType = animationSelect.value;
+// animationSelect.addEventListener('change', () => {
+//   const newAnimationType = animationSelect.value;
 
-  setAnimationType(newAnimationType);
-});
+//   setAnimationType(newAnimationType);
+// });

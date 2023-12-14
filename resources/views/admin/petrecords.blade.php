@@ -6,19 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
-    <title>Pet Records</title>
+    <title>Admin | Pet Records</title>
     <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
-    <link href="/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+    <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+
+
 </head>
 
 <body>
-    <main class="container">
+<main class="d-flex flex-row container-fluid" style="padding: 0;">
     @php
     $activeTab = 'emr'; // Set the active tab
     @endphp
-
     @include('includes.admin_header')
-
         <div class="content">
             <div class="rectangle">
                 <div class="icon-button">
@@ -1088,8 +1097,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="/js/admin/petrecords.js"></script>
-    <script src="/js/sidebar.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -1830,8 +1837,13 @@ aElements.forEach(function (aElement) {
             });
     })
 </script>
-
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/emr.js') }}"></script>
+    <script src="{{ asset('assets/js/sidebar.js') }}"></script>
 
 </body>
 

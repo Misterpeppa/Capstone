@@ -2,47 +2,55 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AppointmentApprovedMail;
+use App\Mail\AppointmentRejectedMail;
 use Illuminate\Http\Request;
 use App\Models\Admin\AppointmentPending;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin\AppointmentApproved;
 use App\Models\Admin\AppointmentRejected;
+use App\Models\User\Clients;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
 
 class AppointmentController extends Controller
 {
     public function showForm()
     {
-        return view('user/appointment');
+        $clientId = Auth::guard('clients')->id();
+        $clientInfo = Clients::find($clientId);
+        return view('user/appointment',compact('clientInfo'));
     }
 
     public function store(Request $request)
     {
-    // Get the currently authenticated user
-    $userID = Auth::guard('client')->id();
-
-    // Form submission logic
-    // Retrieve form data
-    $petType = $request->input('petType');
-    $breed = $request->input('breed');
-    $appointmentType = $request->input('service');
-    $appointmentDate = \DateTime::createFromFormat('F j, Y', $request->input('appointmentDate'))->format('Y-m-d');
-    $appointmentTime = \DateTime::createFromFormat('h:i A', $request->input('appointmentTime'))->format('H:i:s');
+    $clientId = Auth::guard('clients')->id();
+    $validatedData = $request->validate([
+        'petType.*'=>'required',
+        'breed.*' => 'required',
+        'appointmentType.*' => 'required',
+        'appointmentDate.*' => 'required|date',
+        'appointmentTime.*' => 'required',
+    ]);
 
     // Store the form data in the appointments table
-    $appointment_pending = new AppointmentPending();
-    $appointment_pending->user_id = $userID;
-    $appointment_pending->petType = $petType;
-    $appointment_pending->breed = $breed;
-    $appointment_pending->appointmentType = $appointmentType;
-    $appointment_pending->appointmentDate = $appointmentDate;
-    $appointment_pending->appointmentTime = $appointmentTime;
+    $count = count($validatedData['breed']);
+    for ($i = 0; $i < $count; $i++) {
+        // Check if the key exists before accessing it
+        if (isset($validatedData['breed'][$i])) {
+            AppointmentPending::create([
+                'user_id' => $clientId,
+                'petType' => $validatedData['petType'][$i],
+                'breed' => $validatedData['breed'][$i],
+                'appointmentType' => $validatedData['appointmentType'][$i],
+                'appointmentDate' => $validatedData['appointmentDate'][$i],
+                'appointmentTime' => $validatedData['appointmentTime'][$i],
+            ]);
+        }
+    }
 
-    // Associate the appointment with the authenticated user
-
-    $appointment_pending->save();
-    //return response()->json(['message' => 'Data received successfully']);
-    // Redirect to a success page or perform other actions as needed
-    return redirect()->route('appointment_list');
+    session()->flash('success', true);
+    return redirect()->route('appointment.form');
     }
     
     public function approve(Request $request, $id){
@@ -60,24 +68,28 @@ class AppointmentController extends Controller
         // Delete the data from the "appointment_details" table
         $appointment->delete();
         
+        $client = Clients::find($appointment->user_id);
+        Mail::to($client->email)->send(new AppointmentApprovedMail($appointment));
+        
     }
 
-    public function reject($id)
+    public function reject(Request $request, $id)
     {
-        $appointment_pending = AppointmentPending::findOrFail($id);
+        $appointment = AppointmentPending::findOrFail($id);
 
-        // Move the data to the "rejected" table
         AppointmentRejected::create([
-            'user_id' => $appointment_pending->user_id,
-            'petType' => $appointment_pending->petType,
-            'breed' => $appointment_pending->breed,
-            'appointmentType' => $appointment_pending->appointmentType,
-            'appointmentDate' => $appointment_pending->appointmentDate,
-            'appointmentTime' => $appointment_pending->appointmentTime,
+            'user_id' =>$appointment->user_id,
+            'petType' => $appointment->petType,
+            'breed' => $appointment->breed,
+            'appointmentType' => $appointment->appointmentType,
+            'appointmentDate' => $appointment->appointmentDate,
+            'appointmentTime' => $appointment->appointmentTime,
         ]);
-        $appointment_pending->status = 'rejected';
         // Delete the data from the "appointment_details" table
-        $appointment_pending->delete();
+        $appointment->delete();
+
+        $client = Clients::find($appointment->user_id);
+        Mail::to($client->email)->send(new AppointmentRejectedMail($appointment));
 
         return response()->json(['message' => 'Appointment Rejected successfully.']);
 
@@ -93,6 +105,7 @@ class AppointmentController extends Controller
 
     // Retrieve all appointment records and sort them by appointment date from the appointment_details table
     $appointment_pending = AppointmentPending::orderByDesc('appointmentDate')->get();
+    
     return view('admin/admin_appointment', compact( 'appointment_approved', 'appointment_rejected', 'appointment_pending'));
     }
 

@@ -3,8 +3,21 @@
 
 <head>
     <title>TAGAPO CATS & DOGS</title>
-    @include('includes.head') 
+    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+    <link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/user/client.css') }}">
     <link rel="stylesheet" href="{{ asset('css/user/landing.css') }}">  
 
 </head>
@@ -17,8 +30,6 @@
     width: 100%;
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.00) 0%, #1C1C1C 100%), url('{{ asset('img/clientclinic.jpg') }}') no-repeat center/cover;
 }
-
-
 </style>
 
 

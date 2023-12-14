@@ -2,6 +2,9 @@
 
 namespace App\Models\User;
 
+use App\Models\Admin\AppointmentApproved;
+use App\Models\Admin\AppointmentPending;
+use App\Models\Admin\AppointmentRejected;
 use App\Models\Admin\PetInfo;
 use App\Models\Admin\PetRecord;
 use Illuminate\Contracts\Auth\MustVerifyEmail;

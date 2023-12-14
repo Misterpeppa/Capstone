@@ -8,16 +8,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
     <title>Appointment Management</title>
     <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
-    <link rel="stylesheet" href="{{ asset('css/admin/approved_pending_rejected.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('css/admin/approved_pending_rejected.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+    <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/pagination.css') }}">
 
 </head>
 
 <body>
-    <main class="container">
+<main class="d-flex flex-row container-fluid" style="padding: 0;">
     @php
-    $activeTab = 'approved'; // Set the active tab
+        $activeTab = 'appointment'; // Set the active tab
     @endphp
-
     @include('includes.admin_header')
         <div class="content">
           <div class="rectangle">
@@ -105,7 +113,7 @@
                         <td class="text-style">{{ $appointment->clients->first_name }} {{ $appointment->clients->last_name }}</td> 
           
                         <td class="text-style">{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
-                        <td class="text-style">{{ $appointment['appointmentDate'] }} ({{ \Carbon\Carbon::parse($appointment['appointmentTime'])->format('g:ia') }})</td>
+                        <td class="text-style">{{ $appointment['appointmentDate'] }} {{ $appointment['appointmentTime'] }}</td>
                         <td class="text-style">{{ $appointment['appointmentType'] }}</td>
                         
                       </tr>
@@ -206,8 +214,8 @@
                 </div>
                   
                 <div class="header-buttons">
-                    <button class="accept-button">Accept</button>
-                    <button class="reject-button">Reject</button>
+                    <button class="accept-button"></button>
+                    <button class="reject-button"></button>
                 </div>
               </div>
               <div class="table-container">
@@ -231,7 +239,7 @@
                         <td class="text-style">{{ $appointment->clients->first_name }} {{ $appointment->clients->last_name }}</td> 
             
                         <td class="text-style">{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
-                        <td class="text-style">{{ $appointment['appointmentDate'] }} ( {{ \Carbon\Carbon::parse($appointment['appointmentTime'])->format('g:ia') }})</td>
+                        <td class="text-style">{{ $appointment['appointmentDate'] }}  {{ $appointment['appointmentTime'] }}</td>
                         <td class="text-style">{{ $appointment['appointmentType'] }}</td>
                         <td>
                           <button class="approve-btn" data-id="{{ $appointment->id }}">Approve</button>
@@ -404,7 +412,7 @@
                         <td class="text-style">{{ $appointment->clients->first_name }} {{ $appointment->clients->last_name }}</td> 
      
                         <td class="text-style">{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
-                        <td class="text-style">{{ $appointment['appointmentDate'] }} ({{ \Carbon\Carbon::parse($appointment['appointmentTime'])->format('g:ia') }})</td>
+                        <td class="text-style">{{ $appointment['appointmentDate'] }} {{ $appointment['appointmentTime'] }}</td>
                         <td class="text-style">{{ $appointment['appointmentType'] }}</td>
                       </tr>
                     @endforeach             <!-- Table rows will be dynamically generated here -->
@@ -428,13 +436,13 @@
                             <path d="M5.48 12L1.36452 7.88384C0.878492 7.39773 0.878492 6.60227 1.36452 6.11616L5.48 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
                           </svg>
                     </span>
-                  <div class="pages">
-                      <span class="pagination-page active">1</span>
-                      <span class="pagination-page">2</span>
-                      <span class="pagination-page">3</span>
-                      <span class="pagination-page">4</span>
-                      <span class="pagination-page">5</span>
-                  </div>
+                    <div class="pages">
+                        <span class="pagination-page active">1</span>
+                        <span class="pagination-page">2</span>
+                        <span class="pagination-page">3</span>
+                        <span class="pagination-page">4</span>
+                        <span class="pagination-page">5</span>
+                    </div>
                     <span class="pagination-arrow next-page">
                           <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
                             <path d="M1.47998 12L5.59546 7.88384C6.08149 7.39773 6.08149 6.60227 5.59546 6.11616L1.47998 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
@@ -539,9 +547,7 @@
                 success: function(response) {
                     $('#row_' + appointmentId).remove();
                     alert('Appointment has been rejected');
-                    
                     window.location.href = '/admin/appointment';
-
                 },
                 error: function(error) {
                     alert('An error occurred while processing the request.');
@@ -553,6 +559,12 @@
     <script src="{{ asset('js/admin/appointment_multitabs.js')}}"></script>
     <script src="{{ asset('js/admin/appointment_pagination.js')}}"></script>
     <script src="{{ asset('js/sidebar.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/appointmentforms.js') }}"></script>
+    <script src="{{ asset('assets/js/calendar.js') }}"></script>
+    <script src="{{ asset('assets/js/inventory.js') }}"></script>
+    <script src="{{ asset('assets/js/Multi-step-form-script.js') }}"></script>
     
   
 
