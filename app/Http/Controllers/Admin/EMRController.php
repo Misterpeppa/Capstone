@@ -4,26 +4,31 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Admin\EMRvax;
-use App\Models\Admin\Allergy;
-use App\Models\Admin\Condition;
-use App\Models\Admin\OwnerInfo;
+use App\Models\Admin\MedHistory;
+use App\Models\Admin\MedInfo;
 use App\Models\Admin\PetInfo;
 use App\Models\Admin\PetRecord;
+use App\Models\Admin\SurgHistory;
+use App\Models\Admin\VaxHistory;
+use App\Models\Admin\VaxInfo;
 use App\Models\User\Clients;
 
 
 class EMRController extends Controller
 {
-    public function show(){
-        $owners = Clients::all();
+    public function show()
+    {
+        $owners = Clients::withTrashed()->get();
         $petrecord = PetRecord::with('pet', 'owner')->get();
+        $medInfo = MedInfo::all();
+        $med_info = MedInfo::all();
+        $vaxInfo = VaxInfo::all();
         
-        return view('/admin/petrecords', compact('owners', 'petrecord'));
+        return view('/admin/petrecords', compact('owners', 'petrecord', 'medInfo', 'vaxInfo', 'med_info'));
     }
 
-    public function pet(Request $request){
-
+    public function pet(Request $request)
+    {
         $pet_infos = new PetInfo();
         $pet_infos->name = $request->input('pet_name');
         $pet_infos->age = $request->input('pet_age');
@@ -33,7 +38,6 @@ class EMRController extends Controller
         $pet_infos->gender = $request->input('gender');
         $pet_infos->weight = $request->input('weight');
         $pet_infos->save();
-
         $petId = $pet_infos->id;
         $ownerId = $request->input('owner_id');
 
@@ -43,106 +47,79 @@ class EMRController extends Controller
         ]);
         $petrecord->save();
 
-        return redirect()->back();
+        return redirect()->route('admin_emr')->with('success', 'Pet Successfully Added');
     }
     
-    public function viewRecord($id){
-        $petrecord = PetRecord::find($id);
-
-        return view('/admin/petrecords', compact('petrecord'));
-    }
-
-    public function store(Request $request){
-        // Retrieve the form data from the request
-        $petName = $request->input('petName');
-        $age = $request->input('age');
-        $birthdate = $request->input('birthdate');
-        $species = $request->input('species');
-        $gender = $request->input('gender');
-        $weight = $request->input('weight');
-        $allergy_name = $request->input('allergies');
-        $reaction  = $request->input('reaction');
-        $severity = $request->input('severity');
-        $vax_name = $request->input('vax_name');
-        $effects = $request->input('effects');
-        $ownerName = $request->input('ownerName');
-        $phone = $request->input('phone');
-        $email = $request->input('email');
-
-        $petInfo = new PetInfo();
-        $petInfo->name = $request->input('petName');
-        $petInfo->age = $request->input('age');
-        $petInfo->birthdate = $request->input('birthdate');
-        $petInfo->species = $request->input('species');
-        $petInfo->gender = $request->input('gender');
-        $petInfo->weight = $request->input('weight');
-        $petInfo->save();
-
-        $ownerInfo = new OwnerInfo();
-        $ownerInfo->name = $request->input('ownerName');
-        $ownerInfo->phone = $request->input('phone');
-        $ownerInfo->email = $request->input('email');
-        $ownerInfo->save();
-    }
-
-    public function infoSave(Request $request)
+    public function viewRecord($id)
     {
-        // Create and save owner's record
-        $ownerInfo = new OwnerInfo();
-        $ownerInfo->name = $request->input('name');
-        $ownerInfo->phone = $request->input('phone');
-        $ownerInfo->email = $request->input('email');
-        $ownerInfo->save();
+        $petrecord = PetRecord::with('owner', 'pet')->find($id);
+        $petInfo = $petrecord->pet;
+        $ownerInfo = $petrecord->owner;
 
-        // Create and save pet's record
-        $petInfo = new PetInfo();
-        $petInfo->name = $request->input('petName');
-        $petInfo->age = $request->input('age');
-        $petInfo->birthdate = $request->input('birthdate');
-        $petInfo->species = $request->input('species');
-        $petInfo->breed = $request->input('breed');
-        $petInfo->gender = $request->input('gender');
-        $petInfo->weight = $request->input('weight');
-        $petInfo->save();
-
-        return redirect()->back();
+        return response()->json([
+            'petrecord' => $petrecord,
+            'petInfo' => $petInfo,
+            'ownerInfo' => $ownerInfo
+        ]);
     }
 
-    public function infoShow()
+    public function medHistory(Request $request)
     {
-        $ownerInfo = OwnerInfo::all();
-        $petInfo = PetInfo::all();
-        $ownerInfos = OwnerInfo::all();
+        $medHistory = new MedHistory([
+            'petrecord_id' => $request->input('petrecord_id'),
+            'diagnosis' => $request->input('diagnosis'),
+            'diagnosis_date' => $request->input('diagnosis_date'),
+            'treatment' => $request->input('treatment'),
+            'med_id' => $request->input('medication'),
+        ]);
+        $medHistory->save();
 
-        return view('petrecord', compact('ownerInfo', 'petInfo', 'ownerInfos'));
+        return redirect()->route('admin_emr')->with('success', 'Pet Successfully Added');
     }
-    
-    public function save(Request $request)
+    public function vaxHistory(Request $request)
     {
-    $formType = $request->input('form_type');
+        $vaxHistory = new VaxHistory([
+            'petrecord_id' => $request->input('petrecord_id'),
+            'vax_id' => $request->input('vax_id'),
+            'vaccination_date' => $request->input('vaccination_date'),
+            'revaccination_date' => $request->input('revaccination_date'),
+        ]);
+        $vaxHistory->save();
 
-    switch ($formType) {
-        case 'info':
-            $this->infoSave($request);
-            break;
-        case 'allergy':
-            // Handle allergy form submission
-            $this->allergySave($request);
-            break;
-        case 'condition':
-            // Handle condition form submission
-            $this->conditionSave($request);
-            break;
-        case 'vax':
-            // Handle vaccination form submission
-            $this->vaxSave($request);
-            break;
-        default:
-            // Handle unknown form submission
-            break;
+        return redirect()->route('admin_emr')->with('success', 'Pet Successfully Added');
+    }
+    public function surgHistory(Request $request)
+    {
+        $surgHistory = new SurgHistory([
+            'petrecord_id' => $request->input('petrecord_id'),
+            'surgery_type' => $request->input('surgery_type'),
+            'severity' => $request->input('severity'),
+            'med_id' => $request->input('med_id'),
+            'surgery_date' => $request->input('surgery_date'),
+            'surgery_note' => $request->input('surgery_note'),
+        ]);
+        $surgHistory->save();
+
+        return redirect()->route('admin_emr')->with('success', 'Pet Successfully Added');
     }
 
-    return redirect()->back();
+    public function showMedHis($id)
+    {
+        $medHistory = MedHistory::where('petrecord_id', $id)->get();
+
+        return response()->json($medHistory);
+    }
+    public function showVaxHis($id)
+    {
+        $vaxHistory = VaxHistory::where('petrecord_id', $id)->get();
+
+        return response()->json($vaxHistory);
+    }
+    public function showSurgHis($id)
+    {
+        $surgHistory = SurgHistory::where('petrecord_id', $id)->get();
+
+        return response()->json($surgHistory);
     }
 
 }

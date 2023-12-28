@@ -38,7 +38,14 @@ document.addEventListener('DOMContentLoaded', function () {
     add_pet_record_modal.show();
   });
     
-
+    submit_Client.addEventListener('click', function () {
+        add_client_modal.hide();
+        add_client_success.show();
+        // Hide the modal after 2000 milliseconds (2 seconds)
+        setTimeout(function () {
+            add_client_success.hide();
+        }, 2000);
+    });
     
     archive_button.addEventListener('click', function () {
     // Assuming you have a function to get the selected data rows (replace it with your actual logic)
@@ -64,27 +71,17 @@ document.addEventListener('DOMContentLoaded', function () {
     // and query the DOM to get those rows
     // For demonstration purposes, this function returns an array of selected rows
     return document.querySelectorAll('.selected-row');
-    }
+}
 
-    var empty_state_container = document.getElementById('empty_state_container');
-    var client_table_container = document.getElementById('client_table_container');
-    empty_state_container.style.display = 'none';
-    client_table_container.style.display = 'flex';
-
-    function showAddClientSplitBtn() {
-        var addClientSplitBtn = document.getElementById("add_client_split_btn");
-        if (addClientSplitBtn) {
-            addClientSplitBtn.style.display = "flex";
-        }
-    }       
-     
-    showAddClientSplitBtn();
-
-        //get reference IDs
         var empty_state_container = document.getElementById('empty_state_container');
          var client_table_container = document.getElementById('client_table_container');
         
-        
+        //hide empty state and show table container
+        empty_state_container.style.display = 'none';
+        client_table_container.style.display = 'flex';
+        //get reference IDs
+        showAddClientSplitBtn();
+
         
     // Get form values
     var firstName = document.getElementById("first_name").value;
@@ -95,99 +92,42 @@ document.addEventListener('DOMContentLoaded', function () {
     var address = document.getElementById("client_address").value;
     var email = document.getElementById("client_email").value;
     var phoneNumber = document.getElementById("user_phone").value;
-
-
-    // Create dropdown container
-    var dropdownContainer = document.createElement('div');
-    dropdownContainer.className = 'dropdown';
-
-    // Create dropbtn
-    var dropbtn = document.createElement('button');
-    dropbtn.className = 'dropbtn';
-    dropbtn.innerHTML = '<span>Action</span>';
-
-    // Create dropdownContent
-    var dropdownContent = document.createElement('div');
-    dropdownContent.className = 'dropdown-content';
-    dropdownContent.innerHTML = `
-           <!-- Group 1 -->
-    <div class="button-group">
-        <button data-action="Add_Pet"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5672_22512)">
-    <path d="M9 12H15M12 9V15M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_5672_22512">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Add Pet</div></button>
         
-    </div>
-    
-    <!-- Line break -->
-    <div class="line-break"><svg xmlns="http://www.w3.org/2000/svg" width="166" height="2" viewBox="0 0 166 2" fill="none">
-  <path d="M1 1H165" stroke="black" stroke-opacity="0.3" stroke-width="0.8" stroke-linecap="square"/>
-</svg></div>
-    
-    <!-- Group 2 -->
-    <div class="button-group">
-        <button data-action="View"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5624_22297)">
-    <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_5624_22297">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> View</div></button>
-        <button data-action="Edit"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5624_22180)">
-    <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_5624_22180">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Edit</div></button>
-        <button data-action="Archive"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5624_22046)">
-    <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_5624_22046">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Archive</div></button>
-    </div>
-`;
         
 
+    // Construct the client data
+    var clientData = {
+        name: firstName + ' ' + (middleName ? middleName + ' ' : '') + lastName + (suffix ? ' ' + suffix : ''),
+        email: email,
+        phoneNumber: phoneNumber,
+        address: address,
+        // Add more properties as needed
+    };
 
-    // Add a class for styling the line break
-    var lineBreak = document.createElement('div');
-    lineBreak.className = 'line-break';
+    // Create a new row in the table
+    var tableBody = document.getElementById("client_table_body");
+    var newRow = tableBody.insertRow(tableBody.rows.length);
 
-    // Append the line break element to the dropdown content
-    dropdownContent.appendChild(lineBreak);
+    // Add cells to the new row
+    var checkboxCell = newRow.insertCell(0);
+    var nameCell = newRow.insertCell(1);
+    var emailCell = newRow.insertCell(2);
+    var phoneNumberCell = newRow.insertCell(3);
+    var addressCell = newRow.insertCell(4);
+    var visitsCell = newRow.insertCell(5);
+    var lastVisitCell = newRow.insertCell(6);
+    var actionCell = newRow.insertCell(7);
 
-    // Append elements to the dropdown container
-    dropdownContainer.appendChild(dropbtn);
-    dropdownContainer.appendChild(dropdownContent);
-
-    // Append the dropdown container to the action cell
-    actionCell.appendChild(dropdownContainer);
+    // Populate cells with data
+   
+        
     
     // Optionally, you can add additional logic, such as resetting the form
     document.getElementById("add_client_form").reset();
 
 // Add an event listener for the buttons inside dropdown-content
         document.querySelectorAll('.dropdown-content button').forEach(function (button) {
-        button.addEventListener('click', function (event) {
+    button.addEventListener('click', function (event) {
         event.preventDefault();
         const action = this.getAttribute('data-action');
         if (action === 'Add_Pet') {
@@ -246,6 +186,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 });
+        
+
 
 // Function to close all dropdown menus
 function closeDropdownMenus() {
@@ -277,7 +219,6 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
 
         
 
-
     
     var cancel_edit = document.getElementById('cancel_edit');
     var edit_discard = new bootstrap.Modal(document.getElementById('edit_discard'));
@@ -307,7 +248,12 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
     
     var add_pet_success = new bootstrap.Modal(document.getElementById('add_pet_success'));
     
-    
+    function showAddClientSplitBtn() {
+    var addClientSplitBtn = document.getElementById("add_client_split_btn");
+    if (addClientSplitBtn) {
+        addClientSplitBtn.style.display = "flex";
+    }
+}
     var view_client_back_btn = document.getElementById('view_client_back_btn');
     view_client_back_btn.addEventListener('click', function() {
         closeViewClientInfo();
@@ -337,8 +283,10 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
         edit_client_detail_header.style.display = 'none';
         edit_client.style.display = 'none';
     }
-    
-    
+
+ 
+        
+
 function setupBreedOptions(petTypeId, breedId, breedOptions) {
     // Get references to the pet type and breed select elements
     var petTypeSelect = document.getElementById(petTypeId);
@@ -372,24 +320,31 @@ function setupBreedOptions(petTypeId, breedId, breedOptions) {
 
 // Example usage for the first set of IDs and breed options
 setupBreedOptions('pet_type', 'breed', {
-    'Dog': ['Labrador', 'Golden Retriever', 'German Shepherd'],
-    'Cat': ['Siamese', 'Persian', 'Maine Coon']
+    'Dog': ["Affenpinscher","Afghan Hound","Airedale Terrier","Akita","Alaskan Malamute","American Bulldog","American Eskimo Dog","American Foxhound","American Pit Bull Terrier","American Staffordshire Terrier","Anatolian Shepherd Dog","Australian Cattle Dog","Australian Shepherd","Australian Terrier","Basenji","Basset Hound","Beagle","Bearded Collie","Bedlington Terrier","Belgian Malinois","Belgian Sheepdog","Belgian Tervuren","Bernese Mountain Dog","Bichon Frise","Black and Tan Coonhound","Bloodhound","Border Collie","Border Terrier","Borzoi","Boston Terrier","Bouvier des Flandres","Boxer","Boykin Spaniel","Briard","Brittany","Brussels Griffon","Bull Terrier","Bulldog","Bullmastiff","Cairn Terrier","Canaan Dog","Cane Corso","Cardigan Welsh Corgi","Cavalier King Charles Spaniel","Chesapeake Bay Retriever","Chihuahua","Chinese Crested","Chinese Shar-Pei","Chow Chow","Clumber Spaniel","Cockapoo","Collie","Coonhound","Corgi","Coton de Tulear","Curly-Coated Retriever","Dachshund","Dalmatian","Dandie Dinmont Terrier","Doberman Pinscher","Dogue de Bordeaux","Dutch Shepherd","English Bulldog","English Cocker Spaniel","English Foxhound","English Setter","English Springer Spaniel","English Toy Spaniel","Entlebucher Mountain Dog","Eskimo Dog","Finnish Lapphund","Finnish Spitz","Flat-Coated Retriever","French Bulldog","German Pinscher","German Shepherd Dog","German Shorthaired Pointer","German Wirehaired Pointer","Giant Schnauzer","Glen of Imaal Terrier","Goldador","Golden Retriever","Goldendoodle","Gordon Setter","Great Dane","Great Pyrenees","Greater Swiss Mountain Dog","Greyhound","Harrier","Havanese","Hound","Hovawart","Hungarian Puli","Hungarian Shepherd","Hungarian Vizsla","Husky","Ibizan Hound","Icelandic Sheepdog","Irish Setter","Irish Terrier","Irish Water Spaniel","Irish Wolfhound","Italian Greyhound","Jack Russell Terrier","Japanese Chin","Japanese Spitz","Japanese Terrier","Keeshond","Kerry Blue Terrier","King Charles Spaniel","Klee Kai","Kuvasz","Labradoodle","Labrador Retriever","Lakeland Terrier","Lancashire Heeler","Leonberger","Lhasa Apso","Lowchen","Maltese","Manchester Terrier","Maremma Sheepdog","Mastiff","Miniature Bull Terrier","Miniature Pinscher","Miniature Schnauzer","Mixed Breed","Mountain Cur","Mountain Dog","Neapolitan Mastiff","Newfoundland","Norfolk Terrier","Norwegian Buhund","Norwegian Elkhound","Norwegian Lundehund","Norwich Terrier","Nova Scotia Duck Tolling Retriever","Old English Sheepdog","Otterhound","Papillon","Pekingese","Pembroke Welsh Corgi","Pharaoh Hound","Pinscher","Pit Bull Terrier","Plott Hound","Podenco Canario","Pointer","Polish Lowland Sheepdog","Pomeranian","Poodle","Portuguese Water Dog","Presacanario","Pug","Puggle","Puli","Pumi","Pyrenees","Redbone Coonhound","Retriever","Rhodesian Ridgeback","Rottweiler","Saint Bernard","Saluki","Samoyed","Schipperke","Scottish Deerhound","Scottish Terrier","Sealyham Terrier","Setter","Shar-Pei","Sheltie","Shiba Inu","Shih Tzu","Siberian Husky","Silky Terrier","Skye Terrier","Sloughi","Small Munsterlander Pointer","Spaniel","Spanish Water Dog","Spitz","Springer Spaniel","Staffordshire Bull Terrier","Standard Schnauzer","Sussex Spaniel","Swedish Vallhund","Terrier","Thai Ridgeback","Tibetan Mastiff","Tibetan Spaniel","Tibetan Terrier","Tosa Inu","Toy Fox Terrier","Treeing Walker Coonhound","Vizsla","Weimaraner","Welsh Corgi","Welsh Terrier","West Highland White Terrier","Whippet","White Shepherd","Wirehaired Pointing Griffon","Xoloitzcuintli","Yorkshire Terrier"],
+        'Cat': ["Abyssinian","American Bobtail","American Curl","American Shorthair","American Wirehair","Balinese","Bengal","Birman","Bombay","British Shorthair","Burmese","Chartreux","Chausie","Cornish Rex","Cymric","Devon Rex","Egyptian Mau","European Burmese","Exotic Shorthair","Havana Brown","Himalayan","Japanese Bobtail","Javanese","Korat","LaPerm","Maine Coon","Manx","Munchkin","Nebelung","Norwegian Forest","Ocicat","Oriental","Persian","Pixie-Bob","Ragamuffin","Ragdoll","Russian Blue","Savannah","Scottish Fold","Selkirk Rex","Siamese","Siberian","Singapura","Snowshoe","Somali","Sphynx","Tonkinese","Turkish Angora","Turkish Van"]
 });
 
 // Example usage for the second set of IDs and breed options
 setupBreedOptions('pet_type-1', 'breed-1', {
-    'Dog': ['Bulldog', 'Poodle', 'Beagle'],
-    'Cat': ['Ragdoll', 'Sphynx', 'Bengal']
+    'Dog': ["Affenpinscher","Afghan Hound","Airedale Terrier","Akita","Alaskan Malamute","American Bulldog","American Eskimo Dog","American Foxhound","American Pit Bull Terrier","American Staffordshire Terrier","Anatolian Shepherd Dog","Australian Cattle Dog","Australian Shepherd","Australian Terrier","Basenji","Basset Hound","Beagle","Bearded Collie","Bedlington Terrier","Belgian Malinois","Belgian Sheepdog","Belgian Tervuren","Bernese Mountain Dog","Bichon Frise","Black and Tan Coonhound","Bloodhound","Border Collie","Border Terrier","Borzoi","Boston Terrier","Bouvier des Flandres","Boxer","Boykin Spaniel","Briard","Brittany","Brussels Griffon","Bull Terrier","Bulldog","Bullmastiff","Cairn Terrier","Canaan Dog","Cane Corso","Cardigan Welsh Corgi","Cavalier King Charles Spaniel","Chesapeake Bay Retriever","Chihuahua","Chinese Crested","Chinese Shar-Pei","Chow Chow","Clumber Spaniel","Cockapoo","Collie","Coonhound","Corgi","Coton de Tulear","Curly-Coated Retriever","Dachshund","Dalmatian","Dandie Dinmont Terrier","Doberman Pinscher","Dogue de Bordeaux","Dutch Shepherd","English Bulldog","English Cocker Spaniel","English Foxhound","English Setter","English Springer Spaniel","English Toy Spaniel","Entlebucher Mountain Dog","Eskimo Dog","Finnish Lapphund","Finnish Spitz","Flat-Coated Retriever","French Bulldog","German Pinscher","German Shepherd Dog","German Shorthaired Pointer","German Wirehaired Pointer","Giant Schnauzer","Glen of Imaal Terrier","Goldador","Golden Retriever","Goldendoodle","Gordon Setter","Great Dane","Great Pyrenees","Greater Swiss Mountain Dog","Greyhound","Harrier","Havanese","Hound","Hovawart","Hungarian Puli","Hungarian Shepherd","Hungarian Vizsla","Husky","Ibizan Hound","Icelandic Sheepdog","Irish Setter","Irish Terrier","Irish Water Spaniel","Irish Wolfhound","Italian Greyhound","Jack Russell Terrier","Japanese Chin","Japanese Spitz","Japanese Terrier","Keeshond","Kerry Blue Terrier","King Charles Spaniel","Klee Kai","Kuvasz","Labradoodle","Labrador Retriever","Lakeland Terrier","Lancashire Heeler","Leonberger","Lhasa Apso","Lowchen","Maltese","Manchester Terrier","Maremma Sheepdog","Mastiff","Miniature Bull Terrier","Miniature Pinscher","Miniature Schnauzer","Mixed Breed","Mountain Cur","Mountain Dog","Neapolitan Mastiff","Newfoundland","Norfolk Terrier","Norwegian Buhund","Norwegian Elkhound","Norwegian Lundehund","Norwich Terrier","Nova Scotia Duck Tolling Retriever","Old English Sheepdog","Otterhound","Papillon","Pekingese","Pembroke Welsh Corgi","Pharaoh Hound","Pinscher","Pit Bull Terrier","Plott Hound","Podenco Canario","Pointer","Polish Lowland Sheepdog","Pomeranian","Poodle","Portuguese Water Dog","Presacanario","Pug","Puggle","Puli","Pumi","Pyrenees","Redbone Coonhound","Retriever","Rhodesian Ridgeback","Rottweiler","Saint Bernard","Saluki","Samoyed","Schipperke","Scottish Deerhound","Scottish Terrier","Sealyham Terrier","Setter","Shar-Pei","Sheltie","Shiba Inu","Shih Tzu","Siberian Husky","Silky Terrier","Skye Terrier","Sloughi","Small Munsterlander Pointer","Spaniel","Spanish Water Dog","Spitz","Springer Spaniel","Staffordshire Bull Terrier","Standard Schnauzer","Sussex Spaniel","Swedish Vallhund","Terrier","Thai Ridgeback","Tibetan Mastiff","Tibetan Spaniel","Tibetan Terrier","Tosa Inu","Toy Fox Terrier","Treeing Walker Coonhound","Vizsla","Weimaraner","Welsh Corgi","Welsh Terrier","West Highland White Terrier","Whippet","White Shepherd","Wirehaired Pointing Griffon","Xoloitzcuintli","Yorkshire Terrier"],
+        'Cat': ["Abyssinian","American Bobtail","American Curl","American Shorthair","American Wirehair","Balinese","Bengal","Birman","Bombay","British Shorthair","Burmese","Chartreux","Chausie","Cornish Rex","Cymric","Devon Rex","Egyptian Mau","European Burmese","Exotic Shorthair","Havana Brown","Himalayan","Japanese Bobtail","Javanese","Korat","LaPerm","Maine Coon","Manx","Munchkin","Nebelung","Norwegian Forest","Ocicat","Oriental","Persian","Pixie-Bob","Ragamuffin","Ragdoll","Russian Blue","Savannah","Scottish Fold","Selkirk Rex","Siamese","Siberian","Singapura","Snowshoe","Somali","Sphynx","Tonkinese","Turkish Angora","Turkish Van"]
 });
 
-// Example usage for the third set of IDs and breed options
-setupBreedOptions('pet_type-2', 'breed-2', {
-    'Dog': ['Dachshund', 'Shih Tzu', 'Boxer'],
-    'Cat': ['Scottish Fold', 'Exotic Shorthair', 'Abyssinian']
-});
 
-    
+
+//age of pet  
 function setupAgeCalculation(birthdateId, ageId, petTypeId) {
+    const today = new Date();
+    const minDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate()).toISOString().split('T')[0];
+
+    const dateInput = document.getElementById(birthdateId);
+    dateInput.setAttribute('max', today.toISOString().split('T')[0]);  // Set max date to today
+    dateInput.setAttribute('min', minDate);
+    
+    dateInput.addEventListener('keydown', function (e) {
+        e.preventDefault();
+    });
+    
     var birthdateInput = document.getElementById(birthdateId);
     var ageInput = document.getElementById(ageId);
     var petTypeSelect = document.getElementById(petTypeId);
@@ -398,15 +353,18 @@ function setupAgeCalculation(birthdateId, ageId, petTypeId) {
         var selectedBirthdate = new Date(birthdateInput.value);
         var petType = petTypeSelect.value;
 
-        if (petType === '' || !selectedBirthdate) {
+        if (petType === 'none' || !selectedBirthdate) {
             ageInput.value = '';
+            ageInput.placeholder = 'Please select pet type, breed, and enter the birthdate first.';
         } else {
             var age = calculateAge(selectedBirthdate, petType);
             ageInput.value = age;
-            ageInput.placeholder = 'Please select pet type and enter the birthdate first'; // Clear the placeholder
+            ageInput.placeholder = ''; // Clear the placeholder
             document.getElementById('error-' + ageInput.id).innerText = ''; // Clear the error message
         }
     });
+
+    ageInput.disabled = true; // Disable the input initially
 
     function calculateAge(birthdate, petType) {
         var today = new Date();
@@ -454,7 +412,6 @@ function setupAgeCalculation(birthdateId, ageId, petTypeId) {
         return Math.floor(ageInMilliseconds / (365 * 24 * 60 * 60 * 1000));
     }
 }
-
 // Example usage for the first set of IDs
 setupAgeCalculation('pet_birthdate', 'age', 'pet_type');
 
@@ -463,6 +420,7 @@ setupAgeCalculation('pet_birthdate-1', 'age-1', 'pet_type-1');
 
 // Example usage for the third set of IDs
 setupAgeCalculation('pet_birthdate-2', 'age-2', 'pet_type-2');
+
 
        
     
@@ -526,7 +484,7 @@ setupAgeCalculation('pet_birthdate-2', 'age-2', 'pet_type-2');
     });
 
     add_pet_button.addEventListener('click', function () {
-        add_pet_record_modal2.show();
+        add_pet_record_modal1.show();
     });
 
     var submit_pet2 = document.getElementById('submit_pet-2');
@@ -560,8 +518,8 @@ submit_pet2.addEventListener('click', function() {
     pet_empty_state_container.style.display = 'none';
         pet_card_container.style.display = 'flex';
         add_pet_button.style.display = 'flex'
-    // Assuming add_pet_record_modal2 is a Bootstrap modal, you can hide it
-    add_pet_record_modal2.hide();
+    
+    add_pet_record_modal1.hide();
 });
 
 // Add a click event listener to each "Archive" menu inside a pet_card
@@ -621,10 +579,37 @@ function archivePetCard(petCardId) {
     // For example, you might want to make an API request to update the server that the pet is archived.
 }
     
-function setupFormValidation(inputIds, buttonId, clearButtonId) {
+ const inputs = ['first_name', 'middle_name', 'last_name', 'first_name-1', 'middle_name-1', 'last_name-1', 'pet_name', 'pet_name-1', 'first_name-2', 'middle_name-2', 'last_name-2'];
+
+inputs.forEach(inputId => {
+    document.getElementById(inputId).addEventListener('input', function () {
+        let inputValue = this.value;
+        let regex = /^[a-zA-Z0-9\s]*$/;  // Allow letters, numbers, and spaces
+
+        // Check if the input matches the regex
+        if (regex.test(inputValue)) {
+            // Capitalize the first letter of each word
+            inputValue = inputValue.replace(/\b\w/g, firstLetter => firstLetter.toUpperCase());
+        } else {
+            // If the input doesn't match the regex, remove the last character
+            inputValue = inputValue.substring(0, inputValue.length - 1);
+        }
+
+        // Set the updated value to the input
+        this.value = inputValue;
+
+        // Perform any additional checks or actions
+        checkInputs();
+    });
+});   
+    
+    
+    
+function setupFormValidation(inputIds, buttonId, clearButtonId, close_client_modalId) {
     var inputs = inputIds.map(id => document.getElementById(id));
     var submitButton = document.getElementById(buttonId);
     var clearButton = document.getElementById(clearButtonId);
+    var close_client_btn = document.getElementById(close_client_modalId);
 
     // Function to check if all required input fields have values
     function areAllInputsFilled() {
@@ -673,7 +658,6 @@ function setupFormValidation(inputIds, buttonId, clearButtonId) {
 
     // Add an event listener to the clear button for the 'click' event
     clearButton.addEventListener('click', function () {
-        console.log("Clear button clicked!");
         // Clear all input fields
         inputs.forEach(input => {
             if (input.tagName === 'SELECT') {
@@ -688,25 +672,55 @@ function setupFormValidation(inputIds, buttonId, clearButtonId) {
         // Disable the submit button after clearing
         submitButton.disabled = true;
     });
-
     // Disable or enable the submit button based on the initial state of the form
     submitButton.disabled = !areAllInputsFilled();
+    
+    close_client_btn.addEventListener('click', function () {
+        // Clear all input fields
+        inputs.forEach(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, set the selectedIndex to the default one
+                input.selectedIndex = 0;
+            } else {
+                // For other input types, set the value to an empty string
+                input.value = '';
+            }
+        });
+
+        // Disable the submit button after clearing
+        submitButton.disabled = true;
+    });
 }
+
+
+   
+ 
+     
+
+
+
 
 
 // Example usage for the first set of inputs, submit button, and clear button
 setupFormValidation(
     ['first_name', 'middle_name', 'last_name', 'client_birthdate', 'client_address', 'client_email', 'user_phone'],
     'submit_Client',
-    'clear_form'
+    'clear_form', 
+    'close_client_modal'
 );
+    
+
+    
 
 // Example usage for the second set of inputs, submit button, and clear button
 setupFormValidation(
     ['first_name-1', 'middle_name-1', 'last_name-1', 'client_birthdate-1', 'client_address-1', 'client_email-1', 'user_phone-1'],
     'submit_Client-1',
-    'clear_form-1'
+    'clear_form-1',
+    'close_client_modal-1'
 );
+    
+    
 
 // Example usage for the third set of inputs, submit button, and clear button
 setupFormValidation(
@@ -743,60 +757,295 @@ setupFormValidation(
     }
 
 
+
+    
+
  
 });
 
-$(document).ready(function () {
-    // Make an AJAX request to get data from the controller
-    $.ajax({
-      url: '/admin/inventory', 
-      method: 'GET', 
-      success: function (dataExists) {
-          if (dataExists) {
-              // If there is data, hide the empty state container
-              $("#empty_state_container").hide();
+var firstName = document.getElementById("first_name");
+var middleName = document.getElementById("middle_name");
+var lastName = document.getElementById("last_name");
+var suffix = document.getElementById("suffix");
+var birthdate = document.getElementById("client_birthdate");
+var address = document.getElementById("client_address");
+var email = document.getElementById("client_email");
+var user_phone = document.getElementById('user_phone');
 
-              // Show the product table and apply the display: flex property
-              $("#product_table_container").show();
-              split_btn.style.display = "flex";
-          }
+var firstName1 = document.getElementById("first_name-1");
+var middleName1 = document.getElementById("middle_name-1");
+var lastName1 = document.getElementById("last_name-1");
+var suffix1 = document.getElementById("suffix-1");
+var birthdate1 = document.getElementById("client_birthdate-1");
+var address1 = document.getElementById("client_address-1");
+var email1 = document.getElementById("client_email-1");
+var user_phone1 = document.getElementById('user_phone-1');
 
-          // Other logic to handle and display the data as needed
-      },
-      error: function () {
-          console.error('Error in AJAX request.');
-      }
-  });
-    //divs will appear after hitting submit_product button
-    $("#submit_Client-1").click(function () {
-        var formData = $("#add_client_form-1").serialize();
+var firstName2 = document.getElementById("first_name-2");
+var middleName2 = document.getElementById("middle_name-2");
+var lastName2 = document.getElementById("last_name-2");
+var suffix2 = document.getElementById("suffix-2");
+var birthdate2 = document.getElementById("client_birthdate-2");
+var address2 = document.getElementById("client_address-2");
+var email2 = document.getElementById("client_email-2");
+var user_phone2 = document.getElementById('user_phone-2');
 
-        // Make an AJAX request
-        $.ajax({
-            url: '/admin/client', // Replace with your actual route URL
-            method: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-                if (response.success) {
-                    console.log('Form data submitted successfully.');
-                } else {
-                    console.error('Data submission failed.');
-                }
-            },
-            error: function () {
-                console.error('Error in AJAX request.');
-            }
-        });
-     
-      // Show the add_product_success and hide it after 3 seconds
-      add_client_modal.hide();
-      add_client_success.show();
-      // Hide the modal after 2000 milliseconds (2 seconds)
-      setTimeout(function () {
-          add_client_success.hide();
-      }, 2000);
+//error messages IDs
+var errorFname = document.getElementById('error-first_name');
+var errormiddleName = document.getElementById('error-middle_name');
+var errorlastName = document.getElementById('error-last_name');
+var errorbirthdate = document.getElementById('error-client_birthdate');
+var erroraddress = document.getElementById('error-client_address');
+var erroremail = document.getElementById('error-client_email');
+var erroruser_phone = document.getElementById('error-user_phone');
+
+var errorFname1 = document.getElementById('error-first_name-1');
+var errormiddleName1 = document.getElementById('error-middle_name-1');
+var errorlastName1 = document.getElementById('error-last_name-1');
+var errorbirthdate1 = document.getElementById('error-client_birthdate-1');
+var erroraddress1 = document.getElementById('error-client_address-1');
+var erroremail1 = document.getElementById('error-client_email-1');
+var erroruser_phone1 = document.getElementById('error-user_phone-1');
+
+// Copy error elements for the second set of inputs
+var errorFname2 = document.getElementById('error-first_name-2');
+var errormiddleName2 = document.getElementById('error-middle_name-2');
+var errorlastName2 = document.getElementById('error-last_name-2');
+var errorbirthdate2 = document.getElementById('error-client_birthdate-2');
+var erroraddress2 = document.getElementById('error-client_address-2');
+var erroremail2 = document.getElementById('error-client_email-2');
+var erroruser_phone2 = document.getElementById('error-user_phone-2');
+
+
+//guide messages IDs
+var guideFname = document.getElementById('guide-first_name');
+var guidemiddleName = document.getElementById('guide-middle_name');
+var guidelastName = document.getElementById('guide-last_name');
+var guidebirthdate = document.getElementById('guide-client_birthdate');
+var guideaddress = document.getElementById('guide-client_address');
+var guideemail = document.getElementById('guide-client_email');
+var guideuser_phone = document.getElementById('guide-user_phone');
+
+var guideFname1 = document.getElementById('guide-first_name-1');
+var guidemiddleName1 = document.getElementById('guide-middle_name-1');
+var guidelastName1 = document.getElementById('guide-last_name-1');
+var guidebirthdate1 = document.getElementById('guide-client_birthdate-1');
+var guideaddress1 = document.getElementById('guide-client_address-1');
+var guideemail1 = document.getElementById('guide-client_email-1');
+var guideuser_phone1 = document.getElementById('guide-user_phone-1');
+
+// Copy guide elements for the second set of inputs
+var guideFname2 = document.getElementById('guide-first_name-2');
+var guidemiddleName2 = document.getElementById('guide-middle_name-2');
+var guidelastName2 = document.getElementById('guide-last_name-2');
+var guidebirthdate2 = document.getElementById('guide-client_birthdate-2');
+var guideaddress2 = document.getElementById('guide-client_address-2');
+var guideemail2 = document.getElementById('guide-client_email-2');
+var guideuser_phone2 = document.getElementById('guide-user_phone-2');
+
+
+handleInputError(firstName, errorFname, guideFname)  
+handleInputError(middleName, errormiddleName, guidemiddleName)  
+handleInputError(lastName, errorlastName, guidelastName)  
+handleInputError(birthdate, errorbirthdate, guidebirthdate)  
+handleInputError(address, erroraddress, guideaddress)  
+handleInputError(email, erroremail, guideemail)
+handleInputError(user_phone, erroruser_phone, guideuser_phone)
+
+handleInputError(firstName1, errorFname1, guideFname1)  
+handleInputError(middleName1, errormiddleName1, guidemiddleName1)  
+handleInputError(lastName1, errorlastName1, guidelastName1)  
+handleInputError(birthdate1, errorbirthdate1, guidebirthdate1)  
+handleInputError(address1, erroraddress1, guideaddress1)  
+handleInputError(email1, erroremail1, guideemail1)
+handleInputError(user_phone1, erroruser_phone1, guideuser_phone1) 
+
+handleInputError(firstName2, errorFname2, guideFname2);
+handleInputError(middleName2, errormiddleName2, guidemiddleName2);
+handleInputError(lastName2, errorlastName2, guidelastName2);
+handleInputError(birthdate2, errorbirthdate2, guidebirthdate2);
+handleInputError(address2, erroraddress2, guideaddress2);
+handleInputError(email2, erroremail2, guideemail2);
+handleInputError(user_phone2, erroruser_phone2, guideuser_phone2);
+
+
+// Usage example
+var pet_nameInput = document.getElementById('pet_name');
+var pet_TypeInput = document.getElementById('pet_type');
+var breedInput = document.getElementById('breed');
+var pet_GenderInput = document.getElementById('gender');
+var pet_birthdateInput = document.getElementById('pet_birthdate');
+var pet_ageInput = document.getElementById('age');
+var pet_weightInput = document.getElementById('weight');
+var pet_sterilizationStatusInput = document.getElementById('sterilization_status');
+
+var pet_nameInput1 = document.getElementById('pet_name-1');
+var pet_TypeInput1 = document.getElementById('pet_type-1');
+var breedInput1 = document.getElementById('breed-1');
+var pet_GenderInput1 = document.getElementById('gender-1');
+var pet_birthdateInput1 = document.getElementById('pet_birthdate-1');
+var pet_ageInput1 = document.getElementById('age-1');
+var pet_weightInput1 = document.getElementById('weight-1');
+var pet_sterilizationStatusInput1 = document.getElementById('sterilization_status-1');
+
+
+var errorPet = document.getElementById('error-pet_name');
+var errorPetGender = document.getElementById('error-gender');
+var errorPetType = document.getElementById('error-pet_type');
+var errorPetBreed = document.getElementById('error-breed');
+var errorPetBday = document.getElementById('error-pet_birthdate');
+var errorPetWeight = document.getElementById('error-weight');
+var errorPetStatus = document.getElementById('error-sterilization_status');
+var errorPet1 = document.getElementById('error-pet_name-1');
+var errorPetGender1 = document.getElementById('error-breed-1');
+var errorPetType1 = document.getElementById('error-pet_type-1');
+var errorPetBreed1 = document.getElementById('error-pet_type-1');
+var errorPetBday1 = document.getElementById('error-pet_birthdate-1');
+var errorPetWeight1 = document.getElementById('error-weight-1');
+var errorPetStatus1 = document.getElementById('error-sterilization_status-1');
+
+var guidePetMessage = document.getElementById('guide-pet_name');
+var guidePetGenderMessage = document.getElementById('guide-gender');
+var guidePetTypeMessage = document.getElementById('guide-pet_type');
+var guidePetBreedMessage = document.getElementById('guide-breed');
+var guidePetBdayMessage = document.getElementById('guide_pet_birthdate');
+var guidePetWeightMessage = document.getElementById('guide_pet_weight');
+var guidePetStatusMessage = document.getElementById('guide-sterilization_status');  
+
+var guidePetMessage1 = document.getElementById('guide-pet_name-1');
+var guidePetGenderMessage1 = document.getElementById('guide-gender-1');
+var guidePetTypeMessage1 = document.getElementById('guide-pet_type-1');
+var guidePetBreedMessage1 = document.getElementById('guide-breed-1');
+var guidePetBdayMessage1 = document.getElementById('guide_pet_birthdate-1');
+var guidePetWeightMessage1 = document.getElementById('guide_pet_weight-1');
+var guidePetStatusMessage1 = document.getElementById('guide-sterilization_status-1');  
+
+handleInputError(pet_nameInput, errorPet, guidePetMessage);
+handleInputError(pet_GenderInput, errorPetGender, guidePetGenderMessage);
+handleInputError(pet_TypeInput, errorPetType, guidePetTypeMessage);
+handleInputError(breedInput, errorPetBreed, guidePetBreedMessage)
+handleInputError(pet_birthdateInput, errorPetBday, guidePetBdayMessage);
+handleInputError(pet_weightInput, errorPetWeight, guidePetWeightMessage);
+handleInputError(pet_sterilizationStatusInput, errorPetStatus, guidePetStatusMessage)
+handleInputError(pet_nameInput1, errorPet1, guidePetMessage1);
+handleInputError(pet_GenderInput1, errorPetGender1, guidePetGenderMessage1);
+handleInputError(pet_TypeInput1, errorPetType1, guidePetTypeMessage1);
+handleInputError(breedInput1, errorPetBreed1, guidePetBreedMessage1)
+handleInputError(pet_birthdateInput1, errorPetBday1, guidePetBdayMessage1);
+handleInputError(pet_weightInput1, errorPetWeight1, guidePetWeightMessage1);
+handleInputError(pet_sterilizationStatusInput1, errorPetStatus1, guidePetStatusMessage1)
+
+
+
+function handleInputError(input, error, guide) {
+    function onBlur() {
+    if (input.value.trim() === '' || input.value.trim() === '0') {
+        error.style.display = 'flex'; // Show the error message
+        input.classList.add('is-invalid');
+        input.classList.add('error-border');
+    } else if (input.value.trim() === 'none') {
+        error.style.display = 'flex'; // Show the error message
+        input.classList.add('is-invalid');
+        input.classList.add('error-border');
+    } else if (input.type === 'email' && !isValidEmail(input.value.trim())) {
+        error.style.display = 'flex'; // Show the error message
+        input.classList.add('is-invalid');
+        input.classList.add('error-border');
+    } else {
+        error.style.display = 'none'; // Hide the error message
+        input.classList.remove('is-invalid');
+        input.classList.remove('error-border');
+    }
+}
+
+
+    function onFocus() {
+        error.style.display = 'none'; // Hide the error message
+        guide.style.display = 'flex'; // Show the guide message
+        input.classList.remove('is-invalid');
+        input.classList.remove('error-border');
+    }
+
+    function onBlurGuide() {
+        guide.style.display = 'none'; // Hide the guide message
+    }
+
+    // Add event listeners to inputs
+    input.addEventListener('blur', onBlur);
+    input.addEventListener('focus', onFocus);
+    input.addEventListener('blur', onBlurGuide);
+}   
+// Function to check if the value is a valid email format
+function isValidEmail(email) {
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+}
+
+var user_phone1 = document.getElementById('user_phone-1');
+    
+function PhoneNumberInputLimit(inputElement) {
+    inputElement.addEventListener('input', function () {
+        if (this.value.length > 11) {
+        this.value = this.value.slice(0, 11);
+    }
+
+    // Ensure the first two characters are '09'
+    if (this.value.length >= 2 && this.value.slice(0, 2) !== '09') {
+        // Adjust the input to start with '09'
+        this.value = '09' + this.value.slice(2);
+    }
+    });
+}
+    
+    
+PhoneNumberInputLimit(user_phone); 
+PhoneNumberInputLimit(user_phone1); 
+    
+ function weightInputLimit(inputElement) {
+    inputElement.addEventListener('input', function () {
+        if (inputElement.value.length > 10) {
+            inputElement.value = inputElement.value.slice(0, 10);
+        }
+    });
+}
+    
+weightInputLimit(pet_weightInput);
+weightInputLimit(pet_weightInput1);       
+        
+
+// Function to check if the value is a valid email format
+function isValidEmail(email) {
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+}
+ 
+
+function setupDateValidation(inputId) {
+    const today = new Date();
+    const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate()).toISOString().split('T')[0];
+    const minDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate()).toISOString().split('T')[0];
+
+    const dateInput = document.getElementById(inputId);
+    dateInput.setAttribute('max', maxDate);
+    dateInput.setAttribute('min', minDate);
+
+    dateInput.addEventListener('change', function () {
+        let selectedDate = new Date(this.value);
+        if (selectedDate > today || selectedDate < new Date(today.getFullYear() - 100, today.getMonth(), today.getDate())) {
+            this.value = '';
+            alert('Please select a date between 18 and 100 years ago.');
+        }
+        // Additional validation or action can be added here if needed
     });
 
-});
+    dateInput.addEventListener('keydown', function (e) {
+        e.preventDefault();
+    });
+}
+
+// Example usage for client_birthdate
+setupDateValidation('client_birthdate');
+
+// Example usage for client_birthdate-1
+setupDateValidation('client_birthdate-1');
+setupDateValidation('client_birthdate-2');

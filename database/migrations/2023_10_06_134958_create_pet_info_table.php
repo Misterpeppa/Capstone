@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('breed');
             $table->string('gender');
             $table->string('weight');
+            $table->string('sterilization')->nullable();
             $table->timestamps();
         });
     }

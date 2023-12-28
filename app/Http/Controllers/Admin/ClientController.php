@@ -27,6 +27,12 @@ class ClientController extends Controller
         $gender = $request->input('gender');
         $birthdate = $request->input('birthdate');
 
+        $emailExists = Clients::where('email', $request->email)->exists();
+
+        if ($emailExists) {
+            return redirect()->back()->withErrors(['email' => 'The email has already been taken.']);
+        }
+
         $request->validate([
             // Add any validation rules you need
             'suffix' => 'required',

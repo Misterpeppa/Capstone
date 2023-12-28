@@ -15,8 +15,8 @@
                     <div class="dropdown admin_btn">
                       <a class="dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" href="#">{{ $clientInfo->first_name }} {{ $clientInfo->last_name }}</a>
                         <div class="dropdown-menu">
-                          <a class="dropdown-item" href="{{ route('client.profile') }}"><span>Edit Account Details</span></a>
-                          <a class="dropdown-item" href="#"><span>Settings</span></a>
+                          <a class="dropdown-item" href="{{ route('client.pet') }}"><span>Pet Information</span></a>
+                          <a class="dropdown-item" href="{{ route('client.settings') }}"><span>Settings</span></a>
                             <hr><a class="dropdown-item" href="{{ route('client.logout') }}"><span>Sign Out</span></a>
                         </div>
                     </div>

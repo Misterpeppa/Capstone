@@ -174,7 +174,7 @@
 									</div>
 									<div class="form-floating">
 										<select id="suffix" name="suffix" class="form-select">
-											<option value="none" selected="">Select a suffix (optional)</option>
+											<option value="" selected="">Select a suffix (optional)</option>
 											<option value="I">I</option>
 											<option value="II">II</option>
 											<option value="III">III</option>
@@ -193,7 +193,7 @@
 								<div class="input-group">
 									<div class="align-self-stretch form-floating">
 										<select id="gender" name="gender" class="form-select">
-											<option value="none" selected="">Sex (optional)</option>
+											<option value="Prefer not to say" selected="">Sex (optional)</option>
 											<option value="Male">Male</option>
 											<option value="Female">Female</option>
 										</select>

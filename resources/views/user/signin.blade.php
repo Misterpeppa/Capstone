@@ -36,6 +36,17 @@
                             <p>Please sign in to your account.</p>
                         </div>
                     </div>
+                    @if($errors->has('usernameNotice'))
+                                    <div class="alert alert-danger">
+                                        {{ $errors->first('usernameNotice') }}
+                                    </div>
+                                @endif
+
+                                @if($errors->has('passwordNotice'))
+                                    <div class="alert alert-danger">
+                                        {{ $errors->first('passwordNotice') }}
+                                    </div>
+                                @endif
                     <form action="{{ route('client.auth') }}" method="POST" id="signin_custom_container" class="signin_custom_container">
                         @csrf
                         <div class="signin_inputs_container">
@@ -55,22 +66,6 @@
                                     <div class="form-floating"><input name="email" id="email" class="form-control" type="email" data-id="email" placeholder="Email Address" />
                                     <label class="form-label" for="email">Email Address</label><div class="error-message" id="error-email">Please enter your email.</div></div>
                                 </div>
-                                @if(session('error'))
-                                    <div class="alert alert-danger">
-                                        {{ session('error') }}
-                                    </div>
-                                @endif
-
-                                @if(session('info'))
-                                    <div class="alert alert-info">
-                                        {{ session('info') }}
-                                    </div>
-                                @endif
-                                @if(session('resent'))
-                                    <div class="alert alert-success">
-                                        Verification email has been resent.
-                                    </div>
-                                @endif
                                     <div class="input-group"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                         <g opacity="0.5" clip-path="url(#clip0_5236_14313)">
                                             <path d="M8 11V7C8 5.93913 8.42143 4.92172 9.17157 4.17157C9.92172 3.42143 10.9391 3 12 3C13.0609 3 14.0783 3.42143 14.8284 4.17157C15.5786 4.92172 16 5.93913 16 7V11M5 13C5 12.4696 5.21071 11.9609 5.58579 11.5858C5.96086 11.2107 6.46957 11 7 11H17C17.5304 11 18.0391 11.2107 18.4142 11.5858C18.7893 11.9609 19 12.4696 19 13V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21H7C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19V13ZM11 16C11 16.2652 11.1054 16.5196 11.2929 16.7071C11.4804 16.8946 11.7348 17 12 17C12.2652 17 12.5196 16.8946 12.7071 16.7071C12.8946 16.5196 13 16.2652 13 16C13 15.7348 12.8946 15.4804 12.7071 15.2929C12.5196 15.1054 12.2652 15 12 15C11.7348 15 11.4804 15.1054 11.2929 15.2929C11.1054 15.4804 11 15.7348 11 16Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

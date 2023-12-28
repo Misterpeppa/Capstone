@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('petrecord_id');
             $table->string('diagnosis');
+            $table->date('diagnosis_date');
             $table->string('treatment');
             $table->unsignedBigInteger('med_id');
             $table->timestamps();

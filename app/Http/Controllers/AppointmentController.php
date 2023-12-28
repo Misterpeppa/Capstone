@@ -26,8 +26,10 @@ class AppointmentController extends Controller
     {
     $clientId = Auth::guard('clients')->id();
     $validatedData = $request->validate([
+        'petName.*'=>'required',
         'petType.*'=>'required',
         'breed.*' => 'required',
+        'notes.*'=>'',
         'appointmentType.*' => 'required',
         'appointmentDate.*' => 'required|date',
         'appointmentTime.*' => 'required',
@@ -97,24 +99,21 @@ class AppointmentController extends Controller
 
     public function adminShow()
     {
-    // $clients = Clients::all();
-    $appointment_approved= AppointmentApproved::orderByDesc('appointmentDate')->get();
-    
-    // Retrieve the rejected appointments and sort them by appointment date from the rejected table
-    $appointment_rejected = AppointmentRejected::orderByDesc('appointmentDate')->get();
-
-    // Retrieve all appointment records and sort them by appointment date from the appointment_details table
-    $appointment_pending = AppointmentPending::orderByDesc('appointmentDate')->get();
-    
-    return view('admin/admin_appointment', compact( 'appointment_approved', 'appointment_rejected', 'appointment_pending'));
+        $appointment_approved= AppointmentApproved::orderByDesc('appointmentDate')->get();
+        $appointment_rejected = AppointmentRejected::orderByDesc('appointmentDate')->get();
+        $appointment_pending = AppointmentPending::orderByDesc('appointmentDate')->get();
+        
+        return view('admin/admin_appointment', compact( 'appointment_approved', 'appointment_rejected', 'appointment_pending'));
     }
 
     public function list()
     {
-        $user = Auth::guard('clients')->id();        // Get the currently authenticated user
-        $appointments = AppointmentPending::where('user_id', $user)->get();
+        $clientId = Auth::guard('clients')->id();
+        $clientInfo = Clients::find($clientId);     // Get the currently authenticated user
+        $appointments = AppointmentPending::where('user_id', $clientId)->get();
 
-    return view('user/appointmentlist', compact('appointments'));
+
+        return view('user/appointmentlist', compact('appointments', 'clientInfo'));
     }
 
 }

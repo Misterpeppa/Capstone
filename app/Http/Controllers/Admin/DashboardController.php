@@ -15,8 +15,9 @@ class DashboardController extends Controller
         // $completedAppoitments = AppointmentApproved::where('status', 'completed')->count();
         // $staffCount = Staff::count();
         $clients = Clients::count();
+        $appointmentCount = AppointmentApproved::count();
 
-        return view('admin/dashboard', compact('appointment_approved', 'clients'));
+        return view('admin/dashboard', compact('appointment_approved', 'clients', 'appointmentCount'));
     }
 
     public function store(Request $request)

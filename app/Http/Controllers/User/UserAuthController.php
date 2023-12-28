@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
+use App\Mail\VerifyEmail as MailVerifyEmail;
 use Illuminate\Http\Request;
 use App\Models\User\Clients;
 use Illuminate\Support\Facades\Hash;
@@ -46,7 +47,7 @@ class UserAuthController extends Controller
 
         $request->validate([
             // Add any validation rules you need
-            'suffix' => 'required',
+            'suffix' => 'nullable',
             'specify_suffix' => 'required_if:suffix,Other',
         ]);
         $suffix = $request->input('suffix');
@@ -68,16 +69,17 @@ class UserAuthController extends Controller
             $clients->suffix = $suffix;
         }
         $clients->save();
-
-        Notification::send($clients, new VerifyEmail);
         
-        event(new Registered($clients));
-
+        $this->sendVerificationEmail($clients);
         // Log in the user
-        //Auth::login($clients);
+        Auth::login($clients);
 
         // Redirect to a success page or perform any additional actions
         return redirect()->route('client.signup')->with('success', 'User registered successfully');
+    }
+    protected function sendVerificationEmail($clients)
+    {
+        Mail::to($clients->email)->send(new MailVerifyEmail($clients));
     }
 
     public function showSignin()
@@ -126,6 +128,11 @@ class UserAuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/user/signin')->with('reload', true);    
+    }
+
+    public function showForgotpass()
+    {
+        return view('user/forgotpass');
     }
 }
 

@@ -22,24 +22,34 @@ class EmailController
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
+    /**
+     * Show the email verification notice.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function show()
+    {
+        return view('auth.verify');
+    }
+
+    /**
+     * Mark the authenticated user's email address as verified.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function verify(Request $request)
     {
-        $user = Clients::find($request->route('id'));
+        $clients = $request->user('clients');
 
-        if (!$user || !hash_equals((string) $request->route('hash'), sha1($user->getEmailForVerification()))) {
-            throw new AuthorizationException;
-        }
-
-        if ($user->hasVerifiedEmail()) {
+        if ($clients->hasVerifiedEmail()) {
             return redirect($this->redirectPath());
         }
 
-        if ($user->markEmailAsVerified()) {
-            event(new Verified($user));
+        if ($clients->markEmailAsVerified()) {
+            event(new Verified($request->user('clients')));
         }
 
         return redirect($this->redirectPath())->with('verified', true);
     }
-
-    // The rest of the controller methods...
 }

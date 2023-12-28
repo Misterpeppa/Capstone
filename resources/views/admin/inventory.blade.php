@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <title>Admin | Inventory</title>
+  <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
   <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
@@ -36,7 +37,7 @@
               <h1>Inventory</h1>
             </div>
             <div class="btn-group split_btn" id="split_btn"><button class="btn add_Product_btn" id="add_Product_btn" type="button"><span class="add_Product_btn_base">Add Product</span></button><button class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown" data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-              <div class="dropdown-menu"><a class="dropdown-item" id="add_Product_btn_1" data-bs-toggle="modal">Add Product</a><a class="dropdown-item" href="#">Generate Report</a></div>
+              <div class="dropdown-menu"><a class="dropdown-item" id="add_Product_btn_1" data-bs-toggle="modal">Add Product</a><a class="dropdown-item" href="{{ route('report.inventory') }}">Generate Report</a></div>
             </div>
           </div>
           <div id="prod_info_header" class="prod_info_header">
@@ -239,7 +240,6 @@
                     <th>On Hand</th>
                     <th>Date Stocked</th>
                     <th>Expiration Date</th>
-                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -256,7 +256,6 @@
                   <td>{{ $medInfo->quantity }}</td>
                   <td>{{ $medBatch->date_stocked }}</td>
                   <td>{{ $medBatch->expiration_date }}</td>
-                  <td></td>
                   <td>
                    <div class="dropdown">
                     <button class="dropbtn">Actions</button>
@@ -323,7 +322,6 @@
                   <td>{{ $vitInfo->quantity }}</td>
                   <td>{{ $vitBatch->date_stocked }}</td>
                   <td>{{ $vitBatch->expiration_date }}</td>
-                  <td></td>
                   <td>
                    <div class="dropdown">
                     <button class="dropbtn">Actions</button>
@@ -389,7 +387,6 @@
                   <td>{{ $vaxInfo->quantity }}</td>
                   <td>{{ $vaxBatch->date_stocked }}</td>
                   <td>{{ $vaxBatch->expiration_date }}</td>
-                  <td></td>
                   <td>
                   <div class="dropdown">
                    <button class="dropbtn">Actions</button>
@@ -574,8 +571,8 @@
     </div>
   </main>
   <div class="modal fade" role="dialog" tabindex="-1" id="add_product_modal">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content add_client_modal">
         <div class="modal-header">
           <h1 class="modal-title">Add New Product</h1><button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
         </div>
@@ -584,7 +581,7 @@
             @csrf
             <div class="mb-3 input_container">
               <div class="new_input_row">
-                <div class="form-floating"><select class="form-select form-select" name="product_type" data-id="product-categ" id="product-categ">
+                <div class="form-floating" style="width: 100%;"><select class="form-select form-select" name="product_type" data-id="product-categ" id="product-categ">
                     <option value="none" selected="">Select a Product</option>
                     <option value="Medicine">Medicine</option>
                     <option value="Vaccine">Vaccine</option>
@@ -592,15 +589,15 @@
                   </select><label class="form-label form-label" for="product-categ">Product Category</label>
                   <div id="error-product_categ" class="error-message"><span>Please select a category.</span></div>
                 </div>
-                <div class="form-floating"><select class="form-select form-select" name="item_name" data-id="product_name" id="product_name">
+                <div class="form-floating" style="width: 100%;"><select class="form-select form-select" name="item_name" data-id="product_name" id="product_name">
                     <option value="none" selected="">Select a Product Name</option>
                   </select><label class="form-label form-label" for="product_name">Product Name</label>
                   <div id="error-product_name" class="error-message"><span>Please select product name.</span></div>
                 </div>
-                <div class="form-floating"><input class="form-control form-control" type="text" name="product_code" data-id="product_code" id="product_code" placeholder="Product Code"><label class="form-label form-label" for="product_code">Product Code</label>
+                <div class="form-floating"style="width: 100%;"><input class="form-control form-control" type="text" name="product_code" data-id="product_code" id="product_code" placeholder="Product Code"><label class="form-label form-label" for="product_code">Product Code</label>
                   <div class="error-message" id="error-product_code"><span>Please enter product code.</span></div>
                 </div>
-                <div class="form-floating"><input class="form-control form-control" type="text" name="batch_no" data-id="batch_number" id="batch_number" placeholder="Batch Number"><label class="form-label form-label" for="batch_number">Batch Number</label>
+                <div class="form-floating" style="width: 100%;"><input class="form-control form-control" type="text" name="batch_no" data-id="batch_number" id="batch_number" placeholder="Batch Number"><label class="form-label form-label" for="batch_number">Batch Number</label>
                   <div class="error-message" id="error-batch_number"><span>Please enter batch number.</span></div>
                 </div>
               </div>
@@ -639,8 +636,8 @@
     </div>
   </div>
   <div class="modal fade" role="dialog" tabindex="-1" id="add_product_modal-1">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content add_client_modal">
         <div class="modal-header">
           <h1 class="modal-title">Add New Product</h1><button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
         </div>
@@ -649,7 +646,7 @@
             @csrf
             <div class="mb-3 input_container">
               <div class="new_input_row">
-                <div class="form-floating"><select class="form-select form-select" name="product_type" data-id="product-categ" id="product-categ-1">
+                <div class="form-floating" style="width: 100%;"><select class="form-select form-select" name="product_type" data-id="product-categ" id="product-categ-1">
                     <option value="none" selected="">Select a product</option>
                     <option value="Medicine">Medicine</option>
                     <option value="Vaccine">Vaccine</option>
@@ -657,15 +654,15 @@
                   </select><label class="form-label form-label" for="product-categ">Product Category</label>
                   <div id="error-product_categ-1" class="error-message"><span>Please select a category.</span></div>
                 </div>
-                <div class="form-floating"><select class="form-select form-select" name="item_name" data-id="product_name" id="product_name-1">
+                <div class="form-floating" style="width: 100%;"><select class="form-select form-select" name="item_name" data-id="product_name" id="product_name-1">
                     <option value="none" selected="">Select a Product Name</option>
                   </select><label class="form-label form-label" for="product_name">Product Name</label>
                   <div id="error-product_name-1" class="error-message"><span>Please select product name.</span></div>
                 </div>
-                <div class="form-floating"><input class="form-control form-control" type="text" name="product_code" data-id="product_code" id="product_code-1" placeholder="Product Code"><label class="form-label form-label" for="product_code">Product Code</label>
+                <div class="form-floating" style="width: 100%;"><input class="form-control form-control" type="text" name="product_code" data-id="product_code" id="product_code-1" placeholder="Product Code"><label class="form-label form-label" for="product_code">Product Code</label>
                   <div class="error-message" id="error-product_code-1"><span>Please enter product code.</span></div>
                 </div>
-                <div class="form-floating"><input class="form-control form-control" type="text" name="batch_no" data-id="batch_number" id="batch_number-1" placeholder="Batch Number"><label class="form-label form-label" for="batch_number">Batch Number</label>
+                <div class="form-floating" style="width: 100%;"><input class="form-control form-control" type="text" name="batch_no" data-id="batch_number" id="batch_number-1" placeholder="Batch Number"><label class="form-label form-label" for="batch_number">Batch Number</label>
                   <div class="error-message" id="error-batch_number-1"><span>Please enter batch number.</span></div>
                 </div>
               </div>

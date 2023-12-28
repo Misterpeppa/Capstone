@@ -24,11 +24,11 @@
     <main class="d-flex flex-row container-fluid" style="padding: 0;">
     @php
     $activeTab = 'client'; // Set the active tab
-  @endphp
+    @endphp
     @include('includes.admin_header')
         <div class="content">
             <div id="rectangle" class="rectangle"><button class="btn notification" id="notification" type="button"><span class="notification_base"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewbox="0 0 15 18" fill="none"><path d="M2.29482 10.4791L2.93736 10.866L2.93903 10.8632L2.29482 10.4791ZM1.38031 11.998L0.737787 11.6112L0.737673 11.6113L1.38031 11.998ZM2.23916 14.328L1.99871 15.0385L2.00149 15.0394L2.23916 14.328ZM12.7918 14.328L12.5564 13.6159L12.5542 13.6167L12.7918 14.328ZM13.6507 11.998L14.2938 11.6121L14.2932 11.6112L13.6507 11.998ZM12.7362 10.4791L12.0864 10.854L12.0937 10.866L12.7362 10.4791ZM8.99065 2.00199L8.78522 2.7233C9.0594 2.80139 9.35415 2.71728 9.54583 2.50625C9.7375 2.29522 9.79296 1.99376 9.68894 1.72833L8.99065 2.00199ZM6.0483 2.00199L5.35001 1.72833C5.24599 1.99376 5.30145 2.29522 5.49313 2.50625C5.68481 2.71728 5.97955 2.80139 6.25374 2.7233L6.0483 2.00199ZM5.83359 16.3002L5.30286 16.8301L5.30326 16.8305L5.83359 16.3002ZM7.51948 1.02137C4.47306 1.02137 1.99811 3.49632 1.99811 6.54274H3.49811C3.49811 4.32475 5.30148 2.52137 7.51948 2.52137V1.02137ZM1.99811 6.54274V8.84096H3.49811V6.54274H1.99811ZM1.99811 8.84096C1.99811 8.99314 1.96284 9.22832 1.89124 9.48627C1.8197 9.74398 1.72858 9.96429 1.65061 10.0951L2.93903 10.8632C3.10759 10.5804 3.24311 10.2242 3.33658 9.88749C3.42999 9.551 3.49811 9.17386 3.49811 8.84096H1.99811ZM1.6523 10.0923L0.737787 11.6112L2.02284 12.3849L2.93735 10.866L1.6523 10.0923ZM0.737673 11.6113C0.34933 12.2568 0.264391 12.9889 0.507 13.6441C0.749283 14.2984 1.2894 14.7984 1.99871 15.0384L2.47961 13.6176C2.15512 13.5078 1.98351 13.3119 1.91366 13.1233C1.84415 12.9355 1.84668 12.6776 2.02295 12.3847L0.737673 11.6113ZM2.00149 15.0394C5.58318 16.236 9.44782 16.236 13.0295 15.0394L12.5542 13.6167C9.28099 14.7103 5.75001 14.7103 2.47682 13.6167L2.00149 15.0394ZM13.0272 15.0401C14.4485 14.5703 15.0644 12.8965 14.2938 11.6121L13.0076 12.3839C13.2867 12.849 13.0596 13.4496 12.5564 13.6159L13.0272 15.0401ZM14.2932 11.6112L13.3787 10.0923L12.0937 10.866L13.0082 12.3849L14.2932 11.6112ZM13.3858 10.1043C13.3086 9.97054 13.2183 9.7472 13.1473 9.48852C13.0762 9.22901 13.0408 8.99336 13.0408 8.84096H11.5408C11.5408 9.17364 11.6089 9.55031 11.7008 9.88524C11.7928 10.221 11.9252 10.5742 12.0865 10.8539L13.3858 10.1043ZM13.0408 8.84096V6.54274H11.5408V8.84096H13.0408ZM13.0408 6.54274C13.0408 3.50428 10.5579 1.02137 7.51948 1.02137V2.52137C9.72952 2.52137 11.5408 4.3327 11.5408 6.54274H13.0408ZM9.19608 1.28067C8.10014 0.968542 6.93882 0.968542 5.84287 1.28067L6.25374 2.7233C7.08111 2.48766 7.95784 2.48766 8.78522 2.7233L9.19608 1.28067ZM6.7466 2.27564C6.86777 1.96645 7.16863 1.75 7.51948 1.75V0.25C6.53434 0.25 5.69008 0.860583 5.35001 1.72833L6.7466 2.27564ZM7.51948 1.75C7.87033 1.75 8.17119 1.96645 8.29236 2.27564L9.68894 1.72833C9.34888 0.860583 8.50461 0.25 7.51948 0.25V1.75ZM9.15516 14.6143C9.15516 15.5122 8.41739 16.25 7.51948 16.25V17.75C9.24582 17.75 10.6552 16.3407 10.6552 14.6143H9.15516ZM7.51948 16.25C7.07487 16.25 6.65887 16.0648 6.36392 15.7699L5.30326 16.8305C5.86716 17.3944 6.65991 17.75 7.51948 17.75V16.25ZM6.36432 15.7703C6.05752 15.463 5.88477 15.0468 5.88379 14.6126L4.38379 14.616C4.38567 15.4465 4.71607 16.2425 5.30286 16.8301L6.36432 15.7703Z" fill="#1C1C1C"></path></svg></span></button>
-                <div class="dropdown admin_btn"><button class="btn dropdown-toggle admin" aria-expanded="false" data-bs-toggle="dropdown" type="button"><img src="assets/img/image%2011%20(1).png" alt="Admin" width="40" height="40"></button>
+                <div class="dropdown admin_btn"><button class="btn dropdown-toggle admin" aria-expanded="false" data-bs-toggle="dropdown" type="button"><img src="#" alt="Admin" width="40" height="40"></button>
                     <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
                 </div>
             </div>
@@ -38,7 +38,8 @@
                         <h1><strong>Clients</strong></h1>
                     </div>
                     <div class="btn-group split_btn" id="add_client_split_btn"><button class="btn add_Product_btn" id="add_client_btn" type="button"><span class="add_Product_btn_base">Add Client</span></button><button class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown" data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-                        <div class="dropdown-menu"><a class="dropdown-item" id="add_client_btn_1" data-bs-toggle="modal">Add Client</a><a class="dropdown-item" href="#">Generate Report</a></div>
+                        <div class="dropdown-menu"><a class="dropdown-item" id="add_client_btn_1" data-bs-toggle="modal">Add Client</a>
+                        <a class="dropdown-item" href="{{ route('report.client') }}">Generate Report</a></div>
                     </div>
                 </div>
                 <div id="client_container" class="client_container">
@@ -123,41 +124,109 @@
                                 </div>
                             </div>
                         </div><button id="add_client" class="btn add_client_button" type="button"><span class="add_client_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-  <g clip-path="url(#clip0_5334_16405)" filter="url(#filter0_d_5334_16405)">
-    <path d="M12.5 5V19M5.5 12H19.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <filter id="filter0_d_5334_16405" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-      <feOffset dy="2"/>
-      <feGaussianBlur stdDeviation="1"/>
-      <feComposite in2="hardAlpha" operator="out"/>
-      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5334_16405"/>
-      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_5334_16405" result="shape"/>
-    </filter>
-    <clipPath id="clip0_5334_16405">
-      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
-    </clipPath>
-  </defs>
-</svg> Add Client</span></button>
-                    </div>
-                    <div id="client_table_container" class="client_table_container"><table id="client_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th><input id="SelectAll" type="checkbox" class="checkbox"></th>
-                <th>Client</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Address</th>
-                <th>Visits</th>
-                <th>Last Visit</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-    <tbody id="client_table_body"></tbody>
-    </table>
+                            <g clip-path="url(#clip0_5334_16405)" filter="url(#filter0_d_5334_16405)">
+                                <path d="M12.5 5V19M5.5 12H19.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <defs>
+                                <filter id="filter0_d_5334_16405" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="2"/>
+                                <feGaussianBlur stdDeviation="1"/>
+                                <feComposite in2="hardAlpha" operator="out"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5334_16405"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_5334_16405" result="shape"/>
+                                </filter>
+                                <clipPath id="clip0_5334_16405">
+                                <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
+                                </clipPath>
+                            </defs>
+                            </svg> Add Client</span></button>
+                        </div>
+                    <div id="client_table_container" class="client_table_container">
+                    <table id="client_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th><input id="SelectAll" type="checkbox" class="checkbox"></th>
+                                <th>Client</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Birthdate</th>
+                                <th>Visit</th>
+                                <th>Last Visit</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    <tbody id="client_table_body">
+                        @foreach ($clientInfo as $clientInfo)
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>{{ $clientInfo->first_name }} {{ $clientInfo->middle_name }} {{ $clientInfo->last_name }} {{ $clientInfo->suffix }}</td>
+                            <td>{{ $clientInfo->email }}</td>
+                            <td>{{ $clientInfo->phone }}</td>
+                            <td>{{ $clientInfo->birthdate }}</td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                            <div class="dropdown">
+            <button class="dropbtn" id="dropbtn"><span>Action</span></button>
+            <div class="dropdown-content" id="dropdown-content">
+                <div class="button-group">
+                </div>
+                <!-- Group 2 -->
+                <div class="button-group">
+                    <button data-action="View" data-client-id="{{ $clientInfo->id }}>
+                        <div class="action_button_text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <g clip-path="url(#clip0_5624_22297)">
+                                    <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_5624_22297">
+                                        <rect width="24" height="24" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg> View
+                        </div>
+                    </button>
+                    <button data-action="Edit">
+                        <div class="action_button_text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <g clip-path="url(#clip0_5624_22180)">
+                                    <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_5624_22180">
+                                        <rect width="24" height="24" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg> Edit
+                        </div>
+                    </button>
+                    <button data-action="Archive">
+                        <div class="action_button_text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <g clip-path="url(#clip0_5624_22046)">
+                                    <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_5624_22046">
+                                        <rect width="24" height="24" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg> Archive
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    </table>
     <div class="pagination">
                 <div class="pagination-menu">
                     <span>Go to:</span>
@@ -520,12 +589,12 @@
                                     <div id="error-last_name" class="error-message"><span>Please enter client last name.</span></div>
                                 </div>
                                 <div class="form-floating" style="width:100%;"><select id="suffix" class="form-select" data-id="suffix" onchange="handleSuffixChange()">
-        <option value="none" selected>Select a Suffix</option>
-        <option value="Jr">Jr</option>
-        <option value="Sr">Sr</option>
-        <option value="II">II</option>
-        <option value="Other">Other</option>
-    </select><label class="form-label" for="suffix">Suffix</label>
+                                            <option value="none" selected>Select a Suffix</option>
+                                            <option value="Jr">Jr</option>
+                                            <option value="Sr">Sr</option>
+                                            <option value="II">II</option>
+                                            <option value="Other">Other</option>
+                                        </select><label class="form-label" for="suffix">Suffix</label>
                                     <div id="error-suffix" class="error-message"><span>Please select a suffix.</span></div>
                                 </div>
                                 <div id="specific_suffix" class="form-floating" style="width: 100%;display: none;"><input class="form-control" type="text" id="specify_suffix" data-id="specify_suffix" placeholder="Specify Suffix"><label class="form-label" for="specify_suffix">Specify suffix</label>
@@ -558,22 +627,23 @@
                     <h1 class="modal-title">Add Client</h1><button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body" style="width:100%;">
-                    <form class="add_client" id="add_client_form-1"><img src="assets/img/image%2011%20(1).png">
+                    <form action="{{ route('client.store') }}" method="POST" class="add_client" id="add_client_form-1">
+                        @csrf
                         <div class="mb-3 input_container">
                             <div class="new_input_row">
-                                <div class="form-floating" style="width:100%;"><input class="form-control" type="text" id="first_name-1" data-id="first_name" placeholder="First Name"><label class="form-label" for="first_name">First Name</label>
+                                <div class="form-floating" style="width:100%;"><input class="form-control" type="text" name="first_name" id="first_name-1" data-id="first_name" placeholder="First Name"><label class="form-label" for="first_name">First Name</label>
                                     <div class="error-message" id="error-first_name-1"><span>Please enter client first name.</span></div>
                                 </div>
-                                <div class="form-floating" style="width:100%;"><input class="form-control" type="text" id="middle_name-1" data-id="middle_name" placeholder="Middle Name"><label class="form-label" for="middle_name">Middle Name</label>
+                                <div class="form-floating" style="width:100%;"><input class="form-control" type="text" name="middle_name" id="middle_name-1" data-id="middle_name" placeholder="Middle Name"><label class="form-label" for="middle_name">Middle Name</label>
                                     <div class="error-message" id="error-middle_name-1"><span>Please enter client middle name.</span></div>
                                 </div>
                             </div>
                             <div class="new_input_row">
-                                <div class="form-floating" style="width:100%;"><input class="form-control" type="text" id="last_name-1" data-id="last_name" placeholder="Last Name"><label class="form-label" for="last_name">Last Name</label>
+                                <div class="form-floating" style="width:100%;"><input class="form-control" type="text" name="last_name" id="last_name-1" data-id="last_name" placeholder="Last Name"><label class="form-label" for="last_name">Last Name</label>
                                     <div id="error-last_name-1" class="error-message"><span>Please enter client last name.</span></div>
                                 </div>
-                                <div class="form-floating" style="width:100%;"><select class="form-select" id="suffix-1" data-id="suffix">
-                                        <option value="none" selected="">Select a Suffix</option>
+                                <div class="form-floating" style="width:100%;"><select class="form-select" name="suffix" id="suffix-1" data-id="suffix">
+                                        <option value=" " selected="">Select a Suffix</option>
                                         <option value="Jr">Jr</option>
                                         <option value="Sr">Sr</option>
                                         <option value="II">II</option>
@@ -581,26 +651,26 @@
                                     </select><label class="form-label" for="suffix-1">Suffix</label>
                                     <div id="error-suffix-1" class="error-message"><span>Please select a suffix.</span></div>
                                 </div>
-                                <div id="specific_suffix-1" class="form-floating" style="width: 100%;display: none;"><input class="form-control" type="text" id="specify_suffix-1" data-id="specify_suffix" placeholder="Specify Suffix"><label class="form-label" for="specify_suffix">Specify suffix</label>
+                                <div id="specific_suffix-1" class="form-floating" style="width: 100%;display: none;"><input class="form-control" type="text" name="specify_suffix" id="specify_suffix-1" data-id="specify_suffix" placeholder="Specify Suffix"><label class="form-label" for="specify_suffix">Specify suffix</label>
                                     <div id="error-specify_suffix-1" class="error-message"><span>Please specify suffix.</span></div>
                                 </div>
                             </div>
-                            <div class="form-floating" style="width:100%;"><input class="form-control" id="client_birthdate-1" data-id="client_birthdate" placeholder="Birthdate" type="date"><label class="form-label" for="client_birthdate">Birthdate</label>
+                            <div class="form-floating" style="width:100%;"><input class="form-control" name="birthdate" id="client_birthdate-1" data-id="client_birthdate" placeholder="Birthdate" type="date"><label class="form-label" for="client_birthdate">Birthdate</label>
                                 <div class="error-message" id="error-client_birthdate-1"><span>Please enter the client birthdate.</span></div>
                             </div>
-                            <div class="form-floating" style="width:100%;"><textarea class="form-control" id="client_address-1" data-id="client_address" placeholder="Address"></textarea><label class="form-label" for="client_address">Address</label>
-                                <div class="error-message" id="error-client_address-1"><span>Please enter client address.</span></div>
-                            </div>
-                            <div class="form-floating" style="width:100%;"><input class="form-control" type="email" id="client_email-1" data-id="client_email" placeholder="Email"><label class="form-label" for="client_email">Email Address</label>
+                            <div class="form-floating" style="width:100%;"><input class="form-control" type="email" name="email" id="client_email-1" data-id="client_email" placeholder="Email"><label class="form-label" for="client_email">Email Address</label>
                                 <div class="error-message" id="error-client_email-1"><span>Please enter a valid email address.</span></div>
                             </div>
-                            <div class="form-floating" style="width:100%;"><input class="form-control" type="tel" id="user_phone-1" data-id="user_phone" placeholder="Phone Number"><label class="form-label" for="user_phone">Phone Number</label>
+                            <div class="form-floating" style="width:100%;"><input class="form-control" type="tel" name="phone" id="user_phone-1" data-id="user_phone" placeholder="Phone Number"><label class="form-label" for="user_phone">Phone Number</label>
                                 <div class="error-message" id="error-user_phone-1"><span>Please enter a valid phone number.</span></div>
                             </div>
                         </div>
+                    </div>
+                        <div class="modal-footer add_product_button">
+                            <button class="btn clear_form" id="clear_form-1" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
+                            <button class="btn submit_product" id="submit_Client-1" ><span class="submit_product_base">Submit</span></button>
+                        </div>
                     </form>
-                </div>
-                <div class="modal-footer add_product_button"><button class="btn clear_form" id="clear_form-1" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button><button class="btn submit_product" id="submit_Client-1" type="submit"><span class="submit_product_base">Submit</span></button></div>
             </div>
         </div>
     </div>
@@ -965,9 +1035,11 @@
             </div>
         </div>
     </div>
+    <script>
+
+    </script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/appointmentforms.js') }}"></script>
     <script src="{{ asset('assets/js/sidebar.js') }}"></script>
     <script src="{{ asset('assets/js/client.js') }}"></script>
 

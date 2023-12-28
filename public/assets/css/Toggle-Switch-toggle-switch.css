@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   width: 48px;
-  height: 24px;
+  height: 26px;
   padding: 3px;
   justify-content: flex-end;
   align-items: center;
@@ -62,5 +62,5 @@ input:checked + .slider:before {
 }
 
 .slider.round:before {
-  border-radius: 50%;
+  border-radius: 24%;
 }

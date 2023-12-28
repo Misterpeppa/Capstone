@@ -14,7 +14,8 @@ class VaxHistory extends Model
     protected $fillable = [
         'vax_id',
         'petrecord_id',
-        'vaccination_date'
+        'vaccination_date',
+        'revaccination_date',
     ];
 
     public function vax(): BelongsTo

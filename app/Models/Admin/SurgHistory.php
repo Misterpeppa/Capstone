@@ -16,7 +16,8 @@ class SurgHistory extends Model
         'surgery_type',
         'severity',
         'med_id',
-        'surgery_date'
+        'surgery_date',
+        'surgery_note',
     ];
 
     public function petRecord(): BelongsTo

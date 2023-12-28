@@ -10,8 +10,9 @@
 <h1>Verify Your Email Address</h1>
 
 <p>Thanks for signing up! To complete the registration process, please click the button below to verify your email address:</p>
+<p>{{ $clients->first_name }} {{ $clients->middle_name }} {{ $clients->last_name }} {{ $clients-> suffix }}. </p>
 
-<a href="{{ $verificationUrl }}" 
+<a href="{{ route('verification.verify', ['id' => $clients->id, 'hash' => sha1($clients->getEmailForVerification())]) }}" 
 style="background-color: #4CAF50; /* Green */
 border: none;
 color: white;

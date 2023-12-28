@@ -12,9 +12,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Clients extends Authenticatable implements MustVerifyEmail
 {
+    use SoftDeletes;
     use HasFactory, Notifiable;
     protected $guard = 'clients';
 
@@ -26,14 +28,19 @@ class Clients extends Authenticatable implements MustVerifyEmail
         'gender',
         'birthdate',
         'email',
+        'password',
         'phone',
-        'email_verified_at'
+        'email_verified_at',
+        'deleted_at'
     ];
 
     protected $hidden = [
-        'password',
-        'rememeber_token',
+        'remember_token',
     ];
+    public function getEmailForVerification()
+    {
+        return $this->email;
+    }
 
     public function appointmentPending(): HasMany
     {

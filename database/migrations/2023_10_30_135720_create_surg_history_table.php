@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('severity');
             $table->unsignedBigInteger('med_id');
             $table->date('surgery_date');
+            $table->string('surgery_note');
             $table->timestamps();
 
             $table->foreign('petrecord_id')->references('id')->on('pet_record');

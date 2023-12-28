@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/sidebar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
 
 
 </head>
@@ -40,7 +39,7 @@
                 <div class="user">
                     <div class="frame202">
                         <div class="frame417">
-                                <img src="{{ asset('img/LISA.png') }}" alt="Clinic Logo">
+                                <img src="#" >
                         </div>
                         <div class="icon-arrow" id="dropdownBtn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7" viewBox="0 0 14 7" fill="none">
@@ -111,7 +110,7 @@
                                     <select class="admin_petInfo_select" id="name" name="owner_id" placeholder="Owner Name">
                                         <option value=""disabled selected>Select Owner: </option>
                                         @foreach ($owners as $owners)
-                                            <option value="{{ $owners->id }}">{{ $owners->first_name }} {{ $owners->middle_name }} {{ $owners->last_name }}</option>
+                                            <option value="{{ $owners->id }}">{{ $owners->first_name }} {{ $owners->middle_name }} {{ $owners->last_name }} {{ $owners->suffix }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -286,9 +285,7 @@
                     @foreach($petrecord as $petrecord)
                     <div class="admin_petInfo_pet_card">
                         <div class="admin_petInfo_pet_record_item">
-                            <div class="admin_petInfo_pet_picture">
-                                <img src="#" alt="Pet Picture">
-                            </div>
+
                             <div class="admin_petInfo_pet_details" data-container-id="{{ $petrecord->id }}" >
                                 <div class="admin_petInfo_pet_details_petName_moreBtn">
                                     <div class="admin_petInfo_pet_details_header">
@@ -333,13 +330,9 @@
                             </div>
                         </div> 
                         <!-- YUNG CARD LIKE NA CONTAINER NG MGA PET RECORDS NA NADADAGDAGAN DEPENDE KUNG ILAN INADD NG USER OR ADMIN-->
-
-                                                 
                     </div> 
                     @endforeach  
                 </div>
-
-                
                                         <!-- Modal content for the pet record -->
                             <!-- Add your pet record content here -->
                 <div class="admin_petInfo_pet_record_modal" id="admin_petInfo_pet_record_modal" style="display: none;">
@@ -353,14 +346,11 @@
                         </div>
                         <div class="admin_petInfo_PetRecordItem">
                         <div class="admin_petInfo_frame522">
-                            <div class="cloud">
-                                <img src="#" alt="Pet Picture">
-                            </div>
                             <div class="admin_petInfo_records">
                                 <div class="admin_petInfo_records_owner_info_heading">
                                     <div class="pet_name_breed" id="petInfo">
-                                        <h1>Pet Name dito</h1>
-                                    <p>Pet breed dito</p>
+                                        <h1></h1>
+                                    <p></p>
                                     </div>
                                     
                                 </div>
@@ -418,8 +408,6 @@
                             </svg>
                         </button>
                     </div>
-
-
                     <div class="tab-content">
                         <!-- Content for the "Allergies" tab -->
                         <div class="tab-pane active" data-tab="admin_petInfo">
@@ -431,21 +419,18 @@
                                     <div class="ownerInfo_name_address">
                                         <div class="ownerName" id="ownerName">
                                             <h1>Name</h1>
-                                            <p>dito yung name na lilitaw</p>
+                                            <p></p>
                                         </div>
-                                        <div class="ownerAddress">
-                                            <h1>Address</h1>
-                                            <p>Dito yung address na lilitaw</p>
-                                        </div>
+                                        
                                     </div>
                                     <div class="ownerInfo_email_contact">
                                         <div class="ownerEmail" id="ownerEmail">
                                             <h1>Email</h1>
-                                            <p>dito yung email na lalabas</p>
+                                            <p></p>
                                         </div>
                                         <div class="ownerContact" id="ownerPhone">
                                             <h1>Contact Number</h1>
-                                            <p>dito contact number na lalabas</p>
+                                            <p></p>
                                         </div>
                                     </div>
                                 </div>
@@ -458,17 +443,17 @@
                                     <div class="health_concerns_allergies_conditions">
                                         <div class="pet_allergies">
                                             <h1>Allergies</h1>
-                                            <p>dito yung allergies na lilitaw if meron</p>
+                                            <p></p>
                                         </div>
                                         <div class="pet_conditions">
                                             <h1>Existing Conditions</h1>
-                                            <p>Dito yung Existing Conditions na lilitaw</p>
+                                            <p></p>
                                         </div>
                                     </div>
                                     <div class="health_concerns_medications">
                                         <div class="pet_medications">
                                             <h1>Current Medications</h1>
-                                            <p>dito yung Current Medications na lalabas</p>
+                                            <p></p>
                                         </div>
                                     </div>
                                 </div>
@@ -480,15 +465,15 @@
                         <!-- Content for the "admin_petInfo_medical_history" tab -->
                         <div class="tab-pane" data-tab="admin_petInfo_medical_history">
                             <div class="med_histo_empty">
-                                <div class="med_histo_heading">
+                                <!-- <div class="med_histo_heading">
                                     <div class="med_histo_heading_text">
                                         <h1>NO MEDICAL HISTORY FOUND</h1>
                                         <div class="med_histo_paragraph_text">
                                             <p>You can add a medical history by clicking the button below.</p>
                                         </div>
                                     </div>
-                                </div>
-                                <button class="Add_diagnosis_rec" id="Add_diagnosis_rec">
+                                </div> -->
+                                <!-- <button class="Add_diagnosis_rec" id="Add_diagnosis_rec">
                                     <div class="Add_diagnosis_rec_base">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                             <g clip-path="url(#clip0_4601_16440)" filter="url(#filter0_d_4601_16440)">
@@ -511,12 +496,15 @@
                                             </defs>
                                           </svg> Add Diagnosis
                                     </div>
-                                </button>
+                                </button> -->
 
 
                                 <div class="add_diagnosis_Modal" id="add_diagnosis_Modal">
                                     <div class="add_diagnosis_Modal_content">
                                         <!-- Modal content goes here -->
+                                        <form action="{{ route('med.history') }}" method="POST" id="add_diagnosis">
+                                            @csrf
+                                        <input type="hidden" name="petrecord_id" id="medhisId">
                                         <div class="add_diagnosis_Modal_content_header">
                                             <p>Add Diagnosis</p>
                                             <button class="add_diagnosis_close_btn" id="add_diagnosis_close_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
@@ -552,7 +540,7 @@
 
                                             <div class="diagnosis_fields">
                                                 <div class="input_container">
-                                                    <select id="treatment-plan-select" name="treatment-plan" placeholder="Select treatment plan">
+                                                    <select id="treatment-plan-select" name="treatment" placeholder="Select treatment plan">
                                                         <option value="" disabled selected>Treatment Plan</option>
                                                         <option value="Treatment Plan 1">Treatment Plan 1</option>
                                                         <option value="Treatment Plan 2">Treatment Plan 2</option>
@@ -563,20 +551,13 @@
                                                 <div class="input_container">
                                                     <select id="medication-select" name="medication" placeholder="Select medication">
                                                         <option value="" disabled selected>Medication</option>
-                                                        <option value="Medication 1">Medication 1</option>
-                                                        <option value="Medication 2">Medication 2</option>
-                                                        <option value="Medication 3">Medication 3</option>
+                                                        @foreach ($medInfo as $medInfo)
+                                                        <option value="{{ $medInfo->id }}">{{ $medInfo->item_name }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 
                                             </div>
-                                            <div class="input_container">
-                                                <textarea id="diagnosis_prod_description" name="diagnosis_prod_description" aria-labelledby="label-diagnosis_prod_description" required maxlength="253"></textarea>
-                                                <label class="label" for="diagnosis_prod_description" id="label-diagnosis_prod_description">
-                                                    <div class="text">Product Description</div>
-                                                </label>
-                                            </div>
-                                            
 
                                         </div>
                                         <div class="add_health_info_buttons">
@@ -591,6 +572,7 @@
                                                 </div>
                                             </button>
                                         </div>
+                                    </form>
                                     </div>
                                 </div>
 
@@ -606,9 +588,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Table rows will go here -->
-                                    <!-- history to -->
-                                
+
                                 </tbody>
                             </table>
                             
@@ -653,6 +633,9 @@
                                 <div class="add_health_information_modal" id="add_vaccination_Modal">
                                     <div class="add_health_information_modal_content">
                                         <!-- Modal content goes here -->
+                                        <form action="{{ route('vax.history') }}" method="POST">
+                                            @csrf
+                                        <input type="hidden" name="petrecord_id" id="vaxhisId">
                                         <div class="add_health_information_modal_content_header">
                                             <p>Add Vaccine</p>
                                             <button class="add_vaccine_close_btn" id="add_vaccine_close_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
@@ -669,18 +652,18 @@
                                         <div class="add_vaccine_input_fields">
                                             <div class="vaccine_fields">
                                                 <div class="input_container">
-                                                    <select id="vaccine-select" name="vaccine" placeholder="Select Vaccine">
+                                                    <select id="vaccine-select" name="vax_id" placeholder="Select Vaccine">
                                                         <option value=""disabled selected>Vaccine </option>
-                                                        <option value="vaccine 1">Vaccine 1</option>
-                                                        <option value="vaccine 2">Vaccine 2</option>
-                                                        <option value="vaccine 3">Vaccine 3</option>
+                                                        @foreach ($vaxInfo as $vaxInfo)
+                                                        <option value="{{ $vaxInfo->id }}">{{ $vaxInfo->item_name }}</option>
+                                                       @endforeach
                                                     </select>
                                                 </div>  
     
                                                  
                                                 
                                                 <div class="input_container">
-                                                    <input type="date" id="vaccinationDate" name="vaccinationDate" value="" aria-labelledby="label-vaccinationDate" required>
+                                                    <input type="date" id="vaccinationDate" name="vaccination_date" value="" aria-labelledby="label-vaccinationDate" required>
                                                     <label class="label" for="vaccinationDate" id="label-vaccinationDate">
                                                         <div class="text">Vaccination Date</div>
                                                     </label>
@@ -688,36 +671,15 @@
 
                                             </div>
                                             <div class="vaccine_fields">
-                                                <div class="input_container">
-                                                    <textarea id="vaccine_prod_description" name="vaccine_prod_description" aria-labelledby="label-vaccine_prod_description" required maxlength="253"></textarea>
-                                                    <label class="label" for="vaccine_prod_description" id="label-vaccine_prod_description">
-                                                        <div class="text">Vaccine Details</div>
-                                                    </label>
-                                                </div>
+                                                
 
                                                 <div class="input_container">
-                                                    <input type="date" id="next_vaccinationDate" name="next_vaccinationDate" value="" aria-labelledby="label-next_vaccinationDate" required>
+                                                    <input type="date" id="next_vaccinationDate" name="revaccination_date" value="" aria-labelledby="label-next_vaccinationDate" required>
                                                     <label class="label" for="next_vaccinationDate" id="label-next_vaccinationDate">
                                                         <div class="text">Next Vaccination Date</div>
                                                     </label>
                                                 </div>
                                             </div>
-                                            <div class="vaccine_fields_vax_status">
-                                                <div class="input_container">
-
-                                                </div>
-                                                <div class="input_container">
-                                                    <select id="vaccine_status-select" name="vaccine_status" placeholder="Status">
-                                                        <option value=""disabled selected>Status </option>
-                                                        <option value="vaccine_status 1">Status 1</option>
-                                                        <option value="vaccine_status 2">Status 2</option>
-                                                        <option value="vaccine_status 3">Status 3</option>
-                                                    </select>
-                                                </div>  
-                                            </div>
-                                            
-                                            
-                                            
 
                                         </div>
                                         <div class="add_health_info_buttons">
@@ -732,9 +694,9 @@
                                                 </div>
                                             </button>
                                         </div>
+                                        </form>
                                     </div>
                                 </div>
-
                             </div>
                             <table id="immunization_histo_Table" class="immu_histo_table">
                                 <thead>
@@ -747,8 +709,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Table rows will go here -->
-                                    <!-- history to -->
                                 
                                 </tbody>
                             </table>
@@ -806,10 +766,13 @@
                                             </defs>
                                             </svg></button>
                                         </div>
+                                        <form action="{{ route('surg.history') }}" method="POST">
+                                            @csrf
+                                        <input type="hidden" name="petrecord_id" id="surghisId">
                                         <div class="add_surgery_input_fields">
                                             <div class="surgery_fields">
                                                 <div class="input_container">
-                                                    <select id="surgery-select" name="surgery" placeholder="Select Surgery">
+                                                    <select id="surgery-select" name="surgery_type" placeholder="Select Surgery">
                                                         <option value=""disabled selected>Surgery </option>
                                                         <option value="surgery 1">Surgery 1</option>
                                                         <option value="surgery 2">Surgery 2</option>
@@ -820,7 +783,7 @@
                                                  
                                                 
                                                 <div class="input_container">
-                                                    <input type="date" id="surgeryDate" name="surgeryDate" value="" aria-labelledby="label-surgeryDate" required>
+                                                    <input type="date" id="surgeryDate" name="surgery_date" value="" aria-labelledby="label-surgeryDate" required>
                                                     <label class="label" for="surgeryDate" id="label-surgeryDate">
                                                         <div class="text">Date</div>
                                                     </label>
@@ -829,7 +792,7 @@
                                             </div>
                                             <div class="surgery_fields">
                                                 <div class="input_container">
-                                                    <select id="surgery_reason-select" name="surgery_reason" placeholder="Select surgery reason">
+                                                    <select id="surgery_reason-select" name="severity" placeholder="Select surgery reason">
                                                         <option value=""disabled selected>Reason for Surgery</option>
                                                         <option value="surgery_reason 1">Reason 1</option>
                                                         <option value="surgery_reason 2">Reason 2</option>
@@ -838,11 +801,11 @@
                                                 </div>  
 
                                                 <div class="input_container">
-                                                    <select id="surgery_medication-select" name="surgery_medication" placeholder="Select surgery medication">
+                                                    <select id="surgery_medication-select" name="med_id" placeholder="Select surgery medication">
                                                         <option value=""disabled selected>Medication</option>
-                                                        <option value="surgery_medication 1">Medication 1</option>
-                                                        <option value="surgery_medication 2">Medication 2</option>
-                                                        <option value="surgery_medication 3">Medication 3</option>
+                                                        @foreach ($med_info as $med_info)
+                                                        <option value="{{ $med_info->id }}">{{ $med_info->item_name }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>  
                                             </div>
@@ -871,6 +834,7 @@
                                             </button>
                                         </div>
                                     </div>
+                                    </form>
                                 </div>
 
                             </div>
@@ -885,9 +849,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Table rows will go here -->
-                                    <!-- history to -->
-                                
+                                  
                                 </tbody>
                             </table>
                         </div>
@@ -1091,10 +1053,7 @@
 
             </div>
     </main>
-
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
@@ -1457,9 +1416,6 @@
         ageInputLabel.textContent = '';
     });
 
-
-
-
     const pet_weight = document.getElementById('pet_weight');
 
     pet_weight.addEventListener('input', function () {
@@ -1500,10 +1456,6 @@
         });
     }
 
-
-
-
-
     // Add the event listeners to all input fields
     updateValueAttribute(pet_name); 
     updateValueAttribute(petBirthdayInput);
@@ -1515,11 +1467,6 @@
     updateValueAttribute(surgeryDateInput);
     updateValueAttribute(surgeryNoteTextarea);
       
-
-
-
-
-            
 </script>
 
 
@@ -1812,22 +1759,30 @@ aElements.forEach(function (aElement) {
     });
     $(document).ready(function() {
         $('.view-button').click(function() {
-                var containerId = $(this).data('container-id');
-                
+                const id = $(this).data('container-id');
+                displayMedicalHistoryTable(id);
+                displayVaxHistoryTable(id);
+                $('#medhisId').val(id);
+                $('#vaxhisId').val(id);
+                $('#surghisId').val(id);
+
                 // Make an AJAX request to retrieve data
                 $.ajax({
                     type: 'GET',
-                    url: `/admin/petrecord/viewRecord/${id}`,
+                    url: `/admin/emr/view/${id}`,
                     success: function(data) {
                         // Update the HTML elements with the retrieved data
-                        $('#petInfo h1').text(data.petrecord.name);
-                        $('#petInfo p').text(data.petrecord.breed);
-                        $('#petInfoAge p').text(data.petrecord.age);
-                        $('#petInfoBirthdate p').text(data.petrecord.birthdate);
-                        $('#petInfoWeight p').text(data.petrecord.weight);
-                        $('#petInfoGender p').text(data.petrecord.gender);
-
-                       
+                        $('#petInfo h1').text(data.petInfo.name);
+                        $('#petInfo p').text(data.petInfo.breed);
+                        $('#petInfoAge p').text('Age: ' + data.petInfo.age);
+                        $('#petInfoBirthdate p').text('Birthdate: ' + data.petInfo.birthdate);
+                        $('#petInfoWeight p').text('Weight: ' + data.petInfo.weight);
+                        $('#petInfoGender p').text('Gender: ' + data.petInfo.gender);
+                        $('#ownerName p').text(data.ownerInfo.first_name + ' ' + 
+                        (data.ownerInfo.middle_name ? data.ownerInfo.middle_name + ' ' : '') + 
+                        data.ownerInfo.last_name + (data.ownerInfo.suffix ? ' ' + data.ownerInfo.suffix : ''));
+                        $('#ownerEmail p').text(data.ownerInfo.email);
+                        $('#ownerPhone p').text(data.ownerInfo.phone);
                     },
                     error: function(xhr) {
                         // Handle errors
@@ -1835,14 +1790,549 @@ aElements.forEach(function (aElement) {
                     }
                 });
             });
-    })
+
+        function displayMedicalHistoryTable(id) {
+        // Make an AJAX request to fetch medical history data for the specific petrecord_id
+        $.ajax({
+            type: 'GET',
+            url: '/admin/emr/medhis' + id, // Replace with your actual endpoint
+            success: function(data) {
+                // Clear existing table rows
+                $('#medhisto_Table tbody').empty();
+
+                // Populate the table with the fetched data
+                $.each(data, function(index, med) {
+                    var newRow = '<tr>' +
+                        '<td>' + med.diagnosis + '</td>' +
+                        '<td>' + med.diagnosis_date + '</td>' +
+                        '<td>' + med.treatment + '</td>' +
+                        '<td>' + med.Med.item_name + '</td>' +
+                        '</tr>';
+                    $('#medhisto_Table tbody').append(newRow);
+                });
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+        }
+
+        function displayVaxHistoryTable(id) {
+        
+        $.ajax({
+            type: 'GET',
+            url: '/admin/emr/vaxhis' + id,
+            success: function(data) {
+                $('#immunization_histo_Table tbody').empty();
+
+                $.each(data, function(index, vax) {
+                    var newRow = '<tr>' +
+                    '<td>' + vax.vaccination_date + '</td>' +
+                    '<td>' + vax.Vax.item_name + '</td>' +
+                    '<td>' + vax.Vax.prod_desc + '</td>' +
+                    '<td>' + vax.revaccination_date + '</td>' +
+                    '</tr>';
+                $('#immunization_histo_Table tbody').append(newRow);
+
+                });
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+        }
+
+        function displaySurgHistoryTable(id) {
+        
+        $.ajax({
+            type: 'GET',
+            url: '/admin/emr/surghis' + id,
+            success: function(data) {
+                $('#surgery_histo_Table tbody').empty();
+
+                $.each(data, function(index, surgery){
+                    var newRow = '<tr>' +
+                    '<td>' + surgery.surgery_type + '</td>' +
+                    '<td>' + surgery.surgery_date + '</td>' +
+                    '<td>' + surgery.severity + '</td>' +
+                    '<td>' + surgery.Med.item_name + '</td>' +
+                    '<td>' + surgery.surgery_note + '</td>' +
+                    '</tr>';
+                $('#surgery_histo_Table tbody').append(newRow);
+
+                });
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+            }
+        })
+        }
+
+    });
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // Function to generate pet-record-items dynamically
+  function generatePetRecordItems(petRecords) {
+    const petRecordsContainer = $('.admin_petInfo_pet_records_container');
+    petRecordsContainer.empty();
+    
+    petRecords.forEach((record) => {
+      const petRecordItem = `
+        <div class="pet-record-item">
+          <!-- Your content for each pet record item goes here -->
+        </div>
+      `;
+      petRecordsContainer.append(petRecordItem);
+    });
+  }
+
+  // Function to fetch pet records from the backend
+  
+    $(document).ready(function () {
+        // Function to show the menu options
+        function showMenuOptions() {
+            $('.admin_petInfo_menu_options').show();
+        }
+
+        // Function to hide the menu options
+        function hideMenuOptions() {
+            $('.admin_petInfo_menu_options').hide();
+        }
+
+        // Event listener for button click to toggle menu visibility
+        $('.admin_petInfo_frame426').on('click', function (e) {
+            e.stopPropagation(); // Prevent the click event from bubbling up to the document
+
+            var menuOptions = $(this).siblings('.admin_petInfo_menu_options');
+
+            // Toggle the menu visibility
+            if (menuOptions.is(':visible')) {
+                hideMenuOptions(menuOptions);
+            } else {
+                showMenuOptions(menuOptions);
+            }
+        });
+        // Function to hide the menu options
+        function hideMenuOptions(menuOptions) {
+            menuOptions.hide();
+        }
+
+        // Function to show the menu options
+        function showMenuOptions(menuOptions) {
+            // Hide any other open menu options before showing the current one
+            $('.admin_petInfo_menu_options').not(menuOptions).hide();
+
+            // Show the current menu options
+            menuOptions.show();
+        }
+
+
+        // Event listener to hide the menu when clicking anywhere on the document
+        $(document).on('click', function () {
+            hideMenuOptions();
+        });
+
+        // Event listener to prevent the menu from hiding when clicking inside the menu
+        $('.admin_petInfo_menu_options').on('click', function (e) {
+            e.stopPropagation(); // Prevent the click event from bubbling up to the document
+        });
+
+        // Add event listeners for the "Edit" and "Delete" options (you can customize these URLs accordingly)
+        $('#addRecordButton').on('click', function () {
+            // Handle the edit logic here (e.g., redirect to the edit page)
+            // Example: window.location.href = '/edit/' + petId;
+            $('.admin_petInfo_addPetmodal').show();
+        });
+
+        $('.admin_petInfo_cancel-button').on('click', function () {
+            $('.admin_petInfo_addPetmodal').hide();
+        });
+
+        // Add event listener to handle the save logic when the "Save" button is clicked
+        $('.save-button').on('click', function () {
+            // Handle the save logic here (e.g., update the pet record)
+            // Example: window.location.href = '/save/' + petId;
+            // After saving, you can close the modal
+            $('.admin_petInfo_addPetmodal').hide();
+        });
+        function clearForm() {
+            $('#name').val('');
+            $('#species').val('');
+            $('#age').val('');
+            $('#species_input').val('');
+            $('#breed_input').val('');
+            $('#birthdate_input').val('');
+            $('#age_input').val('');
+            $('#weight_input').val('');
+            $('#color_input').val('');
+        }
+
+        // Event listener for the "Clear Form" button click
+        $('.clear-button').on('click', function () {
+            clearForm();
+        });
+
+    });
+
+        // Function to validate input and allow only alphabet characters
+        function validateAlphabetInput(event) {
+            // Get the user's input value from the input field
+            const input = event.target;
+            const inputValue = input.value;
+
+            // Regular expression to match only alphabet characters
+            const regex = /^[A-Za-z]+$/;
+
+            // Check if the input value matches the regex (only alphabet characters)
+            if (!regex.test(inputValue)) {
+                // If the input contains non-alphabet characters, prevent the input and remove the invalid characters
+                input.value = inputValue.replace(/[^A-Za-z]/g, '');
+            }
+        }
+
+        // Get the input element by its ID
+        const petNameInput = document.getElementById('species');
+        // Add an event listener to the input element to handle input changes
+        petNameInput.addEventListener('input', validateAlphabetInput);
+
+
+        // Function to validate input and allow only numbers
+        function validateNumberInput(event) {
+            // Get the user's input value from the input field
+            const input = event.target;
+            const inputValue = input.value;
+
+            // Regular expression to match only numbers, including scientific notation (e.g., 2e5)
+            const regex = /^[0-9]*(?:[eE][-+]?[0-9]+)?$/;
+
+            // Check if the input value matches the regex (only numbers)
+            if (!regex.test(inputValue)) {
+                // If the input contains non-numeric characters, prevent the input and remove the invalid characters
+                input.value = inputValue.replace(/[^\d.eE+-]/g, '');
+            }
+        }
+        // Get the input element by its ID
+        const microchipInput = document.getElementById('age');
+        // Add an event listener to the input element to handle input changes
+        microchipInput.addEventListener('input', validateNumberInput);
+
+
+        // Predefined breed data for dog and cat
+        const breedsData = {
+            dog: ['Afghan Hound', 'Akita', 'Alaskan Malamute', 'American Bulldog', 'American Eskimo Dog','American Foxhound', 'American Pit Bull Terrier', 'American Staffordshire Terrier', 'Aspin','Australian Cattle Dog', 'Australian Shepherd', 'Basset Hound', 'Beagle', 'Bearded Collie',
+      'Bernese Mountain Dog', 'Bichon Frise', 'Bloodhound', 'Border Collie', 'Boston Terrier','Boxer', 'Brittany', 'Bulldog', 'Bullmastiff', 'Cairn Terrier', 'Cavalier King Charles Spaniel','Chesapeake Bay Retriever', 'Chihuahua', 'Chinese Crested', 'Chow Chow', 'Cocker Spaniel',
+      'Collie', 'Dachshund', 'Dalmatian', 'Doberman Pinscher', 'English Bulldog', 'English Cocker Spaniel','English Setter', 'French Bulldog', 'German Shepherd', 'Golden Retriever', 'Great Dane', 'Greyhound','Havanese', 'Irish Setter', 'Italian Greyhound', 'Jack Russell Terrier', 'Labrador Retriever',
+      'Lhasa Apso', 'Maltese', 'Mastiff', 'Miniature Pinscher', 'Newfoundland', 'Old English Sheepdog','Papillon', 'Pekingese', 'Pomeranian', 'Poodle', 'Portuguese Water Dog', 'Pug', 'Rottweiler','Saint Bernard', 'Samoyed', 'Schnauzer', 'Scottish Terrier', 'Shetland Sheepdog', 'Shih Tzu',
+      'Siberian Husky', 'Staffordshire Bull Terrier', 'Weimaraner', 'West Highland White Terrier',
+      'Yorkshire Terrier'],
+            cat: ['Abyssinian', 'American Bobtail', 'American Curl', 'American Shorthair', 'American Wirehair','Balinese', 'Bengal', 'Birman', 'Bombay', 'British Shorthair', 'Burmese', 'Chartreux', 'Chausie','Cornish Rex', 'Cymric', 'Devon Rex', 'Egyptian Mau', 'Exotic Shorthair', 'Havana Brown', 'Himalayan','Japanese Bobtail', 'Javanese', 'Korat', 'LaPerm', 'Maine Coon', 'Manx', 'Munchkin', 'Nebelung',
+      'Norwegian Forest', 'Ocicat', 'Oriental', 'Persian', 'Pixiebob', 'Ragamuffin', 'Ragdoll','Russian Blue', 'Savannah', 'Scottish Fold', 'Selkirk Rex', 'Siamese', 'Siberian', 'Singapura','Snowshoe', 'Somali', 'Sphynx', 'Tonkinese', 'Turkish Angora', 'Turkish Van']
+        };
+
+        // Get the dropdown element by its ID
+        const petTypeDropdown = document.getElementById('pet-type');
+
+        // Get the datalist and breed input element by their IDs
+        const breedDatalist = document.getElementById('breed_datalist');
+        const breedInput = document.getElementsByName('breed_input')[0];
+
+        // Function to populate the datalist based on the selected species (dog or cat)
+        function populateBreedDatalist(selectedSpecies) {
+            // Get the list of breeds based on the selected species from the breedsData object
+            const breeds = breedsData[selectedSpecies];
+
+            // Clear existing options in the datalist
+            breedDatalist.innerHTML = '';
+
+            // Create and append option elements for each breed to the datalist
+            breeds.forEach(breed => {
+                const option = document.createElement('option');
+                option.value = breed;
+                breedDatalist.appendChild(option);
+            });
+        }
+
+        // Add event listener to the dropdown to handle breed options
+        petTypeDropdown.addEventListener('change', function () {
+            const selectedSpecies = petTypeDropdown.value;
+            populateBreedDatalist(selectedSpecies);
+        });
+
+        function togglePetRecord() {
+            const petRecordModal = document.querySelector('.admin_petInfo_pet_record_modal');
+            const petRecordsContainer = document.querySelector('.admin_petInfo_pet_records_container');
+            const addRecordButton = document.getElementById('addRecordButton');
+            
+            // Hide the addRecordButton
+            addRecordButton.style.display = 'none';
+            
+            // Toggle the visibility of pet-record-modal
+            if (petRecordModal.style.display === 'none') {
+                petRecordModal.style.display = 'block';
+                petRecordsContainer.style.display = 'none';
+            } else {
+                petRecordModal.style.display = 'none';
+                petRecordsContainer.style.display = 'block';
+            }
+        }
+        
+        function togglePetRecordItem() {
+            const petRecordModal = document.querySelector('.admin_petInfo_pet_record_modal');
+            const petRecordsContainer = document.querySelector('.admin_petInfo_pet_records_container');
+            const addRecordButton = document.getElementById('addRecordButton');
+            
+            // Show the addRecordButton
+            addRecordButton.style.display = 'flex';
+            
+            // Toggle the visibility of pet-record-modal
+            petRecordModal.style.display = 'none';
+            petRecordsContainer.style.display = 'block';
+        }
+        
+        // Event listener for back button click inside the pet-record-modal
+document.querySelector('.admin_petInfo_backButton').addEventListener('click', function (e) {
+    e.preventDefault(); // Prevent the default behavior of the button (e.g., form submission)
+  
+    // Hide the pet-record-modal
+    document.querySelector('.admin_petInfo_pet_record_modal').style.display = 'none';
+  
+    // Show the pet-records-container
+    document.querySelector('.admin_petInfo_pet_records_container').style.display = 'flex';
+  
+    // Hide the menu-options
+    hideMenuOptions();
+  });
+  
+  // Function to hide the menu options
+  function hideMenuOptions() {
+    document.querySelectorAll('.admin_petInfo_menu_options').forEach(function (menuOptions) {
+      menuOptions.style.display = 'none';
+    });
+  }
+  
+//function to display modal for add health info
+const addButton = document.getElementById("add_health_information");
+const modal = document.getElementById("add_health_information_Modal");
+
+addButton.addEventListener("click", () => {
+    modal.style.display = "flex";
+});
+
+//to display modal for add condition
+const addCondiButton = document.getElementById("add_existing_condition");
+const condimodal = document.getElementById("add_condition_Modal");
+    
+addCondiButton.addEventListener("click", () => {
+    condimodal.style.display = "flex";
+});
+
+//to display modal for add vax
+const addVaxxButton = document.getElementById("add_vaccination");
+const vaxxmodal = document.getElementById("add_vaccination_Modal");
+    
+addVaxxButton.addEventListener("click", () => {
+    vaxxmodal.style.display = "flex";
+});
+
+
+//function sa clear button sa modal ng add health info
+const clearFormButton1 = document.querySelector(".add_health_info_clearForm");
+const selectField = document.querySelector(".add_health_information_input_fields select");
+const inputFields = document.querySelectorAll(".add_health_information_input_fields input");
+
+
+clearFormButton1.addEventListener("click", function () {
+    inputFields.forEach(input => {
+        input.value = "";
+    });
+    selectField.selectedIndex = 0;
+});
+
+
+
+//function on close/x button in modal
+const closeButton = document.querySelector(".add_health_information_close_btn");
+const healthInfomodal = document.getElementById("add_health_information_Modal");
+
+closeButton.addEventListener("click", function () {
+    healthInfomodal.style.display = "none";
+});
+
+// Close the modal if the user clicks outside the modal content
+window.addEventListener("click", function (event) {
+    if (event.target === healthInfomodal) {
+        healthInfomodal.style.display = "none";
+    }    
+});
+
+
+//function sa clear button sa modal ng add condition 
+const clearConditionFormButton = document.querySelector(".add_condition_clearForm");
+const selectConditionField = document.querySelector(".add_condition_input_fields input");
+const inputConditionFields = document.querySelectorAll(".add_condition_input_fields select");
+
+clearConditionFormButton.addEventListener("click", function () {
+    inputConditionFields.forEach(input => {
+        input.value = "";
+    });
+    selectConditionField.selectedIndex = 0;
+});
+
+
+//function on close/x button in modal
+const closeConditionButton = document.querySelector(".add_condition_close_btn");
+const conditionmodal = document.getElementById("add_condition_Modal");
+
+closeConditionButton.addEventListener("click", function () {
+    conditionmodal.style.display = "none";
+});
+
+// Close the modal if the user clicks outside the modal content
+window.addEventListener("click", function (event) {
+    if (event.target === conditionmodal) {
+        conditionmodal.style.display = "none";
+    }    
+});
+
+
+//function sa clear button sa modal ng add vaccine 
+const clearVaccineFormButton = document.querySelector(".add_vaccine_clearForm");
+const selectVaccineField = document.querySelector(".add_vaccine_input_fields input");
+const inputVaccineFields = document.querySelectorAll(".add_vaccine_input_fields select");
+
+clearVaccineFormButton.addEventListener("click", function () {
+    inputVaccineFields.forEach(input => {
+        input.value = "";
+    });
+    selectVaccineField.selectedIndex = 0;
+});
+
+
+//function on close/x button in modal
+const closeVaccineButton = document.querySelector(".add_vaccine_close_btn");
+const vaccinemodal = document.getElementById("add_vaccination_Modal");
+
+closeVaccineButton.addEventListener("click", function () {
+    vaccinemodal.style.display = "none";
+});
+
+// Close the modal if the user clicks outside the modal content
+window.addEventListener("click", function (event) {
+    if (event.target === vaccinemodal) {
+        vaccinemodal.style.display = "none";
+    }    
+});
+
+
+
+
+    
 </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/emr.js') }}"></script>
     <script src="{{ asset('assets/js/sidebar.js') }}"></script>
 
 </body>

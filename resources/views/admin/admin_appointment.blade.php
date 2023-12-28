@@ -39,8 +39,7 @@
             <div class="user">
               <div class="frame202">
                 <div class="frame417">
-                  <img src="#" alt="Admin Logo">
-                    <p>Admin</p>
+                  <img src="#" >
                 </div>
                 <div class="icon-arrow">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7" viewBox="0 0 14 7" fill="none">
@@ -56,9 +55,7 @@
               <div class="header-left">
                         <h1>Appointments</h1>
               </div>
-              <div class="header-right">
-                        <button class="new-appointment-button"><img src="{{ asset('img/icon.svg') }}">New Appointment</button>
-              </div>
+              
             </div>
 
             <div class="tabs">
@@ -113,7 +110,7 @@
                         <td class="text-style">{{ $appointment->clients->first_name }} {{ $appointment->clients->last_name }}</td> 
           
                         <td class="text-style">{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
-                        <td class="text-style">{{ $appointment['appointmentDate'] }} {{ $appointment['appointmentTime'] }}</td>
+                        <td class="text-style">{{ $appointment['appointmentDate'] }} | {{ $appointment['appointmentTime'] }}</td>
                         <td class="text-style">{{ $appointment['appointmentType'] }}</td>
                         
                       </tr>
@@ -239,7 +236,7 @@
                         <td class="text-style">{{ $appointment->clients->first_name }} {{ $appointment->clients->last_name }}</td> 
             
                         <td class="text-style">{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
-                        <td class="text-style">{{ $appointment['appointmentDate'] }}  {{ $appointment['appointmentTime'] }}</td>
+                        <td class="text-style">{{ $appointment['appointmentDate'] }} | {{ $appointment['appointmentTime'] }}</td>
                         <td class="text-style">{{ $appointment['appointmentType'] }}</td>
                         <td>
                           <button class="approve-btn" data-id="{{ $appointment->id }}">Approve</button>
@@ -412,7 +409,7 @@
                         <td class="text-style">{{ $appointment->clients->first_name }} {{ $appointment->clients->last_name }}</td> 
      
                         <td class="text-style">{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
-                        <td class="text-style">{{ $appointment['appointmentDate'] }} {{ $appointment['appointmentTime'] }}</td>
+                        <td class="text-style">{{ $appointment['appointmentDate'] }} | {{ $appointment['appointmentTime'] }}</td>
                         <td class="text-style">{{ $appointment['appointmentType'] }}</td>
                       </tr>
                     @endforeach             <!-- Table rows will be dynamically generated here -->
