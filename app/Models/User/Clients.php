@@ -13,9 +13,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
+use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 
-class Clients extends Authenticatable implements MustVerifyEmail
+class Clients extends Authenticatable implements MustVerifyEmailContract
 {
+    use MustVerifyEmailTrait;
     use SoftDeletes;
     use HasFactory, Notifiable;
     protected $guard = 'clients';

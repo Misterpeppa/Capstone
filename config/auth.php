@@ -105,6 +105,11 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'clients' => [
+            'provider' => 'clients', // This should match the name of your 'clients' provider
+            'table' => 'password_resets_clients', // Choose a different table name if needed
+            'expire' => 60,
+        ],
     ],
 
     /*

@@ -81,14 +81,13 @@
                                 </div>
                             </div>
                             <div class="remember_me_forget_container">
-                                <div class="remember_me">
-                                    <label class="switch">
-                                        <input type="checkbox">
-                                        <span class="sign_in_slider round"></span>
+                                <div class="remember_me"><label class="switch">
+                                    <input type="checkbox" name="rememeber_me">
+                                    <span class="slider round"></span>
                                     </label>
                                     <p class="align-items-xl-center">Remember me</p>
                                 </div>
-                                <div class="d-flex align-items-center forgot_container"><a class="forgot_link" href="#">Forgot Password?</a></div>
+                                <div class="d-flex align-items-center forgot_container"><a class="forgot_link" href="{{ route('client.forgotpass') }}">Forgot Password?</a></div>
                             </div>
                         </div>
                         <div class="bottom_btns">

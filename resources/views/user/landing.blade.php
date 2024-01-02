@@ -5,6 +5,7 @@
     <title>TAGAPO CATS & DOGS</title>
     <meta charset="utf-8">
     <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
@@ -36,6 +37,22 @@
 <body style="padding: 0;margin: 0;">
     @include('includes.user_header')
     <main>
+    @if(session('verified'))
+    <div class="alert alert-success">
+        Your email has been successfully verified!
+    </div>
+    @endif
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+        @if(Auth::guard('clients')->user() && !Auth::guard('clients')->user()->hasVerifiedEmail())
+            <form method="POST" action="{{ route('resend', ['clientId' => $clientInfo->id]) }}">
+                @csrf
+                <button type="submit" class="btn btn-link">Resend Email Verification</button>
+            </form>
+        @endif
+    </div>
+    @endif
         <div class="container-fluid">
             <div class="floating-div">
                 <!-- Two cards inside the floating div -->

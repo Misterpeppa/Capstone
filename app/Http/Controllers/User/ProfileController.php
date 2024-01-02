@@ -27,6 +27,11 @@ class ProfileController extends Controller
     {
         $clientId = Auth::guard('clients')->id();
         $clientInfo = Clients::find($clientId);
+        if (!$clientInfo || !$clientInfo->email_verified_at) {
+            session()->flash('error', 'Please verify your email.');
+            // You can customize the error message and redirection as needed
+            return view('user/landing', compact('clientInfo'));
+        }
         return view('user/landing', compact('clientInfo'));
     }
     public function showPetInfo()

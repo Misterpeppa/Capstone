@@ -27,9 +27,8 @@
                             <h1>Set New Password</h1>
                             <p>Your new password must be at least 8 characters.</p>
                         </div>
-                        <form id="resetPassword_Form" method="POST" action="#">
+                        <form method="POST" action="{{ route('reset.password') }}">
                             @csrf
-
                             <div class="mb-3">
                                 <div class="form-group">
                                     <div class="input-container">
@@ -68,7 +67,7 @@
                                             </svg>
                                         </span>
                                         <label for="password" class="visually-hidden">Repeat Password</label>
-                                        <input class="form-control" type="password" name="confirm_password" placeholder=" " required style="border-left: none;">                                   
+                                        <input class="form-control" type="password" name="password_confirmation" placeholder=" " required style="border-left: none;">                                   
                                         <div class="placeholder-label">Repeat Password</div>
                                     </div>
                                 </div>

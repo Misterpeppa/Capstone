@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use App\Models\User\Clients;
 use Illuminate\Auth\Events\Verified;
@@ -8,12 +8,14 @@ use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use App\Mail\VerifyEmail as MailVerifyEmail;
+use Illuminate\Support\Facades\Mail;
 
 class EmailController
 {
     use VerifiesEmails, HandlesAuthorization;
 
-    protected $redirectTo = '/user/signin'; // Change this to your desired route
+    protected $redirectTo = '/user/landing'; // Change this to your desired route
 
     /**
      * Override the default verify method to use the custom model.
@@ -51,5 +53,19 @@ class EmailController
         }
 
         return redirect($this->redirectPath())->with('verified', true);
+    }
+    public function resend($clientId)
+    {
+        $clients = Clients::find($clientId);
+
+        if (!$clients || $clients->hasVerifiedEmail()) {
+            return redirect()->route('landing')->with('error', 'User not found or email is already verified.');
+        }
+
+        Mail::to($clients->email)->send(new MailVerifyEmail($clients));
+
+        event(new Verified($clients));
+
+        return redirect()->route('landing')->with('success', 'Verification email sent successfully.');
     }
 }

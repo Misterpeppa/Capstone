@@ -35,9 +35,8 @@
                         <h1>Forgot Password?</h1>
                         <p class="mb-5">No worries, we will be sending you reset instructions on your email.</p>
 
-                        <form id="forgotPassword_Form" method="POST" action="#" class="mb-5">
+                        <form  method="POST" action="{{ route('password.form') }}" class="mb-5">
                             @csrf
-
                             <div class="mb-3">
                                 <div class="form-group">
                                     <div class="input-container">
@@ -47,27 +46,19 @@
                                             </svg>
                                         </span>
                                         <label for="email" class="visually-hidden">Email Address</label>
-                                        <input class="form-control" type="text" name="email" id="email" placeholder=" " required style="border-left: none;">
+                                        <input class="form-control" type="email" name="email" id="email" placeholder=" " required style="border-left: none;">
                                         <div class="placeholder-label">Email Address</div>
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="text-center">
                                 <button class="btn custom-reset-btn" type="submit">Send Reset Instructions</button>
                             </div>
                         </form>
                         @if ($errors->any())
-                            <div class="alert alert-danger mt-3">
-                                @if ($errors->has('credentials'))
-                                    {{ $errors->first('credentials') }}
-                                @elseif ($errors->has('usernameNotice'))
-                                    {{ $errors->first('usernameNotice') }}
-                                @elseif ($errors->has('passwordNotice'))
-                                    {{ $errors->first('passwordNotice') }}
-                                @endif
-                            </div>
+                        <div class="alert alert-danger">
+                            Email not found.
+                        </div>
                         @endif
                         <div id="error-message" class="error-message"></div>
 

@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ReportController;
-use App\Http\Controllers\Auth\EmailController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\User\NotificationController;
 use App\Http\Controllers\User\PetInfoController;
 use App\Http\Controllers\User\ProfileController;
@@ -35,21 +35,27 @@ Route::get('/test', function () {
     return view('test');
 });
 
-Route::middleware(['guest'])->group(function () {
-
+Route::middleware(['signedout', 'nocache'])->group(function () {
     Route::get('/user/signup', [UserAuthController::class, 'showSignup']);
     Route::post('/user/signup', [UserAuthController::class, 'signup'])->name('client.signup');
     
     Route::get('/user/signin', [UserAuthController::class, 'showSignin'])->name('client.signin');
     Route::post('/user/signin', [UserAuthController::class, 'authenticate'])->name('client.auth');
-    Route::get('/user/logout', [UserAuthController::class, 'logout'])->name('client.logout');
-
 });
 
 Route::get('user/forgotpassword', [UserAuthController::class, 'showForgotpass'])->name('client.forgotpass');
+Route::post('user/forgotpassword', [UserAuthController::class, 'forgotPass'])->name('password.form');
+Route::post('user/forgotpasswordcode', [UserAuthController::class, 'checkResetCode'])->name('password.code');
+Route::get('user/forgotpasswordcode/{resetCode}', [UserAuthController::class, 'showCodeForm'])->name('code.form');
+Route::get('user/forgotpasswordreset/{resetCode}', [UserAuthController::class, 'showPasswordReset'])->name('reset.form');
+Route::post('user/forgotpassReset', [UserAuthController::class, 'resetPassword'])->name('reset.password');
 
-Route::middleware(['clients'])->group(function () {
-    Route::get('user/verify-email/{id}/{url}', [EmailController::class, 'verify'])->name('verification.verify');
+
+Route::middleware(['clients', 'nocache'])->group(function () {
+    Route::get('/user/logout', [UserAuthController::class, 'logout'])->name('client.logout');
+
+    Route::get('user/verify-email/{id}/{hash}', [EmailController::class, 'verify'])->name('verification');
+    Route::post('user/verify-resend/{clientId}', [EmailController::class, 'resend'])->name('resend');
 
     Route::get('user/landing', [ProfileController::class, 'landing'])->name('landing');
     Route::view('user/contact', 'user/contact');
