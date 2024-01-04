@@ -6,15 +6,78 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User\Clients;
+ use Illuminate\Support\Facades\Session;
 
 class ClientController extends Controller
 {
-    public function show()
-    {
-        $clientInfo = Clients::all();
+    // public function show()
+    // {
+    //     $clients = Clients::paginate(10);
+        
 
-        return view('/admin/admin_client', compact('clientInfo'));
+    //     return view('/admin/admin_client', compact('clients'));
+    // }
+
+
+    
+    public function show(Request $request)
+    {
+        $perPage = $request->input('perPage',5);
+        $query = $request->input('q');
+        $sort = $request->input('sortBy'); 
+        
+        $clients = Clients::query();
+        
+        if ($query) {
+            $clients->where(function ($queryBuilder) use ($query) {
+                $queryBuilder->where('first_name', 'like', '%' . $query . '%')
+                             ->orWhere('last_name', 'like', '%' . $query . '%')
+                             ->orWhere('middle_name', 'like', '%' . $query . '%')
+                             ->orWhere('suffix', 'like', '%' . $query . '%')
+                             ->orWhere('email', 'like', '%' . $query . '%')
+                             ->orWhere('phone', 'like', '%' . $query . '%')
+                             ->orWhere('birthdate', 'like', '%' . $query . '%');
+            });
+        }
+        
+        if ($sort) {
+       
+            switch ($sort) {
+                case '0':
+                    $clients->orderBy('first_name', 'ASC');
+                    break;
+                case '1':
+                    $clients->orderBy('first_name', 'ASC');
+                    break;
+                case '2':
+                    $clients->orderBy('first_name', 'DESC');
+                    break;
+                case '3':
+                    $clients->orderBy('email'); 
+                    break;
+                case '4':
+                    $clients->orderBy('phone'); 
+                    break;
+                case '5':
+                    $clients->orderBy('birthdate'); 
+                    break;
+                default:
+                    $clients->orderBy('first_name', 'ASC');
+                    break;
+            }
+        }
+        $perPage = filter_var($perPage, FILTER_VALIDATE_INT);
+        if ($perPage === false || $perPage < 5) {
+            $perPage = 5; 
+        }
+        $clients = $clients->paginate($perPage); // Ensure $perPage is an integer
+        
+        return view('/admin/admin_client', compact('clients', 'query'));
     }
+    
+    
+    
+    
 
     public function store(Request $request)
     {

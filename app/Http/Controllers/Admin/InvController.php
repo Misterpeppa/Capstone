@@ -13,33 +13,177 @@ use App\Models\Admin\VitBatch;
 use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Foundation\Vite;
 
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
+
+
 class InvController extends Controller
 {
-    public function show()
-    {
-        $vax_info = VaxInfo::all();
-        $med_info = MedInfo::all();
-        $vit_info = VitInfo::all();
-        $med_batch = MedBatch::all();
-        $vax_batch = VaxBatch::all();
-        $vit_batch = VitBatch::all();
+    // public function show()
+    // {
+    //     $vax_info = VaxInfo::all();
+    //     $med_info = MedInfo::all();
+    //     $vit_info = VitInfo::all();
+    //     $med_batch = MedBatch::all();
+    //     $vax_batch = VaxBatch::all();
+    //     $vit_batch = VitBatch::all();
 
-        $med_info = MedInfo::with('MedBatch')->orderBy('created_at', 'asc')->get();
-        $vax_info = VaxInfo::with('VaxBatch')->orderBy('created_at', 'asc')->get();
-        $vit_info = VitInfo::with('VitBatch')->orderBy('created_at', 'asc')->get();
+    //     $med_info = MedInfo::with('MedBatch')->orderBy('created_at', 'asc')->get();
+    //     $vax_info = VaxInfo::with('VaxBatch')->orderBy('created_at', 'asc')->get();
+    //     $vit_info = VitInfo::with('VitBatch')->orderBy('created_at', 'asc')->get();
+    //     $productInfo = $vax_info->concat($med_info)->concat($vit_info);
 
-        $productInfo = $vax_info->concat($med_info)->concat($vit_info);
-        $productBatch = $med_batch->concat($vax_batch)->concat($vit_batch);
-        $dataExists = false;
-        if ($vit_info->isNotEmpty()) {
-            // Data exists
-            $dataExists = true;
-        }
-        $resposne = [
-            'dataExists' => $dataExists,
-        ];
-        return view('admin/inventory', compact('productBatch','productInfo', 'vax_info', 'med_info', 'vit_info', 'med_batch', 'vax_batch', 'vit_batch'));
+       
+        // $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        // $perPage = 6;
+        // $currentPageItems = $productInfo->slice(($currentPage - 1) * $perPage, $perPage)->all();
+        // $productInfo = new LengthAwarePaginator($currentPageItems, $productInfo->count(), $perPage);
+        // $productInfo->withPath('/admin/inventory');
+
+        // $productBatch = $med_batch->concat($vax_batch)->concat($vit_batch);
+        // $dataExists = false;
+        // if ($vit_info->isNotEmpty()) {
+        //     // Data exists
+        //     $dataExists = true;
+        // }
+        // $resposne = [
+        //     'dataExists' => $dataExists,
+        // ];
+        
+    //     return view('admin/inventory', compact('productBatch','productInfo', 'vax_info', 'med_info', 'vit_info', 'med_batch', 'vax_batch', 'vit_batch'));
+    // }
+
+
+    public function show(Request $request)
+{
+    // Retrieve user-selected filter criteria and search term
+    $selectedType = $request->input('type');
+    $searchTerm = $request->input('q');
+    $perPage = $request->input('perPage',6);
+    $sortItem = $request->input('sortItems');
+    $sortOrder = $request->input('sortOrder');
+
+    $medSwitch = $request->input('medSwitch');
+    $vaxSwitch = $request->input('vaxSwitch');
+    $vitSwitch = $request->input('vitSwitch');
+
+    $vax_info = VaxInfo::query();
+    $med_info = MedInfo::query();
+    $vit_info = VitInfo::query();
+    
+    $med_batch = MedBatch::all();
+    $vax_batch = VaxBatch::all();
+    $vit_batch = VitBatch::all();
+
+    $queries = [];
+    if (!$medSwitch && !$vaxSwitch && !$vitSwitch) {
+        $medSwitch = true;
+        $vaxSwitch = true;
+        $vitSwitch = true;
     }
+    if($medSwitch || $vaxSwitch || $vitSwitch){
+      if($medSwitch){
+        $med = MedInfo::select('med_info.*', 'med_batch.expiration_date', 'med_batch.date_stocked')
+        ->join('med_batch', function ($join) {
+            $join->on('med_batch.med_id', '=', 'med_info.id')
+                ->whereRaw('med_batch.expiration_date = (
+                    SELECT MIN(expiration_date) FROM med_batch WHERE med_id = med_info.id
+                )');
+        });
+        if($searchTerm){
+            $med->where('med_info.item_name', 'like', '%' . $searchTerm . '%')
+            ->orWhere('med_info.quantity', 'like', '%' . $searchTerm . '%')
+            ->orWhere('med_info.product_type', 'like', '%' . $searchTerm . '%')
+            ->orWhere('med_batch.expiration_date', 'like', '%' . $searchTerm . '%')
+            ->orWhere('med_batch.date_stocked', 'like', '%' . $searchTerm . '%');
+        }
+
+        $queries[] = $med;
+      }
+      if($vaxSwitch){
+        $vax = VaxInfo::select('vax_info.*', 'vax_batch.expiration_date', 'vax_batch.date_stocked')
+        ->join('vax_batch', function ($join) {
+            $join->on('vax_batch.vax_id', '=', 'vax_info.id')
+                ->whereRaw('vax_batch.expiration_date = (
+                    SELECT MIN(expiration_date) FROM vax_batch WHERE vax_id = vax_info.id
+                )');
+        });
+        if($searchTerm){
+            $vax->where('vax_info.item_name', 'like', '%' . $searchTerm . '%')
+            ->orWhere('vax_info.quantity', 'like', '%' . $searchTerm . '%')
+            ->orWhere('vax_info.product_type', 'like', '%' . $searchTerm . '%')
+            ->orWhere('vax_batch.expiration_date', 'like', '%' . $searchTerm . '%')
+            ->orWhere('vax_batch.date_stocked', 'like', '%' . $searchTerm . '%');
+        }
+        $queries[] = $vax;
+    
+      }
+      if($vitSwitch){
+        $vit = VitInfo::select('vit_info.*', 'vit_batch.expiration_date', 'vit_batch.date_stocked')
+        ->join('vit_batch', function ($join) {
+            $join->on('vit_batch.vit_id', '=', 'vit_info.id')
+                ->whereRaw('vit_batch.expiration_date = (
+                    SELECT MIN(expiration_date) FROM vit_batch WHERE vit_id = vit_info.id
+                )');
+        });
+        if($searchTerm){
+            $vit->where('vit_info.item_name', 'like', '%' . $searchTerm . '%')
+                ->orWhere('vit_info.quantity', 'like', '%' . $searchTerm . '%')
+                ->orWhere('vit_info.product_type', 'like', '%' . $searchTerm . '%')
+                ->orWhere('vit_batch.expiration_date', 'like', '%' . $searchTerm . '%')
+                ->orWhere('vit_batch.date_stocked', 'like', '%' . $searchTerm . '%');
+          }
+          $queries[] = $vit;
+      }  
+    }
+    if (!empty($queries)) {
+        $products = array_shift($queries); // Get the first query
+        foreach ($queries as $query) {
+            $products = $products->union($query);
+        }
+    }
+
+
+    $sortField = [
+        0 => 'item_name',
+        1 => 'product_type',
+        2 => 'quantity',
+        3 => 'date_stocked',
+        4 => 'expiration_date',
+    ][$sortItem] ?? 'item_name';
+    
+
+    $sortDirection = $sortOrder == 1 ? 'desc' : 'asc';
+    
+    // Sort the collection
+    $products = $products->orderBy($sortField, $sortDirection)->get();
+    
+    // PAGINATION
+    $perPage = filter_var($perPage, FILTER_VALIDATE_INT);
+    if ($perPage === false || $perPage < 5) {
+        $perPage = 6; 
+    }
+    $currentPage = LengthAwarePaginator::resolveCurrentPage();
+    $currentPageItems = $products->slice(($currentPage - 1) * $perPage, $perPage)->all();
+    $products = new LengthAwarePaginator($currentPageItems, $products->count(), $perPage);
+    $products->withPath('/admin/inventory');
+
+
+    $productBatch = $med_batch->concat($vax_batch)->concat($vit_batch);
+    // $dataExists = false;
+    // if ($vit_info->isNotEmpty()) {
+    //     // Data exists
+    //     $dataExists = true;
+    // }
+    // $resposne = [
+    //     'dataExists' => $dataExists,
+    // ];
+
+
+
+    return view('admin/inventory', compact('productBatch', 'products', 'vax_info', 'med_info', 'vit_info', 'med_batch', 'vax_batch', 'vit_batch'));
+}
+
 
     public function store(Request $request)
     {
