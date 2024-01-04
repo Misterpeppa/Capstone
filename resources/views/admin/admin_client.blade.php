@@ -24,6 +24,13 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
+<style>
+    .dropdown-item label {
+         display: block;
+         padding: 0.5rem 1rem;
+         cursor: pointer;
+     }
+ </style>
 
 <body>
     <main class="d-flex flex-row container-fluid" style="padding: 0;">
@@ -80,66 +87,72 @@
                                 </div>
                                 <button type="submit" form="searchForm" class="btn filter_btn"><i
                                         class="fa-solid fa-magnifying-glass"></i>Search</button>
-                                <select class="filter_btn" name="sortBy" onchange="submitForm()">
-                                    <option value="0" {{ request()->input('sortBy') == '0' ? 'selected' : '' }}>Sort By
-                                    </option>
-                                    <option value="1" {{ request()->input('sortBy') == '1' ? 'selected' : '' }}>A-Z</option>
-                                    <option value="2" {{ request()->input('sortBy') == '2' ? 'selected' : '' }}>Z-A</option>
-                                    <option value="3" {{ request()->input('sortBy') == '3' ? 'selected' : '' }}>Email</option>
-                                    <option value="4" {{ request()->input('sortBy') == '4' ? 'selected' : '' }}>Phone</option>
-                                    <option value="5" {{ request()->input('sortBy') == '5' ? 'selected' : '' }}>Birthdate</option>
-                                </select>
 
-                        </form>
-
-
-
-
-                        {{-- <button class="btn filter_btn" type="button">
-                                <span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="24" viewBox="0 0 24 24" fill="none">
-                                        <g clip-path="url(#clip0_5284_15912)">
-                                            <path
-                                                d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z"
-                                                stroke="black" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5284_15912">
-                                                <rect width="24" height="24" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg> Filter by</span></button>
-                            <button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none">
-                                        <g clip-path="url(#clip0_5284_15919)">
-                                            <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6"
-                                                stroke="black" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_5284_15919">
-                                                <rect width="24" height="24" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg> Sort by</span></button> --}}
+                                <div class="dropdown">
+                                    <button class="filter_btn dropdown-toggle" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
+                                        aria-expanded="false">
+                                        <i class="fa-solid fa-arrow-down-short-wide"></i>Sort
+                                        By
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item ">
+                                            <input class="form-check-input me-1" type="radio" id = "radio1"
+                                                name="sortBy"{{ request()->input('sortBy', '0') == '0' ? 'checked' : '' }}  value="0">
+                                            <label class="form-check-label ms-1 fs-6" for="radio1">
+                                                Client
+                                        </li>
+                                        <li class="dropdown-item">
+                                            <input class="form-check-input me-1" type="radio" id = "radio2"
+                                                name="sortBy" {{ request()->input('sortBy') == '1' ? 'checked' : '' }} value="1">
+                                            <label class="form-check-label ms-1 fs-6" for="radio2">
+                                                Email
+                                        </li>
+                                        <li class="dropdown-item">
+                                            <input class="form-check-input me-1" type="radio" id = "radio3"
+                                                name="sortBy" {{ request()->input('sortBy') == '2' ? 'checked' : '' }} value="2">
+                                            <label class="form-check-label ms-1 fs-6" for="radio3">
+                                                Phone
+                                        </li>
+                                        <li class="dropdown-item">
+                                            <input class="form-check-input me-1" type="radio" id = "radio4"
+                                                name="sortBy" {{ request()->input('sortBy') == '3' ? 'checked' : '' }} value="3">
+                                            <label class="form-check-label ms-1 fs-6" for="radio4">
+                                                Birthdate
+                                        </li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li class="dropdown-item">
+                                            <input class="form-check-input me-1" type="radio" id = "radio6"
+                                                name="sortOrder" {{ request()->input('sortOrder', '0') == '0' ? 'checked' : '' }} value="0">
+                                            <label class="form-check-label ms-1 fs-6" for="radio6">
+                                                Ascending
+                                        </li>
+                                        <li class="dropdown-item">
+                                            <input class="form-check-input me-1" type="radio" id = "radio7"
+                                                name="sortOrder" {{ request()->input('sortOrder') == '1' ? 'checked' : '' }} value="1">
+                                            <label class="form-check-label ms-1 fs-6" for="radio7">
+                                                Descending
+                                        </li>
+                                        <li class="dropdown-item ">
+                                          <div class="row">
+                                              <div class="col-md-6">
+                                                  <button class="btn btn-outline-secondary btn-sm me-3">Cancel</button>
+                                              </div>
+                                              <div class="col-md-6 text-center">
+                                                  <button type="submit" form="searchForm" class="btn btn-primary btn-sm ms-3">Apply</button>
+                                              </div>
+                                          </div>
+                                      </li>
+                                    </ul>
+                                </div>
+</form>
                     </div>
-                    <div class="right_part_product_header"><button class="btn archive_button" id="archive_button"
-                            type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none">
-                                <g clip-path="url(#clip0_5824_17335)">
-                                    <path
-                                        d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14"
-                                        stroke="black" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_5824_17335">
-                                        <rect width="24" height="24" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg></button></div>
+                    <div class="right_part_product_header">
+                        <button class="btn archive_button" id="archive_button"
+                            type="button"><i class="fa-solid fa-boxes-stacked"></i>
+                        </button>
+                        </div>
                 </div>
                 <div id="empty_state_container" class="empty_state_container">
                     <div class="empty_state">
@@ -295,84 +308,19 @@
                                     <td>{{ $clientInfo->birthdate }}</td>
                                     <td></td>
                                     <td></td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="dropbtn" id="dropbtn"><span>Action</span></button>
-                                            <div class="dropdown-content" id="dropdown-content">
-                                                <div class="button-group">
-                                                </div>
-                                                <!-- Group 2 -->
-                                                <div class="button-group">
-                                                    <button data-action="View"
-                                                        data-client-id="{{ $clientInfo->id }}">
-                                                        <div class="action_button_text">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none">
-                                                                <g clip-path="url(#clip0_5624_22297)">
-                                                                    <path
-                                                                        d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z"
-                                                                        stroke="#1C1C1C" stroke-opacity="0.7"
-                                                                        stroke-width="2" stroke-linecap="round"
-                                                                        stroke-linejoin="round" />
-                                                                    <path
-                                                                        d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z"
-                                                                        stroke="#1C1C1C" stroke-opacity="0.7"
-                                                                        stroke-width="2" stroke-linecap="round"
-                                                                        stroke-linejoin="round" />
-                                                                </g>
-                                                                <defs>
-                                                                    <clipPath id="clip0_5624_22297">
-                                                                        <rect width="24" height="24"
-                                                                            fill="white" />
-                                                                    </clipPath>
-                                                                </defs>
-                                                            </svg> View
-                                                        </div>
-                                                    </button>
-                                                    <button data-action="Edit">
-                                                        <div class="action_button_text">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none">
-                                                                <g clip-path="url(#clip0_5624_22180)">
-                                                                    <path
-                                                                        d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z"
-                                                                        stroke="#1C1C1C" stroke-opacity="0.7"
-                                                                        stroke-width="2" stroke-linecap="round"
-                                                                        stroke-linejoin="round" />
-                                                                </g>
-                                                                <defs>
-                                                                    <clipPath id="clip0_5624_22180">
-                                                                        <rect width="24" height="24"
-                                                                            fill="white" />
-                                                                    </clipPath>
-                                                                </defs>
-                                                            </svg> Edit
-                                                        </div>
-                                                    </button>
-                                                    <button data-action="Archive">
-                                                        <div class="action_button_text">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none">
-                                                                <g clip-path="url(#clip0_5624_22046)">
-                                                                    <path
-                                                                        d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14"
-                                                                        stroke="#1C1C1C" stroke-opacity="0.7"
-                                                                        stroke-width="2" stroke-linecap="round"
-                                                                        stroke-linejoin="round" />
-                                                                </g>
-                                                                <defs>
-                                                                    <clipPath id="clip0_5624_22046">
-                                                                        <rect width="24" height="24"
-                                                                            fill="white" />
-                                                                    </clipPath>
-                                                                </defs>
-                                                            </svg> Archive
-                                                        </div>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    <td class="button-action">
+                                        <button
+                                        data-action="View"
+                                        data-product-id="{{ $clientInfo->id }}"
+                                        class="btn border-0 viewButton"style="color:gray"><i class="fa-solid fa-eye"></i></button>
+                                        <button 
+                                        data-action="Edit" id="editButton"
+                                        data-product-id="{{ $clientInfo->id }}"
+                                        class="btn border-0"style="color:gray"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button 
+                                        data-action="Archive"
+                                        class="btn border-0"style="color:gray"><i class="fa-solid fa-box-archive"></i></button></td>
+                                  
                                 </tr>
                             @endforeach
                         </tbody>
@@ -390,7 +338,12 @@
                             
                         </div>
                         <div class="pagination-pages">
-                            {{ $clients->appends(['q' => request()->input('q'), 'sortBy' => request()->input('sortBy'), 'perPage' => request()->input('perPage')])->links() }}
+                            {{ $clients->appends([
+                                'q' => request()->input('q'), 
+                                'sortBy' => request()->input('sortBy'), 
+                                'sortOrder' => request()->input('sortOrder'),
+                                'perPage' => request()->input('perPage'),
+                                ])->links() }}
                         </div>
                         <div class="pagination-items">
                             <span>Show:</span>
@@ -1545,7 +1498,6 @@
             </div>
         </div>
     </div>
-    <script></script>
     <script>
         function changePage(select) {
             let pageNumber = select.value;

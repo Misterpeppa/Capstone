@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\User\Clients;
  use Illuminate\Support\Facades\Session;
 
+ use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
+
 class ClientController extends Controller
 {
     // public function show()
@@ -25,6 +28,8 @@ class ClientController extends Controller
         $perPage = $request->input('perPage',5);
         $query = $request->input('q');
         $sort = $request->input('sortBy'); 
+        $sortOrder = $request->input('sortOrder'); 
+        
         
         $clients = Clients::query();
         
@@ -39,38 +44,26 @@ class ClientController extends Controller
                              ->orWhere('birthdate', 'like', '%' . $query . '%');
             });
         }
-        
-        if ($sort) {
-       
-            switch ($sort) {
-                case '0':
-                    $clients->orderBy('first_name', 'ASC');
-                    break;
-                case '1':
-                    $clients->orderBy('first_name', 'ASC');
-                    break;
-                case '2':
-                    $clients->orderBy('first_name', 'DESC');
-                    break;
-                case '3':
-                    $clients->orderBy('email'); 
-                    break;
-                case '4':
-                    $clients->orderBy('phone'); 
-                    break;
-                case '5':
-                    $clients->orderBy('birthdate'); 
-                    break;
-                default:
-                    $clients->orderBy('first_name', 'ASC');
-                    break;
-            }
-        }
+
+        $sortField = [
+            0 => 'first_name',
+            1 => 'email',
+            2 => 'phone',
+            3 => 'birthdate',
+        ][$sort] ?? 'first_name';
+        $sortDirection = $sortOrder == 1 ? 'desc' : 'asc';
+        $clients = $clients->orderBy($sortField, $sortDirection)->get();
+
         $perPage = filter_var($perPage, FILTER_VALIDATE_INT);
         if ($perPage === false || $perPage < 5) {
-            $perPage = 5; 
+            $perPage = 6; 
+        }else{
+            $perPage += 1;
         }
-        $clients = $clients->paginate($perPage); // Ensure $perPage is an integer
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $currentPageItems = $clients->slice(($currentPage - 1) * $perPage, $perPage)->all();
+        $clients = new LengthAwarePaginator($currentPageItems, $clients->count(), $perPage);
+        $clients->withPath('/admin/client');
         
         return view('/admin/admin_client', compact('clients', 'query'));
     }

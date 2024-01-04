@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("add_client_form").reset();
 
 // Add an event listener for the buttons inside dropdown-content
-        document.querySelectorAll('.dropdown-content button').forEach(function (button) {
+        document.querySelectorAll('.button-action button').forEach(function (button) {
     button.addEventListener('click', function (event) {
         event.preventDefault();
         const action = this.getAttribute('data-action');
