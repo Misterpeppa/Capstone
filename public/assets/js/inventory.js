@@ -87,14 +87,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }); 
     // Add an event listener for the buttons inside dropdown-content
     document
-      .querySelectorAll(".dropdown-content button")
+      .querySelectorAll(".button-action button")
       .forEach(function (button) {
         button.addEventListener("click", function (event) {
           event.preventDefault();
           const action = this.getAttribute("data-action");
           if (action === "AddStock") {
-            const dropdownContent = this.parentElement;
-            dropdownContent.style.display = "none";
+            // const dropdownContent = this.parentElement;
+            // dropdownContent.style.display = "none";
 
             var modal2 = new bootstrap.Modal(
               document.getElementById("add_stock_modal")
@@ -114,8 +114,8 @@ document.addEventListener("DOMContentLoaded", function () {
             inventory_header.style.display = "none";
             prod_info_header.style.display = "flex";
 
-            const dropdownContent = this.parentElement;
-            dropdownContent.style.display = "none";
+            // const dropdownContent = this.parentElement;
+            // dropdownContent.style.display = "none";
           } else if (action === "Edit") {
             //dapat dito, yung info na lilitaw ay yung kung saang data row niclick ang edit.
 
@@ -135,8 +135,8 @@ document.addEventListener("DOMContentLoaded", function () {
             prod_detail_header.style.display = "flex";
             prod_detail.style.display = "flex";
 
-            const dropdownContent = this.parentElement;
-            dropdownContent.style.display = "none";
+            // const dropdownContent = this.parentElement;
+            // dropdownContent.style.display = "none";
           } else if (action === "Archive") {
             // Handle the "Archive" action here
             // Add your logic for this action

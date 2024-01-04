@@ -32,7 +32,7 @@ class MedInfo extends Model
     }
     public function medBatch(): HasMany
     {
-        return $this->hasMany(MedBatch::class, 'med_id');
+        return $this->hasMany(MedBatch::class, 'med_id', 'id');
     }
 
 }

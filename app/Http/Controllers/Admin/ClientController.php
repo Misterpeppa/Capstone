@@ -6,15 +6,71 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User\Clients;
+ use Illuminate\Support\Facades\Session;
+
+ use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class ClientController extends Controller
 {
-    public function show()
-    {
-        $clientInfo = Clients::all();
+    // public function show()
+    // {
+    //     $clients = Clients::paginate(10);
+        
 
-        return view('/admin/admin_client', compact('clientInfo'));
+    //     return view('/admin/admin_client', compact('clients'));
+    // }
+
+
+    
+    public function show(Request $request)
+    {
+        $perPage = $request->input('perPage',5);
+        $query = $request->input('q');
+        $sort = $request->input('sortBy'); 
+        $sortOrder = $request->input('sortOrder'); 
+        
+        
+        $clients = Clients::query();
+        
+        if ($query) {
+            $clients->where(function ($queryBuilder) use ($query) {
+                $queryBuilder->where('first_name', 'like', '%' . $query . '%')
+                             ->orWhere('last_name', 'like', '%' . $query . '%')
+                             ->orWhere('middle_name', 'like', '%' . $query . '%')
+                             ->orWhere('suffix', 'like', '%' . $query . '%')
+                             ->orWhere('email', 'like', '%' . $query . '%')
+                             ->orWhere('phone', 'like', '%' . $query . '%')
+                             ->orWhere('birthdate', 'like', '%' . $query . '%');
+            });
+        }
+
+        $sortField = [
+            0 => 'first_name',
+            1 => 'email',
+            2 => 'phone',
+            3 => 'birthdate',
+        ][$sort] ?? 'first_name';
+        $sortDirection = $sortOrder == 1 ? 'desc' : 'asc';
+        $clients = $clients->orderBy($sortField, $sortDirection)->get();
+
+        $perPage = filter_var($perPage, FILTER_VALIDATE_INT);
+        if ($perPage === false || $perPage < 5) {
+            $perPage = 6; 
+        }else{
+            $perPage += 1;
+        }
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $currentPageItems = $clients->slice(($currentPage - 1) * $perPage, $perPage)->all();
+        $clients = new LengthAwarePaginator($currentPageItems, $clients->count(), $perPage);
+        $clients->withPath('/admin/client');
+        
+        return view('/admin/admin_client', compact('clients', 'query'));
     }
+    
+    
+    
+    
 
     public function store(Request $request)
     {

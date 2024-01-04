@@ -95,28 +95,28 @@ document.addEventListener('DOMContentLoaded', function () {
         
         
 
-    // Construct the client data
-    var clientData = {
-        name: firstName + ' ' + (middleName ? middleName + ' ' : '') + lastName + (suffix ? ' ' + suffix : ''),
-        email: email,
-        phoneNumber: phoneNumber,
-        address: address,
-        // Add more properties as needed
-    };
+    // // Construct the client data
+    // var clientData = {
+    //     name: firstName + ' ' + (middleName ? middleName + ' ' : '') + lastName + (suffix ? ' ' + suffix : ''),
+    //     email: email,
+    //     phoneNumber: phoneNumber,
+    //     address: address,
+    //     // Add more properties as needed
+    // };
 
-    // Create a new row in the table
-    var tableBody = document.getElementById("client_table_body");
-    var newRow = tableBody.insertRow(tableBody.rows.length);
+    // // Create a new row in the table
+    // var tableBody = document.getElementById("client_table_body");
+    // var newRow = tableBody.insertRow(tableBody.rows.length);
 
-    // Add cells to the new row
-    var checkboxCell = newRow.insertCell(0);
-    var nameCell = newRow.insertCell(1);
-    var emailCell = newRow.insertCell(2);
-    var phoneNumberCell = newRow.insertCell(3);
-    var addressCell = newRow.insertCell(4);
-    var visitsCell = newRow.insertCell(5);
-    var lastVisitCell = newRow.insertCell(6);
-    var actionCell = newRow.insertCell(7);
+    // // Add cells to the new row
+    // var checkboxCell = newRow.insertCell(0);
+    // var nameCell = newRow.insertCell(1);
+    // var emailCell = newRow.insertCell(2);
+    // var phoneNumberCell = newRow.insertCell(3);
+    // var addressCell = newRow.insertCell(4);
+    // var visitsCell = newRow.insertCell(5);
+    // var lastVisitCell = newRow.insertCell(6);
+    // var actionCell = newRow.insertCell(7);
 
     // Populate cells with data
    
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("add_client_form").reset();
 
 // Add an event listener for the buttons inside dropdown-content
-        document.querySelectorAll('.dropdown-content button').forEach(function (button) {
+        document.querySelectorAll('.button-action button').forEach(function (button) {
     button.addEventListener('click', function (event) {
         event.preventDefault();
         const action = this.getAttribute('data-action');
