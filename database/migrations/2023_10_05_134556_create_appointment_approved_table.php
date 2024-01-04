@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('appointmentType');
             $table->date('appointmentDate');
             $table->time('appointmentTime');
-            $table->string('status')->nullable();
+            $table->string('completed_at')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('clients')->onDelete('cascade');

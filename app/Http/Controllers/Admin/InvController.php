@@ -10,6 +10,7 @@ use App\Models\Admin\MedInfo;
 use App\Models\Admin\VaxBatch;
 use App\Models\Admin\VaxInfo;
 use App\Models\Admin\VitBatch;
+use Carbon\Carbon;
 use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Foundation\Vite;
 
@@ -383,6 +384,30 @@ class InvController extends Controller
                 break;
         }
         return redirect()->back()->with('success', 'Product quantity updated successfully');
+    }
+    public function archive(Request $request, $product_type, $id)
+    {
+        switch($product_type) {
+            case 'Medicine':
+                $med_info = MedInfo::find($id);
+                $med_info->update(['archived_at' => Carbon::now()]);
+                $med_info->medBatch()->update(['archived_at' => Carbon::now()]);
+                return redirect()->back()->with('success', 'Product has been archived');
+                break;
+            case 'Vaccine':
+                $vax_info = VaxInfo::find($id);
+                $vax_info->update(['archived_at' => Carbon::now()]);
+                $vax_info->vaxBatch()->update(['archived_at' => Carbon::now()]);
+                break;
+            case 'Vitamin':
+                $vit_info = VitInfo::find($id);
+                $vit_info->update(['archived_at' => Carbon::now()]);
+                $vit_info->vitBatch()->update(['archived_at' => Carbon::now()]);
+                break;
+            default:
+                break;
+        }
+        return redirect()->back()->with('success', 'Product has been archived');
     }
 
 }

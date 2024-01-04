@@ -1,8 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
     
- 
+  const book_appointment = document.getElementById('book_appointment');
+  const agree = document.getElementById('agree');
+  const disagree = document.getElementById('disagree');
+  const consent_modal = new bootstrap.Modal(document.getElementById('consent_modal'));
   
-
+  book_appointment.addEventListener('click', function () {
+      consent_modal.show();
+  });
+  
+  //hide consent modal
+  disagree.addEventListener('click', function () {
+      consent_modal.hide();
+  });
+  
+  agree.addEventListener('click', function () {
+      consent_modal.hide();
+  });
   
   // Function to capitalize the first letter of each word
   function capitalizeFirstLetter(input) {
@@ -78,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Check conditions and enable/disable the button
       const isPetNameSelected = (petNameInput.value.trim() !== '');
       const isBreedSelected = (breedSelect.value.trim() !== 'none');
-      const isSurgeryTypeSelected = (surgeryTypeSelect.value.trim() !== 'none');
+      const isSurgeryTypeSelected = (surgeryTypeSelect.value.trim() !== '');
 
       nextButton.disabled = !(isPetNameSelected && isBreedSelected && isSurgeryTypeSelected);
       
@@ -86,13 +100,16 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!nextButton.disabled) {
           displayConfirmationDetails();
       }
+      
+      const addFormButton = document.getElementById('add_form');
+      addFormButton.disabled = (clickCount > 0);
   }
   
   function checkEnableNextButton1() {
       // Check conditions and enable/disable the button
       const isPetNameSelected = (petName1.value.trim() !== '');
       const isBreedSelected = (breed1.value.trim() !== 'none');
-      const isSurgeryTypeSelected = (surgeryType1.value.trim() !== 'none');
+      const isSurgeryTypeSelected = (surgeryType1.value.trim() !== '');
 
       nextButton.disabled = !(isPetNameSelected && isBreedSelected && isSurgeryTypeSelected);
       
@@ -100,6 +117,9 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!nextButton.disabled) {
           displayConfirmationDetails1();
       }
+      
+      const addFormButton = document.getElementById('add_form');
+  addFormButton.disabled = (clickCount > 0);
 
   }
   
@@ -107,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Check conditions and enable/disable the button
       const isPetNameSelected = (petName2.value.trim() !== '');
       const isBreedSelected = (breed2.value.trim() !== 'none');
-      const isSurgeryTypeSelected = (surgeryType2.value.trim() !== 'none');
+      const isSurgeryTypeSelected = (surgeryType2.value.trim() !== '');
 
       nextButton.disabled = !(isPetNameSelected && isBreedSelected && isSurgeryTypeSelected);
       
@@ -115,6 +135,8 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!nextButton.disabled) {
           displayConfirmationDetails2();
       }
+      const addFormButton = document.getElementById('add_form');
+  addFormButton.disabled = (clickCount > 0);
   }
 
 
@@ -124,12 +146,15 @@ document.addEventListener('DOMContentLoaded', function () {
           if (input.value.trim() === 'none') {
               error.style.display = 'block';
               input.classList.add('error-border');
+              input.classList.add('is-invalid');
           } else if (input.value.trim() === '') {
               error.style.display = 'block';
               input.classList.add('error-border');
+              input.classList.add('is-invalid');
           } else {
               error.style.display = 'none';
               input.classList.remove('error-border');
+              input.classList.remove('is-invalid');
           }
       });
   }
@@ -137,45 +162,32 @@ document.addEventListener('DOMContentLoaded', function () {
   
   
   
-  const add_form = document.getElementById('add_form');
+  var add_form = document.getElementById('add_form');
   add_form.addEventListener('click', toggleForm);
-  const lineBreak = document.getElementById('lineBreak');
-  const lineBreak1 = document.getElementById('lineBreak-1');
-  const lineBreak2 = document.getElementById('lineBreak-2');
-  const lineBreak3 = document.getElementById('lineBreak-3');
-  const lineBreak4 = document.getElementById('lineBreak-4');
-  const lineBreak5 = document.getElementById('lineBreak-5');
-  const appointment_details1 = document.getElementById('appointment_details-1');
-  const appointment_details2 = document.getElementById('appointment_details-2');
-  const details1 = document.getElementById('details-1');
-  const details2 = document.getElementById('details-2');
-  const remove_form = document.getElementById('remove_form');
+  var lineBreak = document.getElementById('lineBreak');
+  var lineBreak1 = document.getElementById('lineBreak-1');
+  var lineBreak2 = document.getElementById('lineBreak-2');
+  var lineBreak3 = document.getElementById('lineBreak-3');
+  var lineBreak4 = document.getElementById('lineBreak-4');
+  var lineBreak5 = document.getElementById('lineBreak-5');
+  var appointment_details1 = document.getElementById('appointment_details-1');
+  var appointment_details2 = document.getElementById('appointment_details-2');
+  var details1 = document.getElementById('details-1');
+  var details2 = document.getElementById('details-2');
+  var remove_form = document.getElementById('remove_form');
+  var remove_form1 = document.getElementById('remove_form-1');
+  var form_fields1 = document.getElementById('form_fields-1');
+  var form_fields2 = document.getElementById('form_fields-2');
   
+let clickCount = 0;
 
-
-
-
-
-function resetInputFields(formId) {
-  // Reset the input fields within the specified form field
-  const form = document.getElementById(formId);
-
-  // Example: Assuming petName is the input field to be reset
-  const petNameInput = form.querySelector('#petName');
-  petNameInput.value = ''; // Reset the value, you can do this for other input fields
-
-  // Reset other input fields as needed
-}
-
-  let clickCount = 0;
-
-  function toggleForm() {
+function toggleForm() {
       clickCount++;
 
       if (clickCount <= 2) {
           // Show the next form field
           // Disable the Next button
-      nextButton.disabled = true;
+          nextButton.disabled = true;
           document.getElementById(`form_fields-${clickCount}`).style.display = 'flex';
           
           // Adjust the form height
@@ -189,6 +201,7 @@ function resetInputFields(formId) {
               lineBreak4.style.display = 'flex';
               details1.style.display = 'flex';
               remove_form.style.display = 'flex';
+              remove_form1.style.display = 'none';
           }
           
           // Disable the add_form button after the second click
@@ -200,9 +213,94 @@ function resetInputFields(formId) {
               details2.style.display = 'flex';
               document.getElementById('add_form').disabled = true;
               add_form.style.display = 'none';
+              remove_form.style.display = 'none';
+              remove_form1.style.display = 'flex';
           }
       }
   }
+
+remove_form.addEventListener('click', function(){
+   if (clickCount > 0) {
+       clickCount--;
+       resetPetDetails();
+       form_fields1.style.display = 'none';
+       lineBreak.style.display = 'none';
+       remove_form.style.display = 'none';
+       lineBreak2.style.display = 'none';
+       lineBreak4.style.display = 'none';
+       appointment_details1.style.display = 'none';
+       details1.style.display = 'none';
+       
+               // Check if clickCount was 2, then re-enable the add_form button
+      if (clickCount === 2) {
+          document.getElementById('add_form').disabled = false;
+      }
+   }
+
+})
+  
+remove_form1.addEventListener('click', function(){
+if (clickCount > 0) {
+  checkEnableNextButton1();
+  clickCount--;
+  resetPetDetails1();
+  form_fields2.style.display = 'none';   
+  lineBreak1.style.display = 'none';
+  remove_form1.style.display = 'none';
+  remove_form.style.display = 'flex';
+  add_form.style.display = 'flex';
+  lineBreak3.style.display = 'none';
+  lineBreak5.style.display = 'none';
+  appointment_details2.style.display = 'none';
+  details2.style.display = 'none';
+      
+  // Check if clickCount was 2, then re-enable the add_form button
+  if (clickCount !== 2) {
+      document.getElementById('add_form').disabled = false;
+  }
+}
+  
+})
+
+
+function resetPetDetails() {
+  
+  checkEnableNextButton();
+  
+  // Reset petName-1
+  document.getElementById('petName-1').value = '';
+
+  // Unselect dog-1 and cat-1 inside dog_cat_btn-1
+  document.getElementById('dog-1').checked = false;
+  document.getElementById('cat-1').checked = false;
+
+  // Disable breed-1
+  document.getElementById('breed-1').disabled = true;
+  document.getElementById('surgery_type-1').value = '';
+  document.getElementById('floatingTextarea-1').value = '';
+  
+  
+}
+  
+function resetPetDetails1() {
+  
+  checkEnableNextButton1();
+  
+  // Reset petName-1
+  document.getElementById('petName-2').value = '';
+
+  // Unselect dog-1 and cat-1 inside dog_cat_btn-1
+  document.getElementById('dog-2').checked = false;
+  document.getElementById('cat-2').checked = false;
+
+  // Disable breed-1
+  document.getElementById('breed-2').disabled = true;
+  document.getElementById('surgery_type-2').value = '';
+  document.getElementById('floatingTextarea-2').value = '';
+}
+
+
+  
 
   // Other functions remain the same...
 
@@ -217,57 +315,71 @@ function resetInputFields(formId) {
   
 
 function makePetSelectionReusable(breedSelectId, dogRadioId, catRadioId, dogBreeds, catBreeds) {
-      const breedSelect = document.getElementById(breedSelectId);
-      const dogRadio = document.getElementById(dogRadioId);
-      const catRadio = document.getElementById(catRadioId);
+const breedSelect = document.getElementById(breedSelectId);
+const dogRadio = document.getElementById(dogRadioId);
+const catRadio = document.getElementById(catRadioId);
 
-      // Function to populate the breed select with options
-      function populateBreeds(breeds) {
-          breedSelect.removeAttribute("disabled");
-          breedSelect.innerHTML = "";
+// Function to populate the breed select with options
+function populateBreeds(breeds) {
+  breedSelect.removeAttribute("disabled");
+  breedSelect.innerHTML = "";
 
-          const defaultOption = document.createElement("option");
-          defaultOption.value = "none";
-          defaultOption.textContent = "Select a breed";
-          breedSelect.appendChild(defaultOption);
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "none";
+  defaultOption.textContent = "Select a breed";
+  breedSelect.appendChild(defaultOption);
 
-          breeds.forEach((breed) => {
-              const option = document.createElement("option");
-              option.value = breed;
-              option.textContent = breed;
-              breedSelect.appendChild(option);
-          });
-      }
+  breeds.forEach((breed) => {
+    const option = document.createElement("option");
+    option.value = breed;
+    option.textContent = breed;
+    breedSelect.appendChild(option);
+  });
+}
 
-      // Function to toggle breed select and populate options based on pet selection
-      function toggleBreedSelect() {
-          if (dogRadio.checked) {
-              populateBreeds(dogBreeds);
-          } else if (catRadio.checked) {
-              populateBreeds(catBreeds);
-          } else {
-              breedSelect.setAttribute("disabled", "true");
-              breedSelect.innerHTML = `<option value="none">Please select type of pet first</option>`;
-          }
-          // Add any additional logic you need here
-      }
-
-      // Add change event listeners to radio buttons
-      dogRadio.addEventListener("change", toggleBreedSelect);
-      catRadio.addEventListener("change", toggleBreedSelect);
-
-      // Initially, call toggleBreedSelect to set the initial state based on radio button selection
-      toggleBreedSelect();
+// Function to handle radio button click
+function handleRadioClick(selectedRadio, breeds) {
+  if (selectedRadio.checked) {
+    populateBreeds(breeds);
+  } else {
+    breedSelect.setAttribute("disabled", "true");
+    breedSelect.innerHTML = `<option value="none">Please select type of pet first</option>`;
   }
+  // Add any additional logic you need here
+}
+
+// Add click event listeners to radio buttons
+dogRadio.addEventListener("click", function () {
+  handleRadioClick(dogRadio, dogBreeds);
+  catRadio.checked = false; // Uncheck the cat radio button
+});
+
+catRadio.addEventListener("click", function () {
+  handleRadioClick(catRadio, catBreeds);
+  dogRadio.checked = false; // Uncheck the dog radio button
+});
+
+// Initially, call handleRadioClick to set the initial state based on radio button selection
+handleRadioClick(dogRadio, dogBreeds);
+}
+
+
 
   // Example usage for the first set of pet elements
-  makePetSelectionReusable("breed", "dog", "cat", ["Affenpinscher", "Yorkshire Terrier"], ["Abyssinian", "Turkish Van"]);
+  makePetSelectionReusable("breed", "dog", "cat", ["Affenpinscher","Afghan Hound","Airedale Terrier","Akita","Alaskan Malamute","American Bulldog","American Eskimo Dog","American Foxhound","American Pit Bull Terrier","American Staffordshire Terrier","Anatolian Shepherd Dog","Australian Cattle Dog","Australian Shepherd","Australian Terrier","Basenji","Basset Hound","Beagle","Bearded Collie","Bedlington Terrier","Belgian Malinois","Belgian Sheepdog","Belgian Tervuren","Bernese Mountain Dog","Bichon Frise","Black and Tan Coonhound","Bloodhound","Border Collie","Border Terrier","Borzoi","Boston Terrier","Bouvier des Flandres","Boxer","Boykin Spaniel","Briard","Brittany","Brussels Griffon","Bull Terrier","Bulldog","Bullmastiff","Cairn Terrier","Canaan Dog","Cane Corso","Cardigan Welsh Corgi","Cavalier King Charles Spaniel","Chesapeake Bay Retriever","Chihuahua","Chinese Crested","Chinese Shar-Pei","Chow Chow","Clumber Spaniel","Cockapoo","Collie","Coonhound","Corgi","Coton de Tulear","Curly-Coated Retriever","Dachshund","Dalmatian","Dandie Dinmont Terrier","Doberman Pinscher","Dogue de Bordeaux","Dutch Shepherd","English Bulldog","English Cocker Spaniel","English Foxhound","English Setter","English Springer Spaniel","English Toy Spaniel","Entlebucher Mountain Dog","Eskimo Dog","Finnish Lapphund","Finnish Spitz","Flat-Coated Retriever","French Bulldog","German Pinscher","German Shepherd Dog","German Shorthaired Pointer","German Wirehaired Pointer","Giant Schnauzer","Glen of Imaal Terrier","Goldador","Golden Retriever","Goldendoodle","Gordon Setter","Great Dane","Great Pyrenees","Greater Swiss Mountain Dog","Greyhound","Harrier","Havanese","Hound","Hovawart","Hungarian Puli","Hungarian Shepherd","Hungarian Vizsla","Husky","Ibizan Hound","Icelandic Sheepdog","Irish Setter","Irish Terrier","Irish Water Spaniel","Irish Wolfhound","Italian Greyhound","Jack Russell Terrier","Japanese Chin","Japanese Spitz","Japanese Terrier","Keeshond","Kerry Blue Terrier","King Charles Spaniel","Klee Kai","Kuvasz","Labradoodle","Labrador Retriever","Lakeland Terrier","Lancashire Heeler","Leonberger","Lhasa Apso","Lowchen","Maltese","Manchester Terrier","Maremma Sheepdog","Mastiff","Miniature Bull Terrier","Miniature Pinscher","Miniature Schnauzer","Mixed Breed","Mountain Cur","Mountain Dog","Neapolitan Mastiff","Newfoundland","Norfolk Terrier","Norwegian Buhund","Norwegian Elkhound","Norwegian Lundehund","Norwich Terrier","Nova Scotia Duck Tolling Retriever","Old English Sheepdog","Otterhound","Papillon","Pekingese","Pembroke Welsh Corgi","Pharaoh Hound","Pinscher","Pit Bull Terrier","Plott Hound","Podenco Canario","Pointer","Polish Lowland Sheepdog","Pomeranian","Poodle","Portuguese Water Dog","Presacanario","Pug","Puggle","Puli","Pumi","Pyrenees","Redbone Coonhound","Retriever","Rhodesian Ridgeback","Rottweiler","Saint Bernard","Saluki","Samoyed","Schipperke","Scottish Deerhound","Scottish Terrier","Sealyham Terrier","Setter","Shar-Pei","Sheltie","Shiba Inu","Shih Tzu","Siberian Husky","Silky Terrier","Skye Terrier","Sloughi","Small Munsterlander Pointer","Spaniel","Spanish Water Dog","Spitz","Springer Spaniel","Staffordshire Bull Terrier","Standard Schnauzer","Sussex Spaniel","Swedish Vallhund","Terrier","Thai Ridgeback","Tibetan Mastiff","Tibetan Spaniel","Tibetan Terrier","Tosa Inu","Toy Fox Terrier","Treeing Walker Coonhound","Vizsla","Weimaraner","Welsh Corgi","Welsh Terrier","West Highland White Terrier","Whippet","White Shepherd","Wirehaired Pointing Griffon","Xoloitzcuintli","Yorkshire Terrier"]
+
+, ["Abyssinian","American Bobtail","American Curl","American Shorthair","American Wirehair","Balinese","Bengal","Birman","Bombay","British Shorthair","Burmese","Chartreux","Chausie","Cornish Rex","Cymric","Devon Rex","Egyptian Mau","European Burmese","Exotic Shorthair","Havana Brown","Himalayan","Japanese Bobtail","Javanese","Korat","LaPerm","Maine Coon","Manx","Munchkin","Nebelung","Norwegian Forest","Ocicat","Oriental","Persian","Pixie-Bob","Ragamuffin","Ragdoll","Russian Blue","Savannah","Scottish Fold","Selkirk Rex","Siamese","Siberian","Singapura","Snowshoe","Somali","Sphynx","Tonkinese","Turkish Angora","Turkish Van"]
+);
 
   // Example usage for the second set of pet elements
-  makePetSelectionReusable("breed-1", "dog-1", "cat-1", ["Bulldog", "Labrador", "Poodle"], ["Siamese", "Persian", "Maine Coon"]);
+  makePetSelectionReusable("breed-1", "dog-1", "cat-1", ["Affenpinscher","Afghan Hound","Airedale Terrier","Akita","Alaskan Malamute","American Bulldog","American Eskimo Dog","American Foxhound","American Pit Bull Terrier","American Staffordshire Terrier","Anatolian Shepherd Dog","Australian Cattle Dog","Australian Shepherd","Australian Terrier","Basenji","Basset Hound","Beagle","Bearded Collie","Bedlington Terrier","Belgian Malinois","Belgian Sheepdog","Belgian Tervuren","Bernese Mountain Dog","Bichon Frise","Black and Tan Coonhound","Bloodhound","Border Collie","Border Terrier","Borzoi","Boston Terrier","Bouvier des Flandres","Boxer","Boykin Spaniel","Briard","Brittany","Brussels Griffon","Bull Terrier","Bulldog","Bullmastiff","Cairn Terrier","Canaan Dog","Cane Corso","Cardigan Welsh Corgi","Cavalier King Charles Spaniel","Chesapeake Bay Retriever","Chihuahua","Chinese Crested","Chinese Shar-Pei","Chow Chow","Clumber Spaniel","Cockapoo","Collie","Coonhound","Corgi","Coton de Tulear","Curly-Coated Retriever","Dachshund","Dalmatian","Dandie Dinmont Terrier","Doberman Pinscher","Dogue de Bordeaux","Dutch Shepherd","English Bulldog","English Cocker Spaniel","English Foxhound","English Setter","English Springer Spaniel","English Toy Spaniel","Entlebucher Mountain Dog","Eskimo Dog","Finnish Lapphund","Finnish Spitz","Flat-Coated Retriever","French Bulldog","German Pinscher","German Shepherd Dog","German Shorthaired Pointer","German Wirehaired Pointer","Giant Schnauzer","Glen of Imaal Terrier","Goldador","Golden Retriever","Goldendoodle","Gordon Setter","Great Dane","Great Pyrenees","Greater Swiss Mountain Dog","Greyhound","Harrier","Havanese","Hound","Hovawart","Hungarian Puli","Hungarian Shepherd","Hungarian Vizsla","Husky","Ibizan Hound","Icelandic Sheepdog","Irish Setter","Irish Terrier","Irish Water Spaniel","Irish Wolfhound","Italian Greyhound","Jack Russell Terrier","Japanese Chin","Japanese Spitz","Japanese Terrier","Keeshond","Kerry Blue Terrier","King Charles Spaniel","Klee Kai","Kuvasz","Labradoodle","Labrador Retriever","Lakeland Terrier","Lancashire Heeler","Leonberger","Lhasa Apso","Lowchen","Maltese","Manchester Terrier","Maremma Sheepdog","Mastiff","Miniature Bull Terrier","Miniature Pinscher","Miniature Schnauzer","Mixed Breed","Mountain Cur","Mountain Dog","Neapolitan Mastiff","Newfoundland","Norfolk Terrier","Norwegian Buhund","Norwegian Elkhound","Norwegian Lundehund","Norwich Terrier","Nova Scotia Duck Tolling Retriever","Old English Sheepdog","Otterhound","Papillon","Pekingese","Pembroke Welsh Corgi","Pharaoh Hound","Pinscher","Pit Bull Terrier","Plott Hound","Podenco Canario","Pointer","Polish Lowland Sheepdog","Pomeranian","Poodle","Portuguese Water Dog","Presacanario","Pug","Puggle","Puli","Pumi","Pyrenees","Redbone Coonhound","Retriever","Rhodesian Ridgeback","Rottweiler","Saint Bernard","Saluki","Samoyed","Schipperke","Scottish Deerhound","Scottish Terrier","Sealyham Terrier","Setter","Shar-Pei","Sheltie","Shiba Inu","Shih Tzu","Siberian Husky","Silky Terrier","Skye Terrier","Sloughi","Small Munsterlander Pointer","Spaniel","Spanish Water Dog","Spitz","Springer Spaniel","Staffordshire Bull Terrier","Standard Schnauzer","Sussex Spaniel","Swedish Vallhund","Terrier","Thai Ridgeback","Tibetan Mastiff","Tibetan Spaniel","Tibetan Terrier","Tosa Inu","Toy Fox Terrier","Treeing Walker Coonhound","Vizsla","Weimaraner","Welsh Corgi","Welsh Terrier","West Highland White Terrier","Whippet","White Shepherd","Wirehaired Pointing Griffon","Xoloitzcuintli","Yorkshire Terrier"]
+, ["Abyssinian","American Bobtail","American Curl","American Shorthair","American Wirehair","Balinese","Bengal","Birman","Bombay","British Shorthair","Burmese","Chartreux","Chausie","Cornish Rex","Cymric","Devon Rex","Egyptian Mau","European Burmese","Exotic Shorthair","Havana Brown","Himalayan","Japanese Bobtail","Javanese","Korat","LaPerm","Maine Coon","Manx","Munchkin","Nebelung","Norwegian Forest","Ocicat","Oriental","Persian","Pixie-Bob","Ragamuffin","Ragdoll","Russian Blue","Savannah","Scottish Fold","Selkirk Rex","Siamese","Siberian","Singapura","Snowshoe","Somali","Sphynx","Tonkinese","Turkish Angora","Turkish Van"]
+);
 
   // Example usage for the third set of pet elements
-  makePetSelectionReusable("breed-2", "dog-2", "cat-2", ["Dachshund", "Golden Retriever", "Beagle"], ["Russian Blue", "Bengal", "Sphynx"]);
+  makePetSelectionReusable("breed-2", "dog-2", "cat-2", ["Affenpinscher","Afghan Hound","Airedale Terrier","Akita","Alaskan Malamute","American Bulldog","American Eskimo Dog","American Foxhound","American Pit Bull Terrier","American Staffordshire Terrier","Anatolian Shepherd Dog","Australian Cattle Dog","Australian Shepherd","Australian Terrier","Basenji","Basset Hound","Beagle","Bearded Collie","Bedlington Terrier","Belgian Malinois","Belgian Sheepdog","Belgian Tervuren","Bernese Mountain Dog","Bichon Frise","Black and Tan Coonhound","Bloodhound","Border Collie","Border Terrier","Borzoi","Boston Terrier","Bouvier des Flandres","Boxer","Boykin Spaniel","Briard","Brittany","Brussels Griffon","Bull Terrier","Bulldog","Bullmastiff","Cairn Terrier","Canaan Dog","Cane Corso","Cardigan Welsh Corgi","Cavalier King Charles Spaniel","Chesapeake Bay Retriever","Chihuahua","Chinese Crested","Chinese Shar-Pei","Chow Chow","Clumber Spaniel","Cockapoo","Collie","Coonhound","Corgi","Coton de Tulear","Curly-Coated Retriever","Dachshund","Dalmatian","Dandie Dinmont Terrier","Doberman Pinscher","Dogue de Bordeaux","Dutch Shepherd","English Bulldog","English Cocker Spaniel","English Foxhound","English Setter","English Springer Spaniel","English Toy Spaniel","Entlebucher Mountain Dog","Eskimo Dog","Finnish Lapphund","Finnish Spitz","Flat-Coated Retriever","French Bulldog","German Pinscher","German Shepherd Dog","German Shorthaired Pointer","German Wirehaired Pointer","Giant Schnauzer","Glen of Imaal Terrier","Goldador","Golden Retriever","Goldendoodle","Gordon Setter","Great Dane","Great Pyrenees","Greater Swiss Mountain Dog","Greyhound","Harrier","Havanese","Hound","Hovawart","Hungarian Puli","Hungarian Shepherd","Hungarian Vizsla","Husky","Ibizan Hound","Icelandic Sheepdog","Irish Setter","Irish Terrier","Irish Water Spaniel","Irish Wolfhound","Italian Greyhound","Jack Russell Terrier","Japanese Chin","Japanese Spitz","Japanese Terrier","Keeshond","Kerry Blue Terrier","King Charles Spaniel","Klee Kai","Kuvasz","Labradoodle","Labrador Retriever","Lakeland Terrier","Lancashire Heeler","Leonberger","Lhasa Apso","Lowchen","Maltese","Manchester Terrier","Maremma Sheepdog","Mastiff","Miniature Bull Terrier","Miniature Pinscher","Miniature Schnauzer","Mixed Breed","Mountain Cur","Mountain Dog","Neapolitan Mastiff","Newfoundland","Norfolk Terrier","Norwegian Buhund","Norwegian Elkhound","Norwegian Lundehund","Norwich Terrier","Nova Scotia Duck Tolling Retriever","Old English Sheepdog","Otterhound","Papillon","Pekingese","Pembroke Welsh Corgi","Pharaoh Hound","Pinscher","Pit Bull Terrier","Plott Hound","Podenco Canario","Pointer","Polish Lowland Sheepdog","Pomeranian","Poodle","Portuguese Water Dog","Presacanario","Pug","Puggle","Puli","Pumi","Pyrenees","Redbone Coonhound","Retriever","Rhodesian Ridgeback","Rottweiler","Saint Bernard","Saluki","Samoyed","Schipperke","Scottish Deerhound","Scottish Terrier","Sealyham Terrier","Setter","Shar-Pei","Sheltie","Shiba Inu","Shih Tzu","Siberian Husky","Silky Terrier","Skye Terrier","Sloughi","Small Munsterlander Pointer","Spaniel","Spanish Water Dog","Spitz","Springer Spaniel","Staffordshire Bull Terrier","Standard Schnauzer","Sussex Spaniel","Swedish Vallhund","Terrier","Thai Ridgeback","Tibetan Mastiff","Tibetan Spaniel","Tibetan Terrier","Tosa Inu","Toy Fox Terrier","Treeing Walker Coonhound","Vizsla","Weimaraner","Welsh Corgi","Welsh Terrier","West Highland White Terrier","Whippet","White Shepherd","Wirehaired Pointing Griffon","Xoloitzcuintli","Yorkshire Terrier"]
+, ["Abyssinian","American Bobtail","American Curl","American Shorthair","American Wirehair","Balinese","Bengal","Birman","Bombay","British Shorthair","Burmese","Chartreux","Chausie","Cornish Rex","Cymric","Devon Rex","Egyptian Mau","European Burmese","Exotic Shorthair","Havana Brown","Himalayan","Japanese Bobtail","Javanese","Korat","LaPerm","Maine Coon","Manx","Munchkin","Nebelung","Norwegian Forest","Ocicat","Oriental","Persian","Pixie-Bob","Ragamuffin","Ragdoll","Russian Blue","Savannah","Scottish Fold","Selkirk Rex","Siamese","Siberian","Singapura","Snowshoe","Somali","Sphynx","Tonkinese","Turkish Angora","Turkish Van"]
+);
 
   
 function displayConfirmationDetails() {
@@ -307,7 +419,7 @@ function displayConfirmationDetails() {
   confirmAdditionalNotes.textContent = floatingTextareaInput.value;
 }
   
-  function displayConfirmationDetails1() {
+function displayConfirmationDetails1() {
   var petNameInput1 = document.getElementById('petName-1');
   var dogRadio1 = document.getElementById('dog-1');
   var catRadio1 = document.getElementById('cat-1');
@@ -348,7 +460,7 @@ function displayConfirmationDetails() {
       
 }
   
-  function displayConfirmationDetails2() {
+function displayConfirmationDetails2() {
   var petNameInput2 = document.getElementById('petName-2');
   var dogRadio2 = document.getElementById('dog-2');
   var catRadio2 = document.getElementById('cat-2');
@@ -481,15 +593,11 @@ if (selectedDate >= currentDate) {
   date = selectedDate;
 
   const confirmDateElement = document.getElementById('confirm_date');
-  const confirmDateElement1 = document.getElementById('confirm_date-1');
-    const confirmDateElement2 = document.getElementById('confirm_date-2');
 
 
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   selectedDateElement.innerText = date.toLocaleDateString(undefined, options);
   confirmDateElement.innerText = selectedDateElement.innerText; // Update the confirmDateElement with the selected date
-  confirmDateElement1.innerText = selectedDateElement.innerText;
-    confirmDateElement2.innerText = selectedDateElement.innerText;
   
   updateAppointmentTimeOptionsDisplay(); // Call the function after updating the selectedDayElement
     displayConfirmationDetails1();
@@ -554,11 +662,7 @@ li.addEventListener('click', function() {
     
   // Update the selected time in the confirm_time element
   const confirmTimeElement = document.querySelector('.confirm_time');
-  const confirmTimeElement1 = document.getElementById('confirm_time-1');
-  const confirmTimeElement2 = document.getElementById('confirm_time-2');
   confirmTimeElement.innerText = li.innerText;
-    confirmTimeElement1.innerText = li.innerText;
-    confirmTimeElement2.innerText = li.innerText;
     
     checkSelectionAndEnableButton();
 });
@@ -583,128 +687,18 @@ function checkSelectionAndEnableButton() {
 function updateAppointmentTimeOptionsDisplay() {
 const selectedDateElement = document.querySelector('.selected-date');
 const timeOptionsContainer = document.getElementById('Appointment_time_options');
+  var date_required_message = document.getElementById('date_required_message');
 
 if (selectedDateElement && selectedDateElement.classList.contains('selected-date')) {
   timeOptionsContainer.classList.remove('d-none');
   timeOptionsContainer.style.display = 'flex';
+    date_required_message.style.display = 'none';
 } else {
   timeOptionsContainer.style.display = 'none';
 }
 }
 
+
+  
+  
   });
-
-//   <script>
-//   // Wait for the document to be ready
-//      document.addEventListener("DOMContentLoaded", function () {
-//          // Get references to the <span> elements
-//          const petNameId = document.getElementById("confirm_Pet_name");
-//          const petTypeId = document.getElementById("confirm_Pet_type");
-//          const breedId = document.getElementById("confirm_breed");
-//          const appointmentTypeId = document.getElementById("confirm_surgery_type");
-//          const notesId = document.getElementById("confirm_additional_notes");
-//          const appointmentDateId = document.getElementById("confirm_date");
-//          const appointmentTimeId = document.getElementById("confirm_time");
-//          // 2nd Form IDs
-//          const petNameId1 = document.getElementById("confirm_Pet_name-1");
-//          const petTypeId1 = document.getElementById("confirm_Pet_type-1");
-//          const breedId1 = document.getElementById("confirm_breed-1");
-//          const appointmentTypeId1 = document.getElementById("confirm_surgery_type-1");
-//          const notesId1 = document.getElementById("confirm_additional_notes-1");
-//          const appointmentDateId1 = document.getElementById("confirm_date-1");
-//          const appointmentTimeId1 = document.getElementById("confirm_time-1");
-//          // 3rd Form IDs
-//          const petNameId2 = document.getElementById("confirm_Pet_name-2");
-//          const petTypeId2 = document.getElementById("confirm_Pet_type-2");
-//          const breedId2 = document.getElementById("confirm_breed-2");
-//          const appointmentTypeId2 = document.getElementById("confirm_surgery_type-2");
-//          const notesId2 = document.getElementById("confirm_additional_notes-2");
-//          const appointmentDateId2 = document.getElementById("confirm_date-2");
-//          const appointmentTimeId2 = document.getElementById("confirm_time-2");
-
-//          const petNameInput = document.getElementById("hidden_petName");
-//          const petTypeInput = document.getElementById("hidden_petType");
-//          const breedInput = document.getElementById("hidden_breed");
-//          const appointmentTypeInput = document.getElementById("hidden_appointmentType");
-//          const notesInput = document.getElementById("hidden_notes");
-//          const appointmentDateInput = document.getElementById("hidden_appointmentDate");
-//          const appointmentTimeInput = document.getElementById("hidden_appointmentTime");
-//          // 2nd Form Inputs
-//          const petNameInput1 = document.getElementById("hidden_petName-1");
-//          const petTypeInput1 = document.getElementById("hidden_petType-1");
-//          const breedInput1 = document.getElementById("hidden_breed-1");
-//          const appointmentTypeInpu1t = document.getElementById("hidden_appointmentType-1");
-//          const notesInput1 = document.getElementById("hidden_notes-1");
-//          const appointmentDateInput1 = document.getElementById("hidden_appointmentDate-1");
-//          const appointmentTimeInput1 = document.getElementById("hidden_appointmentTime-1");
-//          // 3rd Form Inputs
-//          const petNameInput2 = document.getElementById("hidden_petName-2");
-//          const petTypeInput2 = document.getElementById("hidden_petType-2");
-//          const breedInput2 = document.getElementById("hidden_breed-2");
-//          const appointmentTypeInput2 = document.getElementById("hidden_appointmentType-2");
-//          const notesInput2 = document.getElementById("hidden_notes-2");
-//          const appointmentDateInput2 = document.getElementById("hidden_appointmentDate-2");
-//          const appointmentTimeInput2 = document.getElementById("hidden_appointmentTime-2");
-
-//          // Set the values of the hidden <input> elements to the values from the <span> elements
-//          document.getElementById('form3').addEventListener("submit", function () {
-//          petNameInput.value = petNameId.innerText;
-//          petTypeInput.value = petTypeId.innerText;
-//          breedInput.value = breedId.innerText;
-//          appointmentTypeInput.value = appointmentTypeId.innerText;
-//          notesInput.value = notesId.innerText;
-//          appointmentDateInput.value = appointmentDateId.innerText;
-//          appointmentTimeInput.value = appointmentTypeId.innerText;
-
-//          petNameInput1.value = petNameId1.innerText;
-//          petTypeInput1.value = petTypeId1.innerText;
-//          breedInput1.value = breedId1.innerText;
-//          appointmentTypeInput1.value = appointmentTypeId1.innerText;
-//          notesInput1.value = notesId1.innerText;
-//          appointmentDateInput1.value = appointmentDateId1.innerText;
-//          appointmentTimeInput1.value = appointmentTypeId1.innerText;
-
-//          petNameInput2.value = petNameId2.innerText;
-//          petTypeInput2.value = petTypeId2.innerText;
-//          breedInput2.value = breedId2.innerText;
-//          appointmentTypeInput2.value = appointmentTypeId2.innerText;
-//          notesInput2.value = notesId2.innerText;
-//          appointmentDateInput2.value = appointmentDateId2.innerText;
-//          appointmentTimeInput2.value = appointmentTypeId2.innerText;
-//          });
-
-//          function submitForm() {
-//          event.preventDefault(); // Prevent the default form submission
-//          console.log('Button clicked');
-//          const myForm = document.getElementById("form3");
-//          const formData = new FormData(myForm);
-
-//          // Simulate form submission with ajax
-//          $.ajax({
-//              type: 'POST',
-//              url: '/user/appointment', // Replace with your server endpoint
-//              data: myForm,
-//              processData: false,
-//              contentType: false,
-//              headers: {
-//              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//              },
-//              success: function (response) {
-//                  console.log(response);
-//                  // Handle the success response as needed
-//              },
-//              error: function (error) {
-//                  console.error('Error:', error);
-//                  // Handle the error as needed
-//              }
-//          });
-//          }
-//      });
-
-//      const agree = document.getElementById('agree');
-//      const disagree = document.getElementById('disagree');
-//      const consent_modal = new bootstrap.Modal(document.getElementById('consent_modal'));
-//      const book_appointment_success = new bootstrap.Modal(document.getElementById('book_appointment_success'));
-
-
-//  </script>
