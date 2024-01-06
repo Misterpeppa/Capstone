@@ -1379,6 +1379,28 @@
                 });
 
             });
+            $('#archive').on('click', function() {
+            var row = $(this).closest('row-id');
+            const product_type = $(this).data('product-type');
+            const id = $(this).data('product-id');
+
+            // Send an AJAX request to the Laravel controller
+                $.ajax({
+                    type: 'POST',
+                    url: `/admin/inventory/archive/${product_type}/${id}`,
+                    data: {_token: '{{ csrf_token() }}'},
+                    success: function(response) {
+                        // Handle success, e.g., show a success message
+                        alert('Product has been archived');
+                        // Optionally, you can also reload the page or update the UI
+                        // location.reload();
+                    },
+                    error: function(xhr) {
+                        // Handle errors
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
 
         });
 

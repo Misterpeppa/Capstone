@@ -20,6 +20,7 @@ class MedInfo extends Model
         'prod_desc',
         'price',
         'product_type',
+        'archived_at'
     ];
 
     public function medHistory(): HasMany

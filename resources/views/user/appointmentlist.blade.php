@@ -1,139 +1,361 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-bs-theme="light" lang="en">
 
 <head>
-    <title>Appointment List</title>
-    @include('includes.head')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/user/appointmentList.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">  
-</head>
+	<meta charset="utf-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>appointmentformUserSide</title>
+	<link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
+	<link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+	<link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch-toggle-switch.css') }}"> </head>
 
-
-<body>
+<body> 
     @include('includes.user_header')
-    <main>
-        <div class="container text-center appointmentList_custom-container mb-5">
-            <div class="appointmentList_content_header">
-                <div class="appointmentList_header text-start">
-                    <h1>My Appointments</h1>
-                    <p>View your upcoming and pass appointments here.</p>
-                </div>
-                <a href="{{ route('appointment.form') }}" class="btn appointmentList_custom_button" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <g clip-path="url(#clip0_2295_6343)" filter="url(#filter0_d_2295_6343)">
-                    <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </g>
-                    <defs>
-                    <filter id="filter0_d_2295_6343" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                        <feOffset dy="2"/>
-                        <feGaussianBlur stdDeviation="1"/>
-                        <feComposite in2="hardAlpha" operator="out"/>
-                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2295_6343"/>
-                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2295_6343" result="shape"/>
-                    </filter>
-                    <clipPath id="clip0_2295_6343">
-                        <rect width="24" height="24" fill="white"/>
-                    </clipPath>
-                    </defs>
-                </svg> New Appointment
-                </a>
-
-
-            </div>
-            <ul class="nav appointmentList_nav_tabs nav-tabs mb-4" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" data-tab="upcoming" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true">
-                        Upcoming <span class="counter counter-upcoming" id="upcoming-counter"></span>
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" data-tab="history" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">
-                        History <span class="counter counter-recent" id="history-counter"></span>
-                    </button>
-                </li>
-            </ul>
-
-            <div class="appointmentList_tab_content tab-content" id="myTabContent">
-                <div class="tab-pane appointmentList_custom-tab fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab" data-index="0">
-                    <table class="appointmentList_appointment_table" id="upcomingTable">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Patient Info</th>
-                                <th>Appointment</th>
-                                <th>Service</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="upcomingTable">
-                        @foreach ($appointments as $index => $appointment)
-                            <tr>
-                            <td class="text-style">{{ $index + 1 }}</td>
-                            <td class="text-style">{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
-                            <td class="text-style">{{ $appointment['appointmentDate'] }} ( {{ \Carbon\Carbon::parse($appointment['appointmentTime'])->format('g:ia') }})</td>
-                            <td class="text-style">{{ $appointment['appointmentType'] }}</td>
-                            </tr> 
-                        @endforeach    <!-- Data for tab1 will be populated dynamically -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="tab-pane appointmentList_custom-tab fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab" data-index="1">
-                    <table class="appointmentList_appointment_table" id="history">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Patient Info</th>
-                                <th>Appointment</th>
-                                <th>Service</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="historyTable">
-                           <!-- Data for tab2 will be populated dynamically -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-
-    <footer class="d-flex align-items-center" style="background: rgba(4,91,98,0.1);height: 200px;">
-        <div class="d-flex" style="height: 200px;">
-            <div class="col d-lg-flex d-xl-flex d-xxl-flex justify-content-xl-start align-items-xl-center"><img class="flex-md-shrink-0 flex-lg-shrink-0 flex-xl-shrink-0 flex-xxl-shrink-0" src="{{ asset('img/dogs&cats.png') }}" width="167" height="149"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-        </div>
-    </footer>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-    function countDataRows() {
-        var upcomingRowCount = $('#upcomingTable tbody tr').length;
-        var historyRowCount = $('#historyTable tbody tr').length;
-
-        // Update the counters with the counts
-        $('#upcoming-counter').text(upcomingRowCount);
-        $('#history-counter').text(historyRowCount);
-    }
-
-    // Call the function when needed, for example, on page load
-    $(document).ready(function() {
-        countDataRows();
-    });
-
-    </script>
-
- 
+	<main>
+		<div class="container-fluid mb-5">
+			<div class="row d-flex flex-column align-content-center flex-wrap">
+				<div class="col-10 col-xxl-8 user_appointment">
+					<div class="appointment_list_heading_button_container">
+						<div class="appointment_list_heading_texts">
+							<h1><strong>My Appointments</strong></h1>
+							<p>View your upcoming and past appointments here.</p>
+						</div>
+                        <a class="btn new_appointment_btn" role="button" href="{{ route('appointment.form') }}"><span class="new_appointment_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <g clip-path="url(#clip0_5910_1403)" filter="url(#filter0_d_5910_1403)">
+                                <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <defs>
+                                <filter id="filter0_d_5910_1403" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="2"/>
+                                <feGaussianBlur stdDeviation="1"/>
+                                <feComposite in2="hardAlpha" operator="out"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5910_1403"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_5910_1403" result="shape"/>
+                                </filter>
+                                <clipPath id="clip0_5910_1403">
+                                <rect width="24" height="24" fill="white"/>
+                                </clipPath>
+                            </defs>
+                            </svg> New Appointment</span></a> 
+                        </div>
+					<div class="appointment_list_tabs">
+						<ul class="nav nav-tabs appointment_list_tab_items" role="tablist">
+							<li class="nav-item" role="presentation"><a class="nav-link active list_tab" role="tab" data-bs-toggle="tab" href="#tab-1">Upcoming<span id="upcoming-counter" class="counter counter-upcoming">0</span></a></li>
+							<li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-2">Completed<span id="history-counter" class="counter counter-recent">0</span></a></li>
+						</ul>
+						<div class="tab-content" style="width: 100%;">
+							<div class="tab-pane active appointment_list_container" role="tabpanel" id="tab-1">
+								<div class="container_header">
+									<div class="left_part_product_header">
+										
+										
+										
+									</div>
+									<div class="right_part_product_header">
+										
+									</div>
+								</div>
+								<div id="appointment_table_container" class="appointment_table_container mt-3">
+									<table id="appointment_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+										<thead>
+											<tr>
+												<th>
+													<input id="SelectAll" type="checkbox" class="checkbox">
+												</th>
+												<th>No.</th>
+												<th>Patient Info</th>
+												<th>Surgery Type</th>
+												<th>Appointment Date</th>
+												<th>Appointment Time</th>
+											</tr>
+										</thead>
+										<tbody id="appointment_table_body">
+                                        @foreach ($appointments as $index => $appointment)
+                                        <tr>
+                                            <td class="text-style"></td> 
+                                            <td class="text-style">{{ $index + 1 }}</td>
+                                            <td class="text-style">{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
+                                            <td class="text-style">{{ $appointment['appointmentType'] }}</td>
+                                            <td class="text-style">{{ $appointment['appointmentDate'] }}</td>
+                                            <td class="text-style">{{ $appointment['appointmentTime'] }}</td>
+                                        </tr>
+                                        @endforeach
+                                        </tbody>
+									</table>
+									<div class="pagination">
+										<div class="pagination-menu"> <span>Go to:</span>
+											<select class="paginationGoToSelect">
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+											</select>
+										</div>
+										<div class="pagination-pages"> <span class="pagination-arrow previous-page">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
+                          <path d="M5.48 12L1.36452 7.88384C0.878492 7.39773 0.878492 6.60227 1.36452 6.11616L5.48 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+											<div class="pages"> <span class="pagination-page active">1</span> <span class="pagination-page">2</span> <span class="pagination-page">3</span> <span class="pagination-page">4</span> <span class="pagination-page">5</span> </div> <span class="pagination-arrow next-page">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
+                          <path d="M1.47998 12L5.59546 7.88384C6.08149 7.39773 6.08149 6.60227 5.59546 6.11616L1.47998 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
+                        </svg>
+                      </span> </div>
+										<div class="pagination-items"> <span>Show:</span>
+											<select class="paginationItemsSelect">
+												<option value="2">2 items</option>
+												<option value="3">3 items</option>
+												<option value="4">4 items</option>
+												<option value="5">5 items</option>
+												<option value="6">6 items</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane appointment_list_container" role="tabpanel" id="tab-2">
+								<div class="container_header">
+									<div class="left_part_product_header">
+										<div class="search_container">
+											<input type="search" class="search_input" placeholder="Search Appointment">
+										</div>
+										<button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_5284_15912)">
+    <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5284_15912">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg> Filter by</span></button>
+										<button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_5284_15919)">
+    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5284_15919">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg> Sort by</span></button>
+									</div>
+									<div class="right_part_product_header">
+										<button class="btn archive_button" id="archive_button-1" type="button">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+												<g clip-path="url(#clip0_5824_17335)">
+													<path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
+												<defs>
+													<clipPath id="clip0_5824_17335">
+														<rect width="24" height="24" fill="white" /> </clipPath>
+												</defs>
+											</svg>
+										</button>
+									</div>
+								</div>
+								<div id="appointment_table_container" class="appointment_table_container mt-3">
+									<table id="appointment_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+										<thead>
+											<tr>
+												<th>
+													<input id="SelectAll" type="checkbox" class="checkbox">
+												</th>
+												<th>Patient Info</th>
+												<th>Appointment</th>
+												<th>Surgery Type</th>
+												<th>Status</th>
+												<th>Additional Notes</th>
+												<th>Actions</th>
+											</tr>
+										</thead>
+										<tbody id="appointment_table_body"></tbody>
+									</table>
+									<div class="pagination">
+										<div class="pagination-menu"> <span>Go to:</span>
+											<select class="paginationGoToSelect">
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+											</select>
+										</div>
+										<div class="pagination-pages"> <span class="pagination-arrow previous-page">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
+                          <path d="M5.48 12L1.36452 7.88384C0.878492 7.39773 0.878492 6.60227 1.36452 6.11616L5.48 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+											<div class="pages"> <span class="pagination-page active">1</span> <span class="pagination-page">2</span> <span class="pagination-page">3</span> <span class="pagination-page">4</span> <span class="pagination-page">5</span> </div> <span class="pagination-arrow next-page">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
+                          <path d="M1.47998 12L5.59546 7.88384C6.08149 7.39773 6.08149 6.60227 5.59546 6.11616L1.47998 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
+                        </svg>
+                      </span> </div>
+										<div class="pagination-items"> <span>Show:</span>
+											<select class="paginationItemsSelect">
+												<option value="2">2 items</option>
+												<option value="3">3 items</option>
+												<option value="4">4 items</option>
+												<option value="5">5 items</option>
+												<option value="6">6 items</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer class="footer"><img src="{{ asset('assets/img/dogs_cats.png') }}" style="width: 159.783px;height: 150px;flex-shrink: 0;"></footer>
+	<div class="modal fade" role="dialog" tabindex="-1" id="consent_modal">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content add_client_modal">
+				<div class="modal-header">
+					<div class="icon-container">
+						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+							<g clip-path="url(#clip0_5910_18516)">
+								<path d="M16 10.6667V16M16 21.3333H16.0133M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 12.8174 26.7357 9.76516 24.4853 7.51472C22.2348 5.26428 19.1826 4 16 4C12.8174 4 9.76516 5.26428 7.51472 7.51472C5.26428 9.76516 4 12.8174 4 16Z" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
+							<defs>
+								<clipPath id="clip0_5910_18516">
+									<rect width="32" height="32" fill="white" /> </clipPath>
+							</defs>
+						</svg>
+					</div>
+				</div>
+				<div class="modal-body">
+					<div class="consent-title">
+						<h1>Informed Consent and Acknowledgement</h1>
+						<p>Before scheduling your pet's surgery, please carefully read and acknowledge the following:</p>
+					</div>
+					<div class="consent-text">
+						<p><span class="custom-style">1. Understanding the Procedure:</span> I understand that my pet will undergo a surgical procedure as recommended by the veterinarian. I have received information about the procedure, its risks, and its benefits.</p>
+						<p><span class="custom-style">2. Health Status:</span> I confirm that I have provided accurate information about my pet's health, including any known medical conditions, allergies, or medications.</p>
+						<p><span class="custom-style">3. Financial Responsibility:</span> I acknowledge that I am responsible for the cost of the surgical procedure and any related services. I have discussed the estimated costs with the clinic.</p>
+						<p><span class="custom-style">4. Postoperative Care:</span> I understand that postoperative care is essential for my pet's recovery. I will follow the post-surgery care instructions provided by the clinic.</p>
+						<p><span class="custom-style">5. Emergency Contact:</span> I have provided a valid emergency contact person and phone number in case of unforeseen circumstances during or after the surgery.</p>
+						<p>By clicking "I Agree," I confirm that I have read, understood, and agree to the terms and conditions mentioned above. I consent to my pet undergoing the scheduled surgery.</p>
+						<p>Please note that your agreement is required to proceed with scheduling the surgery for your pet.</p>
+					</div>
+				</div>
+				<div class="modal-footer consent_buttons">
+					<button class="btn disagree" id="disagree" type="button"><span class="disagree_base">I disagree</span></button>
+					<button class="btn agree" id="agree" type="submit"><span class="agree_base">I Agree</span></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade show" role="dialog" tabindex="-1" id="book_appointment_success">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content success_modal">
+				<div class="modal-header success_header">
+					<div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_5910_17688)">
+    <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5910_17688">
+      <rect width="32" height="32" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></div>
+				</div>
+				<div class="modal-body success_message">
+					<div>
+						<h1>Appointment completed!</h1>
+						<p>Please wait for your appointment to be confirmed.</p>
+					</div>
+				</div>
+				<div class="modal-footer"><a class="btn view_appointments" role="button"><span class="view_appointments_base">View Appointments</span></a></div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade show" role="dialog" tabindex="-1" id="archive_appointment_modal">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content archive_modal">
+				<div class="modal-header archive_header">
+					<div class="archive_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_5935_6779)">
+    <path d="M16 10.6667V16M16 21.3333H16.0133M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 12.8174 26.7357 9.76516 24.4853 7.51472C22.2348 5.26428 19.1826 4 16 4C12.8174 4 9.76516 5.26428 7.51472 7.51472C5.26428 9.76516 4 12.8174 4 16Z" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5935_6779">
+      <rect width="32" height="32" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></div>
+				</div>
+				<div class="modal-body archive_message">
+					<div>
+						<h1><strong>Archive appointments?</strong></h1>
+						<p>You can restore archived appointments at a later time.</p>
+					</div>
+				</div>
+				<div class="modal-footer discard_footer">
+					<button class="btn return_btn" data-bs-dismiss="modal" type="button"><span class="return_btn_base">Cancel</span></button>
+					<button class="btn archive_confirm" id="archive_confirm_button" type="button"><span class="archive_confirm_button_base">Archive</span></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade show" role="dialog" tabindex="-1" id="archive_appointment_modal-1">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content archive_modal">
+				<div class="modal-header archive_header">
+					<div class="archive_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_5935_6779)">
+    <path d="M16 10.6667V16M16 21.3333H16.0133M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 12.8174 26.7357 9.76516 24.4853 7.51472C22.2348 5.26428 19.1826 4 16 4C12.8174 4 9.76516 5.26428 7.51472 7.51472C5.26428 9.76516 4 12.8174 4 16Z" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5935_6779">
+      <rect width="32" height="32" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></div>
+				</div>
+				<div class="modal-body archive_message">
+					<div>
+						<h1><strong>Archive multiple appointments?</strong></h1>
+						<p>You can restore archived appointments at a later time.</p>
+					</div>
+				</div>
+				<div class="modal-footer discard_footer">
+					<button class="btn return_btn" data-bs-dismiss="modal" type="button"><span class="return_btn_base">Cancel</span></button>
+					<button class="btn archive_confirm" id="archive_confirm_button-1" type="button"><span class="archive_confirm_button_base">Archive</span></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('assets/js/bs-init.js') }}"></script>
+	<script src="{{ asset('assets/js/admin_signin.js') }}"></script>
+	<script src="{{ asset('assets/js/appointment_list.js') }}"></script>
+	<script src="{{ asset('assets/js/appointmentforms.js') }}"></script>
+	<script src="{{ asset('assets/js/client.js') }}"></script>
+	<script src="{{ asset('assets/js/dashboard.js') }}"></script>
+	<script src="{{ asset('assets/js/inventory.js') }}"></script>
+	<script src="{{ asset('assets/js/Multi-step-form-script.js') }}"></script>
+	<script src="{{ asset('assets/js/pet_information.js') }}"></script>
+	<script src="{{ asset('assets/js/pet_records.js') }}"></script>
+	<script src="{{ asset('assets/js/sidebar.js') }}"></script>
+	<script src="{{ asset('assets/js/signin.js') }}"></script>
+	<script src="{{ asset('assets/js/signup.js') }}"></script>
+	<script src="{{ asset('assets/js/user_settings.js') }}"></script>
 </body>
 
 </html>

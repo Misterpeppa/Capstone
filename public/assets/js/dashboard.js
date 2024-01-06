@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
   var add_patient_btn = document.getElementById('add_patient_btn');
-    var submit_client = document.getElementById('submit_client');
-  var modal = new bootstrap.Modal(document.getElementById('add_patient_modal'));
+  var add_patient_modal = new bootstrap.Modal(document.getElementById('add_patient_modal'));
   
   add_patient_btn.addEventListener('click', function () {
-    modal.show();
+    add_patient_modal.show();
   });
     
     
@@ -15,16 +14,18 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
     
+  
+    
 function submitClient() {
 
-            // Get form values
-            var firstName = document.getElementById('first_name').value;
-            var middleName = document.getElementById('middle_name').value;
-            var lastName = document.getElementById('last_name-1').value;
-            var suffix = document.getElementById('suffix-1').value;
-            var birthdate = document.getElementById('client_birthdate').value;
-            var address = document.getElementById('client_address').value;
-            var phoneNumber = document.getElementById('user_phone').value;
+            // Get form values    
+            var firstName = document.getElementById("first_name").value;
+            var middleName = document.getElementById("middle_name").value;
+            var lastName = document.getElementById("last_name").value;
+            var suffix = document.getElementById("suffix").value;
+            var birthdate = document.getElementById("client_birthdate").value;
+            var address = document.getElementById("client_address").value;
+            var user_phone = document.getElementById('user_phone').value;
 
             // Create a new table row
             var table = document.getElementById('dashboard_table_body');
@@ -158,32 +159,278 @@ dropdownContent.appendChild(lineBreak);
     document.getElementById('add_client_form').reset();
 
           // Toggle the visibility of dropdown-content when the Actions button is clicked
-                document.querySelectorAll('.dropbtn').forEach(function (button) {
-                    button.addEventListener('click', function (event) {
-                        event.stopPropagation(); // Prevent the click event from propagating
-                        const content = this.nextElementSibling;
-                        if (content.style.display === 'flex') {
-                            content.style.display = 'none';
-                        } else if (content.style.display === 'flex'){
-                            content.style.display = 'none';
-                        }
-                        else {
-                            content.style.display = 'flex';
-                        }
-                    });
-                });
+    // Toggle the visibility of dropdown-content when the Actions button is clicked
+document.querySelectorAll('.dropbtn').forEach(function (button) {
+    button.addEventListener('click', function (event) {
+        event.stopPropagation(); // Prevent the click event from propagating
+        const content = this.nextElementSibling;
+        content.style.display = (content.style.display === 'flex') ? 'none' : 'flex';
+    });
+});
+
 }
-
-function handleAction(action) {
-    // Add your logic here based on the action
-    console.log('Action:', action);
-}
-    
-
-
-
-
-
 
 
 });
+
+ const inputs = ['first_name', 'middle_name', 'last_name'];
+
+inputs.forEach(inputId => {
+    document.getElementById(inputId).addEventListener('input', function () {
+        let inputValue = this.value;
+        let regex = /^[a-zA-Z0-9\s]*$/;  // Allow letters, numbers, and spaces
+
+        // Check if the input matches the regex
+        if (regex.test(inputValue)) {
+            // Capitalize the first letter of each word
+            inputValue = inputValue.replace(/\b\w/g, firstLetter => firstLetter.toUpperCase());
+        } else {
+            // If the input doesn't match the regex, remove the last character
+            inputValue = inputValue.substring(0, inputValue.length - 1);
+        }
+
+        // Set the updated value to the input
+        this.value = inputValue;
+
+        // Perform any additional checks or actions
+        checkInputs();
+    });
+});   
+    
+    
+    
+function setupFormValidation(inputIds, buttonId, clearButtonId, close_client_modalId) {
+    var inputs = inputIds.map(id => document.getElementById(id));
+    var submitButton = document.getElementById(buttonId);
+    var clearButton = document.getElementById(clearButtonId);
+    var close_client_btn = document.getElementById(close_client_modalId);
+
+    // Function to check if all required input fields have values
+    function areAllInputsFilled() {
+        return inputs.every(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, check if a valid option is selected
+                return input.options[input.selectedIndex].value.trim() !== '';
+            } else {
+                // For other input types, check if the value is present
+                return input.value.trim() !== '';
+            }
+        });
+    }
+
+    // Disable the submit button by default
+    submitButton.disabled = true;
+
+    // Add an event listener to each input field for the 'input' event
+    inputs.forEach(input => input.addEventListener('input', enableSubmitButton));
+
+    function enableSubmitButton() {
+        // Enable or disable the submit button based on the condition
+        submitButton.disabled = !areAllInputsFilled();
+    }
+
+    // Add an event listener to the submit button for the 'click' event
+    submitButton.addEventListener('click', function () {
+        console.log("Submit button clicked!");
+        // Add your logic for handling the form submission
+        // For example, you can call a function to process the form data
+
+        // Reset all input fields
+        inputs.forEach(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, set the selectedIndex to the default one
+                input.selectedIndex = 0;
+            } else {
+                // For other input types, set the value to an empty string
+                input.value = '';
+            }
+        });
+
+        // Disable the submit button after submission
+        submitButton.disabled = true;
+    });
+
+    // Add an event listener to the clear button for the 'click' event
+    clearButton.addEventListener('click', function () {
+        // Clear all input fields
+        inputs.forEach(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, set the selectedIndex to the default one
+                input.selectedIndex = 0;
+            } else {
+                // For other input types, set the value to an empty string
+                input.value = '';
+            }
+        });
+
+        // Disable the submit button after clearing
+        submitButton.disabled = true;
+    });
+    // Disable or enable the submit button based on the initial state of the form
+    submitButton.disabled = !areAllInputsFilled();
+    
+    close_client_btn.addEventListener('click', function () {
+        // Clear all input fields
+        inputs.forEach(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, set the selectedIndex to the default one
+                input.selectedIndex = 0;
+            } else {
+                // For other input types, set the value to an empty string
+                input.value = '';
+            }
+        });
+
+        // Disable the submit button after clearing
+        submitButton.disabled = true;
+    });
+}
+
+function setupDateValidation(inputId) {
+    const today = new Date();
+    const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate()).toISOString().split('T')[0];
+    const minDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate()).toISOString().split('T')[0];
+
+    const dateInput = document.getElementById(inputId);
+    dateInput.setAttribute('max', maxDate);
+    dateInput.setAttribute('min', minDate);
+
+    dateInput.addEventListener('change', function () {
+        let selectedDate = new Date(this.value);
+        if (selectedDate > today || selectedDate < new Date(today.getFullYear() - 100, today.getMonth(), today.getDate())) {
+            this.value = '';
+            alert('Please select a date between 18 and 100 years ago.');
+        }
+        // Additional validation or action can be added here if needed
+    });
+
+    dateInput.addEventListener('keydown', function (e) {
+        e.preventDefault();
+    });
+}
+
+// Example usage for client_birthdate
+setupDateValidation('client_birthdate');
+
+    
+    var firstName = document.getElementById("first_name");
+    var middleName = document.getElementById("middle_name");
+    var lastName = document.getElementById("last_name");
+    var suffix = document.getElementById("suffix");
+    var birthdate = document.getElementById("client_birthdate");
+    var address = document.getElementById("client_address");
+    var email = document.getElementById("client_email");
+    var user_phone = document.getElementById('user_phone');
+    
+    //error messages IDs
+    var errorFname = document.getElementById('error-first_name');
+    var errormiddleName = document.getElementById('error-middle_name');
+    var errorlastName = document.getElementById('error-last_name');
+    var errorbirthdate = document.getElementById('error-client_birthdate');
+    var erroraddress = document.getElementById('error-client_address');
+    var erroremail = document.getElementById('error-client_email');
+    var erroruser_phone = document.getElementById('error-user_phone');
+    
+    //guide messages IDs
+    var guideFname = document.getElementById('guide-first_name');
+    var guidemiddleName = document.getElementById('guide-middle_name');
+    var guidelastName = document.getElementById('guide-last_name');
+    var guidebirthdate = document.getElementById('guide-client_birthdate');
+    var guideaddress = document.getElementById('guide-client_address');
+    var guideemail = document.getElementById('guide-client_email');
+    var guideuser_phone = document.getElementById('guide-user_phone');
+    
+
+
+    
+    handleInputError(firstName, errorFname, guideFname)  
+    handleInputError(middleName, errormiddleName, guidemiddleName)  
+    handleInputError(lastName, errorlastName, guidelastName)  
+    handleInputError(birthdate, errorbirthdate, guidebirthdate)  
+    handleInputError(address, erroraddress, guideaddress)  
+    handleInputError(email, erroremail, guideemail)
+    handleInputError(user_phone, erroruser_phone, guideuser_phone)
+  
+    
+function handleInputError(input, error, guide) {
+    function onBlur() {
+    if (input.value.trim() === '' || input.value.trim() === '0') {
+        error.style.display = 'flex'; // Show the error message
+        input.classList.add('is-invalid');
+        input.classList.add('error-border');
+    } else if (input.value.trim() === 'none') {
+        error.style.display = 'flex'; // Show the error message
+        input.classList.add('is-invalid');
+        input.classList.add('error-border');
+    } else if (input.type === 'email' && !isValidEmail(input.value.trim())) {
+        error.style.display = 'flex'; // Show the error message
+        input.classList.add('is-invalid');
+        input.classList.add('error-border');
+    } else {
+        error.style.display = 'none'; // Hide the error message
+        input.classList.remove('is-invalid');
+        input.classList.remove('error-border');
+    }
+}
+
+
+    function onFocus() {
+        error.style.display = 'none'; // Hide the error message
+        guide.style.display = 'flex'; // Show the guide message
+        input.classList.remove('is-invalid');
+        input.classList.remove('error-border');
+    }
+
+    function onBlurGuide() {
+        guide.style.display = 'none'; // Hide the guide message
+    }
+
+    // Add event listeners to inputs
+    input.addEventListener('blur', onBlur);
+    input.addEventListener('focus', onFocus);
+    input.addEventListener('blur', onBlurGuide);
+}   
+// Function to check if the value is a valid email format
+function isValidEmail(email) {
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+}
+
+    
+function PhoneNumberInputLimit(inputElement) {
+    inputElement.addEventListener('input', function () {
+        if (this.value.length > 11) {
+        this.value = this.value.slice(0, 11);
+    }
+
+    // Ensure the first two characters are '09'
+    if (this.value.length >= 2 && this.value.slice(0, 2) !== '09') {
+        // Adjust the input to start with '09'
+        this.value = '09' + this.value.slice(2);
+    }
+    });
+}
+    
+    
+PhoneNumberInputLimit(user_phone); 
+    
+        
+
+// Function to check if the value is a valid email format
+function isValidEmail(email) {
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+}
+
+
+
+// Example usage for the first set of inputs, submit button, and clear button
+setupFormValidation(
+    ['first_name', 'middle_name', 'last_name', 'client_birthdate', 'client_address', 'client_email', 'user_phone'],
+    'submit_Client',
+    'clear_form', 
+    'close_client_modal'
+);
+    
+
+

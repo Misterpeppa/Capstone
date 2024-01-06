@@ -18,7 +18,8 @@ class VitBatch extends Model
         'product_code',
         'manufacturing_date',
         'expiration_date',
-        'date_stocked'
+        'date_stocked',
+        'archived_at'
     ];
 
     public function Vit(): BelongsTo

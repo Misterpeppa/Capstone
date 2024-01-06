@@ -1,6 +1,3 @@
-.pet_card {
-}
-
 .error-message {
   position: absolute;
   left: 0;
@@ -917,6 +914,18 @@ h1 {
   gap: var(--spacing-spacing-l, 2px);
 }
 
+.modal-content.resched_modal {
+  display: flex;
+  width: 798px;
+  padding: var(--Spacing-spacing-m, 24px);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--Spacing-spacing-s, 16px);
+  border-radius: var(--radius-s, 8px);
+  background: var(--Colors-Main-neutral-light, #F5F5F5);
+}
+
 .modal-content.success_modal, .modal-content.archive_modal {
   display: flex;
   width: 420px;
@@ -1116,7 +1125,7 @@ h1 {
   box-shadow: -1px 0px 10px 0px rgba(0, 0, 0, 0.25) inset !important;
 }
 
-.submit_product:disabled, .edit_save_changes:disabled, .add_stock:disabled, .add:disabled, .archive_confirm:disabled, .submit_pet:disabled, .signin_btn:disabled, .signin_btn:disabled {
+.submit_product:disabled, .edit_save_changes:disabled, .add_stock:disabled, .add:disabled, .archive_confirm:disabled, .submit_pet:disabled, .signin_btn:disabled, .signin_btn:disabled, .reschedule_btn:disabled {
   border-radius: var(--radius-s, 8px);
   opacity: 0.7;
   background: var(--colors-actions-action, #045B62);
@@ -1334,20 +1343,43 @@ h1 {
   top: 50%;
 }
 
-#example tbody tr, #dashboard_table tbody tr, #client_table tbody tr, #appointment_table tr {
+#approve_table tbody tr, #example tbody tr, #dashboard_table tbody tr, #client_table tbody tr, #appointment_table tr {
   height: 50px;
-}
-
-#example th:first-child, #example td:first-child, #client_table th:first-child, #client_table td:first-child, #appointment_table td:first-child, #dashboard_table th:first-child, #dashboard_table td:first-child {
-  width: 20px;
 }
 
 #example th:nth-child(2), #example td:nth-child(2), #example th:nth-child(3), #example td:nth-child(3), #example th:nth-child(4), #example td:nth-child(4), #example th:nth-child(5), #example td:nth-child(5), #example th:nth-child(6), #example td:nth-child(6), #example th:nth-child(7), #example td:nth-child(7) {
   width: 200px;
 }
 
-#appointment_table th:nth-child(2), #appointment_table td:nth-child(2), #appointment_table th:nth-child(3), #appointment_table td:nth-child(3), #appointment_table th:nth-child(4), #appointment_table td:nth-child(4), #appointment_table th:nth-child(5), #appointment_table td:nth-child(5), #appointment_table th:nth-child(6), #appointment_table td:nth-child(6) {
-  width: 200px;
+#approve_table th:first-child, #pending_table th:first-child, #rejected_table th:first-child, #example th:first-child, #example td:first-child, #client_table th:first-child, #client_table td:first-child, #appointment_table td:first-child, #dashboard_table th:first-child, #dashboard_table td:first-child {
+  width: 20px;
+}
+
+#approvedTableBody td, #pendingTableBody td, #rejectedTableBody td {
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgba(28, 28, 28, 0.70);
+  text-align: start;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+#approvedTableBody td:last-child, #pendingTableBody td:last-child, #rejectedTableBody td:last-child {
+  overflow: visible !important;
+}
+
+@media (max-width: 1400px) {
+  #approvedTableBody td:nth-child(n + 3):nth-child(-n + 8), #pendingTableBody td:nth-child(n + 3):nth-child(-n + 8), #rejectedTableBody td:nth-child(n + 3):nth-child(-n + 8) {
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 #client_table th:nth-child(2), #client_table td:nth-child(2), #client_table th:nth-child(3), #client_table td:nth-child(3), #client_table th:nth-child(4), #client_table td:nth-child(4), #client_table th:nth-child(5), #client_table td:nth-child(5), #client_table th:nth-child(6), #client_table td:nth-child(6), #client_table th:nth-child(7), #client_table td:nth-child(7) {
@@ -1362,7 +1394,7 @@ h1 {
   max-width: 70px;
 }
 
-#example td:last-child, #dashboard_table td:last-child, #client_table td:last-child, #appointment_table {
+#example td:last-child, #dashboard_table td:last-child, #client_table td:last-child, #appointment_table, #rejected_table td:last-child, #approved_table td:last-child, #pending_table td:last-child {
   text-align: right;
 }
 
@@ -1405,11 +1437,9 @@ h1 {
 
 .dropdown-item {
   display: flex;
-  height: 42px;
-  min-width: 164px;
-  padding: 12px;
+  min-width: 140px;
   align-items: center;
-  border-radius: var(--radius-s, 8px);
+  gap: var(--Spacing-spacing-xs, 12px);
   color: rgba(28, 28, 28, 0.70);
   font-family: Inter;
   font-size: 12px;
@@ -2038,7 +2068,7 @@ body {
   line-height: normal;
 }
 
-.discard_btn {
+.discard_btn, .reject_btn {
   display: flex;
   height: 56px;
   min-width: 100px;
@@ -2082,6 +2112,12 @@ body {
   border-radius: var(--radius-s, 8px);
   background: var(--colors-main-danger-dark, #C33834);
   box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+
+.discard_btn:active {
+  border-radius: var(--radius-s, 8px);
+  background: var(--Colors-Main-danger-dark, #C33834) !important;
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05) !important;
 }
 
 .add_stock_content {
@@ -2510,12 +2546,8 @@ body {
   align-self: stretch;
 }
 
-.pet_card_container {
+.pet_table {
   display: none;
-  align-items: flex-start;
-  gap: var(--spacing-spacing-s, 16px);
-  align-self: stretch;
-  max-height: 248px;
 }
 
 .card.pet_card {
@@ -2883,10 +2915,10 @@ body {
 .custom-control.custom-radio {
   display: flex;
   height: 64px;
-  max-width: 281px;
   padding: 0px var(--spacing-spacing-s, 16px) 0px var(--spacing-spacing-m, 24px);
   justify-content: space-between;
   align-items: center;
+  align-self: stretch;
   flex: 1 0 0;
   border-radius: var(--radius-s, 8px);
   border: 0.5px solid rgba(0, 0, 0, 0.30);
@@ -4813,4 +4845,271 @@ tbody tr td {
     gap: 20px;
     width: 568px;
   }
+}
+
+.admin_signin {
+  display: flex;
+  width: 441px;
+  padding: 30px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+  border-radius: var(--radius-s, 8px);
+  background: #F2F2F2;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+.admin_signin img {
+  width: 148px;
+  height: 141px;
+}
+
+.appointment_tab_content {
+  display: flex;
+  width: 100%;
+  padding: var(--Spacing-spacing-m, 24px);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--Spacing-spacing-s, 16px);
+  border-radius: var(--radius-s, 8px);
+  background: #F9F9F9;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.10), 0px 4px 6px -2px rgba(28, 28, 28, 0.05);
+}
+
+.appointment_empty_state {
+  display: flex;
+  padding: 60px 120px;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--Spacing-spacing-m, 24px);
+  align-self: stretch;
+  border-radius: var(--radius-s, 8px);
+}
+
+.approved_appointments_empty_state_message_container, .pending_appointments_empty_state_message_container, .rejected_appointments_empty_state_message_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--Spacing-spacing-s, 16px);
+  align-self: stretch;
+}
+
+.custom-control-label {
+  cursor: pointer;
+  margin: 0;
+}
+
+.custom-control-input {
+  display: flex;
+  width: 22px;
+  height: 22px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: var(--Colors-Main-neutral-light, #F5F5F5);
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+.date_time_container {
+  display: flex;
+  align-items: center;
+  gap: var(--Spacing-spacing-xs, 12px);
+  align-self: stretch;
+}
+
+.active-radio {
+  background: var(--Colors-Actions-action-active, #004D53)!important;
+}
+
+hr {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropbtn {
+  height: 20px;
+  align-self: end;
+  gap: 10px;
+  margin-right: 0;
+}
+
+.btn.dropbtn.dropdown-toggle:focus, .btn.dropbtn.dropdown-toggle:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.approve_appointment_btn {
+  display: flex;
+  height: 56px;
+  min-width: 100px;
+  padding: 16px var(--Spacing-spacing-m, 24px);
+  justify-content: center;
+  align-items: center;
+  gap: var(--Spacing-spacing-m, 24px);
+  flex: 1 0 0;
+  border-radius: var(--Spacing-spacing-xxs, 8px);
+  background: #5BB85A;
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+
+.approve_appointment_btn:hover {
+  border-radius: var(--radius-s, 8px);
+  background: var(--Colors-Main-success-dark, #329631);
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+
+.approve_appointment_btn:active {
+  border-radius: var(--radius-s, 8px);
+  background: var(--Colors-Main-success, #5BB85A) !important;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset !important;
+}
+
+.specific_reason {
+  display: none;
+}
+
+.date_and_time_container {
+  display: flex;
+  align-items: center;
+  gap: var(--Spacing-spacing-xs, 12px);
+  align-self: stretch;
+}
+
+.reschedule_btn {
+  display: flex;
+  height: 56px;
+  min-width: 100px;
+  padding: 16px var(--Spacing-spacing-m, 24px);
+  justify-content: center;
+  align-items: center;
+  gap: var(--Spacing-spacing-m, 24px);
+  border-radius: var(--radius-s, 8px);
+  background: var(--Colors-Actions-action, #045B62);
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+
+.reschedule_btn:hover {
+  border-radius: var(--radius-s, 8px);
+  background: var(--Colors-Actions-action-hover, #004D53);
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+
+.reschedule_btn:active {
+  border-radius: var(--radius-s, 8px);
+  background: var(--Colors-Actions-action-active, #004D53) !important;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset !important;
+}
+
+.cancel_btn {
+  display: inline-flex;
+  height: 56px;
+  min-width: 120px;
+  padding: 0px var(--Spacing-spacing-m, 24px) 0px var(--Spacing-spacing-s, 16px);
+  justify-content: center;
+  align-items: center;
+  gap: var(--Spacing-spacing-m, 24px);
+  flex-shrink: 0;
+  border-radius: var(--radius-s, 8px);
+  border: 0.5px solid rgba(0, 0, 0, 0.15);
+  background: var(--Colors-Actions-action-neut, #F9F9F9);
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+
+.cancel_btn:hover {
+  border-radius: var(--radius-s, 8px);
+  border: 0.5px solid rgba(0, 0, 0, 0.15);
+  background: var(--Colors-Actions-action-neut-hover, #ECECEC);
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+
+.cancel_btn:active {
+  border-radius: var(--radius-s, 8px);
+  background: var(--Colors-Actions-action-neut-active, #ECECEC) !important;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset !important;
+}
+
+.confirm_complete {
+  display: flex;
+  height: 56px;
+  min-width: 100px;
+  padding: 16px var(--Spacing-spacing-m, 24px);
+  justify-content: center;
+  align-items: center;
+  gap: var(--Spacing-spacing-m, 24px);
+  flex: 1 0 0;
+  border-radius: var(--Spacing-spacing-xxs, 8px);
+  background: #5BB85A;
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+
+.confirm_complete:hover {
+  border-radius: var(--radius-s, 8px);
+  background: var(--Colors-Main-success-dark, #329631);
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+
+.confirm_complete:active {
+  border-radius: var(--radius-s, 8px);
+  background: var(--Colors-Main-success, #5BB85A) !important;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset !important;
+}
+
+.complete_icon_container {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 830px;
+  background: #BEE7BD;
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+
+.upcoming {
+  border-radius: var(--radius-xs, 4px) !important;
+  background: #367CFF !important;
+  color: var(--Colors-Main-neutral, #FFF) !important;
+  font-family: Inter !important;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.completed {
+  padding: 8px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  border-radius: var(--radius-xs, 4px);
+  background: #5CA500 !important;
+  color: var(--Colors-Main-neutral, #FFF) !important;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.pending {
+  border-radius: var(--radius-xs, 4px) !important;
+  background: #FFA800 !important;
+  padding: 8px 12px !important;
+  justify-content: center !important;
+  align-items: center !important;
+  color: var(--Colors-Main-neutral, #FFF) !important;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }

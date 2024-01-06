@@ -3,32 +3,50 @@
 
 <head>
     <meta charset="utf-8">
-    <meta charset="UTF-8">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
-    <title>Appoinment </title>
-    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <title>appointmentformUserSide</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
-    <link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch-toggle-switch.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch.css') }}">
+    <link rel="stylesheet" href="assets/fonts/typicons.min.css">
+    <link rel="stylesheet" href="assets/css/bs-theme-overrides.css">
+    <link rel="stylesheet" href="assets/css/Multi-step-form.css">
+    <link rel="stylesheet" href="assets/css/Navbar-Centered-Links-icons.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/Toggle-Switch-toggle-switch.css">
 </head>
 
 <body>
-    @include('includes.user_header')
+    <nav class="navbar navbar-expand-md bg-body d-flex py-3" style="max-width: 1920px;background: #EFEFEF;box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.10), 0px 4px 6px -2px rgba(28, 28, 28, 0.05);width: 100%;">
+        <div class="container">
+            <div class="d-flex align-items-center clinic_logo"><img src="assets/img/dogs&cats.png" style="width: 63.913px;height: 60px;">
+                <p class="fw-bold" style="color: #000;font-size: 20px;font-family: Inter;--bs-body-font-weight: 700;width: 200px;margin: 0px;">Tagapo Dogs &amp; Cats Veterinary Clinic</p>
+            </div><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-3" style="background: #EFEFEF;"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-3">
+                <ul class="navbar-nav mx-auto" style="font-family: Inter;--bs-body-font-weight: 700;">
+                    <li class="nav-item"><a class="nav-link active" href="#" style="color: #1C1C1C;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="appointment_list.html" style="color: #1C1C1C;">Appointments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color: #1C1C1C;">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color: #1C1C1C;">About Us</a></li>
+                </ul>
+                <div class="user"><button class="btn notification" id="notification" type="button"><span class="notification_base"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewbox="0 0 15 18" fill="none"><path d="M2.29482 10.4791L2.93736 10.866L2.93903 10.8632L2.29482 10.4791ZM1.38031 11.998L0.737787 11.6112L0.737673 11.6113L1.38031 11.998ZM2.23916 14.328L1.99871 15.0385L2.00149 15.0394L2.23916 14.328ZM12.7918 14.328L12.5564 13.6159L12.5542 13.6167L12.7918 14.328ZM13.6507 11.998L14.2938 11.6121L14.2932 11.6112L13.6507 11.998ZM12.7362 10.4791L12.0864 10.854L12.0937 10.866L12.7362 10.4791ZM8.99065 2.00199L8.78522 2.7233C9.0594 2.80139 9.35415 2.71728 9.54583 2.50625C9.7375 2.29522 9.79296 1.99376 9.68894 1.72833L8.99065 2.00199ZM6.0483 2.00199L5.35001 1.72833C5.24599 1.99376 5.30145 2.29522 5.49313 2.50625C5.68481 2.71728 5.97955 2.80139 6.25374 2.7233L6.0483 2.00199ZM5.83359 16.3002L5.30286 16.8301L5.30326 16.8305L5.83359 16.3002ZM7.51948 1.02137C4.47306 1.02137 1.99811 3.49632 1.99811 6.54274H3.49811C3.49811 4.32475 5.30148 2.52137 7.51948 2.52137V1.02137ZM1.99811 6.54274V8.84096H3.49811V6.54274H1.99811ZM1.99811 8.84096C1.99811 8.99314 1.96284 9.22832 1.89124 9.48627C1.8197 9.74398 1.72858 9.96429 1.65061 10.0951L2.93903 10.8632C3.10759 10.5804 3.24311 10.2242 3.33658 9.88749C3.42999 9.551 3.49811 9.17386 3.49811 8.84096H1.99811ZM1.6523 10.0923L0.737787 11.6112L2.02284 12.3849L2.93735 10.866L1.6523 10.0923ZM0.737673 11.6113C0.34933 12.2568 0.264391 12.9889 0.507 13.6441C0.749283 14.2984 1.2894 14.7984 1.99871 15.0384L2.47961 13.6176C2.15512 13.5078 1.98351 13.3119 1.91366 13.1233C1.84415 12.9355 1.84668 12.6776 2.02295 12.3847L0.737673 11.6113ZM2.00149 15.0394C5.58318 16.236 9.44782 16.236 13.0295 15.0394L12.5542 13.6167C9.28099 14.7103 5.75001 14.7103 2.47682 13.6167L2.00149 15.0394ZM13.0272 15.0401C14.4485 14.5703 15.0644 12.8965 14.2938 11.6121L13.0076 12.3839C13.2867 12.849 13.0596 13.4496 12.5564 13.6159L13.0272 15.0401ZM14.2932 11.6112L13.3787 10.0923L12.0937 10.866L13.0082 12.3849L14.2932 11.6112ZM13.3858 10.1043C13.3086 9.97054 13.2183 9.7472 13.1473 9.48852C13.0762 9.22901 13.0408 8.99336 13.0408 8.84096H11.5408C11.5408 9.17364 11.6089 9.55031 11.7008 9.88524C11.7928 10.221 11.9252 10.5742 12.0865 10.8539L13.3858 10.1043ZM13.0408 8.84096V6.54274H11.5408V8.84096H13.0408ZM13.0408 6.54274C13.0408 3.50428 10.5579 1.02137 7.51948 1.02137V2.52137C9.72952 2.52137 11.5408 4.3327 11.5408 6.54274H13.0408ZM9.19608 1.28067C8.10014 0.968542 6.93882 0.968542 5.84287 1.28067L6.25374 2.7233C7.08111 2.48766 7.95784 2.48766 8.78522 2.7233L9.19608 1.28067ZM6.7466 2.27564C6.86777 1.96645 7.16863 1.75 7.51948 1.75V0.25C6.53434 0.25 5.69008 0.860583 5.35001 1.72833L6.7466 2.27564ZM7.51948 1.75C7.87033 1.75 8.17119 1.96645 8.29236 2.27564L9.68894 1.72833C9.34888 0.860583 8.50461 0.25 7.51948 0.25V1.75ZM9.15516 14.6143C9.15516 15.5122 8.41739 16.25 7.51948 16.25V17.75C9.24582 17.75 10.6552 16.3407 10.6552 14.6143H9.15516ZM7.51948 16.25C7.07487 16.25 6.65887 16.0648 6.36392 15.7699L5.30326 16.8305C5.86716 17.3944 6.65991 17.75 7.51948 17.75V16.25ZM6.36432 15.7703C6.05752 15.463 5.88477 15.0468 5.88379 14.6126L4.38379 14.616C4.38567 15.4465 4.71607 16.2425 5.30286 16.8301L6.36432 15.7703Z" fill="#1C1C1C"></path></svg></span></button>
+                    <div class="dropdown admin_btn"><a class="dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" href="#"><img src="assets/img/image%2011%20(1).png"></a>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="user_settings.html"><span>Settings</span></a>
+                            <hr><a class="dropdown-item" href="#"><span>Sign Out</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
     <main>
         <div class="container-fluid mb-5">
             <div class="row d-flex flex-column align-content-center flex-wrap">
-                <div class="col-10 col-xxl-8 user_appointment">
-                    <div class="d-flex flex-column align-items-center">
+                <div class="col-9 user_appointment">
+                    <div class="d-flex flex-column align-items-center align-self-stretch">
                         <div class="d-flex flex-column align-items-start">
                             <h1 class="text-center align-self-stretch" style="color: #1C1C1C;font-size: 36px;font-family: Inter;">BOOK AN</h1>
                             <h1 class="text-center" style="color: #045B62;font-size: 50px;--bs-body-font-weight: 700;font-family: Inter;">APPOINTMENT</h1>
@@ -47,8 +65,8 @@
                                             <h3 class="text-start multisteps-form__title" style="align-self: stretch;color: #1C1C1C;font-family: Inter;font-size: 21px;font-style: normal;font-weight: 700;line-height: normal;">APPOINTMENT PREFERENCES</h3>
                                             <div id="form-content" class="multisteps-form__content" style="display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 25px;align-self: stretch;max-height: 1500px;">
                                                 <div id="form_fields" class="form_fields">
-                                                    <div class="align-self-stretch form-floating"><input class="form-control" type="text" id="petName" data-id="petName" placeholder="Pet Name"><label class="form-label" for="petName">Pet Name</label>
-                                                        <div id="error-petName" class="error-message"><span>Please enter pet name.</span></div>
+                                                    <div class="align-self-stretch form-floating"><input class="form-control" type="text" id="petName" data-id="petName" placeholder="Pet Name" maxlength="32"><label class="form-label" for="petName">Pet Name<span>&nbsp;*</span></label>
+                                                        <div id="error-petName" class="error-message"><span>• Please enter pet name.</span></div>
                                                     </div>
                                                     <div class="pet_type_and_breed_container">
                                                         <div class="species_container">
@@ -57,23 +75,23 @@
                                                                 <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Cat" for="cat" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Cat</label><input type="radio" id="cat" class="custom-control-input" style="display: flex;width: 22px;height: 22px;justify-content: center;align-items: center;border-radius: 8px;background: var(--colors-main-neutral-light, #F5F5F5);box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;" name="cat"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="align-self-stretch form-floating breed_container"><select class="form-select" id="breed" required="" style="height: 100%;" disabled=""></select><label class="form-label" for="breed">Select a breed</label>
-                                                            <div id="error-breed" class="error-message"><span>Please select a breed</span></div>
+                                                        <div class="align-self-stretch form-floating breed_container"><select class="form-select" id="breed" required="" style="height: 100%;" disabled=""></select><label class="form-label" for="breed">Select a breed<span>&nbsp;*</span></label>
+                                                            <div id="error-breed" class="error-message"><span>• Please select a breed</span></div>
                                                         </div>
                                                     </div>
-                                                    <div class="align-self-stretch form-floating"><select class="form-select" id="surgery_type" data-id="surgery_type">
-                                                            <option value="none" selected="">Select a surgery</option>
-                                                            <option value="Neuter">Neuter</option>
-                                                            <option value="Tooth Extraction">Tooth Extraction</option>
-                                                        </select><label class="form-label" for="surgery_type">Surgery Type</label>
-                                                        <div id="error-surgery" class="error-message"><span>Please select a surgery type</span></div>
+                                                    <div class="align-self-stretch form-floating"><select class="form-select form-select-sm" id="surgery_type" data-id="surgery_type">
+                                                            <option value="" selected="">Select a surgery</option>
+                                                            <option value="Neuter">Neuter (𝘐𝘵 𝘪𝘴 𝘵𝘩𝘦 𝘴𝘶𝘳𝘨𝘪𝘤𝘢𝘭 𝘳𝘦𝘮𝘰𝘷𝘢𝘭 𝘰𝘧 𝘢 𝘮𝘢𝘭𝘦 𝘥𝘰𝘨'𝘴 𝘵𝘦𝘴𝘵𝘪𝘤𝘭𝘦𝘴)</option>
+                                                            <option value="Tooth Extraction">Tooth Extraction (𝘳𝘦𝘮𝘰𝘷𝘢𝘭 𝘰𝘧 𝘢 𝘵𝘰𝘰𝘵𝘩)</option>
+                                                        </select><label class="form-label" for="surgery_type">Surgery Type<span>&nbsp;*</span></label>
+                                                        <div id="error-surgery" class="error-message"><span>• Please select a surgery type</span></div>
                                                     </div>
                                                     <div class="align-self-stretch form-floating"><textarea class="form-control" id="floatingTextarea" data-id="floatingTextarea" placeholder="Additional Notes" type="text"></textarea><label class="form-label form-label" for="floatingTextarea">Additional Notes</label></div>
                                                 </div>
                                                 <hr id="lineBreak" class="lineBreak">
                                                 <div id="form_fields-1" class="form_fields" style="display: none;">
-                                                    <div class="align-self-stretch form-floating"><input class="form-control" type="text" id="petName-1" data-id="petName" placeholder="Pet Name"><label class="form-label" for="petName-1">Pet Name</label>
-                                                        <div id="error-petName-1" class="error-message"><span>Please enter pet name.</span></div>
+                                                    <div class="align-self-stretch form-floating"><input class="form-control" type="text" id="petName-1" data-id="petName" placeholder="Pet Name" maxlength="32"><label class="form-label" for="petName-1">Pet Name<span>&nbsp;*</span></label>
+                                                        <div id="error-petName-1" class="error-message"><span>• Please enter pet name.</span></div>
                                                     </div>
                                                     <div class="pet_type_and_breed_container">
                                                         <div class="species_container">
@@ -82,23 +100,23 @@
                                                                 <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Cat-1" for="cat-1" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Cat</label><input type="radio" id="cat-1" class="custom-control-input" style="display: flex;width: 22px;height: 22px;justify-content: center;align-items: center;border-radius: 8px;background: var(--colors-main-neutral-light, #F5F5F5);box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;" name="cat-1"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="align-self-stretch form-floating breed_container"><select class="form-select" id="breed-1" disabled="" required="" style="height: 100%;"></select><label class="form-label" for="breed-1">Select a breed</label>
-                                                            <div id="error-breed-1" class="error-message"><span>Please select a breed</span></div>
+                                                        <div class="align-self-stretch form-floating breed_container"><select class="form-select" id="breed-1" disabled="" required="" style="height: 100%;"></select><label class="form-label" for="breed-1">Select a breed<span>&nbsp;*</span></label>
+                                                            <div id="error-breed-1" class="error-message"><span>• Please select a breed</span></div>
                                                         </div>
                                                     </div>
-                                                    <div class="align-self-stretch form-floating"><select class="form-select" id="surgery_type-1" data-id="surgery_type-1">
+                                                    <div class="align-self-stretch form-floating"><select class="form-select form-select-sm" id="surgery_type-1" data-id="surgery_type-1">
                                                             <option value="none" selected="">Select a surgery</option>
                                                             <option value="Neuter">Neuter</option>
                                                             <option value="Tooth Extraction">Tooth Extraction</option>
-                                                        </select><label class="form-label" for="surgery_type-1">Surgery Type</label>
-                                                        <div id="error-surgery-1" class="error-message"><span>Please select a surgery type</span></div>
+                                                        </select><label class="form-label" for="surgery_type-1">Surgery Type<span>&nbsp;*</span></label>
+                                                        <div id="error-surgery-1" class="error-message"><span>• Please select a surgery type</span></div>
                                                     </div>
                                                     <div class="align-self-stretch form-floating"><textarea class="form-control" id="floatingTextarea-1" data-id="floatingTextarea-1" placeholder="Additional Notes" maxlength="255" minlength="0"></textarea><label class="form-label form-label" for="floatingTextarea-1">Additional Notes</label></div>
                                                 </div>
                                                 <hr id="lineBreak-1" class="lineBreak">
                                                 <div id="form_fields-2" class="form_fields" style="display: none;">
-                                                    <div class="align-self-stretch form-floating"><input class="form-control" type="text" id="petName-2" data-id="petName" placeholder="Pet Name"><label class="form-label" for="petName-2">Pet Name</label>
-                                                        <div id="error-petName-2" class="error-message"><span>Please enter pet name.</span></div>
+                                                    <div class="align-self-stretch form-floating"><input class="form-control" type="text" id="petName-2" data-id="petName" placeholder="Pet Name" maxlength="32"><label class="form-label" for="petName-2">Pet Name<span>&nbsp;*</span></label>
+                                                        <div id="error-petName-2" class="error-message"><span>• Please enter pet name.</span></div>
                                                     </div>
                                                     <div class="pet_type_and_breed_container">
                                                         <div class="species_container">
@@ -107,38 +125,47 @@
                                                                 <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Cat-2" for="cat-2" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Cat</label><input type="radio" id="cat-2" class="custom-control-input" style="display: flex;width: 22px;height: 22px;justify-content: center;align-items: center;border-radius: 8px;background: var(--colors-main-neutral-light, #F5F5F5);box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;" name="cat-2"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="align-self-stretch form-floating breed_container"><select class="form-select" id="breed-2" disabled="" required="" style="height: 100%;"></select><label class="form-label" for="breed-2">Select a breed</label>
-                                                            <div id="error-breed-2" class="error-message"><span>Please select a breed</span></div>
+                                                        <div class="align-self-stretch form-floating breed_container"><select class="form-select" id="breed-2" disabled="" required="" style="height: 100%;"></select><label class="form-label" for="breed-2">Select a breed<span>&nbsp;*</span></label>
+                                                            <div id="error-breed-2" class="error-message"><span>• Please select a breed</span></div>
                                                         </div>
                                                     </div>
-                                                    <div class="align-self-stretch form-floating"><select class="form-select" id="surgery_type-2" data-id="surgery_type-2">
+                                                    <div class="align-self-stretch form-floating"><select class="form-select form-select-sm" id="surgery_type-2" data-id="surgery_type-2">
                                                             <option value="none" selected="">Select a surgery</option>
                                                             <option value="Neuter">Neuter</option>
                                                             <option value="Tooth Extraction">Tooth Extraction</option>
-                                                        </select><label class="form-label" for="surgery_type-2">Surgery Type</label>
-                                                        <div id="error-surgery-2" class="error-message"><span>Please select a surgery type</span></div>
+                                                        </select><label class="form-label" for="surgery_type-2">Surgery Type<span>&nbsp;*</span></label>
+                                                        <div id="error-surgery-2" class="error-message"><span>• Please select a surgery type</span></div>
                                                     </div>
                                                     <div class="align-self-stretch form-floating"><textarea class="form-control" id="floatingTextarea-2" data-id="floatingTextarea-2" placeholder="Additional Notes" maxlength="255" minlength="0"></textarea><label class="form-label" for="floatingTextarea-2">Additional Notes</label></div>
                                                 </div>
-                                                <div class="add_form_btn_container"><button class="btn add_form" id="add_form" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <g clip-path="url(#clip0_1917_11656)">
-                                                <path d="M12 5V19M5 12H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_1917_11656">
-                                                <rect width="24" height="24" fill="white"/>
-                                                </clipPath>
-                                            </defs>
-                                            </svg></span></button><button class="btn remove_form" id="remove_form" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <g clip-path="url(#clip0_2291_11324)">
-                                                <path d="M5 12H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_2291_11324">
-                                                <rect width="24" height="24" fill="white"/>
-                                                </clipPath>
-                                            </defs>
-                                            </svg></span></button></div>
+                                                <div class="add_form_btn_container"><button class="btn add_form" data-bs-toggle="tooltip" data-bss-tooltip="" id="add_form" type="button" title="Add Pet"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_1917_11656)">
+    <path d="M12 5V19M5 12H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_1917_11656">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></button><button class="btn remove_form" data-bs-toggle="tooltip" data-bss-tooltip="" id="remove_form" type="button" title="Remove Pet"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_2291_11324)">
+    <path d="M5 12H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_2291_11324">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></button><button class="btn remove_form" data-bs-toggle="tooltip" data-bss-tooltip="" id="remove_form-1" type="button" title="Remove Pet"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_2291_11324)">
+    <path d="M5 12H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_2291_11324">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></button></div>
                                             </div>
                                             <div class="form_content_buttons mb-4"><button id="next_btn" class="btn  border-primary ml-auto js-btn-next" type="button" title="Next" style="color: var(--colors-main-neutral, #FFF);text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;display: inline-flex;height: 56px;min-width: 100px;padding: var(--spacing-spacing-s, 16px) var(--spacing-spacing-m, 24px);justify-content: center;align-items: center;gap: var(--spacing-spacing-m, 24px);flex-shrink: 0;border-radius: var(--radius-s, 8px);background: var(--colors-actions-action, #045B62);box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);--bs-primary: #045B62;--bs-primary-rgb: 4,91,98;" disabled>Next</button></div>
                                         </div>
@@ -263,6 +290,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <h1 id="date_required_message" class="date_required_message">Select a date to show available slots.</h1>
                                                         <div id="Appointment_time_options" class="Appointment_time_options">
                                                             <p id="selected_date" class="selected_date"></p>
                                                             <div id="time_options_container" class="time_options_container">
@@ -286,164 +314,119 @@
                                         <div id="single-form-next-prev-1" class="multisteps-form__panel" data-animation="scaleIn" style="display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 25px;align-self: stretch;">
                                             <div id="form-content-2" class="multisteps-form__content" style="display: flex;flex-direction: column;align-items: flex-start;gap: 25px;align-self: stretch;">
                                                 <div class="d-flex flex-column align-items-start align-self-stretch details_confirmation" id="details_confirmation">
-                                                <form action="{{ route('appointment.store') }}" method="POST" id="form_3">
-                                                    @csrf
-                                                    <p class="confirmation_details">APPOINTMENT DETAILS CONFIRMATION</p>
-                                                    <div class="d-flex flex-column align-items-start align-self-stretch details" id="details">
-                                                        <div class="d-flex align-items-center align-self-stretch details_confirmation_1strow" id="details_confirmation_1strow">
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Pet Name</h1>
-                                                                <p id="confirm_Pet_Name" class="confirm_Pet_Name">Pet Name</p>
-                                                                <input type="hidden" name="petName[]" id="hidden_petName">
+                                                    <div class="container_of_details">
+                                                        <p class="confirmation_details">APPOINTMENT PREFERENCES</p>
+                                                        <div class="d-flex flex-column align-items-start align-self-stretch details" id="details">
+                                                            <div class="d-flex align-items-center align-self-stretch details_confirmation_1strow" id="details_confirmation_1strow">
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <h1>Pet Name</h1>
+                                                                    <p id="confirm_Pet_Name" class="confirm_Pet_Name">Pet Name</p>
+                                                                    <input type="hidden" name="petName" id="hidden_petName">                                                                </div>
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <h1>Pet Type</h1>
+                                                                    <p id="confirm_Pet_type" class="confirm_Pet_type">Pet Type</p>
+                                                                    <input type="hidden" name="petType[]" id="hidden_petType" value="">                                                                </div>
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <h1>Breed</h1>
+                                                                    <p id="confirm_breed" class="confirm_breed">Breed</p>
+                                                                    <input type="hidden" name="breed[]" id="hidden_breed">                                                                </div>
                                                             </div>
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Pet Type</h1>
-                                                                <p id="confirm_Pet_type" class="confirm_Pet_type">Pet Type</p>
-                                                                <input type="hidden" name="petType[]" id="hidden_petType">
-                                                            </div>
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Breed</h1>
-                                                                <p id="confirm_breed" class="confirm_breed">Breed</p>
-                                                                <input type="hidden" name="breed[]" id="hidden_breed">
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex align-items-start align-self-stretch details_confirmation_2ndrow" id="details_confirmation_2ndrow">
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Surgery Type</h1>
-                                                                <p id="confirm_surgery_Type" class="confirm_surgery_Type">Surgery Type</p>
-                                                                <input type="hidden" name="appointmentType[]" id="hidden_appointmentType">
-                                                            </div>
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Additional Notes</h1>
-                                                                <p id="confirm_additional_Notes" class="confirm_additional_Notes">Additional Notes</p>
-                                                                <input type="hidden" name="notes[]" id="hidden_notes">
-                                                            </div>
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <p></p>
+                                                            <div class="d-flex align-items-start align-self-stretch details_confirmation_2ndrow" id="details_confirmation_2ndrow">
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <h1>Surgery Type</h1>
+                                                                    <p id="confirm_surgery_Type" class="confirm_surgery_Type">Surgery Type</p>
+                                                                    <input type="hidden" name="appointmentType[]" id="hidden_appointmentType">                                                                </div>
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <h1>Additional Notes</h1>
+                                                                    <p id="confirm_additional_Notes" class="confirm_additional_Notes">Additional Notes</p>
+                                                                    <input type="hidden" name="notes" id="hidden_notes">                                                                </div>
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <p></p>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <hr id="lineBreak-4" class="lineBreak">
+                                                        <div id="details-1" class="details">
+                                                            <div class="d-flex align-items-center align-self-stretch details_confirmation_1strow" id="details_confirmation_1strow-1">
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <h1>Pet Name</h1>
+                                                                    <p id="confirm_Pet_Name-1" class="confirm_Pet_Name">Pet Name</p>
+                                                                    <input type="hidden" name="petName1" id="hidden_petName-1">                                                                </div>
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <h1>Pet Type</h1>
+                                                                    <p id="confirm_Pet_type-1" class="confirm_Pet_type">Pet Type</p>
+                                                                    <input type="hidden" name="petType1" id="hidden_petType-1">                                                                </div>
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <h1>Breed</h1>
+                                                                    <p id="confirm_breed-1" class="confirm_breed">Breed</p>
+                                                                    <input type="hidden" name="breed1" id="hidden_breed-1">                                                                </div>
+                                                            </div>
+                                                            <div class="d-flex align-items-start align-self-stretch details_confirmation_2ndrow" id="details_confirmation_2ndrow-1">
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <h1>Surgery Type</h1>
+                                                                    <p id="confirm_surgery_Type-1" class="confirm_surgery_Type">Surgery Type</p>
+                                                                    <input type="hidden" name="appointmentType1" id="hidden_appointmentType-1">                                                                </div>
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <h1>Additional Notes</h1>
+                                                                    <p id="confirm_additional_Notes-1" class="confirm_additional_Notes">Additional Notes</p>
+                                                                    <input type="hidden" name="notes1" id="hidden_notes-1">                                                                </div>
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <p></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <hr id="lineBreak-5" class="lineBreak">
+                                                        <div id="details-2" class="details">
+                                                            <div class="d-flex align-items-center align-self-stretch details_confirmation_1strow" id="details_confirmation_1strow-2">
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <h1>Pet Name</h1>
+                                                                    <p id="confirm_Pet_Name-2" class="confirm_Pet_Name">Pet Name</p>
+                                                                    <input type="hidden" name="petName2" id="hidden_petName-2">                                                                </div>
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <h1>Pet Type</h1>
+                                                                    <p id="confirm_Pet_type-2" class="confirm_Pet_type">Pet Type</p>
+                                                                    <input type="hidden" name="petType2" id="hidden_petType-2">                                                                </div>
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <h1>Breed</h1>
+                                                                    <p id="confirm_breed-2" class="confirm_breed">Breed</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="d-flex align-items-start align-self-stretch details_confirmation_2ndrow" id="details_confirmation_2ndrow-2">
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <h1>Surgery Type</h1>
+                                                                    <p id="confirm_surgery_Type-2" class="confirm_surgery_Type">Surgery Type</p>
+                                                                </div>
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <h1>Additional Notes</h1>
+                                                                    <p id="confirm_additional_Notes-2" class="confirm_additional_Notes">Additional Notes</p>
+                                                                </div>
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <p></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="date_and_time">
+                                                        <h1>APPOINTMENT SCHEDULE</h1>
                                                         <div class="d-flex align-items-start align-self-stretch details_confirmation_3rdrow" id="details_confirmation_3rdrow">
                                                             <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                 <h1>Date</h1>
                                                                 <p id="confirm_date" class="confirm_date">Date</p>
-                                                                <input type="hidden" name="appointmentDate[]" id="hidden_appointmentDate">
                                                             </div>
                                                             <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                 <h1>Time</h1>
                                                                 <p class="confirm_time">Time</p>
-                                                                <input type="hidden" name="appointmentTime[]" id="hidden_appointmentTime">
                                                             </div>
                                                             <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                 <p></p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <hr id="lineBreak-4" class="lineBreak">
-                                                    <div id="details-1" class="details">
-                                                        <div class="d-flex align-items-center align-self-stretch details_confirmation_1strow" id="details_confirmation_1strow-1">
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Pet Name</h1>
-                                                                <p id="confirm_Pet_Name-1" class="confirm_Pet_Name">Pet Name</p>
-                                                                <input type="hidden" name="pet_name[]" id="hidden_pet_name-1">
-                                                            </div>
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Pet Type</h1>
-                                                                <p id="confirm_Pet_type-1" class="confirm_Pet_type">Pet Type</p>
-                                                                <input type="hidden" name="petType[]" id="hidden_petType-1">
-                                                            </div>
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Breed</h1>
-                                                                <p id="confirm_breed-1" class="confirm_breed">Breed</p>
-                                                                <input type="hidden" name="breed[]" id="hidden_breed-1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex align-items-start align-self-stretch details_confirmation_2ndrow" id="details_confirmation_2ndrow-1">
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Surgery Type</h1>
-                                                                <p id="confirm_surgery_Type-1" class="confirm_surgery_Type">Surgery Type</p>
-                                                                <input type="hidden" name="appointmentType[]" id="hidden_appointmentType-1">
-                                                            </div>
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Additional Notes</h1>
-                                                                <p id="confirm_additional_Notes-1" class="confirm_additional_Notes">Additional Notes</p>
-                                                                <input type="hidden" name="notes[]" id="hidden_notes-1">
-                                                            </div>
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <p></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex align-items-start align-self-stretch details_confirmation_3rdrow" id="details_confirmation_3rdrow-1">
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Date</h1>
-                                                                <p id="confirm_date-1" class="confirm_date">Date</p>
-                                                                <input type="hidden" name="appointmenDate[]" id="hidden_appointmetDate-1">
-                                                            </div>
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Time</h1>
-                                                                <p id="confirm_time-1" class="confirm_time">Time</p>
-                                                                <input type="hidden" name="appointmentTime[]" id="hidden_appointmentTime-1">
-                                                            </div>
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <p></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr id="lineBreak-5" class="lineBreak">
-                                                    <div id="details-2" class="details">
-                                                        <div class="d-flex align-items-center align-self-stretch details_confirmation_1strow" id="details_confirmation_1strow-2">
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Pet Name</h1>
-                                                                <p id="confirm_Pet_Name-2" class="confirm_Pet_Name">Pet Name</p>
-                                                                <input type="hidden" name="petName[]" id="hidden_petName-2">
-                                                            </div>
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Pet Type</h1>
-                                                                <p id="confirm_Pet_type-2" class="confirm_Pet_type">Pet Type</p>
-                                                                <input type="hidden" name="petType[]" id="hidden_petType-2">
-                                                            </div>
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Breed</h1>
-                                                                <p id="confirm_breed-2" class="confirm_breed">Breed</p>
-                                                                <input type="hidden" name="breed[]" id="hidden_breed-2">
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex align-items-start align-self-stretch details_confirmation_2ndrow" id="details_confirmation_2ndrow-2">
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Surgery Type</h1>
-                                                                <p id="confirm_surgery_Type-2" class="confirm_surgery_Type">Surgery Type</p>
-                                                                <input type="hidden" name="appointType[]" id="hidden_appointmentType-2">
-                                                            </div>
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Additional Notes</h1>
-                                                                <p id="confirm_additional_Notes-2" class="confirm_additional_Notes">Additional Notes</p>
-                                                                <input type="hidden" name="notes[]" id="hidden_notes-2">
-                                                            </div>
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <p></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex align-items-start align-self-stretch details_confirmation_3rdrow" id="details_confirmation_3rdrow-2">
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Date</h1>
-                                                                <p id="confirm_date-2" class="confirm_date">Date</p>
-                                                                <input type="hidden" name="appointmentDate[]" id="hidden_appointmentDate-2">
-                                                            </div>
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <h1>Time</h1>
-                                                                <p id="confirm_time-2" class="confirm_time">Time</p>
-                                                                <input type="hidden" name="appointmentTime[]" id="hidden_appointmentTime-2">
-                                                            </div>
-                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                <p></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex justify-content-between align-items-center align-self-stretch button-row d-flex mt-4" id="next-prev-buttons-1"><button class="btn btn btn-primary js-btn-prev" type="button" title="Prev" style="display: flex;height: 56px;min-width: 100px;padding: 16px var(--spacing-spacing-m, 24px);justify-content: center;align-items: center;gap: var(--spacing-spacing-m, 24px);background: transparent;border-radius: var(--radius-s, 8px);border: none;color: var(--colors-actions-action, #045B62);font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;">Previous</button>
-                                                    <button class="btn book_appointment" id="submitBtn" type="submit" onclick="submitForm()"><span class="book_appointment_base">Book Appointment</span></button></div>
-                                                </form>
+                                                    <div class="d-flex justify-content-between align-items-center align-self-stretch button-row d-flex mt-4" id="next-prev-buttons-1"><button class="btn btn btn-primary js-btn-prev" type="button" title="Prev" style="display: flex;height: 56px;min-width: 100px;padding: 16px var(--spacing-spacing-m, 24px);justify-content: center;align-items: center;gap: var(--spacing-spacing-m, 24px);background: transparent;border-radius: var(--radius-s, 8px);border: none;color: var(--colors-actions-action, #045B62);font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;">Previous</button><button class="btn book_appointment" id="book_appointment" type="button" title="Next"><span class="book_appointment_base">Book Appointment</span></button></div>
                                                 </div>
                                             </div>
                                         </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -452,7 +435,7 @@
             </div>
         </div>
     </main>
-    <footer class="footer"><img src="{{ asset('assets/img/dogs_cats.png') }}" style="width: 159.783px;height: 150px;flex-shrink: 0;"></footer>
+    <footer class="footer" style="position: relative;"><img src="assets/img/dogs&cats.png" style="width: 159.783px;height: 150px;flex-shrink: 0;"></footer>
     <div class="modal fade" role="dialog" tabindex="-1" id="consent_modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content add_client_modal">
@@ -483,12 +466,11 @@
                         <p>Please note that your agreement is required to proceed with scheduling the surgery for your pet.</p>
                     </div>
                 </div>
-                <div class="modal-footer consent_buttons"><button class="btn disagree" id="disagree" type="button"><span class="disagree_base">I disagree</span></button>
-                <button class="btn agree" id="agree" type="submit"><span class="agree_base">I Agree</span></button></div>
+                <div class="modal-footer consent_buttons"><button class="btn disagree" id="disagree" type="button"><span class="disagree_base">I disagree</span></button><button class="btn agree" id="agree" type="submit"><span class="agree_base">I Agree</span></button></div>
             </div>
         </div>
     </div>
-    <div class="modal fade show" role="dialog" tabindex="-1" id="book_appointment_success">
+    <div class="modal fade show" role="dialog" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content success_modal">
                 <div class="modal-header success_header">
@@ -513,126 +495,25 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-     // Wait for the document to be ready
-        document.addEventListener("DOMContentLoaded", function () {
-            // Get references to the <span> elements
-            const petNameId = document.getElementById("confirm_Pet_name");
-            const petTypeId = document.getElementById("confirm_Pet_type");
-            const breedId = document.getElementById("confirm_breed");
-            const appointmentTypeId = document.getElementById("confirm_surgery_type");
-            const notesId = document.getElementById("confirm_additional_notes");
-            const appointmentDateId = document.getElementById("confirm_date");
-            const appointmentTimeId = document.getElementById("confirm_time");
-            // 2nd Form IDs
-            const petNameId1 = document.getElementById("confirm_Pet_name-1");
-            const petTypeId1 = document.getElementById("confirm_Pet_type-1");
-            const breedId1 = document.getElementById("confirm_breed-1");
-            const appointmentTypeId1 = document.getElementById("confirm_surgery_type-1");
-            const notesId1 = document.getElementById("confirm_additional_notes-1");
-            const appointmentDateId1 = document.getElementById("confirm_date-1");
-            const appointmentTimeId1 = document.getElementById("confirm_time-1");
-            // 3rd Form IDs
-            const petNameId2 = document.getElementById("confirm_Pet_name-2");
-            const petTypeId2 = document.getElementById("confirm_Pet_type-2");
-            const breedId2 = document.getElementById("confirm_breed-2");
-            const appointmentTypeId2 = document.getElementById("confirm_surgery_type-2");
-            const notesId2 = document.getElementById("confirm_additional_notes-2");
-            const appointmentDateId2 = document.getElementById("confirm_date-2");
-            const appointmentTimeId2 = document.getElementById("confirm_time-2");
-
-            const petNameInput = document.getElementById("hidden_petName");
-            const petTypeInput = document.getElementById("hidden_petType");
-            const breedInput = document.getElementById("hidden_breed");
-            const appointmentTypeInput = document.getElementById("hidden_appointmentType");
-            const notesInput = document.getElementById("hidden_notes");
-            const appointmentDateInput = document.getElementById("hidden_appointmentDate");
-            const appointmentTimeInput = document.getElementById("hidden_appointmentTime");
-            // 2nd Form Inputs
-            const petNameInput1 = document.getElementById("hidden_petName-1");
-            const petTypeInput1 = document.getElementById("hidden_petType-1");
-            const breedInput1 = document.getElementById("hidden_breed-1");
-            const appointmentTypeInpu1t = document.getElementById("hidden_appointmentType-1");
-            const notesInput1 = document.getElementById("hidden_notes-1");
-            const appointmentDateInput1 = document.getElementById("hidden_appointmentDate-1");
-            const appointmentTimeInput1 = document.getElementById("hidden_appointmentTime-1");
-            // 3rd Form Inputs
-            const petNameInput2 = document.getElementById("hidden_petName-2");
-            const petTypeInput2 = document.getElementById("hidden_petType-2");
-            const breedInput2 = document.getElementById("hidden_breed-2");
-            const appointmentTypeInput2 = document.getElementById("hidden_appointmentType-2");
-            const notesInput2 = document.getElementById("hidden_notes-2");
-            const appointmentDateInput2 = document.getElementById("hidden_appointmentDate-2");
-            const appointmentTimeInput2 = document.getElementById("hidden_appointmentTime-2");
-
-            // Set the values of the hidden <input> elements to the values from the <span> elements
-            document.getElementById("form_3").addEventListener("submit", function () {
-            petNameInput.value = petNameId.innerText;
-            petTypeInput.value = petTypeId.innerText;
-            breedInput.value = breedId.innerText;
-            appointmentTypeInput.value = appointmentTypeId.innerText;
-            notesInput.value = notesId.innerText;
-            appointmentDateInput.value = appointmentDateId.innerText;
-            appointmentTimeInput.value = appointmentTypeId.innerText;
-
-            petNameInput1.value = petNameId1.innerText;
-            petTypeInput1.value = petTypeId1.innerText;
-            breedInput1.value = breedId1.innerText;
-            appointmentTypeInput1.value = appointmentTypeId1.innerText;
-            notesInput1.value = notesId1.innerText;
-            appointmentDateInput1.value = appointmentDateId1.innerText;
-            appointmentTimeInput1.value = appointmentTypeId1.innerText;
-
-            petNameInput2.value = petNameId2.innerText;
-            petTypeInput2.value = petTypeId2.innerText;
-            breedInput2.value = breedId2.innerText;
-            appointmentTypeInput2.value = appointmentTypeId2.innerText;
-            notesInput2.value = notesId2.innerText;
-            appointmentDateInput2.value = appointmentDateId2.innerText;
-            appointmentTimeInput2.value = appointmentTypeId2.innerText;
-            });
-        });
-
-        const agree = document.getElementById('agree');
-        const disagree = document.getElementById('disagree');
-        const consent_modal = new bootstrap.Modal(document.getElementById('consent_modal'));
-        const book_appointment_success = new bootstrap.Modal(document.getElementById('book_appointment_success'));
-
-  function submitForm() {
-    event.preventDefault(); // Prevent the default form submission
-    console.log('Button clicked');
-    const myForm = document.getElementById('form_3');
-
-    // Simulate form submission with ajax
-    $.ajax({
-        type: 'POST',
-        url: '/user/appointment', // Replace with your server endpoint
-        data: myForm,
-        processData: false,
-        contentType: false,
-        headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        success: function (response) {
-            console.log(response);
-            // Handle the success response as needed
-        },
-        error: function (error) {
-            console.error('Error:', error);
-            // Handle the error as needed
-        }
-    });
-    }
-    </script>
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bs-init.js') }}"></script>
-    <script src="{{ asset('assets/js/appointment_list.js') }}"></script>
-    <script src="{{ asset('assets/js/appointmentforms.js') }}"></script>
-    <script src="{{ asset('assets/js/calendar.js') }}"></script>
-    <script src="{{ asset('assets/js/Multi-step-form-script.js') }}"></script>
-
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/admin_appointment.js"></script>
+    <script src="assets/js/admin_archive.js"></script>
+    <script src="assets/js/admin_settings.js"></script>
+    <script src="assets/js/admin_signin.js"></script>
+    <script src="assets/js/appointment_list.js"></script>
+    <script src="assets/js/appointmentforms.js"></script>
+    <script src="assets/js/client.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/inventory.js"></script>
+    <script src="assets/js/Multi-step-form-script.js"></script>
+    <script src="assets/js/pet_information.js"></script>
+    <script src="assets/js/pet_records.js"></script>
+    <script src="assets/js/sidebar.js"></script>
+    <script src="assets/js/signin.js"></script>
+    <script src="assets/js/signup.js"></script>
+    <script src="assets/js/user_settings.js"></script>
 </body>
 
 </html>

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('prod_desc')->nullable();
             $table->integer('price')->nullable();
             $table->string('product_type');
+            $table->string('archived_at');
             $table->timestamps();
         });
     }

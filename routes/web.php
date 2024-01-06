@@ -7,9 +7,11 @@ use App\Http\Controllers\Admin\InvController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\User\UserAuthController;
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\ArchiveController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\User\NotificationController;
 use App\Http\Controllers\User\PetInfoController;
@@ -33,6 +35,9 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/test', function () {
     return view('test');
+});
+Route::get('/appointment2', function (){
+    return view('user/appointment2');
 });
 
 Route::middleware(['signedout', 'nocache'])->group(function () {
@@ -79,38 +84,48 @@ Route::get('/admin/signup', [AdminAuthController::class, 'show']);
 Route::post('/admin/signup',[AdminAuthController::class, 'store']);
 Auth::routes(['verify' => true]);
 
-Route::get('/admin/signin', [AdminAuthController::class, 'show']);
-Route::post('/admin/signin',[AdminAuthController::class, 'store']);
+Route::middleware('adminauth', 'nocache')->group(function () {
+    Route::get('/admin/signin', [AdminAuthController::class, 'show'])->name('admin.signin');
+    Route::post('/admin/signin',[AdminAuthController::class, 'authenticate'])->name('admin.auth');
+});
 
-Route::get('/admin/appointment', [AppointmentController::class, 'adminShow'])->name('admin_appointment');
-Route::post('/admin/appointment/approve/{id}', [AppointmentController::class, 'approve']);
-Route::post('/admin/appointment/reject/{id}', [AppointmentController::class, 'reject']);
+Route::middleware('admin', 'nocache')->group(function () {
+    Route::get('/admin/signout', [AdminAuthController::class, 'signout'])->name('admin.signout');
 
-Route::get('/admin/emr', [EMRController::class, 'show'])->name('admin_emr');
-Route::post('/admin/emr/petrecord', [EMRController::class, 'pet'])->name('emr.pet');
-Route::get('/admin/emr/view/{id}', [EMRController::class, 'viewRecord']);
-Route::post('/admin/emr/medhistory', [EMRController::class, 'medHistory'])->name('med.history');
-Route::post('/admin/emr/vaxhistory', [EMRController::class, 'vaxHistory'])->name('vax.history');
-Route::post('/admin/emr/surghistory', [EMRController::class, 'surgHistory'])->name('surg.history');
-Route::get('/admin/emr/medhis/{id}', [EMRController::class, 'showMedHis']);
-Route::get('/admin/emr/vaxhis/{id}', [EMRController::class, 'showVaxHis']);
-Route::get('/admin/emr/surghis/{id}', [EMRController::class, 'showSurgHis']);
+    Route::get('/admin/appointment', [AppointmentController::class, 'adminShow'])->name('admin_appointment');
+    Route::post('/admin/appointment/approve/{id}', [AppointmentController::class, 'approve']);
+    Route::post('/admin/appointment/reject/{id}', [AppointmentController::class, 'reject']);
 
+    Route::get('/admin/emr', [EMRController::class, 'show'])->name('admin_emr');
+    Route::post('/admin/emr/petrecord', [EMRController::class, 'pet'])->name('emr.pet');
+    Route::get('/admin/emr/view/{id}', [EMRController::class, 'viewRecord']);
+    Route::post('/admin/emr/medhistory', [EMRController::class, 'medHistory'])->name('med.history');
+    Route::post('/admin/emr/vaxhistory', [EMRController::class, 'vaxHistory'])->name('vax.history');
+    Route::post('/admin/emr/surghistory', [EMRController::class, 'surgHistory'])->name('surg.history');
+    Route::get('/admin/emr/medhis/{id}', [EMRController::class, 'showMedHis']);
+    Route::get('/admin/emr/vaxhis/{id}', [EMRController::class, 'showVaxHis']);
+    Route::get('/admin/emr/surghis/{id}', [EMRController::class, 'showSurgHis']);
 
-Route::get('/admin/inventory', [InvController::class, 'show'])->name('admin_inv');
-Route::post('/admin/inventory', [InvController::class, 'store'])->name('inv.store');
-Route::post('/admin/inventory/addStock/{product_type}/{id}', [InvController::class, 'addStock'])->name('product.stock');
-Route::get('/admin/inventory/view/{product_type}/{id}', [InvController::class, 'viewProduct']);
-Route::match(['put', 'patch'],'/admin/inventory/edit/{product_type}/{id}', [InvController::class, 'updateProduct'])->name('product.edit');
-Route::get('/admin/inventory/reports', [ReportController::class, 'invPDF'])->name('report.inventory');
+    Route::get('/admin/inventory', [InvController::class, 'show'])->name('admin_inv');
+    Route::post('/admin/inventory', [InvController::class, 'store'])->name('inv.store');
+    Route::post('/admin/inventory/addStock/{product_type}/{id}', [InvController::class, 'addStock'])->name('product.stock');
+    Route::get('/admin/inventory/view/{product_type}/{id}', [InvController::class, 'viewProduct']);
+    Route::match(['put', 'patch'],'/admin/inventory/edit/{product_type}/{id}', [InvController::class, 'updateProduct'])->name('product.edit');
+    Route::post('/admin/inventory/archive/{product_type}/{id}', [InvController::class, 'archive'])->name('product.archive');
+    Route::get('/admin/inventory/reports', [ReportController::class, 'invPDF'])->name('report.inventory');
 
-Route::get('admin/client', [ClientController::class, 'show'])->name('admin_client');
-Route::post('admin/client', [ClientController::class, 'store'])->name(('client.store'));
-Route::get('admin/client/reports', [ReportController::class, 'clientPDF'])->name('report.client');
+    Route::get('admin/client', [ClientController::class, 'show'])->name('admin_client');
+    Route::post('admin/client', [ClientController::class, 'store'])->name(('client.store'));
+    Route::get('admin/client/reports', [ReportController::class, 'clientPDF'])->name('report.client');
 
-Route::get('admin/dashboard', [DashboardController::class, 'show'])->name('admin_dashboard');
-Route::post('admin/dashboard', [DashboardController::class, 'store'])->name('dashboard.client.store');
+    Route::get('admin/dashboard', [DashboardController::class, 'show'])->name('admin_dashboard');
+    Route::post('admin/dashboard', [DashboardController::class, 'store'])->name('dashboard.client.store');
 
+    Route::get('admin/settings', [SettingsController::class, 'show'])->name('admin_settings');
+
+    Route::get('admin/archive', [ArchiveController::class, 'show'])->name('admin_archive');
+    Route::post('admin/archive/unarchived/{product_type}/{id}', [ArchiveController::class, 'unarchived'])->name('admin.unarchived');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

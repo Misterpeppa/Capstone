@@ -19,6 +19,7 @@ class AppointmentApproved extends Model
         'appointmentType',
         'appointmentDate',
         'appointmentTime',
+        'completed_at',
     ];
 
     public function clients(): BelongsTo

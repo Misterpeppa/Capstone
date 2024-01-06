@@ -18,7 +18,8 @@ class MedBatch extends Model
         'product_code',
         'manufacturing_date',
         'expiration_date',
-        'date_stocked'
+        'date_stocked',
+        'archived_at'
     ];
 
     function Med(): BelongsTo
