@@ -82,10 +82,10 @@ class UserAuthController extends Controller
         // Redirect to a success page or perform any additional actions
         return redirect()->route('client.signup')->with('success', 'User registered successfully');
     }
-    protected function sendVerificationEmail($clients)
-    {
-        Mail::to($clients->email)->send(new MailVerifyEmail($clients));
-    }
+    //protected function sendVerificationEmail($clients)
+    //{
+    //    Mail::to($clients->email)->send(new MailVerifyEmail($clients));
+    //}
 
     public function showSignin()
     {
@@ -109,10 +109,10 @@ class UserAuthController extends Controller
             Auth::login($client,$remember = true);
 
             // Check if the email is already verified
-            if ($client->email_verified_at === null) {
+            //if ($client->email_verified_at === null) {
                 // Send the email verification
-                $this->sendVerificationEmail($client);
-            }
+                //$this->sendVerificationEmail($client);
+            //}
         
             return redirect()->route('landing');
         } else {

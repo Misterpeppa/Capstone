@@ -314,19 +314,8 @@
 	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('assets/js/bs-init.js') }}"></script>
-	<script src="{{ asset('assets/js/admin_signin.js') }}"></script>
-	<script src="{{ asset('assets/js/appointment_list.js') }}"></script>
-	<script src="{{ asset('assets/js/appointmentforms.js') }}"></script>
-	<script src="{{ asset('assets/js/client.js') }}"></script>
 	<script src="{{ asset('assets/js/dashboard.js') }}"></script>
-	<script src="{{ asset('assets/js/inventory.js') }}"></script>
-	<script src="{{ asset('assets/js/Multi-step-form-script.js') }}"></script>
-	<script src="{{ asset('assets/js/pet_information.js') }}"></script>
-	<script src="{{ asset('assets/js/pet_records.js') }}"></script>
 	<script src="{{ asset('assets/js/sidebar.js') }}"></script>
-	<script src="{{ asset('assets/js/signin.js') }}"></script>
-	<script src="{{ asset('assets/js/signup.js') }}"></script>
-	<script src="{{ asset('assets/js/user_settings.js') }}"></script>
 </body>
 
 </html>
