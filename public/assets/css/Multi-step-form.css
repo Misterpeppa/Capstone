@@ -142,66 +142,13 @@ body a {
   align-self: stretch;
 }
 
-.time_options input[type="radio"]:checked + label {
-  color: var(--colors-main-brand, #045B62);
-  text-align: center;
-  font-family: Inter;
-  font-size: 21px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-}
 
-.time_options label {
-  flex-grow: 1;
-  padding: 5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.time_options li input[type="radio"] {
-  display: none;
-  width: 240px;
-  padding: 30px 50px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: var(--radius-s, 8px);
-  border: 0.5px solid rgba(0, 0, 0, 0.30);
-}
 
-.selected-time {
-  border-radius: var(--radius-s, 8px) !important;
-  border: 2px solid var(--colors-actions-action-active, #004D53)!important;
-  background: rgba(165, 194, 195, 0.50) !important;
-}
 
-.time_options li {
-  display: flex;
-  width: 180px;
-  padding: 10px 30px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: var(--radius-s, 8px);
-  border: 0.5px solid rgba(0, 0, 0, 0.30);
-}
 
-.time_options_container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 10px;
-}
 
-.Appointment_time_options {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-spacing-m, 24px);
-}
+
 
 .multi_step_section {
   align-items: flex-start;
@@ -314,9 +261,7 @@ body a {
   height: var(--spacing-spacing-m, 24px);
 }
 
-.calendar_time_container {
-  padding: 0px var(--spacing-spacing-xl, 64px);
-}
+
 
 .multisteps-form {
   width: 100%;
@@ -508,45 +453,13 @@ body a {
   align-self: stretch;
 }
 
-.Appointment_time-option {
-  cursor: pointer;
-  color: #1C1C1C;
-  text-align: center;
-  font-family: Inter;
-  font-size: 21px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-}
 
-.days li.selected-date {
-  color: var(--colors-main-neutral, #FFF);
-  text-align: center;
-  font-family: Inter;
-  font-size: 21px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
 
-.days li {
-  color: #1C1C1C;
-  text-align: center;
-  font-family: Inter;
-  font-size: 21px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
 
-.Appointment_time_options p {
-  color: #1C1C1C;
-  font-family: Inter;
-  font-size: 21px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
+
+
+
+
 
 .next_month {
   display: flex;

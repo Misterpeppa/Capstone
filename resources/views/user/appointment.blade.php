@@ -16,9 +16,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch-toggle-switch.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
+    
 </head>
 
 <body>
@@ -27,10 +26,10 @@
         <div class="container-fluid mb-5">
             <div class="row d-flex flex-column align-content-center flex-wrap">
                 <div class="col-9 user_appointment">
-                    <div class="d-flex flex-column align-items-center align-self-stretch">
-                        <div class="d-flex flex-column align-items-start">
-                            <h1 class="text-center align-self-stretch" style="color: #1C1C1C;font-size: 36px;font-family: Inter;">BOOK AN</h1>
-                            <h1 class="text-center" style="color: #045B62;font-size: 50px;--bs-body-font-weight: 700;font-family: Inter;">APPOINTMENT</h1>
+                    <div class="appointment_head_texts d-flex flex-column align-items-center align-self-stretch">
+                        <div class="appointment_heading_text d-flex flex-column align-items-start">
+                            <h1 class="text-center align-self-stretch">BOOK AN</h1>
+                            <h2 class="text-center" style="color: #045B62;font-size: 50px;--bs-body-font-weight: 700;font-family: Inter;">APPOINTMENT</h2>
                         </div>
                         <p class="text-center" style="color: #1c1c1c;font-size: 20px;font-family: Inter;--bs-body-font-weight: 500;">Please input complete and accurate details to secure a slot for your appointment.</p>
                     </div>
@@ -418,7 +417,23 @@
             </div>
         </div>
     </main>
-    <footer class="footer" style="position: relative;"><img src="assets/img/dogs&cats.png" style="width: 159.783px;height: 150px;flex-shrink: 0;"></footer>
+    <footer class="text-center py-4" style="background: rgba(4, 91, 98, 0.10); width:100%; position: static; left: 0; bottom: 0;">
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-lg-3">
+                <div class="col-lg-3"><img src="{{ asset('assets/img/dogs_cats.png') }}" style="width: 50px;height: 50px;flex-shrink: 0;" /></div>
+                <div class="col">
+                    <p style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 0;">Copyright © 2023, MediPaws | All Rights Reserved |</p><a href="https://tabler.io/icons" style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 0;">Icons-by-Tabler-Icons</a>
+                </div>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item"><a id="terms_and_conditions" class="terms_and_conditions" style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-right: 20px;cursor: pointer;">Terms &amp; Conditions</a></li>
+                        <li class="list-inline-item"><a id="privacy_and_policy" class="terms_and_conditions" style="margin-left: 10px;margin-top: 0;margin-bottom: 0;color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;cursor: pointer;">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <div class="modal fade" role="dialog" tabindex="-1" id="consent_modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content add_client_modal">

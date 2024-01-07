@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch-toggle-switch.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
 </head>
 
 <body>
@@ -79,7 +79,7 @@
 									<div class="my_profile_box">
 										<div class="my_profile_details_containers">
 											<div class="card my_profile_cards">
-												<div class="card_header">
+												<div class="card_header mt-3">
 													<h1>Personal Information</h1>
 													<button id="edit_profile_personal_info" class="btn edit_profile_personal_info" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
                                             			<path d="M7.91187 3.33001C8.08095 4.4114 8.60433 5.40602 9.39986 6.15776C10.1954 6.9095 11.218 7.37579 12.3072 7.48343M0.742188 17H15.259M9.01676 2.1606L2.39549 9.16899C2.14548 9.43513 1.90353 9.95935 1.85514 10.3223L1.55674 12.9353C1.4519 13.8789 2.12935 14.5241 3.06488 14.3628L5.66177 13.9192C6.02469 13.8547 6.53278 13.5886 6.78279 13.3143L13.4041 6.30596C14.5493 5.09622 15.0654 3.71713 13.2831 2.03157C11.5088 0.362135 10.162 0.950872 9.01676 2.1606Z" stroke="#1C1C1C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -132,7 +132,7 @@
 											</div>
 											</form>
 											<div class="card my_profile_cards">
-												<div class="card_header">
+												<div class="card_header mt-3">
 													<h1>Address</h1>
 													<button id="edit_profile_address" class="btn edit_profile" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
                                             <path d="M7.91187 3.33001C8.08095 4.4114 8.60433 5.40602 9.39986 6.15776C10.1954 6.9095 11.218 7.37579 12.3072 7.48343M0.742188 17H15.259M9.01676 2.1606L2.39549 9.16899C2.14548 9.43513 1.90353 9.95935 1.85514 10.3223L1.55674 12.9353C1.4519 13.8789 2.12935 14.5241 3.06488 14.3628L5.66177 13.9192C6.02469 13.8547 6.53278 13.5886 6.78279 13.3143L13.4041 6.30596C14.5493 5.09622 15.0654 3.71713 13.2831 2.03157C11.5088 0.362135 10.162 0.950872 9.01676 2.1606Z" stroke="#1C1C1C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -385,7 +385,22 @@
 			</div>
 		</div>
 	</main>
-	<footer class="footer" style="position: relative;"><img src="assets/img/dogs&cats.png" style="width: 159.783px;height: 150px;flex-shrink: 0;"></footer>
+	<footer class="text-center py-4" style="background: rgba(4, 91, 98, 0.10); width:100%; position: static; left: 0; bottom: 0;">
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-lg-3">
+                <div class="col-lg-3"><img src="{{ asset('assets/img/dogs_cats.png') }}" style="width: 50px;height: 50px;flex-shrink: 0;" /></div>
+                <div class="col">
+                    <p style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 0;">Copyright © 2023, MediPaws | All Rights Reserved |</p><a href="https://tabler.io/icons" style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 0;">Icons-by-Tabler-Icons</a>
+                </div>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item"><a id="terms_and_conditions" class="terms_and_conditions" style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-right: 20px;cursor: pointer;">Terms &amp; Conditions</a></li>
+                        <li class="list-inline-item"><a id="privacy_and_policy" class="terms_and_conditions" style="margin-left: 10px;margin-top: 0;margin-bottom: 0;color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;cursor: pointer;">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 	<div class="modal fade show" role="dialog" tabindex="-1" id="cancel_change_pass">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content discard_modal">
