@@ -43,6 +43,10 @@ return [
         'clients' =>[
             'driver' => 'session',
             'provider' =>'clients'
+        ],
+        'admin' =>[
+            'driver' => 'session',
+            'provider' => 'admin'
         ]
     ],
 
@@ -71,6 +75,10 @@ return [
         'clients' => [
             'driver' => 'eloquent',
             'model' => App\Models\User\Clients::class,
+        ],
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin\Admin::class,
         ]
 
         // 'users' => [
@@ -104,6 +112,11 @@ return [
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'clients' => [
+            'provider' => 'clients', // This should match the name of your 'clients' provider
+            'table' => 'password_resets_clients', // Choose a different table name if needed
+            'expire' => 60,
         ],
     ],
 

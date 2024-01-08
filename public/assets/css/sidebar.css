@@ -1,0 +1,110 @@
+.sidebar {
+    transition: width 0.3s ease;
+  }
+  
+  .sidebar.collapsed {
+    width: 100px;
+  }
+  
+  .sidebar {
+    display: flex;
+    width: 272px;
+    height: 1080px;
+    padding: 24px 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+  
+  .logo_link img {
+    width: 63.913px;
+    height: 60px;
+  }
+  
+  .sidebar_arrow {
+    border: none;
+    background: none;
+  }
+  
+  .sidebar.collapsed .add {
+    width: 56px;
+    padding: 10px;
+    border-radius: 30px;
+  }
+  
+  .logo {
+    display: flex;
+    padding-left: var(--spacing-spacing-xs, 0px);
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+  }
+  
+  .logo_link img {
+    width: 63.913px;
+    height: 60px;
+  }
+  
+  .sidebar_arrow {
+    border: none;
+    background: none;
+  }
+  
+  .items_and_button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 0 0;
+    align-self: stretch;
+  }
+  
+  .navigation_links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+  }
+  
+  .first_group {
+    display: flex;
+    padding-top: var(--spacing-spacing-xs, 12px);
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+  }
+  
+  .second_group, .third_group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+  }
+  
+  .navigation_links ul li {
+    display: flex;
+    height: 56px;
+    padding: 20px;
+    align-items: center;
+    gap: 28px;
+    align-self: stretch;
+    border-radius: var(--radius-s, 8px);
+    width: 100%;
+  }
+  
+  .content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #E8F0F0;
+    overflow: auto;
+    width: 1366px;
+    max-width: 100%;
+    max-height: 300vh;
+  }
+  
+  .rotate180 {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+  }

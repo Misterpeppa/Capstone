@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('pet_info', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('age');
+            $table->string('age');
             $table->date('birthdate');
             $table->string('species');
             $table->string('breed');
             $table->string('gender');
-            $table->float('weight');
+            $table->string('weight');
+            $table->string('sterilization')->nullable();
             $table->timestamps();
         });
     }

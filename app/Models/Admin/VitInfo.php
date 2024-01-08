@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\admin;
+namespace App\Models\Admin;
 
 use App\Models\Admin\VitBatch;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,11 +15,13 @@ class VitInfo extends Model
     protected $fillable = [
         'item_name',
         'quantity',
+        'prod_desc',
         'price',
         'product_type',
+        'archived_at'
     ];
 
-    public function VitBatch(): HasMany
+    public function vitBatch(): HasMany
     {
         return $this->hasMany(VitBatch::class, 'vit_id');
     }

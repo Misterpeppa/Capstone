@@ -19,9 +19,13 @@ return new class extends Migration
             $table->string('suffix')->nullable();
             $table->string('gender');
             $table->date('birthdate');
+            $table->string('address')->nullable();
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->integer('phone')->nullable()->unique();
-            $table->string('password');
+            $table->string('password')->nullable();
+            $table->rememberToken();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

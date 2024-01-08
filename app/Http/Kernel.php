@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AdminAuth;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -66,6 +67,10 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'clients' => \App\Http\Middleware\UserAuth::class,
-        'user.log.status' => \App\Http\Middleware\UserLoggedStatus::class,
+        'signedout' => \App\Http\Middleware\UserLoggedStatus::class,
+        'nocache' => \App\Http\Middleware\NoCacheMiddleware::class,
+        'admin' => \App\Http\Middleware\AdminAuth::class,
+        'adminauth' => \App\Http\Middleware\AdminLoggedStatus::class,
+
     ];
 }

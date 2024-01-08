@@ -14,14 +14,15 @@ class VaxHistory extends Model
     protected $fillable = [
         'vax_id',
         'petrecord_id',
-        'vaccination_date'
+        'vaccination_date',
+        'revaccination_date',
     ];
 
     public function vax(): BelongsTo
     {
         return $this->belongsTo(VaxInfo::class, 'vax_id');
     }
-    public function PetRecord(): BelongsTo
+    public function petRecord(): BelongsTo
     {
         return $this->belongsTo(PetRecord::class, 'petrecord_id');
     }

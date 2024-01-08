@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\admin;
+namespace App\Models\Admin;
 
 use App\Models\Admin\MedBatch;
 use App\Models\Admin\MedHistory;
@@ -17,23 +17,23 @@ class MedInfo extends Model
     protected $fillable = [
         'item_name',
         'quantity',
-        'uses',
-        'side_effects',
+        'prod_desc',
         'price',
         'product_type',
+        'archived_at'
     ];
 
-    public function MedHistory(): HasMany
+    public function medHistory(): HasMany
     {
         return $this->hasMany(MedHistory::class, 'med_id');
     }
-    public function SurgHistory(): HasMany
+    public function surgHistory(): HasMany
     {
         return $this->hasMany(SurgHistory::class, 'med_id');
     }
-    public function MedBatch(): HasMany
+    public function medBatch(): HasMany
     {
-        return $this->hasMany(MedBatch::class, 'med_id');
+        return $this->hasMany(MedBatch::class, 'med_id', 'id');
     }
 
 }

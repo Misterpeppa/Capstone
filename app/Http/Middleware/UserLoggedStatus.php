@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,12 +15,14 @@ class UserLoggedStatus
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, string ...$guards): Response
     {
-        if (Auth::check('clients')) {
-            // User is authenticated, redirect them to the dashboard or home page.
-            return redirect('/user/landing'); // Replace with the desired URL
+        $guards = empty($guards) ? [null] : $guards;
+
+        if(Auth::guard('clients')->check()){
+            return redirect()->route('landing');
         }
+        return $next($request);
         
     }
 }

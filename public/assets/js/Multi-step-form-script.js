@@ -1,6 +1,6 @@
 //DOM elements
 const DOMstrings = {
-  stepsBtnClass: 'multisteps-form__progress-btn',
+
   stepsBtns: document.querySelectorAll(`.multisteps-form__progress-btn`),
   stepsBar: document.querySelector('.multisteps-form__progress'),
   stepsForm: document.querySelector('.multisteps-form__form'),
@@ -87,7 +87,7 @@ const setActivePanel = activePanelNum => {
 
       elem.classList.add('js-active');
 
-      setFormHeight(elem);
+      setFormHeight();
 
     }
   });
@@ -105,29 +105,19 @@ const formHeight = activePanel => {
 
 const setFormHeight = () => {
   const activePanel = getActivePanel();
+  const activePanelNum = Array.from(DOMstrings.stepFormPanels).indexOf(activePanel);
 
-  formHeight(activePanel);
+  let totalHeight = 0;
+  DOMstrings.stepFormPanels.forEach((elem, index) => {
+    if (index <= activePanelNum) {
+      totalHeight += elem.offsetHeight;
+    }
+  });
+
+  DOMstrings.stepsForm.style.height = `${totalHeight}px`;
 };
 
-//STEPS BAR CLICK FUNCTION
-DOMstrings.stepsBar.addEventListener('click', e => {
 
-  //check if click target is a step button
-  const eventTarget = e.target;
-
-  if (!eventTarget.classList.contains(`${DOMstrings.stepsBtnClass}`)) {
-    return;
-  }
-
-  //get active button step number
-  const activeStep = getActiveStep(eventTarget);
-
-  //set all steps before clicked (and clicked too) to active
-  setActiveStep(activeStep);
-
-  //open active panel
-  setActivePanel(activeStep);
-});
 
 //PREV/NEXT BTNS CLICK
 DOMstrings.stepsForm.addEventListener('click', e => {

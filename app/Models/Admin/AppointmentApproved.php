@@ -2,7 +2,7 @@
 
 namespace App\Models\Admin;
 
-use App\Models\Admin\Clients;
+use App\Models\User\Clients;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use \Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -19,6 +19,7 @@ class AppointmentApproved extends Model
         'appointmentType',
         'appointmentDate',
         'appointmentTime',
+        'completed_at',
     ];
 
     public function clients(): BelongsTo

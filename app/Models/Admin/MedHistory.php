@@ -10,10 +10,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class MedHistory extends Model
 {
     use HasFactory;
-    protected $table = 'med_history;';
+    protected $table = 'med_history';
     protected $fillable = [
         'petrecord_id',
         'diagnosis',
+        'diagnosis_date',
         'treatment',
         'med_id'
     ];

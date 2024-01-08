@@ -20,7 +20,8 @@ class PetInfo extends Model
         'species',
         'breed',
         'gender',
-        'weight'
+        'weight',
+        'sterilization'
     ];
 
     public function owner(): BelongsTo 

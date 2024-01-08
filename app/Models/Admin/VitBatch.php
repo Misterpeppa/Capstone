@@ -13,11 +13,13 @@ class VitBatch extends Model
     protected $table = 'vit_batch';
     protected $fillable = [
         'vit_id',
+        'quantity',
         'batch_no',
         'product_code',
         'manufacturing_date',
         'expiration_date',
-        'date_stocked'
+        'date_stocked',
+        'archived_at'
     ];
 
     public function Vit(): BelongsTo
