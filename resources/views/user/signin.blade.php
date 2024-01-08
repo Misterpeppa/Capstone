@@ -48,18 +48,22 @@
                         @csrf
                         <div class="signin_inputs_container">
                             <div class="signup_inputs_container">
-
-                            <div class="input-group">
-                                <div class="input_svg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><g opacity="0.5" clip-path="url(#clip0_6488_6539)"><path d="M3 7.5C3 6.96957 3.21071 6.46086 3.58579 6.08579C3.96086 5.71071 4.46957 5.5 5 5.5H19C19.5304 5.5 20.0391 5.71071 20.4142 6.08579C20.7893 6.46086 21 6.96957 21 7.5M3 7.5V17.5C3 18.0304 3.21071 18.5391 3.58579 18.9142C3.96086 19.2893 4.46957 19.5 5 19.5H19C19.5304 19.5 20.0391 19.2893 20.4142 18.9142C20.7893 18.5391 21 18.0304 21 17.5V7.5M3 7.5L12 13.5L21 7.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_6488_6539"><rect width="24" height="24" fill="white" transform="translate(0 0.5)"/></clipPath></defs></svg></div>
-                                <div class="form-floating custom_form_floating">
-                                    
-                                    <input name="email" id="email" class="form-control custom_email" type="email" data-id="email" placeholder="Email Address" />
-                                    <label class="form-label" for="email">Email Address<span>&nbsp;*</span></label>
-                                    <div id="guide_email_message" class="guide-message email"><span>• Please enter your email.<br>(e.g. pogiako@gmail.com/pogiako@yahoo.com)</span></div>
-                                    <div id="error-email" class="error-message email"><span>• Invalid email format.</span></div>
+                            <div class="row" style="padding:0; margin:0; width:100%">
+                                <div class="col" style="padding:0; margin:0;">
+                                    <div class="input-group">
+                                        <div class="input_svg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><g opacity="0.5" clip-path="url(#clip0_6488_6539)"><path d="M3 7.5C3 6.96957 3.21071 6.46086 3.58579 6.08579C3.96086 5.71071 4.46957 5.5 5 5.5H19C19.5304 5.5 20.0391 5.71071 20.4142 6.08579C20.7893 6.46086 21 6.96957 21 7.5M3 7.5V17.5C3 18.0304 3.21071 18.5391 3.58579 18.9142C3.96086 19.2893 4.46957 19.5 5 19.5H19C19.5304 19.5 20.0391 19.2893 20.4142 18.9142C20.7893 18.5391 21 18.0304 21 17.5V7.5M3 7.5L12 13.5L21 7.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_6488_6539"><rect width="24" height="24" fill="white" transform="translate(0 0.5)"/></clipPath></defs></svg></div>
+                                        <div class="form-floating custom_form_floating">
+                                            
+                                            <input name="email" id="email" class="form-control custom_email" type="email" data-id="email" placeholder="Email Address" />
+                                            <label class="form-label" for="email">Email Address<span>&nbsp;*</span></label>
+                                            <div id="guide_email_message" class="guide-message email"><span>• Please enter your email.<br>(e.g. pogiako@gmail.com/pogiako@yahoo.com)</span></div>
+                                            <div id="error-email" class="error-message email"><span>• Invalid email format.</span></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            
 
                             <div class="input-group">
                                 <div class="input_svg">
@@ -76,10 +80,7 @@
                             </div>
 
                             <div class="remember_me_forget_container mt-3">
-                                <div class="remember_me">
-                                    <label class="switch"><input type="checkbox" name="rememeber_me"><span class="slider round"></span></label>
-                                    <p class="align-items-xl-center">Remember me</p>
-                                </div>
+                                
                                 <div class="d-flex align-items-center forgot_container"><a class="forgot_link" href="{{ route('client.forgotpass') }}">Forgot Password?</a></div>
                             </div>
                         </div>
