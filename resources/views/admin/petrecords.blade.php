@@ -15,7 +15,8 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}"> </head>
+	<link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}"> 
+</head>
 
 <body>
 	<main class="d-flex flex-row container-fluid" style="padding: 0;"> @php $activeTab = 'emr'; // Set the active tab @endphp @include('includes.admin_header')
@@ -166,10 +167,9 @@
   </defs>
 </svg> Add Record</span></button>
 					</div>
-                    @foreach($petrecord as $petrecord)
-
 					<div id="pet_records" class="pet_records_container"> 
-						<div class="card pet_card">
+					@foreach($petrecord as $petrecord)
+						<div class="card pet_card" data-container-id="{{ $petrecord->id }}">
 							<div class="card-body pet_card_body">
 								<div id="pet_detail_header" class="pet_detail_header">
 									<div class="pet_detail_heading_text_container">
@@ -194,7 +194,8 @@
 														<clipPath id="clip0_6230_1794">
 															<rect width="24" height="24" fill="white" /> </clipPath>
 													</defs>
-												</svg>&nbsp;View</button>
+												</svg>&nbsp;View
+											</button>
 											<button class="dropdown-item Edit_pet-action" id="Edit">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6230_538)">
@@ -240,8 +241,9 @@
 								</div>
 							</div>
 						</div>
+						@endforeach
+
 					</div>
-                    @endforeach
 				</div>
 				<div id="view_pet_container" class="view_pet">
 					<div class="view_pet_back_btn_container">
@@ -361,23 +363,23 @@
 									</div>
 									<div class="owner_details">
 										<div class="owner_details_row">
-											<div class="owner_detail_container">
+											<div class="owner_detail_container" id="ownerName">
 												<h1>Name</h1>
-												<p>Harold</p>
+												<p></p>
 											</div>
-											<div class="owner_detail_container">
+											<div class="owner_detail_container" id="">
 												<h1>Address</h1>
 												<p>Namek</p>
 											</div>
 										</div>
 										<div class="owner_details_row">
-											<div class="owner_detail_container">
+											<div class="owner_detail_container" id="ownerEmail">
 												<h1>Email</h1>
-												<p>r@gmail.com</p>
+												<p></p>
 											</div>
-											<div class="owner_detail_container">
+											<div class="owner_detail_container" id="ownerPhone">
 												<h1>Contact Number</h1>
-												<p>+63 948 745 1489</p>
+												<p></p>
 											</div>
 										</div>
 									</div>
@@ -418,25 +420,26 @@
 										</div>
 									</div>
 									<button class="btn add_history" id="add_medical_history" type="button"><span id="add_medical_history" class="add_history_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-  <g clip-path="url(#clip0_6404_5410)" filter="url(#filter0_d_6404_5410)">
-    <path d="M12.5 5V19M5.5 12H19.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <filter id="filter0_d_6404_5410" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-      <feOffset dy="2"/>
-      <feGaussianBlur stdDeviation="1"/>
-      <feComposite in2="hardAlpha" operator="out"/>
-      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6404_5410"/>
-      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6404_5410" result="shape"/>
-    </filter>
-    <clipPath id="clip0_6404_5410">
-      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
-    </clipPath>
-  </defs>
-</svg>&nbsp;Add Diagnosis</span></button>
+										<g clip-path="url(#clip0_6404_5410)" filter="url(#filter0_d_6404_5410)">
+											<path d="M12.5 5V19M5.5 12H19.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+										</g>
+										<defs>
+											<filter id="filter0_d_6404_5410" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+											<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+											<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+											<feOffset dy="2"/>
+											<feGaussianBlur stdDeviation="1"/>
+											<feComposite in2="hardAlpha" operator="out"/>
+											<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+											<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6404_5410"/>
+											<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6404_5410" result="shape"/>
+											</filter>
+											<clipPath id="clip0_6404_5410">
+											<rect width="24" height="24" fill="white" transform="translate(0.5)"/>
+											</clipPath>
+										</defs>
+										</svg>&nbsp;Add Diagnosis</span>
+									</button>
 								</div>
 								<div id="medical_history_table_container" class="medical_history_table_container" style="display: none;">
 									<div class="table-responsive mt-3" id="medical_history_table" style="width: 100%;">
@@ -451,13 +454,6 @@
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-													<td>Cell 1</td>
-													<td>Cell 1</td>
-													<td>Cell 1</td>
-													<td>Cell 2</td>
-													<td>Cell 2</td>
-												</tr>
 											</tbody>
 										</table>
 									</div>
@@ -1027,11 +1023,13 @@
 					<button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
-					<form class="add_client" id="add_pet_form">
+					<form action="{{ route('med.history') }}" method="POST" class="add_client" id="add_pet_form">
+						@csrf
+						<input type="hidden" name="petrecord_id" id="medhisId">
 						<div class="mb-3 input_container">
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" data-id="diagnosis" id="diagnosis" placeholder="Diagnosis">
+									<select class="form-select form-select" name="diagnosis" data-id="diagnosis" id="diagnosis" placeholder="Diagnosis">
 										<option value="" selected="">Select Diagnosis</option>
 										<option value="Diagnosis 1">Diagnosis 1</option>
 										<option value="Diagnosis 2">Diagnosis 2</option>
@@ -1042,7 +1040,7 @@
 									<div class="guide-message" id="guide-pet_type"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" data-id="diagnosis_date" id="diagnosis_date" placeholder="Date" type="date">
+									<input class="form-control form-control" name="diagnosis_date" data-id="diagnosis_date" id="diagnosis_date" placeholder="Date" type="date">
 									<label class="form-label form-label" for="diagnosis_date">Date<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_birthdate"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 									<div class="guide-message" id="guide_pet_birthdate"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
@@ -1050,7 +1048,7 @@
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" data-id="treatment_plan" id="treatment_plan" placeholder="Treatment Plan">
+									<select class="form-select form-select" name="treatment" data-id="treatment_plan" id="treatment_plan" placeholder="Treatment Plan">
 										<option value="" selected="">Select Treatment</option>
 										<option value="Treatment 1">Treatment 1</option>
 										<option value="Treatment 2">Treatment 2</option>
@@ -1061,11 +1059,11 @@
 									<div class="guide-message" id="guide-pet_type-3"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select" id="medication" data-id="medication" placeholder="Medication">
-										<option value="" selected="">Select Medication</option>
-										<option value="Medication 1">Medication 1</option>
-										<option value="Medication 2">Medication 2</option>
-										<option value="Medication 3">Medication 3</option>
+									<select class="form-select" id="medication" name="medication" data-id="medication" placeholder="Medication">
+										<option value="" disabled selected>Medication</option>
+										@foreach ($medInfo as $medInfo)
+										<option value="{{ $medInfo->id }}">{{ $medInfo->item_name }}</option>
+										@endforeach
 									</select>
 									<label class="form-label form-label" for="medication">Medication<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_type-4"><span>• Please select pet type</span></div>
@@ -1074,19 +1072,19 @@
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<textarea class="form-control form-control" data-id="diagnosis_description" id="diagnosis_description" placeholder="Diagnosis Description"></textarea>
+									<textarea class="form-control form-control" name="diagnosis_desc" data-id="diagnosis_description" id="diagnosis_description" placeholder="Diagnosis Description"></textarea>
 									<label class="form-label form-label" for="diagnosis_description">Diagnosis Description<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-diagnosis_description"><span>• Please select a sterilization status.</span></div>
 									<div class="guide-message" id="guide-diagnosis_description"><span>• Please select a sterilization status.</span></div>
 								</div>
 							</div>
 						</div>
-					</form>
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_diagnosis" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
 					<button class="btn submit_pet" id="submit_diagnosis" type="submit"><span class="submit_product_base">Submit</span></button>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -1098,22 +1096,24 @@
 					<button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
-					<form class="add_client" id="add_pet_form-2">
+					<form action="{{ route('vax.history') }}" method="POST" class="add_client" id="add_pet_form-2">
+						@csrf
+						<input type="hidden" name="petrecord_id" id="vaxhisId">
 						<div class="mb-3 input_container">
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" id="vaccination" data-id="vaccination" placeholder="Vaccination">
-										<option value="" selected="">Select Vaccination</option>
-										<option value="Vaccination 1">Vaccination 1</option>
-										<option value="Vaccination 2">Vaccination 2</option>
-										<option value="Vaccination 3">Vaccination 3</option>
+									<select class="form-select form-select" name="vax_id" id="vaccination" data-id="vaccination" placeholder="Vaccination">
+										<option value=""disabled selected>Vaccine </option>
+										@foreach ($vaxInfo as $vaxInfo)
+										<option value="{{ $vaxInfo->id }}">{{ $vaxInfo->item_name }}</option>
+										@endforeach
 									</select>
 									<label class="form-label form-label" for="vaccination">Diagnosis<span>&nbsp;*</span></label>
 									<div id="error-vaccination" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-vaccination" class="guide-message"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" id="vaccination_date" data-id="vaccination_date" placeholder="Date" type="date">
+									<input class="form-control form-control" name="vaccination_date" id="vaccination_date" data-id="vaccination_date" placeholder="Date" type="date">
 									<label class="form-label form-label" for="vaccination_date">Date<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_birthdate-2"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 									<div class="guide-message" id="guide_pet_birthdate-2"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
@@ -1127,7 +1127,7 @@
 									<div class="guide-message" id="guide-pet_type-5"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" id="next_schedule" type="date" data-id="next_schedule">
+									<input class="form-control" id="next_schedule" name="revaccination_date" type="date" data-id="next_schedule">
 									<label class="form-label form-label" for="next_schedule">Next Schedule Date<span>&nbsp;*</span></label>
 									<div id="error-next_schedule" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-next_schedule" class="guide-message"><span>• Please select pet type</span></div>
@@ -1147,12 +1147,12 @@
 								</div>
 							</div>
 						</div>
-					</form>
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_vaccination" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
 					<button class="btn submit_pet" id="submit_vaccination" type="submit"><span class="submit_product_base">Submit</span></button>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -1164,11 +1164,13 @@
 					<button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
-					<form class="add_client" id="add_pet_form-3">
+					<form action="{{ route('surg.history') }}" method="POST" class="add_client" id="add_pet_form-3">
+						@csrf
+						<input type="hidden" name="petrecord_id" id="surghisId">
 						<div class="mb-3 input_container">
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" id="surgery" data-id="surgery" placeholder="Surgery">
+									<select class="form-select form-select" name="surgery_type" id="surgery" data-id="surgery" placeholder="Surgery">
 										<option value="" selected="">Surgery</option>
 										<option value="Surgery 1">Surgery 1</option>
 										<option value="Surgery 2">Surgery 2</option>
@@ -1179,7 +1181,7 @@
 									<div id="guide-vaccination-1" class="guide-message"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" id="surgery_date" data-id="surgery_date" placeholder="Date" type="date">
+									<input class="form-control form-control" name="surgery_date" id="surgery_date" data-id="surgery_date" placeholder="Date" type="date">
 									<label class="form-label form-label" for="surgery_date">Date<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_birthdate-3"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 									<div class="guide-message" id="guide_pet_birthdate-3"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
@@ -1187,7 +1189,7 @@
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select" id="surgery_reason" data-id="surgery_reason" placeholder="Reason for surgery">
+									<select class="form-select" id="surgery_reason" name="reason" data-id="surgery_reason" placeholder="Reason for surgery">
 										<option value="" selected="">Reason for surgery</option>
 										<option value="Reason surgery 1">Reason surgery 1</option>
 										<option value="Reason surgery 2">Reason surgery 2</option>
@@ -1198,11 +1200,11 @@
 									<div id="guide-medication-2" class="guide-message"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select" id="medication-1" data-id="medication-1" placeholder="Medication">
-										<option value="" selected="">Medication</option>
-										<option value="Medication 1">Medication 1</option>
-										<option value="Medication 2">Medication 2</option>
-										<option value="Medication 3">Medication 3</option>
+									<select class="form-select" id="medication-1" name="med_id" data-id="medication-1" placeholder="Medication">
+										<option value=""disabled selected>Medication</option>
+										@foreach ($med_info as $med_info)
+										<option value="{{ $med_info->id }}">{{ $med_info->item_name }}</option>
+										@endforeach
 									</select>
 									<label class="form-label form-label" for="medication-1">Medication<span>&nbsp;*</span></label>
 									<div id="error-medication-1" class="error-message"><span>• Please select pet type</span></div>
@@ -1211,19 +1213,19 @@
 							</div>
 							<div class="d-flex justify-content-end align-items-end align-content-end align-self-end newinput_row" style="width: 100%;">
 								<div class="form-floating" style="width: 100%;">
-									<textarea class="form-control form-control" id="notes" placeholder="Notes"></textarea>
+									<textarea class="form-control form-control" name="surgery_notes" id="notes" placeholder="Notes"></textarea>
 									<label class="form-label" for="notes">Notes<span>&nbsp;*</span></label>
 									<div id="error-notes" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-notes" class="guide-message"><span>• Please select pet type</span></div>
 								</div>
 							</div>
 						</div>
-					</form>
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_surgery" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
 					<button class="btn submit_pet" id="submit_surgery" type="submit"><span class="submit_product_base">Submit</span></button>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -1251,21 +1253,49 @@ $('#add_pet_split_btn').hide();
 $('#pet_records').hide();
 </script> 
 @endif
+@if ($medHistoryExist)
 <script>
-// Listen for button clicks with the class "view-record-button"
-document.addEventListener('click', function(e) {
-	if (e.target && e.target.classList.contains('view-button')) {
-		// Get the container ID from the data attribute
-		const containerId = e.target.getAttribute('data-container-id');
-
-		// You can now use the containerId to open the detailed view or perform any other action.
-		console.log('Clicked on the View Record button in container with ID:', containerId);
-	}
-});
+$('#medical_empty_state').hide();
+$('#add_diagnosis').show();
+$('#medical_history_table_container').show();
+</script>
+@else
+<script>
+$('#medical_empty_state').show();
+$('#add_diagnosis').hide();
+$('#medical_history_table_container').hide();
+</script> 
+@endif
+@if ($vaxHistoryExist)
+<script>
+$('#immunization_empty_state').hide();
+$('#add_immunization').show();
+$('#immunization_history_table_container').show();
+</script>
+@else
+<script>
+$('#immunization_empty_state').show();
+$('#add_immunization').hide();
+$('#immunization_history_table_container').hide();
+</script> 
+@endif
+@if ($surgHistoryExist)
+<script>
+$('#surgery_empty_state').hide();
+$('#add_surgery').show();
+$('#surgery_history_table_container').show();
+</script>
+@else
+<script>
+$('#surgery_empty_state').show();
+$('#add_surgery').hide();
+$('#surgery_history_table_container').hide();
+</script> 
+@endif
+<script>
 $(document).ready(function() {
-	$('#View').click(function() {
+	$('.View_pet-action').click(function() {
 			const id = $(this).data('container-id');
-			displayMedicalHistoryTable(id);
 			displayVaxHistoryTable(id);
 			$('#medhisId').val(id);
 			$('#vaxhisId').val(id);
@@ -1302,9 +1332,6 @@ $(document).ready(function() {
 		type: 'GET',
 		url: '/admin/emr/medhis' + id, // Replace with your actual endpoint
 		success: function(data) {
-			// Clear existing table rows
-			$('#medhisto_Table tbody').empty();
-
 			// Populate the table with the fetched data
 			$.each(data, function(index, med) {
 				var newRow = '<tr>' +

@@ -21,11 +21,18 @@ class EMRController extends Controller
         $owners = Clients::withTrashed()->get();
         $petrecord = PetRecord::with('pet', 'owner')->get();
         $petrecordExists = $petrecord->isNotEmpty();
+        $medHistory = MedHistory::all();
+        $vaxHistory = VaxHistory::all();
+        $surgHistory = SurgHistory::all();
+        $medHistoryExist = $medHistory->isNotEmpty();
+        $vaxHistoryExist = $vaxHistory->isNotEmpty();
+        $surgHistoryExist = $surgHistory->isNotEmpty();
         $medInfo = MedInfo::all();
         $med_info = MedInfo::all();
         $vaxInfo = VaxInfo::all();
         
-        return view('/admin/petrecords', compact('owners', 'petrecord','petrecordExists', 'medInfo', 'vaxInfo', 'med_info'));
+        return view('/admin/petrecords', compact('owners', 'petrecord','petrecordExists', 'medHistoryExist', 'vaxHistoryExist', 'surgHistoryExist', 
+        'medInfo', 'vaxInfo', 'med_info'));
     }
 
     public function pet(Request $request)
@@ -73,6 +80,7 @@ class EMRController extends Controller
             'diagnosis_date' => $request->input('diagnosis_date'),
             'treatment' => $request->input('treatment'),
             'med_id' => $request->input('medication'),
+            // 'diagnosis_desc' => $request->input('diagnosis_desc'),
         ]);
         $medHistory->save();
 
@@ -95,7 +103,6 @@ class EMRController extends Controller
         $surgHistory = new SurgHistory([
             'petrecord_id' => $request->input('petrecord_id'),
             'surgery_type' => $request->input('surgery_type'),
-            'severity' => $request->input('severity'),
             'med_id' => $request->input('med_id'),
             'surgery_date' => $request->input('surgery_date'),
             'surgery_note' => $request->input('surgery_note'),

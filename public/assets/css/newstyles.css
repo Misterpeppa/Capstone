@@ -2698,7 +2698,7 @@ body{
   .card.pet_card {
     display: flex;
     padding: 24px;
-    width: 49.3%;
+    width: 45%;
     align-items: flex-start;
     flex-direction: row;
     gap: var(--spacing-spacing-l, 32px);
