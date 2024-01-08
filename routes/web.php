@@ -41,6 +41,7 @@ Route::get('/appointment2', function (){
 });
 
 Route::middleware(['signedout', 'nocache'])->group(function () {
+    Route::get('/', [UserAuthController::class, 'showSignin']);
     Route::get('/user/signup', [UserAuthController::class, 'showSignup']);
     Route::post('/user/signup', [UserAuthController::class, 'signup'])->name('client.signup');
     

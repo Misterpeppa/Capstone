@@ -32,7 +32,7 @@
 			<div class="main_content">
 				<div id="client_header" class="client_header">
 					<div class="header_text_container">
-						<h1><strong>Appointments</strong></h1> </div>
+						<h1><strong>Appointmezng></h1> </div>
 					<div class="btn-group split_btn" id="add_approve_appointment_split_btn" style="display: none;">
 						<button class="btn add_Product_btn" id="approved_appointment_btn" type="button"><span class="add_Product_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="27" viewBox="0 0 25 27" fill="none">
   <g clip-path="url(#clip0_6356_20985)" filter="url(#filter0_d_6356_20985)">
@@ -53,12 +53,10 @@
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg> Add Appointment</span></button>
-						<button class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown" data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-						<div class="dropdown-menu"><a class="dropdown-item" href="#">Generate Report</a></div>
-					</div>
-					<div class="btn-group split_btn" id="add_pending_appointment_split_btn" style="display: none;">
-						<button class="btn add_Product_btn" id="pending_appointment_btn" type="button"><span class="add_Product_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="27" viewBox="0 0 25 27" fill="none">
+</svg> Add Appointment</span></button><button class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown" data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Generate Report</a></div>
+                    </div>
+                    <div class="btn-group split_btn" id="add_pending_appointment_split_btn" style="display: none;"><button class="btn add_Product_btn" id="pending_appointment_btn" type="button"><span class="add_Product_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="27" viewBox="0 0 25 27" fill="none">
   <g clip-path="url(#clip0_6356_20985)" filter="url(#filter0_d_6356_20985)">
     <path d="M12.5 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H18C18.5304 5 19.0391 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V12M16 3V7M8 3V7M4 11H20M16 19H22M19 16V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -77,12 +75,10 @@
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg> Add Appointment</span></button>
-						<button class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown" data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-						<div class="dropdown-menu"><a class="dropdown-item" href="#">Generate Report</a></div>
-					</div>
-					<div class="btn-group split_btn" id="add_rejected_appointment_split_btn" style="display: none;">
-						<button class="btn add_Product_btn" id="reject_appointment_btn" type="button"><span class="add_Product_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="27" viewBox="0 0 25 27" fill="none">
+</svg> Add Appointment</span></button><button class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown" data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Generate Report</a></div>
+                    </div>
+                    <div class="btn-group split_btn" id="add_rejected_appointment_split_btn" style="display: none;"><button class="btn add_Product_btn" id="reject_appointment_btn" type="button"><span class="add_Product_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="27" viewBox="0 0 25 27" fill="none">
   <g clip-path="url(#clip0_6356_20985)" filter="url(#filter0_d_6356_20985)">
     <path d="M12.5 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H18C18.5304 5 19.0391 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V12M16 3V7M8 3V7M4 11H20M16 19H22M19 16V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -128,8 +124,7 @@
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg> Filter by</span></button>
-									<button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+</svg> Filter by</span></button><button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_5284_15919)">
     <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -139,9 +134,8 @@
     </clipPath>
   </defs>
 </svg> Sort by</span></button>
-								</div>
-								<div class="right_part_product_header">
-									<button class="btn add_pet_button" id="add_pet_button" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                </div>
+                                <div class="right_part_product_header"><button class="btn add_pet_button" id="add_pet_button" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_5749_19213)">
     <path d="M12 5V19M5 12H19" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -311,25 +305,24 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
                           <path d="M1.47998 12L5.59546 7.88384C6.08149 7.39773 6.08149 6.60227 5.59546 6.11616L1.47998 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
                         </svg>
-                      </span> </div>
-								<div class="pagination-items"> <span>Show:</span>
-									<select class="paginationItemsSelect">
-										<option value="2">2 items</option>
-										<option value="3">3 items</option>
-										<option value="4">4 items</option>
-										<option value="5">5 items</option>
-										<option value="6">6 items</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane align-self-stretch appointment_tab" role="tabpanel" id="pending_tab">
-							<div class="container_header">
-								<div class="left_part_product_header">
-									<div class="search_container">
-										<input type="search" class="search_input" placeholder="Search Appointment">
-									</div>
-									<button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      </span>
+                </div>
+                <div class="pagination-items">
+                      <span>Show:</span>
+                        <select class="paginationItemsSelect">
+                          <option value="2">2 items</option>
+                          <option value="3">3 items</option>
+                          <option value="4">4 items</option>
+                          <option value="5">5 items</option>
+                          <option value="6">6 items</option>
+                        </select>
+                </div>
+              </div>
+                        </div>
+                        <div class="tab-pane align-self-stretch appointment_tab" role="tabpanel" id="pending_tab">
+                            <div class="container_header">
+                                <div class="left_part_product_header">
+                                    <div class="search_container"><input type="search" class="search_input" placeholder="Search Appointment"></div><button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_5284_15912)">
     <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -338,8 +331,7 @@
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg> Filter by</span></button>
-									<button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+</svg> Filter by</span></button><button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_5284_15919)">
     <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -349,9 +341,8 @@
     </clipPath>
   </defs>
 </svg> Sort by</span></button>
-								</div>
-								<div class="right_part_product_header">
-									<button class="btn add_pet_button" id="add_pet_button-1" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                </div>
+                                <div class="right_part_product_header"><button class="btn add_pet_button" id="add_pet_button-1" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_5749_19213)">
     <path d="M12 5V19M5 12H19" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -531,29 +522,35 @@
                           <path d="M5.48 12L1.36452 7.88384C0.878492 7.39773 0.878492 6.60227 1.36452 6.11616L5.48 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
                         </svg>
                       </span>
-									<div class="pages"> <span class="pagination-page active">1</span> <span class="pagination-page">2</span> <span class="pagination-page">3</span> <span class="pagination-page">4</span> <span class="pagination-page">5</span> </div> <span class="pagination-arrow next-page">
+                  <div class="pages">
+                        <span class="pagination-page active">1</span>
+                        <span class="pagination-page">2</span>
+                        <span class="pagination-page">3</span>
+                        <span class="pagination-page">4</span>
+                        <span class="pagination-page">5</span>
+                  </div>
+                      <span class="pagination-arrow next-page">
                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
                           <path d="M1.47998 12L5.59546 7.88384C6.08149 7.39773 6.08149 6.60227 5.59546 6.11616L1.47998 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
                         </svg>
-                      </span> </div>
-								<div class="pagination-items"> <span>Show:</span>
-									<select class="paginationItemsSelect">
-										<option value="2">2 items</option>
-										<option value="3">3 items</option>
-										<option value="4">4 items</option>
-										<option value="5">5 items</option>
-										<option value="6">6 items</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane align-self-stretch appointment_tab" role="tabpanel" id="rejected_tab">
-							<div class="container_header">
-								<div class="left_part_product_header">
-									<div class="search_container">
-										<input type="search" class="search_input" placeholder="Search Appointment">
-									</div>
-									<button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      </span>
+                </div>
+                <div class="pagination-items">
+                      <span>Show:</span>
+                        <select class="paginationItemsSelect">
+                          <option value="2">2 items</option>
+                          <option value="3">3 items</option>
+                          <option value="4">4 items</option>
+                          <option value="5">5 items</option>
+                          <option value="6">6 items</option>
+                        </select>
+                </div>
+              </div>
+                        </div>
+                        <div class="tab-pane align-self-stretch appointment_tab" role="tabpanel" id="rejected_tab">
+                            <div class="container_header">
+                                <div class="left_part_product_header">
+                                    <div class="search_container"><input type="search" class="search_input" placeholder="Search Appointment"></div><button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_5284_15912)">
     <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -562,8 +559,7 @@
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg> Filter by</span></button>
-									<button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+</svg> Filter by</span></button><button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_5284_15919)">
     <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -573,9 +569,8 @@
     </clipPath>
   </defs>
 </svg> Sort by</span></button>
-								</div>
-								<div class="right_part_product_header">
-									<button class="btn add_pet_button" id="add_pet_button-2" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                </div>
+                                <div class="right_part_product_header"><button class="btn add_pet_button" id="add_pet_button-2" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_5749_19213)">
     <path d="M12 5V19M5 12H19" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -764,113 +759,101 @@
                           <path d="M5.48 12L1.36452 7.88384C0.878492 7.39773 0.878492 6.60227 1.36452 6.11616L5.48 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
                         </svg>
                       </span>
-									<div class="pages"> <span class="pagination-page active">1</span> <span class="pagination-page">2</span> <span class="pagination-page">3</span> <span class="pagination-page">4</span> <span class="pagination-page">5</span> </div> <span class="pagination-arrow next-page">
+                  <div class="pages">
+                        <span class="pagination-page active">1</span>
+                        <span class="pagination-page">2</span>
+                        <span class="pagination-page">3</span>
+                        <span class="pagination-page">4</span>
+                        <span class="pagination-page">5</span>
+                  </div>
+                      <span class="pagination-arrow next-page">
                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
                           <path d="M1.47998 12L5.59546 7.88384C6.08149 7.39773 6.08149 6.60227 5.59546 6.11616L1.47998 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
                         </svg>
-                      </span> </div>
-								<div class="pagination-items"> <span>Show:</span>
-									<select class="paginationItemsSelect">
-										<option value="2">2 items</option>
-										<option value="3">3 items</option>
-										<option value="4">4 items</option>
-										<option value="5">5 items</option>
-										<option value="6">6 items</option>
-									</select>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-	</main>
-	<div class="modal fade" role="dialog" tabindex="-1" id="add_appointment_modal">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content add_appointment_modal">
-				<div class="modal-header">
-					<h1 class="modal-title">Add Appointment</h1>
-					<button class="btn-close" id="close_client_modal-1" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
-				</div>
-				<div class="modal-body" style="width:100%;">
-					<form id="add_appointment_form-1" class="add_client">
-						<div class="mb-3 input_container">
-							<div class="form-floating" style="width:100%;">
-								<select class="form-select" id="owner_name" data-id="owner_name">
-									<option value="" selected="">Select an owner</option>
-								</select>
-								<label class="form-label" for="owner_name">Owner Name<span>&nbsp;*</span></label>
-								<div id="error-owner_name-2" class="error-message"><span>• Please enter client first name.</span></div>
-								<div id="guide-owner_name-2" class="guide-message"><span>• Please enter client first name.</span></div>
-							</div>
-							<div class="form-floating" style="width:100%;">
-								<input class="form-control" type="text" id="email" data-id="email" placeholder="Email">
-								<label class="form-label" for="email">Email<span>&nbsp;*</span></label>
-							</div>
-							<div class="form-floating" style="width:100%;">
-								<select class="form-select" id="pet_name" data-id="pet_name">
-									<option value="" selected="">Select a pet</option>
-								</select>
-								<label class="form-label" for="pet_name">Pet Name<span>&nbsp;*</span></label>
-								<div id="error-pet_name-1" class="error-message"><span>• Please enter client first name.</span></div>
-								<div id="guide-pet_name-1" class="guide-message"><span>• Please enter client first name.</span></div>
-							</div>
-							<div class="pet_type_and_breed_container">
-								<div class="species_container">
-									<div id="dog_cat_btn-1" class="species" style="display: flex;align-items: flex-start;gap: var(--spacing-spacing-xs, 12px);align-self: stretch;">
-										<button id="dog" data-id="dog" class="btn custom-radio" type="button" onclick="checkRadio('dog');  selectBreed('dog');">
-											<label class="form-label custom-control-label">Dog</label>
-											<input name="species" id="dog-radio" class="checkbox" type="radio" /> </button>
-										<button id="cat" data-id="cat" class="btn custom-radio" type="button" onclick="checkRadio('cat');  selectBreed('cat');">
-											<label class="form-label custom-control-label">Cat</label>
-											<input name="species" id="cat-radio" class="checkbox" type="radio" /> </button>
-									</div>
-								</div>
-								<div class="align-self-stretch form-floating breed_container">
-									<select class="form-select" id="breed" data-id="breed" disabled="" required="" style="height:100%;"></select>
-									<label class="form-label" for="breed">Select a breed<span>&nbsp;*</span></label>
-									<div id="error-breed-1" class="error-message"><span>• Please select a breed</span></div>
-								</div>
-							</div>
-							<div class="form-floating" style="width:100%;">
-								<select class="form-select" id="surgery_type" data-id="surgery_type">
-									<option value="" selected="">Surgery Type</option>
-									<option value="Neuter">Neuter</option>
-									<option value="Tooth Extraction">Tooth Extraction</option>
-								</select>
-								<label class="form-label" for="surgery_type">Surgery Type<span>&nbsp;*</span></label>
-								<div id="error-surgery_type-1" class="error-message"><span>• Please select a surgery.</span></div>
-							</div>
-							<div class="form-floating" style="width:100%;">
-								<textarea class="form-control" id="additional_notes" data-id="additional_notes" placeholder="Additional Notes"></textarea>
-								<label class="form-label" for="additional_notes-1">Additional Notes</label>
-								<div id="guide-additional_notes-1" class="guide-message"><span>• Please enter client last name.</span></div>
-							</div>
-							<div class="date_time_container">
-								<div class="form-floating" style="width: 100%;">
-									<input class="form-control" id="appointment_date" type="date" data-id="appointment_date">
-									<label class="form-label" for="appointment_date">Date<span>&nbsp;*</span></label>
-								</div>
-								<div class="form-floating" style="width: 100%;">
-									<input class="form-control" id="appointment_time" type="time" data-id="appointment_time">
-									<label class="form-label" for="appointment_time">Time<span>&nbsp;*</span></label>
-									<div id="error-appointment_time-1" class="error-message"><span>• Please select a breed</span></div>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer add_product_button">
-					<button class="btn clear_form" id="clear_form" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_product" id="submit_pending_appointment" type="submit" data-bs-dismiss="modal"><span class="submit_product_base">Submit</span></button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade show" role="dialog" tabindex="-1" id="add_appointment_success">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content success_modal">
-				<div class="modal-header success_header">
-					<div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                      </span>
+                </div>
+                <div class="pagination-items">
+                      <span>Show:</span>
+                        <select class="paginationItemsSelect">
+                          <option value="2">2 items</option>
+                          <option value="3">3 items</option>
+                          <option value="4">4 items</option>
+                          <option value="5">5 items</option>
+                          <option value="6">6 items</option>
+                        </select>
+                </div>
+              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+    
+    <div class="modal fade" role="dialog" tabindex="-1" id="add_appointment_modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content add_appointment_modal">
+                <div class="modal-header">
+                    <h1 class="modal-title">Add Appointment</h1><button class="btn-close" id="close_client_modal-1" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body" style="width:100%;">
+                    <form id="add_appointment_form-1" class="add_client">
+                        <div class="mb-3 input_container">
+                            <div class="form-floating" style="width:100%;"><select class="form-select" id="owner_name" data-id="owner_name">
+                                    <option value="" selected="">Select an owner</option>
+                                </select><label class="form-label" for="owner_name">Owner Name<span>&nbsp;*</span></label>
+                                <div id="error-owner_name-2" class="error-message"><span>• Please enter client first name.</span></div>
+                                <div id="guide-owner_name-2" class="guide-message"><span>• Please enter client first name.</span></div>
+                            </div>
+                            <div class="form-floating" style="width:100%;"><input class="form-control" type="text" id="email" data-id="email" placeholder="Email"><label class="form-label" for="email">Email<span>&nbsp;*</span></label></div>
+                            <div class="form-floating" style="width:100%;"><select class="form-select" id="pet_name" data-id="pet_name">
+                                    <option value="" selected="">Select a pet</option>
+                                </select><label class="form-label" for="pet_name">Pet Name<span>&nbsp;*</span></label>
+                                <div id="error-pet_name-1" class="error-message"><span>• Please enter client first name.</span></div>
+                                <div id="guide-pet_name-1" class="guide-message"><span>• Please enter client first name.</span></div>
+                            </div>
+                            <div class="pet_type_and_breed_container">
+                                <div class="species_container">
+                                    <div id="dog_cat_btn-1" class="species" style="display: flex;align-items: flex-start;gap: var(--spacing-spacing-xs, 12px);align-self: stretch;"><button id="dog" data-id="dog" class="btn custom-radio" type="button" onclick="checkRadio('dog');  selectBreed('dog');">
+  <label class="form-label custom-control-label">Dog</label>
+  <input name="species" id="dog-radio" class="checkbox" type="radio" />
+</button><button id="cat" data-id="cat" class="btn custom-radio" type="button" onclick="checkRadio('cat');  selectBreed('cat');">
+  <label class="form-label custom-control-label">Cat</label>
+  <input name="species" id="cat-radio" class="checkbox" type="radio" />
+</button></div>
+                                </div>
+                                <div class="align-self-stretch form-floating breed_container"><select class="form-select" id="breed" data-id="breed" disabled="" required="" style="height:100%;"></select><label class="form-label" for="breed">Select a breed<span>&nbsp;*</span></label>
+                                    <div id="error-breed-1" class="error-message"><span>• Please select a breed</span></div>
+                                </div>
+                            </div>
+                            <div class="form-floating" style="width:100%;"><select class="form-select" id="surgery_type" data-id="surgery_type">
+                                    <option value="" selected="">Surgery Type</option>
+                                    <option value="Neuter">Neuter</option>
+                                    <option value="Tooth Extraction">Tooth Extraction</option>
+                                </select><label class="form-label" for="surgery_type">Surgery Type<span>&nbsp;*</span></label>
+                                <div id="error-surgery_type-1" class="error-message"><span>• Please select a surgery.</span></div>
+                            </div>
+                            <div class="form-floating" style="width:100%;"><textarea class="form-control" id="additional_notes" data-id="additional_notes" placeholder="Additional Notes"></textarea><label class="form-label" for="additional_notes-1">Additional Notes</label>
+                                <div id="guide-additional_notes-1" class="guide-message"><span>• Please enter client last name.</span></div>
+                            </div>
+                            <div class="date_time_container">
+                                <div class="form-floating" style="width: 100%;"><input class="form-control" id="appointment_date" type="date" data-id="appointment_date"><label class="form-label" for="appointment_date">Date<span>&nbsp;*</span></label></div>
+                                <div class="form-floating" style="width: 100%;"><input class="form-control" id="appointment_time" type="time" data-id="appointment_time"><label class="form-label" for="appointment_time">Time<span>&nbsp;*</span></label>
+                                    <div id="error-appointment_time-1" class="error-message"><span>• Please select a breed</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer add_product_button"><button class="btn clear_form" id="clear_form" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button><button class="btn submit_product" id="submit_pending_appointment" type="submit" data-bs-dismiss="modal"><span class="submit_product_base">Submit</span></button></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade show" role="dialog" tabindex="-1" id="add_appointment_success">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content success_modal">
+                <div class="modal-header success_header">
+                    <div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
   <g clip-path="url(#clip0_5693_10654)">
     <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -1176,115 +1159,114 @@
     $(document).ready(function() {
         $('.accept-action').click(function() {
             var appointmentId = $(this).data('id');
-			var acceptModal = new bootstrap.Modal(document.getElementById('accept_modal'));
+			      var acceptModal = new bootstrap.Modal(document.getElementById('accept_modal'));
             acceptModal.show();
-			$('#confirm_approve_appointment_btn').off('click').on('click', function() {
-				$.ajax({
-					type: 'POST',
-					url: '/admin/appointment/approve/' + appointmentId,
-					data: {
-						_token: '{{ csrf_token() }}'
-					},
-					success: function(response) {
-						$('#row_' + appointmentId).remove();
-						alert('Appointment has been approved');
-						window.location.href = '/admin/appointment';
-					},
-					error: function(error) {
-						alert('An error occurred while processing the request.');
-					}
-				});
-				acceptModal.hide();
-			});
+        $('#confirm_approve_appointment_btn').off('click').on('click', function() {
+          $.ajax({
+            type: 'POST',
+            url: '/admin/appointment/approve/' + appointmentId,
+            data: {
+              _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
+              $('#row_' + appointmentId).remove();
+              alert('Appointment has been approved');
+              window.location.href = '/admin/appointment';
+            },
+            error: function(error) {
+              alert('An error occurred while processing the request.');
+            }
+          });
+          acceptModal.hide();
+        });
         });
         $('.reject-action').click(function() {
             var appointmentId = $(this).data('id');
-			var rejectModal = new bootstrap.Modal(document.getElementById('reject_modal'));
+			      var rejectModal = new bootstrap.Modal(document.getElementById('reject_modal'));
             rejectModal.show();
-			$('#reject_btn').off('click').on('click', function() {
-				var reason = $('#rejection_reason').val();
-				console.log('Reason: ', reason);
-				if (reason === 'other') {
-					// If 'other' is selected, get the value from the textarea
-					var otherReason = $('#specify_reason').val();
-					if (!otherReason.trim()) {
-						alert('Please specify the other reason.');
-						return;
-					}
-				}
-				$.ajax({
-					type: 'POST',
-					url: '/admin/appointment/reject/' + appointmentId,
-					data: {
-						_token: '{{ csrf_token() }}',
-						reason: reason,
-						otherReason: otherReason,
-					},
-					success: function(response) {
-						$('#row_' + appointmentId).remove();
-						alert('Appointment has been rejected');
-						window.location.href = '/admin/appointment';
-					},
-					error: function(error) {
-						alert('An error occurred while processing the request.');
-					}
-				});
-				rejectModal.hide();
-			});
+        $('#reject_btn').off('click').on('click', function() {
+          var reason = $('#rejection_reason').val();
+          console.log('Reason: ', reason);
+          if (reason === 'other') {
+            // If 'other' is selected, get the value from the textarea
+            var otherReason = $('#specify_reason').val();
+            if (!otherReason.trim()) {
+              alert('Please specify the other reason.');
+              return;
+            }
+          }
+          $.ajax({
+            type: 'POST',
+            url: '/admin/appointment/reject/' + appointmentId,
+            data: {
+              _token: '{{ csrf_token() }}',
+              reason: reason,
+              otherReason: otherReason,
+            },
+            success: function(response) {
+              $('#row_' + appointmentId).remove();
+              alert('Appointment has been rejected');
+              window.location.href = '/admin/appointment';
+            },
+            error: function(error) {
+              alert('An error occurred while processing the request.');
+            }
+          });
+          rejectModal.hide();
         });
+          });
 		$('.resched-action').click(function() {
             var appointmentId = $(this).data('id');
-			var reschedModal1 = new bootstrap.Modal(document.getElementById('resched_modal-1'));
-			reschedModal1.show();
-			$('#reschedule_btn-1').off('click').on('click', function() {
-				var appointmentDate = $('#appointmentDate').val();
-				var appointmentTime = $('#appointmentTime').val();
-				$.ajax({
-					type: 'POST',
-					url: '/admin/appointment/resched/' + appointmentId,
-					data: {
-						_token: '{{ csrf_token() }}',
-						appointmentDate: appointmentDate,
-						appointmentTime: appointmentTime,
-					},
-					success: function(response) {
-						$('#row_' + appointmentId).remove();
-						alert('Appointment has been rescheduled');
-						window.location.href = '/admin/appointment';
-					},
-					error: function(error) {
-						alert('An error occurred while processing the request.');
-					}
-				});
-				reschedModal1.hide();
-			});
-        });
+			      var reschedModal1 = new bootstrap.Modal(document.getElementById('resched_modal-1'));
+			      reschedModal1.show();
+            $('#reschedule_btn-1').off('click').on('click', function() {
+              var appointmentDate = $('#appointmentDate').val();
+              var appointmentTime = $('#appointmentTime').val();
+              $.ajax({
+                type: 'POST',
+                url: '/admin/appointment/resched/' + appointmentId,
+                data: {
+                  _token: '{{ csrf_token() }}',
+                  appointmentDate: appointmentDate,
+                  appointmentTime: appointmentTime,
+                },
+                success: function(response) {
+                  $('#row_' + appointmentId).remove();
+                  alert('Appointment has been rescheduled');
+                  window.location.href = '/admin/appointment';
+                },
+                error: function(error) {
+                  alert('An error occurred while processing the request.');
+                }
+              });
+              reschedModal1.hide();
+            });
+              });
 		$('.complete-action').on('click', function(event) {
-			var appointmentId = $(this).data('id');
+        var appointmentId = $(this).data('id');
+        var completeModal = new bootstrap.Modal(document.getElementById('mark_complete_modal'));
+        completeModal.show();
+        $('.confirm_complete').off('click').on('click', function() {
+          // Access the appointmentId from the outer scope
+          $.ajax({
+            url: '/admin/appointment/markascomplete/' + appointmentId,
+            type: 'POST',
+            data: {
+              _token: "{{ csrf_token() }}",
+              id: appointmentId
+            },
+            success: function(response) {
+              console.log('Appointment marked as completed:', response);
+              // You can update the UI or perform additional actions as needed
+            },
+            error: function(error) {
+              console.error('Error marking appointment as completed:', error);
+            }
+          });
 
-			var completeModal = new bootstrap.Modal(document.getElementById('mark_complete_modal'));
-			completeModal.show();
-			$('.confirm_complete').off('click').on('click', function() {
-				// Access the appointmentId from the outer scope
-				$.ajax({
-					url: '/admin/appointment/markascomplete/' + appointmentId,
-					type: 'POST',
-					data: {
-						_token: "{{ csrf_token() }}",
-						id: appointmentId
-					},
-					success: function(response) {
-						console.log('Appointment marked as completed:', response);
-						// You can update the UI or perform additional actions as needed
-					},
-					error: function(error) {
-						console.error('Error marking appointment as completed:', error);
-					}
-				});
-
-				completeModal.hide();
-			});
-		});
+          completeModal.hide();
+        });
+      });
     });
   </script>
 	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
