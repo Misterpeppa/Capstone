@@ -20,11 +20,12 @@ class EMRController extends Controller
     {
         $owners = Clients::withTrashed()->get();
         $petrecord = PetRecord::with('pet', 'owner')->get();
+        $petrecordExists = $petrecord->isNotEmpty();
         $medInfo = MedInfo::all();
         $med_info = MedInfo::all();
         $vaxInfo = VaxInfo::all();
         
-        return view('/admin/petrecords', compact('owners', 'petrecord', 'medInfo', 'vaxInfo', 'med_info'));
+        return view('/admin/petrecords', compact('owners', 'petrecord','petrecordExists', 'medInfo', 'vaxInfo', 'med_info'));
     }
 
     public function pet(Request $request)
@@ -37,6 +38,7 @@ class EMRController extends Controller
         $pet_infos->birthdate = $request->input('pet_birthday');
         $pet_infos->gender = $request->input('gender');
         $pet_infos->weight = $request->input('weight');
+        $pet_infos->sterilization = $request->input('sterilization');
         $pet_infos->save();
         $petId = $pet_infos->id;
         $ownerId = $request->input('owner_id');

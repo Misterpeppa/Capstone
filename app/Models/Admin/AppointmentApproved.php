@@ -14,12 +14,16 @@ class AppointmentApproved extends Model
     protected $table = 'appointment_approved'; 
     protected $fillable = [
         'user_id',
+        'petName',
         'petType',
         'breed',
+        'notes',
         'appointmentType',
         'appointmentDate',
         'appointmentTime',
         'completed_at',
+        'status',
+        'source,'
     ];
 
     public function clients(): BelongsTo

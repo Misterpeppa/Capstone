@@ -14,11 +14,15 @@ class AppointmentRejected extends Model
     protected $table = 'appointment_rejected'; 
     protected $fillable = [
         'user_id',
+        'petName',
         'petType',
         'breed',
+        'notes',
         'appointmentType',
         'appointmentDate',
         'appointmentTime',
+        'status',
+        'source,'
     ];
 
     public function clients(): BelongsTo
