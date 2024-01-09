@@ -14,8 +14,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
     <link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
 
@@ -52,12 +50,12 @@
         @endif
     </div>
     @endif
-        <div class="container-fluid">
+        <div class="container-fluid" style="padding:0; margin:0;">
             <div class="customized-row row d-flex align-items-center justify-content-end">
                 <div class="customized-col col-8 col-md-6 mt-4 mt-md-0 d-flex flex-column justify-content-center align-items-start">
                     <h1>Welcome to</h1>
                     <h2>Tagapo Dogs &amp; Cats Veterinary Clinic</h2>
-                    <div class="mt-5 landing_btns">
+                    <div class="landing_btns">
                         <a class="btn custom-book-appointment-btn" role="button" href="{{ route('appointment.form') }}">
                             BOOK AN APPOINTMENT
                         </a>
@@ -69,7 +67,7 @@
             </div>
 
             <div class="floating-div">
-                <div class="row d-flex justify-content-center ">
+                <div class="row w-100 d-flex justify-content-center ">
                     <div class="col-8 mb-3">
                         <div class="card service_icons">
                             <div class="card-body landingpage d-flex flex-column justify-content-center flex-sm-column flex-md-row">
@@ -103,7 +101,7 @@
 
 
          
-                <div class="row loc_and_working_hours d-flex justify-content-center">
+                <div class="row w-100 loc_and_working_hours d-flex justify-content-center">
                     <div class="col-8 col-md-4">
                         <div class="card location mb-4">
                             <div class="location_heading">

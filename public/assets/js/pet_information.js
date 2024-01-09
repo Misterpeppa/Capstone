@@ -343,7 +343,12 @@ setupAgeCalculation('pet_birthdate', 'age', 'pet_type');
 // Example usage for the second set of IDs
 setupAgeCalculation('pet_birthdate-1', 'age-1', 'pet_type-1');
 
-submit_Pet.addEventListener('click', function () {
+submit_Pet.addEventListener('click', function (event) {
+    //paalis nalang nito if needed
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+
     var petName = pet_nameInput.value;
     var petBreed = breedInput.value;
     var sex = pet_GenderInput.value;

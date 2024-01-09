@@ -117,7 +117,7 @@ const setFormHeight = () => {
   DOMstrings.stepsForm.style.height = `${totalHeight}px`;
 };
 
-
+setFormHeight();
 
 //PREV/NEXT BTNS CLICK
 DOMstrings.stepsForm.addEventListener('click', e => {

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch-toggle-switch.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
 </head>
 
 <body>
@@ -84,7 +84,8 @@
 								<div class="empty_state_message_container">
 									<h1>NO PETS YET!</h1>
 									<div class="empty_state_paragraph_container">
-										<p>You can add a pet by clicking the button below.</p>
+										<p>Looks like you haven’t added any of your pets just yet.<br>
+										You can add a pet by clicking the button below.</p>
 									</div>
 								</div>
 							</div>
@@ -298,7 +299,7 @@
 </svg> Back</span></button>
 						</div>
 						<div class="pet_record_item">
-							<div class="pet_record"><img src="assets/img/koda%201.png">
+							<div class="pet_record">
 								<div class="pet_record_details">
 									<div class="pet_record_details_second_row">
 										<div class="pet_name_breed_container">
@@ -417,7 +418,7 @@
 											</div>
 										</div>
 									</div>
-									<div id="medical_history_table_container" class="medical_history_table_container">
+									<div id="medical_history_table_container" class="table-responsive">
 										<div class="table-responsive" id="medical_history_table">
 											<table class="table">
 												<thead>
@@ -451,8 +452,7 @@
 											</div>
 										</div>
 									</div>
-									<div id="immunization_history_table_container" class="immunization_history_table_container">
-										<div class="table-responsive" id="immunization_history_table">
+									<div class="table-responsive" id="immunization_history_table">
 											<table class="table">
 												<thead>
 													<tr>
@@ -474,7 +474,6 @@
 												</tbody>
 											</table>
 										</div>
-									</div>
 								</div>
 								<div class="tab-pane pet_information" role="tabpanel" id="tab-4">
 									<div id="surgery_empty_state" class="pet_record_empty_state_message_container">
@@ -485,8 +484,7 @@
 											</div>
 										</div>
 									</div>
-									<div id="surgery_history_table_container" class="surgery_history_table_container">
-										<div class="table-responsive" id="surgery_history_table">
+									<div class="table-responsive" id="surgery_history_table">
 											<table class="table">
 												<thead>
 													<tr>
@@ -508,7 +506,6 @@
 												</tbody>
 											</table>
 										</div>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -517,7 +514,22 @@
 			</div>
 		</div>
 	</main>
-	<footer class="footer"><img src="assets/img/dogs&cats.png" style="width: 159.783px;height: 150px;flex-shrink: 0;"></footer>
+	<footer class="text-center py-4" style="background: rgba(4, 91, 98, 0.10); width:100%; position: static; left: 0; bottom: 0;">
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-lg-3">
+                <div class="col-lg-3"><img src="{{ asset('assets/img/dogs_cats.png') }}" style="width: 50px;height: 50px;flex-shrink: 0;" /></div>
+                <div class="col">
+                    <p style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 0;">Copyright © 2023, MediPaws | All Rights Reserved |</p><a href="https://tabler.io/icons" style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 0;">Icons-by-Tabler-Icons</a>
+                </div>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item"><a id="terms_and_conditions" class="terms_and_conditions" style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-right: 20px;cursor: pointer;">Terms &amp; Conditions</a></li>
+                        <li class="list-inline-item"><a id="privacy_and_policy" class="terms_and_conditions" style="margin-left: 10px;margin-top: 0;margin-bottom: 0;color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;cursor: pointer;">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 	<div class="modal fade show" role="dialog" tabindex="-1" id="add_pet_success">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content success_modal">
@@ -606,36 +618,36 @@
 										<option value="Dog">Dog</option>
 										<option value="Cat">Cat</option>
 									</select>
-									<label class="form-label form-label" for="pet_type">Pet Type<span>&nbsp;*</span></label>
+									<label class="form-label " for="pet_type">Pet Type<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_type"><span>• Please select pet type</span></div>
 									<div class="guide-message" id="guide-pet_type"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" data-id="breed" name="breed" disabled="" id="breed" placeholder="Breed">
+									<select class="form-select" data-id="breed" name="breed" disabled="" id="breed" placeholder="Breed">
 										<option value="none" selected="">Select a Pet Type first</option>
 									</select>
-									<label class="form-label form-label" for="breed">Breed<span>&nbsp;*</span></label>
+									<label class="form-label" for="breed">Breed<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-breed"><span>• Please select a breed.</span></div>
 									<div class="guide-message" id="guide-breed"><span>• Please select a breed.</span></div>
 								</div>
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" data-id="pet_birthdate" name="pet_birthdate" id="pet_birthdate" placeholder="Birthdate" type="date">
-									<label class="form-label form-label" for="pet_birthdate">Birthdate<span>&nbsp;*</span></label>
+									<input class="form-control" data-id="pet_birthdate" name="pet_birthdate" id="pet_birthdate" placeholder="Birthdate" type="date">
+									<label class="form-label " for="pet_birthdate">Birthdate<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_birthdate"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 									<div class="guide-message" id="guide_pet_birthdate"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" type="text" data-bs-toggle="tooltip" data-id="age" name="pet_age" disabled="" value=" " id="age" maxlength="3" placeholder="Please select pet type, breed, and enter the birthdate first." title="Please select pet type and enter the birthdate first.">
-									<label class="form-label form-label" for="age">Age</label>
+									<input class="form-control" type="text" data-bs-toggle="tooltip" data-id="age" name="pet_age" disabled="" value=" " id="age" maxlength="3" placeholder="Please select pet type, breed, and enter the birthdate first." title="Please select pet type and enter the birthdate first.">
+									<label class="form-label" for="age">Age</label>
 									<div class="error-message" id="error-age" style="color:red;"></div>
 								</div>
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" type="number" data-id="weight" name="weight" id="weight" maxlength="10" placeholder="Weight">
-									<label class="form-label form-label" for="weight">Weight<span>&nbsp;*</span></label>
+									<input class="form-control" type="number" data-id="weight" name="weight" id="weight" maxlength="10" placeholder="Weight">
+									<label class="form-label" for="weight">Weight<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-weight"><span>• Please enter weight of pet.</span><span>• Only numerical inputs will be accepted</span></div>
 									<div class="guide-message" id="guide_pet_weight"><span>• Please enter weight of pet.</span><span>• Only numerical inputs will be accepted</span></div>
 								</div>

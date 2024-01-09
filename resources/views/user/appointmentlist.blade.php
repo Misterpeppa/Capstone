@@ -57,17 +57,48 @@
 						</ul>
 						<div class="tab-content" style="width: 100%;">
 							<div class="tab-pane active appointment_list_container" role="tabpanel" id="tab-1">
-								<div class="container_header">
+
+							<div class="container_header">
 									<div class="left_part_product_header">
-										
-										
-										
+										<div class="search_container">
+											<input type="search" class="search_input" placeholder="Search Appointment">
+										</div>
+										<button class="btn filter_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_5284_15912)">
+    <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5284_15912">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg><span class="filter_btn_base">Filter by</span></button>
+										<button class="btn sort_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_5284_15919)">
+    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5284_15919">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg><span class="sort_btn_base">Sort by</span></button>
 									</div>
 									<div class="right_part_product_header">
-										
+										<button class="btn archive_button" id="archive_button-1" type="button">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+												<g clip-path="url(#clip0_5824_17335)">
+													<path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
+												<defs>
+													<clipPath id="clip0_5824_17335">
+														<rect width="24" height="24" fill="white" /> </clipPath>
+												</defs>
+											</svg>
+										</button>
 									</div>
 								</div>
-								<div id="appointment_table_container" class="appointment_table_container mt-3">
+								
+								<div id="appointment_table_container" class="table-responsive mt-3">
 									<table id="appointment_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
 										<thead>
 											<tr>
@@ -94,7 +125,9 @@
                                         @endforeach
                                         </tbody>
 									</table>
-									<div class="pagination">
+								</div>
+
+								<div class="pagination mt-3">
 										<div class="pagination-menu"> <span>Go to:</span>
 											<select class="paginationGoToSelect">
 												<option value="1">1</option>
@@ -124,7 +157,6 @@
 											</select>
 										</div>
 									</div>
-								</div>
 							</div>
 							<div class="tab-pane appointment_list_container" role="tabpanel" id="tab-2">
 								<div class="container_header">
@@ -132,7 +164,7 @@
 										<div class="search_container">
 											<input type="search" class="search_input" placeholder="Search Appointment">
 										</div>
-										<button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+										<button class="btn filter_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_5284_15912)">
     <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -141,8 +173,8 @@
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg> Filter by</span></button>
-										<button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+</svg><span class="filter_btn_base">Filter by</span></button>
+										<button class="btn sort_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_5284_15919)">
     <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -151,7 +183,7 @@
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg> Sort by</span></button>
+</svg><span class="sort_btn_base">Sort by</span></button>
 									</div>
 									<div class="right_part_product_header">
 										<button class="btn archive_button" id="archive_button-1" type="button">
@@ -166,7 +198,7 @@
 										</button>
 									</div>
 								</div>
-								<div id="appointment_table_container" class="appointment_table_container mt-3">
+								<div id="appointment_table_container" class="table-responsive mt-3">
 									<table id="appointment_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
 										<thead>
 											<tr>
@@ -183,7 +215,8 @@
 										</thead>
 										<tbody id="appointment_table_body"></tbody>
 									</table>
-									<div class="pagination">
+								</div>
+								<div class="pagination mt-3">
 										<div class="pagination-menu"> <span>Go to:</span>
 											<select class="paginationGoToSelect">
 												<option value="1">1</option>
@@ -213,7 +246,6 @@
 											</select>
 										</div>
 									</div>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -359,19 +391,8 @@
 	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('assets/js/bs-init.js') }}"></script>
-	<script src="{{ asset('assets/js/admin_signin.js') }}"></script>
 	<script src="{{ asset('assets/js/appointment_list.js') }}"></script>
-	<script src="{{ asset('assets/js/appointmentforms.js') }}"></script>
-	<script src="{{ asset('assets/js/client.js') }}"></script>
-	<script src="{{ asset('assets/js/dashboard.js') }}"></script>
-	<script src="{{ asset('assets/js/inventory.js') }}"></script>
 	<script src="{{ asset('assets/js/Multi-step-form-script.js') }}"></script>
-	<script src="{{ asset('assets/js/pet_information.js') }}"></script>
-	<script src="{{ asset('assets/js/pet_records.js') }}"></script>
-	<script src="{{ asset('assets/js/sidebar.js') }}"></script>
-	<script src="{{ asset('assets/js/signin.js') }}"></script>
-	<script src="{{ asset('assets/js/signup.js') }}"></script>
-	<script src="{{ asset('assets/js/user_settings.js') }}"></script>
 </body>
 
 </html>

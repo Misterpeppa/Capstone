@@ -21,7 +21,7 @@
 		<div class="row g-0">
 			<div class="signup_column col-12 d-flex justify-content-center">
 				<div id="step-1" class="step active">
-					<div class="justify-content-between vet_logo_btn_container">
+					<div class="vet_logo_btn_container">
 						<div class="vet_logo_and_text_container d-flex align-items-center align-self-stretch" style="gap:8px;">
 							<img src="{{ asset('assets/img/dogs_cats.png') }}">
 							<h1>Tagapo Dogs &amp; Cats Veterinary Clinic</h1>

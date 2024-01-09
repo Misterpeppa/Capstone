@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch-toggle-switch.css') }}"> </head>
 
 <body>

@@ -167,14 +167,6 @@ body a {
   color: #ccc;
 }
 
-.days li.selected-date::before {
-  background-clip: content-box;
-  padding: 2px;
-  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
-  border-radius: var(--radius-s, 8px);
-  background: var(--colors-actions-action-active, #004D53);
-}
-
 .days li::before {
   position: absolute;
   content: "";

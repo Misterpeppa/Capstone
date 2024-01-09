@@ -235,11 +235,13 @@ remove_form.addEventListener('click', function(){
       if (clickCount === 2) {
           document.getElementById('add_form').disabled = false;
       }
+      setFormHeight();
    }
 
 })
   
 remove_form1.addEventListener('click', function(){
+  setFormHeight();
 if (clickCount > 0) {
   checkEnableNextButton1();
   clickCount--;
@@ -601,6 +603,8 @@ if (selectedDate >= currentDate) {
   
   updateAppointmentTimeOptionsDisplay(); // Call the function after updating the selectedDayElement
     displayConfirmationDetails1();
+
+    setFormHeight();
 }
 });
 
