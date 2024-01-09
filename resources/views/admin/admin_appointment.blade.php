@@ -32,7 +32,7 @@
 			<div class="main_content">
 				<div id="client_header" class="client_header">
 					<div class="header_text_container">
-						<h1><strong>Appointmezng></h1> </div>
+						<h1><strong>Appointment</h1> </div>
 					<div class="btn-group split_btn" id="add_approve_appointment_split_btn" style="display: none;">
 						<button class="btn add_Product_btn" id="approved_appointment_btn" type="button"><span class="add_Product_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="27" viewBox="0 0 25 27" fill="none">
   <g clip-path="url(#clip0_6356_20985)" filter="url(#filter0_d_6356_20985)">

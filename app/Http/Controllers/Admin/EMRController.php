@@ -68,7 +68,7 @@ class EMRController extends Controller
         return response()->json([
             'petrecord' => $petrecord,
             'petInfo' => $petInfo,
-            'ownerInfo' => $ownerInfo
+            'ownerInfo' => $ownerInfo,
         ]);
     }
 
@@ -103,6 +103,7 @@ class EMRController extends Controller
         $surgHistory = new SurgHistory([
             'petrecord_id' => $request->input('petrecord_id'),
             'surgery_type' => $request->input('surgery_type'),
+            'severity' => $request->input('severity'),
             'med_id' => $request->input('med_id'),
             'surgery_date' => $request->input('surgery_date'),
             'surgery_note' => $request->input('surgery_note'),
@@ -114,19 +115,18 @@ class EMRController extends Controller
 
     public function showMedHis($id)
     {
-        $medHistory = MedHistory::where('petrecord_id', $id)->get();
-
+        $medHistory = MedHistory::with('med')->where('petrecord_id', $id)->get();
         return response()->json($medHistory);
     }
     public function showVaxHis($id)
     {
-        $vaxHistory = VaxHistory::where('petrecord_id', $id)->get();
+        $vaxHistory = VaxHistory::with('vax')->where('petrecord_id', $id)->get();
 
         return response()->json($vaxHistory);
     }
     public function showSurgHis($id)
     {
-        $surgHistory = SurgHistory::where('petrecord_id', $id)->get();
+        $surgHistory = SurgHistory::with('med')->where('petrecord_id', $id)->get();
 
         return response()->json($surgHistory);
     }
