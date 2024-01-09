@@ -987,11 +987,11 @@ body{
   .filter_btn, .sort_btn {
     display: flex;
     height: 56px;
-    width: 120px;
+    width: 140px;
     padding: 0px var(--spacing-spacing-m, 24px) 0px var(--spacing-spacing-s, 16px);
     justify-content: center;
     align-items: center;
-    gap: var(--spacing-spacing-m, 24px);
+    gap: 8px;
     border-radius: var(--spacing-spacing-xxs, 8px);
     border: 0.5px solid rgba(0, 0, 0, 0.15);
     background: var(--colors-actions-action-neut, #F9F9F9);
@@ -2752,8 +2752,8 @@ body{
   .card.pet_card {
     display: flex;
     padding: 24px;
-    width: 49.3% !important;
-    height: 100%;
+    width: 464px;
+    height: 250px;
     align-items: flex-start;
     flex-direction: row;
     gap: var(--spacing-spacing-l, 32px);
@@ -2763,18 +2763,6 @@ body{
   
   
   
-  @media (max-width: 992px) {
-    .card.pet_card {
-      display: none;
-      padding: 24px;
-      width: 456px;
-      align-items: flex-start;
-      flex-direction: row;
-      gap: var(--spacing-spacing-m, 12px);
-      border-radius: var(--radius-s, 2px);
-      border: 1px solid rgba(0, 0, 0, 0.25);
-    }
-  }
   
   .card-body.pet_card_body {
     display: flex;
@@ -3613,13 +3601,18 @@ body{
     left: 24px;
   }
   
-  .form-floating input, .form-floating select {
+  .form-floating input, .form-floating select{
     border-radius: var(--radius-s, 8px) !important;
     background: #FFF;
     box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05) !important;
     border: 0.5px solid rgba(0, 0, 0, 0.30);
   }
-  
+  .form-floating textarea{
+    border-radius: var(--radius-s, 8px);
+    background: #FFF;
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+    border: 0.5px solid rgba(0, 0, 0, 0.30);
+  }
   .custom_email, .custom_phone, .custom_password {
     width: 100%;
     text-indent: 24px;
@@ -3850,6 +3843,14 @@ body{
     background: #F9F9F9;
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.10), 0px 4px 6px -2px rgba(28, 28, 28, 0.05);
   }
+  .view_pet_detail{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--Spacing-spacing-m, 24px);
+    align-self: stretch;
+    background: #F9F9F9;
+  }
   
   .pet_record_item {
     display: flex;
@@ -3860,7 +3861,15 @@ body{
   }
   
 
-  
+  .tabpane_header{
+    display: flex;
+    justify-content: space-between;
+  }
+  .tab_header_right{
+    display: flex;
+    flex-direction: row;
+    padding: 0 20px;
+  }
   .pet_nav_tabs {
     display: flex;
     padding: 10px;
@@ -3966,11 +3975,13 @@ body{
 
   .pet_records_container {
     display: none;
+    height: 500px;
     align-items: flex-start;
-    gap: var(--Spacing-spacing-s, 16px);
+    gap: 16px;
     align-self: stretch;
     flex-wrap: wrap !important; 
     justify-content: flex-start;
+    overflow: auto;
   }
   
   .pet_information {
@@ -5812,5 +5823,6 @@ body{
     align-self: stretch;
   }
 
+
   
-}
+} 

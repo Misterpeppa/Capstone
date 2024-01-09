@@ -38,6 +38,7 @@
             $activeTab = 'client'; // Set the active tab
         @endphp
         @include('includes.admin_header')
+
         <div class="content">
             <div id="rectangle" class="rectangle"><button class="btn notification" id="notification"
                     type="button"><span class="notification_base"><svg xmlns="http://www.w3.org/2000/svg"
@@ -488,8 +489,7 @@
                     <div class="left_part_product_header">
                         <div class="search_container">
                             <input type="search" class="search_input" placeholder="Search Client" value="">
-                        </div><button class="btn filter_btn" type="button">
-                            <span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        </div><button class="btn filter_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="24" viewBox="0 0 24 24" fill="none">
                                     <g clip-path="url(#clip0_5284_15912)">
                                         <path
@@ -502,8 +502,8 @@
                                             <rect width="24" height="24" fill="white" />
                                         </clipPath>
                                     </defs>
-                                </svg> Filter by</span></button><button class="btn sort_btn" type="button"><span
-                                class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                </svg>
+                            <span class="filter_btn_base">Filter by</span></button><button class="btn sort_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="24" viewBox="0 0 24 24" fill="none">
                                     <g clip-path="url(#clip0_5284_15919)">
                                         <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6"
@@ -515,7 +515,8 @@
                                             <rect width="24" height="24" fill="white" />
                                         </clipPath>
                                     </defs>
-                                </svg> Sort by</span></button>
+                                </svg><span
+                                class="sort_btn_base">Sort by</span></button>
                     </div>
                     <div class="right_part_product_header"><button class="btn add_pet_button" id="add_pet_button"
                             type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24"
@@ -1220,6 +1221,26 @@
         function submitForm(){
             document.getElementById('searchForm').submit();
         }
+    </script>
+
+    <script>
+        // checkbox
+        var selectAllapproved = document.getElementById("SelectAll");
+
+        selectAllapproved.addEventListener("click", function () {
+            var tableBody = document.getElementById('client_table_body');
+            var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
+
+            rowCheckboxes.forEach(function (checkbox) {
+                checkbox.checked = !checkbox.checked; // Toggle the state
+            });
+
+        });
+
+        
+
+        
+
     </script>
 
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>

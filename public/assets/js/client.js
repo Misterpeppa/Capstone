@@ -119,13 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
         
         const action = this.getAttribute('data-action');
-        if (action === 'Add_Pet') {
-            // Show the add_pet_record_modal
-                            
-            add_pet_record_modal.show();
-
-            
-        }else if (action === 'View'){
+        if (action === 'View'){
             const client_container = document.getElementById('client_container');
             const view_client = document.getElementById('view_client');
             
@@ -233,7 +227,21 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
     var discard_btn = document.getElementById('discard_btn');
     discard_btn.addEventListener('click', function () {
         edit_discard.hide();
+        clearClientInfo();
       });
+
+      function clearClientInfo() {
+        // Clear the values of the specified input fields
+        $('#first_name').val('');
+        $('#middle_name').val('');
+        $('#last_name').val('');
+        $('#suffix').val('');
+        $('#client_birthdate').val('');
+        $('#client_address').val('');
+        $('#client_email').val('');
+        $('#user_phone').val('');
+    }
+
     
     
 
@@ -636,17 +644,4 @@ setupDateValidation('client_birthdate');
 setupDateValidation('client_birthdate-1');
 setupDateValidation('client_birthdate-2');
 
-
-// checkbox
-var selectAllapproved = document.getElementById("SelectAll");
-
-selectAllapproved.addEventListener("click", function () {
-    var tableBody = document.getElementById('client_table_body');
-    var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
-
-    rowCheckboxes.forEach(function (checkbox) {
-        checkbox.checked = !checkbox.checked; // Toggle the state
-    });
-
-});
 
