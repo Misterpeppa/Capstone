@@ -706,7 +706,7 @@
                             </div>
                         </div>
                     </div>
-                    <a class="btn add_client_button" role="button" href="#"><span class="add_client_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                    <a class="btn add_client_button" role="button" href="{{ route('admin_emr') }}"><span class="add_client_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
   <g clip-path="url(#clip0_6550_11565)" filter="url(#filter0_d_6550_11565)">
     <path d="M5.5 12H19.5M19.5 12L13.5 18M19.5 12L13.5 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -728,105 +728,7 @@
 </svg> Go to Pet Records.</span></a>
                     
                 </div>
-                <div id="pet_card_container" class="pet_card_container">
-                    <div class="card pet_card" id="pet_card" data-pet-id="pet_card_0">
-                        <div class="pet_image_container"><img src="assets/img/koda%201.png"></div>
-                        <div class="card-body pet_card_body">
-                            <div class="pet_detail_header">
-                                <div class="pet_detail_heading_text_container">
-                                    <h1>Pet Name</h1>
-                                    <p>Pet Breed</p>
-                                </div>
-                                <div class="dropdown more_button"><button class="btn dropdown-toggle more_btn"
-                                        aria-expanded="false" data-bs-toggle="dropdown" type="button"><span
-                                            class="more_btn_base"><svg fill="none" height="18"
-                                                viewbox="0 0 18 18" width="18"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z"
-                                                    fill="#045B62"></path>
-                                                <path
-                                                    d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z"
-                                                    fill="#045B62"></path>
-                                                <path
-                                                    d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z"
-                                                    fill="#045B62"></path>
-                                            </svg></span></button>
-                                    <div class="dropdown-menu more_button" data-bs-popper="none"><a
-                                            class="dropdown-item" id="View"><svg
-                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <g clip-path="url(#clip0_5624_22297)">
-                                                    <path
-                                                        d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z"
-                                                        stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path
-                                                        d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z"
-                                                        stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_5624_22297">
-                                                        <rect width="24" height="24" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>&nbsp;View</a><a class="dropdown-item" id="Edit"><svg
-                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <g clip-path="url(#clip0_5624_22180)">
-                                                    <path
-                                                        d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z"
-                                                        stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_5624_22180">
-                                                        <rect width="24" height="24" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>&nbsp;Edit</a><a class="dropdown-item" id="Archive"><svg
-                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none">
-                                                <g clip-path="url(#clip0_5624_22046)">
-                                                    <path
-                                                        d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14"
-                                                        stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_5624_22046">
-                                                        <rect width="24" height="24" fill="white" />
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>&nbsp;Archive</a></div>
-                                </div>
-                            </div>
-                            <div class="pet_detail_body">
-                                <div class="pet_upper_detail">
-                                    <div class="pet_gender_container">
-                                        <h1>Gender</h1>
-                                        <p>Paragraph</p>
-                                    </div>
-                                    <div class="pet_age_container">
-                                        <h1>Age</h1>
-                                        <p>Paragraph</p>
-                                    </div>
-                                </div>
-                                <div class="pet_lower_detail">
-                                    <div class="pet_weight_container">
-                                        <h1>Weight</h1>
-                                        <p>Paragraph</p>
-                                    </div>
-                                    <div class="pet_sterilization_status_container">
-                                        <h1>Sterilization Status</h1>
-                                        <p>Paragraph</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <div id="edit_client" class="view_client">
                 <div class="product_detail_header"><button class="btn client_back_btn" id="edit_client_back_btn"
