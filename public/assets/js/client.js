@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
     var add_client = document.getElementById('add_client');
     var add_client_btn = document.getElementById('add_client_btn');
+
     var archive_button = document.getElementById('archive_button');
 
     var add_client_modal = new bootstrap.Modal(document.getElementById('add_client_modal'));
-    var add_client_modal1 = new bootstrap.Modal(document.getElementById('add_client_modal-1'));
+    var archive_modal = new bootstrap.Modal(document.getElementById('archive_modal'));
     var archive_modal1 = new bootstrap.Modal(document.getElementById('archive_modal-1'));
+    var archive_modal2 = new bootstrap.Modal(document.getElementById('archive_modal-2'));
                 
     
     var add_client_success = new bootstrap.Modal(document.getElementById('add_client_success'));
@@ -20,9 +22,10 @@ document.addEventListener('DOMContentLoaded', function () {
   });
     
     add_client_btn.addEventListener('click', function () {
-    add_client_modal1.show();
+    add_client_modal.show();
   });
 
+    
 
     
     submit_Client.addEventListener('click', function () {
@@ -35,21 +38,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     
     archive_button.addEventListener('click', function () {
+    // Assuming you have a function to get the selected data rows (replace it with your actual logic)
+    var selectedDataRows = getSelectedDataRows();
+
+    // Check the number of selected data rows
+    if (selectedDataRows.length > 1) {
+        // Show archive_modal2 if there are more than 1 selected data row
         archive_modal1.show();
-    });
-    var confirmButton1 = document.getElementById('archive_confirm_button-1');
-        confirmButton1.addEventListener('click', function() {
-            // User confirmed the archiving action
-            
-
-            var row = button.closest('tr');
-                    
-                // Perform the archiving logic (e.g., hide the row)
-            row.style.display = 'none';
-
-                // Close the archive_modal after archiving
-            bootstrapModal.hide();
-        });
+    } else if (selectedDataRows.length === 1) {
+        // Show archive_modal1 if there is only 1 selected data row
+        archive_modal.show();
+    } else {
+        // Handle the case when no data row is selected, if needed
+        console.log('No data row selected.');
+    }
+});
 
     // Function to get the selected data rows (replace it with your actual logic)
     function getSelectedDataRows() {
@@ -113,11 +116,9 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("add_client_form").reset();
 
 // Add an event listener for the buttons inside dropdown-content
-        document.querySelectorAll('.dropdown button').forEach(function (button) {
+        document.querySelectorAll('.button-action button').forEach(function (button) {
     button.addEventListener('click', function (event) {
-        closeDropdownMenus();
         event.preventDefault();
-        
         const action = this.getAttribute('data-action');
         if (action === 'View'){
             const client_container = document.getElementById('client_container');
@@ -166,18 +167,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
         }
-        function closeOtherDropdowns(currentDropdown) {
-            allDropdowns.forEach(function (otherDropdown) {
-                if (otherDropdown !== currentDropdown) {
-                    // Add logic to close other dropdowns here
-                    console.log("Closing other dropdowns"); // Replace this with your actual code to close other dropdowns
-                }
-            });
-        }
 
     });
 });
-
         
 
 
@@ -187,7 +179,6 @@ function closeDropdownMenus() {
         content.style.display = 'none';
     });
 }
-
 
 // Event listener to close dropdown menus when clicking outside
 document.addEventListener('click', function (event) {
@@ -227,25 +218,8 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
     var discard_btn = document.getElementById('discard_btn');
     discard_btn.addEventListener('click', function () {
         edit_discard.hide();
-        clearClientInfo();
       });
-
-      function clearClientInfo() {
-        // Clear the values of the specified input fields
-        $('#first_name').val('');
-        $('#middle_name').val('');
-        $('#last_name').val('');
-        $('#suffix').val('');
-        $('#client_birthdate').val('');
-        $('#client_address').val('');
-        $('#client_email').val('');
-        $('#user_phone').val('');
-    }
-
     
-    
-
-
     var edit_save_changes = document.getElementById('edit_save_changes');
     var save_changes_success = new bootstrap.Modal(document.getElementById('save_changes_success'));
     edit_save_changes.addEventListener('click', function () {
@@ -256,6 +230,7 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
         }, 2000);
       });
     
+
     
     function showAddClientSplitBtn() {
     var addClientSplitBtn = document.getElementById("add_client_split_btn");
@@ -293,6 +268,11 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
         edit_client.style.display = 'none';
     }
 
+
+
+
+       
+    
     //show prod details clickign view
  function handleEditClientDetailClick() {
 
@@ -316,12 +296,11 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
 
     // Add event listener to the edit_prod_detail button
     edit_client_detail.addEventListener('click', handleEditClientDetailClick);
-
-
-
+    
+    
 
     
- const inputs = ['first_name', 'middle_name', 'last_name','first_name-1', 'middle_name-1', 'last_name-1'];
+ const inputs = ['first_name', 'middle_name', 'last_name'];
 
 inputs.forEach(inputId => {
     document.getElementById(inputId).addEventListener('input', function () {
@@ -345,112 +324,115 @@ inputs.forEach(inputId => {
     });
 });   
     
-    //validation to enable submit buttons
-    function setupFormValidation(inputIds, buttonId, clearButtonId) {
-        const inputs = inputIds.map(id => document.getElementById(id));
-        let submitButton = document.getElementById(buttonId);
-        let clearButton = document.getElementById(clearButtonId);
+    
+    
+function setupFormValidation(inputIds, buttonId, clearButtonId, close_client_modalId) {
+    var inputs = inputIds.map(id => document.getElementById(id));
+    var submitButton = document.getElementById(buttonId);
+    var clearButton = document.getElementById(clearButtonId);
+    var close_client_btn = document.getElementById(close_client_modalId);
 
-        // Function to check if all required input fields have values and meet additional criteria
-        function areAllInputsFilled() {
-            return inputs.every(input => {
-                if (input.tagName === 'SELECT') {
-                    // For select elements, check if a valid option is selected
-                    return input.options[input.selectedIndex].value.trim() !== '';
-                } else {
-                    // For other input types, check if the value is present and meets additional criteria
-                    const inputValue = input.value.trim();
-
-                    if (input.id === 'client_email' || input.id === 'client_email-1' || input.id === 'client_email-2') {
-                        // Additional criteria for client_email: Should contain either @gmail.com or @yahoo.com
-                        return inputValue !== '' && (inputValue.endsWith('@gmail.com') || inputValue.endsWith('@yahoo.com'));
-                    } else if (input.id === 'user_phone' || input.id === 'user_phone-1' || input.id === 'user_phone-2') {
-                        // Additional criteria for user_phone: Should be 11 digits
-                        return inputValue !== '' && /^\d{11}$/.test(inputValue);
-                    } else {
-                        // Default criteria for other inputs
-                        return inputValue !== '';
-                    }
-                }
-            });
-        }
-
-
-        // Disable the submit button by default
-        submitButton.disabled = true;
-
-        // Add an event listener to each input field for the 'input' event
-        inputs.forEach(input => input.addEventListener('input', enableSubmitButton));
-
-        function enableSubmitButton() {
-            // Enable or disable the submit button based on the condition
-            submitButton.disabled = !areAllInputsFilled();
-        }
-
-        // Add an event listener to the submit button for the 'click' event
-        submitButton.addEventListener('click', function () {
-            console.log("Submit button clicked!");
-            // Add your logic for handling the form submission
-            // For example, you can call a function to process the form data
-
-            // Reset all input fields
-            inputs.forEach(input => {
-                if (input.tagName === 'SELECT') {
-                    // For select elements, set the selectedIndex to the default one
-                    input.selectedIndex = 0;
-                } else {
-                    // For other input types, set the value to an empty string
-                    input.value = '';
-                }
-            });
-
-            // Disable the submit button after submission
-            submitButton.disabled = true;
+    // Function to check if all required input fields have values
+    function areAllInputsFilled() {
+        return inputs.every(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, check if a valid option is selected
+                return input.options[input.selectedIndex].value.trim() !== '';
+            } else {
+                // For other input types, check if the value is present
+                return input.value.trim() !== '';
+            }
         });
-
-        // Add an event listener to the clear button for the 'click' event
-        clearButton.addEventListener('click', function () {
-            // Clear all input fields
-            inputs.forEach(input => {
-                // Set the selectedIndex to the default (0) for select elements
-                if (input.tagName === 'SELECT') {
-                    input.value = "none";
-                }
-                // Set the value to an empty string for all input types
-                input.value = '';
-            });
-
-            // Disable the submit button after clearing
-            submitButton.disabled = true;
-        });
-
-
-
-        // Disable or enable the submit button based on the initial state of the form
-        submitButton.disabled = !areAllInputsFilled();
-        
-
     }
+
+    // Disable the submit button by default
+    submitButton.disabled = true;
+
+    // Add an event listener to each input field for the 'input' event
+    inputs.forEach(input => input.addEventListener('input', enableSubmitButton));
+
+    function enableSubmitButton() {
+        // Enable or disable the submit button based on the condition
+        submitButton.disabled = !areAllInputsFilled();
+    }
+
+    // Add an event listener to the submit button for the 'click' event
+    submitButton.addEventListener('click', function () {
+        console.log("Submit button clicked!");
+        // Add your logic for handling the form submission
+        // For example, you can call a function to process the form data
+
+        // Reset all input fields
+        inputs.forEach(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, set the selectedIndex to the default one
+                input.selectedIndex = 0;
+            } else {
+                // For other input types, set the value to an empty string
+                input.value = '';
+            }
+        });
+
+        // Disable the submit button after submission
+        submitButton.disabled = true;
+    });
+
+    // Add an event listener to the clear button for the 'click' event
+    clearButton.addEventListener('click', function () {
+        // Clear all input fields
+        inputs.forEach(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, set the selectedIndex to the default one
+                input.selectedIndex = 0;
+            } else {
+                // For other input types, set the value to an empty string
+                input.value = '';
+            }
+        });
+
+        // Disable the submit button after clearing
+        submitButton.disabled = true;
+    });
+    // Disable or enable the submit button based on the initial state of the form
+    submitButton.disabled = !areAllInputsFilled();
+    
+    close_client_btn.addEventListener('click', function () {
+        // Clear all input fields
+        inputs.forEach(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, set the selectedIndex to the default one
+                input.selectedIndex = 0;
+            } else {
+                // For other input types, set the value to an empty string
+                input.value = '';
+            }
+        });
+
+        // Disable the submit button after clearing
+        submitButton.disabled = true;
+    });
+}
+
+
+   
+ 
+     
+
+
+
+
 
 // Example usage for the first set of inputs, submit button, and clear button
 setupFormValidation(
     ['first_name', 'middle_name', 'last_name', 'client_birthdate', 'client_address', 'client_email', 'user_phone'],
     'submit_Client',
-    'clear_form'
+    'clear_form', 
+    'close_client_modal'
 );
-
-
-    // Example usage for the second set of inputs, submit button, and clear button
-    setupFormValidation(
-        ['first_name-1', 'middle_name-1', 'last_name-1', 'suffix-1', 'client_birthdate-1', 'client_address-1', 'client_email-1', 'user_phone-1'],
-        'submit_Client-1',
-        'clear_form-1',
-        'close_modal-1'
-    );
     
 
     
-    
+
 
 
 
@@ -464,7 +446,12 @@ setupFormValidation(
             specific_suffix.style.display = 'none';
         }
     }
+    handleSuffixChange();
 
+
+    
+
+ 
 });
 
 var firstName = document.getElementById("first_name");
@@ -476,23 +463,7 @@ var address = document.getElementById("client_address");
 var email = document.getElementById("client_email");
 var user_phone = document.getElementById('user_phone');
 
-var firstName1 = document.getElementById("first_name-1");
-var middleName1 = document.getElementById("middle_name-1");
-var lastName1 = document.getElementById("last_name-1");
-var suffix1 = document.getElementById("suffix-1");
-var birthdate1 = document.getElementById("client_birthdate-1");
-var address1 = document.getElementById("client_address-1");
-var email1 = document.getElementById("client_email-1");
-var user_phone1 = document.getElementById('user_phone-1');
 
-var firstName2 = document.getElementById("first_name-2");
-var middleName2 = document.getElementById("middle_name-2");
-var lastName2 = document.getElementById("last_name-2");
-var suffix2 = document.getElementById("suffix-2");
-var birthdate2 = document.getElementById("client_birthdate-2");
-var address2 = document.getElementById("client_address-2");
-var email2 = document.getElementById("client_email-2");
-var user_phone2 = document.getElementById('user_phone-2');
 
 //error messages IDs
 var errorFname = document.getElementById('error-first_name');
@@ -503,55 +474,20 @@ var erroraddress = document.getElementById('error-client_address');
 var erroremail = document.getElementById('error-client_email');
 var erroruser_phone = document.getElementById('error-user_phone');
 
-var errorFname1 = document.getElementById('error-first_name-1');
-var errormiddleName1 = document.getElementById('error-middle_name-1');
-var errorlastName1 = document.getElementById('error-last_name-1');
-var errorbirthdate1 = document.getElementById('error-client_birthdate-1');
-var erroraddress1 = document.getElementById('error-client_address-1');
-var erroremail1 = document.getElementById('error-client_email-1');
-var erroruser_phone1 = document.getElementById('error-user_phone-1');
-
-// Copy error elements for the second set of inputs
-var errorFname2 = document.getElementById('error-first_name-2');
-var errormiddleName2 = document.getElementById('error-middle_name-2');
-var errorlastName2 = document.getElementById('error-last_name-2');
-var errorbirthdate2 = document.getElementById('error-client_birthdate-2');
-var erroraddress2 = document.getElementById('error-client_address-2');
-var erroremail2 = document.getElementById('error-client_email-2');
-var erroruser_phone2 = document.getElementById('error-user_phone-2');
-
-
-//guide messages IDs
-var guideFname = document.getElementById('guide-first_name');
-var guidemiddleName = document.getElementById('guide-middle_name');
-var guidelastName = document.getElementById('guide-last_name');
-var guidebirthdate = document.getElementById('guide-client_birthdate');
-var guideaddress = document.getElementById('guide-client_address');
-var guideemail = document.getElementById('guide-client_email');
-var guideuser_phone = document.getElementById('guide-user_phone');
-
-var guideFname1 = document.getElementById('guide-first_name-1');
-var guidemiddleName1 = document.getElementById('guide-middle_name-1');
-var guidelastName1 = document.getElementById('guide-last_name-1');
-var guidebirthdate1 = document.getElementById('guide-client_birthdate-1');
-var guideaddress1 = document.getElementById('guide-client_address-1');
-var guideemail1 = document.getElementById('guide-client_email-1');
-var guideuser_phone1 = document.getElementById('guide-user_phone-1');
-
-// Copy guide elements for the second set of inputs
-var guideFname2 = document.getElementById('guide-first_name-2');
-var guidemiddleName2 = document.getElementById('guide-middle_name-2');
-var guidelastName2 = document.getElementById('guide-last_name-2');
-var guidebirthdate2 = document.getElementById('guide-client_birthdate-2');
-var guideaddress2 = document.getElementById('guide-client_address-2');
-var guideemail2 = document.getElementById('guide-client_email-2');
-var guideuser_phone2 = document.getElementById('guide-user_phone-2');
 
 
 
+handleInputError(firstName, errorFname)  
+handleInputError(middleName, errormiddleName)  
+handleInputError(lastName, errorlastName)  
+handleInputError(birthdate, errorbirthdate)  
+handleInputError(address, erroraddress)  
+handleInputError(email, erroremail)
+handleInputError(user_phone, erroruser_phone)
 
 
-function handleInputError(input, error, guide) {
+
+function handleInputError(input, error) {
     function onBlur() {
     if (input.value.trim() === '' || input.value.trim() === '0') {
         error.style.display = 'flex'; // Show the error message
@@ -580,20 +516,19 @@ function handleInputError(input, error, guide) {
         input.classList.remove('error-border');
     }
 
-    function onBlurGuide() {
-        guide.style.display = 'none'; // Hide the guide message
-    }
+
 
     // Add event listeners to inputs
     input.addEventListener('blur', onBlur);
     input.addEventListener('focus', onFocus);
-    input.addEventListener('blur', onBlurGuide);
 }   
 // Function to check if the value is a valid email format
 function isValidEmail(email) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
 }
+
+var user_phone1 = document.getElementById('user_phone-1');
     
 function PhoneNumberInputLimit(inputElement) {
     inputElement.addEventListener('input', function () {
@@ -613,7 +548,7 @@ function PhoneNumberInputLimit(inputElement) {
 PhoneNumberInputLimit(user_phone); 
 PhoneNumberInputLimit(user_phone1); 
     
-        
+
  
 
 function setupDateValidation(inputId) {
@@ -641,7 +576,6 @@ function setupDateValidation(inputId) {
 
 // Example usage for client_birthdate
 setupDateValidation('client_birthdate');
+
+// Example usage for client_birthdate-1
 setupDateValidation('client_birthdate-1');
-setupDateValidation('client_birthdate-2');
-
-

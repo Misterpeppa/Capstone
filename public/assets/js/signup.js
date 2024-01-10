@@ -21,14 +21,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 var emailInput = document.getElementById('email');
-var guideEmailMessage = document.getElementById('guide_email_message');
 var errorEmail = document.getElementById('error-email');
 var phone_number = document.getElementById('phone_number');
-var guidePhoneNumber = document.getElementById('guide_phone_number');
 var errorPhoneNumber = document.getElementById('error-phone_number');
 
 var passwordInput = document.getElementById('password');
-var guide_password = document.getElementById('guide_password');
 var errorPassword = document.getElementById('error-password');
 var confirmPasswordInput = document.getElementById('password_confirmation');
 var errorConfirmPassword = document.getElementById('error-password_confirmation');
@@ -78,22 +75,19 @@ return emailRegex.test(email);
 }
 
 function displayErrorEmail(message) {
-guideEmailMessage.style.display = 'none'; // Hide guide message
 errorEmail.innerHTML = '<span>' + message + '</span>';
-errorEmail.style.display = 'block';
+errorEmail.style.display = 'flex';
 emailInput.classList.add('is-invalid');
 emailInput.classList.add('error-border');
 }
 
 function hideErrorEmail() {
-guideEmailMessage.style.display = 'none'; // Hide guide message
 errorEmail.style.display = 'none';
 emailInput.classList.remove('is-invalid');
 emailInput.classList.remove('error-border');
 }
 
 emailInput.addEventListener('focus', function () {
-    guide_email_message.style.display = 'flex';
       errorEmail.style.display = 'none';
       emailInput.classList.remove('is-invalid');
         emailInput.classList.remove('error-border');
@@ -102,7 +96,6 @@ checkInputs();
  
 // Add a focusout event listener to handle the condition when the input has a value and is not focused
 emailInput.addEventListener('focusout', function () {
-guide_email_message.style.display = 'none';
 checkInputs();
 
 });
@@ -122,22 +115,19 @@ if (phoneNumberValue === '') {
 });
 
 function displayPhoneError(message) {
-guidePhoneNumber.style.display = 'none'; // Hide guide message
 errorPhoneNumber.textContent = message;
-errorPhoneNumber.style.display = 'block';
+errorPhoneNumber.style.display = 'flex';
 phoneNumberInput.classList.add('is-invalid');
 phoneNumberInput.classList.add('error-border');
 }
 
 function hidePhoneError() {
-guidePhoneNumber.style.display = 'none'; // Hide guide message
 errorPhoneNumber.style.display = 'none';
 phoneNumberInput.classList.remove('is-invalid');
 phoneNumberInput.classList.remove('error-border');
 }
  
 phone_number.addEventListener('focus', function () {
-    guide_phone_number.style.display = 'block';
       error_phone_number.style.display = 'none';
       phone_number.classList.remove('is-invalid');
         phone_number.classList.remove('error-border');
@@ -146,7 +136,6 @@ checkInputs();
  
 // Add a focusout event listener to handle the condition when the input has a value and is not focused
 phone_number.addEventListener('focusout', function () {
-guide_phone_number.style.display = 'none';
 checkInputs();
 });
  
@@ -221,27 +210,16 @@ passwordInput.classList.remove('is-invalid');
 passwordInput.classList.remove('error-border');
 }
 
-// Helper function to show guide message
-function showGuide(message) {
-guidePassword.innerHTML = message;
-guidePassword.style.display = 'flex';
-}
 
-// Helper function to hide guide message
-function hideGuide() {
-guide_password.style.display = 'none';
-}
 
 
 // Add a focusout event listener to handle the condition when the password has a value and is not focused
 passwordInput.addEventListener('focusout', function () {
-guide_password.style.display = 'none';      
 checkInputs();
 });
  
    
 passwordInput.addEventListener('focus', function () {
-    guide_password.style.display = 'flex';
       errorPassword.style.display = 'none';
       passwordInput.classList.remove('is-invalid');
         passwordInput.classList.remove('error-border');
@@ -270,7 +248,6 @@ if (confirmPasswordInput.value.trim() === '') {
 });
  
 confirmPasswordInput.addEventListener('focus', function () {
-guide_password_confirmation.style.display = 'flex';
 errorConfirmPassword.style.display = 'none';
 confirmPasswordInput.classList.remove('is-invalid');
 confirmPasswordInput.classList.remove('error-border');
@@ -279,7 +256,6 @@ checkInputs();
 
 // Add a focusout event listener to handle the condition when the password confirmation has a value and is not focused
 confirmPasswordInput.addEventListener('focusout', function () {
-guide_password_confirmation.style.display = 'none';
 checkInputs();
 });
 
@@ -341,7 +317,7 @@ const errorFname = document.getElementById('error-first_name');
 
 fnameInput.addEventListener('blur', function () {
 if (fnameInput.value.trim() === '') {
-    errorFname.style.display = 'block';
+    errorFname.style.display = 'flex';
     fnameInput.classList.add('error-border');
 } else {
     errorFname.style.display = 'none';
@@ -350,25 +326,19 @@ if (fnameInput.value.trim() === '') {
 });
 
      fnameInput.addEventListener('focus', function () {
-    guide_first_name.style.display = 'flex';
       errorFname.style.display = 'none';
       fnameInput.classList.remove('is-invalid');
         fnameInput.classList.remove('error-border');
 });
  
- // Add a focusout event listener to handle the condition when the phone_number has a value and is not focused
-fnameInput.addEventListener('focusout', function () {
-    if (document.activeElement !== phone_number) {
-        guide_first_name.style.display = 'none';
-    }
-});
+
 
 const mnameInput = document.getElementById('middle_name');
 const errorMname = document.getElementById('error-middle_name');
 
 mnameInput.addEventListener('blur', function () {
 if (mnameInput.value.trim() === '') {
-    errorMname.style.display = 'block';
+    errorMname.style.display = 'flex';
     mnameInput.classList.add('error-border');
 } else {
     errorMname.style.display = 'none';
@@ -377,25 +347,19 @@ if (mnameInput.value.trim() === '') {
 });
 
      mnameInput.addEventListener('focus', function () {
-    guide_middle_name.style.display = 'flex';
       errorMname.style.display = 'none';
       mnameInput.classList.remove('is-invalid');
         mnameInput.classList.remove('error-border');
 });
  
- // Add a focusout event listener to handle the condition when the input has a value and is not focused
-mnameInput.addEventListener('focusout', function () {
-    if (document.activeElement !== phone_number) {
-        guide_middle_name.style.display = 'none';
-    }
-});
+
 
 const lnameInput = document.getElementById('last_name');
 const errorLname = document.getElementById('error-last_name');
 
 lnameInput.addEventListener('blur', function () {
 if (lnameInput.value.trim() === '') {
-    errorLname.style.display = 'block';
+    errorLname.style.display = 'flex';
     lnameInput.classList.add('error-border');
 } else {
     errorLname.style.display = 'none';
@@ -404,18 +368,11 @@ if (lnameInput.value.trim() === '') {
 });
 
      lnameInput.addEventListener('focus', function () {
-    guide_last_name.style.display = 'flex';
       errorLname.style.display = 'none';
       lnameInput.classList.remove('is-invalid');
         lnameInput.classList.remove('error-border');
 });
- 
- // Add a focusout event listener to handle the condition when the input has a value and is not focused
-lnameInput.addEventListener('focusout', function () {
-    if (document.activeElement !== phone_number) {
-        guide_last_name.style.display = 'none';
-    }
-});
+
 
 
 
@@ -425,7 +382,7 @@ var errorSuffix = document.getElementById('error-specify_suffix');
 var suffixSelect = document.getElementById('suffix');
 suffixSelect.addEventListener('change', function () {
         if (suffixSelect.value === 'Other') {
-            specifySuffixInput.parentElement.style.display = 'block';
+            specifySuffixInput.parentElement.style.display = 'flex';
         } else {
             specifySuffixInput.parentElement.style.display = 'none';
         }
@@ -435,7 +392,7 @@ suffixSelect.addEventListener('change', function () {
 
 specifySuffixInput.addEventListener('blur', function () {
 if (specifySuffixInput.value.trim() === '') {
-    errorSuffix.style.display = 'block';
+    errorSuffix.style.display = 'flex';
     specifySuffixInput.classList.add('error-border');
 } else {
     errorSuffix.style.display = 'none';
@@ -444,17 +401,9 @@ if (specifySuffixInput.value.trim() === '') {
 });
 
      specifySuffixInput.addEventListener('focus', function () {
-    guide_specify_suffix.style.display = 'flex';
       errorSuffix.style.display = 'none';
       specifySuffixInput.classList.remove('is-invalid');
         specifySuffixInput.classList.remove('error-border');
-});
- 
- // Add a focusout event listener to handle the condition when the input has a value and is not focused
-specifySuffixInput.addEventListener('focusout', function () {
-    if (document.activeElement !== phone_number) {
-        guide_specify_suffix.style.display = 'none';
-    }
 });
 
 
@@ -464,7 +413,7 @@ const errorBirthdate = document.getElementById('error-birthdate');
 
 birthdateInput.addEventListener('blur', function () {
 if (birthdateInput.value.trim() === '') {
-    errorBirthdate.style.display = 'block';
+    errorBirthdate.style.display = 'flex';
     birthdateInput.classList.add('error-border');
 } else {
     errorBirthdate.style.display = 'none';
@@ -474,20 +423,13 @@ if (birthdateInput.value.trim() === '') {
 });
 
      birthdateInput.addEventListener('focus', function () {
-    guide_birthdate.style.display = 'flex';
       errorBirthdate.style.display = 'none';
       birthdateInput.classList.remove('is-invalid');
         birthdateInput.classList.remove('error-border');
          checkInputs1();
 });
  
- // Add a focusout event listener to handle the condition when the input has a value and is not focused
-birthdateInput.addEventListener('focusout', function () {
-    if (document.activeElement !== phone_number) {
-        guide_birthdate.style.display = 'none';
-        checkInputs1();
-    }
-});
+
 
 
 const today = new Date();

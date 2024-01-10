@@ -574,7 +574,7 @@ body{
   
   .signin {
     display: flex;
-    width: 550px;
+    width: 700px;
     padding: 48px var(--spacing-spacing-l, 32px);
     flex-direction: column;
     align-items: center;
@@ -626,6 +626,7 @@ body{
   
   .bottom_btns {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     align-self: stretch;
@@ -5133,9 +5134,8 @@ body{
     font-size: 12px;
   }
   
-  
-  
   @media (min-width: 1400px){
+
     .admin_signin_input_fields{
       display: flex;
       flex-direction: column;
@@ -5263,16 +5263,7 @@ body{
       }
    }
 
-
-/* USER SIDE*/ /* USER SIDE*/ /* USER SIDE*/ /* USER SIDE*/ /* USER SIDE*/
-/* USER SIDE*/ /* USER SIDE*/ /* USER SIDE*/ /* USER SIDE*/ /* USER SIDE*/
-/* USER SIDE*/ /* USER SIDE*/ /* USER SIDE*/ /* USER SIDE*/ /* USER SIDE*/
-/* USER SIDE*/ /* USER SIDE*/ /* USER SIDE*/ /* USER SIDE*/ /* USER SIDE*/
-@media (min-width: 1401px){
-
-}
-
-@media (min-width: 1200px) and (max-width: 1400px){
+  @media (min-width: 1200px) and (max-width: 1399px){
   .location_heading{
     display: flex;
     flex-direction: column-reverse;
@@ -5295,8 +5286,8 @@ body{
   }
 }
 
-
-@media (min-width: 993px) and (max-width: 1199px){
+  
+@media (min-width: 992px) and (max-width: 1199px){
   .location_heading{
     display: flex;
     flex-direction: column-reverse;
@@ -5318,8 +5309,195 @@ body{
     text-align: center;
   }
 
+  .admin_signin_input_fields{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--Spacing-spacing-lg, 16px);
+    align-self: stretch;
+  }
+
+  .admin_signin_input_fields{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--Spacing-spacing-xxl, 16px);
+    align-self: stretch;
+  }
+
+  .admin_signin{
+    width: 500px!important;
+  }
+
+  .step.active {
+    display: flex;
+    width: 700px;
+    padding: 48px 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-spacing-xl, 24px);
+    background: #F9F9F9;
+    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+  }
+  .sign_in{
+    display: inline-flex;
+    height: 46px;
+    min-width: 100px;
+    padding: var(--Spacing-spacing-s, 8px);
+    justify-content: center;
+    align-items: center;
+    gap: var(--Spacing-spacing-s, 8px);
+    flex-shrink: 0;
+  }
+  .signup_already_user_container h1{
+    margin: 0;
+  }
+  .loc_and_working_hours {
+    height: 400px;
+  }
+  .card.working_hours, .card.location {
+    gap: 6px;
+    align-items: center;
+  }
+  .loc_and_working_hours {
+    height: 200px;
+  }
+
+  footer{
+    position: static;
+    align-content: center;
+    justify-content: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+  }
+  .Appointment_time_options {
+    display: none;
+    width: 300px;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-lg, 14px);
+  }
+
+  .time_options_container {
+    display: flex;
+    width: 300px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .time_options{
+    width: 150px;
+    padding: 0!important;
+  }
+
+  .time_options li {
+    display: flex;
+    width: 150px;
+    height: 50px;
+    padding: 10px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: var(--radius-s, 8px);
+    border: 0.5px solid rgba(0, 0, 0, 0.30);
+  }
+  .calendar_time_container {
+    display: flex;
+    justify-content: space-around!important;
+    gap: 4px!important;
+  }
+  .calendar_container {
+    display: flex;
+    width: 320px!important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+  }
+  .days{
+    padding: 0!important;
+    margin: 0!important;
+  }
+  .days li {
+    color: #1C1C1C;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .days li.selected-date {
+    color: var(--colors-main-neutral, #FFF);
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .Appointment_time-option {
+    cursor: pointer;
+    color: #1C1C1C;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+  }
+  .selected_Calendar_date{
+    display: flex;
+    height: 80px!important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: var(--radius-s, 8px);
+    background: rgba(0, 0, 0, 0.10);
+  }
+
+  .time_options input[type="radio"]:checked + label {
+    color: var(--colors-main-brand, #045B62);
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px!important;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  
+  .time_options label {
+    flex-grow: 1;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .time_options li input[type="radio"] {
+    display: none;
+    width: 100px;
+    padding: 30px 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: var(--radius-s, 8px);
+    border: 0.5px solid rgba(0, 0, 0, 0.30);
+  }
+  
+  .selected-time {
+    border-radius: var(--radius-s, 8px) !important;
+    border: 2px solid var(--colors-actions-action-active, #004D53)!important;
+    background: rgba(165, 194, 195, 0.50) !important;
+    font-size: 18px!important;
+  }
 }
-@media (min-width: 767px) and (max-width: 992px) {
+
+@media (min-width: 768px) and (max-width: 992px) {
   .floating-div{
     margin-top: 10px;
   }
@@ -5446,21 +5624,7 @@ body{
   }
 }
 
-@media (width <=1200px){
-  .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
-    display: flex;
-    width: 340px;
-    padding: var(--spacing-spacing-s, 8px);
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-spacing-s, 4px);
-    border-radius: var(--radius-s, 8px);
-    background: var(--colors-main-neutral-light, #F5F5F5);
-    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
-  }
-}
-
-@media(width <768px){
+@media(max-width: 767px){
 
 
   .admin_signin {
@@ -6095,26 +6259,317 @@ body{
   
 } 
 
+@media (min-width: 576px) and (max-width: 767px){
+    .signin {
+        width: 90%;
+        height: 95%;
+    }
 
-@media(width < 576px){
+    .step.active {
+      display: flex;
+      width: 90%;
+      height: 100%;
+      padding: 10px 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-spacing-s, 8px);
+      background: #F9F9F9;
+      box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+    }
+
+    .admin_signin {
+      display: flex;
+      width: 300px;
+      padding: 20px;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+      border-radius: var(--radius-s, 8px);
+      background: #F2F2F2;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+    }
+    .admin_signin_input_fields{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--Spacing-spacing-s, 8px);
+      align-self: stretch;
+    }
+  
+
+
+
+    
+}
+
+@media (min-width: 360px) {
+
+
+
+  .card.services_icons {
+    padding: 10px; /* Adjust padding for smaller screens */
+    height: 500px !important;
+  }
+  .customized-col h1{
+    color: #fff;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; /* 19.2px */
+  }
+  .customized-col h2{
+    color: #fff;
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; /* 33.6px */
+  }
+  .frame504{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--Spacing-spacing-xxs, 8px);
+  }
+  .frame504 svg {
+    height: 36px;
+    width: 36px;
+  }
+  
+  
+
+  .frame520{
+    display: flex;
+    height: 113px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    align-self: stretch;
+  }
+  .services{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-xxs, 8px);
+  }
+  .frame504{
+    display: flex;
+    padding: 2px;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  
+  .vet_logo_btn_container{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    align-self: stretch;
+  }
+  .vet_logo_and_text_container img{
+      width: 79.891px;
+      height: 75px;
+  }
+  .vet_logo_and_text_container h1{
+    color: #000;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  
+  .img {
+    filter: none; /* Remove the blur */
+    width: 100%; /* Make the image full width */
+    height: 100%; /* Make the image full height */
+    object-fit: cover; /* Cover the entire container */
+    position: absolute; /* Position absolutely to cover the container */
+    top: 0;
+    left: 0;
+    z-index: -1; /* Move the image behind other content */
+  }
+      
+
+  .step.active {
+    display: flex;
+    width: 90%;
+    height: 100%;
+    padding: 10px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-spacing-s, 8px);
+    background: #F9F9F9;
+    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+  }
+
+  .signup_already_user_container {
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--spacing-spacing-s, 4px);
+  }
+
+  .sign_in{
+    display: inline-flex;
+    height: 46px;
+    min-width: 100px;
+    padding: var(--Spacing-spacing-s, 8px);
+    justify-content: center;
+    align-items: center;
+    gap: var(--Spacing-spacing-s, 8px);
+    flex-shrink: 0;
+  }
+
+
+  .next_btn{
+    align-self: stretch;
+  }
+
+
+
   .admin_signin {
     display: flex;
-    width: 300px;
-    padding: 20px;
+    width: 80%;
+    padding: 30px;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    gap: 12px;
+    gap: 20px;
     flex-shrink: 0;
     border-radius: var(--radius-s, 8px);
     background: #F2F2F2;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
   }
+
   .admin_signin_input_fields{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--Spacing-spacing-s, 8px);
+    gap: var(--Spacing-spacing-xs, 12px);
     align-self: stretch;
+  }
+
+
+  .modal-content.add_appointment_modal {
+    display: flex;
+    width: 90%;
+    padding: var(--spacing-spacing-s, 8px);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-s, 8px);
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-main-neutral-light, #F5F5F5);
+    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+  }
+
+  .date_time_container {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: var(--Spacing-spacing-xs, 8px);
+    align-self: stretch;
+  }
+
+  .clear_form{
+    width: 100%;
+  }
+  .submit_product{
+    width: 100%;
+  }
+
+  .input_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-spacing-xs, 8px);
+    align-self: stretch;
+  }
+ 
+
+  footer{
+    position: static;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 180px;
+  }
+  .landing_btns{
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .landing_btns a{
+    width: 100%;
+    margin: 0;
+  }
+  .appointment_heading_text {
+    width: 210px;
+  }
+  .appointment_heading_text  h1{
+    font-size: 24px;
+  }
+  .appointment_heading_text  h2{
+    font-size: 24px!important;
+    align-self: stretch;
+  }
+  .appointment_head_texts p{
+    font-size: 10px !important;
+  }
+  .user_appointment{
+    gap: 2px;
+  }
+  .multiple-step-form-n {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+  }
+
+}
+@media(max-width:359px){
+  .container{
+    justify-content: center;
+    padding-left: 10px!important;
+  }
+  .signup_column{
+    justify-content: center;
+    width: 340px;
+  }
+  .vet_logo_btn_container{
+    flex-direction: column;
+    
+  }
+  .vet_logo_and_text_container {
+    justify-content: space-between;
+  }
+  .vet_logo_and_text_container img{
+    width: 50px;
+    height: 50px;
+  }
+  .vet_logo_and_text_container h1{
+    font-size: 10px!important;
+  }
+  .step.active {
+    display: flex;
+    width: 90%;
+    height: 100%;
+    padding: 10px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-spacing-s, 8px);
+    background: #F9F9F9;
+    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+  }
+  .signup_inputs_container{ 
+    gap: 2px;
   }
 }
