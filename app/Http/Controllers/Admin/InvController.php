@@ -179,7 +179,12 @@ class InvController extends Controller
     // $resposne = [
     //     'dataExists' => $dataExists,
     // ];
-
+    $vax_info = VaxInfo::whereNull('archived_at')->get();
+    $med_info = MedInfo::whereNull('archived_at')->get();
+    $vit_info = VitInfo::whereNull('archived_at')->get();
+    $med_batch = MedBatch::orderBy('expiration_date')->get();
+    $vax_batch = VaxBatch::orderBy('expiration_date')->get();
+    $vit_batch = VitBatch::orderBy('expiration_date')->get();
 
 
     return view('admin/inventory', compact('productBatch', 'products', 'vax_info', 'med_info', 'vit_info', 'med_batch', 'vax_batch', 'vit_batch'));

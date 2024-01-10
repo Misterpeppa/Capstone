@@ -20,11 +20,19 @@ class EMRController extends Controller
     {
         $owners = Clients::withTrashed()->get();
         $petrecord = PetRecord::with('pet', 'owner')->get();
+        $petrecordExists = $petrecord->isNotEmpty();
+        $medHistory = MedHistory::all();
+        $vaxHistory = VaxHistory::all();
+        $surgHistory = SurgHistory::all();
+        $medHistoryExist = $medHistory->isNotEmpty();
+        $vaxHistoryExist = $vaxHistory->isNotEmpty();
+        $surgHistoryExist = $surgHistory->isNotEmpty();
         $medInfo = MedInfo::all();
         $med_info = MedInfo::all();
         $vaxInfo = VaxInfo::all();
         
-        return view('/admin/petrecords', compact('owners', 'petrecord', 'medInfo', 'vaxInfo', 'med_info'));
+        return view('/admin/petrecords', compact('owners', 'petrecord','petrecordExists', 'medHistoryExist', 'vaxHistoryExist', 'surgHistoryExist', 
+        'medInfo', 'vaxInfo', 'med_info'));
     }
 
     public function pet(Request $request)
@@ -37,6 +45,7 @@ class EMRController extends Controller
         $pet_infos->birthdate = $request->input('pet_birthday');
         $pet_infos->gender = $request->input('gender');
         $pet_infos->weight = $request->input('weight');
+        $pet_infos->sterilization = $request->input('sterilization');
         $pet_infos->save();
         $petId = $pet_infos->id;
         $ownerId = $request->input('owner_id');
@@ -59,7 +68,7 @@ class EMRController extends Controller
         return response()->json([
             'petrecord' => $petrecord,
             'petInfo' => $petInfo,
-            'ownerInfo' => $ownerInfo
+            'ownerInfo' => $ownerInfo,
         ]);
     }
 
@@ -71,6 +80,7 @@ class EMRController extends Controller
             'diagnosis_date' => $request->input('diagnosis_date'),
             'treatment' => $request->input('treatment'),
             'med_id' => $request->input('medication'),
+            // 'diagnosis_desc' => $request->input('diagnosis_desc'),
         ]);
         $medHistory->save();
 
@@ -105,19 +115,18 @@ class EMRController extends Controller
 
     public function showMedHis($id)
     {
-        $medHistory = MedHistory::where('petrecord_id', $id)->get();
-
+        $medHistory = MedHistory::with('med')->where('petrecord_id', $id)->get();
         return response()->json($medHistory);
     }
     public function showVaxHis($id)
     {
-        $vaxHistory = VaxHistory::where('petrecord_id', $id)->get();
+        $vaxHistory = VaxHistory::with('vax')->where('petrecord_id', $id)->get();
 
         return response()->json($vaxHistory);
     }
     public function showSurgHis($id)
     {
-        $surgHistory = SurgHistory::where('petrecord_id', $id)->get();
+        $surgHistory = SurgHistory::with('med')->where('petrecord_id', $id)->get();
 
         return response()->json($surgHistory);
     }

@@ -1,174 +1,6 @@
-document.addEventListener('DOMContentLoaded', function () {
-    
-
-    
-    var approved_appointment_tab_button = document.getElementById('approved_appointment_tab_button');
-    var pending_appointment_tab_button = document.getElementById('pending_appointment_tab_button');
-    var rejected_appointment_tab_button = document.getElementById('rejected_appointment_tab_button');
-    
-    var add_appointment_modal = new bootstrap.Modal(document.getElementById('add_appointment_modal'));
-    var add_appointment_modal1 = new bootstrap.Modal(document.getElementById('add_appointment_modal-1'));
-    var add_appointment_modal2 = new bootstrap.Modal(document.getElementById('add_appointment_modal-2'));
-    
-    
-approved_appointment_tab_button.addEventListener('click', function () {
-    add_appointment_modal.show();    
-  });
-    
-pending_appointment_tab_button.addEventListener('click', function () {
-    add_appointment_modal1.show();    
-  });
-    
-rejected_appointment_tab_button.addEventListener('click', function () {
-    add_appointment_modal2.show();    
-  });
-
-
-
-
-
-var submit_approved_appointment = document.getElementById('submit_approved_appointment');
-    
-var submit_pending_appointment = document.getElementById('submit_pending_appointment');
-    
-var submit_rejected_appointment = document.getElementById('submit_rejected_appointment');
-
-submit_approved_appointment.addEventListener('click', function () {
-     
-    add_appointment_modal.hide();
-    submitApprovedAppointment();
-    updateApprovedCount();
-       // Add the following lines to hide the empty state and display the table
-    var emptyState = document.getElementById('approved_appointment_empty_state');
-    var table = document.getElementById('approved_table');
-    var pagination = document.getElementById('pagination');
-    var add_approve_appointment_split_btn = document.getElementById('add_approve_appointment_split_btn');
-
-    emptyState.style.display = 'none';
-    table.style.display = 'flex';
-    pagination.style.display = 'flex';
-    add_approve_appointment_split_btn.style.display = 'flex';
-
-});
-    
-submit_pending_appointment.addEventListener('click', function () {
-    
-    add_appointment_modal1.hide();
-    submitPendingAppointment();
-    updatePendingCount();
-    resetPendingInputFields();
-    
-    var emptyState = document.getElementById('pending_appointment_empty_state');
-    var table = document.getElementById('pending_table');
-    var pagination = document.getElementById('pending_pagination');
-    var add_pending_appointment_split_btn = document.getElementById('add_pending_appointment_split_btn');
-
-    emptyState.style.display = 'none';
-    table.style.display = 'flex';
-    pagination.style.display = 'flex';
-    add_pending_appointment_split_btn.style.display = 'flex';
-});
-    
-    
-submit_rejected_appointment.addEventListener('click', function () {
-    
-
-    add_appointment_modal2.hide();
-    submitRejectAppointment();
-    updateRejectedCount();
-    resetRejectedInputFields();
-    
-    var reject = document.getElementById('rejected_appointment_empty_state');
-    var rejected_table = document.getElementById('rejected_table');
-    var pagination = document.getElementById('rejected_pagination');
-    var add_rejected_appointment_split_btn = document.getElementById('add_rejected_appointment_split_btn');
-
-
-    reject.style.display = 'none';
-    rejected_table.style.display = 'flex';
-    pagination.style.display = 'flex';
-    add_rejected_appointment_split_btn.style.display = 'flex';
-    
-});
-
-
-
-function submitApprovedAppointment() {
-
-    // Assuming you have your input fields with the specified ids
-    var ownerNameInput = document.getElementById('owner_name');
-    var emailInput = document.getElementById('email');
-    var petNameInput = document.getElementById('pet_name');
-    var breedInput = document.getElementById('breed-0');
-    var surgeryTypeInput = document.getElementById('surgery_type');
-    var additionalNotesInput = document.getElementById('additional_notes');
-    var appointmentDateInput = document.getElementById('appointment_date');
-    var appointmentTimeInput = document.getElementById('appointment_time');
-
-    // Get the table body
-    var tableBody = document.getElementById('approvedTableBody');
-
-    // Create a new row and cells
-    var newRow = tableBody.insertRow();
-    var checkboxCell = newRow.insertCell(0);
-    var numberCell = newRow.insertCell(1);
-    var ownerNameCell = newRow.insertCell(2);
-    var statusCell = newRow.insertCell(3);
-    var petInfoCell = newRow.insertCell(4);
-    var dateTimeCell = newRow.insertCell(5);
-    var surgeryTypeCell = newRow.insertCell(6);
-    var notesCell = newRow.insertCell(7);
-    var actionsCell = newRow.insertCell(8);
-
-    // Populate cells with values
-    checkboxCell.innerHTML = '<input type="checkbox">';
-    numberCell.innerHTML = ''; // Replace with your logic for numbering
-    ownerNameCell.innerHTML = `<span title="${ownerNameInput.value || 'N/A'}">${ownerNameInput.value || 'N/A'}</span>`;
-    statusCell.innerHTML = 'Upcoming';
-    statusCell.classList.add('upcoming');
-    petInfoCell.innerHTML = `<span title="Pet Name: ${petNameInput.value || 'N/A'}&#13;Breed: ${breedInput.value || 'N/A'}">${petNameInput.value || 'N/A'}<br>${breedInput.value || 'N/A'}</span>`;
-    
-    dateTimeCell.innerHTML = `<span title="Date: ${appointmentDateInput.value || 'N/A'}&#13;Time: ${appointmentTimeInput.value || 'N/A'}">${appointmentDateInput.value || 'N/A'}<br>${appointmentTimeInput.value || 'N/A'}</span>`;
-
-    surgeryTypeCell.innerHTML = `<span title="Surgery Type: ${surgeryTypeInput.value || 'N/A'}">${surgeryTypeInput.value || 'N/A'}</span>`;
-
-    notesCell.innerHTML = `<span title="${additionalNotesInput.value || 'N/A'}">${additionalNotesInput.value || 'N/A'}</span>`;
-    actionsCell.innerHTML = `<div class="dropdown"><button class="btn dropbtn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-  <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
-  <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
-  <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
-</svg> </button>
-    <div class="dropdown-menu"><a class="dropdown-item complete-action"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="12" viewBox="0 0 22 12" fill="none">
-  <path d="M6 6L11 11L21 1M1 6L6 11M11 6L16 1" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg> Mark as complete</a>
-        <hr /><a class="dropdown-item archive-action"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6291_1005)">
-    <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6291_1005">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Archive</a>
-    </div>
-</div>`;
-    
-    resetApprovedInputFields();
-    
-//mark as complete menu item
 var completeActions = document.querySelectorAll('.complete-action');
 
 //mark complete modal that will appear after clicking completeAction
-var completeModal = new bootstrap.Modal(document.getElementById('mark_complete_modal'));
-
-completeActions.forEach(function(completeAction) {
-    completeAction.addEventListener('click', function() {
-        // Store the selected row in a data attribute
-        completeModal.relatedRow = completeAction.closest('tr');
-        completeModal.show();
-    });
-});
 
 //continue button for complete appointment
 var confirmCompleteAction = document.querySelector('.confirm_complete');
@@ -185,762 +17,710 @@ function updateStatusToCompleted() {
     completeModal.hide();
     statusCell.innerHTML = 'Completed';
     statusCell.classList.add('completed');
+    
+    
 }
-
-
-
-
-
-    var archiveAction = newRow.querySelector('.archive-action');
-    
-    archiveAction.addEventListener('click', function() {
-        // Assuming you have your modal with the ID 'acceptModal'
-        var archiveModal = new bootstrap.Modal(document.getElementById('archive_modal'));
-        archiveModal.show();
-    });
-}
-
-    //reset input fields on add_appointment_modal
-function resetApprovedInputFields() {
-    var ownerNameInput = document.getElementById('owner_name');
-    var emailInput = document.getElementById('email');
-    var petNameInput = document.getElementById('pet_name');
-    var breedInput = document.getElementById('breed-0');
-    var surgeryTypeInput = document.getElementById('surgery_type');
-    var additionalNotesInput = document.getElementById('additional_notes');
-    var appointmentDateInput = document.getElementById('appointment_date');
-    var appointmentTimeInput = document.getElementById('appointment_time');
-
-    // Reset input values
-    ownerNameInput.value = '';
-    emailInput.value = '';
-    petNameInput.value = '';
-    breedInput.value = '';
-    breedInput.disabled = true;
-    surgeryTypeInput.value = '';
-    additionalNotesInput.value = '';
-    appointmentDateInput.value = '';
-    appointmentTimeInput.value = '';
-
-    // Unselect and reset styles for radio buttons for 'Dog' and 'Cat'
-    unselectAndResetRadio('dog-0');
-    unselectAndResetRadio('cat-0');
-}
-
-function unselectAndResetRadio(buttonId) {
-    var button = document.getElementById(buttonId);
-    
-    if (button) {
-        var radio = button.querySelector('.checkbox');
-        
-        if (radio) {
-            // Unselect the radio button
-            radio.checked = false;
-
-            // Reset styles for the radio button using inline style
-            radio.style.backgroundColor = '';
-            radio.style.border = '';
-        }
-    }
-}
-
-
-      
-function submitPendingAppointment() {
-    
-    // Assuming you have your input fields with the specified ids
-    var ownerNameInput1 = document.getElementById('owner_name-1');
-    var emailInput1 = document.getElementById('email-1');
-    var petNameInput1 = document.getElementById('pet_name-1');
-    var breedInput1 = document.getElementById('breed-1');
-    var surgeryTypeInput1 = document.getElementById('surgery_type-1');
-    var additionalNotesInput1 = document.getElementById('additional_notes-1');
-    var appointmentDateInput1 = document.getElementById('appointment_date-1');
-    var appointmentTimeInput1 = document.getElementById('appointment_time-1');
-
-    // Get the table body
-    var tableBody = document.getElementById('pendingTableBody');
-
-    // Create a new row and cells
-    var newRow = tableBody.insertRow();
-    var checkboxCell = newRow.insertCell(0);
-    var numberCell = newRow.insertCell(1);
-    var ownerNameCell = newRow.insertCell(2);
-    var statusCell = newRow.insertCell(3);
-    var patientInfoCell = newRow.insertCell(4);
-    var dateTimeCell = newRow.insertCell(5);
-    var surgeryTypeCell = newRow.insertCell(6);
-    var actionsCell = newRow.insertCell(7);
-
-    // Populate cells with values
-    checkboxCell.innerHTML = '<input type="checkbox">';
-    // Assuming you have a variable for number or it can be dynamically generated
-    numberCell.innerHTML = ''; // Replace with your logic for numbering
-    
-    ownerNameCell.innerHTML = `<span title="${ownerNameInput1.value || 'N/A'}">${ownerNameInput1.value || 'N/A'}</span>`;
-    statusCell.innerHTML = 'Pending';
-    statusCell.classList.add('pending');
-    
-    patientInfoCell.innerHTML = `<span title="Pet Name: ${petNameInput1.value || 'N/A'}&#13;Breed: ${breedInput1.value || 'N/A'}">${petNameInput1.value || 'N/A'}<br>${breedInput1.value || 'N/A'}</span>`;
-
-     dateTimeCell.innerHTML = `<span title="Date: ${appointmentDateInput1.value || 'N/A'}&#13;Time: ${appointmentTimeInput1.value || 'N/A'}">${appointmentDateInput1.value || 'N/A'}<br>${appointmentTimeInput1.value || 'N/A'}</span>`;
-
-    surgeryTypeCell.innerHTML = `<span title="Surgery Type: ${surgeryTypeInput1.value || 'N/A'}">${surgeryTypeInput1.value || 'N/A'}</span>`;
-    
-    // Create dropdown HTML for actionsCell
-actionsCell.innerHTML = `<div class="dropdown"><button class="btn dropbtn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-  <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
-  <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
-  <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
-</svg></button>
-    <div class="dropdown-menu"><a class="dropdown-item accept-action"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6291_1355)">
-    <path d="M5 12L10 17L20 7" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6291_1355">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Accept</a><a class="dropdown-item reject-action"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6291_1893)">
-    <path d="M18 6L6 18M6 6L18 18" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6291_1893">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Reject</a><a class="dropdown-item resched-action"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6291_2186)">
-    <path d="M15.5 12H12V7M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6291_2186">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Reschedule</a>
-        <hr /><a class="dropdown-item archive-action"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6291_1005)">
-    <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6291_1005">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Archive</a>
-    </div>
-</div>`;
-    
-
-    // Get the "Accept" dropdown item
-    var acceptAction = newRow.querySelector('.accept-action');
-    var rejectAction = newRow.querySelector('.reject-action');
-    var reschedAction = newRow.querySelector('.resched-action');
-    var archiveAction = newRow.querySelector('.archive-action');
-    
-    // Assuming you have references to the tables and buttons
-    var approvedTableBody = document.getElementById('approvedTableBody');
-    var pendingTableBody = document.getElementById('pendingTableBody');
-    var rejectTableBody = document.getElementById('rejectedTableBody');
-
-    // Variable to store the selected row
-    var selectedRow;
-
-    // `approved_appointment_empty_state` and `approved_table` are the IDs of empty state and table elements respectively
-    var emptyState = document.getElementById('approved_appointment_empty_state');
-    var approvedTable = document.getElementById('approved_table');
-    
-    var rejectEmptyState = document.getElementById('rejected_appointment_empty_state');
-    var rejectTable = document.getElementById('rejected_table');
-    
-    
-
-    // Add an event listener to show the modal when "Accept" is clicked
-    acceptAction.addEventListener('click', function (event) {
-        // Show the accept modal
-        var acceptModal = new bootstrap.Modal(document.getElementById('accept_modal'));
-        acceptModal.show();
-        
-        // Get the clicked button's parent row
-        selectedRow = event.target.closest('tr');
-        
-
-         // Event listener for "Reject" button inside the modal
-        var approve_btn = document.getElementById('confirm_approve_appointment_btn');
-        approve_btn.addEventListener('click', function () {
-            moveToApproveTable();
-            
-            // Call the function after moving the table row or any other relevant actions
-        });
-        
-        function moveToApproveTable(){
-            
-            acceptModal.hide(); 
-            // Move the data row to the approvedTableBody
-        if (selectedRow) {
-            // Append the selected row to the approvedTableBody
-            approvedTableBody.appendChild(selectedRow);
-            
-            
-            // Check if the empty state is visible and hide it
-            if (emptyState.style.display !== 'none') {
-                emptyState.style.display = 'none';
-                // Make the approved table visible
-                approvedTable.style.display = 'flex'; // Adjust this if your table has a different display style
-            }
-            
-        }
-
-        
-        // Find the status cell within the selected row
-        var statusCell = selectedRow.querySelector('.pending');
-
-        statusCell.classList.remove('pending');
-        statusCell.innerHTML = 'Upcoming';
-        statusCell.classList.add('upcoming');
-        
-        // Create a new cell after the statusCell
-        var notesCell = selectedRow.insertCell(7); // Assuming it's the fifth cell, adjust the index accordingly
-
-        // Populate notesCell with values
-        notesCell.innerHTML = `<span title="${additionalNotesInput1.value || 'N/A'}">${additionalNotesInput1.value || 'N/A'}</span>`;
-        
-        
-        actionsCell.innerHTML = `<div class="dropdown"><button class="btn dropbtn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
-      <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
-      <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
-    </svg> </button>
-        <div class="dropdown-menu"><a class="dropdown-item complete-action"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="12" viewBox="0 0 22 12" fill="none">
-      <path d="M6 6L11 11L21 1M1 6L6 11M11 6L16 1" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg> Mark as complete</a>
-            <hr /><a class="dropdown-item archive-action"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <g clip-path="url(#clip0_6291_1005)">
-        <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </g>
-      <defs>
-        <clipPath id="clip0_6291_1005">
-          <rect width="24" height="24" fill="white"/>
-        </clipPath>
-      </defs>
-    </svg> Archive</a>
-        </div>
-    </div>`;
-        
-            //mark as complete menu item
-    var completeActions = document.querySelectorAll('.complete-action');
-
-    //mark complete modal that will appear after clicking completeAction
-    var completeModal = new bootstrap.Modal(document.getElementById('mark_complete_modal'));
-
-    completeActions.forEach(function(completeAction) {
-        completeAction.addEventListener('click', function() {
-            // Store the selected row in a data attribute
-            completeModal.relatedRow = completeAction.closest('tr');
-            completeModal.show();
-        });
-    });
-
-    //continue button for complete appointment
-    var confirmCompleteAction = document.querySelector('.confirm_complete');
-    confirmCompleteAction.addEventListener('click', updateStatusToCompleted);
-
-    function updateStatusToCompleted() {
-        // Retrieve the selected row from the data attribute
-        var selectedRow = completeModal.relatedRow;
-
-        // Find the status cell within the selected row
-        var statusCell = selectedRow.querySelector('.upcoming');
-
-        // Change status if complete button was clicked
-        completeModal.hide();
-        statusCell.innerHTML = 'Completed';
-        statusCell.classList.add('completed');
-        
-        
-    }
-            
-    updateApprovedCount();
-    updatePendingCount();
-    checkPendingTableEmptyState();
-            
-        }
-    resetPendingInputFields();
-        
-    function checkPendingTableEmptyState() {
-            var pendingTableBody = document.getElementById('pendingTableBody');
-            var pendingEmptyState = document.getElementById('pending_appointment_empty_state');
-            var pendingTable = document.getElementById('pending_table');
-            var pendingPagination = document.getElementById('pending_pagination');
-
-            // Check if there are table rows inside pendingTableBody
-            var hasRows = pendingTableBody.querySelectorAll('tr').length > 0;
-
-            // Toggle the visibility of the empty state based on whether there are rows or not
-            if (hasRows) {
-                pendingEmptyState.style.display = 'none'; // Hide the empty state
-            } else {
-                pendingEmptyState.style.display = 'flex'; // Show the empty state
-                pendingTable.style.display = 'none'; //hide the table and pagination
-                pendingPagination.style.display = 'none';
-            }
-        }
-    
-        
-
-
-        
-        
-        var approvedPagination = document.getElementById('pagination');
-        approvedPagination.style.display = 'flex';
-
- 
-    });
- 
-    // Event listener for "Reject" button click
-    rejectAction.addEventListener('click', function (event) {
-        // Get the clicked button's parent row
-        selectedRow = event.target.closest('tr');
-
-        // Show the reject modal
-        var rejectModal = new bootstrap.Modal(document.getElementById('reject_modal'));
-        rejectModal.show();
-
-        // Event listener for "Reject" button inside the modal
-        var reject_btn = document.getElementById('reject_btn');
-        reject_btn.addEventListener('click', function () {
-            moveToRejectedTable();
-            // Call the function after moving the table row or any other relevant actions
-            checkPendingTableEmptyState();
-        });
-        function moveToRejectedTable(){
-               
-        var statusCell = selectedRow.querySelector('.pending');
-        statusCell.classList.remove('pending');
-        
-        // Move the data row to the rejectTableBody
-        if (selectedRow) {
-                    // Append the selected row to the rejectedTableBody
-                    rejectTableBody.appendChild(selectedRow);
-
-
-                    // Check if the empty state is visible and hide it
-                    if (rejectEmptyState.style.display !== 'none') {
-                        rejectEmptyState.style.display = 'none';
-                        // Make the reject table visible
-                        rejectTable.style.display = 'flex'; 
-                    }
-
-                }
-        
-        
-        var patientInfoCell = selectedRow.querySelector(':nth-child(4)'); 
-        var dateTimeCell = selectedRow.querySelector(':nth-child(5)');     
-        var surgeryTypeCell = selectedRow.querySelector(':nth-child(6)'); 
-
-        patientInfoCell.innerHTML = petNameInput1.value + ' (' + breedInput1.value + ')' || 'N/A';
-        dateTimeCell.innerHTML = (appointmentDateInput1.value || 'N/A') + '<br>' + (appointmentTimeInput1.value || 'N/A');
-        surgeryTypeCell.innerHTML = surgeryTypeInput1.value || 'N/A';
-
-
-        
-        var reasonInput = document.getElementById('rejection_reason');
-        var specify_reasonInput = document.getElementById('specify_reason');
-        var reasonCell = selectedRow.querySelector(':nth-child(7)');
-
-        if (reasonInput.value !== '') {
-            if (reasonInput.value.toLowerCase() !== 'other') {
-                reasonCell.innerHTML = reasonInput.value;
-            } else {
-                reasonCell.innerHTML = specify_reasonInput.value || 'N/A';
-            }
-        } else {
-            reasonCell.innerHTML = 'N/A';
-        }
-
-        
-        
-        
-        actionsCell.innerHTML = `<div class="dropdown"><button class="btn dropbtn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
-      <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
-      <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
-    </svg></button>
-        <div class="dropdown-menu"><a class="dropdown-item resched-action" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <g clip-path="url(#clip0_6291_1874)">
-        <path d="M15.5 12H12V7M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </g>
-      <defs>
-        <clipPath id="clip0_6291_1874">
-          <rect width="24" height="24" fill="white"/>
-        </clipPath>
-      </defs>
-    </svg> Reschedule</a><hr /><a class="dropdown-item archive-action"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <g clip-path="url(#clip0_6291_1005)">
-        <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </g>
-      <defs>
-        <clipPath id="clip0_6291_1005">
-          <rect width="24" height="24" fill="white"/>
-        </clipPath>
-      </defs>
-    </svg> Archive</a>
-        </div>
-    </div>`;
-
-
-            updateRejectedCount();
-            updatePendingCount();
   
-             // Add an event listener to show the modal when "Reject" is clicked
+document.addEventListener('DOMContentLoaded', function () {
+    
+    
+
+    var approve_appointment_tab_button = document.getElementById('approve_appointment_tab_button');
+    var pending_appointment_tab_button = document.getElementById('pending_appointment_tab_button');
+    var rejected_appointment_tab_button = document.getElementById('rejected_appointment_tab_button');
+
+    var approved_appointment_btn = document.getElementById('approved_appointment_btn');
+    var pending_appointment_btn = document.getElementById('pending_appointment_btn');
+    var reject_appointment_btn = document.getElementById('reject_appointment_btn');
+    var add_appointment_modal1 = new bootstrap.Modal(document.getElementById('add_appointment_modal'));
+
+    approve_appointment_tab_button.addEventListener('click', function () {
+        add_appointment_modal1.show();    
+    });
+
+    pending_appointment_tab_button.addEventListener('click', function () {
+        add_appointment_modal1.show();    
+    });
+
+    rejected_appointment_tab_button.addEventListener('click', function () {
+        add_appointment_modal1.show();    
+    });
+    
+
+
+
+
+    var submit_pending_appointment = document.getElementById('submit_pending_appointment');
+    
+
+
+    
+    submit_pending_appointment.addEventListener('click', function () {
+        submitPendingAppointment();
+        updatePendingCount();
+        resetPendingInputFields();
+        handleAddPendingAppointmentBtnVisibility();
+        
+        var emptyState = document.getElementById('pending_appointment_empty_state');
+        var table = document.getElementById('pending_table');
+        var pagination = document.getElementById('pending_pagination');
+
+        add_appointment_modal1.hide();
+        emptyState.style.display = 'none';
+        table.style.display = 'flex';
+        pagination.style.display = 'flex';
+
+        // Call the visibility function after updating the UI
+        handleAddPendingAppointmentBtnVisibility();
+    });
+
+    // Function to handle visibility of add_pending_appointment_split_btn
+    function handleAddPendingAppointmentBtnVisibility() {
+        var addPendingAppointmentBtn = document.getElementById('add_pending_appointment_split_btn');
+        var approvedAppointmentEmptyState = document.getElementById('approved_appointment_empty_state');
+        var rejectedAppointmentEmptyState = document.getElementById('rejected_appointment_empty_state');
+        var pendingAppointmentEmptyState = document.getElementById('pending_appointment_empty_state');
+
+        // Check if approved, rejected, and pending tabs don't contain their respective empty states
+        if (!approvedAppointmentEmptyState && !rejectedAppointmentEmptyState && !pendingAppointmentEmptyState) {
+            addPendingAppointmentBtn.style.display = 'flex';
+        } else {
+            // If any of the conditions are not met, hide the button
+            addPendingAppointmentBtn.style.display = 'none';
+        }
+    }
+
+
+    // Call the visibility function initially
+    handleAddPendingAppointmentBtnVisibility();
+
+
+    function unselectAndResetRadio(buttonId) {
+        var button = document.getElementById(buttonId);
+        
+        if (button) {
+            var radio = button.querySelector('.checkbox');
+            
+            if (radio) {
+                // Unselect the radio button
+                radio.checked = false;
+
+                // Reset styles for the radio button using inline style
+                radio.style.backgroundColor = '';
+                radio.style.border = '';
+            }
+        }
+    }
+
+        
+    function submitPendingAppointment() {
+        setupSubmitPendingButton();
+        
+        // Assuming you have your input fields with the specified ids
+        var ownerNameInput1 = document.getElementById('owner_name');
+        var emailInput1 = document.getElementById('email');
+        var petNameInput1 = document.getElementById('pet_name');
+        var breedInput1 = document.getElementById('breed');
+        var surgeryTypeInput1 = document.getElementById('surgery_type');
+        var additionalNotesInput1 = document.getElementById('additional_notes');
+        var appointmentDateInput1 = document.getElementById('appointment_date');
+        var appointmentTimeInput1 = document.getElementById('appointment_time');
+
+        // Get the table body
+        var tableBody = document.getElementById('pendingTableBody');
+
+        // Create a new row and cells
+        var newRow = tableBody.insertRow();
+        var checkboxCell = newRow.insertCell(0);
+        var numberCell = newRow.insertCell(1);
+        var ownerNameCell = newRow.insertCell(2);
+        var statusCell = newRow.insertCell(3);
+        var patientInfoCell = newRow.insertCell(4);
+        var dateTimeCell = newRow.insertCell(5);
+        var surgeryTypeCell = newRow.insertCell(6);
+        var actionsCell = newRow.insertCell(7);
+
+        // Populate cells with values
+        checkboxCell.innerHTML = '<input type="checkbox">';
+        // Assuming you have a variable for number or it can be dynamically generated
+        numberCell.innerHTML = ''; // Replace with your logic for numbering
+        
+        ownerNameCell.innerHTML = `<span title="${ownerNameInput1.value || 'N/A'}">${ownerNameInput1.value || 'N/A'}</span>`;
+        statusCell.innerHTML = 'Pending';
+        statusCell.classList.add('pending');
+        
+        patientInfoCell.innerHTML = `<span title="Pet Name: ${petNameInput1.value || 'N/A'}&#13;Breed: ${breedInput1.value || 'N/A'}">${petNameInput1.value || 'N/A'}<br>${breedInput1.value || 'N/A'}</span>`;
+
+        dateTimeCell.innerHTML = `<span title="Date: ${appointmentDateInput1.value || 'N/A'}&#13;Time: ${appointmentTimeInput1.value || 'N/A'}">${appointmentDateInput1.value || 'N/A'}<br>${appointmentTimeInput1.value || 'N/A'}</span>`;
+
+        surgeryTypeCell.innerHTML = `<span title="Surgery Type: ${surgeryTypeInput1.value || 'N/A'}">${surgeryTypeInput1.value || 'N/A'}</span>`;
+        
+        // Create dropdown HTML for actionsCell
+    actionsCell.innerHTML = `<div class="dropdown"><button class="btn dropbtn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+    <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
+    <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
+    <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
+    </svg></button>
+        <div class="dropdown-menu"><a class="dropdown-item accept-action"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <g clip-path="url(#clip0_6291_1355)">
+        <path d="M5 12L10 17L20 7" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+        <clipPath id="clip0_6291_1355">
+        <rect width="24" height="24" fill="white"/>
+        </clipPath>
+    </defs>
+    </svg> Accept</a><a class="dropdown-item reject-action"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <g clip-path="url(#clip0_6291_1893)">
+        <path d="M18 6L6 18M6 6L18 18" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+        <clipPath id="clip0_6291_1893">
+        <rect width="24" height="24" fill="white"/>
+        </clipPath>
+    </defs>
+    </svg> Reject</a><a class="dropdown-item resched-action"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <g clip-path="url(#clip0_6291_2186)">
+        <path d="M15.5 12H12V7M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+        <clipPath id="clip0_6291_2186">
+        <rect width="24" height="24" fill="white"/>
+        </clipPath>
+    </defs>
+    </svg> Reschedule</a>
+            <hr /><a class="dropdown-item archive-action"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <g clip-path="url(#clip0_6291_1005)">
+        <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+        <clipPath id="clip0_6291_1005">
+        <rect width="24" height="24" fill="white"/>
+        </clipPath>
+    </defs>
+    </svg> Archive</a>
+        </div>
+    </div>`;
+        
+
+        // Get the "Accept" dropdown item
+        var acceptAction = newRow.querySelector('.accept-action');
+        var rejectAction = newRow.querySelector('.reject-action');
         var reschedAction = newRow.querySelector('.resched-action');
+        var archiveAction = newRow.querySelector('.archive-action');
+        
+        // Assuming you have references to the tables and buttons
+        var approvedTableBody = document.getElementById('approvedTableBody');
+        var pendingTableBody = document.getElementById('pendingTableBody');
+        var rejectTableBody = document.getElementById('rejectedTableBody');
 
-        // Add an event listener to show the modal when "Reject" is clicked
-        reschedAction.addEventListener('click', function() {
+        // Variable to store the selected row
+        var selectedRow;
 
-            var reschedModal1 = new bootstrap.Modal(document.getElementById('resched_modal-1'));
-            reschedModal1.show();
+        // `approved_appointment_empty_state` and `approved_table` are the IDs of empty state and table elements respectively
+        var emptyState = document.getElementById('approved_appointment_empty_state');
+        var approvedTable = document.getElementById('approved_table');
+        
+        var rejectEmptyState = document.getElementById('rejected_appointment_empty_state');
+        var rejectTable = document.getElementById('rejected_table');
+        
+        
+
+        // Add an event listener to show the modal when "Accept" is clicked
+        acceptAction.addEventListener('click', function (event) {
+            // Show the accept modal
+            var acceptModal = new bootstrap.Modal(document.getElementById('accept_modal'));
+            acceptModal.show();
+            
+            // Get the clicked button's parent row
+            selectedRow = event.target.closest('tr');
+            
+
+            // Event listener for "Reject" button inside the modal
+            var approve_btn = document.getElementById('confirm_approve_appointment_btn');
+            approve_btn.addEventListener('click', function () {
+                moveToApproveTable();
+                
+                // Call the function after moving the table row or any other relevant actions
+            });
+            
+            function moveToApproveTable(){
+                
+                acceptModal.hide(); 
+                // Move the data row to the approvedTableBody
+            if (selectedRow) {
+                // Append the selected row to the approvedTableBody
+                approvedTableBody.appendChild(selectedRow);
+                
+                
+                // Check if the empty state is visible and hide it
+                if (emptyState.style.display !== 'none') {
+                    emptyState.style.display = 'none';
+                    // Make the approved table visible
+                    approvedTable.style.display = 'flex'; // Adjust this if your table has a different display style
+                }
+                
+            }
+
+            
+            // Find the status cell within the selected row
+            var statusCell = selectedRow.querySelector('.pending');
+
+            statusCell.classList.remove('pending');
+            statusCell.innerHTML = 'Upcoming';
+            statusCell.classList.add('upcoming');
+            
+            // Create a new cell after the statusCell
+            var notesCell = selectedRow.insertCell(7); // Assuming it's the fifth cell, adjust the index accordingly
+
+            // Populate notesCell with values
+            notesCell.innerHTML = `<span title="${additionalNotesInput1.value || 'N/A'}">${additionalNotesInput1.value || 'N/A'}</span>`;
+            
+            
+            actionsCell.innerHTML = `<div class="dropdown"><button class="btn dropbtn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
+        <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
+        <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
+        </svg> </button>
+            <div class="dropdown-menu"><a class="dropdown-item complete-action"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="12" viewBox="0 0 22 12" fill="none">
+        <path d="M6 6L11 11L21 1M1 6L6 11M11 6L16 1" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg> Mark as complete</a>
+                <hr /><a class="dropdown-item archive-action"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <g clip-path="url(#clip0_6291_1005)">
+            <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+            <clipPath id="clip0_6291_1005">
+            <rect width="24" height="24" fill="white"/>
+            </clipPath>
+        </defs>
+        </svg> Archive</a>
+            </div>
+        </div>`;
+            
+                //mark as complete menu item
+        var completeActions = document.querySelectorAll('.complete-action');
+
+        //mark complete modal that will appear after clicking completeAction
+        var completeModal = new bootstrap.Modal(document.getElementById('mark_complete_modal'));
+
+        completeActions.forEach(function(completeAction) {
+            completeAction.addEventListener('click', function() {
+                // Store the selected row in a data attribute
+                completeModal.relatedRow = completeAction.closest('tr');
+                completeModal.show();
+            });
         });
 
-        var archiveAction = newRow.querySelector('.archive-action');
+        //continue button for complete appointment
+        var confirmCompleteAction = document.querySelector('.confirm_complete');
+        confirmCompleteAction.addEventListener('click', updateStatusToCompleted);
 
+        function updateStatusToCompleted() {
+            // Retrieve the selected row from the data attribute
+            var selectedRow = completeModal.relatedRow;
+
+            // Find the status cell within the selected row
+            var statusCell = selectedRow.querySelector('.upcoming');
+
+            // Change status if complete button was clicked
+            completeModal.hide();
+            statusCell.innerHTML = 'Completed';
+            statusCell.classList.add('completed');
+            
+            
+        }
+                
+        updateApprovedCount();
+        updatePendingCount();
+        checkPendingTableEmptyState();
+                
+            }
+        resetPendingInputFields();
+            
+        function checkPendingTableEmptyState() {
+                var pendingTableBody = document.getElementById('pendingTableBody');
+                var pendingEmptyState = document.getElementById('pending_appointment_empty_state');
+                var pendingTable = document.getElementById('pending_table');
+                var pendingPagination = document.getElementById('pending_pagination');
+
+                // Check if there are table rows inside pendingTableBody
+                var hasRows = pendingTableBody.querySelectorAll('tr').length > 0;
+
+                // Toggle the visibility of the empty state based on whether there are rows or not
+                if (hasRows) {
+                    pendingEmptyState.style.display = 'none'; // Hide the empty state
+                } else {
+                    pendingEmptyState.style.display = 'flex'; // Show the empty state
+                    pendingTable.style.display = 'none'; //hide the table and pagination
+                    pendingPagination.style.display = 'none';
+                }
+            }
+        
+            
+
+
+            
+            
+            var approvedPagination = document.getElementById('pagination');
+            approvedPagination.style.display = 'flex';
+
+    
+        });
+    
+        // Event listener for "Reject" button click
+        rejectAction.addEventListener('click', function (event) {
+            // Get the clicked button's parent row
+            selectedRow = event.target.closest('tr');
+
+            // Show the reject modal
+            var rejectModal = new bootstrap.Modal(document.getElementById('reject_modal'));
+            rejectModal.show();
+
+            // Event listener for "Reject" button inside the modal
+            var reject_btn = document.getElementById('reject_btn');
+            reject_btn.addEventListener('click', function () {
+                moveToRejectedTable();
+                // Call the function after moving the table row or any other relevant actions
+                checkPendingTableEmptyState();
+            });
+            function moveToRejectedTable(){
+                
+            var statusCell = selectedRow.querySelector('.pending');
+            statusCell.classList.remove('pending');
+            
+            // Move the data row to the rejectTableBody
+            if (selectedRow) {
+                        // Append the selected row to the rejectedTableBody
+                        rejectTableBody.appendChild(selectedRow);
+
+
+                        // Check if the empty state is visible and hide it
+                        if (rejectEmptyState.style.display !== 'none') {
+                            rejectEmptyState.style.display = 'none';
+                            // Make the reject table visible
+                            rejectTable.style.display = 'flex'; 
+                        }
+
+                    }
+            
+            
+            var patientInfoCell = selectedRow.querySelector(':nth-child(4)'); 
+            var dateTimeCell = selectedRow.querySelector(':nth-child(5)');     
+            var surgeryTypeCell = selectedRow.querySelector(':nth-child(6)'); 
+
+            patientInfoCell.innerHTML = petNameInput1.value + ' (' + breedInput1.value + ')' || 'N/A';
+            dateTimeCell.innerHTML = (appointmentDateInput1.value || 'N/A') + '<br>' + (appointmentTimeInput1.value || 'N/A');
+            surgeryTypeCell.innerHTML = surgeryTypeInput1.value || 'N/A';
+
+
+            
+            var reasonInput = document.getElementById('rejection_reason');
+            var specify_reasonInput = document.getElementById('specify_reason');
+            var reasonCell = selectedRow.querySelector(':nth-child(7)');
+
+            if (reasonInput.value !== '') {
+                if (reasonInput.value.toLowerCase() !== 'other') {
+                    reasonCell.innerHTML = reasonInput.value;
+                } else {
+                    reasonCell.innerHTML = specify_reasonInput.value || 'N/A';
+                }
+            } else {
+                reasonCell.innerHTML = 'N/A';
+            }
+
+            
+            
+            
+            actionsCell.innerHTML = `<div class="dropdown"><button class="btn dropbtn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
+        <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
+        <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
+        </svg></button>
+            <div class="dropdown-menu"><a class="dropdown-item resched-action" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <g clip-path="url(#clip0_6291_1874)">
+            <path d="M15.5 12H12V7M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+            <clipPath id="clip0_6291_1874">
+            <rect width="24" height="24" fill="white"/>
+            </clipPath>
+        </defs>
+        </svg> Reschedule</a><hr /><a class="dropdown-item archive-action"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <g clip-path="url(#clip0_6291_1005)">
+            <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+            <clipPath id="clip0_6291_1005">
+            <rect width="24" height="24" fill="white"/>
+            </clipPath>
+        </defs>
+        </svg> Archive</a>
+            </div>
+        </div>`;
+
+
+                updateRejectedCount();
+                updatePendingCount();
+    
+                // Add an event listener to show the modal when "Reject" is clicked
+            var reschedAction = newRow.querySelector('.resched-action');
+
+            // Add an event listener to show the modal when "Reject" is clicked
+            reschedAction.addEventListener('click', function() {
+
+                var reschedModal1 = new bootstrap.Modal(document.getElementById('resched_modal-1'));
+                reschedModal1.show();
+            });
+
+            var archiveAction = newRow.querySelector('.archive-action');
+
+            archiveAction.addEventListener('click', function() {
+                // Assuming you have your modal with the ID 'acceptModal'
+                var archiveModal = new bootstrap.Modal(document.getElementById('archive_modal'));
+                archiveModal.show();
+            });
+            
+            var rejectPagination = document.getElementById('rejected_pagination');
+            rejectPagination.style.display = 'flex';
+                
+            resetPendingInputFields();
+            rejectModal.hide();
+            }
+            
+        function checkPendingTableEmptyState() {
+                var pendingTableBody = document.getElementById('pendingTableBody');
+                var pendingEmptyState = document.getElementById('pending_appointment_empty_state');
+                var pendingTable = document.getElementById('pending_table');
+                var pendingPagination = document.getElementById('pending_pagination');
+
+                // Check if there are table rows inside pendingTableBody
+                var hasRows = pendingTableBody.querySelectorAll('tr').length > 0;
+
+                // Toggle the visibility of the empty state based on whether there are rows or not
+                if (hasRows) {
+                    pendingEmptyState.style.display = 'none'; // Hide the empty state
+                } else {
+                    pendingEmptyState.style.display = 'flex'; // Show the empty state
+                    pendingTable.style.display = 'none'; //hide the table and pagination
+                    pendingPagination.style.display = 'none';
+                }
+            }
+        });
+    
+
+        // Add an event listener to show the modal when "Resched" is clicked
+        reschedAction.addEventListener('click', function() {
+            
+            var reschedModal = new bootstrap.Modal(document.getElementById('resched_modal'));
+            reschedModal.show();
+        });
+        
+        
         archiveAction.addEventListener('click', function() {
             // Assuming you have your modal with the ID 'acceptModal'
             var archiveModal = new bootstrap.Modal(document.getElementById('archive_modal'));
             archiveModal.show();
         });
         
-        var rejectPagination = document.getElementById('rejected_pagination');
-        rejectPagination.style.display = 'flex';
+
+    }
+        //reset input fields on add_appointment_modal-2
+    function resetPendingInputFields() {
+        
+        var ownerNameInput1 = document.getElementById('owner_name');
+        var emailInput1 = document.getElementById('email');
+        var petNameInput1 = document.getElementById('pet_name');
+        var breedInput1 = document.getElementById('breed');
+        var surgeryTypeInput1 = document.getElementById('surgery_type');
+        var additionalNotesInput1 = document.getElementById('additional_notes');
+        var appointmentDateInput1 = document.getElementById('appointment_date');
+        var appointmentTimeInput1 = document.getElementById('appointment_time');
             
-        resetPendingInputFields();
-        rejectModal.hide();
-        }
+
+        ownerNameInput1.value = '';
+        emailInput1.value = '';
+        petNameInput1.value = '';
+        breedInput1.value = '';
+        breedInput1.disabled = true;
+        surgeryTypeInput1.value = '';
+        additionalNotesInput1.value = '';
+        appointmentDateInput1.value = '';
+        appointmentTimeInput1.value = '';
         
-    function checkPendingTableEmptyState() {
-            var pendingTableBody = document.getElementById('pendingTableBody');
-            var pendingEmptyState = document.getElementById('pending_appointment_empty_state');
-            var pendingTable = document.getElementById('pending_table');
-            var pendingPagination = document.getElementById('pending_pagination');
+        unselectAndResetRadio('dog');
+        unselectAndResetRadio('cat');
+        
+    }
 
-            // Check if there are table rows inside pendingTableBody
-            var hasRows = pendingTableBody.querySelectorAll('tr').length > 0;
+    function updateApprovedCount() {
+        const tbody = document.getElementById('approvedTableBody');
+        const countSpan = document.getElementById('approvedCount');
 
-            // Toggle the visibility of the empty state based on whether there are rows or not
-            if (hasRows) {
-                pendingEmptyState.style.display = 'none'; // Hide the empty state
-            } else {
-                pendingEmptyState.style.display = 'flex'; // Show the empty state
-                pendingTable.style.display = 'none'; //hide the table and pagination
-                pendingPagination.style.display = 'none';
-            }
+        if (tbody && countSpan) {
+            const rows = tbody.getElementsByTagName('tr');
+            countSpan.textContent = rows.length.toString();
+            return true; // Return true if count is successfully updated
+        } else {
+            return false; // Return false if either tbody or countSpan is not found
         }
-    });
+    }
+    updateApprovedCount();
+        
+    function updatePendingCount() {
+        // Get the tbody element by ID
+        const tbody = document.getElementById('pendingTableBody');
+
+        // Get the span element for count by ID
+        const countSpan = document.getElementById('pendingCount');
+
+        // Check if both tbody and countSpan elements exist
+        if (tbody && countSpan) {
+            // Get all rows within the tbody
+            const rows = tbody.getElementsByTagName('tr');
+
+            // Update the content of the span with the count of rows
+            countSpan.textContent = rows.length.toString();
+        }
+    }
+    updatePendingCount();
+
+    function updateRejectedCount() {
+        // Get the tbody element by ID
+        const tbody = document.getElementById('rejectedTableBody');
+
+        // Get the span element for count by ID
+        const countSpan = document.getElementById('rejectedCount');
+
+        // Check if both tbody and countSpan elements exist
+        if (tbody && countSpan) {
+            // Get all rows within the tbody
+            const rows = tbody.getElementsByTagName('tr');
+
+            // Update the content of the span with the count of rows
+            countSpan.textContent = rows.length.toString();
+        }
+    }
+    updateRejectedCount();
    
+    //split button for pending appointment button
 
-    // Add an event listener to show the modal when "Resched" is clicked
-    reschedAction.addEventListener('click', function() {
         
-        var reschedModal = new bootstrap.Modal(document.getElementById('resched_modal'));
-        reschedModal.show();
+    pending_appointment_btn.addEventListener('click', function() {
+        add_appointment_modal1.show(); 
     });
     
-    
-    archiveAction.addEventListener('click', function() {
-        // Assuming you have your modal with the ID 'acceptModal'
-        var archiveModal = new bootstrap.Modal(document.getElementById('archive_modal'));
-        archiveModal.show();
+    approved_appointment_btn.addEventListener('click', function() {
+        add_appointment_modal1.show(); 
+    });
+
+    reject_appointment_btn.addEventListener('click', function() {
+        add_appointment_modal1.show(); 
     });
     
 
-}
-    //reset input fields on add_appointment_modal-2
-function resetPendingInputFields() {
-    
-    var ownerNameInput1 = document.getElementById('owner_name-1');
-    var emailInput1 = document.getElementById('email-1');
-    var petNameInput1 = document.getElementById('pet_name-1');
-    var breedInput1 = document.getElementById('breed-1');
-    var surgeryTypeInput1 = document.getElementById('surgery_type-1');
-    var additionalNotesInput1 = document.getElementById('additional_notes-1');
-    var appointmentDateInput1 = document.getElementById('appointment_date-1');
-    var appointmentTimeInput1 = document.getElementById('appointment_time-1');
-         
 
-    ownerNameInput1.value = '';
-    emailInput1.value = '';
-    petNameInput1.value = '';
-    breedInput1.value = '';
-    breedInput1.disabled = true;
-    surgeryTypeInput1.value = '';
-    additionalNotesInput1.value = '';
-    appointmentDateInput1.value = '';
-    appointmentTimeInput1.value = '';
+    function setupSubmitPendingButton() {
+        // Get the submit button by its ID
+        var submitButton = document.getElementById('submit_pending_appointment');
     
-    unselectAndResetRadio('dog-1');
-    unselectAndResetRadio('cat-1');
+        // Initially, disable the submit button
+        submitButton.disabled = true;
     
-}
+        // Get the input elements by their IDs
+        var emailInput = document.getElementById('email');
+        var breedInput = document.getElementById('breed');
+        var surgeryTypeInput = document.getElementById('surgery_type');
+        var appointmentDateInput = document.getElementById('appointment_date');
+        var appointmentTimeInput = document.getElementById('appointment_time');
     
-function submitRejectAppointment() {
+        // Add input event listeners to each input
+        [emailInput, breedInput, surgeryTypeInput, appointmentDateInput, appointmentTimeInput].forEach(function (input) {
+            input.addEventListener('input', function () {
+                updateSubmitButtonState();
+            });
+        });
     
-    // Assuming you have your input fields with the specified ids
-    var ownerNameInput = document.getElementById('owner_name-2');
-    var emailInput = document.getElementById('email-2');
-    var petNameInput = document.getElementById('pet_name-2');
-    var breedInput = document.getElementById('breed-2');
-    var surgeryTypeInput = document.getElementById('surgery_type-2');
-    var additionalNotesInput = document.getElementById('additional_notes-2');
-    var appointmentDateInput = document.getElementById('appointment_date-2');
-    var appointmentTimeInput = document.getElementById('appointment_time-2');
-    var rejectReasonInput = document.getElementById('rejection_reason');
+        // Function to update the submit button state
+        function updateSubmitButtonState() {
+            // Check if all required inputs have values
+            var isEmailValid = emailInput.value.trim() !== '';  // You can add email validation logic if needed
+            var isBreedValid = breedInput.value.trim() !== '';
+            var isSurgeryTypeValid = surgeryTypeInput.value.trim() !== '';
+            var isAppointmentDateValid = appointmentDateInput.value.trim() !== '';
+            var isAppointmentTimeValid = appointmentTimeInput.value.trim() !== '';
+    
+            // Enable or disable the submit button based on the conditions
+            submitButton.disabled = !(isEmailValid && isBreedValid && isSurgeryTypeValid && isAppointmentDateValid && isAppointmentTimeValid);
+        }
+    }
+    setupSubmitPendingButton();
 
-    // Get the table body
-    var tableBody = document.getElementById('rejectedTableBody');
 
-    // Create a new row and cells
-    var newRow = tableBody.insertRow();
-    var checkboxCell = newRow.insertCell(0);
-    var numberCell = newRow.insertCell(1);
-    var ownerNameCell = newRow.insertCell(2);
-    var patientInfoCell = newRow.insertCell(3);
-    var dateTimeCell = newRow.insertCell(4);
-    var surgeryTypeCell = newRow.insertCell(5);
-    var reasonCell = newRow.insertCell(6);
-    var actionsCell = newRow.insertCell(7);
+        // Assuming you have references to the tabs
+    var approveTab = document.getElementById('approve_tab');
+    var pendingTab = document.getElementById('pending-tab');
+    var rejectTab = document.getElementById('reject_tab');
 
-    
-    // Populate cells with values
-    checkboxCell.innerHTML = '<input type="checkbox">';
-    numberCell.innerHTML = ''; // Replace with your logic for numbering
-    ownerNameCell.innerHTML = `<span title="${ownerNameInput.value || 'N/A'}">${ownerNameInput.value || 'N/A'}</span>`;
-    patientInfoCell.innerHTML = `<span title="Pet Name: ${petNameInput.value || 'N/A'}&#13;Breed: ${breedInput.value || 'N/A'}">${petNameInput.value || 'N/A'}<br>${breedInput.value || 'N/A'}</span>`;
 
-    
-    dateTimeCell.innerHTML = `<span title="Date: ${appointmentDateInput.value || 'N/A'}&#13;Time: ${appointmentTimeInput.value || 'N/A'}">${appointmentDateInput.value || 'N/A'}<br>${appointmentTimeInput.value || 'N/A'}</span>`;
+    var approvedEmptyState = document.getElementById('approved_appointment_empty_state');
+    var pendingEmptyState = document.getElementById('pending_appointment_empty_state');
+    var rejectedEmptyState = document.getElementById('rejected_appointment_empty_state');
 
-    
-    surgeryTypeCell.innerHTML = `<span title="Surgery Type: ${surgeryTypeInput.value || 'N/A'}">${surgeryTypeInput.value || 'N/A'}</span>`;
-    
-    
-    reasonCell.innerHTML = rejectReasonInput.value !== '' ? rejectReasonInput.value : 'N/A';
-
-    actionsCell.innerHTML = `<div class="dropdown"><button class="btn dropbtn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-  <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
-  <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
-  <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
-</svg></button>
-    <div class="dropdown-menu"><a class="dropdown-item resched-action" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6291_1874)">
-    <path d="M15.5 12H12V7M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6291_1874">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Reschedule</a><hr /><a class="dropdown-item archive-action"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6291_1005)">
-    <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6291_1005">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Archive</a>
-    </div>
-</div>`;
-
-    // Add an event listener to show the modal when "Reject" is clicked
-    var reschedAction = newRow.querySelector('.resched-action');
-    
-    // Add an event listener to show the modal when "Reject" is clicked
-    reschedAction.addEventListener('click', function() {
+    approveTab.addEventListener('click', function () {
+        approveBtn = document.getElementById('add_approve_appointment_split_btn');
+        pendingBtn = document.getElementById('add_pending_appointment_split_btn');
+        rejectBtn = document.getElementById('add_rejected_appointment_split_btn');
         
-        var reschedModal = new bootstrap.Modal(document.getElementById('resched_modal-1'));
-        reschedModal.show();
+        if (approvedEmptyState.style.display !== 'none') {
+            // If approved_appointment_empty_state is visible, hide all buttons
+            approveBtn.style.display = 'none';
+            pendingBtn.style.display = 'none';
+            rejectBtn.style.display = 'none';
+        } else {
+            // If approved_appointment_empty_state is not visible, display add_approve_appointment_split_btn
+            approveBtn.style.display = 'flex';
+            pendingBtn.style.display = 'none';
+            rejectBtn.style.display = 'none';// explicitly hide add_reject_appointment_split_btn
+        }
     });
-    
-    var archiveAction = newRow.querySelector('.archive-action');
-    
-    archiveAction.addEventListener('click', function() {
-        // Assuming you have your modal with the ID 'acceptModal'
-        var archiveModal = new bootstrap.Modal(document.getElementById('archive_modal'));
-        archiveModal.show();
+        
+    pendingTab.addEventListener('click', function () {
+        approveBtn = document.getElementById('add_approve_appointment_split_btn');
+        pendingBtn = document.getElementById('add_pending_appointment_split_btn');
+        rejectBtn = document.getElementById('add_rejected_appointment_split_btn');
+        
+        if (pendingEmptyState.style.display !== 'none') {
+            // If rejected_appointment_empty_state is visible, display add_reject_appointment_split_btn
+            approveBtn.style.display = 'none';
+            pendingBtn.style.display = 'none';
+            rejectBtn.style.display = 'none';
+        } else {
+            // If rejected_appointment_empty_state is not visible, hide all buttons including add_reject_appointment_split_btn
+            approveBtn.style.display = 'none';
+            pendingBtn.style.display = 'flex';
+            rejectBtn.style.display = 'none';
+        }
     });
 
-}
-//reset input fields on add_appointment_modal-3
-function resetRejectedInputFields() {
-    
-    var ownerNameInput1 = document.getElementById('owner_name-2');
-    var emailInput1 = document.getElementById('email-2');
-    var petNameInput1 = document.getElementById('pet_name-2');
-    var breedInput1 = document.getElementById('breed-2');
-    var surgeryTypeInput1 = document.getElementById('surgery_type-2');
-    var additionalNotesInput1 = document.getElementById('additional_notes-2');
-    var appointmentDateInput1 = document.getElementById('appointment_date-2');
-    var appointmentTimeInput1 = document.getElementById('appointment_time-2');
-         
-
-    ownerNameInput1.value = '';
-    emailInput1.value = '';
-    petNameInput1.value = '';
-    breedInput1.value = '';
-    breedInput1.disabled = true;
-    surgeryTypeInput1.value = '';
-    additionalNotesInput1.value = '';
-    appointmentDateInput1.value = '';
-    appointmentTimeInput1.value = '';
-    
-    unselectAndResetRadio('dog-2');
-    unselectAndResetRadio('cat-2');
-}
-
-function updateApprovedCount() {
-    const tbody = document.getElementById('approvedTableBody');
-    const countSpan = document.getElementById('approvedCount');
-
-    if (tbody && countSpan) {
-        const rows = tbody.getElementsByTagName('tr');
-        countSpan.textContent = rows.length.toString();
-        return true; // Return true if count is successfully updated
-    } else {
-        return false; // Return false if either tbody or countSpan is not found
-    }
-}
-    
-function updatePendingCount() {
-    // Get the tbody element by ID
-    const tbody = document.getElementById('pendingTableBody');
-
-    // Get the span element for count by ID
-    const countSpan = document.getElementById('pendingCount');
-
-    // Check if both tbody and countSpan elements exist
-    if (tbody && countSpan) {
-        // Get all rows within the tbody
-        const rows = tbody.getElementsByTagName('tr');
-
-        // Update the content of the span with the count of rows
-        countSpan.textContent = rows.length.toString();
-    }
-}
-
-function updateRejectedCount() {
-    // Get the tbody element by ID
-    const tbody = document.getElementById('rejectedTableBody');
-
-    // Get the span element for count by ID
-    const countSpan = document.getElementById('rejectedCount');
-
-    // Check if both tbody and countSpan elements exist
-    if (tbody && countSpan) {
-        // Get all rows within the tbody
-        const rows = tbody.getElementsByTagName('tr');
-
-        // Update the content of the span with the count of rows
-        countSpan.textContent = rows.length.toString();
-    }
-}
-
-    
-    // Assuming you have references to the tabs
-var approveTab = document.getElementById('approve_tab');
-var pendingTab = document.getElementById('pending-tab');
-var rejectTab = document.getElementById('reject_tab');
-
-
-var approvedEmptyState = document.getElementById('approved_appointment_empty_state');
-var pendingEmptyState = document.getElementById('pending_appointment_empty_state');
-var rejectedEmptyState = document.getElementById('rejected_appointment_empty_state');
-
-approveTab.addEventListener('click', function () {
-    approveBtn = document.getElementById('add_approve_appointment_split_btn');
-    pendingBtn = document.getElementById('add_pending_appointment_split_btn');
-    rejectBtn = document.getElementById('add_rejected_appointment_split_btn');
-    
-    if (approvedEmptyState.style.display !== 'none') {
-        // If approved_appointment_empty_state is visible, hide all buttons
-        approveBtn.style.display = 'none';
-        pendingBtn.style.display = 'none';
-        rejectBtn.style.display = 'none';
-    } else {
-        // If approved_appointment_empty_state is not visible, display add_approve_appointment_split_btn
-        approveBtn.style.display = 'flex';
-        pendingBtn.style.display = 'none';
-        rejectBtn.style.display = 'none';// explicitly hide add_reject_appointment_split_btn
-    }
-});
-    
-pendingTab.addEventListener('click', function () {
-    approveBtn = document.getElementById('add_approve_appointment_split_btn');
-    pendingBtn = document.getElementById('add_pending_appointment_split_btn');
-    rejectBtn = document.getElementById('add_rejected_appointment_split_btn');
-    
-    if (pendingEmptyState.style.display !== 'none') {
-        // If rejected_appointment_empty_state is visible, display add_reject_appointment_split_btn
-        approveBtn.style.display = 'none';
-        pendingBtn.style.display = 'none';
-        rejectBtn.style.display = 'none';
-    } else {
-        // If rejected_appointment_empty_state is not visible, hide all buttons including add_reject_appointment_split_btn
-        approveBtn.style.display = 'none';
-        pendingBtn.style.display = 'flex';
-        rejectBtn.style.display = 'none';
-    }
-});
-
-rejectTab.addEventListener('click', function () {
-    approveBtn = document.getElementById('add_approve_appointment_split_btn');
-    pendingBtn = document.getElementById('add_pending_appointment_split_btn');
-    rejectBtn = document.getElementById('add_rejected_appointment_split_btn');
-    
-    if (rejectedEmptyState.style.display !== 'none') {
-        // If rejected_appointment_empty_state is visible, display add_reject_appointment_split_btn
-        approveBtn.style.display = 'none';
-        pendingBtn.style.display = 'none';
-        rejectBtn.style.display = 'none';
-    } else {
-        // If rejected_appointment_empty_state is not visible, hide all buttons including add_reject_appointment_split_btn
-        approveBtn.style.display = 'none';
-        pendingBtn.style.display = 'none';
-        rejectBtn.style.display = 'flex';
-    }
-});
-    
-    
-    
-//split button for approve appointment button
-var approve_appointment_btn = document.getElementById('approve_appointment_btn');
-    
-approve_appointment_btn.addEventListener('click', function() {
-    add_appointment_modal.show(); 
-});
-    
-//split button for pending appointment button
-var pending_appointment_btn = document.getElementById('pending_appointment_btn');
-    
-pending_appointment_btn.addEventListener('click', function() {
-    add_appointment_modal1.show(); 
-});
-    
- //split button for reject appointment button
-var reject_appointment_btn = document.getElementById('reject_appointment_btn');
-    
-reject_appointment_btn.addEventListener('click', function() {
-    add_appointment_modal2.show(); 
-});   
-     
-    
-
-
-  
-    
+    rejectTab.addEventListener('click', function () {
+        approveBtn = document.getElementById('add_approve_appointment_split_btn');
+        pendingBtn = document.getElementById('add_pending_appointment_split_btn');
+        rejectBtn = document.getElementById('add_rejected_appointment_split_btn');
+        
+        if (rejectedEmptyState.style.display !== 'none') {
+            // If rejected_appointment_empty_state is visible, display add_reject_appointment_split_btn
+            approveBtn.style.display = 'none';
+            pendingBtn.style.display = 'none';
+            rejectBtn.style.display = 'none';
+        } else {
+            // If rejected_appointment_empty_state is not visible, hide all buttons including add_reject_appointment_split_btn
+            approveBtn.style.display = 'none';
+            pendingBtn.style.display = 'none';
+            rejectBtn.style.display = 'flex';
+        }
+    });
+ 
 });
 
 function checkRadio(buttonId) {
@@ -969,8 +749,8 @@ function checkRadio(buttonId) {
     }
 }
 
-function selectBreed(species, number) {
-    var breedSelect = document.getElementById('breed-' + number);
+function selectBreed(species) {
+    var breedSelect = document.getElementById('breed');
     breedSelect.disabled = false;
     breedSelect.innerHTML = ''; // Clear previous options
 
@@ -1060,52 +840,46 @@ selectAllreject.addEventListener("click", function () {
 
 
 function setupEmailValidation() {
-    // Get the email input elements by their IDs
-    var emailInputs = [
-        document.getElementById('email'),
-        document.getElementById('email-1'),
-        document.getElementById('email-2')
-    ];
+    // Get the email input element by its ID
+    var emailInput = document.getElementById('email');
 
-    // Add event listeners to each email input
-    emailInputs.forEach(function (emailInput) {
-        // Flag to track whether the input is in focus
-        var isInputInFocus = false;
+    // Flag to track whether the input is in focus
+    var isInputInFocus = false;
 
-        // Add focus and blur event listeners
-        emailInput.addEventListener('focus', function () {
-            isInputInFocus = true;
-        });
-
-        emailInput.addEventListener('blur', function () {
-            isInputInFocus = false;
-            validateEmail();
-        });
-
-        // Input event listener
-        emailInput.addEventListener('input', function () {
-            validateEmail();
-        });
-
-        // Function to validate email
-        function validateEmail() {
-            // Get the entered email value
-            var enteredEmail = emailInput.value.toLowerCase();
-
-            // Check if the email ends with @gmail.com or @yahoo.com
-            if (enteredEmail.endsWith('@gmail.com') || enteredEmail.endsWith('@yahoo.com')) {
-                // Valid email, no error message
-                // You can customize this part to hide or clear any existing error messages
-                console.log('Valid email');
-            } else if (!isInputInFocus) {
-                // Invalid email, show error message only when not in focus
-                alert('Please enter a valid email ending with @gmail.com or @yahoo.com.');
-                // You can customize this part to display an error message to the user
-                // or add a CSS class to highlight the input field as invalid
-            }
-        }
+    // Add focus and blur event listeners
+    emailInput.addEventListener('focus', function () {
+        isInputInFocus = true;
     });
+
+    emailInput.addEventListener('blur', function () {
+        isInputInFocus = false;
+        validateEmail();
+    });
+
+    // Input event listener
+    emailInput.addEventListener('input', function () {
+        validateEmail();
+    });
+
+    // Function to validate email
+    function validateEmail() {
+        // Get the entered email value
+        var enteredEmail = emailInput.value.toLowerCase();
+
+        // Check if the email ends with @gmail.com or @yahoo.com
+        if (enteredEmail.endsWith('@gmail.com') || enteredEmail.endsWith('@yahoo.com')) {
+            // Valid email, no error message
+            // You can customize this part to hide or clear any existing error messages
+            console.log('Valid email');
+        } else if (!isInputInFocus) {
+            // Invalid email, show error message only when not in focus
+            alert('Please enter a valid email ending with @gmail.com or @yahoo.com.');
+            // You can customize this part to display an error message to the user
+            // or add a CSS class to highlight the input field as invalid
+        }
+    }
 }
+
 
 // Call the function to set up email validation
 setupEmailValidation();
@@ -1196,114 +970,13 @@ setupTimeInputRestrictions();
 
 
 
-function setupSubmitApproveButton() {
-    // Get the submit button by its ID
-    var submitButton = document.getElementById('submit_approved_appointment');
 
-    // Initially, disable the submit button
-    submitButton.disabled = true;
 
-    // Get the input elements by their IDs
-    var emailInput = document.getElementById('email');
-    var breedInput = document.getElementById('breed-0');
-    var surgeryTypeInput = document.getElementById('surgery_type');
-    var appointmentDateInput = document.getElementById('appointment_date');
-    var appointmentTimeInput = document.getElementById('appointment_time');
 
-    // Add input event listeners to each input
-    [emailInput, breedInput, surgeryTypeInput, appointmentDateInput, appointmentTimeInput].forEach(function (input) {
-        input.addEventListener('input', function () {
-            updateSubmitButtonState();
-        });
-    });
+resetPendingInputFields();
 
-    // Function to update the submit button state
-    function updateSubmitButtonState() {
-        // Check if all required inputs have values
-        var isEmailValid = emailInput.value.trim() !== '';  // You can add email validation logic if needed
-        var isBreedValid = breedInput.value.trim() !== '';
-        var isSurgeryTypeValid = surgeryTypeInput.value.trim() !== '';
-        var isAppointmentDateValid = appointmentDateInput.value.trim() !== '';
-        var isAppointmentTimeValid = appointmentTimeInput.value.trim() !== '';
 
-        // Enable or disable the submit button based on the conditions
-        submitButton.disabled = !(isEmailValid && isBreedValid && isSurgeryTypeValid && isAppointmentDateValid && isAppointmentTimeValid);
-    }
-}
 
-function setupSubmitPendingButton() {
-    // Get the submit button by its ID
-    var submitButton = document.getElementById('submit_pending_appointment');
-
-    // Initially, disable the submit button
-    submitButton.disabled = true;
-
-    // Get the input elements by their IDs
-    var emailInput = document.getElementById('email-1');
-    var breedInput = document.getElementById('breed-1');
-    var surgeryTypeInput = document.getElementById('surgery_type-1');
-    var appointmentDateInput = document.getElementById('appointment_date-1');
-    var appointmentTimeInput = document.getElementById('appointment_time-1');
-
-    // Add input event listeners to each input
-    [emailInput, breedInput, surgeryTypeInput, appointmentDateInput, appointmentTimeInput].forEach(function (input) {
-        input.addEventListener('input', function () {
-            updateSubmitButtonState();
-        });
-    });
-
-    // Function to update the submit button state
-    function updateSubmitButtonState() {
-        // Check if all required inputs have values
-        var isEmailValid = emailInput.value.trim() !== '';  // You can add email validation logic if needed
-        var isBreedValid = breedInput.value.trim() !== '';
-        var isSurgeryTypeValid = surgeryTypeInput.value.trim() !== '';
-        var isAppointmentDateValid = appointmentDateInput.value.trim() !== '';
-        var isAppointmentTimeValid = appointmentTimeInput.value.trim() !== '';
-
-        // Enable or disable the submit button based on the conditions
-        submitButton.disabled = !(isEmailValid && isBreedValid && isSurgeryTypeValid && isAppointmentDateValid && isAppointmentTimeValid);
-    }
-}
-
-function setupSubmitRejectedButton() {
-    // Get the submit button by its ID
-    var submitButton = document.getElementById('submit_rejected_appointment');
-
-    // Initially, disable the submit button
-    submitButton.disabled = true;
-
-    // Get the input elements by their IDs
-    var emailInput = document.getElementById('email-2');
-    var breedInput = document.getElementById('breed-2');
-    var surgeryTypeInput = document.getElementById('surgery_type-2');
-    var appointmentDateInput = document.getElementById('appointment_date-2');
-    var appointmentTimeInput = document.getElementById('appointment_time-2');
-
-    // Add input event listeners to each input
-    [emailInput, breedInput, surgeryTypeInput, appointmentDateInput, appointmentTimeInput].forEach(function (input) {
-        input.addEventListener('input', function () {
-            updateSubmitButtonState();
-        });
-    });
-
-    // Function to update the submit button state
-    function updateSubmitButtonState() {
-        // Check if all required inputs have values
-        var isEmailValid = emailInput.value.trim() !== '';  // You can add email validation logic if needed
-        var isBreedValid = breedInput.value.trim() !== '';
-        var isSurgeryTypeValid = surgeryTypeInput.value.trim() !== '';
-        var isAppointmentDateValid = appointmentDateInput.value.trim() !== '';
-        var isAppointmentTimeValid = appointmentTimeInput.value.trim() !== '';
-
-        // Enable or disable the submit button based on the conditions
-        submitButton.disabled = !(isEmailValid && isBreedValid && isSurgeryTypeValid && isAppointmentDateValid && isAppointmentTimeValid);
-    }
-}
-// Call the function to set up the submit button
-setupSubmitApproveButton();
-setupSubmitPendingButton();
-setupSubmitRejectedButton();
 
 
 

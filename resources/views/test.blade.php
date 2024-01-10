@@ -2,979 +2,781 @@
 <html data-bs-theme="light" lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-	<title>appointmentformUserSide</title>
-	<link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
+    <meta charset="utf-8">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>appointmentformUserSide</title>
+    <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
 	<link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
-	<link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch-toggle-switch.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/pagination.css') }}"> 
 </head>
 
 <body>
-	<main class="d-flex flex-row container-fluid" style="padding: 0;">
-    @php
-    $activeTab = 'appointment'; // Set the active tab
-    @endphp
-        @include('includes.admin_header')
-		<div class="content">
-			<div id="rectangle" class="rectangle">
-				<button class="btn notification" id="notification" type="button"><span class="notification_base"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewbox="0 0 15 18" fill="none"><path d="M2.29482 10.4791L2.93736 10.866L2.93903 10.8632L2.29482 10.4791ZM1.38031 11.998L0.737787 11.6112L0.737673 11.6113L1.38031 11.998ZM2.23916 14.328L1.99871 15.0385L2.00149 15.0394L2.23916 14.328ZM12.7918 14.328L12.5564 13.6159L12.5542 13.6167L12.7918 14.328ZM13.6507 11.998L14.2938 11.6121L14.2932 11.6112L13.6507 11.998ZM12.7362 10.4791L12.0864 10.854L12.0937 10.866L12.7362 10.4791ZM8.99065 2.00199L8.78522 2.7233C9.0594 2.80139 9.35415 2.71728 9.54583 2.50625C9.7375 2.29522 9.79296 1.99376 9.68894 1.72833L8.99065 2.00199ZM6.0483 2.00199L5.35001 1.72833C5.24599 1.99376 5.30145 2.29522 5.49313 2.50625C5.68481 2.71728 5.97955 2.80139 6.25374 2.7233L6.0483 2.00199ZM5.83359 16.3002L5.30286 16.8301L5.30326 16.8305L5.83359 16.3002ZM7.51948 1.02137C4.47306 1.02137 1.99811 3.49632 1.99811 6.54274H3.49811C3.49811 4.32475 5.30148 2.52137 7.51948 2.52137V1.02137ZM1.99811 6.54274V8.84096H3.49811V6.54274H1.99811ZM1.99811 8.84096C1.99811 8.99314 1.96284 9.22832 1.89124 9.48627C1.8197 9.74398 1.72858 9.96429 1.65061 10.0951L2.93903 10.8632C3.10759 10.5804 3.24311 10.2242 3.33658 9.88749C3.42999 9.551 3.49811 9.17386 3.49811 8.84096H1.99811ZM1.6523 10.0923L0.737787 11.6112L2.02284 12.3849L2.93735 10.866L1.6523 10.0923ZM0.737673 11.6113C0.34933 12.2568 0.264391 12.9889 0.507 13.6441C0.749283 14.2984 1.2894 14.7984 1.99871 15.0384L2.47961 13.6176C2.15512 13.5078 1.98351 13.3119 1.91366 13.1233C1.84415 12.9355 1.84668 12.6776 2.02295 12.3847L0.737673 11.6113ZM2.00149 15.0394C5.58318 16.236 9.44782 16.236 13.0295 15.0394L12.5542 13.6167C9.28099 14.7103 5.75001 14.7103 2.47682 13.6167L2.00149 15.0394ZM13.0272 15.0401C14.4485 14.5703 15.0644 12.8965 14.2938 11.6121L13.0076 12.3839C13.2867 12.849 13.0596 13.4496 12.5564 13.6159L13.0272 15.0401ZM14.2932 11.6112L13.3787 10.0923L12.0937 10.866L13.0082 12.3849L14.2932 11.6112ZM13.3858 10.1043C13.3086 9.97054 13.2183 9.7472 13.1473 9.48852C13.0762 9.22901 13.0408 8.99336 13.0408 8.84096H11.5408C11.5408 9.17364 11.6089 9.55031 11.7008 9.88524C11.7928 10.221 11.9252 10.5742 12.0865 10.8539L13.3858 10.1043ZM13.0408 8.84096V6.54274H11.5408V8.84096H13.0408ZM13.0408 6.54274C13.0408 3.50428 10.5579 1.02137 7.51948 1.02137V2.52137C9.72952 2.52137 11.5408 4.3327 11.5408 6.54274H13.0408ZM9.19608 1.28067C8.10014 0.968542 6.93882 0.968542 5.84287 1.28067L6.25374 2.7233C7.08111 2.48766 7.95784 2.48766 8.78522 2.7233L9.19608 1.28067ZM6.7466 2.27564C6.86777 1.96645 7.16863 1.75 7.51948 1.75V0.25C6.53434 0.25 5.69008 0.860583 5.35001 1.72833L6.7466 2.27564ZM7.51948 1.75C7.87033 1.75 8.17119 1.96645 8.29236 2.27564L9.68894 1.72833C9.34888 0.860583 8.50461 0.25 7.51948 0.25V1.75ZM9.15516 14.6143C9.15516 15.5122 8.41739 16.25 7.51948 16.25V17.75C9.24582 17.75 10.6552 16.3407 10.6552 14.6143H9.15516ZM7.51948 16.25C7.07487 16.25 6.65887 16.0648 6.36392 15.7699L5.30326 16.8305C5.86716 17.3944 6.65991 17.75 7.51948 17.75V16.25ZM6.36432 15.7703C6.05752 15.463 5.88477 15.0468 5.88379 14.6126L4.38379 14.616C4.38567 15.4465 4.71607 16.2425 5.30286 16.8301L6.36432 15.7703Z" fill="#1C1C1C"></path></svg></span></button>
-				<div class="dropdown admin_btn">
-					<button class="btn dropdown-toggle admin" aria-expanded="false" data-bs-toggle="dropdown" type="button"><img src="assets/img/image%2011%20(1).png" alt="Admin" width="40" height="40"></button>
-					<div class="dropdown-menu"><a class="dropdown-item" href="#">Sign Out</a></div>
-				</div>
-			</div>
-			<div class="main_content">
-				<div id="client_header" class="client_header">
-					<div class="header_text_container">
-						<h1><strong>Appointments</strong></h1> </div>
-					<div class="btn-group split_btn" id="add_approve_appointment_split_btn" style="display: none;">
-						<button class="btn add_Product_btn" id="approve_appointment_btn" type="button"><span class="add_Product_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="27" viewBox="0 0 25 27" fill="none">
-  <g clip-path="url(#clip0_6356_20985)" filter="url(#filter0_d_6356_20985)">
-    <path d="M12.5 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H18C18.5304 5 19.0391 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V12M16 3V7M8 3V7M4 11H20M16 19H22M19 16V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <main class="d-flex flex-row container-fluid" style="padding: 0;">
+        <div id="sidebarArrow" class="sidebar sidebar_collapsed">
+            <div class="logo"><a id="logo_link-1" class="logo_link" href="#"><img src="assets/img/dogs&cats.png" alt="Clinic Logo"></a><button id="sidebar_arrow" class="sidebar_arrow" type="button" onclick="toggleSidebar()"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none" class="arrow-svg">
+        <path d="M6 12L1.88453 7.88384C1.3985 7.39773 1.3985 6.60227 1.88453 6.11616L6 2" stroke="#004D53" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"></path>
+    </svg></button></div>
+            <div class="items_and_button">
+                <div class="navigation_links">
+                    <ul class="list-inline first_group">
+                        <li class="list-inline-item">
+                            <div data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="right" title="Dashboard"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6127_11385)">
+    <path d="M4 5C4 4.73478 4.10536 4.48043 4.29289 4.29289C4.48043 4.10536 4.73478 4 5 4H9C9.26522 4 9.51957 4.10536 9.70711 4.29289C9.89464 4.48043 10 4.73478 10 5V9C10 9.26522 9.89464 9.51957 9.70711 9.70711C9.51957 9.89464 9.26522 10 9 10H5C4.73478 10 4.48043 9.89464 4.29289 9.70711C4.10536 9.51957 4 9.26522 4 9V5Z" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14 5C14 4.73478 14.1054 4.48043 14.2929 4.29289C14.4804 4.10536 14.7348 4 15 4H19C19.2652 4 19.5196 4.10536 19.7071 4.29289C19.8946 4.48043 20 4.73478 20 5V9C20 9.26522 19.8946 9.51957 19.7071 9.70711C19.5196 9.89464 19.2652 10 19 10H15C14.7348 10 14.4804 9.89464 14.2929 9.70711C14.1054 9.51957 14 9.26522 14 9V5Z" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4 15C4 14.7348 4.10536 14.4804 4.29289 14.2929C4.48043 14.1054 4.73478 14 5 14H9C9.26522 14 9.51957 14.1054 9.70711 14.2929C9.89464 14.4804 10 14.7348 10 15V19C10 19.2652 9.89464 19.5196 9.70711 19.7071C9.51957 19.8946 9.26522 20 9 20H5C4.73478 20 4.48043 19.8946 4.29289 19.7071C4.10536 19.5196 4 19.2652 4 19V15Z" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14 15C14 14.7348 14.1054 14.4804 14.2929 14.2929C14.4804 14.1054 14.7348 14 15 14H19C19.2652 14 19.5196 14.1054 19.7071 14.2929C19.8946 14.4804 20 14.7348 20 15V19C20 19.2652 19.8946 19.5196 19.7071 19.7071C19.5196 19.8946 19.2652 20 19 20H15C14.7348 20 14.4804 19.8946 14.2929 19.7071C14.1054 19.5196 14 19.2652 14 19V15Z" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <defs>
-    <filter id="filter0_d_6356_20985" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <clipPath id="clip0_6127_11385">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>
+
+
+</div><a href="dashboard.html"> Dashboard</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <div data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="right" title="Appointments"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_5274_11630)">
+    <path d="M11.795 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V7C3 6.46957 3.21071 5.96086 3.58579 5.58579C3.96086 5.21071 4.46957 5 5 5H17C17.5304 5 18.0391 5.21071 18.4142 5.58579C18.7893 5.96086 19 6.46957 19 7V11H3M15 3V7M7 3V7M18 16.496V18L19 19M14 18C14 19.0609 14.4214 20.0783 15.1716 20.8284C15.9217 21.5786 16.9391 22 18 22C19.0609 22 20.0783 21.5786 20.8284 20.8284C21.5786 20.0783 22 19.0609 22 18C22 16.9391 21.5786 15.9217 20.8284 15.1716C20.0783 14.4214 19.0609 14 18 14C16.9391 14 15.9217 14.4214 15.1716 15.1716C14.4214 15.9217 14 16.9391 14 18Z" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5274_11630">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+    </svg></div><a href="admin_appointments.html">Appointments</a>
+                        </li>
+                    </ul>
+                    <hr class="line_separator">
+                    <ul class="list-inline second_group">
+                        <li class="list-inline-item active">
+                            <div data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="right" title="Pet Records"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6127_8189)">
+    <path d="M14.7003 13.5C13.6003 11.5 13.2593 11 12.0003 11C10.7413 11 10.2643 11.755 9.16426 13.747C8.22226 15.45 6.31826 15.592 5.84326 17.038C5.74626 17.303 5.69826 17.715 5.70026 18C5.70026 19.176 6.48726 20 7.50026 20C8.75926 20 10.5003 19 12.0003 19C13.5003 19 15.2413 20 16.5003 20C17.5133 20 18.3003 19.177 18.3003 18C18.3003 17.715 18.2513 17.303 18.1543 17.038C17.6793 15.587 15.6423 15.203 14.7003 13.5Z" stroke="#004D53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20.1882 8.082C20.0597 8.0277 19.9216 7.99981 19.7822 8H19.7672C19.0322 8.012 18.2072 8.75 17.7742 9.866C17.2552 11.201 17.4942 12.566 18.3122 12.918C18.4412 12.973 18.5792 13 18.7182 13C19.4572 13 20.2932 12.258 20.7292 11.134C21.2452 9.799 21.0012 8.434 20.1882 8.082Z" stroke="#004D53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9.47358 9C9.52858 9 9.58258 9 9.63658 8.989C10.5806 8.861 11.1696 7.643 10.9566 6.267C10.7536 4.97 9.90958 4 9.02458 4C8.96958 4 8.91558 4 8.86158 4.011C7.91758 4.139 7.32858 5.357 7.54158 6.733C7.74558 8.026 8.58958 9 9.47458 9H9.47358Z" stroke="#004D53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.4559 6.733C16.6699 5.357 16.0809 4.139 15.1359 4.011C15.0822 4.00357 15.0281 3.99989 14.9739 4C14.0889 4 13.2459 4.97 13.0439 6.267C12.8299 7.643 13.4189 8.861 14.3639 8.989C14.4179 8.996 14.4719 9 14.5259 9C15.4109 9 16.2559 8.026 16.4559 6.733Z" stroke="#004D53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M5.68982 12.918C6.50582 12.566 6.74382 11.199 6.22582 9.866C5.78982 8.742 4.95482 8 4.21682 8C4.07682 8 3.93982 8.027 3.80982 8.082C2.99382 8.434 2.75582 9.801 3.27382 11.134C3.70982 12.258 4.54482 13 5.28282 13C5.42282 13 5.55982 12.973 5.68982 12.918Z" stroke="#004D53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6127_8189">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></div><a href="pet_records.html">Pet Records</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <div data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="right" title="Clients"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6142_14997)">
+    <path d="M3 21V19C3 17.9391 3.42143 16.9217 4.17157 16.1716C4.92172 15.4214 5.93913 15 7 15H11C12.0609 15 13.0783 15.4214 13.8284 16.1716C14.5786 16.9217 15 17.9391 15 19V21M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88M21 21V19C20.9949 18.1172 20.6979 17.2608 20.1553 16.5644C19.6126 15.868 18.8548 15.3707 18 15.15M5 7C5 8.06087 5.42143 9.07828 6.17157 9.82843C6.92172 10.5786 7.93913 11 9 11C10.0609 11 11.0783 10.5786 11.8284 9.82843C12.5786 9.07828 13 8.06087 13 7C13 5.93913 12.5786 4.92172 11.8284 4.17157C11.0783 3.42143 10.0609 3 9 3C7.93913 3 6.92172 3.42143 6.17157 4.17157C5.42143 4.92172 5 5.93913 5 7Z" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6142_14997">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></div><a href="clients.html">Clients</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <div data-bs-toggle="" data-bss-tooltip="" data-bs-placement="right" title="Inventory"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_5540_21684)">
+    <path d="M20 7.5L12 3L4 7.5M20 7.5V16.5L12 21M20 7.5L12 12M12 21L4 16.5V7.5M12 21V12M4 7.5L12 12M8.2002 9.79995L15.8002 5.19995" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5540_21684">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+    </svg></div><a href="inventory.html">Inventory</a>
+                        </li>
+                    </ul>
+                    <hr class="line_separator">
+                    <ul class="list-inline third_group">
+                        <li class="list-inline-item">
+                            <div data-bs-toggle="" data-bss-tooltip="" data-bs-placement="right" title="Settings"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6396_1764)">
+    <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6396_1764">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></div><a href="settingsAdmin.html">Archives</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <div data-bs-toggle="" data-bss-tooltip="" data-bs-placement="right" title="Settings"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_5274_11667)">
+    <path d="M10.325 4.317C10.751 2.561 13.249 2.561 13.675 4.317C13.7389 4.5808 13.8642 4.82578 14.0407 5.032C14.2172 5.23822 14.4399 5.39985 14.6907 5.50375C14.9414 5.60764 15.2132 5.65085 15.4838 5.62987C15.7544 5.60889 16.0162 5.5243 16.248 5.383C17.791 4.443 19.558 6.209 18.618 7.753C18.4769 7.98466 18.3924 8.24634 18.3715 8.51677C18.3506 8.78721 18.3938 9.05877 18.4975 9.30938C18.6013 9.55999 18.7627 9.78258 18.9687 9.95905C19.1747 10.1355 19.4194 10.2609 19.683 10.325C21.439 10.751 21.439 13.249 19.683 13.675C19.4192 13.7389 19.1742 13.8642 18.968 14.0407C18.7618 14.2172 18.6001 14.4399 18.4963 14.6907C18.3924 14.9414 18.3491 15.2132 18.3701 15.4838C18.3911 15.7544 18.4757 16.0162 18.617 16.248C19.557 17.791 17.791 19.558 16.247 18.618C16.0153 18.4769 15.7537 18.3924 15.4832 18.3715C15.2128 18.3506 14.9412 18.3938 14.6906 18.4975C14.44 18.6013 14.2174 18.7627 14.0409 18.9687C13.8645 19.1747 13.7391 19.4194 13.675 19.683C13.249 21.439 10.751 21.439 10.325 19.683C10.2611 19.4192 10.1358 19.1742 9.95929 18.968C9.7828 18.7618 9.56011 18.6001 9.30935 18.4963C9.05859 18.3924 8.78683 18.3491 8.51621 18.3701C8.24559 18.3911 7.98375 18.4757 7.752 18.617C6.209 19.557 4.442 17.791 5.382 16.247C5.5231 16.0153 5.60755 15.7537 5.62848 15.4832C5.64942 15.2128 5.60624 14.9412 5.50247 14.6906C5.3987 14.44 5.23726 14.2174 5.03127 14.0409C4.82529 13.8645 4.58056 13.7391 4.317 13.675C2.561 13.249 2.561 10.751 4.317 10.325C4.5808 10.2611 4.82578 10.1358 5.032 9.95929C5.23822 9.7828 5.39985 9.56011 5.50375 9.30935C5.60764 9.05859 5.65085 8.78683 5.62987 8.51621C5.60889 8.24559 5.5243 7.98375 5.383 7.752C4.443 6.209 6.209 4.442 7.753 5.382C8.753 5.99 10.049 5.452 10.325 4.317Z" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9 12C9 12.7956 9.31607 13.5587 9.87868 14.1213C10.4413 14.6839 11.2044 15 12 15C12.7956 15 13.5587 14.6839 14.1213 14.1213C14.6839 13.5587 15 12.7956 15 12C15 11.2044 14.6839 10.4413 14.1213 9.87868C13.5587 9.31607 12.7956 9 12 9C11.2044 9 10.4413 9.31607 9.87868 9.87868C9.31607 10.4413 9 11.2044 9 12Z" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5274_11667">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></div><a href="admin_settings.html">Settings</a>
+                        </li>
+                    </ul>
+                </div><button class="add" type="button"><div class="add_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_5266_11673)" filter="url(#filter0_d_5266_11673)">
+    <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <filter id="filter0_d_5266_11673" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
       <feFlood flood-opacity="0" result="BackgroundImageFix"/>
       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
       <feOffset dy="2"/>
       <feGaussianBlur stdDeviation="1"/>
       <feComposite in2="hardAlpha" operator="out"/>
       <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6356_20985"/>
-      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6356_20985" result="shape"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5266_11673"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_5266_11673" result="shape"/>
     </filter>
-    <clipPath id="clip0_6356_20985">
+    <clipPath id="clip0_5266_11673">
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg> Add Appointment</span></button>
-						<button class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown" data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-						<div class="dropdown-menu"><a class="dropdown-item" href="#">Generate Report</a></div>
-					</div>
-					<div class="btn-group split_btn" id="add_pending_appointment_split_btn" style="display: none;">
-						<button class="btn add_Product_btn" id="pending_appointment_btn" type="button"><span class="add_Product_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="27" viewBox="0 0 25 27" fill="none">
-  <g clip-path="url(#clip0_6356_20985)" filter="url(#filter0_d_6356_20985)">
+</svg> Add</div></button>
+            </div>
+        </div>
+        <div class="content">
+            <div id="rectangle" class="rectangle"><button class="btn notification" id="notification" type="button"><span class="notification_base"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewbox="0 0 15 18" fill="none"><path d="M2.29482 10.4791L2.93736 10.866L2.93903 10.8632L2.29482 10.4791ZM1.38031 11.998L0.737787 11.6112L0.737673 11.6113L1.38031 11.998ZM2.23916 14.328L1.99871 15.0385L2.00149 15.0394L2.23916 14.328ZM12.7918 14.328L12.5564 13.6159L12.5542 13.6167L12.7918 14.328ZM13.6507 11.998L14.2938 11.6121L14.2932 11.6112L13.6507 11.998ZM12.7362 10.4791L12.0864 10.854L12.0937 10.866L12.7362 10.4791ZM8.99065 2.00199L8.78522 2.7233C9.0594 2.80139 9.35415 2.71728 9.54583 2.50625C9.7375 2.29522 9.79296 1.99376 9.68894 1.72833L8.99065 2.00199ZM6.0483 2.00199L5.35001 1.72833C5.24599 1.99376 5.30145 2.29522 5.49313 2.50625C5.68481 2.71728 5.97955 2.80139 6.25374 2.7233L6.0483 2.00199ZM5.83359 16.3002L5.30286 16.8301L5.30326 16.8305L5.83359 16.3002ZM7.51948 1.02137C4.47306 1.02137 1.99811 3.49632 1.99811 6.54274H3.49811C3.49811 4.32475 5.30148 2.52137 7.51948 2.52137V1.02137ZM1.99811 6.54274V8.84096H3.49811V6.54274H1.99811ZM1.99811 8.84096C1.99811 8.99314 1.96284 9.22832 1.89124 9.48627C1.8197 9.74398 1.72858 9.96429 1.65061 10.0951L2.93903 10.8632C3.10759 10.5804 3.24311 10.2242 3.33658 9.88749C3.42999 9.551 3.49811 9.17386 3.49811 8.84096H1.99811ZM1.6523 10.0923L0.737787 11.6112L2.02284 12.3849L2.93735 10.866L1.6523 10.0923ZM0.737673 11.6113C0.34933 12.2568 0.264391 12.9889 0.507 13.6441C0.749283 14.2984 1.2894 14.7984 1.99871 15.0384L2.47961 13.6176C2.15512 13.5078 1.98351 13.3119 1.91366 13.1233C1.84415 12.9355 1.84668 12.6776 2.02295 12.3847L0.737673 11.6113ZM2.00149 15.0394C5.58318 16.236 9.44782 16.236 13.0295 15.0394L12.5542 13.6167C9.28099 14.7103 5.75001 14.7103 2.47682 13.6167L2.00149 15.0394ZM13.0272 15.0401C14.4485 14.5703 15.0644 12.8965 14.2938 11.6121L13.0076 12.3839C13.2867 12.849 13.0596 13.4496 12.5564 13.6159L13.0272 15.0401ZM14.2932 11.6112L13.3787 10.0923L12.0937 10.866L13.0082 12.3849L14.2932 11.6112ZM13.3858 10.1043C13.3086 9.97054 13.2183 9.7472 13.1473 9.48852C13.0762 9.22901 13.0408 8.99336 13.0408 8.84096H11.5408C11.5408 9.17364 11.6089 9.55031 11.7008 9.88524C11.7928 10.221 11.9252 10.5742 12.0865 10.8539L13.3858 10.1043ZM13.0408 8.84096V6.54274H11.5408V8.84096H13.0408ZM13.0408 6.54274C13.0408 3.50428 10.5579 1.02137 7.51948 1.02137V2.52137C9.72952 2.52137 11.5408 4.3327 11.5408 6.54274H13.0408ZM9.19608 1.28067C8.10014 0.968542 6.93882 0.968542 5.84287 1.28067L6.25374 2.7233C7.08111 2.48766 7.95784 2.48766 8.78522 2.7233L9.19608 1.28067ZM6.7466 2.27564C6.86777 1.96645 7.16863 1.75 7.51948 1.75V0.25C6.53434 0.25 5.69008 0.860583 5.35001 1.72833L6.7466 2.27564ZM7.51948 1.75C7.87033 1.75 8.17119 1.96645 8.29236 2.27564L9.68894 1.72833C9.34888 0.860583 8.50461 0.25 7.51948 0.25V1.75ZM9.15516 14.6143C9.15516 15.5122 8.41739 16.25 7.51948 16.25V17.75C9.24582 17.75 10.6552 16.3407 10.6552 14.6143H9.15516ZM7.51948 16.25C7.07487 16.25 6.65887 16.0648 6.36392 15.7699L5.30326 16.8305C5.86716 17.3944 6.65991 17.75 7.51948 17.75V16.25ZM6.36432 15.7703C6.05752 15.463 5.88477 15.0468 5.88379 14.6126L4.38379 14.616C4.38567 15.4465 4.71607 16.2425 5.30286 16.8301L6.36432 15.7703Z" fill="#1C1C1C"></path></svg></span></button>
+                <div class="dropdown admin_btn"><button class="btn dropdown-toggle admin" aria-expanded="false" data-bs-toggle="dropdown" type="button"><img src="assets/img/image%2011%20(1).png" alt="Admin" width="40" height="40"></button>
+                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Sign Out</a></div>
+                </div>
+            </div>
+            <div class="main_content">
+                <div id="client_header" class="client_header">
+                    <div class="header_text_container">
+                        <h1><strong>Pet Records</strong></h1>
+                    </div>
+                    <div class="btn-group split_btn" id="add_pet_split_btn"><button class="btn add_Product_btn" id="add_pet_btn-1" type="button"><span class="add_Product_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="27" viewBox="0 0 25 27" fill="none">
+  <g clip-path="url(#clip0_6404_17517)" filter="url(#filter0_d_6404_17517)">
     <path d="M12.5 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H18C18.5304 5 19.0391 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V12M16 3V7M8 3V7M4 11H20M16 19H22M19 16V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <defs>
-    <filter id="filter0_d_6356_20985" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <filter id="filter0_d_6404_17517" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
       <feFlood flood-opacity="0" result="BackgroundImageFix"/>
       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
       <feOffset dy="2"/>
       <feGaussianBlur stdDeviation="1"/>
       <feComposite in2="hardAlpha" operator="out"/>
       <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6356_20985"/>
-      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6356_20985" result="shape"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6404_17517"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6404_17517" result="shape"/>
     </filter>
-    <clipPath id="clip0_6356_20985">
+    <clipPath id="clip0_6404_17517">
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg> Add Appointment</span></button>
-						<button class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown" data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-						<div class="dropdown-menu"><a class="dropdown-item" href="#">Generate Report</a></div>
-					</div>
-					<div class="btn-group split_btn" id="add_rejected_appointment_split_btn" style="display: none;">
-						<button class="btn add_Product_btn" id="reject_appointment_btn" type="button"><span class="add_Product_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="27" viewBox="0 0 25 27" fill="none">
-  <g clip-path="url(#clip0_6356_20985)" filter="url(#filter0_d_6356_20985)">
-    <path d="M12.5 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H18C18.5304 5 19.0391 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V12M16 3V7M8 3V7M4 11H20M16 19H22M19 16V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <filter id="filter0_d_6356_20985" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-      <feOffset dy="2"/>
-      <feGaussianBlur stdDeviation="1"/>
-      <feComposite in2="hardAlpha" operator="out"/>
-      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6356_20985"/>
-      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6356_20985" result="shape"/>
-    </filter>
-    <clipPath id="clip0_6356_20985">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Add Appointment</span></button>
-						<button class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown" data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-						<div class="dropdown-menu"><a class="dropdown-item" href="#">Generate Report</a></div>
-					</div>
-				</div>
-				<div class="d-flex flex-column align-items-start align-self-stretch" style="gap: var(--Spacing-spacing-xs, 12px);">
-					<ul class="nav nav-tabs pet_nav_tabs" role="tablist">
-						<li class="nav-item" role="presentation" id="approve_tab"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#approved_tab">Approved<span id="approvedCount" class="tab-count">0</span></a></li>
-						<li class="nav-item" role="presentation" id="pending-tab"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#pending_tab">Pending<span id="pendingCount" class="tab-count">0</span></a></li>
-						<li class="nav-item" role="presentation" id="reject_tab"><a class="nav-link active list_tab" role="tab" data-bs-toggle="tab" href="#rejected_tab">Rejected<span id="rejectedCount" class="tab-count">0</span></a></li>
-					</ul>
-					<div class="tab-content appointment_tab_content">
-						<div class="tab-pane align-self-stretch appointment_tab" role="tabpanel" id="approved_tab">
-							<div class="container_header">
-								<div class="left_part_product_header">
-									<div class="search_container">
-										<input type="search" class="search_input" placeholder="Search Appointment">
-									</div>
-									<button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5284_15912)">
+</svg> Add Record</span></button><button class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown" data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Generate Report</a></div>
+                    </div>
+                </div>
+                <div id="client_container" class="client_container">
+                    <div class="container_header">
+                        <div class="left_part_product_header">
+                            <div class="search_container"><input type="search" class="search_input" placeholder="Search Pet Record"></div><button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6404_12416)">
     <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <defs>
-    <clipPath id="clip0_5284_15912">
+    <clipPath id="clip0_6404_12416">
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg> Filter by</span></button>
-									<button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5284_15919)">
+</svg> Filter by</span></button><button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6404_20238)">
     <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <defs>
-    <clipPath id="clip0_5284_15919">
+    <clipPath id="clip0_6404_20238">
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
 </svg> Sort by</span></button>
-								</div>
-								<div class="right_part_product_header">
-									<button class="btn add_pet_button" id="add_pet_button" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5749_19213)">
-    <path d="M12 5V19M5 12H19" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </div>
+                        <div class="right_part_product_header"><button class="btn archive_button" id="archive_button" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_5824_17335)">
+    <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <defs>
-    <clipPath id="clip0_5749_19213">
+    <clipPath id="clip0_5824_17335">
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg></span></button>
-								</div>
-							</div>
-							<div id="approved_appointment_empty_state" class="appointment_empty_state">
-								<svg xmlns="http://www.w3.org/2000/svg" width="220" height="110" viewBox="0 0 220 110" fill="none">
-									<g clip-path="url(#clip0_3896_26042)">
-										<path d="M198.031 89.4723H32.121C30 89.4699 27.9666 88.6263 26.4668 87.1266C24.9671 85.6268 24.1235 83.5934 24.1211 81.4725V18.517C24.1235 16.396 24.9671 14.3626 26.4669 12.8629C27.9666 11.3631 30 10.5195 32.121 10.5171H198.031C200.152 10.5195 202.186 11.3631 203.685 12.8629C205.185 14.3626 206.029 16.396 206.031 18.517V81.4725C206.029 83.5934 205.185 85.6268 203.685 87.1266C202.186 88.6263 200.152 89.4699 198.031 89.4723Z" fill="white" />
-										<path d="M198.031 89.4723H32.121C30 89.4699 27.9666 88.6263 26.4668 87.1266C24.9671 85.6268 24.1235 83.5934 24.1211 81.4725V18.517C24.1235 16.396 24.9671 14.3626 26.4669 12.8629C27.9666 11.3631 30 10.5195 32.121 10.5171H198.031C200.152 10.5195 202.186 11.3631 203.685 12.8629C205.185 14.3626 206.029 16.396 206.031 18.517V81.4725C206.029 83.5934 205.185 85.6268 203.685 87.1266C202.186 88.6263 200.152 89.4699 198.031 89.4723ZM32.121 11.2127C30.1838 11.2127 28.3259 11.9823 26.9561 13.3521C25.5863 14.7219 24.8167 16.5798 24.8167 18.517V81.4725C24.8167 82.4317 25.0057 83.3815 25.3727 84.2677C25.7398 85.1538 26.2778 85.9591 26.9561 86.6373C27.6343 87.3156 28.4396 87.8536 29.3258 88.2207C30.2119 88.5877 31.1618 88.7767 32.121 88.7767H198.031C198.99 88.7767 199.94 88.5877 200.826 88.2207C201.713 87.8536 202.518 87.3156 203.196 86.6373C203.874 85.9591 204.412 85.1538 204.78 84.2677C205.147 83.3815 205.335 82.4317 205.335 81.4725V57.7348C205.335 45.3964 200.434 33.5633 191.71 24.8387C182.985 16.1142 171.152 11.2127 158.813 11.2127H32.121Z" fill="#E6E6E6" />
-										<path d="M18.9919 102.875C19.0597 102.408 18.5713 101.951 17.9009 101.854C17.2306 101.756 16.6321 102.055 16.5643 102.521C16.4964 102.988 16.9848 103.445 17.6552 103.542C18.3256 103.64 18.924 103.341 18.9919 102.875Z" fill="white" />
-										<path d="M26.9763 102.096C27.0441 101.629 26.5557 101.172 25.8853 101.075C25.2149 100.977 24.6165 101.276 24.5486 101.743C24.4808 102.209 24.9692 102.666 25.6396 102.764C26.31 102.861 26.9084 102.562 26.9763 102.096Z" fill="#3F3D56" />
-										<path d="M16.8083 96.4126C16.8761 95.9463 16.3877 95.4892 15.7173 95.3916C15.047 95.2941 14.4485 95.5931 14.3807 96.0594C14.3128 96.5258 14.8013 96.9829 15.4716 97.0804C16.142 97.178 16.7404 96.879 16.8083 96.4126Z" fill="#FF6584" />
-										<path d="M13.3383 93.7662C13.3415 93.338 13.1027 92.9892 12.8049 92.9869C12.5071 92.9847 12.263 93.3299 12.2598 93.758C12.2565 94.1861 12.4953 94.535 12.7932 94.5373C13.091 94.5395 13.335 94.1943 13.3383 93.7662Z" fill="#E6E6E6" />
-										<path d="M12.1625 88.836C12.1657 88.4079 11.9269 88.059 11.6291 88.0567C11.3313 88.0545 11.0872 88.3997 11.084 88.8278C11.0807 89.256 11.3196 89.6049 11.6174 89.6071C11.9152 89.6094 12.1593 89.2641 12.1625 88.836Z" fill="#3F3D56" />
-										<path d="M21.3109 97.5123C21.3142 97.0841 21.0754 96.7353 20.7775 96.733C20.4797 96.7308 20.2357 97.076 20.2324 97.5041C20.2292 97.9322 20.468 98.2811 20.7658 98.2834C21.0636 98.2856 21.3077 97.9404 21.3109 97.5123Z" fill="#E6E6E6" />
-										<path d="M17.4516 99.438C17.4548 99.0099 17.216 98.661 16.9182 98.6588C16.6203 98.6565 16.3763 99.0018 16.373 99.4299C16.3698 99.858 16.6086 100.207 16.9064 100.209C17.2043 100.211 17.4483 99.8662 17.4516 99.438Z" fill="#FF6584" />
-										<path d="M22.8227 102.997C22.8259 102.569 22.5871 102.22 22.2893 102.218C21.9914 102.216 21.7474 102.561 21.7441 102.989C21.7409 103.417 21.9797 103.766 22.2775 103.768C22.5754 103.77 22.8194 103.425 22.8227 102.997Z" fill="#3F3D56" />
-										<path d="M211.818 2.33786C211.966 1.75557 211.407 1.11158 210.57 0.899453C209.732 0.687327 208.934 0.987394 208.787 1.56968C208.639 2.15198 209.198 2.79599 210.035 3.00811C210.872 3.22024 211.67 2.92015 211.818 2.33786Z" fill="white" />
-										<path d="M201.595 2.27196C201.743 1.68967 201.184 1.04566 200.347 0.833535C199.51 0.621409 198.712 0.921494 198.564 1.50378C198.416 2.08608 198.975 2.73007 199.812 2.94219C200.65 3.15432 201.448 2.85425 201.595 2.27196Z" fill="#3F3D56" />
-										<path d="M213.736 10.8188C213.883 10.2365 213.325 9.59254 212.487 9.38041C211.65 9.16828 210.852 9.46835 210.705 10.0506C210.557 10.6329 211.116 11.2769 211.953 11.4891C212.79 11.7012 213.588 11.4011 213.736 10.8188Z" fill="#FF6584" />
-										<path d="M216.117 14.0163C216.177 13.474 215.921 13.0001 215.543 12.958C215.166 12.9158 214.811 13.3213 214.75 13.8637C214.69 14.406 214.946 14.8799 215.324 14.922C215.701 14.9642 216.056 14.5587 216.117 14.0163Z" fill="#E6E6E6" />
-										<path d="M216.96 20.4211C217.021 19.8788 216.764 19.4049 216.387 19.3628C216.01 19.3206 215.655 19.7261 215.594 20.2685C215.534 20.8108 215.79 21.2847 216.168 21.3268C216.545 21.369 216.9 20.9635 216.96 20.4211Z" fill="#3F3D56" />
-										<path d="M206.507 8.21507C206.568 7.67271 206.311 7.19887 205.934 7.15671C205.557 7.11456 205.202 7.52005 205.141 8.06241C205.08 8.60477 205.337 9.07861 205.714 9.12077C206.092 9.16293 206.447 8.75743 206.507 8.21507Z" fill="#E6E6E6" />
-										<path d="M211.652 6.28246C211.712 5.7401 211.456 5.26625 211.078 5.2241C210.701 5.18194 210.346 5.58743 210.286 6.12979C210.225 6.67215 210.482 7.14599 210.859 7.18815C211.236 7.23031 211.591 6.82482 211.652 6.28246Z" fill="#FF6584" />
-										<path d="M205.316 1.06126C205.376 0.518905 205.12 0.045062 204.742 0.00290405C204.365 -0.0392539 204.01 0.366238 203.95 0.908597C203.889 1.45096 204.146 1.9248 204.523 1.96696C204.9 2.00912 205.255 1.60362 205.316 1.06126Z" fill="#3F3D56" />
-										<path d="M90.4821 48.7131C90.4912 55.0134 88.1638 61.0934 83.95 65.7772V65.7807C83.3542 66.4431 82.725 67.0746 82.0648 67.6728C81.3892 68.2847 80.681 68.8594 79.9431 69.3945C79.4283 69.7702 78.8996 70.1249 78.357 70.4589C77.7136 70.8588 77.0515 71.2287 76.371 71.5684C75.8666 71.8223 75.3519 72.0588 74.8267 72.2779C71.6916 73.5955 68.3249 74.2731 64.9242 74.271C63.0036 74.2731 61.0889 74.0584 59.2165 73.631C58.3506 73.4341 57.496 73.1902 56.6565 72.9005C56.333 72.7927 56.0096 72.6745 55.6896 72.5493C53.7493 71.7992 51.9093 70.812 50.2114 69.6102C46.6227 67.0835 43.7451 63.6751 41.856 59.7136C39.9668 55.752 39.1296 51.3706 39.4252 46.9916C39.7208 42.6126 41.1391 38.3835 43.5435 34.7117C45.9478 31.0399 49.2573 28.0492 53.153 26.0277C57.0487 24.0061 61.3994 23.0219 65.7859 23.1698C70.1723 23.3177 74.4468 24.5927 78.1975 26.8721C81.9482 29.1514 85.0487 32.3583 87.2003 36.1837C89.3519 40.0091 90.4821 44.3241 90.4821 48.7131Z" fill="#F2F2F2" />
-										<path d="M166.976 29.7147H122.803C122.435 29.7142 122.081 29.5673 121.821 29.3065C121.56 29.0456 121.414 28.692 121.414 28.3234C121.414 27.9548 121.56 27.6012 121.821 27.3403C122.081 27.0795 122.435 26.9327 122.803 26.9321H166.976C167.345 26.9321 167.699 27.0787 167.96 27.3396C168.221 27.6005 168.368 27.9544 168.368 28.3234C168.368 28.6924 168.221 29.0463 167.96 29.3072C167.699 29.5681 167.345 29.7147 166.976 29.7147Z" fill="#045B62" />
-										<path d="M166.976 48.4969H122.803C122.435 48.4964 122.081 48.3496 121.821 48.0887C121.56 47.8278 121.414 47.4743 121.414 47.1056C121.414 46.737 121.56 46.3834 121.821 46.1226C122.081 45.8617 122.435 45.7149 122.803 45.7144H166.976C167.345 45.7149 167.698 45.8617 167.959 46.1226C168.219 46.3834 168.366 46.737 168.366 47.1056C168.366 47.4743 168.219 47.8278 167.959 48.0887C167.698 48.3496 167.345 48.4964 166.976 48.4969Z" fill="#E6E6E6" />
-										<path d="M166.976 67.2792H122.803C122.435 67.2786 122.081 67.1318 121.821 66.8709C121.56 66.6101 121.414 66.2565 121.414 65.8879C121.414 65.5192 121.56 65.1657 121.821 64.9048C122.081 64.644 122.435 64.4971 122.803 64.4966H166.976C167.345 64.4966 167.699 64.6432 167.96 64.9041C168.221 65.165 168.368 65.5189 168.368 65.8879C168.368 66.2569 168.221 66.6107 167.96 66.8717C167.699 67.1326 167.345 67.2792 166.976 67.2792Z" fill="#E6E6E6" />
-										<path d="M56.54 108.785C51.5532 102.152 48.6709 94.7347 48.5765 86.2782C48.4158 85.8225 48.4425 85.3216 48.6506 84.8856C48.8588 84.4495 49.2314 84.1138 49.6867 83.9521L66.6845 77.9378C67.1402 77.7771 67.6411 77.8038 68.0772 78.0119C68.5132 78.2201 68.849 78.5927 69.0107 79.0481L76.9742 101.555C77.1349 102.011 77.1082 102.512 76.9001 102.948C76.6919 103.384 76.3193 103.719 75.864 103.881L58.8662 109.895C58.4105 110.056 57.9096 110.029 57.4736 109.821C57.0375 109.613 56.7017 109.241 56.54 108.785Z" fill="#E6E6E6" />
-										<path d="M55.4396 101.526C52.4403 98.4933 51.1565 93.0846 50.3199 87.0563C50.1694 86.6295 50.1944 86.1605 50.3893 85.7521C50.5842 85.3437 50.9332 85.0293 51.3597 84.8778L65.9678 79.7091C66.3946 79.5586 66.8637 79.5835 67.2721 79.7785C67.6805 79.9734 67.995 80.3224 68.1464 80.7488L75.2329 100.777C75.3834 101.204 75.3584 101.673 75.1635 102.081C74.9685 102.49 74.6195 102.804 74.1931 102.956L65.1436 106.157C63.2425 106.828 61.1531 106.716 59.3339 105.848C57.5147 104.98 56.1142 103.425 55.4396 101.526Z" fill="white" />
-										<path d="M68.3402 91.5381L56.9608 95.5999C56.8712 95.6319 56.7761 95.646 56.681 95.6412C56.5859 95.6365 56.4927 95.6131 56.4067 95.5723C56.3207 95.5315 56.2435 95.4742 56.1796 95.4036C56.1157 95.333 56.0664 95.2506 56.0344 95.1609C56.0024 95.0712 55.9883 94.9761 55.9931 94.8811C55.9978 94.786 56.0213 94.6928 56.062 94.6067C56.1028 94.5207 56.1601 94.4435 56.2307 94.3797C56.3013 94.3158 56.3838 94.2664 56.4734 94.2344L67.8528 90.1726C68.0338 90.1079 68.2332 90.1179 68.4069 90.2002C68.5807 90.2825 68.7146 90.4305 68.7792 90.6116C68.8439 90.7927 68.8339 90.992 68.7516 91.1658C68.6693 91.3395 68.5213 91.4734 68.3402 91.5381Z" fill="#045B62" />
-										<path d="M58.1291 90.9622L55.6256 91.8558C55.5359 91.8879 55.4408 91.902 55.3456 91.8973C55.2505 91.8927 55.1572 91.8693 55.0711 91.8285C54.985 91.7878 54.9077 91.7305 54.8438 91.6598C54.7799 91.5892 54.7305 91.5067 54.6984 91.417C54.6664 91.3273 54.6524 91.2321 54.6572 91.137C54.6619 91.0418 54.6854 90.9485 54.7262 90.8625C54.7671 90.7764 54.8245 90.6992 54.8952 90.6354C54.9659 90.5715 55.0484 90.5222 55.1382 90.4902L57.6416 89.5966C57.7313 89.5645 57.8265 89.5504 57.9216 89.5551C58.0168 89.5597 58.1101 89.5831 58.1962 89.6239C58.2823 89.6646 58.3595 89.7219 58.4235 89.7926C58.4874 89.8632 58.5368 89.9457 58.5688 90.0354C58.6008 90.1252 58.6149 90.2203 58.6101 90.3155C58.6053 90.4106 58.5819 90.5039 58.541 90.5899C58.5002 90.676 58.4428 90.7532 58.3721 90.8171C58.3014 90.8809 58.2188 90.9302 58.1291 90.9622Z" fill="#045B62" />
-										<path d="M70.484 97.5412L59.1047 101.603C58.9237 101.668 58.7245 101.657 58.5509 101.575C58.3773 101.493 58.2435 101.345 58.1789 101.164C58.1143 100.983 58.1242 100.784 58.2064 100.61C58.2886 100.436 58.4364 100.302 58.6173 100.238L69.9966 96.1757C70.1776 96.1113 70.3768 96.1214 70.5504 96.2038C70.724 96.2862 70.8578 96.4341 70.9224 96.615C70.987 96.796 70.9771 96.9952 70.8949 97.1689C70.8127 97.3425 70.6649 97.4765 70.484 97.5412Z" fill="#045B62" />
-										<path d="M69.4105 94.5398L58.0312 98.6017C57.8501 98.6663 57.6507 98.6563 57.477 98.574C57.3033 98.4917 57.1693 98.3437 57.1047 98.1626C57.0401 97.9815 57.05 97.7822 57.1323 97.6084C57.2147 97.4347 57.3627 97.3008 57.5437 97.2361L68.9231 93.1743C69.0128 93.1422 69.1079 93.128 69.2031 93.1327C69.2982 93.1374 69.3915 93.1608 69.4776 93.2015C69.5637 93.2423 69.641 93.2996 69.7049 93.3702C69.7688 93.4408 69.8182 93.5234 69.8503 93.6131C69.8823 93.7028 69.8963 93.7979 69.8915 93.8931C69.8868 93.9882 69.8633 94.0815 69.8224 94.1676C69.7816 94.2536 69.7242 94.3308 69.6535 94.3947C69.5828 94.4585 69.5003 94.5079 69.4105 94.5398Z" fill="#045B62" />
-										<path d="M59.0773 37.1502C59.4478 40.14 61.5195 42.6051 64.5322 42.6051C65.9789 42.6051 67.3664 42.0304 68.3894 41.0074C69.4124 39.9844 69.9871 38.5969 69.9871 37.1502C69.9871 34.1375 67.5319 31.9738 64.5322 31.6953C61.3493 31.3997 58.6015 33.3117 59.0773 37.1502Z" fill="#2F2E41" />
-										<path d="M69.2808 73.8991C65.9405 74.4733 62.5198 74.3823 59.2148 73.6313C60.7835 72.7652 65.5417 73.2974 69.2808 73.8991Z" fill="#2F2E41" />
-										<path d="M48.0499 83.494L50.6702 77.1616L52.7346 78.3086L51.4879 84.7502C51.6127 85.1583 51.6213 85.5931 51.5126 86.0058C51.4039 86.4185 51.1822 86.7927 50.8725 87.0863C50.5627 87.3799 50.1772 87.5813 49.7593 87.6679C49.3414 87.7544 48.9077 87.7227 48.5068 87.5762C48.106 87.4297 47.7539 87.1744 47.4902 86.8388C47.2266 86.5032 47.0617 86.1007 47.0142 85.6766C46.9668 85.2525 47.0385 84.8235 47.2215 84.4379C47.4044 84.0524 47.6913 83.7255 48.0499 83.494Z" fill="#FFB6B6" />
-										<path d="M75.1585 66.358V66.3615C75.0646 68.5667 74.9359 70.6641 74.8281 72.2779C71.6931 73.5955 68.3263 74.2731 64.9257 74.2709C63.0051 74.2731 61.0904 74.0584 59.2179 73.631C58.352 73.4341 57.4974 73.1902 56.658 72.9005C56.7748 72.8251 56.9011 72.7655 57.0336 72.7232C58.2858 72.2988 57.0475 71.9127 57.058 71.5093C57.0962 70.0345 57.5032 68.2641 58.0284 66.5667L55.691 72.5493L54.4736 75.6588C54.4736 75.6588 54.5154 78.3439 53.7432 77.5231C52.9676 76.7022 53.0232 79.3596 53.0232 79.3596C52.7822 79.5313 52.5747 79.7459 52.4111 79.9926C52.3422 80.1036 52.3163 80.236 52.338 80.3648V80.3683C52.373 80.4694 52.4418 80.5554 52.5328 80.6117C53.058 80.9665 52.3032 81.9056 51.9693 82.2778C51.8789 82.3786 51.8198 82.4378 51.8198 82.4378L48.6094 82.2082V82.1456C48.6233 81.7665 48.7103 79.77 49.2076 79.2935C49.7537 78.7683 49.4859 77.937 49.4859 77.937C49.4859 77.937 50.9119 76.6744 49.9554 75.6483C49.5728 75.2344 49.7433 72.7823 50.2128 69.6102C51.2389 62.612 53.698 52.1079 54.7623 52.2574C54.9816 51.192 55.491 50.2078 56.2343 49.4136C56.9776 48.6194 57.9258 48.046 58.9744 47.7566L62.4422 46.8036L63.0613 44.3584H67.9447L68.7934 45.9653L72.3516 47.5723L72.3968 47.5931L72.5081 47.6418L72.5499 47.774C72.5499 47.774 72.5464 47.7775 72.5499 47.7775L74.529 53.993C75.4194 55.0156 75.3846 60.9912 75.1585 66.358Z" fill="#045B62" />
-										<path d="M83.4747 78.8831L80.168 72.8806L82.3534 71.9854L86.6037 76.9838C87.0004 77.1413 87.3452 77.4063 87.5995 77.749C87.8538 78.0918 88.0074 78.4987 88.0431 78.924C88.0788 79.3492 87.9952 79.776 87.8016 80.1564C87.6081 80.5368 87.3123 80.8556 86.9474 81.077C86.5826 81.2985 86.1633 81.4138 85.7365 81.41C85.3097 81.4062 84.8925 81.2834 84.5317 81.0554C84.1709 80.8275 83.8808 80.5034 83.6941 80.1196C83.5074 79.7359 83.4314 79.3076 83.4747 78.8831Z" fill="#FFB6B6" />
-										<path d="M72.3516 47.5244C72.9398 48.5813 78.3191 51.2995 77.3869 54.0283C77.3869 54.0283 82.4406 69.8393 83.0977 69.7361C83.7549 69.6329 84.3963 71.266 84.3963 71.266C84.3963 71.266 84.2569 72.3319 84.6668 71.889C85.0767 71.4461 84.9786 72.6072 84.9786 72.6072C84.9786 72.6072 84.7822 73.632 85.3026 73.3534C85.8231 73.0747 85.1388 75.036 85.1388 75.036L82.0111 76.5087L81.4168 75.6241C81.4168 75.6241 80.1468 75.3822 80.7444 75.1906C81.342 74.999 80.1824 74.3542 80.1824 74.3542C80.1824 74.3542 78.9693 73.5297 79.1384 72.1643C79.3074 70.7989 75.9903 68.1148 75.9903 68.1148C73.71 63.6126 72.4626 58.9902 72.4669 54.2221L72.3516 47.5244Z" fill="#045B62" />
-										<path d="M65.138 42.9293C67.8095 42.9293 69.9752 40.7636 69.9752 38.0921C69.9752 35.4206 67.8095 33.2549 65.138 33.2549C62.4665 33.2549 60.3008 35.4206 60.3008 38.0921C60.3008 40.7636 62.4665 42.9293 65.138 42.9293Z" fill="#FFB6B6" />
-										<path d="M60.1276 38.6193C60.2808 39.6704 61.1767 41.1369 60.9669 41.1369C60.7571 41.1369 59.2654 36.8038 60.7571 36.5212C61.8391 36.3163 62.0809 36.4961 63.0922 36.0576L62.9495 36.1918C63.6188 36.6786 64.5503 36.3786 65.314 36.0618C66.0798 35.7471 67.0092 35.447 67.6806 35.9317C68.1023 36.2359 68.2806 36.7646 68.5429 37.2136C68.8052 37.6647 69.2898 38.0906 69.7891 37.9521C69.9837 37.8769 70.1495 37.742 70.2626 37.5667C70.3757 37.3914 70.4303 37.1848 70.4185 36.9765C70.4164 36.5611 69.8755 36.1659 70.0577 35.7932C70.5976 34.6887 70.1121 33.9359 68.9352 33.4161C68.5072 33.3511 68.0792 33.2847 67.6512 33.2168C67.8755 32.9062 68.1474 32.6329 68.4569 32.407C68.3261 32.0717 68.1 31.7822 67.8065 31.574C67.4438 31.4055 67.0397 31.3471 66.6442 31.4062C65.7588 31.4524 64.8741 31.4985 63.9901 31.5447C63.3318 31.5329 62.6784 31.6602 62.0725 31.9181C61.3424 32.2937 60.8641 33.0259 60.5158 33.7707C59.7353 35.4449 59.8591 36.7919 60.1276 38.6193Z" fill="#2F2E41" />
-										<path d="M181.129 35.4464H108.384C108.304 35.4464 108.227 35.4145 108.17 35.3579C108.114 35.3013 108.082 35.2244 108.082 35.1443C108.082 35.0642 108.114 34.9874 108.17 34.9308C108.227 34.8741 108.304 34.8423 108.384 34.8423H181.129C181.209 34.8423 181.286 34.8741 181.343 34.9308C181.4 34.9874 181.431 35.0642 181.431 35.1443C181.431 35.2244 181.4 35.3013 181.343 35.3579C181.286 35.4145 181.209 35.4464 181.129 35.4464Z" fill="#E6E6E6" />
-										<path d="M181.129 54.1724H108.384C108.304 54.1724 108.227 54.1406 108.17 54.084C108.114 54.0273 108.082 53.9505 108.082 53.8704C108.082 53.7903 108.114 53.7135 108.17 53.6568C108.227 53.6002 108.304 53.5684 108.384 53.5684H181.129C181.209 53.5684 181.286 53.6002 181.343 53.6568C181.4 53.7135 181.431 53.7903 181.431 53.8704C181.431 53.9505 181.4 54.0273 181.343 54.084C181.286 54.1406 181.209 54.1724 181.129 54.1724Z" fill="#E6E6E6" />
-										<path d="M181.129 72.8985H108.384C108.304 72.8985 108.227 72.8667 108.17 72.81C108.114 72.7534 108.082 72.6766 108.082 72.5965C108.082 72.5164 108.114 72.4395 108.17 72.3829C108.227 72.3263 108.304 72.2944 108.384 72.2944H181.129C181.209 72.2944 181.286 72.3263 181.343 72.3829C181.4 72.4395 181.431 72.5164 181.431 72.5965C181.431 72.6766 181.4 72.7534 181.343 72.81C181.286 72.8667 181.209 72.8985 181.129 72.8985Z" fill="#E6E6E6" />
-										<path d="M191.957 71.7013C189.294 71.7013 186.719 70.7503 184.695 69.0194C184.019 68.4415 183.3 67.4367 182.556 66.0333C182.082 65.1292 181.816 64.1303 181.779 63.11C181.741 62.0897 181.933 61.0739 182.34 60.1375C181.948 60.5365 181.514 60.8924 181.046 61.199L180.809 61.3564L180.796 61.0727C180.787 60.8882 180.782 60.7043 180.782 60.5262C180.782 59.4762 181.576 58.4108 181.21 57.4404C179.666 53.3501 174.77 49.2852 181.866 42.9549C182.522 42.3694 181.646 41.1985 181.646 40.3126C181.646 31.6297 193.917 16.6081 197.396 24.5657C201.685 34.3795 209.075 33.3298 212.349 35.3568L212.396 35.5002L212.256 35.5568C211.54 35.8579 210.785 36.0587 210.014 36.1533C210.836 36.321 211.675 36.3913 212.514 36.3628L212.644 36.3582L212.676 36.4847C212.988 37.7367 213.146 39.0222 213.145 40.3126L213.145 40.452C213.142 41.4321 213.346 42.4018 213.743 43.2979C214.14 44.194 214.721 44.9963 215.449 45.6526C216.599 46.7009 217.517 47.9773 218.147 49.4003C218.776 50.8233 219.101 52.3618 219.103 53.9177C219.103 55.7584 217.852 58.1747 216.802 59.8775C216.536 60.3113 216.176 60.6792 215.747 60.9537C215.319 61.2281 214.834 61.402 214.328 61.4622C213.85 61.5225 213.364 61.477 212.905 61.3287C212.446 61.1804 212.025 60.9331 211.672 60.6041C212.169 61.603 212.816 62.5195 213.592 63.3216L213.735 63.4692L213.557 63.5728C211.848 64.5691 209.906 65.0937 207.928 65.093L207.812 65.0926C206.362 65.0777 204.923 65.3523 203.58 65.9004C202.238 66.4484 201.018 67.259 199.992 68.2845C198.948 69.3603 197.699 70.2167 196.319 70.8034C194.94 71.3901 193.457 71.6954 191.957 71.7013Z" fill="#E6E6E6" />
-										<path d="M188.114 89.3985C188.066 89.3985 188.019 89.381 187.982 89.3493C187.946 89.3176 187.922 89.2738 187.915 89.2259C187.39 84.5394 187.358 79.8107 187.821 75.1177C188.515 67.7143 190.743 57.0508 197.416 48.293C197.432 48.272 197.452 48.2544 197.475 48.2411C197.498 48.2279 197.523 48.2192 197.549 48.2157C197.575 48.2121 197.602 48.2138 197.627 48.2205C197.653 48.2273 197.677 48.239 197.698 48.255C197.719 48.271 197.736 48.291 197.75 48.3138C197.763 48.3366 197.771 48.3618 197.775 48.3879C197.779 48.4141 197.777 48.4407 197.77 48.4662C197.763 48.4917 197.752 48.5157 197.736 48.5367C191.12 57.2188 188.91 67.8041 188.222 75.1552C187.761 79.8168 187.792 84.514 188.313 89.1692C188.317 89.1978 188.315 89.2268 188.307 89.2544C188.299 89.282 188.285 89.3076 188.266 89.3293C188.247 89.3511 188.224 89.3685 188.197 89.3804C188.171 89.3924 188.143 89.3985 188.114 89.3985Z" fill="#3F3D56" />
-										<path d="M193.561 60.6463C193.518 60.6464 193.477 60.633 193.442 60.608C193.408 60.5831 193.382 60.5479 193.369 60.5076C193.356 60.4672 193.356 60.4237 193.369 60.3833C193.382 60.3429 193.408 60.3077 193.442 60.2828C195.344 58.9957 197.398 57.9501 199.557 57.1699C202.931 55.9347 208.061 54.815 213.343 56.4959C213.368 56.5039 213.391 56.5168 213.412 56.5338C213.432 56.5508 213.448 56.5716 213.461 56.5951C213.473 56.6185 213.48 56.6441 213.482 56.6704C213.484 56.6967 213.482 56.7232 213.474 56.7483C213.466 56.7735 213.453 56.7968 213.436 56.817C213.419 56.8371 213.398 56.8538 213.374 56.8659C213.351 56.878 213.325 56.8854 213.299 56.8876C213.273 56.8899 213.246 56.8869 213.221 56.8789C208.048 55.2325 203.01 56.3337 199.695 57.5474C197.571 58.3142 195.55 59.3422 193.678 60.6079C193.644 60.6329 193.603 60.6463 193.561 60.6463Z" fill="#3F3D56" />
-										<path d="M184.36 37.7371C184.357 37.6947 184.367 37.6525 184.39 37.6165C184.412 37.5804 184.445 37.5523 184.485 37.5363C184.524 37.5203 184.567 37.5172 184.608 37.5273C184.65 37.5375 184.687 37.5604 184.714 37.5929C186.135 39.3967 187.326 41.3702 188.259 43.4679C189.734 46.744 191.22 51.7804 189.924 57.1693C189.918 57.195 189.907 57.2193 189.891 57.2407C189.876 57.2621 189.856 57.2803 189.834 57.2941C189.811 57.3079 189.786 57.3172 189.76 57.3213C189.734 57.3255 189.707 57.3244 189.682 57.3183C189.656 57.3121 189.632 57.3009 189.61 57.2853C189.589 57.2698 189.571 57.2501 189.557 57.2276C189.543 57.205 189.534 57.1799 189.53 57.1538C189.526 57.1277 189.527 57.101 189.533 57.0753C190.803 51.7968 189.342 46.8518 187.893 43.6329C186.975 41.5689 185.804 39.627 184.407 37.852C184.379 37.8196 184.363 37.7794 184.36 37.7371Z" fill="#3F3D56" />
-										<path d="M20.0095 67.6805C18.9839 66.6549 17.764 65.8444 16.4212 65.2963C15.0784 64.7483 13.6397 64.4737 12.1894 64.4886L12.0736 64.4889C10.0957 64.4897 8.15304 63.9651 6.4444 62.9688L6.26661 62.8652L6.40981 62.7176C7.18509 61.9155 7.83245 60.999 8.32921 60.0001C7.9764 60.3291 7.5556 60.5764 7.0966 60.7247C6.6376 60.873 6.15161 60.9185 5.67304 60.8582C5.16779 60.798 4.68274 60.6241 4.25427 60.3497C3.8258 60.0752 3.46503 59.7073 3.19903 59.2735C2.1495 57.5707 0.898438 55.1544 0.898438 53.3137C0.900071 51.7578 1.22584 50.2193 1.85499 48.7963C2.48414 47.3733 3.40287 46.0969 4.55261 45.0487C5.28049 44.3923 5.86189 43.59 6.25888 42.6939C6.65588 41.7978 6.85956 40.8281 6.85666 39.848L6.85608 39.7086C6.85588 38.4182 7.01356 37.1327 7.32561 35.8807L7.35729 35.7542L7.48737 35.7588C8.32623 35.7873 9.16553 35.717 9.98794 35.5493C9.21652 35.4547 8.46186 35.2539 7.74536 34.9528L7.60542 34.8962L7.65291 34.7528C10.9267 32.7258 18.3167 33.7755 22.606 23.9617C26.0841 16.0041 38.3559 31.0257 38.3559 39.7086C38.3559 40.5945 37.4791 41.7653 38.1355 42.3509C45.231 48.6812 40.3352 52.7461 38.7916 56.8364C38.4254 57.8068 39.2195 58.8722 39.2195 59.9221C39.2195 60.1003 39.2149 60.2842 39.206 60.4687L39.1923 60.7524L38.9557 60.595C38.4877 60.2884 38.0539 59.9325 37.6616 59.5335C38.0685 60.4699 38.2603 61.4857 38.2228 62.506C38.1853 63.5263 37.9196 64.5252 37.445 65.4292C36.7014 66.8327 35.982 67.8375 35.3069 68.4154C33.144 70.2663 30.3557 71.2211 27.5123 71.0845C24.6688 70.9479 21.985 69.7302 20.0095 67.6805Z" fill="#E6E6E6" />
-										<path d="M31.8894 88.795C31.9378 88.795 31.9845 88.7775 32.021 88.7458C32.0575 88.7141 32.0813 88.6703 32.0881 88.6224C32.6137 83.9359 32.6451 79.2072 32.1819 74.5142C31.4882 67.1108 29.2606 56.4473 22.5874 47.6895C22.5714 47.6685 22.5514 47.6509 22.5286 47.6376C22.5058 47.6243 22.4806 47.6157 22.4544 47.6122C22.4283 47.6086 22.4017 47.6103 22.3762 47.617C22.3507 47.6238 22.3267 47.6355 22.3057 47.6515C22.2847 47.6675 22.2671 47.6874 22.2538 47.7103C22.2405 47.7331 22.2319 47.7583 22.2284 47.7844C22.2248 47.8106 22.2265 47.8372 22.2332 47.8627C22.24 47.8882 22.2517 47.9122 22.2677 47.9332C28.8832 56.6153 31.0929 67.2005 31.7817 74.5516C32.2424 79.2133 32.2117 83.9105 31.6902 88.5657C31.6861 88.5942 31.6883 88.6233 31.6965 88.6509C31.7046 88.6785 31.7186 88.7041 31.7375 88.7258C31.7564 88.7475 31.7797 88.765 31.8059 88.7769C31.8321 88.7889 31.8606 88.795 31.8894 88.795Z" fill="#3F3D56" />
-										<path d="M26.442 60.0428C26.4845 60.0428 26.5259 60.0294 26.5602 60.0045C26.5946 59.9796 26.6202 59.9444 26.6333 59.904C26.6464 59.8637 26.6465 59.8202 26.6333 59.7798C26.6202 59.7394 26.5947 59.7042 26.5603 59.6793C24.6589 58.3922 22.6048 57.3465 20.4453 56.5664C17.0715 55.3312 11.9411 54.2114 6.65954 55.8924C6.6344 55.9004 6.61107 55.9133 6.5909 55.9303C6.57073 55.9473 6.55412 55.9681 6.54199 55.9916C6.52987 56.015 6.52248 56.0406 6.52025 56.0669C6.51802 56.0932 6.52099 56.1197 6.529 56.1448C6.537 56.17 6.54987 56.1933 6.56689 56.2135C6.58391 56.2336 6.60474 56.2502 6.62818 56.2624C6.65162 56.2745 6.67721 56.2819 6.70351 56.2841C6.7298 56.2863 6.75628 56.2834 6.78142 56.2754C11.9548 54.629 16.9922 55.7302 20.3071 56.9438C22.4319 57.7107 24.453 58.7387 26.324 60.0044C26.3583 60.0294 26.3996 60.0428 26.442 60.0428Z" fill="#3F3D56" />
-										<path d="M35.6427 37.1331C35.6458 37.0908 35.6354 37.0485 35.613 37.0125C35.5906 36.9764 35.5574 36.9483 35.5181 36.9323C35.4788 36.9163 35.4354 36.9132 35.3942 36.9233C35.3529 36.9335 35.316 36.9565 35.2886 36.9889C33.868 38.7927 32.6771 40.7662 31.7434 42.8639C30.2685 46.14 28.7822 51.1764 30.0784 56.5653C30.0845 56.591 30.0957 56.6153 30.1112 56.6367C30.1267 56.6581 30.1462 56.6763 30.1688 56.6901C30.1913 56.704 30.2163 56.7132 30.2425 56.7174C30.2686 56.7215 30.2952 56.7204 30.3209 56.7143C30.3466 56.7081 30.3709 56.6969 30.3922 56.6813C30.4136 56.6658 30.4317 56.6461 30.4455 56.6236C30.4592 56.601 30.4684 56.5759 30.4725 56.5498C30.4766 56.5237 30.4754 56.497 30.4692 56.4713C29.1996 51.1928 30.6608 46.2478 32.11 43.0289C33.0278 40.9649 34.1988 39.023 35.5959 37.248C35.6233 37.2156 35.6397 37.1754 35.6427 37.1331Z" fill="#3F3D56" /> </g>
-									<defs>
-										<clipPath id="clip0_3896_26042">
-											<rect width="218.206" height="110" fill="white" transform="translate(0.898438)" /> </clipPath>
-									</defs>
-								</svg>
-								<div class="approved_appointments_empty_state_message_container">
-									<div class="pet_info_empty_state">
-										<h1>NO APPROVED APPOINTMENTS FOUND</h1>
-										<div class="pet_info_empty_state_p_container">
-											<p>Looks like there’s no approved appointments yet.</p>
-											<p>You can add view pending appointments by clicking the tab above, or you can create one by yourself by clicking the button below.</p>
-										</div>
-									</div>
-								</div>
-								<button class="btn new_appointment_btn" id="approved_appointment_tab_button" type="button"><span class="new_appointment_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5910_1403)" filter="url(#filter0_d_5910_1403)">
-    <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></button></div>
+                    </div>
+                    <div id="empty_state_container" class="empty_state_container">
+                        <div class="empty_state"><div><svg xmlns="http://www.w3.org/2000/svg" width="150" height="106" viewBox="0 0 150 106" fill="none">
+  <g clip-path="url(#clip0_3896_30773)">
+    <path d="M58.9852 66.2918C59.0314 65.9776 59.0081 65.6571 58.9171 65.3529C58.826 65.0487 58.6693 64.7681 58.4581 64.531C58.2469 64.2939 57.9863 64.1059 57.6946 63.9804C57.4029 63.8549 57.0872 63.7949 56.7698 63.8046L42.8577 49.7383L40.1094 53.5803L54.6487 66.1989C54.7004 66.731 54.9454 67.2257 55.3374 67.5893C55.7294 67.9529 56.2412 68.16 56.7757 68.1714C57.3102 68.1829 57.8304 67.9979 58.2376 67.6514C58.6448 67.305 58.9108 66.8212 58.9852 66.2918Z" fill="#FFB8B8"/>
+    <path d="M52.3935 58.1699L48.8427 61.7169C48.6726 61.8858 48.4429 61.981 48.2032 61.9819C47.9636 61.9829 47.7331 61.8896 47.5617 61.722L37.8587 52.1827C37.5233 51.8528 37.2565 51.4598 37.0739 51.0262C36.8913 50.5926 36.7965 50.1271 36.7949 49.6566C36.7934 49.1861 36.8851 48.72 37.0648 48.2852C37.2445 47.8504 37.5086 47.4556 37.8419 47.1235C38.1751 46.7914 38.5709 46.5287 39.0064 46.3505C39.4418 46.1724 39.9082 46.0823 40.3787 46.0855C40.8491 46.0888 41.3143 46.1852 41.7472 46.3694C42.1802 46.5535 42.5723 46.8216 42.901 47.1583L52.4016 56.8906C52.5682 57.0623 52.6606 57.2926 52.6591 57.5319C52.6576 57.7712 52.5622 58.0003 52.3935 58.1699Z" fill="#045B62"/>
+    <path d="M39.9408 40.7595C42.6836 40.7595 44.907 38.5361 44.907 35.7933C44.907 33.0506 42.6836 30.8271 39.9408 30.8271C37.1981 30.8271 34.9746 33.0506 34.9746 35.7933C34.9746 38.5361 37.1981 40.7595 39.9408 40.7595Z" fill="#FFB8B8"/>
+    <path d="M23.1602 95.3049L24.4176 97.4411L33.2561 93.6077L31.4001 90.4546L23.1602 95.3049Z" fill="#FFB8B8"/>
+    <path d="M23.5378 94.3496L26.0142 98.5567C26.2215 98.9088 26.3574 99.2985 26.4141 99.7031C26.4709 100.108 26.4473 100.519 26.3449 100.915C26.2425 101.31 26.0631 101.682 25.8171 102.008C25.5712 102.334 25.2633 102.609 24.9112 102.816L24.8241 102.867L20.7695 95.9791L23.5378 94.3496Z" fill="#2F2E41"/>
+    <path d="M37.7309 103.001H40.2098L41.389 93.4395L37.7305 93.4397L37.7309 103.001Z" fill="#FFB8B8"/>
+    <path d="M37.0977 102.192L41.9795 102.192H41.9797C42.3883 102.192 42.7928 102.272 43.1703 102.429C43.5477 102.585 43.8907 102.814 44.1796 103.103C44.4685 103.392 44.6977 103.735 44.854 104.112C45.0104 104.49 45.0908 104.894 45.0908 105.303V105.404L37.0978 105.404L37.0977 102.192Z" fill="#2F2E41"/>
+    <path d="M27.7636 97.2083C27.6209 97.2084 27.4803 97.1749 27.353 97.1105C27.2256 97.0461 27.1153 96.9527 27.0308 96.8377L24.6401 93.5907C24.5672 93.4916 24.5151 93.3788 24.487 93.2591C24.4589 93.1393 24.4553 93.0151 24.4766 92.894C24.4978 92.7728 24.5434 92.6572 24.6106 92.5542C24.6778 92.4512 24.7652 92.3628 24.8675 92.2945L35.5059 85.189L29.0868 68.3105L42.8139 69.4434L43.2763 83.9477C43.3196 85.2687 43.003 86.5765 42.3603 87.7313C41.7176 88.8862 40.773 89.8445 39.6275 90.5038L28.2182 97.0861C28.0801 97.1661 27.9232 97.2083 27.7636 97.2083Z" fill="#2F2E41"/>
+    <path d="M37.8052 101.06C37.5698 101.06 37.3437 100.968 37.1745 100.805C37.0052 100.641 36.906 100.418 36.8976 100.183L36.3945 86.0528L42.6239 85.7246L42.1279 99.9561C42.1206 100.182 42.0296 100.396 41.8726 100.558C41.7156 100.72 41.5039 100.818 41.2787 100.832L37.8671 101.058C37.8464 101.06 37.8258 101.06 37.8052 101.06Z" fill="#2F2E41"/>
+    <path d="M44.4035 72.2495C42.8186 72.2495 37.2828 70.4668 35.361 69.8314C35.0735 70.0615 33.494 71.2425 31.6504 71.0266C30.5128 70.8932 29.5114 70.2492 28.6738 69.1127C26.8243 66.6026 29.1087 55.8381 31.3507 47.2498C31.8002 45.5138 32.9052 44.0197 34.4335 43.0815C35.9617 42.1434 37.7941 41.8342 39.5456 42.2191C40.815 42.4993 41.9811 43.128 42.9129 44.0345C43.8447 44.9409 44.5053 46.0893 44.8204 47.3505C45.2425 49.0688 44.8794 51.09 44.6143 52.566C44.4896 53.2598 44.3912 53.808 44.4248 54.0773C44.5549 55.1183 45.2778 71.4445 44.813 72.1417C44.7635 72.2159 44.6204 72.2495 44.4035 72.2495Z" fill="#045B62"/>
+    <path d="M38.6055 72.278C38.8602 72.0884 39.0702 71.8452 39.2208 71.5656C39.3714 71.2861 39.4588 70.9769 39.477 70.6598C39.4951 70.3428 39.4436 70.0256 39.3259 69.7307C39.2082 69.4358 39.0273 69.1702 38.7959 68.9527L38.894 49.1689L34.2344 49.9449L35.6031 69.1477C35.2636 69.5607 35.0873 70.0839 35.1077 70.6181C35.1281 71.1524 35.3438 71.6606 35.7139 72.0464C36.084 72.4323 36.5827 72.669 37.1157 72.7117C37.6486 72.7543 38.1787 72.6001 38.6055 72.278Z" fill="#FFB8B8"/>
+    <path d="M39.683 61.8745H34.6641C34.4244 61.8738 34.1947 61.7788 34.0244 61.6102C33.8542 61.4415 33.7571 61.2126 33.7542 60.9729L33.631 47.3666C33.6267 46.8961 33.7158 46.4294 33.893 45.9936C34.0702 45.5577 34.3321 45.1613 34.6635 44.8273C34.9948 44.4933 35.3892 44.2283 35.8236 44.0477C36.2581 43.867 36.724 43.7743 37.1945 43.7749C37.665 43.7755 38.1307 43.8693 38.5647 44.051C38.9987 44.2327 39.3924 44.4987 39.723 44.8335C40.0535 45.1683 40.3144 45.5654 40.4906 46.0016C40.6667 46.4379 40.7546 46.9048 40.7492 47.3753L40.5929 60.9751C40.5893 61.2143 40.492 61.4426 40.3218 61.6108C40.1517 61.779 39.9223 61.8737 39.683 61.8745Z" fill="#045B62"/>
+    <path d="M38.677 40.7386C36.4033 40.7427 34.2582 38.9455 33.8641 36.7061C33.7231 35.8263 33.7867 34.9259 34.05 34.0747C34.3359 33.1057 34.8263 32.2093 35.488 31.4459C36.1497 30.6825 36.9673 30.0698 37.8859 29.6491C38.8044 29.2285 39.8025 29.0096 40.8127 29.0073C41.823 29.0051 42.822 29.2194 43.7424 29.6359C44.3507 29.9112 44.9499 30.3065 45.2284 30.9133C45.5069 31.5201 45.3326 32.3681 44.7233 32.6412C44.3252 32.8196 43.8255 32.732 43.4723 32.9881C42.9649 33.356 43.0955 34.1389 43.3221 34.7232C43.5486 35.3075 43.8049 36.0146 43.4251 36.5131C43.0712 36.9776 42.3638 36.9632 41.8066 36.7884C41.2494 36.6135 40.6995 36.3208 40.1185 36.3803C39.2712 36.4672 38.6624 37.31 38.5497 38.1542C38.437 38.9984 38.7023 39.8423 38.9642 40.6528L38.677 40.7386Z" fill="#2F2E41"/>
+    <path d="M100.82 45.8071C100.82 32.2264 111.83 0 125.41 0C138.991 0 150 32.2264 150 45.8071C150 52.3288 147.41 58.5834 142.798 63.195C138.187 67.8065 131.932 70.3972 125.41 70.3972C118.889 70.3972 112.634 67.8065 108.023 63.195C103.411 58.5834 100.82 52.3288 100.82 45.8071Z" fill="#045B62"/>
+    <path d="M125.409 105.632C125.356 105.632 125.304 105.611 125.266 105.573C125.228 105.535 125.207 105.484 125.207 105.43V20.6514C125.207 20.5978 125.228 20.5464 125.266 20.5084C125.304 20.4705 125.356 20.4492 125.409 20.4492C125.463 20.4492 125.514 20.4705 125.552 20.5084C125.59 20.5464 125.611 20.5978 125.611 20.6514V105.43C125.611 105.484 125.59 105.535 125.552 105.573C125.514 105.611 125.463 105.632 125.409 105.632Z" fill="#3F3D56"/>
+    <path d="M125.411 37.0185C125.384 37.0185 125.358 37.0133 125.333 37.0031C125.309 36.993 125.286 36.9781 125.268 36.9592L115.535 27.2266C115.497 27.1886 115.476 27.1373 115.477 27.0839C115.477 27.0305 115.498 26.9793 115.536 26.9415C115.574 26.9038 115.625 26.8825 115.678 26.8823C115.732 26.8822 115.783 26.9031 115.821 26.9407L125.554 36.6733C125.582 36.7016 125.601 36.7376 125.609 36.7768C125.617 36.8161 125.613 36.8567 125.597 36.8937C125.582 36.9306 125.556 36.9622 125.523 36.9844C125.49 37.0066 125.451 37.0185 125.411 37.0185Z" fill="#3F3D56"/>
+    <path d="M125.409 53.8677C125.369 53.8677 125.33 53.8559 125.297 53.8336C125.264 53.8114 125.238 53.7798 125.222 53.7429C125.207 53.706 125.203 53.6653 125.211 53.6261C125.219 53.5869 125.238 53.5508 125.266 53.5226L141.565 37.2233C141.603 37.1858 141.655 37.1649 141.708 37.165C141.762 37.1652 141.813 37.1865 141.85 37.2242C141.888 37.262 141.909 37.3131 141.91 37.3665C141.91 37.4199 141.889 37.4712 141.851 37.5092L125.552 53.8085C125.533 53.8273 125.511 53.8422 125.487 53.8524C125.462 53.8625 125.436 53.8678 125.409 53.8677Z" fill="#3F3D56"/>
+    <path d="M57.3586 66.1769C60.5846 65.4476 64.2395 67.971 64.3528 71.3587C64.3846 72.3116 64.1054 73.3122 63.3721 73.9605C62.7668 74.4956 61.8661 74.7655 61.0835 74.504C59.5777 74.0006 59.4973 71.9023 60.3051 70.7816C61.3988 69.2642 63.5657 69.005 65.285 69.1855C67.3871 69.4062 69.385 70.3279 71.0615 71.5912C74.4177 74.1203 76.5548 77.9964 78.2846 81.7414C80.0554 85.5831 81.3431 89.6296 82.1181 93.7882C82.2157 94.3105 82.305 94.8343 82.3862 95.3594C82.4092 95.4363 82.4615 95.5011 82.5319 95.5398C82.6023 95.5784 82.685 95.5878 82.7623 95.5659C82.8384 95.5417 82.9023 95.4891 82.9407 95.4191C82.9791 95.3491 82.9892 95.267 82.9687 95.1898C82.2607 90.6518 80.9529 86.228 79.0795 82.0344C77.2684 77.9758 74.985 73.7659 71.3526 71.0573C69.5418 69.7071 67.4035 68.7675 65.1406 68.5666C63.2355 68.3974 60.9796 68.8005 59.7949 70.4573C58.8603 71.7645 58.9553 73.9368 60.4014 74.8472C61.1964 75.3477 62.2067 75.2892 63.0322 74.9001C63.4703 74.6838 63.8561 74.3748 64.1628 73.9945C64.4696 73.6142 64.69 73.1718 64.8087 72.6979C65.3222 70.8164 64.5425 68.7813 63.2057 67.4365C61.951 66.1708 60.2459 65.4537 58.4638 65.4424C58.0346 65.4471 57.6072 65.498 57.189 65.5944C56.8082 65.6805 56.9784 66.2628 57.3586 66.1769Z" fill="#A5A5A5"/>
+    <path d="M72.9169 103.435L70.9121 100.012L73.3841 98.564L75.3889 101.987C75.5809 102.314 75.6348 102.705 75.5388 103.073C75.4427 103.44 75.2046 103.755 74.8768 103.947C74.549 104.139 74.1583 104.193 73.7908 104.097C73.4232 104.001 73.1089 103.763 72.9169 103.435Z" fill="#045B62"/>
+    <path d="M66.2884 96.3199C67.262 96.3199 68.0513 95.5306 68.0513 94.5569C68.0513 93.5832 67.262 92.7939 66.2884 92.7939C65.3147 92.7939 64.5254 93.5832 64.5254 94.5569C64.5254 95.5306 65.3147 96.3199 66.2884 96.3199Z" fill="#045B62"/>
+    <path d="M80.6727 103.435L78.668 100.012L81.1399 98.564L83.1447 101.987C83.3362 102.314 83.3898 102.705 83.2937 103.072C83.1975 103.439 82.9595 103.754 82.632 103.945C82.3044 104.137 81.914 104.191 81.5466 104.096C81.1793 104 80.8649 103.762 80.6727 103.435Z" fill="#045B62"/>
+    <path d="M66.623 98.1086C66.6242 97.1154 67.0192 96.1631 67.7215 95.4608C68.4239 94.7585 69.3761 94.3634 70.3693 94.3623H82.2285C82.6483 94.3628 83.0508 94.5298 83.3476 94.8266C83.6445 95.1235 83.8114 95.526 83.8119 95.9458V97.2952C83.8105 98.5041 83.3297 99.6631 82.4749 100.518C81.6201 101.373 80.4611 101.854 79.2522 101.855H70.3693C69.3761 101.854 68.4239 101.459 67.7215 100.756C67.0192 100.054 66.6242 99.1018 66.623 98.1086Z" fill="#3F3D56"/>
+    <path d="M69.3574 103.876V99.9092H72.2222V103.876C72.2222 104.256 72.0713 104.62 71.8027 104.889C71.5341 105.157 71.1697 105.308 70.7898 105.308C70.4099 105.308 70.0456 105.157 69.777 104.889C69.5083 104.62 69.3574 104.256 69.3574 103.876Z" fill="#3F3D56"/>
+    <path d="M77.6719 103.876V99.9092H80.5367V103.876C80.5369 104.064 80.5 104.251 80.4281 104.425C80.3563 104.598 80.2508 104.757 80.1177 104.89C79.9847 105.023 79.8267 105.129 79.6528 105.201C79.4789 105.273 79.2925 105.31 79.1043 105.31C78.916 105.31 78.7296 105.273 78.5557 105.201C78.3818 105.129 78.2238 105.023 78.0908 104.89C77.9578 104.757 77.8523 104.598 77.7804 104.425C77.7085 104.251 77.6717 104.064 77.6719 103.876Z" fill="#3F3D56"/>
+    <path d="M89.3275 88.1821C89.6207 87.8187 90.046 87.5863 90.5103 87.5361C90.9745 87.4859 91.4397 87.6219 91.8038 87.9143C92.1679 88.2067 92.4011 88.6316 92.4522 89.0958C92.5033 89.5599 92.3683 90.0254 92.0766 90.39L89.1787 93.9982L86.4297 91.7903L89.3275 88.1821Z" fill="#045B62"/>
+    <path d="M82.3459 95.2901L84.6675 92.3995C85.232 91.6983 86.0516 91.2496 86.9464 91.1519C87.8413 91.0542 88.7384 91.3155 89.4409 91.8784L90.1663 92.4609C91.0024 93.134 91.5373 94.1112 91.6538 95.1782C91.7703 96.2451 91.4588 97.3147 90.7876 98.1523L88.8749 100.534C88.6636 100.796 88.3567 100.964 88.0217 101.001C87.6866 101.038 87.3507 100.94 87.0877 100.729L82.541 97.0773C82.2785 96.8659 82.1105 96.5591 82.0739 96.224C82.0374 95.889 82.1352 95.5531 82.3459 95.2901Z" fill="#3F3D56"/>
+    <path d="M89.6725 87.7524C89.7722 87.6283 89.8953 87.525 90.0349 87.4485C90.1745 87.372 90.3278 87.3238 90.486 87.3065C90.6442 87.2892 90.8043 87.3033 90.9571 87.3478C91.1099 87.3924 91.2524 87.4667 91.3765 87.5664C91.5006 87.666 91.6038 87.7892 91.6804 87.9287C91.7569 88.0683 91.8051 88.2216 91.8224 88.3798C91.8397 88.538 91.8256 88.6981 91.781 88.8509C91.7364 89.0037 91.6622 89.1462 91.5625 89.2703L88.3197 93.308L86.4297 91.7901L89.6725 87.7524Z" fill="#3F3D56"/>
+    <path d="M85.0263 94.5015L90.0089 98.5033C90.3721 98.7965 90.6042 99.2218 90.6542 99.6859C90.7043 100.15 90.5682 100.615 90.276 100.979C89.9837 101.343 89.559 101.576 89.095 101.627C88.6311 101.679 88.1657 101.544 87.801 101.252L82.8184 97.2505L85.0263 94.5015Z" fill="#3F3D56"/>
+    <path d="M90.4928 101.112C90.7501 100.792 90.8143 100.417 90.6364 100.274C90.4585 100.131 90.1058 100.275 89.8485 100.595C89.5913 100.915 89.527 101.291 89.705 101.434C89.8829 101.576 90.2356 101.433 90.4928 101.112Z" fill="#045B62"/>
+    <path d="M139.921 105.594H0.202198C0.148572 105.594 0.0971419 105.573 0.0592224 105.535C0.0213028 105.497 0 105.446 0 105.392C0 105.339 0.0213028 105.287 0.0592224 105.249C0.0971419 105.211 0.148572 105.19 0.202198 105.19H139.921C139.975 105.19 140.026 105.211 140.064 105.249C140.102 105.287 140.123 105.339 140.123 105.392C140.123 105.446 140.102 105.497 140.064 105.535C140.026 105.573 139.975 105.594 139.921 105.594Z" fill="#A5A5A5"/>
   </g>
   <defs>
-    <filter id="filter0_d_5910_1403" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <clipPath id="clip0_3896_30773">
+      <rect width="150" height="105.632" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></div>
+                            <div class="empty_state_message_container">
+                                <h1>NO PETS YET!</h1>
+                                <div class="empty_state_paragraph_container">
+                                    <p>Looks like you haven’t added any of pet records just yet.</p>
+                                    <p>You can do so by clicking the button below.</p>
+                                </div>
+                            </div>
+                        </div><button class="btn add_client_button" id="add_pet_btn" type="button"><span class="add_client_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+  <g clip-path="url(#clip0_6127_20125)" filter="url(#filter0_d_6127_20125)">
+    <path d="M12.5 5.63184V19.6318M5.5 12.6318H19.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <filter id="filter0_d_6127_20125" x="-1.5" y="0.631836" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
       <feFlood flood-opacity="0" result="BackgroundImageFix"/>
       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
       <feOffset dy="2"/>
       <feGaussianBlur stdDeviation="1"/>
       <feComposite in2="hardAlpha" operator="out"/>
       <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5910_1403"/>
-      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_5910_1403" result="shape"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6127_20125"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6127_20125" result="shape"/>
     </filter>
-    <clipPath id="clip0_5910_1403">
+    <clipPath id="clip0_6127_20125">
+      <rect width="24" height="24" fill="white" transform="translate(0.5 0.631836)"/>
+    </clipPath>
+  </defs>
+</svg> Add Record</span></button>
+                    </div>
+                    <div id="pet_records" class="pet_records_container">
+                        <div class="card pet_card">
+                            <div class="pet_image_container"><img src="assets/img/koda%201.png"></div>
+                            <div class="card-body pet_card_body">
+                                <div id="pet_detail_header" class="pet_detail_header">
+                                    <div class="pet_detail_heading_text_container">
+                                        <h1>${petName1}</h1>
+                                        <p>${petBreed1}</p>
+                                    </div>
+                                    <div class="dropdown"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><svg fill="none" height="18" viewbox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"></path><path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"></path><path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"></path></svg></button>
+                                        <div class="dropdown-menu more_button" data-bs-popper="none"><a class="dropdown-item View_pet-action" id="View"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6230_1794)">
+    <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6230_1794">
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg> New Appointment</span></button>
-							</div>
-							<div class="table-responsive mt-3" id="approved_table" style="overflow: visible; display: none;">
-								<table class="table approve_table" id="approve_table">
-									<thead>
-										<tr>
-											<th>
-												<input type="radio" id="selectAll_approve" class="checkbox">
-											</th>
-											<th>No.</th>
-											<th>Client</th>
-											<th>Status</th>
-											<th>Patient Info</th>
-											<th>Appointment</th>
-											<th>surgery type</th>
-											<th>additional notes</th>
-											<th>Actions</th>
-										</tr>
-									</thead>
-									<tbody id="approvedTableBody"></tbody>
-								</table>
-							</div>
-							<div class="pagination" id="pagination" style="display: none;">
-								<div class="pagination-menu"> <span>Go to:</span>
-									<select class="paginationGoToSelect">
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-									</select>
-								</div>
-								<div class="pagination-pages"> <span class="pagination-arrow previous-page">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
-                          <path d="M5.48 12L1.36452 7.88384C0.878492 7.39773 0.878492 6.60227 1.36452 6.11616L5.48 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
-                        </svg>
-                      </span>
-									<div class="pages"> <span class="pagination-page active">1</span> <span class="pagination-page">2</span> <span class="pagination-page">3</span> <span class="pagination-page">4</span> <span class="pagination-page">5</span> </div> <span class="pagination-arrow next-page">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
-                          <path d="M1.47998 12L5.59546 7.88384C6.08149 7.39773 6.08149 6.60227 5.59546 6.11616L1.47998 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
-                        </svg>
-                      </span> </div>
-								<div class="pagination-items"> <span>Show:</span>
-									<select class="paginationItemsSelect">
-										<option value="2">2 items</option>
-										<option value="3">3 items</option>
-										<option value="4">4 items</option>
-										<option value="5">5 items</option>
-										<option value="6">6 items</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane align-self-stretch appointment_tab" role="tabpanel" id="pending_tab">
-							<div class="container_header">
-								<div class="left_part_product_header">
-									<div class="search_container">
-										<input type="search" class="search_input" placeholder="Search Appointment">
-									</div>
-									<button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5284_15912)">
-    <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>&nbsp;View</a><a class="dropdown-item Edit_pet-action" id="Edit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6230_538)">
+    <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <defs>
-    <clipPath id="clip0_5284_15912">
+    <clipPath id="clip0_6230_538">
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg> Filter by</span></button>
-									<button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5284_15919)">
-    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>&nbsp;Edit</a><a class="dropdown-item archive_pet-action" id="Archive"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6230_1803)">
+    <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <defs>
-    <clipPath id="clip0_5284_15919">
+    <clipPath id="clip0_6230_1803">
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg> Sort by</span></button>
-								</div>
-								<div class="right_part_product_header">
-									<button class="btn add_pet_button" id="add_pet_button-1" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5749_19213)">
-    <path d="M12 5V19M5 12H19" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>&nbsp;Archive</a><a class="dropdown-item add_appointment" href="appointment.html" id="add_appointment"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6230_1769)">
+    <path d="M9 12H15M12 9V15M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <defs>
-    <clipPath id="clip0_5749_19213">
+    <clipPath id="clip0_6230_1769">
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg></span></button>
-								</div>
-							</div>
-							<div id="pending_appointment_empty_state" class="appointment_empty_state">
-								<svg xmlns="http://www.w3.org/2000/svg" width="220" height="110" viewBox="0 0 220 110" fill="none">
-									<g clip-path="url(#clip0_3896_26042)">
-										<path d="M198.031 89.4723H32.121C30 89.4699 27.9666 88.6263 26.4668 87.1266C24.9671 85.6268 24.1235 83.5934 24.1211 81.4725V18.517C24.1235 16.396 24.9671 14.3626 26.4669 12.8629C27.9666 11.3631 30 10.5195 32.121 10.5171H198.031C200.152 10.5195 202.186 11.3631 203.685 12.8629C205.185 14.3626 206.029 16.396 206.031 18.517V81.4725C206.029 83.5934 205.185 85.6268 203.685 87.1266C202.186 88.6263 200.152 89.4699 198.031 89.4723Z" fill="white" />
-										<path d="M198.031 89.4723H32.121C30 89.4699 27.9666 88.6263 26.4668 87.1266C24.9671 85.6268 24.1235 83.5934 24.1211 81.4725V18.517C24.1235 16.396 24.9671 14.3626 26.4669 12.8629C27.9666 11.3631 30 10.5195 32.121 10.5171H198.031C200.152 10.5195 202.186 11.3631 203.685 12.8629C205.185 14.3626 206.029 16.396 206.031 18.517V81.4725C206.029 83.5934 205.185 85.6268 203.685 87.1266C202.186 88.6263 200.152 89.4699 198.031 89.4723ZM32.121 11.2127C30.1838 11.2127 28.3259 11.9823 26.9561 13.3521C25.5863 14.7219 24.8167 16.5798 24.8167 18.517V81.4725C24.8167 82.4317 25.0057 83.3815 25.3727 84.2677C25.7398 85.1538 26.2778 85.9591 26.9561 86.6373C27.6343 87.3156 28.4396 87.8536 29.3258 88.2207C30.2119 88.5877 31.1618 88.7767 32.121 88.7767H198.031C198.99 88.7767 199.94 88.5877 200.826 88.2207C201.713 87.8536 202.518 87.3156 203.196 86.6373C203.874 85.9591 204.412 85.1538 204.78 84.2677C205.147 83.3815 205.335 82.4317 205.335 81.4725V57.7348C205.335 45.3964 200.434 33.5633 191.71 24.8387C182.985 16.1142 171.152 11.2127 158.813 11.2127H32.121Z" fill="#E6E6E6" />
-										<path d="M18.9919 102.875C19.0597 102.408 18.5713 101.951 17.9009 101.854C17.2306 101.756 16.6321 102.055 16.5643 102.521C16.4964 102.988 16.9848 103.445 17.6552 103.542C18.3256 103.64 18.924 103.341 18.9919 102.875Z" fill="white" />
-										<path d="M26.9763 102.096C27.0441 101.629 26.5557 101.172 25.8853 101.075C25.2149 100.977 24.6165 101.276 24.5486 101.743C24.4808 102.209 24.9692 102.666 25.6396 102.764C26.31 102.861 26.9084 102.562 26.9763 102.096Z" fill="#3F3D56" />
-										<path d="M16.8083 96.4126C16.8761 95.9463 16.3877 95.4892 15.7173 95.3916C15.047 95.2941 14.4485 95.5931 14.3807 96.0594C14.3128 96.5258 14.8013 96.9829 15.4716 97.0804C16.142 97.178 16.7404 96.879 16.8083 96.4126Z" fill="#FF6584" />
-										<path d="M13.3383 93.7662C13.3415 93.338 13.1027 92.9892 12.8049 92.9869C12.5071 92.9847 12.263 93.3299 12.2598 93.758C12.2565 94.1861 12.4953 94.535 12.7932 94.5373C13.091 94.5395 13.335 94.1943 13.3383 93.7662Z" fill="#E6E6E6" />
-										<path d="M12.1625 88.836C12.1657 88.4079 11.9269 88.059 11.6291 88.0567C11.3313 88.0545 11.0872 88.3997 11.084 88.8278C11.0807 89.256 11.3196 89.6049 11.6174 89.6071C11.9152 89.6094 12.1593 89.2641 12.1625 88.836Z" fill="#3F3D56" />
-										<path d="M21.3109 97.5123C21.3142 97.0841 21.0754 96.7353 20.7775 96.733C20.4797 96.7308 20.2357 97.076 20.2324 97.5041C20.2292 97.9322 20.468 98.2811 20.7658 98.2834C21.0636 98.2856 21.3077 97.9404 21.3109 97.5123Z" fill="#E6E6E6" />
-										<path d="M17.4516 99.438C17.4548 99.0099 17.216 98.661 16.9182 98.6588C16.6203 98.6565 16.3763 99.0018 16.373 99.4299C16.3698 99.858 16.6086 100.207 16.9064 100.209C17.2043 100.211 17.4483 99.8662 17.4516 99.438Z" fill="#FF6584" />
-										<path d="M22.8227 102.997C22.8259 102.569 22.5871 102.22 22.2893 102.218C21.9914 102.216 21.7474 102.561 21.7441 102.989C21.7409 103.417 21.9797 103.766 22.2775 103.768C22.5754 103.77 22.8194 103.425 22.8227 102.997Z" fill="#3F3D56" />
-										<path d="M211.818 2.33786C211.966 1.75557 211.407 1.11158 210.57 0.899453C209.732 0.687327 208.934 0.987394 208.787 1.56968C208.639 2.15198 209.198 2.79599 210.035 3.00811C210.872 3.22024 211.67 2.92015 211.818 2.33786Z" fill="white" />
-										<path d="M201.595 2.27196C201.743 1.68967 201.184 1.04566 200.347 0.833535C199.51 0.621409 198.712 0.921494 198.564 1.50378C198.416 2.08608 198.975 2.73007 199.812 2.94219C200.65 3.15432 201.448 2.85425 201.595 2.27196Z" fill="#3F3D56" />
-										<path d="M213.736 10.8188C213.883 10.2365 213.325 9.59254 212.487 9.38041C211.65 9.16828 210.852 9.46835 210.705 10.0506C210.557 10.6329 211.116 11.2769 211.953 11.4891C212.79 11.7012 213.588 11.4011 213.736 10.8188Z" fill="#FF6584" />
-										<path d="M216.117 14.0163C216.177 13.474 215.921 13.0001 215.543 12.958C215.166 12.9158 214.811 13.3213 214.75 13.8637C214.69 14.406 214.946 14.8799 215.324 14.922C215.701 14.9642 216.056 14.5587 216.117 14.0163Z" fill="#E6E6E6" />
-										<path d="M216.96 20.4211C217.021 19.8788 216.764 19.4049 216.387 19.3628C216.01 19.3206 215.655 19.7261 215.594 20.2685C215.534 20.8108 215.79 21.2847 216.168 21.3268C216.545 21.369 216.9 20.9635 216.96 20.4211Z" fill="#3F3D56" />
-										<path d="M206.507 8.21507C206.568 7.67271 206.311 7.19887 205.934 7.15671C205.557 7.11456 205.202 7.52005 205.141 8.06241C205.08 8.60477 205.337 9.07861 205.714 9.12077C206.092 9.16293 206.447 8.75743 206.507 8.21507Z" fill="#E6E6E6" />
-										<path d="M211.652 6.28246C211.712 5.7401 211.456 5.26625 211.078 5.2241C210.701 5.18194 210.346 5.58743 210.286 6.12979C210.225 6.67215 210.482 7.14599 210.859 7.18815C211.236 7.23031 211.591 6.82482 211.652 6.28246Z" fill="#FF6584" />
-										<path d="M205.316 1.06126C205.376 0.518905 205.12 0.045062 204.742 0.00290405C204.365 -0.0392539 204.01 0.366238 203.95 0.908597C203.889 1.45096 204.146 1.9248 204.523 1.96696C204.9 2.00912 205.255 1.60362 205.316 1.06126Z" fill="#3F3D56" />
-										<path d="M90.4821 48.7131C90.4912 55.0134 88.1638 61.0934 83.95 65.7772V65.7807C83.3542 66.4431 82.725 67.0746 82.0648 67.6728C81.3892 68.2847 80.681 68.8594 79.9431 69.3945C79.4283 69.7702 78.8996 70.1249 78.357 70.4589C77.7136 70.8588 77.0515 71.2287 76.371 71.5684C75.8666 71.8223 75.3519 72.0588 74.8267 72.2779C71.6916 73.5955 68.3249 74.2731 64.9242 74.271C63.0036 74.2731 61.0889 74.0584 59.2165 73.631C58.3506 73.4341 57.496 73.1902 56.6565 72.9005C56.333 72.7927 56.0096 72.6745 55.6896 72.5493C53.7493 71.7992 51.9093 70.812 50.2114 69.6102C46.6227 67.0835 43.7451 63.6751 41.856 59.7136C39.9668 55.752 39.1296 51.3706 39.4252 46.9916C39.7208 42.6126 41.1391 38.3835 43.5435 34.7117C45.9478 31.0399 49.2573 28.0492 53.153 26.0277C57.0487 24.0061 61.3994 23.0219 65.7859 23.1698C70.1723 23.3177 74.4468 24.5927 78.1975 26.8721C81.9482 29.1514 85.0487 32.3583 87.2003 36.1837C89.3519 40.0091 90.4821 44.3241 90.4821 48.7131Z" fill="#F2F2F2" />
-										<path d="M166.976 29.7147H122.803C122.435 29.7142 122.081 29.5673 121.821 29.3065C121.56 29.0456 121.414 28.692 121.414 28.3234C121.414 27.9548 121.56 27.6012 121.821 27.3403C122.081 27.0795 122.435 26.9327 122.803 26.9321H166.976C167.345 26.9321 167.699 27.0787 167.96 27.3396C168.221 27.6005 168.368 27.9544 168.368 28.3234C168.368 28.6924 168.221 29.0463 167.96 29.3072C167.699 29.5681 167.345 29.7147 166.976 29.7147Z" fill="#045B62" />
-										<path d="M166.976 48.4969H122.803C122.435 48.4964 122.081 48.3496 121.821 48.0887C121.56 47.8278 121.414 47.4743 121.414 47.1056C121.414 46.737 121.56 46.3834 121.821 46.1226C122.081 45.8617 122.435 45.7149 122.803 45.7144H166.976C167.345 45.7149 167.698 45.8617 167.959 46.1226C168.219 46.3834 168.366 46.737 168.366 47.1056C168.366 47.4743 168.219 47.8278 167.959 48.0887C167.698 48.3496 167.345 48.4964 166.976 48.4969Z" fill="#E6E6E6" />
-										<path d="M166.976 67.2792H122.803C122.435 67.2786 122.081 67.1318 121.821 66.8709C121.56 66.6101 121.414 66.2565 121.414 65.8879C121.414 65.5192 121.56 65.1657 121.821 64.9048C122.081 64.644 122.435 64.4971 122.803 64.4966H166.976C167.345 64.4966 167.699 64.6432 167.96 64.9041C168.221 65.165 168.368 65.5189 168.368 65.8879C168.368 66.2569 168.221 66.6107 167.96 66.8717C167.699 67.1326 167.345 67.2792 166.976 67.2792Z" fill="#E6E6E6" />
-										<path d="M56.54 108.785C51.5532 102.152 48.6709 94.7347 48.5765 86.2782C48.4158 85.8225 48.4425 85.3216 48.6506 84.8856C48.8588 84.4495 49.2314 84.1138 49.6867 83.9521L66.6845 77.9378C67.1402 77.7771 67.6411 77.8038 68.0772 78.0119C68.5132 78.2201 68.849 78.5927 69.0107 79.0481L76.9742 101.555C77.1349 102.011 77.1082 102.512 76.9001 102.948C76.6919 103.384 76.3193 103.719 75.864 103.881L58.8662 109.895C58.4105 110.056 57.9096 110.029 57.4736 109.821C57.0375 109.613 56.7017 109.241 56.54 108.785Z" fill="#E6E6E6" />
-										<path d="M55.4396 101.526C52.4403 98.4933 51.1565 93.0846 50.3199 87.0563C50.1694 86.6295 50.1944 86.1605 50.3893 85.7521C50.5842 85.3437 50.9332 85.0293 51.3597 84.8778L65.9678 79.7091C66.3946 79.5586 66.8637 79.5835 67.2721 79.7785C67.6805 79.9734 67.995 80.3224 68.1464 80.7488L75.2329 100.777C75.3834 101.204 75.3584 101.673 75.1635 102.081C74.9685 102.49 74.6195 102.804 74.1931 102.956L65.1436 106.157C63.2425 106.828 61.1531 106.716 59.3339 105.848C57.5147 104.98 56.1142 103.425 55.4396 101.526Z" fill="white" />
-										<path d="M68.3402 91.5381L56.9608 95.5999C56.8712 95.6319 56.7761 95.646 56.681 95.6412C56.5859 95.6365 56.4927 95.6131 56.4067 95.5723C56.3207 95.5315 56.2435 95.4742 56.1796 95.4036C56.1157 95.333 56.0664 95.2506 56.0344 95.1609C56.0024 95.0712 55.9883 94.9761 55.9931 94.8811C55.9978 94.786 56.0213 94.6928 56.062 94.6067C56.1028 94.5207 56.1601 94.4435 56.2307 94.3797C56.3013 94.3158 56.3838 94.2664 56.4734 94.2344L67.8528 90.1726C68.0338 90.1079 68.2332 90.1179 68.4069 90.2002C68.5807 90.2825 68.7146 90.4305 68.7792 90.6116C68.8439 90.7927 68.8339 90.992 68.7516 91.1658C68.6693 91.3395 68.5213 91.4734 68.3402 91.5381Z" fill="#045B62" />
-										<path d="M58.1291 90.9622L55.6256 91.8558C55.5359 91.8879 55.4408 91.902 55.3456 91.8973C55.2505 91.8927 55.1572 91.8693 55.0711 91.8285C54.985 91.7878 54.9077 91.7305 54.8438 91.6598C54.7799 91.5892 54.7305 91.5067 54.6984 91.417C54.6664 91.3273 54.6524 91.2321 54.6572 91.137C54.6619 91.0418 54.6854 90.9485 54.7262 90.8625C54.7671 90.7764 54.8245 90.6992 54.8952 90.6354C54.9659 90.5715 55.0484 90.5222 55.1382 90.4902L57.6416 89.5966C57.7313 89.5645 57.8265 89.5504 57.9216 89.5551C58.0168 89.5597 58.1101 89.5831 58.1962 89.6239C58.2823 89.6646 58.3595 89.7219 58.4235 89.7926C58.4874 89.8632 58.5368 89.9457 58.5688 90.0354C58.6008 90.1252 58.6149 90.2203 58.6101 90.3155C58.6053 90.4106 58.5819 90.5039 58.541 90.5899C58.5002 90.676 58.4428 90.7532 58.3721 90.8171C58.3014 90.8809 58.2188 90.9302 58.1291 90.9622Z" fill="#045B62" />
-										<path d="M70.484 97.5412L59.1047 101.603C58.9237 101.668 58.7245 101.657 58.5509 101.575C58.3773 101.493 58.2435 101.345 58.1789 101.164C58.1143 100.983 58.1242 100.784 58.2064 100.61C58.2886 100.436 58.4364 100.302 58.6173 100.238L69.9966 96.1757C70.1776 96.1113 70.3768 96.1214 70.5504 96.2038C70.724 96.2862 70.8578 96.4341 70.9224 96.615C70.987 96.796 70.9771 96.9952 70.8949 97.1689C70.8127 97.3425 70.6649 97.4765 70.484 97.5412Z" fill="#045B62" />
-										<path d="M69.4105 94.5398L58.0312 98.6017C57.8501 98.6663 57.6507 98.6563 57.477 98.574C57.3033 98.4917 57.1693 98.3437 57.1047 98.1626C57.0401 97.9815 57.05 97.7822 57.1323 97.6084C57.2147 97.4347 57.3627 97.3008 57.5437 97.2361L68.9231 93.1743C69.0128 93.1422 69.1079 93.128 69.2031 93.1327C69.2982 93.1374 69.3915 93.1608 69.4776 93.2015C69.5637 93.2423 69.641 93.2996 69.7049 93.3702C69.7688 93.4408 69.8182 93.5234 69.8503 93.6131C69.8823 93.7028 69.8963 93.7979 69.8915 93.8931C69.8868 93.9882 69.8633 94.0815 69.8224 94.1676C69.7816 94.2536 69.7242 94.3308 69.6535 94.3947C69.5828 94.4585 69.5003 94.5079 69.4105 94.5398Z" fill="#045B62" />
-										<path d="M59.0773 37.1502C59.4478 40.14 61.5195 42.6051 64.5322 42.6051C65.9789 42.6051 67.3664 42.0304 68.3894 41.0074C69.4124 39.9844 69.9871 38.5969 69.9871 37.1502C69.9871 34.1375 67.5319 31.9738 64.5322 31.6953C61.3493 31.3997 58.6015 33.3117 59.0773 37.1502Z" fill="#2F2E41" />
-										<path d="M69.2808 73.8991C65.9405 74.4733 62.5198 74.3823 59.2148 73.6313C60.7835 72.7652 65.5417 73.2974 69.2808 73.8991Z" fill="#2F2E41" />
-										<path d="M48.0499 83.494L50.6702 77.1616L52.7346 78.3086L51.4879 84.7502C51.6127 85.1583 51.6213 85.5931 51.5126 86.0058C51.4039 86.4185 51.1822 86.7927 50.8725 87.0863C50.5627 87.3799 50.1772 87.5813 49.7593 87.6679C49.3414 87.7544 48.9077 87.7227 48.5068 87.5762C48.106 87.4297 47.7539 87.1744 47.4902 86.8388C47.2266 86.5032 47.0617 86.1007 47.0142 85.6766C46.9668 85.2525 47.0385 84.8235 47.2215 84.4379C47.4044 84.0524 47.6913 83.7255 48.0499 83.494Z" fill="#FFB6B6" />
-										<path d="M75.1585 66.358V66.3615C75.0646 68.5667 74.9359 70.6641 74.8281 72.2779C71.6931 73.5955 68.3263 74.2731 64.9257 74.2709C63.0051 74.2731 61.0904 74.0584 59.2179 73.631C58.352 73.4341 57.4974 73.1902 56.658 72.9005C56.7748 72.8251 56.9011 72.7655 57.0336 72.7232C58.2858 72.2988 57.0475 71.9127 57.058 71.5093C57.0962 70.0345 57.5032 68.2641 58.0284 66.5667L55.691 72.5493L54.4736 75.6588C54.4736 75.6588 54.5154 78.3439 53.7432 77.5231C52.9676 76.7022 53.0232 79.3596 53.0232 79.3596C52.7822 79.5313 52.5747 79.7459 52.4111 79.9926C52.3422 80.1036 52.3163 80.236 52.338 80.3648V80.3683C52.373 80.4694 52.4418 80.5554 52.5328 80.6117C53.058 80.9665 52.3032 81.9056 51.9693 82.2778C51.8789 82.3786 51.8198 82.4378 51.8198 82.4378L48.6094 82.2082V82.1456C48.6233 81.7665 48.7103 79.77 49.2076 79.2935C49.7537 78.7683 49.4859 77.937 49.4859 77.937C49.4859 77.937 50.9119 76.6744 49.9554 75.6483C49.5728 75.2344 49.7433 72.7823 50.2128 69.6102C51.2389 62.612 53.698 52.1079 54.7623 52.2574C54.9816 51.192 55.491 50.2078 56.2343 49.4136C56.9776 48.6194 57.9258 48.046 58.9744 47.7566L62.4422 46.8036L63.0613 44.3584H67.9447L68.7934 45.9653L72.3516 47.5723L72.3968 47.5931L72.5081 47.6418L72.5499 47.774C72.5499 47.774 72.5464 47.7775 72.5499 47.7775L74.529 53.993C75.4194 55.0156 75.3846 60.9912 75.1585 66.358Z" fill="#045B62" />
-										<path d="M83.4747 78.8831L80.168 72.8806L82.3534 71.9854L86.6037 76.9838C87.0004 77.1413 87.3452 77.4063 87.5995 77.749C87.8538 78.0918 88.0074 78.4987 88.0431 78.924C88.0788 79.3492 87.9952 79.776 87.8016 80.1564C87.6081 80.5368 87.3123 80.8556 86.9474 81.077C86.5826 81.2985 86.1633 81.4138 85.7365 81.41C85.3097 81.4062 84.8925 81.2834 84.5317 81.0554C84.1709 80.8275 83.8808 80.5034 83.6941 80.1196C83.5074 79.7359 83.4314 79.3076 83.4747 78.8831Z" fill="#FFB6B6" />
-										<path d="M72.3516 47.5244C72.9398 48.5813 78.3191 51.2995 77.3869 54.0283C77.3869 54.0283 82.4406 69.8393 83.0977 69.7361C83.7549 69.6329 84.3963 71.266 84.3963 71.266C84.3963 71.266 84.2569 72.3319 84.6668 71.889C85.0767 71.4461 84.9786 72.6072 84.9786 72.6072C84.9786 72.6072 84.7822 73.632 85.3026 73.3534C85.8231 73.0747 85.1388 75.036 85.1388 75.036L82.0111 76.5087L81.4168 75.6241C81.4168 75.6241 80.1468 75.3822 80.7444 75.1906C81.342 74.999 80.1824 74.3542 80.1824 74.3542C80.1824 74.3542 78.9693 73.5297 79.1384 72.1643C79.3074 70.7989 75.9903 68.1148 75.9903 68.1148C73.71 63.6126 72.4626 58.9902 72.4669 54.2221L72.3516 47.5244Z" fill="#045B62" />
-										<path d="M65.138 42.9293C67.8095 42.9293 69.9752 40.7636 69.9752 38.0921C69.9752 35.4206 67.8095 33.2549 65.138 33.2549C62.4665 33.2549 60.3008 35.4206 60.3008 38.0921C60.3008 40.7636 62.4665 42.9293 65.138 42.9293Z" fill="#FFB6B6" />
-										<path d="M60.1276 38.6193C60.2808 39.6704 61.1767 41.1369 60.9669 41.1369C60.7571 41.1369 59.2654 36.8038 60.7571 36.5212C61.8391 36.3163 62.0809 36.4961 63.0922 36.0576L62.9495 36.1918C63.6188 36.6786 64.5503 36.3786 65.314 36.0618C66.0798 35.7471 67.0092 35.447 67.6806 35.9317C68.1023 36.2359 68.2806 36.7646 68.5429 37.2136C68.8052 37.6647 69.2898 38.0906 69.7891 37.9521C69.9837 37.8769 70.1495 37.742 70.2626 37.5667C70.3757 37.3914 70.4303 37.1848 70.4185 36.9765C70.4164 36.5611 69.8755 36.1659 70.0577 35.7932C70.5976 34.6887 70.1121 33.9359 68.9352 33.4161C68.5072 33.3511 68.0792 33.2847 67.6512 33.2168C67.8755 32.9062 68.1474 32.6329 68.4569 32.407C68.3261 32.0717 68.1 31.7822 67.8065 31.574C67.4438 31.4055 67.0397 31.3471 66.6442 31.4062C65.7588 31.4524 64.8741 31.4985 63.9901 31.5447C63.3318 31.5329 62.6784 31.6602 62.0725 31.9181C61.3424 32.2937 60.8641 33.0259 60.5158 33.7707C59.7353 35.4449 59.8591 36.7919 60.1276 38.6193Z" fill="#2F2E41" />
-										<path d="M181.129 35.4464H108.384C108.304 35.4464 108.227 35.4145 108.17 35.3579C108.114 35.3013 108.082 35.2244 108.082 35.1443C108.082 35.0642 108.114 34.9874 108.17 34.9308C108.227 34.8741 108.304 34.8423 108.384 34.8423H181.129C181.209 34.8423 181.286 34.8741 181.343 34.9308C181.4 34.9874 181.431 35.0642 181.431 35.1443C181.431 35.2244 181.4 35.3013 181.343 35.3579C181.286 35.4145 181.209 35.4464 181.129 35.4464Z" fill="#E6E6E6" />
-										<path d="M181.129 54.1724H108.384C108.304 54.1724 108.227 54.1406 108.17 54.084C108.114 54.0273 108.082 53.9505 108.082 53.8704C108.082 53.7903 108.114 53.7135 108.17 53.6568C108.227 53.6002 108.304 53.5684 108.384 53.5684H181.129C181.209 53.5684 181.286 53.6002 181.343 53.6568C181.4 53.7135 181.431 53.7903 181.431 53.8704C181.431 53.9505 181.4 54.0273 181.343 54.084C181.286 54.1406 181.209 54.1724 181.129 54.1724Z" fill="#E6E6E6" />
-										<path d="M181.129 72.8985H108.384C108.304 72.8985 108.227 72.8667 108.17 72.81C108.114 72.7534 108.082 72.6766 108.082 72.5965C108.082 72.5164 108.114 72.4395 108.17 72.3829C108.227 72.3263 108.304 72.2944 108.384 72.2944H181.129C181.209 72.2944 181.286 72.3263 181.343 72.3829C181.4 72.4395 181.431 72.5164 181.431 72.5965C181.431 72.6766 181.4 72.7534 181.343 72.81C181.286 72.8667 181.209 72.8985 181.129 72.8985Z" fill="#E6E6E6" />
-										<path d="M191.957 71.7013C189.294 71.7013 186.719 70.7503 184.695 69.0194C184.019 68.4415 183.3 67.4367 182.556 66.0333C182.082 65.1292 181.816 64.1303 181.779 63.11C181.741 62.0897 181.933 61.0739 182.34 60.1375C181.948 60.5365 181.514 60.8924 181.046 61.199L180.809 61.3564L180.796 61.0727C180.787 60.8882 180.782 60.7043 180.782 60.5262C180.782 59.4762 181.576 58.4108 181.21 57.4404C179.666 53.3501 174.77 49.2852 181.866 42.9549C182.522 42.3694 181.646 41.1985 181.646 40.3126C181.646 31.6297 193.917 16.6081 197.396 24.5657C201.685 34.3795 209.075 33.3298 212.349 35.3568L212.396 35.5002L212.256 35.5568C211.54 35.8579 210.785 36.0587 210.014 36.1533C210.836 36.321 211.675 36.3913 212.514 36.3628L212.644 36.3582L212.676 36.4847C212.988 37.7367 213.146 39.0222 213.145 40.3126L213.145 40.452C213.142 41.4321 213.346 42.4018 213.743 43.2979C214.14 44.194 214.721 44.9963 215.449 45.6526C216.599 46.7009 217.517 47.9773 218.147 49.4003C218.776 50.8233 219.101 52.3618 219.103 53.9177C219.103 55.7584 217.852 58.1747 216.802 59.8775C216.536 60.3113 216.176 60.6792 215.747 60.9537C215.319 61.2281 214.834 61.402 214.328 61.4622C213.85 61.5225 213.364 61.477 212.905 61.3287C212.446 61.1804 212.025 60.9331 211.672 60.6041C212.169 61.603 212.816 62.5195 213.592 63.3216L213.735 63.4692L213.557 63.5728C211.848 64.5691 209.906 65.0937 207.928 65.093L207.812 65.0926C206.362 65.0777 204.923 65.3523 203.58 65.9004C202.238 66.4484 201.018 67.259 199.992 68.2845C198.948 69.3603 197.699 70.2167 196.319 70.8034C194.94 71.3901 193.457 71.6954 191.957 71.7013Z" fill="#E6E6E6" />
-										<path d="M188.114 89.3985C188.066 89.3985 188.019 89.381 187.982 89.3493C187.946 89.3176 187.922 89.2738 187.915 89.2259C187.39 84.5394 187.358 79.8107 187.821 75.1177C188.515 67.7143 190.743 57.0508 197.416 48.293C197.432 48.272 197.452 48.2544 197.475 48.2411C197.498 48.2279 197.523 48.2192 197.549 48.2157C197.575 48.2121 197.602 48.2138 197.627 48.2205C197.653 48.2273 197.677 48.239 197.698 48.255C197.719 48.271 197.736 48.291 197.75 48.3138C197.763 48.3366 197.771 48.3618 197.775 48.3879C197.779 48.4141 197.777 48.4407 197.77 48.4662C197.763 48.4917 197.752 48.5157 197.736 48.5367C191.12 57.2188 188.91 67.8041 188.222 75.1552C187.761 79.8168 187.792 84.514 188.313 89.1692C188.317 89.1978 188.315 89.2268 188.307 89.2544C188.299 89.282 188.285 89.3076 188.266 89.3293C188.247 89.3511 188.224 89.3685 188.197 89.3804C188.171 89.3924 188.143 89.3985 188.114 89.3985Z" fill="#3F3D56" />
-										<path d="M193.561 60.6463C193.518 60.6464 193.477 60.633 193.442 60.608C193.408 60.5831 193.382 60.5479 193.369 60.5076C193.356 60.4672 193.356 60.4237 193.369 60.3833C193.382 60.3429 193.408 60.3077 193.442 60.2828C195.344 58.9957 197.398 57.9501 199.557 57.1699C202.931 55.9347 208.061 54.815 213.343 56.4959C213.368 56.5039 213.391 56.5168 213.412 56.5338C213.432 56.5508 213.448 56.5716 213.461 56.5951C213.473 56.6185 213.48 56.6441 213.482 56.6704C213.484 56.6967 213.482 56.7232 213.474 56.7483C213.466 56.7735 213.453 56.7968 213.436 56.817C213.419 56.8371 213.398 56.8538 213.374 56.8659C213.351 56.878 213.325 56.8854 213.299 56.8876C213.273 56.8899 213.246 56.8869 213.221 56.8789C208.048 55.2325 203.01 56.3337 199.695 57.5474C197.571 58.3142 195.55 59.3422 193.678 60.6079C193.644 60.6329 193.603 60.6463 193.561 60.6463Z" fill="#3F3D56" />
-										<path d="M184.36 37.7371C184.357 37.6947 184.367 37.6525 184.39 37.6165C184.412 37.5804 184.445 37.5523 184.485 37.5363C184.524 37.5203 184.567 37.5172 184.608 37.5273C184.65 37.5375 184.687 37.5604 184.714 37.5929C186.135 39.3967 187.326 41.3702 188.259 43.4679C189.734 46.744 191.22 51.7804 189.924 57.1693C189.918 57.195 189.907 57.2193 189.891 57.2407C189.876 57.2621 189.856 57.2803 189.834 57.2941C189.811 57.3079 189.786 57.3172 189.76 57.3213C189.734 57.3255 189.707 57.3244 189.682 57.3183C189.656 57.3121 189.632 57.3009 189.61 57.2853C189.589 57.2698 189.571 57.2501 189.557 57.2276C189.543 57.205 189.534 57.1799 189.53 57.1538C189.526 57.1277 189.527 57.101 189.533 57.0753C190.803 51.7968 189.342 46.8518 187.893 43.6329C186.975 41.5689 185.804 39.627 184.407 37.852C184.379 37.8196 184.363 37.7794 184.36 37.7371Z" fill="#3F3D56" />
-										<path d="M20.0095 67.6805C18.9839 66.6549 17.764 65.8444 16.4212 65.2963C15.0784 64.7483 13.6397 64.4737 12.1894 64.4886L12.0736 64.4889C10.0957 64.4897 8.15304 63.9651 6.4444 62.9688L6.26661 62.8652L6.40981 62.7176C7.18509 61.9155 7.83245 60.999 8.32921 60.0001C7.9764 60.3291 7.5556 60.5764 7.0966 60.7247C6.6376 60.873 6.15161 60.9185 5.67304 60.8582C5.16779 60.798 4.68274 60.6241 4.25427 60.3497C3.8258 60.0752 3.46503 59.7073 3.19903 59.2735C2.1495 57.5707 0.898438 55.1544 0.898438 53.3137C0.900071 51.7578 1.22584 50.2193 1.85499 48.7963C2.48414 47.3733 3.40287 46.0969 4.55261 45.0487C5.28049 44.3923 5.86189 43.59 6.25888 42.6939C6.65588 41.7978 6.85956 40.8281 6.85666 39.848L6.85608 39.7086C6.85588 38.4182 7.01356 37.1327 7.32561 35.8807L7.35729 35.7542L7.48737 35.7588C8.32623 35.7873 9.16553 35.717 9.98794 35.5493C9.21652 35.4547 8.46186 35.2539 7.74536 34.9528L7.60542 34.8962L7.65291 34.7528C10.9267 32.7258 18.3167 33.7755 22.606 23.9617C26.0841 16.0041 38.3559 31.0257 38.3559 39.7086C38.3559 40.5945 37.4791 41.7653 38.1355 42.3509C45.231 48.6812 40.3352 52.7461 38.7916 56.8364C38.4254 57.8068 39.2195 58.8722 39.2195 59.9221C39.2195 60.1003 39.2149 60.2842 39.206 60.4687L39.1923 60.7524L38.9557 60.595C38.4877 60.2884 38.0539 59.9325 37.6616 59.5335C38.0685 60.4699 38.2603 61.4857 38.2228 62.506C38.1853 63.5263 37.9196 64.5252 37.445 65.4292C36.7014 66.8327 35.982 67.8375 35.3069 68.4154C33.144 70.2663 30.3557 71.2211 27.5123 71.0845C24.6688 70.9479 21.985 69.7302 20.0095 67.6805Z" fill="#E6E6E6" />
-										<path d="M31.8894 88.795C31.9378 88.795 31.9845 88.7775 32.021 88.7458C32.0575 88.7141 32.0813 88.6703 32.0881 88.6224C32.6137 83.9359 32.6451 79.2072 32.1819 74.5142C31.4882 67.1108 29.2606 56.4473 22.5874 47.6895C22.5714 47.6685 22.5514 47.6509 22.5286 47.6376C22.5058 47.6243 22.4806 47.6157 22.4544 47.6122C22.4283 47.6086 22.4017 47.6103 22.3762 47.617C22.3507 47.6238 22.3267 47.6355 22.3057 47.6515C22.2847 47.6675 22.2671 47.6874 22.2538 47.7103C22.2405 47.7331 22.2319 47.7583 22.2284 47.7844C22.2248 47.8106 22.2265 47.8372 22.2332 47.8627C22.24 47.8882 22.2517 47.9122 22.2677 47.9332C28.8832 56.6153 31.0929 67.2005 31.7817 74.5516C32.2424 79.2133 32.2117 83.9105 31.6902 88.5657C31.6861 88.5942 31.6883 88.6233 31.6965 88.6509C31.7046 88.6785 31.7186 88.7041 31.7375 88.7258C31.7564 88.7475 31.7797 88.765 31.8059 88.7769C31.8321 88.7889 31.8606 88.795 31.8894 88.795Z" fill="#3F3D56" />
-										<path d="M26.442 60.0428C26.4845 60.0428 26.5259 60.0294 26.5602 60.0045C26.5946 59.9796 26.6202 59.9444 26.6333 59.904C26.6464 59.8637 26.6465 59.8202 26.6333 59.7798C26.6202 59.7394 26.5947 59.7042 26.5603 59.6793C24.6589 58.3922 22.6048 57.3465 20.4453 56.5664C17.0715 55.3312 11.9411 54.2114 6.65954 55.8924C6.6344 55.9004 6.61107 55.9133 6.5909 55.9303C6.57073 55.9473 6.55412 55.9681 6.54199 55.9916C6.52987 56.015 6.52248 56.0406 6.52025 56.0669C6.51802 56.0932 6.52099 56.1197 6.529 56.1448C6.537 56.17 6.54987 56.1933 6.56689 56.2135C6.58391 56.2336 6.60474 56.2502 6.62818 56.2624C6.65162 56.2745 6.67721 56.2819 6.70351 56.2841C6.7298 56.2863 6.75628 56.2834 6.78142 56.2754C11.9548 54.629 16.9922 55.7302 20.3071 56.9438C22.4319 57.7107 24.453 58.7387 26.324 60.0044C26.3583 60.0294 26.3996 60.0428 26.442 60.0428Z" fill="#3F3D56" />
-										<path d="M35.6427 37.1331C35.6458 37.0908 35.6354 37.0485 35.613 37.0125C35.5906 36.9764 35.5574 36.9483 35.5181 36.9323C35.4788 36.9163 35.4354 36.9132 35.3942 36.9233C35.3529 36.9335 35.316 36.9565 35.2886 36.9889C33.868 38.7927 32.6771 40.7662 31.7434 42.8639C30.2685 46.14 28.7822 51.1764 30.0784 56.5653C30.0845 56.591 30.0957 56.6153 30.1112 56.6367C30.1267 56.6581 30.1462 56.6763 30.1688 56.6901C30.1913 56.704 30.2163 56.7132 30.2425 56.7174C30.2686 56.7215 30.2952 56.7204 30.3209 56.7143C30.3466 56.7081 30.3709 56.6969 30.3922 56.6813C30.4136 56.6658 30.4317 56.6461 30.4455 56.6236C30.4592 56.601 30.4684 56.5759 30.4725 56.5498C30.4766 56.5237 30.4754 56.497 30.4692 56.4713C29.1996 51.1928 30.6608 46.2478 32.11 43.0289C33.0278 40.9649 34.1988 39.023 35.5959 37.248C35.6233 37.2156 35.6397 37.1754 35.6427 37.1331Z" fill="#3F3D56" /> </g>
-									<defs>
-										<clipPath id="clip0_3896_26042">
-											<rect width="218.206" height="110" fill="white" transform="translate(0.898438)" /> </clipPath>
-									</defs>
-								</svg>
-								<div class="pending_appointments_empty_state_message_container">
-									<div class="pet_info_empty_state">
-										<h1>NO PENDING APPOINTMENTS YET</h1>
-										<div class="pet_info_empty_state_p_container">
-											<p>Looks like no one has made an appointment yet.</p>
-											<p>You can add one by yourself by clicking the button below.</p>
-										</div>
-									</div>
-								</div>
-								<button class="btn new_appointment_btn" id="pending_appointment_tab_button" type="button"><span class="new_appointment_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5910_1403)" filter="url(#filter0_d_5910_1403)">
-    <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>&nbsp;Add Appointment</a></div>
+                                    </div>
+                                </div>
+                                <div class="pet_detail_body">
+                                    <div class="pet_upper_detail">
+                                        <div class="pet_sex_container">
+                                            <h1>Sex</h1>
+                                            <p>${sex1}</p>
+                                        </div>
+                                        <div class="pet_age_container">
+                                            <h1>Age</h1>
+                                            <p>${age1}</p>
+                                        </div>
+                                    </div>
+                                    <div class="pet_lower_detail">
+                                        <div class="pet_weight_container">
+                                            <h1>Weight</h1>
+                                            <p>${weight1}</p>
+                                        </div>
+                                        <div class="pet_sterilization_status_container">
+                                            <h1>Sterilization Status</h1>
+                                            <p>${sterilizationStatus1}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="view_pet_container" class="view_pet">
+                    <div class="view_pet_back_btn_container"><button class="btn edit_pet_back_btn" id="view_pet_back_btn" type="button"><span class="edit_pet_back_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+  <g clip-path="url(#clip0_6089_3068)" filter="url(#filter0_d_6089_3068)">
+    <path d="M5.5 12H19.5M5.5 12L11.5 18M5.5 12L11.5 6" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <defs>
-    <filter id="filter0_d_5910_1403" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <filter id="filter0_d_6089_3068" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
       <feFlood flood-opacity="0" result="BackgroundImageFix"/>
       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
       <feOffset dy="2"/>
       <feGaussianBlur stdDeviation="1"/>
       <feComposite in2="hardAlpha" operator="out"/>
       <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5910_1403"/>
-      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_5910_1403" result="shape"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6089_3068"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6089_3068" result="shape"/>
     </filter>
-    <clipPath id="clip0_5910_1403">
+    <clipPath id="clip0_6089_3068">
+      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
+    </clipPath>
+  </defs>
+</svg> Back</span></button></div>
+                    <div class="pet_record_item">
+                        <div class="pet_record"><img src="assets/img/koda%201.png">
+                            <div class="pet_record_details">
+                                <div class="pet_record_details_second_row">
+                                    <div class="pet_name_breed_container">
+                                        <h1>Pet Name</h1>
+                                        <p>Breed</p>
+                                    </div>
+                                </div>
+                                <div class="pet_record_details_first_row">
+                                    <div class="pet_other_details">
+                                        <div class="other_details">
+                                            <h1>Sex</h1>
+                                            <p>Paragraph</p>
+                                        </div>
+                                        <div class="other_details">
+                                            <h1>Birth Date</h1>
+                                            <p>Paragraph</p>
+                                        </div>
+                                        <div class="other_details">
+                                            <h1>Age</h1>
+                                            <p>Paragraph</p>
+                                        </div>
+                                        <div class="other_details">
+                                            <h1>Weight</h1>
+                                            <p>Paragraph</p>
+                                        </div>
+                                        <div class="other_details">
+                                            <h1><strong>Sterilization Status</strong></h1>
+                                            <p>Paragraph</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><button class="btn edit_pet_btn" id="edit_pet_btn" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6127_11956)">
+    <path d="M13.5 6.50024L17.5 10.5002M4 20.0003H8L18.5 9.5003C19.0304 8.96987 19.3284 8.25045 19.3284 7.5003C19.3284 6.75016 19.0304 6.03074 18.5 5.5003C17.9696 4.96987 17.2501 4.67188 16.5 4.67188C15.7499 4.67187 15.0304 4.96987 14.5 5.5003L4 16.0003V20.0003Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6127_11956">
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg> New Appointment</span></button>
-							</div>
-							<div class="table-responsive mt-3" id="pending_table" style="overflow: visible; display: none;">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>
-												<input type="radio" id="selectAll_pending" class="checkbox">
-											</th>
-											<th>No.</th>
-											<th>Client</th>
-											<th>Status</th>
-											<th>Patient Info</th>
-											<th>Appointment</th>
-											<th>Surgery type</th>
-											<th>Actions</th>
-										</tr>
-									</thead>
-									<tbody id="pendingTableBody"></tbody>
-								</table>
-							</div>
-							<div class="pagination" id="pending_pagination" style="display: none;">
-								<div class="pagination-menu"> <span>Go to:</span>
-									<select class="paginationGoToSelect">
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-									</select>
-								</div>
-								<div class="pagination-pages"> <span class="pagination-arrow previous-page">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
-                          <path d="M5.48 12L1.36452 7.88384C0.878492 7.39773 0.878492 6.60227 1.36452 6.11616L5.48 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
-                        </svg>
-                      </span>
-									<div class="pages"> <span class="pagination-page active">1</span> <span class="pagination-page">2</span> <span class="pagination-page">3</span> <span class="pagination-page">4</span> <span class="pagination-page">5</span> </div> <span class="pagination-arrow next-page">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
-                          <path d="M1.47998 12L5.59546 7.88384C6.08149 7.39773 6.08149 6.60227 5.59546 6.11616L1.47998 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
-                        </svg>
-                      </span> </div>
-								<div class="pagination-items"> <span>Show:</span>
-									<select class="paginationItemsSelect">
-										<option value="2">2 items</option>
-										<option value="3">3 items</option>
-										<option value="4">4 items</option>
-										<option value="5">5 items</option>
-										<option value="6">6 items</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane active align-self-stretch appointment_tab" role="tabpanel" id="rejected_tab">
-							<div class="container_header">
-								<div class="left_part_product_header">
-									<div class="search_container">
-										<input type="search" class="search_input" placeholder="Search Appointment">
-									</div>
-									<button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5284_15912)">
-    <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span></button>
+                    </div>
+                    <div class="align-self-stretch pet_records">
+                        <div class="tabpane_header">
+                            <ul class="nav nav-tabs pet_nav_tabs" role="tablist">
+                                <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1">Information</a></li>
+                                <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2">Medical History</a></li>
+                                <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3">Immunization History</a></li>
+                                <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-4">Surgeries</a></li>
+                            </ul>
+                            <button id="add_diagnosis" class="btn edit_pet_btn" type="button" style="display:none;"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <g clip-path="url(#clip0_6456_9985)">
+                                  <path d="M12 5V19M5 12H19" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_6456_9985">
+                                    <rect width="24" height="24" fill="white"/>
+                                  </clipPath>
+                                </defs>
+                              </svg></span></button>
+                            <button id="add_immunization" class="btn edit_pet_btn" type="button" style="display:none;"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <g clip-path="url(#clip0_6456_9985)">
+                                  <path d="M12 5V19M5 12H19" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_6456_9985">
+                                    <rect width="24" height="24" fill="white"/>
+                                  </clipPath>
+                                </defs>
+                              </svg></span></button>
+                            <button id="add_surgery" class="btn edit_pet_btn" type="button" style="display:none;"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <g clip-path="url(#clip0_6456_9985)">
+                                  <path d="M12 5V19M5 12H19" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_6456_9985">
+                                    <rect width="24" height="24" fill="white"/>
+                                  </clipPath>
+                                </defs>
+                              </svg></span></button>
+                        </div>
+                        
+                        <div class="tab-content view_pet_content">
+                            <div class="tab-pane active pet_information" role="tabpanel" id="tab-1" style="width: 100%;">
+                                <div>
+                                    <div class="owner_information">
+                                        <div class="owner_info_heading">
+                                            <h1><strong>Owner Information</strong></h1>
+                                        </div>
+                                    </div>
+                                    <div class="owner_details">
+                                        <div class="owner_details_row">
+                                            <div class="owner_detail_container">
+                                                <h1>Name</h1>
+                                                <p>Harold</p>
+                                            </div>
+                                            <div class="owner_detail_container">
+                                                <h1>Address</h1>
+                                                <p>Namek</p>
+                                            </div>
+                                        </div>
+                                        <div class="owner_details_row">
+                                            <div class="owner_detail_container">
+                                                <h1>Email</h1>
+                                                <p>r@gmail.com</p>
+                                            </div>
+                                            <div class="owner_detail_container">
+                                                <h1>Contact Number</h1>
+                                                <p>+63 948 745 1489</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div>
+                                    <div class="owner_information">
+                                        <div class="owner_info_heading">
+                                            <h1><strong>Health Concerns</strong></h1>
+                                        </div>
+                                    </div>
+                                    <div class="owner_details">
+                                        <div class="owner_details_row">
+                                            <div class="owner_detail_container">
+                                                <h1><strong>Allergies</strong></h1>
+                                                <p><strong>None</strong></p>
+                                            </div>
+                                            <div class="owner_detail_container">
+                                                <h1><strong>Existing Conditions</strong></h1>
+                                                <p><strong>None</strong></p>
+                                            </div>
+                                        </div>
+                                        <div class="owner_details_row">
+                                            <div class="owner_detail_container">
+                                                <h1><strong>Current Medications</strong></h1>
+                                                <p><strong>None</strong></p>
+                                            </div>
+                                            <div class="owner_detail_container"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane pet_information" role="tabpanel" id="tab-2">
+                                <div id="medical_empty_state" class="pet_record_empty_state_message_container">
+                                    <div class="pet_info_empty_state">
+                                        <h1>NO MEDICAL HISTORY FOUND</h1>
+                                        <div class="pet_info_empty_state_p_container">
+                                            <p>You can add a medical history by clicking the button below.</p>
+                                        </div>
+                                    </div><button class="btn add_history" id="add_medical_history" type="button"><span id="add_medical_history" class="add_history_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+  <g clip-path="url(#clip0_6404_5410)" filter="url(#filter0_d_6404_5410)">
+    <path d="M12.5 5V19M5.5 12H19.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <defs>
-    <clipPath id="clip0_5284_15912">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Filter by</span></button>
-									<button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5284_15919)">
-    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_5284_15919">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Sort by</span></button>
-								</div>
-								<div class="right_part_product_header">
-									<button class="btn add_pet_button" id="add_pet_button-2" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5749_19213)">
-    <path d="M12 5V19M5 12H19" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_5749_19213">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg></span></button>
-								</div>
-							</div>
-							<div id="rejected_appointment_empty_state" class="appointment_empty_state">
-								<svg xmlns="http://www.w3.org/2000/svg" width="220" height="110" viewBox="0 0 220 110" fill="none">
-									<g clip-path="url(#clip0_3896_26042)">
-										<path d="M198.031 89.4723H32.121C30 89.4699 27.9666 88.6263 26.4668 87.1266C24.9671 85.6268 24.1235 83.5934 24.1211 81.4725V18.517C24.1235 16.396 24.9671 14.3626 26.4669 12.8629C27.9666 11.3631 30 10.5195 32.121 10.5171H198.031C200.152 10.5195 202.186 11.3631 203.685 12.8629C205.185 14.3626 206.029 16.396 206.031 18.517V81.4725C206.029 83.5934 205.185 85.6268 203.685 87.1266C202.186 88.6263 200.152 89.4699 198.031 89.4723Z" fill="white" />
-										<path d="M198.031 89.4723H32.121C30 89.4699 27.9666 88.6263 26.4668 87.1266C24.9671 85.6268 24.1235 83.5934 24.1211 81.4725V18.517C24.1235 16.396 24.9671 14.3626 26.4669 12.8629C27.9666 11.3631 30 10.5195 32.121 10.5171H198.031C200.152 10.5195 202.186 11.3631 203.685 12.8629C205.185 14.3626 206.029 16.396 206.031 18.517V81.4725C206.029 83.5934 205.185 85.6268 203.685 87.1266C202.186 88.6263 200.152 89.4699 198.031 89.4723ZM32.121 11.2127C30.1838 11.2127 28.3259 11.9823 26.9561 13.3521C25.5863 14.7219 24.8167 16.5798 24.8167 18.517V81.4725C24.8167 82.4317 25.0057 83.3815 25.3727 84.2677C25.7398 85.1538 26.2778 85.9591 26.9561 86.6373C27.6343 87.3156 28.4396 87.8536 29.3258 88.2207C30.2119 88.5877 31.1618 88.7767 32.121 88.7767H198.031C198.99 88.7767 199.94 88.5877 200.826 88.2207C201.713 87.8536 202.518 87.3156 203.196 86.6373C203.874 85.9591 204.412 85.1538 204.78 84.2677C205.147 83.3815 205.335 82.4317 205.335 81.4725V57.7348C205.335 45.3964 200.434 33.5633 191.71 24.8387C182.985 16.1142 171.152 11.2127 158.813 11.2127H32.121Z" fill="#E6E6E6" />
-										<path d="M18.9919 102.875C19.0597 102.408 18.5713 101.951 17.9009 101.854C17.2306 101.756 16.6321 102.055 16.5643 102.521C16.4964 102.988 16.9848 103.445 17.6552 103.542C18.3256 103.64 18.924 103.341 18.9919 102.875Z" fill="white" />
-										<path d="M26.9763 102.096C27.0441 101.629 26.5557 101.172 25.8853 101.075C25.2149 100.977 24.6165 101.276 24.5486 101.743C24.4808 102.209 24.9692 102.666 25.6396 102.764C26.31 102.861 26.9084 102.562 26.9763 102.096Z" fill="#3F3D56" />
-										<path d="M16.8083 96.4126C16.8761 95.9463 16.3877 95.4892 15.7173 95.3916C15.047 95.2941 14.4485 95.5931 14.3807 96.0594C14.3128 96.5258 14.8013 96.9829 15.4716 97.0804C16.142 97.178 16.7404 96.879 16.8083 96.4126Z" fill="#FF6584" />
-										<path d="M13.3383 93.7662C13.3415 93.338 13.1027 92.9892 12.8049 92.9869C12.5071 92.9847 12.263 93.3299 12.2598 93.758C12.2565 94.1861 12.4953 94.535 12.7932 94.5373C13.091 94.5395 13.335 94.1943 13.3383 93.7662Z" fill="#E6E6E6" />
-										<path d="M12.1625 88.836C12.1657 88.4079 11.9269 88.059 11.6291 88.0567C11.3313 88.0545 11.0872 88.3997 11.084 88.8278C11.0807 89.256 11.3196 89.6049 11.6174 89.6071C11.9152 89.6094 12.1593 89.2641 12.1625 88.836Z" fill="#3F3D56" />
-										<path d="M21.3109 97.5123C21.3142 97.0841 21.0754 96.7353 20.7775 96.733C20.4797 96.7308 20.2357 97.076 20.2324 97.5041C20.2292 97.9322 20.468 98.2811 20.7658 98.2834C21.0636 98.2856 21.3077 97.9404 21.3109 97.5123Z" fill="#E6E6E6" />
-										<path d="M17.4516 99.438C17.4548 99.0099 17.216 98.661 16.9182 98.6588C16.6203 98.6565 16.3763 99.0018 16.373 99.4299C16.3698 99.858 16.6086 100.207 16.9064 100.209C17.2043 100.211 17.4483 99.8662 17.4516 99.438Z" fill="#FF6584" />
-										<path d="M22.8227 102.997C22.8259 102.569 22.5871 102.22 22.2893 102.218C21.9914 102.216 21.7474 102.561 21.7441 102.989C21.7409 103.417 21.9797 103.766 22.2775 103.768C22.5754 103.77 22.8194 103.425 22.8227 102.997Z" fill="#3F3D56" />
-										<path d="M211.818 2.33786C211.966 1.75557 211.407 1.11158 210.57 0.899453C209.732 0.687327 208.934 0.987394 208.787 1.56968C208.639 2.15198 209.198 2.79599 210.035 3.00811C210.872 3.22024 211.67 2.92015 211.818 2.33786Z" fill="white" />
-										<path d="M201.595 2.27196C201.743 1.68967 201.184 1.04566 200.347 0.833535C199.51 0.621409 198.712 0.921494 198.564 1.50378C198.416 2.08608 198.975 2.73007 199.812 2.94219C200.65 3.15432 201.448 2.85425 201.595 2.27196Z" fill="#3F3D56" />
-										<path d="M213.736 10.8188C213.883 10.2365 213.325 9.59254 212.487 9.38041C211.65 9.16828 210.852 9.46835 210.705 10.0506C210.557 10.6329 211.116 11.2769 211.953 11.4891C212.79 11.7012 213.588 11.4011 213.736 10.8188Z" fill="#FF6584" />
-										<path d="M216.117 14.0163C216.177 13.474 215.921 13.0001 215.543 12.958C215.166 12.9158 214.811 13.3213 214.75 13.8637C214.69 14.406 214.946 14.8799 215.324 14.922C215.701 14.9642 216.056 14.5587 216.117 14.0163Z" fill="#E6E6E6" />
-										<path d="M216.96 20.4211C217.021 19.8788 216.764 19.4049 216.387 19.3628C216.01 19.3206 215.655 19.7261 215.594 20.2685C215.534 20.8108 215.79 21.2847 216.168 21.3268C216.545 21.369 216.9 20.9635 216.96 20.4211Z" fill="#3F3D56" />
-										<path d="M206.507 8.21507C206.568 7.67271 206.311 7.19887 205.934 7.15671C205.557 7.11456 205.202 7.52005 205.141 8.06241C205.08 8.60477 205.337 9.07861 205.714 9.12077C206.092 9.16293 206.447 8.75743 206.507 8.21507Z" fill="#E6E6E6" />
-										<path d="M211.652 6.28246C211.712 5.7401 211.456 5.26625 211.078 5.2241C210.701 5.18194 210.346 5.58743 210.286 6.12979C210.225 6.67215 210.482 7.14599 210.859 7.18815C211.236 7.23031 211.591 6.82482 211.652 6.28246Z" fill="#FF6584" />
-										<path d="M205.316 1.06126C205.376 0.518905 205.12 0.045062 204.742 0.00290405C204.365 -0.0392539 204.01 0.366238 203.95 0.908597C203.889 1.45096 204.146 1.9248 204.523 1.96696C204.9 2.00912 205.255 1.60362 205.316 1.06126Z" fill="#3F3D56" />
-										<path d="M90.4821 48.7131C90.4912 55.0134 88.1638 61.0934 83.95 65.7772V65.7807C83.3542 66.4431 82.725 67.0746 82.0648 67.6728C81.3892 68.2847 80.681 68.8594 79.9431 69.3945C79.4283 69.7702 78.8996 70.1249 78.357 70.4589C77.7136 70.8588 77.0515 71.2287 76.371 71.5684C75.8666 71.8223 75.3519 72.0588 74.8267 72.2779C71.6916 73.5955 68.3249 74.2731 64.9242 74.271C63.0036 74.2731 61.0889 74.0584 59.2165 73.631C58.3506 73.4341 57.496 73.1902 56.6565 72.9005C56.333 72.7927 56.0096 72.6745 55.6896 72.5493C53.7493 71.7992 51.9093 70.812 50.2114 69.6102C46.6227 67.0835 43.7451 63.6751 41.856 59.7136C39.9668 55.752 39.1296 51.3706 39.4252 46.9916C39.7208 42.6126 41.1391 38.3835 43.5435 34.7117C45.9478 31.0399 49.2573 28.0492 53.153 26.0277C57.0487 24.0061 61.3994 23.0219 65.7859 23.1698C70.1723 23.3177 74.4468 24.5927 78.1975 26.8721C81.9482 29.1514 85.0487 32.3583 87.2003 36.1837C89.3519 40.0091 90.4821 44.3241 90.4821 48.7131Z" fill="#F2F2F2" />
-										<path d="M166.976 29.7147H122.803C122.435 29.7142 122.081 29.5673 121.821 29.3065C121.56 29.0456 121.414 28.692 121.414 28.3234C121.414 27.9548 121.56 27.6012 121.821 27.3403C122.081 27.0795 122.435 26.9327 122.803 26.9321H166.976C167.345 26.9321 167.699 27.0787 167.96 27.3396C168.221 27.6005 168.368 27.9544 168.368 28.3234C168.368 28.6924 168.221 29.0463 167.96 29.3072C167.699 29.5681 167.345 29.7147 166.976 29.7147Z" fill="#045B62" />
-										<path d="M166.976 48.4969H122.803C122.435 48.4964 122.081 48.3496 121.821 48.0887C121.56 47.8278 121.414 47.4743 121.414 47.1056C121.414 46.737 121.56 46.3834 121.821 46.1226C122.081 45.8617 122.435 45.7149 122.803 45.7144H166.976C167.345 45.7149 167.698 45.8617 167.959 46.1226C168.219 46.3834 168.366 46.737 168.366 47.1056C168.366 47.4743 168.219 47.8278 167.959 48.0887C167.698 48.3496 167.345 48.4964 166.976 48.4969Z" fill="#E6E6E6" />
-										<path d="M166.976 67.2792H122.803C122.435 67.2786 122.081 67.1318 121.821 66.8709C121.56 66.6101 121.414 66.2565 121.414 65.8879C121.414 65.5192 121.56 65.1657 121.821 64.9048C122.081 64.644 122.435 64.4971 122.803 64.4966H166.976C167.345 64.4966 167.699 64.6432 167.96 64.9041C168.221 65.165 168.368 65.5189 168.368 65.8879C168.368 66.2569 168.221 66.6107 167.96 66.8717C167.699 67.1326 167.345 67.2792 166.976 67.2792Z" fill="#E6E6E6" />
-										<path d="M56.54 108.785C51.5532 102.152 48.6709 94.7347 48.5765 86.2782C48.4158 85.8225 48.4425 85.3216 48.6506 84.8856C48.8588 84.4495 49.2314 84.1138 49.6867 83.9521L66.6845 77.9378C67.1402 77.7771 67.6411 77.8038 68.0772 78.0119C68.5132 78.2201 68.849 78.5927 69.0107 79.0481L76.9742 101.555C77.1349 102.011 77.1082 102.512 76.9001 102.948C76.6919 103.384 76.3193 103.719 75.864 103.881L58.8662 109.895C58.4105 110.056 57.9096 110.029 57.4736 109.821C57.0375 109.613 56.7017 109.241 56.54 108.785Z" fill="#E6E6E6" />
-										<path d="M55.4396 101.526C52.4403 98.4933 51.1565 93.0846 50.3199 87.0563C50.1694 86.6295 50.1944 86.1605 50.3893 85.7521C50.5842 85.3437 50.9332 85.0293 51.3597 84.8778L65.9678 79.7091C66.3946 79.5586 66.8637 79.5835 67.2721 79.7785C67.6805 79.9734 67.995 80.3224 68.1464 80.7488L75.2329 100.777C75.3834 101.204 75.3584 101.673 75.1635 102.081C74.9685 102.49 74.6195 102.804 74.1931 102.956L65.1436 106.157C63.2425 106.828 61.1531 106.716 59.3339 105.848C57.5147 104.98 56.1142 103.425 55.4396 101.526Z" fill="white" />
-										<path d="M68.3402 91.5381L56.9608 95.5999C56.8712 95.6319 56.7761 95.646 56.681 95.6412C56.5859 95.6365 56.4927 95.6131 56.4067 95.5723C56.3207 95.5315 56.2435 95.4742 56.1796 95.4036C56.1157 95.333 56.0664 95.2506 56.0344 95.1609C56.0024 95.0712 55.9883 94.9761 55.9931 94.8811C55.9978 94.786 56.0213 94.6928 56.062 94.6067C56.1028 94.5207 56.1601 94.4435 56.2307 94.3797C56.3013 94.3158 56.3838 94.2664 56.4734 94.2344L67.8528 90.1726C68.0338 90.1079 68.2332 90.1179 68.4069 90.2002C68.5807 90.2825 68.7146 90.4305 68.7792 90.6116C68.8439 90.7927 68.8339 90.992 68.7516 91.1658C68.6693 91.3395 68.5213 91.4734 68.3402 91.5381Z" fill="#045B62" />
-										<path d="M58.1291 90.9622L55.6256 91.8558C55.5359 91.8879 55.4408 91.902 55.3456 91.8973C55.2505 91.8927 55.1572 91.8693 55.0711 91.8285C54.985 91.7878 54.9077 91.7305 54.8438 91.6598C54.7799 91.5892 54.7305 91.5067 54.6984 91.417C54.6664 91.3273 54.6524 91.2321 54.6572 91.137C54.6619 91.0418 54.6854 90.9485 54.7262 90.8625C54.7671 90.7764 54.8245 90.6992 54.8952 90.6354C54.9659 90.5715 55.0484 90.5222 55.1382 90.4902L57.6416 89.5966C57.7313 89.5645 57.8265 89.5504 57.9216 89.5551C58.0168 89.5597 58.1101 89.5831 58.1962 89.6239C58.2823 89.6646 58.3595 89.7219 58.4235 89.7926C58.4874 89.8632 58.5368 89.9457 58.5688 90.0354C58.6008 90.1252 58.6149 90.2203 58.6101 90.3155C58.6053 90.4106 58.5819 90.5039 58.541 90.5899C58.5002 90.676 58.4428 90.7532 58.3721 90.8171C58.3014 90.8809 58.2188 90.9302 58.1291 90.9622Z" fill="#045B62" />
-										<path d="M70.484 97.5412L59.1047 101.603C58.9237 101.668 58.7245 101.657 58.5509 101.575C58.3773 101.493 58.2435 101.345 58.1789 101.164C58.1143 100.983 58.1242 100.784 58.2064 100.61C58.2886 100.436 58.4364 100.302 58.6173 100.238L69.9966 96.1757C70.1776 96.1113 70.3768 96.1214 70.5504 96.2038C70.724 96.2862 70.8578 96.4341 70.9224 96.615C70.987 96.796 70.9771 96.9952 70.8949 97.1689C70.8127 97.3425 70.6649 97.4765 70.484 97.5412Z" fill="#045B62" />
-										<path d="M69.4105 94.5398L58.0312 98.6017C57.8501 98.6663 57.6507 98.6563 57.477 98.574C57.3033 98.4917 57.1693 98.3437 57.1047 98.1626C57.0401 97.9815 57.05 97.7822 57.1323 97.6084C57.2147 97.4347 57.3627 97.3008 57.5437 97.2361L68.9231 93.1743C69.0128 93.1422 69.1079 93.128 69.2031 93.1327C69.2982 93.1374 69.3915 93.1608 69.4776 93.2015C69.5637 93.2423 69.641 93.2996 69.7049 93.3702C69.7688 93.4408 69.8182 93.5234 69.8503 93.6131C69.8823 93.7028 69.8963 93.7979 69.8915 93.8931C69.8868 93.9882 69.8633 94.0815 69.8224 94.1676C69.7816 94.2536 69.7242 94.3308 69.6535 94.3947C69.5828 94.4585 69.5003 94.5079 69.4105 94.5398Z" fill="#045B62" />
-										<path d="M59.0773 37.1502C59.4478 40.14 61.5195 42.6051 64.5322 42.6051C65.9789 42.6051 67.3664 42.0304 68.3894 41.0074C69.4124 39.9844 69.9871 38.5969 69.9871 37.1502C69.9871 34.1375 67.5319 31.9738 64.5322 31.6953C61.3493 31.3997 58.6015 33.3117 59.0773 37.1502Z" fill="#2F2E41" />
-										<path d="M69.2808 73.8991C65.9405 74.4733 62.5198 74.3823 59.2148 73.6313C60.7835 72.7652 65.5417 73.2974 69.2808 73.8991Z" fill="#2F2E41" />
-										<path d="M48.0499 83.494L50.6702 77.1616L52.7346 78.3086L51.4879 84.7502C51.6127 85.1583 51.6213 85.5931 51.5126 86.0058C51.4039 86.4185 51.1822 86.7927 50.8725 87.0863C50.5627 87.3799 50.1772 87.5813 49.7593 87.6679C49.3414 87.7544 48.9077 87.7227 48.5068 87.5762C48.106 87.4297 47.7539 87.1744 47.4902 86.8388C47.2266 86.5032 47.0617 86.1007 47.0142 85.6766C46.9668 85.2525 47.0385 84.8235 47.2215 84.4379C47.4044 84.0524 47.6913 83.7255 48.0499 83.494Z" fill="#FFB6B6" />
-										<path d="M75.1585 66.358V66.3615C75.0646 68.5667 74.9359 70.6641 74.8281 72.2779C71.6931 73.5955 68.3263 74.2731 64.9257 74.2709C63.0051 74.2731 61.0904 74.0584 59.2179 73.631C58.352 73.4341 57.4974 73.1902 56.658 72.9005C56.7748 72.8251 56.9011 72.7655 57.0336 72.7232C58.2858 72.2988 57.0475 71.9127 57.058 71.5093C57.0962 70.0345 57.5032 68.2641 58.0284 66.5667L55.691 72.5493L54.4736 75.6588C54.4736 75.6588 54.5154 78.3439 53.7432 77.5231C52.9676 76.7022 53.0232 79.3596 53.0232 79.3596C52.7822 79.5313 52.5747 79.7459 52.4111 79.9926C52.3422 80.1036 52.3163 80.236 52.338 80.3648V80.3683C52.373 80.4694 52.4418 80.5554 52.5328 80.6117C53.058 80.9665 52.3032 81.9056 51.9693 82.2778C51.8789 82.3786 51.8198 82.4378 51.8198 82.4378L48.6094 82.2082V82.1456C48.6233 81.7665 48.7103 79.77 49.2076 79.2935C49.7537 78.7683 49.4859 77.937 49.4859 77.937C49.4859 77.937 50.9119 76.6744 49.9554 75.6483C49.5728 75.2344 49.7433 72.7823 50.2128 69.6102C51.2389 62.612 53.698 52.1079 54.7623 52.2574C54.9816 51.192 55.491 50.2078 56.2343 49.4136C56.9776 48.6194 57.9258 48.046 58.9744 47.7566L62.4422 46.8036L63.0613 44.3584H67.9447L68.7934 45.9653L72.3516 47.5723L72.3968 47.5931L72.5081 47.6418L72.5499 47.774C72.5499 47.774 72.5464 47.7775 72.5499 47.7775L74.529 53.993C75.4194 55.0156 75.3846 60.9912 75.1585 66.358Z" fill="#045B62" />
-										<path d="M83.4747 78.8831L80.168 72.8806L82.3534 71.9854L86.6037 76.9838C87.0004 77.1413 87.3452 77.4063 87.5995 77.749C87.8538 78.0918 88.0074 78.4987 88.0431 78.924C88.0788 79.3492 87.9952 79.776 87.8016 80.1564C87.6081 80.5368 87.3123 80.8556 86.9474 81.077C86.5826 81.2985 86.1633 81.4138 85.7365 81.41C85.3097 81.4062 84.8925 81.2834 84.5317 81.0554C84.1709 80.8275 83.8808 80.5034 83.6941 80.1196C83.5074 79.7359 83.4314 79.3076 83.4747 78.8831Z" fill="#FFB6B6" />
-										<path d="M72.3516 47.5244C72.9398 48.5813 78.3191 51.2995 77.3869 54.0283C77.3869 54.0283 82.4406 69.8393 83.0977 69.7361C83.7549 69.6329 84.3963 71.266 84.3963 71.266C84.3963 71.266 84.2569 72.3319 84.6668 71.889C85.0767 71.4461 84.9786 72.6072 84.9786 72.6072C84.9786 72.6072 84.7822 73.632 85.3026 73.3534C85.8231 73.0747 85.1388 75.036 85.1388 75.036L82.0111 76.5087L81.4168 75.6241C81.4168 75.6241 80.1468 75.3822 80.7444 75.1906C81.342 74.999 80.1824 74.3542 80.1824 74.3542C80.1824 74.3542 78.9693 73.5297 79.1384 72.1643C79.3074 70.7989 75.9903 68.1148 75.9903 68.1148C73.71 63.6126 72.4626 58.9902 72.4669 54.2221L72.3516 47.5244Z" fill="#045B62" />
-										<path d="M65.138 42.9293C67.8095 42.9293 69.9752 40.7636 69.9752 38.0921C69.9752 35.4206 67.8095 33.2549 65.138 33.2549C62.4665 33.2549 60.3008 35.4206 60.3008 38.0921C60.3008 40.7636 62.4665 42.9293 65.138 42.9293Z" fill="#FFB6B6" />
-										<path d="M60.1276 38.6193C60.2808 39.6704 61.1767 41.1369 60.9669 41.1369C60.7571 41.1369 59.2654 36.8038 60.7571 36.5212C61.8391 36.3163 62.0809 36.4961 63.0922 36.0576L62.9495 36.1918C63.6188 36.6786 64.5503 36.3786 65.314 36.0618C66.0798 35.7471 67.0092 35.447 67.6806 35.9317C68.1023 36.2359 68.2806 36.7646 68.5429 37.2136C68.8052 37.6647 69.2898 38.0906 69.7891 37.9521C69.9837 37.8769 70.1495 37.742 70.2626 37.5667C70.3757 37.3914 70.4303 37.1848 70.4185 36.9765C70.4164 36.5611 69.8755 36.1659 70.0577 35.7932C70.5976 34.6887 70.1121 33.9359 68.9352 33.4161C68.5072 33.3511 68.0792 33.2847 67.6512 33.2168C67.8755 32.9062 68.1474 32.6329 68.4569 32.407C68.3261 32.0717 68.1 31.7822 67.8065 31.574C67.4438 31.4055 67.0397 31.3471 66.6442 31.4062C65.7588 31.4524 64.8741 31.4985 63.9901 31.5447C63.3318 31.5329 62.6784 31.6602 62.0725 31.9181C61.3424 32.2937 60.8641 33.0259 60.5158 33.7707C59.7353 35.4449 59.8591 36.7919 60.1276 38.6193Z" fill="#2F2E41" />
-										<path d="M181.129 35.4464H108.384C108.304 35.4464 108.227 35.4145 108.17 35.3579C108.114 35.3013 108.082 35.2244 108.082 35.1443C108.082 35.0642 108.114 34.9874 108.17 34.9308C108.227 34.8741 108.304 34.8423 108.384 34.8423H181.129C181.209 34.8423 181.286 34.8741 181.343 34.9308C181.4 34.9874 181.431 35.0642 181.431 35.1443C181.431 35.2244 181.4 35.3013 181.343 35.3579C181.286 35.4145 181.209 35.4464 181.129 35.4464Z" fill="#E6E6E6" />
-										<path d="M181.129 54.1724H108.384C108.304 54.1724 108.227 54.1406 108.17 54.084C108.114 54.0273 108.082 53.9505 108.082 53.8704C108.082 53.7903 108.114 53.7135 108.17 53.6568C108.227 53.6002 108.304 53.5684 108.384 53.5684H181.129C181.209 53.5684 181.286 53.6002 181.343 53.6568C181.4 53.7135 181.431 53.7903 181.431 53.8704C181.431 53.9505 181.4 54.0273 181.343 54.084C181.286 54.1406 181.209 54.1724 181.129 54.1724Z" fill="#E6E6E6" />
-										<path d="M181.129 72.8985H108.384C108.304 72.8985 108.227 72.8667 108.17 72.81C108.114 72.7534 108.082 72.6766 108.082 72.5965C108.082 72.5164 108.114 72.4395 108.17 72.3829C108.227 72.3263 108.304 72.2944 108.384 72.2944H181.129C181.209 72.2944 181.286 72.3263 181.343 72.3829C181.4 72.4395 181.431 72.5164 181.431 72.5965C181.431 72.6766 181.4 72.7534 181.343 72.81C181.286 72.8667 181.209 72.8985 181.129 72.8985Z" fill="#E6E6E6" />
-										<path d="M191.957 71.7013C189.294 71.7013 186.719 70.7503 184.695 69.0194C184.019 68.4415 183.3 67.4367 182.556 66.0333C182.082 65.1292 181.816 64.1303 181.779 63.11C181.741 62.0897 181.933 61.0739 182.34 60.1375C181.948 60.5365 181.514 60.8924 181.046 61.199L180.809 61.3564L180.796 61.0727C180.787 60.8882 180.782 60.7043 180.782 60.5262C180.782 59.4762 181.576 58.4108 181.21 57.4404C179.666 53.3501 174.77 49.2852 181.866 42.9549C182.522 42.3694 181.646 41.1985 181.646 40.3126C181.646 31.6297 193.917 16.6081 197.396 24.5657C201.685 34.3795 209.075 33.3298 212.349 35.3568L212.396 35.5002L212.256 35.5568C211.54 35.8579 210.785 36.0587 210.014 36.1533C210.836 36.321 211.675 36.3913 212.514 36.3628L212.644 36.3582L212.676 36.4847C212.988 37.7367 213.146 39.0222 213.145 40.3126L213.145 40.452C213.142 41.4321 213.346 42.4018 213.743 43.2979C214.14 44.194 214.721 44.9963 215.449 45.6526C216.599 46.7009 217.517 47.9773 218.147 49.4003C218.776 50.8233 219.101 52.3618 219.103 53.9177C219.103 55.7584 217.852 58.1747 216.802 59.8775C216.536 60.3113 216.176 60.6792 215.747 60.9537C215.319 61.2281 214.834 61.402 214.328 61.4622C213.85 61.5225 213.364 61.477 212.905 61.3287C212.446 61.1804 212.025 60.9331 211.672 60.6041C212.169 61.603 212.816 62.5195 213.592 63.3216L213.735 63.4692L213.557 63.5728C211.848 64.5691 209.906 65.0937 207.928 65.093L207.812 65.0926C206.362 65.0777 204.923 65.3523 203.58 65.9004C202.238 66.4484 201.018 67.259 199.992 68.2845C198.948 69.3603 197.699 70.2167 196.319 70.8034C194.94 71.3901 193.457 71.6954 191.957 71.7013Z" fill="#E6E6E6" />
-										<path d="M188.114 89.3985C188.066 89.3985 188.019 89.381 187.982 89.3493C187.946 89.3176 187.922 89.2738 187.915 89.2259C187.39 84.5394 187.358 79.8107 187.821 75.1177C188.515 67.7143 190.743 57.0508 197.416 48.293C197.432 48.272 197.452 48.2544 197.475 48.2411C197.498 48.2279 197.523 48.2192 197.549 48.2157C197.575 48.2121 197.602 48.2138 197.627 48.2205C197.653 48.2273 197.677 48.239 197.698 48.255C197.719 48.271 197.736 48.291 197.75 48.3138C197.763 48.3366 197.771 48.3618 197.775 48.3879C197.779 48.4141 197.777 48.4407 197.77 48.4662C197.763 48.4917 197.752 48.5157 197.736 48.5367C191.12 57.2188 188.91 67.8041 188.222 75.1552C187.761 79.8168 187.792 84.514 188.313 89.1692C188.317 89.1978 188.315 89.2268 188.307 89.2544C188.299 89.282 188.285 89.3076 188.266 89.3293C188.247 89.3511 188.224 89.3685 188.197 89.3804C188.171 89.3924 188.143 89.3985 188.114 89.3985Z" fill="#3F3D56" />
-										<path d="M193.561 60.6463C193.518 60.6464 193.477 60.633 193.442 60.608C193.408 60.5831 193.382 60.5479 193.369 60.5076C193.356 60.4672 193.356 60.4237 193.369 60.3833C193.382 60.3429 193.408 60.3077 193.442 60.2828C195.344 58.9957 197.398 57.9501 199.557 57.1699C202.931 55.9347 208.061 54.815 213.343 56.4959C213.368 56.5039 213.391 56.5168 213.412 56.5338C213.432 56.5508 213.448 56.5716 213.461 56.5951C213.473 56.6185 213.48 56.6441 213.482 56.6704C213.484 56.6967 213.482 56.7232 213.474 56.7483C213.466 56.7735 213.453 56.7968 213.436 56.817C213.419 56.8371 213.398 56.8538 213.374 56.8659C213.351 56.878 213.325 56.8854 213.299 56.8876C213.273 56.8899 213.246 56.8869 213.221 56.8789C208.048 55.2325 203.01 56.3337 199.695 57.5474C197.571 58.3142 195.55 59.3422 193.678 60.6079C193.644 60.6329 193.603 60.6463 193.561 60.6463Z" fill="#3F3D56" />
-										<path d="M184.36 37.7371C184.357 37.6947 184.367 37.6525 184.39 37.6165C184.412 37.5804 184.445 37.5523 184.485 37.5363C184.524 37.5203 184.567 37.5172 184.608 37.5273C184.65 37.5375 184.687 37.5604 184.714 37.5929C186.135 39.3967 187.326 41.3702 188.259 43.4679C189.734 46.744 191.22 51.7804 189.924 57.1693C189.918 57.195 189.907 57.2193 189.891 57.2407C189.876 57.2621 189.856 57.2803 189.834 57.2941C189.811 57.3079 189.786 57.3172 189.76 57.3213C189.734 57.3255 189.707 57.3244 189.682 57.3183C189.656 57.3121 189.632 57.3009 189.61 57.2853C189.589 57.2698 189.571 57.2501 189.557 57.2276C189.543 57.205 189.534 57.1799 189.53 57.1538C189.526 57.1277 189.527 57.101 189.533 57.0753C190.803 51.7968 189.342 46.8518 187.893 43.6329C186.975 41.5689 185.804 39.627 184.407 37.852C184.379 37.8196 184.363 37.7794 184.36 37.7371Z" fill="#3F3D56" />
-										<path d="M20.0095 67.6805C18.9839 66.6549 17.764 65.8444 16.4212 65.2963C15.0784 64.7483 13.6397 64.4737 12.1894 64.4886L12.0736 64.4889C10.0957 64.4897 8.15304 63.9651 6.4444 62.9688L6.26661 62.8652L6.40981 62.7176C7.18509 61.9155 7.83245 60.999 8.32921 60.0001C7.9764 60.3291 7.5556 60.5764 7.0966 60.7247C6.6376 60.873 6.15161 60.9185 5.67304 60.8582C5.16779 60.798 4.68274 60.6241 4.25427 60.3497C3.8258 60.0752 3.46503 59.7073 3.19903 59.2735C2.1495 57.5707 0.898438 55.1544 0.898438 53.3137C0.900071 51.7578 1.22584 50.2193 1.85499 48.7963C2.48414 47.3733 3.40287 46.0969 4.55261 45.0487C5.28049 44.3923 5.86189 43.59 6.25888 42.6939C6.65588 41.7978 6.85956 40.8281 6.85666 39.848L6.85608 39.7086C6.85588 38.4182 7.01356 37.1327 7.32561 35.8807L7.35729 35.7542L7.48737 35.7588C8.32623 35.7873 9.16553 35.717 9.98794 35.5493C9.21652 35.4547 8.46186 35.2539 7.74536 34.9528L7.60542 34.8962L7.65291 34.7528C10.9267 32.7258 18.3167 33.7755 22.606 23.9617C26.0841 16.0041 38.3559 31.0257 38.3559 39.7086C38.3559 40.5945 37.4791 41.7653 38.1355 42.3509C45.231 48.6812 40.3352 52.7461 38.7916 56.8364C38.4254 57.8068 39.2195 58.8722 39.2195 59.9221C39.2195 60.1003 39.2149 60.2842 39.206 60.4687L39.1923 60.7524L38.9557 60.595C38.4877 60.2884 38.0539 59.9325 37.6616 59.5335C38.0685 60.4699 38.2603 61.4857 38.2228 62.506C38.1853 63.5263 37.9196 64.5252 37.445 65.4292C36.7014 66.8327 35.982 67.8375 35.3069 68.4154C33.144 70.2663 30.3557 71.2211 27.5123 71.0845C24.6688 70.9479 21.985 69.7302 20.0095 67.6805Z" fill="#E6E6E6" />
-										<path d="M31.8894 88.795C31.9378 88.795 31.9845 88.7775 32.021 88.7458C32.0575 88.7141 32.0813 88.6703 32.0881 88.6224C32.6137 83.9359 32.6451 79.2072 32.1819 74.5142C31.4882 67.1108 29.2606 56.4473 22.5874 47.6895C22.5714 47.6685 22.5514 47.6509 22.5286 47.6376C22.5058 47.6243 22.4806 47.6157 22.4544 47.6122C22.4283 47.6086 22.4017 47.6103 22.3762 47.617C22.3507 47.6238 22.3267 47.6355 22.3057 47.6515C22.2847 47.6675 22.2671 47.6874 22.2538 47.7103C22.2405 47.7331 22.2319 47.7583 22.2284 47.7844C22.2248 47.8106 22.2265 47.8372 22.2332 47.8627C22.24 47.8882 22.2517 47.9122 22.2677 47.9332C28.8832 56.6153 31.0929 67.2005 31.7817 74.5516C32.2424 79.2133 32.2117 83.9105 31.6902 88.5657C31.6861 88.5942 31.6883 88.6233 31.6965 88.6509C31.7046 88.6785 31.7186 88.7041 31.7375 88.7258C31.7564 88.7475 31.7797 88.765 31.8059 88.7769C31.8321 88.7889 31.8606 88.795 31.8894 88.795Z" fill="#3F3D56" />
-										<path d="M26.442 60.0428C26.4845 60.0428 26.5259 60.0294 26.5602 60.0045C26.5946 59.9796 26.6202 59.9444 26.6333 59.904C26.6464 59.8637 26.6465 59.8202 26.6333 59.7798C26.6202 59.7394 26.5947 59.7042 26.5603 59.6793C24.6589 58.3922 22.6048 57.3465 20.4453 56.5664C17.0715 55.3312 11.9411 54.2114 6.65954 55.8924C6.6344 55.9004 6.61107 55.9133 6.5909 55.9303C6.57073 55.9473 6.55412 55.9681 6.54199 55.9916C6.52987 56.015 6.52248 56.0406 6.52025 56.0669C6.51802 56.0932 6.52099 56.1197 6.529 56.1448C6.537 56.17 6.54987 56.1933 6.56689 56.2135C6.58391 56.2336 6.60474 56.2502 6.62818 56.2624C6.65162 56.2745 6.67721 56.2819 6.70351 56.2841C6.7298 56.2863 6.75628 56.2834 6.78142 56.2754C11.9548 54.629 16.9922 55.7302 20.3071 56.9438C22.4319 57.7107 24.453 58.7387 26.324 60.0044C26.3583 60.0294 26.3996 60.0428 26.442 60.0428Z" fill="#3F3D56" />
-										<path d="M35.6427 37.1331C35.6458 37.0908 35.6354 37.0485 35.613 37.0125C35.5906 36.9764 35.5574 36.9483 35.5181 36.9323C35.4788 36.9163 35.4354 36.9132 35.3942 36.9233C35.3529 36.9335 35.316 36.9565 35.2886 36.9889C33.868 38.7927 32.6771 40.7662 31.7434 42.8639C30.2685 46.14 28.7822 51.1764 30.0784 56.5653C30.0845 56.591 30.0957 56.6153 30.1112 56.6367C30.1267 56.6581 30.1462 56.6763 30.1688 56.6901C30.1913 56.704 30.2163 56.7132 30.2425 56.7174C30.2686 56.7215 30.2952 56.7204 30.3209 56.7143C30.3466 56.7081 30.3709 56.6969 30.3922 56.6813C30.4136 56.6658 30.4317 56.6461 30.4455 56.6236C30.4592 56.601 30.4684 56.5759 30.4725 56.5498C30.4766 56.5237 30.4754 56.497 30.4692 56.4713C29.1996 51.1928 30.6608 46.2478 32.11 43.0289C33.0278 40.9649 34.1988 39.023 35.5959 37.248C35.6233 37.2156 35.6397 37.1754 35.6427 37.1331Z" fill="#3F3D56" /> </g>
-									<defs>
-										<clipPath id="clip0_3896_26042">
-											<rect width="218.206" height="110" fill="white" transform="translate(0.898438)" /> </clipPath>
-									</defs>
-								</svg>
-								<div class="pending_appointments_empty_state_message_container">
-									<div class="pet_info_empty_state">
-										<h1>NO REJECTED APPOINTMENTS YET</h1>
-										<div class="pet_info_empty_state_p_container">
-											<p>You haven’t rejected any appointments yet.</p>
-											<p>However, you can add one by yourself by clicking the pending tab above, or you can create an appointment by clicking the button below.</p>
-										</div>
-									</div>
-								</div>
-								<button class="btn new_appointment_btn" id="rejected_appointment_tab_button" type="button"><span class="new_appointment_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5910_1403)" filter="url(#filter0_d_5910_1403)">
-    <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <filter id="filter0_d_5910_1403" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <filter id="filter0_d_6404_5410" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
       <feFlood flood-opacity="0" result="BackgroundImageFix"/>
       <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
       <feOffset dy="2"/>
       <feGaussianBlur stdDeviation="1"/>
       <feComposite in2="hardAlpha" operator="out"/>
       <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5910_1403"/>
-      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_5910_1403" result="shape"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6404_5410"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6404_5410" result="shape"/>
     </filter>
-    <clipPath id="clip0_5910_1403">
-      <rect width="24" height="24" fill="white"/>
+    <clipPath id="clip0_6404_5410">
+      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
     </clipPath>
   </defs>
-</svg> New Appointment</span></button>
-							</div>
-							<div class="table-responsive mt-3" id="rejected_table" style="overflow: visible; display:none;">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>
-												<input type="radio" id="selectAll_rejected" class="checkbox">
-											</th>
-											<th>No.</th>
-											<th>Client</th>
-											<th>Patient Info</th>
-											<th>Appointment</th>
-											<th>Surgery type</th>
-											<th>Reasons</th>
-											<th>Actions</th>
-										</tr>
-									</thead>
-									<tbody id="rejectedTableBody"></tbody>
-								</table>
-							</div>
-							<div class="pagination" id="rejected_pagination" style="display: none;">
-								<div class="pagination-menu"> <span>Go to:</span>
-									<select class="paginationGoToSelect">
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-									</select>
-								</div>
-								<div class="pagination-pages"> <span class="pagination-arrow previous-page">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
-                          <path d="M5.48 12L1.36452 7.88384C0.878492 7.39773 0.878492 6.60227 1.36452 6.11616L5.48 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
-                        </svg>
-                      </span>
-									<div class="pages"> <span class="pagination-page active">1</span> <span class="pagination-page">2</span> <span class="pagination-page">3</span> <span class="pagination-page">4</span> <span class="pagination-page">5</span> </div> <span class="pagination-arrow next-page">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
-                          <path d="M1.47998 12L5.59546 7.88384C6.08149 7.39773 6.08149 6.60227 5.59546 6.11616L1.47998 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
-                        </svg>
-                      </span> </div>
-								<div class="pagination-items"> <span>Show:</span>
-									<select class="paginationItemsSelect">
-										<option value="2">2 items</option>
-										<option value="3">3 items</option>
-										<option value="4">4 items</option>
-										<option value="5">5 items</option>
-										<option value="6">6 items</option>
-									</select>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
-	<div class="modal fade" role="dialog" tabindex="-1" id="add_appointment_modal">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content add_client_modal">
-				<div class="modal-header">
-					<h1 class="modal-title">Add Appointment</h1>
-					<button class="btn-close" id="close_client_modal" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
-				</div>
-				<div class="modal-body" style="width:100%;">
-					<form id="add_appointment_form" class="add_client">
-						<div class="mb-3 input_container">
-							<div class="form-floating" style="width:100%;">
-								<select class="form-select" data-id="owner_name" id="owner_name">
-									<option value="none" selected="">Select an owner</option>
-								</select>
-								<label class="form-label" for="owner_name">Owner Name<span>&nbsp;*</span></label>
-								<div id="error-owner_name-1" class="error-message"><span>• Please enter client first name.</span></div>
-								<div id="guide-owner_name-1" class="guide-message"><span>• Please enter client first name.</span></div>
-							</div>
-							<div class="form-floating" style="width:100%;">
-								<input class="form-control" type="text" id="email" data-id="email" placeholder="Email">
-								<label class="form-label" for="email">Email<span>&nbsp;*</span></label>
-							</div>
-							<div class="form-floating" style="width:100%;">
-								<select class="form-select" data-id="pet_name" id="pet_name">
-									<option value="" selected="">Select a pet</option>
-								</select>
-								<label class="form-label" for="pet_name">Pet Name<span>&nbsp;*</span></label>
-								<div id="error-pet_name" class="error-message"><span>• Please enter client first name.</span></div>
-								<div id="guide-pet_name" class="guide-message"><span>• Please enter client first name.</span></div>
-							</div>
-							<div class="pet_type_and_breed_container">
-								<div class="species_container">
-									<div id="dog_cat_btn" class="species" style="display: flex;align-items: flex-start;gap: var(--spacing-spacing-xs, 12px);align-self: stretch;">
-										<button id="dog-0" class="btn custom-radio" type="button" onclick="checkRadio('dog-0'); selectBreed('dog', '0');">
-											<label class="form-label custom-control-label">Dog</label>
-											<input name="species" id="dog-radio-0" class="checkbox" type="radio" /> </button>
-										<button id="cat-0" class="btn custom-radio" type="button" onclick="checkRadio('cat-0');  selectBreed('cat', '0');">
-											<label class="form-label custom-control-label">Cat</label>
-											<input name="species" id="cat-radio-0" class="checkbox" type="radio" /> </button>
-									</div>
-								</div>
-								<div class="align-self-stretch form-floating breed_container">
-									<select class="form-select" id="breed-0" data-id="breed-0" disabled="" required="" style="height:100%;"></select>
-									<label class="form-label" for="breed">Select a breed<span>&nbsp;*</span></label>
-									<div id="error-breed" class="error-message"><span>• Please select a breed</span></div>
-								</div>
-							</div>
-							<div class="form-floating" style="width:100%;">
-								<select class="form-select" data-id="surgery_type" id="surgery_type">
-									<option value="" selected="">Surgery Type</option>
-									<option value="Neuter">Neuter</option>
-									<option value="Tooth Extraction">Tooth Extraction</option>
-								</select>
-								<label class="form-label" for="surgery_type">Surgery Type<span>&nbsp;*</span></label>
-								<div id="error-surgery_type" class="error-message"><span>• Please select a surgery.</span></div>
-							</div>
-							<div class="form-floating" style="width:100%;">
-								<textarea class="form-control" id="additional_notes" data-id="additional_notes" placeholder="Additional Notes"></textarea>
-								<label class="form-label" for="additional_notes">Additional Notes</label>
-								<div id="guide-additional_notes" class="guide-message"><span>• Please enter client last name.</span></div>
-							</div>
-							<div class="date_time_container">
-								<div class="form-floating" style="width: 100%;">
-									<input class="form-control form-control" id="appointment_date" type="date" data-id="appointment_date">
-									<label class="form-label" for="appointment_date">Date<span>&nbsp;*</span></label>
-								</div>
-								<div class="form-floating" style="width: 100%;">
-									<input class="form-control form-control form-control" id="appointment_time" type="time" data-id="appointment_time">
-									<label class="form-label" for="appointment_time">Time<span>&nbsp;*</span></label>
-									<div id="error-appointment_time" class="error-message"><span>• Please select a breed</span></div>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer add_product_button">
-					<button class="btn clear_form" id="clear_form" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_product" id="submit_approved_appointment" type="submit"><span class="submit_product_base">Submit</span></button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" role="dialog" tabindex="-1" id="add_appointment_modal-1">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content add_client_modal">
-				<div class="modal-header">
-					<h1 class="modal-title">Add Appointment</h1>
-					<button class="btn-close" id="close_client_modal-1" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
-				</div>
-				<div class="modal-body" style="width:100%;">
-					<form id="add_appointment_form-1" class="add_client">
-						<div class="mb-3 input_container">
-							<div class="form-floating" style="width:100%;">
-								<select class="form-select" id="owner_name-1" data-id="owner_name-1">
-									<option value="" selected="">Select an owner</option>
-								</select>
-								<label class="form-label" for="owner_name">Owner Name<span>&nbsp;*</span></label>
-								<div id="error-owner_name-2" class="error-message"><span>• Please enter client first name.</span></div>
-								<div id="guide-owner_name-2" class="guide-message"><span>• Please enter client first name.</span></div>
-							</div>
-							<div class="form-floating" style="width:100%;">
-								<input class="form-control" type="text" id="email-1" data-id="email-1" placeholder="Email">
-								<label class="form-label" for="email">Email<span>&nbsp;*</span></label>
-							</div>
-							<div class="form-floating" style="width:100%;">
-								<select class="form-select" id="pet_name-1" data-id="pet_name-1">
-									<option value="" selected="">Select a pet</option>
-								</select>
-								<label class="form-label" for="pet_name">Pet Name<span>&nbsp;*</span></label>
-								<div id="error-pet_name-1" class="error-message"><span>• Please enter client first name.</span></div>
-								<div id="guide-pet_name-1" class="guide-message"><span>• Please enter client first name.</span></div>
-							</div>
-							<div class="pet_type_and_breed_container">
-								<div class="species_container">
-									<div id="dog_cat_btn-1" class="species" style="display: flex;align-items: flex-start;gap: var(--spacing-spacing-xs, 12px);align-self: stretch;">
-										<button id="dog-1" data-id="dog-1" class="btn custom-radio" type="button" onclick="checkRadio('dog-1');  selectBreed('dog', '1');">
-											<label class="form-label custom-control-label">Dog</label>
-											<input name="species" id="dog-radio-1" class="checkbox" type="radio" /> </button>
-										<button id="cat-1" data-id="cat-1" class="btn custom-radio" type="button" onclick="checkRadio('cat-1');  selectBreed('cat', '1');">
-											<label class="form-label custom-control-label">Cat</label>
-											<input name="species" id="cat-radio-1" class="checkbox" type="radio" /> </button>
-									</div>
-								</div>
-								<div class="align-self-stretch form-floating breed_container">
-									<select class="form-select" id="breed-1" data-id="breed-1" disabled="" required="" style="height:100%;"></select>
-									<label class="form-label" for="breed">Select a breed<span>&nbsp;*</span></label>
-									<div id="error-breed-1" class="error-message"><span>• Please select a breed</span></div>
-								</div>
-							</div>
-							<div class="form-floating" style="width:100%;">
-								<select class="form-select" id="surgery_type-1" data-id="surgery_type-1">
-									<option value="" selected="">Surgery Type</option>
-									<option value="Neuter">Neuter</option>
-									<option value="Tooth Extraction">Tooth Extraction</option>
-								</select>
-								<label class="form-label" for="surgery_type">Surgery Type<span>&nbsp;*</span></label>
-								<div id="error-surgery_type-1" class="error-message"><span>• Please select a surgery.</span></div>
-							</div>
-							<div class="form-floating" style="width:100%;">
-								<textarea class="form-control" id="additional_notes-1" data-id="additional_notes-1" placeholder="Additional Notes"></textarea>
-								<label class="form-label" for="additional_notes-1">Additional Notes</label>
-								<div id="guide-additional_notes-1" class="guide-message"><span>• Please enter client last name.</span></div>
-							</div>
-							<div class="date_time_container">
-								<div class="form-floating" style="width: 100%;">
-									<input class="form-control" id="appointment_date-1" type="date" data-id="appointment_date-1">
-									<label class="form-label" for="appointment_date">Date<span>&nbsp;*</span></label>
-								</div>
-								<div class="form-floating" style="width: 100%;">
-									<input class="form-control" id="appointment_time-1" type="time" data-id="appointment_time-1">
-									<label class="form-label" for="appointment_time">Time<span>&nbsp;*</span></label>
-									<div id="error-appointment_time-1" class="error-message"><span>• Please select a breed</span></div>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer add_product_button">
-					<button class="btn clear_form" id="clear_form-1" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_product" id="submit_pending_appointment" type="submit"><span class="submit_product_base">Submit</span></button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" role="dialog" tabindex="-1" id="add_appointment_modal-2">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content add_client_modal">
-				<div class="modal-header">
-					<h1 class="modal-title">Add Appointment</h1>
-					<button class="btn-close" id="close_client_modal-2" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
-				</div>
-				<div class="modal-body" style="width:100%;">
-					<form id="add_appointment_form-2" class="add_client">
-						<div class="mb-3 input_container">
-							<div class="form-floating" style="width:100%;">
-								<select class="form-select" id="owner_name-2" data-id="owner_name-2">
-									<option value="" selected="">Select an owner</option>
-								</select>
-								<label class="form-label" for="owner_name">Owner Name<span>&nbsp;*</span></label>
-								<div id="error-owner_name-3" class="error-message"><span>• Please enter client first name.</span></div>
-								<div id="guide-owner_name-3" class="guide-message"><span>• Please enter client first name.</span></div>
-							</div>
-							<div class="form-floating" style="width:100%;">
-								<input class="form-control" type="text" id="email-2" data-id="email-2" placeholder="Email">
-								<label class="form-label" for="email">Email<span>&nbsp;*</span></label>
-							</div>
-							<div class="form-floating" style="width:100%;">
-								<select class="form-select" id="pet_name-2" data-id="pet_name-2">
-									<option value="none" selected="">Select a pet</option>
-								</select>
-								<label class="form-label" for="pet_name">Pet Name<span>&nbsp;*</span></label>
-								<div id="error-pet_name-2" class="error-message"><span>• Please enter client first name.</span></div>
-								<div id="guide-pet_name-2" class="guide-message"><span>• Please enter client first name.</span></div>
-							</div>
-							<div class="pet_type_and_breed_container">
-								<div class="species_container">
-									<div id="dog_cat_btn-2" class="species" style="display: flex;align-items: flex-start;gap: var(--spacing-spacing-xs, 12px);align-self: stretch;">
-										<button id="dog-2" class="btn custom-radio" type="button" onclick="checkRadio('dog-2');  selectBreed('dog', '2');">
-											<label class="form-label custom-control-label">Dog</label>
-											<input name="species" id="dog-radio-2" class="checkbox" type="radio" /> </button>
-										<button id="cat-2" class="btn custom-radio" type="button" onclick="checkRadio('cat-2');  selectBreed('cat', '2');">
-											<label class="form-label custom-control-label">Cat</label>
-											<input name="species" id="cat-radio-2" class="checkbox" type="radio" /> </button>
-									</div>
-								</div>
-								<div class="align-self-stretch form-floating breed_container">
-									<select class="form-select" id="breed-2" data-id="breed-2" disabled="" required="" style="height:100%;"></select>
-									<label class="form-label" for="breed">Select a breed<span>&nbsp;*</span></label>
-									<div id="error-breed-2" class="error-message"><span>• Please select a breed</span></div>
-								</div>
-							</div>
-							<div class="form-floating" style="width:100%;">
-								<select class="form-select" id="surgery_type-2" data-id="surgery_type-2">
-									<option value="" selected="">Surgery Type</option>
-									<option value="Neuter">Neuter</option>
-									<option value="Tooth Extraction">Tooth Extraction</option>
-								</select>
-								<label class="form-label" for="surgery_type">Surgery Type<span>&nbsp;*</span></label>
-								<div id="error-surgery_type-2" class="error-message"><span>• Please select a surgery.</span></div>
-							</div>
-							<div class="form-floating" style="width:100%;">
-								<textarea class="form-control form-control" id="additional_notes-2" data-id="additional_notes-2" placeholder="Additional Notes"></textarea>
-								<label class="form-label" for="additional_notes">Additional Notes</label>
-								<div id="guide-additional_notes-2" class="guide-message"><span>• Please enter client last name.</span></div>
-							</div>
-							<div class="date_time_container">
-								<div class="form-floating" style="width: 100%;">
-									<input class="form-control form-control" id="appointment_date-2" type="date" data-id="appointment_date-2">
-									<label class="form-label" for="appointment_date">Date<span>&nbsp;*</span></label>
-								</div>
-								<div class="form-floating" style="width: 100%;">
-									<input class="form-control" id="appointment_time-2" type="time" data-id="appointment_time-2">
-									<label class="form-label" for="appointment_time">Time<span>&nbsp;*</span></label>
-									<div id="error-appointment_time-2" class="error-message"><span>• Please select a breed</span></div>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer add_product_button">
-					<button class="btn clear_form" id="clear_form-2" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_product" id="submit_rejected_appointment" type="submit"><span class="submit_product_base">Submit</span></button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade show" role="dialog" tabindex="-1" id="add_appointment_success">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content success_modal">
-				<div class="modal-header success_header">
-					<div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-  <g clip-path="url(#clip0_5693_10654)">
-    <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>&nbsp;Add Diagnosis</span></button>
+                                </div>
+                                <div id="medical_history_table_container" class="medical_history_table_container" style="display: none;">
+                                    <div class="table-responsive mt-3" id="medical_history_table" style="width: 100%;">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Diagnosis</th>
+                                                    <th>Date Diagnosed</th>
+                                                    <th>Treatment</th>
+                                                    <th>Medication</th>
+                                                    <th>Note</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Cell 1</td>
+                                                    <td>Cell 1</td>
+                                                    <td>Cell 1</td>
+                                                    <td>Cell 2</td>
+                                                    <td>Cell 2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane pet_information" role="tabpanel" id="tab-3">
+                                <div id="immunization_empty_state" class="pet_record_empty_state_message_container">
+                                    <div class="pet_info_empty_state">
+                                        <h1>NO IMMUNIZATION HISTORY FOUND</h1>
+                                        <div class="pet_info_empty_state_p_container">
+                                            <p>You can add an immunization&nbsp;history by clicking the button below.</p>
+                                        </div>
+                                    </div><button class="btn add_history" id="add_vaccine_history" type="button"><span id="add_vaccine_history" class="add_history_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+  <g clip-path="url(#clip0_6404_5410)" filter="url(#filter0_d_6404_5410)">
+    <path d="M12.5 5V19M5.5 12H19.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <defs>
-    <clipPath id="clip0_5693_10654">
-      <rect width="32" height="32" fill="white"/>
+    <filter id="filter0_d_6404_5410" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="2"/>
+      <feGaussianBlur stdDeviation="1"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6404_5410"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6404_5410" result="shape"/>
+    </filter>
+    <clipPath id="clip0_6404_5410">
+      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
     </clipPath>
   </defs>
-</svg></span></div>
-				</div>
-				<div class="modal-body success_message">
-					<div>
-						<h1>Success!</h1>
-						<p>Client have been successfully added.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade show" role="dialog" tabindex="-1" id="success_reschedule_modal">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content success_modal">
-				<div class="modal-header success_header">
-					<div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-  <g clip-path="url(#clip0_5693_10654)">
-    <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>&nbsp;Vaccine Record</span></button>
+                                </div>
+                                <div id="immunization_history_table_container" class="immunization_history_table_container" style="display: none;">
+                                    <div class="table-responsive mt-3" id="immunization_history_table" style="width: 100%;">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Vaccination</th>
+                                                    <th>Details</th>
+                                                    <th>Next Vaccination</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Cell 1</td>
+                                                    <td>Cell 1</td>
+                                                    <td>Cell 1</td>
+                                                    <td>Cell 2</td>
+                                                    <td>Cell 2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane pet_information" role="tabpanel" id="tab-4">
+                                <div id="surgery_empty_state" class="pet_record_empty_state_message_container">
+                                    <div class="pet_info_empty_state">
+                                        <h1>NO SURGICAL HISTORY FOUND</h1>
+                                        <div class="pet_info_empty_state_p_container">
+                                            <p>You can add a surgical history by clicking the button below.</p>
+                                        </div>
+                                    </div><button class="btn add_history" id="add_surgery_history" type="button"><span id="add_surgery_history" class="add_history_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+  <g clip-path="url(#clip0_6404_5410)" filter="url(#filter0_d_6404_5410)">
+    <path d="M12.5 5V19M5.5 12H19.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <defs>
-    <clipPath id="clip0_5693_10654">
-      <rect width="32" height="32" fill="white"/>
+    <filter id="filter0_d_6404_5410" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="2"/>
+      <feGaussianBlur stdDeviation="1"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6404_5410"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6404_5410" result="shape"/>
+    </filter>
+    <clipPath id="clip0_6404_5410">
+      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
     </clipPath>
   </defs>
-</svg></span></div>
-				</div>
-				<div class="modal-body success_message">
-					<div>
-						<h1>Success!</h1>
-						<p>The appointment has been rescheduled.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade show" role="dialog" tabindex="-1" id="accept_modal">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content discard_modal">
-				<div class="modal-header success_header">
-					<div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-  <g clip-path="url(#clip0_6319_20047)">
-    <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>&nbsp;Add Surgery</span></button>
+                                </div>
+                                <div id="surgery_history_table_container" class="surgery_history_table_container" style="display: none;">
+                                    <div class="table-responsive mt-3" id="surgery_history_table" style="width: 100%;">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Surgery Performed</th>
+                                                    <th>Date of Surgery</th>
+                                                    <th>Reason</th>
+                                                    <th>Medication</th>
+                                                    <th>Note</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Cell 1</td>
+                                                    <td>Cell 1</td>
+                                                    <td>Cell 1</td>
+                                                    <td>Cell 2</td>
+                                                    <td>Cell 2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="edit_pet_container" class="edit_pet">
+                    <div class="edit_pet_back_btn_container"><button class="btn edit_pet_back_btn" id="edit_pet_back_btn" type="button"><span class="edit_pet_back_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+  <g clip-path="url(#clip0_6089_3068)" filter="url(#filter0_d_6089_3068)">
+    <path d="M5.5 12H19.5M5.5 12L11.5 18M5.5 12L11.5 6" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <defs>
-    <clipPath id="clip0_6319_20047">
-      <rect width="32" height="32" fill="white"/>
+    <filter id="filter0_d_6089_3068" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="2"/>
+      <feGaussianBlur stdDeviation="1"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6089_3068"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6089_3068" result="shape"/>
+    </filter>
+    <clipPath id="clip0_6089_3068">
+      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
     </clipPath>
   </defs>
-</svg></span></div>
-				</div>
-				<div class="modal-body success_message">
-					<div>
-						<h1>Approve appointment?</h1>
-						<p>You are approving a pending appointment. Do you wish to continue?</p>
-					</div>
-				</div>
-				<div class="modal-footer discard_footer">
-					<button class="btn return_btn" id="cancel_appointment_btn" data-bs-dismiss="modal" type="button"><span class="return_btn_base">Cancel</span></button>
-					<button class="btn approve_appointment_btn" id="confirm_approve_appointment_btn" type="button"><span class="discard_btn_base">Approve</span></button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade show" role="dialog" tabindex="-1" id="reject_modal">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content discard_modal">
-				<div class="modal-header discard_header">
-					<div class="discard_icon_container"><span class="discard_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+</svg> Back</span></button></div>
+                    <div class="input_details_container">
+                        <div class="detail_body"><img src="assets/img/koda%201.png">
+                            <div class="pet_details_container">
+                                <div class="align-self-stretch form-floating"><input type="text" class="form-control"><label class="form-label" for="pet_name">Pet Name</label>
+                                    <div class="error-message"><span>• Error Message</span></div>
+                                    <div class="guide-message"><span>• Guide Message</span></div>
+                                </div>
+                                <div class="align-self-stretch form-floating"><select aria-label="Floating label select example" class="form-select" id="pet_sex">
+                                        <option value="" selected="">Select sex</option>
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
+                                    </select><label class="form-label" for="pet_sex">Sex</label>
+                                    <div id="error_sex" class="error-message"><span>• Error Message</span></div>
+                                    <div id="guide_sex" class="guide-message"><span>• Guide Message</span></div>
+                                </div>
+                                <div class="new_input_row">
+                                    <div class="form-floating" style="width: 100%;"><input class="form-control" type="date"><label class="form-label">Label</label>
+                                        <div class="error-message"></div>
+                                        <div class="guide-message"></div>
+                                    </div>
+                                    <div class="form-floating" style="width: 100%;"><input type="text" class="form-control"><label class="form-label">Age</label></div>
+                                </div>
+                                <div class="new_input_row">
+                                    <div class="form-floating" style="width: 543px;"><select class="form-select" aria-label="Floating label select example">
+                                            <option value="" selected="">Pet Type</option>
+                                            <option value="Dog">Dog</option>
+                                            <option value="Cat">Cat</option>
+                                        </select><label class="form-label" for="">Pet Type</label>
+                                        <div class="error-message"><span>• Error Message</span></div>
+                                        <div class="guide-message"><span>• Guide Message</span></div>
+                                    </div>
+                                    <div class="new_inputs_row">
+                                        <div class="form-floating" style="width: 100%;"><select class="form-select" id="pet_breed" aria-label="Floating label select example">
+                                                <option value="" selected="">Breed</option>
+                                                <option value="other">Other</option>
+                                            </select><label class="form-label" for="">Breed</label>
+                                            <div class="error-message"><span>• Error Message</span></div>
+                                            <div class="guide-message"><span>• Guide Message</span></div>
+                                        </div>
+                                        <div class="form-floating" id="pet_breed_specify" style="width: 100%; display: none;"><input type="text" class="form-control" id="pet_breed1" placeholder="Specify Breed">
+                                            <label class="form-label" for="pet_breed1">Specify Breed</label>
+                                            <div class="error-message"><span>• Error Message</span></div>
+                                            <div class="guide-message"><span>• Guide Message</span></div>
+                                        </div>
+                                        <div class="align-self-stretch form-floating" id="specific_breed"><input type="text" id="specify_breed" class="form-control" placeholder="Specify Breed"><label class="form-label" for="specify_breed">Specify Breed</label>
+                                            <div id="error_specify_breed" class="error-message"><span>• Error Message</span></div>
+                                            <div id="guide_specify_breed" class="guide-message"><span>• Guide Message</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 prod_detail_fields_buttons"><button id="cancel_edit" class="btn cancel_edit" type="button"><span class="cancel_edit_base">Cancel</span></button><button id="edit_save_changes" class="btn edit_save_changes" type="button"><span class="edit_save_changes_base">Save Changes</span></button></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="modal fade show" role="dialog" tabindex="-1" id="edit_discard">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content discard_modal">
+                <div class="modal-header discard_header">
+                    <div class="discard_icon_container"><span class="discard_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
   <g clip-path="url(#clip0_5693_21111)">
     <path d="M13.3333 13.3333L18.6667 18.6667M18.6667 13.3333L13.3333 18.6667M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#DA534F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -984,196 +786,449 @@
     </clipPath>
   </defs>
 </svg></span></div>
-				</div>
-				<div class="modal-body discard_message">
-					<div>
-						<h1>Reject appointment</h1>
-						<p>You are about to reject a pending appointment. Do you wish to continue?</p>
-					</div>
-					<div class="form-floating" style="width:100%;">
-						<select id="rejection_reason" class="form-select" data-id="rejection_reason">
-							<option value="" selected="">Rejection reason</option>
-							<option value="Reason 1">Reason 1</option>
-							<option value="Reason 2">Reason 2</option>
-							<option value="other">Other reason</option>
-						</select>
-						<label class="form-label" for="rejection_reason">Rejection reason<span>&nbsp;*</span></label>
-					</div>
-					<div id="specific_reason" class="form-floating specific_reason" style="width:100%;">
-						<textarea id="specify_reason" class="form-control"></textarea>
-						<label class="form-label" for="specific_reason">Other reasons<span>&nbsp;*</span></label>
-					</div>
-				</div>
-				<div class="modal-footer discard_footer">
-					<button class="btn return_btn" data-bs-dismiss="modal" id="return_btn" type="button"><span class="return_btn_base">Cancel</span></button>
-					<button class="btn reject_btn" id="reject_btn" type="button"><span class="discard_btn_base">Reject</span></button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade show" role="dialog" tabindex="-1" id="resched_modal" style="display:none;">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content resched_modal">
-				<div class="modal-header archive_header">
-					<div class="archive_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-  <g clip-path="url(#clip0_6356_1845)">
-    <path d="M16 10.6667V16M16 21.3333H16.0133M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 12.8174 26.7357 9.76516 24.4853 7.51472C22.2348 5.26428 19.1826 4 16 4C12.8174 4 9.76516 5.26428 7.51472 7.51472C5.26428 9.76516 4 12.8174 4 16Z" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6356_1845">
-      <rect width="32" height="32" fill="white"/>
-    </clipPath>
-  </defs>
-</svg></span></div>
-				</div>
-				<div class="modal-body archive_message">
-					<div>
-						<h1><strong>Reschedule appointment</strong></h1>
-						<p>You are about to reschedule an appointment. Please make sure that all information are correct.</p>
-					</div>
-					<div class="date_time_container">
-						<div class="form-floating" style="width:100%;">
-							<input class="form-control" data-id="appointment_date-3" id="appointment_date-3" type="date">
-							<label class="form-label form-label" for="appointment_date-3">Date<span>&nbsp;*</span></label>
-						</div>
-						<div class="form-floating" style="width:100%;">
-							<input class="form-control" data-id="appointment_time-3" id="appointment_time-3" type="time">
-							<label class="form-label form-label" for="appointment_time-3">Time<span>&nbsp;*</span></label>
-							<div class="error-message" id="error-appointment_time-3"><span>• Please select a breed</span></div>
-						</div>
-					</div>
-					<div class="form-floating" style="width:100%;">
-						<select id="rejection_reason-1" class="form-select" data-id="rejection_reason-1">
-							<option value="" selected="">Reschedule reason</option>
-							<option value="Reason 1">Reason 1</option>
-							<option value="Reason 2">Reason 2</option>
-							<option value="other">Other reason</option>
-						</select>
-						<label class="form-label form-label" for="rejection_reason">Reschedule reason<span>&nbsp;*</span></label>
-					</div>
-					<div class="form-floating specific_reason" id="specific_reason-1" style="width:100%;">
-						<textarea class="form-control" id="specify_reason-1"></textarea>
-						<label class="form-label form-label" for="specific_reason">Other reasons<span>&nbsp;*</span></label>
-					</div>
-				</div>
-				<div class="modal-footer d-flex justify-content-end align-items-center align-self-stretch">
-					<button class="btn cancel_btn" data-bs-dismiss="modal" id="cancel_reschedule_btn" type="button"><span class="return_btn_base">Cancel</span></button>
-					<button id="reschedule_btn" class="btn reschedule_btn" type="button" data-bs-dismiss="modal"><span class="archive_confirm_button_base">Reschedule</span></button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade show" role="dialog" tabindex="-1" id="resched_modal-1">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content resched_modal">
-				<div class="modal-header archive_header">
-					<div class="archive_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-  <g clip-path="url(#clip0_6356_1845)">
-    <path d="M16 10.6667V16M16 21.3333H16.0133M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 12.8174 26.7357 9.76516 24.4853 7.51472C22.2348 5.26428 19.1826 4 16 4C12.8174 4 9.76516 5.26428 7.51472 7.51472C5.26428 9.76516 4 12.8174 4 16Z" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6356_1845">
-      <rect width="32" height="32" fill="white"/>
-    </clipPath>
-  </defs>
-</svg></span></div>
-				</div>
-				<div class="modal-body archive_message">
-					<div>
-						<h1><strong>Reschedule appointment</strong></h1>
-						<p>You are about to reschedule an appointment. Please make sure that all information are correct.</p>
-					</div>
-					<div class="date_time_container">
-						<div class="form-floating" style="width:100%;">
-							<input class="form-control" data-id="appointment_date-4" id="appointment_date-4" type="date">
-							<label class="form-label form-label" for="appointment_date-4">Date<span>&nbsp;*</span></label>
-						</div>
-						<div class="form-floating" style="width:100%;">
-							<input class="form-control" data-id="appointment_time-4" id="appointment_time-4" type="time">
-							<label class="form-label form-label" for="appointment_time-4">Time<span>&nbsp;*</span></label>
-							<div class="error-message" id="error-appointment_time-4"><span>• Please select a breed</span></div>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer d-flex justify-content-end align-items-center align-self-stretch">
-					<button class="btn cancel_btn" data-bs-dismiss="modal" id="cancel_reschedule_btn-1" type="button"><span class="return_btn_base">Cancel</span></button>
-					<button id="reschedule_btn-1" class="btn reschedule_btn" type="button" data-bs-dismiss="modal"><span class="archive_confirm_button_base">Reschedule</span></button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade show" role="dialog" tabindex="-1" id="archive_modal">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content archive_modal">
-				<div class="modal-header archive_header">
-					<div class="archive_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-  <g clip-path="url(#clip0_6356_1845)">
-    <path d="M16 10.6667V16M16 21.3333H16.0133M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 12.8174 26.7357 9.76516 24.4853 7.51472C22.2348 5.26428 19.1826 4 16 4C12.8174 4 9.76516 5.26428 7.51472 7.51472C5.26428 9.76516 4 12.8174 4 16Z" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6356_1845">
-      <rect width="32" height="32" fill="white"/>
-    </clipPath>
-  </defs>
-</svg></span></div>
-				</div>
-				<div class="modal-body archive_message">
-					<div>
-						<h1><strong>Archive appointment?</strong></h1>
-						<p>You are about to archive a rejected appointment. Do you wish to continue?</p>
-					</div>
-				</div>
-				<div class="modal-footer discard_footer">
-					<button class="btn return_btn" data-bs-dismiss="modal" type="button"><span class="return_btn_base">Cancel</span></button>
-					<button class="btn archive_confirm" id="archive_confirm_button" type="button"><span class="archive_confirm_button_base">Archive</span></button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade show" role="dialog" tabindex="-1" id="mark_complete_modal">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content archive_modal">
-				<div class="modal-header archive_header">
-					<div class="complete_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-  <g clip-path="url(#clip0_6356_15066)">
+                </div>
+                <div class="modal-body discard_message">
+                    <div>
+                        <h1>Discard changes?</h1>
+                        <p>Any unsaved progress will be lost.</p>
+                    </div>
+                </div>
+                <div class="modal-footer discard_footer"><button class="btn return_btn" data-bs-dismiss="modal" id="return_btn" type="button"><span class="return_btn_base">Return</span></button><button class="btn discard_btn" id="discard_btn" type="button" data-bs-dismiss="modal" ><span class="discard_btn_base">Discard</span></button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade show" role="dialog" tabindex="-1" id="save_changes_success">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content success_modal">
+                <div class="modal-header success_header">
+                    <div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_5693_10654)">
     <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <defs>
-    <clipPath id="clip0_6356_15066">
+    <clipPath id="clip0_5693_10654">
       <rect width="32" height="32" fill="white"/>
     </clipPath>
   </defs>
 </svg></span></div>
-				</div>
-				<div class="modal-body archive_message">
-					<div>
-						<h1><strong>Complete appointment?</strong></h1>
-						<p>You are about to mark this appointment as complete. Do you wish to continue?</p>
-					</div>
-				</div>
-				<div class="modal-footer discard_footer">
-					<button class="btn return_btn" data-bs-dismiss="modal" type="button"><span class="return_btn_base">Cancel</span></button>
-					<button class="btn confirm_complete" id="confirm_complete_btn" type="button"><span class="archive_confirm_button_base">Continue</span></button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+                </div>
+                <div class="modal-body success_message">
+                    <div>
+                        <h1>Success!</h1>
+                        <p>Your changes have been successfully saved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade show" role="dialog" tabindex="-1" id="add_pet_success">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content success_modal">
+                <div class="modal-header success_header">
+                    <div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_5693_10654)">
+    <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5693_10654">
+      <rect width="32" height="32" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></div>
+                </div>
+                <div class="modal-body success_message">
+                    <div>
+                        <h1>Success!</h1>
+                        <p>Pet have been successfully saved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade show" role="dialog" tabindex="-1" id="add_client_success">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content success_modal">
+                <div class="modal-header success_header">
+                    <div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_5693_10654)">
+    <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5693_10654">
+      <rect width="32" height="32" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></div>
+                </div>
+                <div class="modal-body success_message">
+                    <div>
+                        <h1>Success!</h1>
+                        <p>Client have been successfully added.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade show" role="dialog" tabindex="-1" id="archive_modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content archive_modal">
+                <div class="modal-header archive_header">
+                    <div class="archive_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_5693_10845)">
+    <path d="M16 10.6667V16M16 21.3333H16.0133M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 12.8174 26.7357 9.76516 24.4853 7.51472C22.2348 5.26428 19.1826 4 16 4C12.8174 4 9.76516 5.26428 7.51472 7.51472C5.26428 9.76516 4 12.8174 4 16Z" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5693_10845">
+      <rect width="32" height="32" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></div>
+                </div>
+                <div class="modal-body archive_message">
+                    <div>
+                        <h1>Archive client?</h1>
+                        <p>You can restore archived clients at a later time.</p>
+                    </div>
+                </div>
+                <div class="modal-footer discard_footer"><button class="btn return_btn" data-bs-dismiss="modal" type="button"><span class="return_btn_base">Cancel</span></button><button class="btn archive_confirm" id="archive_confirm_button" type="button"><span class="archive_confirm_button_base">Archive</span></button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade show" role="dialog" tabindex="-1" id="archive_pet_modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content archive_modal">
+                <div class="modal-header archive_header">
+                    <div class="archive_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_5693_10845)">
+    <path d="M16 10.6667V16M16 21.3333H16.0133M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 12.8174 26.7357 9.76516 24.4853 7.51472C22.2348 5.26428 19.1826 4 16 4C12.8174 4 9.76516 5.26428 7.51472 7.51472C5.26428 9.76516 4 12.8174 4 16Z" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5693_10845">
+      <rect width="32" height="32" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></div>
+                </div>
+                <div class="modal-body archive_message">
+                    <div>
+                        <h1>Archive Pet?</h1>
+                        <p>You can restore archived pets at a later time.</p>
+                    </div>
+                </div>
+                <div class="modal-footer discard_footer"><button class="btn return_btn" data-bs-dismiss="modal" type="button"><span class="return_btn_base">Cancel</span></button><button class="btn archive_confirm" id="archive_confirm_button-2" type="button" data-bs-dismiss="modal"><span class="archive_confirm_button_base">Archive</span></button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="add_pet_record_modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content add_pet_record_modal">
+                <div class="modal-header">
+                    <h1 class="modal-title">Add Pet Record</h1><button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body" style="width:100%;">
+                    <form id="add_pet_form" class="add_client"><img src="assets/img/image%2010.png">
+                        <div class="mb-3 input_container">
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><input class="form-control" type="text" id="pet_name" data-id="pet_name" placeholder="Pet Name" maxlength="255"><label class="form-label" for="pet_name">Pet Name<span>&nbsp;*</span></label>
+                                    <div id="error-pet_name" class="error-message"><span>• Please enter pet name.</span></div>
+                                    <div id="guide-pet_name" class="guide-message"><span>• Please enter pet name.</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><select class="form-select" id="gender" data-id="gender-" placeholder="Gender">
+                                        <option value="" selected="">Select Sex</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select><label class="form-label" for="gender">Sex<span>&nbsp;*</span></label>
+                                    <div id="error-gender" class="error-message"><span>• Please select gender of pet.</span></div>
+                                    <div id="guide-gender" class="guide-message"><span>• Please select gender of pet.</span></div>
+                                </div>
+                            </div>
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><select class="form-select" id="pet_type" data-id="pet_type-" placeholder="Pet Type">
+                                        <option value="" selected="">Select Pet Type</option>
+                                        <option value="Dog">Dog</option>
+                                        <option value="Cat">Cat</option>
+                                    </select><label class="form-label" for="pet_type">Pet Type<span>&nbsp;*</span></label>
+                                    <div id="error-pet_type" class="error-message"><span>• Please select pet type</span></div>
+                                    <div id="guide-pet_type" class="guide-message"><span>• Please select pet type</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><select class="form-select" id="breed" data-id="breed" disabled="" placeholder="Breed">
+                                        <option value="none" selected="">Select a Pet Type first.</option>
+                                    </select><label class="form-label" for="breed">Breed<span>&nbsp;*</span></label>
+                                    <div id="error-breed" class="error-message"><span>• Please select a breed.</span></div>
+                                    <div id="guide-breed" class="guide-message"><span>• Please select a breed.</span></div>
+                                </div>
+                            </div>
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><input class="form-control" id="pet_birthdate" data-id="pet_birthdate" placeholder="Birthdate" type="date"><label class="form-label" for="pet_birthdate">Birthdate<span>&nbsp;*</span></label>
+                                    <div id="error-pet_birthdate" class="error-message"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
+                                    <div id="guide_pet_birthdate" class="guide-message"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="age" data-id="age" title="Please select pet type and enter the birthdate first." maxlength="3" disabled="" placeholder="Please select pet type, breed, and enter the birthdate first."><label class="form-label" for="age">Age</label>
+                                    <div id="error-age" class="error-message" style="color:red;"></div>
+                                </div>
+                            </div>
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><input class="form-control" type="number" id="weight" data-id="weight" maxlength="10" placeholder="Weight"><label class="form-label" for="weight">Weight<span>&nbsp;*</span></label>
+                                    <div id="error-weight" class="error-message"><span>• Please enter weight of pet.</span><span>• Only numerical inputs will be accepted</span></div>
+                                    <div id="guide_pet_weight" class="guide-message"><span>• Please enter weight of pet.</span><span>• Only numerical inputs will be accepted</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><select class="form-select" id="sterilization_status" data-id="sterilization_status" placeholder="Sterilization Status">
+                                        <option value="" selected="">Select Status</option>
+                                        <option value="None">None</option>
+                                        <option value="Spayed">Spayed</option>
+                                        <option value="Neutered">Neutered</option>
+                                    </select><label class="form-label" for="sterilization_status">Sterilization Status<span>&nbsp;*</span></label>
+                                    <div id="error-sterilization_status" class="error-message"><span>• Please select a sterilization status.</span></div>
+                                    <div id="guide-sterilization_status" class="guide-message"><span>• Please select a sterilization status.</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer add_product_button"><button class="btn clear_form" id="clear_form" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button><button class="btn submit_pet" id="submit_Pet" type="submit" title="Complete the fields first to make this clickable."><span class="submit_product_base">Submit</span></button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="add_pet_record_modal-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content add_pet_record_modal">
+                <div class="modal-header">
+                    <h1 class="modal-title">Add Pet Record</h1><button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body" style="width:100%;">
+                    <form id="add_pet_form-1" class="add_client"><img src="assets/img/image%2010.png">
+                        <div class="mb-3 input_container">
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><input class="form-control" type="text" id="pet_name-1" data-id="pet_name-1" placeholder="Pet Name" maxlength="255"><label class="form-label" for="pet_name">Pet Name<span>&nbsp;*</span></label>
+                                    <div id="error-pet_name-1" class="error-message"><span>• Please enter pet name.</span></div>
+                                    <div id="guide-pet_name-1" class="guide-message"><span>• Please enter pet name.</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><select class="form-select" id="gender-1" data-id="gender-1" placeholder="Gender">
+                                        <option value="" selected="">Select Sex</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select><label class="form-label" for="gender">Sex<span>&nbsp;*</span></label>
+                                    <div id="error-gender-1" class="error-message"><span>• Please select gender of pet.</span></div>
+                                    <div id="guide-gender-1" class="guide-message"><span>• Please select gender of pet.</span></div>
+                                </div>
+                            </div>
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><select class="form-select" id="pet_type-1" data-id="pet_type-1" placeholder="Pet Type">
+                                        <option value="" selected="">Select Pet Type</option>
+                                        <option value="Dog">Dog</option>
+                                        <option value="Cat">Cat</option>
+                                    </select><label class="form-label" for="pet_type">Pet Type<span>&nbsp;*</span></label>
+                                    <div id="error-pet_type-1" class="error-message"><span>• Please select pet type</span></div>
+                                    <div id="guide-pet_type-1" class="guide-message"><span>• Please select pet type</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><select class="form-select" id="breed-1" data-id="breed-1" disabled="" placeholder="Breed">
+                                        <option value="none" selected="">Select a Pet Type first.</option>
+                                    </select><label class="form-label" for="breed">Breed<span>&nbsp;*</span></label>
+                                    <div id="error-breed-1" class="error-message"><span>• Please select a breed.</span></div>
+                                    <div id="guide-breed-1" class="guide-message"><span>• Please select a breed.</span></div>
+                                </div>
+                            </div>
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><input class="form-control" id="pet_birthdate-1" data-id="pet_birthdate-1" placeholder="Birthdate" type="date"><label class="form-label" for="pet_birthdate">Birthdate<span>&nbsp;*</span></label>
+                                    <div id="error-pet_birthdate-1" class="error-message"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
+                                    <div id="guide_pet_birthdate-1" class="guide-message"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="age-1" data-id="age-1" title="Please select pet type and enter the birthdate first." maxlength="3" disabled="" placeholder="Please select pet type, breed, and enter the birthdate first."><label class="form-label" for="age">Age</label>
+                                    <div id="error-age-1" class="error-message" style="color:red;"></div>
+                                </div>
+                            </div>
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><input class="form-control" type="number" id="weight-1" data-id="weight-1" maxlength="10" placeholder="Weight"><label class="form-label" for="weight">Weight<span>&nbsp;*</span></label>
+                                    <div id="error-weight-1" class="error-message"><span>• Please enter weight of pet.</span><span>• Only numerical inputs will be accepted</span></div>
+                                    <div id="guide_pet_weight-1" class="guide-message"><span>• Please enter weight of pet.</span><span>• Only numerical inputs will be accepted</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><select class="form-select" id="sterilization_status-1" data-id="sterilization_status-1" placeholder="Sterilization Status">
+                                        <option value="" selected="">Select Status</option>
+                                        <option value="None">None</option>
+                                        <option value="Spayed">Spayed</option>
+                                        <option value="Neutered">Neutered</option>
+                                    </select><label class="form-label" for="sterilization_status">Sterilization Status<span>&nbsp;*</span></label>
+                                    <div id="error-sterilization_status-1" class="error-message"><span>• Please select a sterilization status.</span></div>
+                                    <div id="guide-sterilization_status-1" class="guide-message"><span>• Please select a sterilization status.</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer add_product_button"><button class="btn clear_form" id="clear_form-1" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button><button class="btn submit_pet" id="submit_Pet-1" type="submit" title="Complete the fields first to make this clickable."><span class="submit_product_base">Submit</span></button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="add_medical_history_modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content add_pet_record_modal">
+                <div class="modal-header">
+                    <h1 class="modal-title">Add Diagnosis</h1><button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body" style="width:100%;">
+                    <form class="add_client" id="add_pet_form">
+                        <div class="mb-3 input_container">
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><select class="form-select form-select" data-id="diagnosis" id="diagnosis" placeholder="Diagnosis">
+                                        <option value="" selected="">Select Diagnosis</option>
+                                        <option value="Diagnosis 1">Diagnosis 1</option>
+                                        <option value="Diagnosis 2">Diagnosis 2</option>
+                                        <option value="Diagnosis 3">Diagnosis 3</option>
+                                    </select><label class="form-label form-label" for="diagnosis">Diagnosis<span>&nbsp;*</span></label>
+                                    <div class="error-message" id="error-pet_type"><span>• Please select pet type</span></div>
+                                    <div class="guide-message" id="guide-pet_type"><span>• Please select pet type</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><input class="form-control form-control" data-id="diagnosis_date" id="diagnosis_date" placeholder="Date" type="date"><label class="form-label form-label" for="diagnosis_date">Date<span>&nbsp;*</span></label>
+                                    <div class="error-message" id="error-pet_birthdate"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
+                                    <div class="guide-message" id="guide_pet_birthdate"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
+                                </div>
+                            </div>
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><select class="form-select form-select" data-id="treatment_plan" id="treatment_plan" placeholder="Treatment Plan">
+                                        <option value="" selected="">Select Treatment</option>
+                                        <option value="Treatment 1">Treatment 1</option>
+                                        <option value="Treatment 2">Treatment 2</option>
+                                        <option value="Treatment 3">Treatment 3</option>
+                                    </select><label class="form-label form-label" for="diagnosis">Treatment Plan<span>&nbsp;*</span></label>
+                                    <div class="error-message" id="error-pet_type-3"><span>• Please select pet type</span></div>
+                                    <div class="guide-message" id="guide-pet_type-3"><span>• Please select pet type</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><select class="form-select" id="medication" data-id="medication" placeholder="Medication">
+                                        <option value="" selected="">Select Medication</option>
+                                        <option value="Medication 1">Medication 1</option>
+                                        <option value="Medication 2">Medication 2</option>
+                                        <option value="Medication 3">Medication 3</option>
+                                    </select><label class="form-label form-label" for="medication">Medication<span>&nbsp;*</span></label>
+                                    <div class="error-message" id="error-pet_type-4"><span>• Please select pet type</span></div>
+                                    <div class="guide-message" id="guide-pet_type-4"><span>• Please select pet type</span></div>
+                                </div>
+                            </div>
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><textarea class="form-control form-control" data-id="diagnosis_description" id="diagnosis_description" placeholder="Diagnosis Description"></textarea><label class="form-label form-label" for="diagnosis_description">Diagnosis Description<span>&nbsp;*</span></label>
+                                    <div class="error-message" id="error-diagnosis_description"><span>• Please select a sterilization status.</span></div>
+                                    <div class="guide-message" id="guide-diagnosis_description"><span>• Please select a sterilization status.</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer add_product_button"><button class="btn clear_form" id="clear_diagnosis" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button><button class="btn submit_pet" id="submit_diagnosis" type="submit"><span class="submit_product_base">Submit</span></button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="add_immunization_history_modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content add_pet_record_modal">
+                <div class="modal-header">
+                    <h1 class="modal-title">Add Vaccination History</h1><button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body" style="width:100%;">
+                    <form class="add_client" id="add_pet_form-2">
+                        <div class="mb-3 input_container">
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><select class="form-select form-select" id="vaccination" data-id="vaccination" placeholder="Vaccination">
+                                        <option value="" selected="">Select Vaccination</option>
+                                        <option value="Vaccination 1">Vaccination 1</option>
+                                        <option value="Vaccination 2">Vaccination 2</option>
+                                        <option value="Vaccination 3">Vaccination 3</option>
+                                    </select><label class="form-label form-label" for="vaccination">Diagnosis<span>&nbsp;*</span></label>
+                                    <div id="error-vaccination" class="error-message"><span>• Please select pet type</span></div>
+                                    <div id="guide-vaccination" class="guide-message"><span>• Please select pet type</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><input class="form-control form-control" id="vaccination_date" data-id="vaccination_date" placeholder="Date" type="date"><label class="form-label form-label" for="vaccination_date">Date<span>&nbsp;*</span></label>
+                                    <div class="error-message" id="error-pet_birthdate-2"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
+                                    <div class="guide-message" id="guide_pet_birthdate-2"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
+                                </div>
+                            </div>
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><textarea class="form-control form-control" id="vaccination_description" placeholder="Vaccination Details"></textarea><label class="form-label" for="vaccination_description">Vaccination Details<span>&nbsp;*</span></label>
+                                    <div class="error-message" id="error-pet_type-5"><span>• Please select pet type</span></div>
+                                    <div class="guide-message" id="guide-pet_type-5"><span>• Please select pet type</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><input class="form-control" id="next_schedule" type="date" data-id="next_schedule"><label class="form-label form-label" for="next_schedule">Next Schedule Date<span>&nbsp;*</span></label>
+                                    <div id="error-next_schedule" class="error-message"><span>• Please select pet type</span></div>
+                                    <div id="guide-next_schedule" class="guide-message"><span>• Please select pet type</span></div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end align-items-end align-content-end align-self-end newinput_row" style="width: 100%;">
+                                <div class="form-floating" style="width: 49.3%;"><select class="form-select" data-id="status" id="status">
+                                        <option value="" selected="">Status</option>
+                                        <option value="Status 1">Status 1</option>
+                                        <option value="Status 2">Status 2</option>
+                                        <option value="Status 3">Status 3</option>
+                                    </select><label class="form-label" for="status">Status<span>&nbsp;*</span></label>
+                                    <div id="error-next_schedule-1" class="error-message"><span>• Please select pet type</span></div>
+                                    <div id="guide-next_schedule-1" class="guide-message"><span>• Please select pet type</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer add_product_button"><button class="btn clear_form" id="clear_vaccination" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button><button class="btn submit_pet" id="submit_vaccination" type="submit"><span class="submit_product_base">Submit</span></button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="add_surgery_history_modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content add_pet_record_modal">
+                <div class="modal-header">
+                    <h1 class="modal-title">Add Surgery</h1><button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body" style="width:100%;">
+                    <form class="add_client" id="add_pet_form-3">
+                        <div class="mb-3 input_container">
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><select class="form-select form-select" id="surgery" data-id="surgery" placeholder="Surgery">
+                                        <option value="" selected="">Surgery</option>
+                                        <option value="Surgery 1">Surgery 1</option>
+                                        <option value="Surgery 2">Surgery 2</option>
+                                        <option value="Surgery 3">Surgery 3</option>
+                                    </select><label class="form-label form-label" for="surgery">Surgery<span>&nbsp;*</span></label>
+                                    <div id="error-vaccination-1" class="error-message"><span>• Please select pet type</span></div>
+                                    <div id="guide-vaccination-1" class="guide-message"><span>• Please select pet type</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><input class="form-control form-control" id="surgery_date" data-id="surgery_date" placeholder="Date" type="date"><label class="form-label form-label" for="surgery_date">Date<span>&nbsp;*</span></label>
+                                    <div class="error-message" id="error-pet_birthdate-3"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
+                                    <div class="guide-message" id="guide_pet_birthdate-3"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
+                                </div>
+                            </div>
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><select class="form-select" id="surgery_reason" data-id="surgery_reason" placeholder="Reason for surgery">
+                                        <option value="" selected="">Reason for surgery</option>
+                                        <option value="Reason surgery 1">Reason surgery 1</option>
+                                        <option value="Reason surgery 2">Reason surgery 2</option>
+                                        <option value="Reason surgery 3">Reason surgery 3</option>
+                                    </select><label class="form-label form-label" for="surgery_reason">Reason for surgery<span>&nbsp;*</span></label>
+                                    <div id="error-medication-2" class="error-message"><span>• Please select pet type</span></div>
+                                    <div id="guide-medication-2" class="guide-message"><span>• Please select pet type</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><select class="form-select" id="medication-1" data-id="medication-1" placeholder="Medication">
+                                        <option value="" selected="">Medication</option>
+                                        <option value="Medication 1">Medication 1</option>
+                                        <option value="Medication 2">Medication 2</option>
+                                        <option value="Medication 3">Medication 3</option>
+                                    </select><label class="form-label form-label" for="medication-1">Medication<span>&nbsp;*</span></label>
+                                    <div id="error-medication-1" class="error-message"><span>• Please select pet type</span></div>
+                                    <div id="guide-medication-1" class="guide-message"><span>• Please select pet type</span></div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end align-items-end align-content-end align-self-end newinput_row" style="width: 100%;">
+                                <div class="form-floating" style="width: 100%;"><textarea class="form-control form-control" id="notes" placeholder="Notes"></textarea><label class="form-label" for="notes">Notes<span>&nbsp;*</span></label>
+                                    <div id="error-notes" class="error-message"><span>• Please select pet type</span></div>
+                                    <div id="guide-notes" class="guide-message"><span>• Please select pet type</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer add_product_button"><button class="btn clear_form" id="clear_surgery" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button><button class="btn submit_pet" id="submit_surgery" type="submit"><span class="submit_product_base">Submit</span></button></div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-	<script src="{{ asset('assets/js/bs-init.js') }}"></script>
-	<script src="{{ asset('assets/js/admin_signin.js') }}"></script>
-	<script src="{{ asset('assets/js/appointment_list.js') }}"></script>
-	<script src="{{ asset('assets/js/appointmentforms.js') }}"></script>
-	<script src="{{ asset('assets/js/client.js') }}"></script>
-	<script src="{{ asset('assets/js/dashboard.js') }}"></script>
-	<script src="{{ asset('assets/js/inventory.js') }}"></script>
-	<script src="{{ asset('assets/js/Multi-step-form-script.js') }}"></script>
-	<script src="{{ asset('assets/js/admin_appointment.js') }}"></script>
+	<script src="{{ asset('js/sidebar.js') }}"></script>
 	<script src="{{ asset('assets/js/pet_records.js') }}"></script>
-	<script src="{{ asset('assets/js/sidebar.js') }}"></script>
-	<script src="{{ asset('assets/js/signin.js') }}"></script>
-	<script src="{{ asset('assets/js/signup.js') }}"></script>
-	<script src="{{ asset('assets/js/user_settings.js') }}"></script>
 </body>
 
 </html>

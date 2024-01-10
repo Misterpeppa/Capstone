@@ -95,7 +95,9 @@ Route::middleware('admin', 'nocache')->group(function () {
 
     Route::get('/admin/appointment', [AppointmentController::class, 'adminShow'])->name('admin_appointment');
     Route::post('/admin/appointment/approve/{id}', [AppointmentController::class, 'approve']);
-    Route::post('/admin/appointment/reject/{id}', [AppointmentController::class, 'reject']);
+    Route::post('/admin/appointment/reject/{id}', [AppointmentController::class, 'reject'])->name('reject');
+    Route::post('/admin/appointment/resched/{id}', [AppointmentController::class, 'resched'])->name('resched');
+    Route::post('/admin/appointment/markascomplete/{id}', [AppointmentController::class, 'markAsComplete'])->name('appointment.complete');
 
     Route::get('/admin/emr', [EMRController::class, 'show'])->name('admin_emr');
     Route::post('/admin/emr/petrecord', [EMRController::class, 'pet'])->name('emr.pet');

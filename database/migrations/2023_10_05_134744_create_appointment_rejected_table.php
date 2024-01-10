@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('appointmentDate');
             $table->time('appointmentTime');
             $table->string('status')->nullable();
+            $table->string('source')->default('Appointment');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('clients')->onDelete('cascade');
