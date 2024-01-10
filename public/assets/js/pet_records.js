@@ -150,7 +150,7 @@ function onEditPetActionClick() {
     };
 
 editPetAction.forEach(function (element) {
-        element.addEventListener('click', onViewPetActionClick);
+        element.addEventListener('click', onEditPetActionClick);
 });
 
 var archivePetActions = document.querySelectorAll('.archive_pet-action');
@@ -192,18 +192,6 @@ edit_pet_btn.addEventListener('click', function(){
     // Show the view_pet_container
     viewPetContainer.style.display = 'none';
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1039,12 +1027,6 @@ submit_surgery.addEventListener('click', function(){
     initializeForm(submit_surgery, surgery, surgery_date, surgery_reason, medication1, notes);
 })
     
-    
-
-
-
-
-
     
     
 var view_pet_back_btn = document.getElementById('view_pet_back_btn');   

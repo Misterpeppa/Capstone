@@ -104,11 +104,13 @@
 						</div>
 					</div>
 				</div>
+				
 				<div id="dashboard_table_container" class="dashboard_table_container">
-					<div class="dashboard_table_header">
+				<div class="dashboard_table_header">
 						<h1>Appointments</h1>
 						<button class="btn dashboard_view_btn" type="button"><span class="dashboard_view_btn_base">View</span></button>
 					</div>
+					<div class="table-responsive align-self-stretch" >
 					<table id="dashboard_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
 						<thead>
 							<tr>
@@ -139,6 +141,8 @@
                         @endforeach 
                         </tbody>
 					</table>
+					</div>
+					
 					<div class="pagination">
 						<div class="pagination-menu"> <span>Go to:</span>
 							<select class="paginationGoToSelect">
@@ -187,7 +191,7 @@
 								<th>Date Stocked</th>
 								<th>Expiration Date</th>
 								<th>Status</th>
-								<th></th>
+								<th>Actions</th>
 							</tr>
 						</thead>
 						<tbody id="dashboard_table_body" class="dashboard_table_body">

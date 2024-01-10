@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }); 
     // Add an event listener for the buttons inside dropdown-content
     document
-      .querySelectorAll(".dropdown button")
+      .querySelectorAll(".button-action button")
       .forEach(function (button) {
         button.addEventListener("click", function (event) {
           event.preventDefault();
@@ -969,5 +969,3 @@ function handleSelectAll() {
     checkbox.checked = selectAllCheckbox.checked;
   });
 }
-
-
