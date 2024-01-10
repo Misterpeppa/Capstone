@@ -6014,6 +6014,20 @@ body{
   }
   .modal-body.add_stock_modal{
     width: 400px;
+    height: auto;
+  }
+  .container_header{
+    align-items: start;
+    flex-direction: column;
+  }
+  .add_stock_buttons{
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1px !important;
+  }
+  .add_stock, .cancel_btn{
+    display: flex;
+    align-self: stretch;
   }
   .new_input_row{
     flex-wrap: wrap;
