@@ -19,7 +19,7 @@ class EMRController extends Controller
     public function show()
     {
         $owners = Clients::withTrashed()->get();
-        $petrecord = PetRecord::with('pet', 'owner')->get();
+        $petrecord = PetRecord::with('pet', 'owner')->whereNull('archived_at')->get();
         $petrecordExists = $petrecord->isNotEmpty();
         $medHistory = MedHistory::all();
         $vaxHistory = VaxHistory::all();
@@ -58,7 +58,25 @@ class EMRController extends Controller
 
         return redirect()->route('admin_emr')->with('success', 'Pet Successfully Added');
     }
-    
+    public function editPet(Request $request)
+    {
+        // Retrieve existing pet info or create a new one
+        $pet_infos = PetInfo::find($request->input('pet_id')) ?? new PetInfo;
+
+        // Update or set the fields
+        $pet_infos->name = $request->input('pet_name');
+        $pet_infos->age = $request->input('pet_age');
+        $pet_infos->species = $request->input('species');
+        $pet_infos->breed = $request->input('breed');
+        $pet_infos->birthdate = $request->input('pet_birthday');
+        $pet_infos->gender = $request->input('gender');
+        $pet_infos->weight = $request->input('weight');
+        $pet_infos->sterilization = $request->input('sterilization');
+        // Save the pet info
+        $pet_infos->save();
+        // Update or create the pet record
+        return redirect()->route('admin_emr')->with('success', 'Pet Successfully Updated');
+    }
     public function viewRecord($id)
     {
         $petrecord = PetRecord::with('owner', 'pet')->find($id);
@@ -70,6 +88,12 @@ class EMRController extends Controller
             'petInfo' => $petInfo,
             'ownerInfo' => $ownerInfo,
         ]);
+    }
+    public function archive($id)
+    {
+        $petrecord = PetRecord::findOrFail($id);
+        $petrecord->update(['archived_at' => now()]);
+        return redirect()->route('admin_emr')->with('success', 'Pet Successfully Updated');
     }
 
     public function medHistory(Request $request)

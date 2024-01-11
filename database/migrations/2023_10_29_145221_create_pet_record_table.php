@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('allergies')->nullable();
             $table->text('existing_condition')->nullable();
             $table->text('current_medication')->nullable();
+            $table->timestamp('archived_at')->nullable();
             $table->timestamps();
 
             $table->foreign('owner_id')->references('id')->on('clients');

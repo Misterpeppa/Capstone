@@ -53,24 +53,31 @@ class AppointmentController extends Controller
     // }
     $count = $request->input('count');
     $validatedData = $request->validate([
+        'petName' => 'required',
         'petType' => 'required',
         'breed' => 'required',
         'appointmentType' => 'required',
+        'notes' => 'nullable',
+        'petName1' => 'nullable',
         'petType1'=> 'nullable',
         'breed1' => 'nullable',
         'appointmentType1' => 'nullable',
+        'notes1' => 'nullable',
+        'petName2' => 'nullable',
         'petType2' => 'nullable',
         'breed2' => 'nullable',
         'appointmentType2' => 'nullable',
+        'notes2' => 'nullable',
     ]);
     $appointmentDate = $request->input('appointmentDate');
     $appointmentTime = $request->input('appointmentTime');
-
     AppointmentPending::create([
         'user_id' => $clientId,
+        'petName' => $validatedData['petName'],
         'petType' => $validatedData['petType'],
         'breed' => $validatedData['breed'],
         'appointmentType' => $validatedData['appointmentType'],
+        'notes' => $validatedData['notes'],
         'appointmentDate' => $appointmentDate,
         'appointmentTime' => $appointmentTime,
     ]);
@@ -78,9 +85,11 @@ class AppointmentController extends Controller
     if($count == 2 ){
         AppointmentPending::create([
             'user_id' => $clientId,
+            'petName' => $validatedData['petName1'],
             'petType' => $validatedData['petType1'],
             'breed' => $validatedData['breed1'],
             'appointmentType' => $validatedData['appointmentType1'],
+            'notes' => $validatedData['notes1'],
             'appointmentDate' => $appointmentDate,
             'appointmentTime' => $appointmentTime,
         ]);
@@ -88,17 +97,21 @@ class AppointmentController extends Controller
     if($count == 3){
         AppointmentPending::create([
             'user_id' => $clientId,
+            'petName' => $validatedData['petName1'],
             'petType' => $validatedData['petType1'],
             'breed' => $validatedData['breed1'],
             'appointmentType' => $validatedData['appointmentType1'],
+            'notes' => $validatedData['notes1'],
             'appointmentDate' => $appointmentDate,
             'appointmentTime' => $appointmentTime,
         ]);
         AppointmentPending::create([
             'user_id' => $clientId,
+            'petName' => $validatedData['petName2'],
             'petType' => $validatedData['petType2'],
             'breed' => $validatedData['breed2'],
             'appointmentType' => $validatedData['appointmentType2'],
+            'notes' => $validatedData['notes2'],
             'appointmentDate' => $appointmentDate,
             'appointmentTime' => $appointmentTime,
         ]);
@@ -146,7 +159,7 @@ class AppointmentController extends Controller
         $appointment->delete();
 
         $client = Clients::find($appointment->user_id);
-        // Mail::to($client->email)->send(new AppointmentRejectedMail($appointment));
+        Mail::to($client->email)->send(new AppointmentRejectedMail($appointment));
 
         return response()->json(['message' => 'Appointment Rejected successfully.']);
 
@@ -185,9 +198,8 @@ class AppointmentController extends Controller
         $clientId = Auth::guard('clients')->id();
         $clientInfo = Clients::find($clientId);     // Get the currently authenticated user
         $appointments = AppointmentPending::where('user_id', $clientId)->get();
-
-
-        return view('user/appointmentlist', compact('appointments', 'clientInfo'));
+        $appointmentapproved = AppointmentApproved::where('user_id', $clientId)->get();
+        return view('user/appointmentlist', compact('appointments', 'appointmentapproved',  'clientInfo'));
     }
 
     public function markAsComplete($id)
@@ -195,6 +207,13 @@ class AppointmentController extends Controller
         $appointment = AppointmentApproved::findOrFail($id);
         $appointment->update(['completed_at' => now(), 'status' => 'Completed']);
         return redirect()->back()->with('success', 'Appointment marked as completed.');
+    }
+
+    public function archive($id)
+    {
+        $appointment = AppointmentApproved::findOrFail($id);
+        $appointment->update(['archived_at' => now()]);
+        return redirect()->back()->with('success', 'Appointment archived.');
     }
 
 }

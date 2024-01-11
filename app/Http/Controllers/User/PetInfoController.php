@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\MedHistory;
 use App\Models\Admin\PetInfo;
 use App\Models\Admin\PetRecord;
+use App\Models\Admin\SurgHistory;
+use App\Models\Admin\VaxHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,6 +35,27 @@ class PetInfoController extends Controller
         $petrecord->save();
 
         return redirect()->route('client.pet')->with('success', 'Pet Successfully Added');
+    }
+    public function showMedHis($id)
+    {
+        $ownerId = Auth::guard('clients')->id();
+        $petrecord = PetRecord::where('owner_id', $ownerId)->where('id', $id)->first();
+        $medHistory = $petrecord->medHistory;
+        return response()->json($medHistory);
+    }
+    public function showVaxHis($id)
+    {
+        $ownerId = Auth::guard('clients')->id();
+        $petrecord = PetRecord::where('owner_id', $ownerId)->where('id',$id)->first();
+        $vaxHistory = $petrecord->vaxHistory;
+        return response()->json($vaxHistory);
+    }
+    public function showSurgHis($id)
+    {
+        $ownerId = Auth::guard('clients')->id();
+        $petrecord = PetRecord::where('owner_id', $ownerId)->where('id',$id)->first();
+        $surgHistory = $petrecord->surgHistory;
+        return response()->json($surgHistory);
     }
     
 }

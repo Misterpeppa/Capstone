@@ -31,25 +31,26 @@
 							<p>View all your pets and their information</p>
 						</div>
 						<button class="btn user_new_pet_btn" id="user_new_pet_btn" type="button"><span class="user_new_pet_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6116_2623)" filter="url(#filter0_d_6116_2623)">
-    <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <filter id="filter0_d_6116_2623" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-      <feOffset dy="2"/>
-      <feGaussianBlur stdDeviation="1"/>
-      <feComposite in2="hardAlpha" operator="out"/>
-      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6116_2623"/>
-      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6116_2623" result="shape"/>
-    </filter>
-    <clipPath id="clip0_6116_2623">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> New Pet</span></button>
+							<g clip-path="url(#clip0_6116_2623)" filter="url(#filter0_d_6116_2623)">
+								<path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</g>
+							<defs>
+								<filter id="filter0_d_6116_2623" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+								<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+								<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+								<feOffset dy="2"/>
+								<feGaussianBlur stdDeviation="1"/>
+								<feComposite in2="hardAlpha" operator="out"/>
+								<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+								<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6116_2623"/>
+								<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6116_2623" result="shape"/>
+								</filter>
+								<clipPath id="clip0_6116_2623">
+								<rect width="24" height="24" fill="white"/>
+								</clipPath>
+							</defs>
+							</svg> New Pet</span>
+						</button>
 					</div>
 					<div id="pet_container" class="pet_container">
 						<div class="container_header">
@@ -58,25 +59,26 @@
 									<input type="search" class="search_input" placeholder="Search Pet" maxlength="255">
 								</div>
 								<button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5284_15912)">
-    <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_5284_15912">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Filter by</span></button>
-								<button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5284_15919)">
-    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_5284_15919">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Sort by</span></button>
+									<g clip-path="url(#clip0_5284_15912)">
+										<path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+									</g>
+									<defs>
+										<clipPath id="clip0_5284_15912">
+										<rect width="24" height="24" fill="white"/>
+										</clipPath>
+									</defs>
+									</svg> Filter by</span></button>
+																	<button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+									<g clip-path="url(#clip0_5284_15919)">
+										<path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+									</g>
+									<defs>
+										<clipPath id="clip0_5284_15919">
+										<rect width="24" height="24" fill="white"/>
+										</clipPath>
+									</defs>
+									</svg> Sort by</span>
+								</button>
 							</div>
 						</div>
 						<div id="empty_state_container" class="empty_state_container">
@@ -89,34 +91,35 @@
 								</div>
 							</div>
 							<button class="btn add_client_button" id="add_pet" type="button"><span class="add_client_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6001_19901)" filter="url(#filter0_d_6001_19901)">
-    <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <filter id="filter0_d_6001_19901" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-      <feOffset dy="2"/>
-      <feGaussianBlur stdDeviation="1"/>
-      <feComposite in2="hardAlpha" operator="out"/>
-      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6001_19901"/>
-      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6001_19901" result="shape"/>
-    </filter>
-    <clipPath id="clip0_6001_19901">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Add Pet</span></button>
+								<g clip-path="url(#clip0_6001_19901)" filter="url(#filter0_d_6001_19901)">
+									<path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</g>
+								<defs>
+									<filter id="filter0_d_6001_19901" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dy="2"/>
+									<feGaussianBlur stdDeviation="1"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+									<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6001_19901"/>
+									<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6001_19901" result="shape"/>
+									</filter>
+									<clipPath id="clip0_6001_19901">
+									<rect width="24" height="24" fill="white"/>
+									</clipPath>
+								</defs>
+								</svg> Add Pet</span>
+							</button>
 						</div>
+						@foreach ($petrecords as $petrecord)
 						<div id="pet_card_container" class="pet_card_container">
 							<div class="card pet_card">
-								<div class="pet_image_container"><img src="assets/img/koda%201.png"></div>
 								<div class="card-body pet_card_body">
 									<div class="pet_detail_header">
 										<div class="pet_detail_heading_text_container">
-											<h1>${petName1}</h1>
-											<p>${petBreed1}</p>
+											<h1>{{ $petrecord->pet->name }}</h1>
+											<p>{{ $petrecord->pet->breed }}</p>
 										</div>
 										<div class="dropdown more_button">
 											<button class="btn dropdown-toggle more_btn" aria-expanded="false" data-bs-toggle="dropdown" type="button"><span class="more_btn_base"><svg fill="none" height="18" viewbox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"></path><path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"></path><path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"></path></svg></span></button>
@@ -165,50 +168,52 @@
 										<div class="pet_upper_detail">
 											<div class="pet_sex_container">
 												<h1>Sex</h1>
-												<p>${sex1}</p>
+												<p>{{ $petrecord->pet->gender }}</p>
 											</div>
 											<div class="pet_age_container">
 												<h1>Age</h1>
-												<p>${age1}</p>
+												<p>{{ $petrecord->pet->age }}</p>
 											</div>
 										</div>
 										<div class="pet_lower_detail">
 											<div class="pet_weight_container">
 												<h1>Weight</h1>
-												<p>${weight1}</p>
+												<p>{{ $petrecord->pet->weigth }}</p>
 											</div>
 											<div class="pet_sterilization_status_container">
 												<h1>Sterilization Status</h1>
-												<p>${sterilizationStatus1}</p>
+												<p>{{ $petrecord->pet->sterilization }}</p>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+						@endforeach
 					</div>
 					<div id="edit_pet" class="edit_pet">
 						<div class="edit_pet_back_btn_container">
 							<button class="btn edit_pet_back_btn" id="edit_pet_back_btn" type="button"><span class="edit_pet_back_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-  <g clip-path="url(#clip0_6089_3068)" filter="url(#filter0_d_6089_3068)">
-    <path d="M5.5 12H19.5M5.5 12L11.5 18M5.5 12L11.5 6" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <filter id="filter0_d_6089_3068" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-      <feOffset dy="2"/>
-      <feGaussianBlur stdDeviation="1"/>
-      <feComposite in2="hardAlpha" operator="out"/>
-      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6089_3068"/>
-      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6089_3068" result="shape"/>
-    </filter>
-    <clipPath id="clip0_6089_3068">
-      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
-    </clipPath>
-  </defs>
-</svg> Back</span></button>
+								<g clip-path="url(#clip0_6089_3068)" filter="url(#filter0_d_6089_3068)">
+									<path d="M5.5 12H19.5M5.5 12L11.5 18M5.5 12L11.5 6" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</g>
+								<defs>
+									<filter id="filter0_d_6089_3068" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+									<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+									<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+									<feOffset dy="2"/>
+									<feGaussianBlur stdDeviation="1"/>
+									<feComposite in2="hardAlpha" operator="out"/>
+									<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+									<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6089_3068"/>
+									<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6089_3068" result="shape"/>
+									</filter>
+									<clipPath id="clip0_6089_3068">
+									<rect width="24" height="24" fill="white" transform="translate(0.5)"/>
+									</clipPath>
+								</defs>
+								</svg> Back</span>
+							</button>
 						</div>
 						<div class="input_details_container">
 							<div class="detail_body">
@@ -333,16 +338,17 @@
 								</div>
 							</div>
 							<button class="btn edit_pet_btn" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6127_11956)">
-    <path d="M13.5 6.50024L17.5 10.5002M4 20.0003H8L18.5 9.5003C19.0304 8.96987 19.3284 8.25045 19.3284 7.5003C19.3284 6.75016 19.0304 6.03074 18.5 5.5003C17.9696 4.96987 17.2501 4.67188 16.5 4.67188C15.7499 4.67187 15.0304 4.96987 14.5 5.5003L4 16.0003V20.0003Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6127_11956">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg>
-</span></button>
+								<g clip-path="url(#clip0_6127_11956)">
+									<path d="M13.5 6.50024L17.5 10.5002M4 20.0003H8L18.5 9.5003C19.0304 8.96987 19.3284 8.25045 19.3284 7.5003C19.3284 6.75016 19.0304 6.03074 18.5 5.5003C17.9696 4.96987 17.2501 4.67188 16.5 4.67188C15.7499 4.67187 15.0304 4.96987 14.5 5.5003L4 16.0003V20.0003Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</g>
+								<defs>
+									<clipPath id="clip0_6127_11956">
+									<rect width="24" height="24" fill="white"/>
+									</clipPath>
+								</defs>
+								</svg>
+								</span>
+							</button>
 						</div>
 						<div class="align-self-stretch pet_records">
 							<ul class="nav nav-tabs pet_nav_tabs" role="tablist">
@@ -751,6 +757,179 @@
 			</div>
 		</div>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	@if ($petExist)
+	<script>
+	$('#empty_state_container').hide();
+	$('#user_new_pet_btn').show();
+	$('#pet_card_container').show();
+	</script>
+	@else
+	<script>
+	$('#empty_state_container').hide();
+	$('#user_new_pet_btn').hide();
+	$('#pet_card_container').show();
+	</script>
+	@endif
+	<script>
+$(document).ready(function() {
+	$('.Edit_pet-action').click(function() {
+		const id = $(this).data(container-id);
+		$('#editId').val(id);
+	});
+	$('.View_pet').click(function() {
+			const id = $(this).data('container-id');
+			$('#medhisId').val(id);
+			$('#vaxhisId').val(id);
+			$('#surghisId').val(id);
+			$('#editId').val(id);
+			// Make an AJAX request to retrieve data
+			$.ajax({
+				type: 'GET',
+				url: `/admin/emr/view/${id}`,
+				success: function(data) {
+					// Update the HTML elements with the retrieved data
+					$('#petInfo h1').text(data.petInfo.name);
+					$('#petInfo p').text(data.petInfo.breed);
+					$('#age p').text(data.petInfo.age);
+					$('#birthdate p').text(data.petInfo.birthdate);
+					$('#weight p').text(data.petInfo.weight);
+					$('#sex p').text(data.petInfo.gender);
+					$('#sterilization p').text(data.petInfo.sterilization);
+					$('#ownerName p').text(data.ownerInfo.first_name + ' ' + 
+					(data.ownerInfo.middle_name ? data.ownerInfo.middle_name + ' ' : '') + 
+					data.ownerInfo.last_name + (data.ownerInfo.suffix ? ' ' + data.ownerInfo.suffix : ''));
+					$('#ownerEmail p').text(data.ownerInfo.email);
+					$('#ownerPhone p').text(data.ownerInfo.phone);
+				},
+				error: function(xhr) {
+					// Handle errors
+					console.log(xhr.responseText);
+				}
+			});
+			$.ajax({
+				type: 'GET',
+				url: '/admin/emr/medhis/' + id, // Replace with your actual endpoint
+				success: function(data) {
+					$('#medhisto_Table tbody').empty();
+					console.log('Success: Data received', data);
+					$.each(data, function(index, medhisto) {
+						var newRow = '<tr>' +
+							'<td>' + medhisto.diagnosis + '</td>' +
+							'<td>' + medhisto.diagnosis_date + '</td>' +
+							'<td>' + medhisto.treatment + '</td>' +
+							'<td>' + medhisto.med.item_name + '</td>' +
+							'</tr>';
+						$('#medhisto_Table tbody').append(newRow);
+					});
+				},
+				error: function(xhr) {
+					console.log(xhr.responseText);
+				}
+			});
+			$.ajax({
+				type: 'GET',
+				url: '/admin/emr/vaxhis/' + id,
+				success: function(data) {
+					$('#immuno_Table tbody').empty();
+					$.each(data, function(index, vaxhisto) {
+						var newRow = '<tr>' +
+						'<td>' + vaxhisto.vaccination_date + '</td>' +
+						'<td>' + vaxhisto.vax.item_name + '</td>' +
+						'<td>' + vaxhisto.vax.prod_desc + '</td>' +
+						'<td>' + vaxhisto.revaccination_date + '</td>' +
+						'</tr>';
+					$('#immuno_Table tbody').append(newRow);
+
+					});
+				},
+				error: function(xhr) {
+					console.log(xhr.responseText);
+				}
+			});
+			$.ajax({
+				type: 'GET',
+				url: '/admin/emr/surghis/' + id,
+				success: function(data) {
+					$('#surghisto_Table tbody').empty();
+					$.each(data, function(index, surgery){
+						var newRow = '<tr>' +
+						'<td>' + surgery.surgery_type + '</td>' +
+						'<td>' + surgery.surgery_date + '</td>' +
+						'<td>' + surgery.reason + '</td>' +
+						'<td>' + surgery.med.item_name + '</td>' +
+						'<td>' + surgery.surgery_note + '</td>' +
+						'</tr>';
+					$('#surghisto_Table tbody').append(newRow);
+
+					});
+				},
+				error: function(xhr) {
+					console.log(xhr.responseText);
+				}
+			})
+			
+			
+		});
+
+	function displayMedicalHistoryTable(id) {
+	// Make an AJAX request to fetch medical history data for the specific petrecord_id
+	
+	}
+
+	function displayVaxHistoryTable(id) {
+	
+	$.ajax({
+		type: 'GET',
+		url: '/admin/emr/vaxhis/' + id,
+		success: function(data) {
+			$('#immunization_histo_Table tbody').empty();
+
+			$.each(data, function(index, vax) {
+				var newRow = '<tr>' +
+				'<td>' + vax.vaccination_date + '</td>' +
+				'<td>' + vax.Vax.item_name + '</td>' +
+				'<td>' + vax.Vax.prod_desc + '</td>' +
+				'<td>' + vax.revaccination_date + '</td>' +
+				'</tr>';
+			$('#immunization_histo_Table tbody').append(newRow);
+
+			});
+		},
+		error: function(xhr) {
+			console.log(xhr.responseText);
+		}
+	});
+	}
+
+	function displaySurgHistoryTable(id) {
+	
+	$.ajax({
+		type: 'GET',
+		url: '/admin/emr/surghis/' + id,
+		success: function(data) {
+			$('#surgery_histo_Table tbody').empty();
+
+			$.each(data, function(index, surgery){
+				var newRow = '<tr>' +
+				'<td>' + surgery.surgery_type + '</td>' +
+				'<td>' + surgery.surgery_date + '</td>' +
+				'<td>' + surgery.severity + '</td>' +
+				'<td>' + surgery.Med.item_name + '</td>' +
+				'<td>' + surgery.surgery_note + '</td>' +
+				'</tr>';
+			$('#surgery_histo_Table tbody').append(newRow);
+
+			});
+		},
+		error: function(xhr) {
+			console.log(xhr.responseText);
+		}
+	})
+	}
+
+});
+</script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/sidebar.js') }}"></script>

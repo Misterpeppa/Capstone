@@ -105,6 +105,7 @@ Route::middleware('admin', 'nocache')->group(function () {
     Route::post('/admin/emr/medhistory', [EMRController::class, 'medHistory'])->name('med.history');
     Route::post('/admin/emr/vaxhistory', [EMRController::class, 'vaxHistory'])->name('vax.history');
     Route::post('/admin/emr/surghistory', [EMRController::class, 'surgHistory'])->name('surg.history');
+    Route::post('/admin/emr/edit', [EMRController::class, 'editPet'])->name('edit.petrecord');
     Route::get('/admin/emr/medhis/{id}', [EMRController::class, 'showMedHis']);
     Route::get('/admin/emr/vaxhis/{id}', [EMRController::class, 'showVaxHis']);
     Route::get('/admin/emr/surghis/{id}', [EMRController::class, 'showSurgHis']);
@@ -119,6 +120,7 @@ Route::middleware('admin', 'nocache')->group(function () {
 
     Route::get('admin/client', [ClientController::class, 'show'])->name('admin_client');
     Route::post('admin/client', [ClientController::class, 'store'])->name(('client.store'));
+    Route::post('admin/client/edit', [ClientController::class, 'editClient'])->name(('client.edit'));
     Route::get('admin/client/reports', [ReportController::class, 'clientPDF'])->name('report.client');
 
     Route::get('admin/dashboard', [DashboardController::class, 'show'])->name('admin_dashboard');

@@ -26,10 +26,8 @@ class AdminAuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided email address is incorrect.',
-            'password' => 'The provided password is incorrect.',
-        ]);
-        
+            'email' => 'The provided email address or password is incorrect.',
+        ])->withInput($request->only('email'));
     }
     public function signout(Request $request): RedirectResponse
     {

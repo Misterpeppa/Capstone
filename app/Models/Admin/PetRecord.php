@@ -20,6 +20,7 @@ class PetRecord extends Model
         'allergies',
         'existing_condtion',
         'current_medication',
+        'archived_at',
     ];
 
     public function owner(): BelongsTo
