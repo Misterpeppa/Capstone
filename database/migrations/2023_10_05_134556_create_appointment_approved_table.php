@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('appointmentDate');
             $table->time('appointmentTime');
             $table->string('completed_at')->nullable();
+            $table->timestamp('archived_at')->nullable();
             $table->string('status')->nullable();
             $table->string('source')->default('Appointment');
             $table->timestamps();

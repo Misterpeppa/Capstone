@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\AppointmentApproved;
 use App\Models\Admin\MedInfo;
+use App\Models\Admin\PetRecord;
 use App\Models\Admin\VaxInfo;
 use App\Models\Admin\VitInfo;
 use Illuminate\Http\Request;
@@ -15,15 +17,19 @@ class ArchiveController extends Controller
         $med_exist = MedInfo::whereNotNull('archived_at')->exists();
         $vax_exist = VaxInfo::whereNotNull('archived_at')->exists();
         $vit_exist = VitInfo::whereNotNull('archived_at')->exists();
-        $dataExist = $med_exist || $vax_exist || $vit_exist;
+        $petrecord_exist = PetRecord::whereNotNull('archived_at')->exists();
+        $appointment_exist = AppointmentApproved::whereNotNull('archived_at')->exists();
+        $dataExist = $med_exist || $vax_exist || $vit_exist || $petrecord_exist || $appointment_exist;
 
         $med_info = MedInfo::whereNotNull('archived_at')->get();
         $vax_info = VaxInfo::whereNotNull('archived_at')->get();
         $vit_info = VitInfo::whereNotNull('archived_at')->get();
+        $petrecord = PetRecord::whereNotNull('archived_at')->get();
+        $appointment = AppointmentApproved::whereNotNull('archived_at')->get();
 
         $productInfo = $vax_info->concat($med_info)->concat($vit_info);
 
-        return view('admin/archive', compact('dataExist', 'productInfo'));
+        return view('admin/archive', compact('dataExist', 'productInfo', 'petrecord', 'appointment'));
     }
     public function unarchived(Request $request, $product_type, $id)
     {
@@ -46,5 +52,6 @@ class ArchiveController extends Controller
             default:
                 return null;
         }
+        return redirect()->back()->with('success', 'Unarchive');
     }
 }

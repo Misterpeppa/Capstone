@@ -43,13 +43,10 @@ class UserAuthController extends Controller
         $last_name = $request->input('last_name');
         $gender = $request->input('gender');
         $birthdate = $request->input('birthdate');
-
         $emailExists = Clients::where('email', $request->email)->exists();
-
         if ($emailExists) {
             return redirect()->back()->withErrors(['email' => 'The email has already been taken.']);
         }
-
         $request->validate([
             // Add any validation rules you need
             'suffix' => 'nullable',
@@ -75,17 +72,16 @@ class UserAuthController extends Controller
         }
         $clients->save();
         
-        
         // Log in the user
         Auth::login($clients);
 
         // Redirect to a success page or perform any additional actions
         return redirect()->route('client.signup')->with('success', 'User registered successfully');
     }
-    //protected function sendVerificationEmail($clients)
-    //{
-    //    Mail::to($clients->email)->send(new MailVerifyEmail($clients));
-    //}
+    protected function sendVerificationEmail($clients)
+    {
+       Mail::to($clients->email)->send(new MailVerifyEmail($clients));
+    }
 
     public function showSignin()
     {
@@ -93,12 +89,10 @@ class UserAuthController extends Controller
     }
     public function authenticate(Request $request)
     {
-            // Perform validation (example validation, modify according to your needs)
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
         $credentials = $request->only('email', 'password');
         $remember = $request->has('remember_me');
         
@@ -109,25 +103,23 @@ class UserAuthController extends Controller
             Auth::login($client,$remember = true);
 
             // Check if the email is already verified
-            //if ($client->email_verified_at === null) {
-                // Send the email verification
-                //$this->sendVerificationEmail($client);
-            //}
-        
+            if ($client->email_verified_at === null) {
+                //Send the email verification
+                $this->sendVerificationEmail($client);
+            }
             return redirect()->route('landing');
         } else {
             // Authentication failed
             $client = Clients::where('email', $request->email)->first();
-        
             if (!$client) {
                 // Incorrect email
                 return back()
-                    ->withErrors(['usernameNotice' => 'Email and password do not match.'])
+                    ->withErrors(['email' => 'Email and password do not match.'])
                     ->withInput($request->except('password'));
             } else {
                 // Incorrect password
                 return back()
-                    ->withErrors(['passwordNotice' => 'Email and password do not match.'])
+                    ->withErrors(['password' => 'Email and password do not match.'])
                     ->withInput($request->except('password'));
             }
         }

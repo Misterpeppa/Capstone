@@ -179,12 +179,7 @@ class InvController extends Controller
     // $resposne = [
     //     'dataExists' => $dataExists,
     // ];
-    $vax_info = VaxInfo::whereNull('archived_at')->get();
-    $med_info = MedInfo::whereNull('archived_at')->get();
-    $vit_info = VitInfo::whereNull('archived_at')->get();
-    $med_batch = MedBatch::orderBy('expiration_date')->get();
-    $vax_batch = VaxBatch::orderBy('expiration_date')->get();
-    $vit_batch = VitBatch::orderBy('expiration_date')->get();
+    
 
 
     return view('admin/inventory', compact('productBatch', 'products', 'vax_info', 'med_info', 'vit_info', 'med_batch', 'vax_batch', 'vit_batch'));
@@ -193,7 +188,7 @@ class InvController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->all();
+        $validatedData = $request->except(['archived_at']);
 
         $productType = $request->input('product_type');
     
@@ -204,6 +199,7 @@ class InvController extends Controller
                 $medInfo->save();
     
                 $medBatchData = [
+                    'quantity' => $validatedData['quantity'],
                     'batch_no' => $validatedData['batch_no'],
                     'product_code' => $validatedData['product_code'],
                     'manufacturing_date' => $validatedData['manufacturing_date'],
@@ -255,7 +251,7 @@ class InvController extends Controller
                 // Handle the default case (if necessary)
                 break;
         }
-         return redirect()->back();
+        return redirect()->back()->with('success_product', 'Product added successfully');
     }
 
     public function viewProduct($product_type, $id)
@@ -412,7 +408,7 @@ class InvController extends Controller
             default:
                 break;
         }
-        return redirect()->back()->with('success', 'Product has been archived');
+        return redirect('/admin/inventory');
     }
 
 }

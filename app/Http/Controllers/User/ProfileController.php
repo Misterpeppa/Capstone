@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\PetInfo;
+use App\Models\Admin\PetRecord;
 use App\Models\User\Clients;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +31,6 @@ class ProfileController extends Controller
         $clientInfo = Clients::find($clientId);
         if (!$clientInfo || !$clientInfo->email_verified_at) {
             session()->flash('error', 'Please verify your email.');
-            // You can customize the error message and redirection as needed
             return view('user/landing', compact('clientInfo'));
         }
         return view('user/landing', compact('clientInfo'));
@@ -38,7 +39,9 @@ class ProfileController extends Controller
     {
         $clientId = Auth::guard('clients')->id();
         $clientInfo = Clients::find($clientId);
-        return view('user/pet_info', compact('clientInfo'));
+        $petrecords = PetRecord::where('owner_id', $clientId)->get();
+        $petExist = PetRecord::where('owner_id', $clientId)->exists(); // Corrected typo
+        return view('user/pet_info', compact('clientInfo', 'petExist', 'petrecords'));
     }
     public function editProfile(Request $request)
     {

@@ -140,18 +140,19 @@ viewPetActions.forEach(function (element) {
     element.addEventListener('click', onViewPetActionClick);
 });
 
-var editPetAction = document.querySelector('.Edit_pet-action');
+var editPetAction = document.querySelectorAll('.Edit_pet-action');
     
-editPetAction.addEventListener('click', function () {
+function onEditPetActionClick() {
         var edit_pet_container = document.getElementById('edit_pet_container');
         var client_container = document.getElementById('client_container');
         edit_pet_container.style.display = 'flex';
         client_container.style.display = 'none';
-        
- 
-    });
-    
-    
+    };
+
+editPetAction.forEach(function (element) {
+        element.addEventListener('click', onViewPetActionClick);
+});
+
 var archivePetActions = document.querySelectorAll('.archive_pet-action');
     
 archivePetActions.forEach(function (element) {
@@ -184,6 +185,22 @@ editPetBackBtn.addEventListener('click', function () {
     
 var edit_pet_btn = document.getElementById('edit_pet_btn');
 
+var editPetAction = document.querySelectorAll('.Edit_pet-action');
+
+
+function onEditPetActionClick() {
+var edit_pet_container = document.getElementById('edit_pet_container');
+        var client_container = document.getElementById('client_container');
+        edit_pet_container.style.display = 'flex';
+        client_container.style.display = 'none';
+}
+
+ 
+
+// Attach the click event listener to all elements with the class 'Edit_pet-action'
+editPetAction.forEach(function (element) {
+    element.addEventListener('click', onEditPetActionClick);
+});
 edit_pet_btn.addEventListener('click', function(){
         // Hide the edit_pet_container
     editPetContainer.style.display = 'flex';
@@ -208,7 +225,6 @@ edit_pet_btn.addEventListener('click', function(){
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
 
     
     var editSaveChangesButton = document.getElementById('edit_save_changes');
@@ -305,9 +321,24 @@ document.addEventListener('DOMContentLoaded', function () {
     var surgery_empty_state = document.getElementById('surgery_empty_state');
     
     // Get the tab links
+    var informationTabLink = document.querySelector('[href="#tab-1"]');
     var medicalHistoryTabLink = document.querySelector('[href="#tab-2"]');
     var immunizationTabLink = document.querySelector('[href="#tab-3"]');
     var surgeryTabLink = document.querySelector('[href="#tab-4"]');
+    
+    // Add a click event listener to the Medical History tab link
+    informationTabLink.addEventListener('click', function () {
+
+ 
+        // Hide add_diagnosis
+           add_diagnosis.style.display = 'none';
+                   // Hide add_immunization
+       add_immunization.style.display = 'none';
+       add_surgery.style.display = 'none';
+
+   });
+
+   informationTabLink.click();
     
     // Add a click event listener to the Medical History tab link
     medicalHistoryTabLink.addEventListener('click', function () {
@@ -520,10 +551,11 @@ function createPetCard(name1, breed1, sex1, age1, weight1, sterilizationStatus1)
     // Create new elements
     var newCard = document.createElement('div');
     newCard.className = 'card pet_card';
+    newCard.style.display = 'flex';
 
     var imageContainer = document.createElement('div');
     imageContainer.className = 'pet_image_container';
-    imageContainer.innerHTML = '<img src="koda 1.png" />';
+    imageContainer.innerHTML = '<img src="koda 1.png" />';  
 
     var cardBody = document.createElement('div');
     cardBody.className = 'card-body pet_card_body';
@@ -596,39 +628,37 @@ function createPetCard(name1, breed1, sex1, age1, weight1, sterilizationStatus1)
 
 }
 
-   
 submit_Pet1.addEventListener('click', function() {
-console.log('Button clicked!');
-    resetPetInputFields1();
-        add_pet_record_modal1.hide();
-        add_pet_success.show();
-        // Hide the modal after 2000 milliseconds (2 seconds)
-        setTimeout(function () {
-            add_pet_success.hide();
-        }, 2000);     
+    console.log('Button clicked!');
+        resetPetInputFields1();
+            add_pet_record_modal1.hide();
+            add_pet_success.show();
+            // Hide the modal after 2000 milliseconds (2 seconds)
+            setTimeout(function () {
+                add_pet_success.hide();
+            }, 2000);     
+        
+        // Get input values for Pet1
+        var petName1 = pet_nameInput1.value;
+        var petBreed1 = breedInput1.value;
+        var sex1 = pet_GenderInput1.value;
+        var age1 = pet_ageInput1.value;
+        var weight1 = pet_weightInput1.value;
+        var sterilizationStatus1 = pet_sterilizationStatusInput1.value;
     
-    // Get input values for Pet1
-    var petName1 = pet_nameInput1.value;
-    var petBreed1 = breedInput1.value;
-    var sex1 = pet_GenderInput1.value;
-    var age1 = pet_ageInput1.value;
-    var weight1 = pet_weightInput1.value;
-    var sterilizationStatus1 = pet_sterilizationStatusInput1.value;
-
-    // Console.log to check if values are correctly retrieved
-    console.log('Pet Name:', petName1);
-    console.log('Pet Breed:', petBreed1);
-    console.log('Pet Sex:', sex1);
-    console.log('Pet Age:', age1);
-    console.log('Pet Weight:', weight1);
-    console.log('Pet Sterilization Status:', sterilizationStatus1);
-
-    // Call the createPetCard function with input values for Pet1
-    createPetCard(petName1, petBreed1, sex1, age1, weight1, sterilizationStatus1);
-    // Log a message to indicate that the pet card is generated
-    console.log('Pet Card Generated!');
-});
- 
+        // Console.log to check if values are correctly retrieved
+        console.log('Pet Name:', petName1);
+        console.log('Pet Breed:', petBreed1);
+        console.log('Pet Sex:', sex1);
+        console.log('Pet Age:', age1);
+        console.log('Pet Weight:', weight1);
+        console.log('Pet Sterilization Status:', sterilizationStatus1);
+    
+        // Call the createPetCard function with input values for Pet1
+        createPetCard(petName1, petBreed1, sex1, age1, weight1, sterilizationStatus1);
+        // Log a message to indicate that the pet card is generated
+        console.log('Pet Card Generated!');
+    });
     
 function capitalizeFirstLetterOfWords(inputElement) {
     inputElement.addEventListener('input', function () {
@@ -803,7 +833,7 @@ function initializeForm(submitButton, ...inputs) {
 }
     
 initializeForm(submit_Pet, pet_nameInput, pet_TypeInput, breedInput, pet_GenderInput, pet_birthdateInput, pet_ageInput, pet_weightInput, pet_sterilizationStatusInput);
-    
+
 initializeForm(submit_Pet1, pet_nameInput1, pet_TypeInput1, breedInput1, pet_GenderInput1, pet_birthdateInput1, pet_ageInput1, pet_weightInput1, pet_sterilizationStatusInput1);
     
 
@@ -970,6 +1000,11 @@ initializeForm(submit_surgery, surgery, surgery_date, surgery_reason, medication
 
 
 submit_diagnosis.addEventListener('click', function () {
+    var add_medical_histo_success = new bootstrap.Modal(document.getElementById('add_medical_histo_success'));
+    add_medical_histo_success.show()
+    setTimeout(function() {
+        $('#add_medical_histo_success').hide();
+    }, 2000);
     // Call the resetDiagnosisFields function
     resetDiagnosisFields();
     add_medical_history_modal.hide();
@@ -984,6 +1019,11 @@ submit_diagnosis.addEventListener('click', function () {
 });
     
 submit_vaccination.addEventListener('click', function(){
+    var add_immunization_histo_success = new bootstrap.Modal(document.getElementById('add_immunization_histo_success'));
+    add_immunization_histo_success.show()
+    setTimeout(function() {
+        $('#add_immunization_histo_success').hide();
+    }, 2000);
     resetVaccinationFields();
     add_immunization_history_modal.hide();
     immunization_empty_state.style.display = 'none';
@@ -997,6 +1037,12 @@ submit_vaccination.addEventListener('click', function(){
 })
     
 submit_surgery.addEventListener('click', function(){
+    var add_surgery_histo_success = new bootstrap.Modal(document.getElementById('add_surgery_histo_success'));
+    add_surgery_histo_success.show()
+    setTimeout(function() {
+        $('#add_surgery_histo_success').hide();
+    }, 2000);
+
     resetSurgeryFields();
     add_surgery_history_modal.hide();
     surgery_empty_state.style.display = 'none';
@@ -1069,7 +1115,6 @@ petBreedInput.addEventListener('change', function() {
 });
     
     
-});
 
 
 
@@ -1152,8 +1197,16 @@ function setupFutureDateInputRestriction() {
 setupFutureDateInputRestriction();
 
 
+$(document).ready(function(){
+    // Initially hide tab_header_right
+    $("#tab_header_right").hide();
 
-
-
-
-
+    // Show/hide tab_header_right based on active tab
+    $('.nav-tabs a').on('shown.bs.tab', function (e) {
+    if ($(e.target).attr('href') === "#tab-1") {
+        $("#tab_header_right").hide();
+    } else {
+        $("#tab_header_right").show();
+    }
+    });
+});
