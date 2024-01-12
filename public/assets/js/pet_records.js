@@ -1,5 +1,54 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    var addDiagnosisActions = document.querySelectorAll('.add_diagnosis-action');
+    var addVaccinesActions = document.querySelectorAll('.add_immunization_action');
+    var addSurgeryActions = document.querySelectorAll('.add_surgery_action');
+
+    var add_medical_history_modal = new bootstrap.Modal(document.getElementById('add_medical_history_modal'));
+    var add_immunization_history_modal = new bootstrap.Modal(document.getElementById('add_immunization_history_modal'));
+    var add_surgery_history_modal = new bootstrap.Modal(document.getElementById('add_surgery_history_modal'));
+
+    addDiagnosisActions.forEach(function(button) {
+        button.addEventListener('click', function () {
+            add_medical_history_modal.show();
+        });
+    });
+
+    addVaccinesActions.forEach(function(button) {
+        button.addEventListener('click', function () {
+            add_immunization_history_modal.show();
+        });
+    });
+
+    addSurgeryActions.forEach(function(button) {
+        button.addEventListener('click', function () {
+            add_surgery_history_modal.show();
+        });
+    });
+
+        // Define the click event listener function
+    function onDiagnosisActionClick() {
+        var view_pet_container = document.getElementById('view_pet_container');
+        var client_container = document.getElementById('client_container');
+        view_pet_container.style.display = 'flex';
+        client_container.style.display = 'none';
+    }
+
+    // Define the click event listener function
+    function onVaccineActionClick() {
+        var view_pet_container = document.getElementById('view_pet_container');
+        var client_container = document.getElementById('client_container');
+        view_pet_container.style.display = 'flex';
+        client_container.style.display = 'none';
+    }
+
+    // Define the click event listener function
+    function onSurgeryActionClick() {
+        var view_pet_container = document.getElementById('view_pet_container');
+        var client_container = document.getElementById('client_container');
+        view_pet_container.style.display = 'flex';
+        client_container.style.display = 'none';
+    }
 
 // Get all elements with the class 'View_pet-action'
 var viewPetActions = document.querySelectorAll('.View_pet-action');
