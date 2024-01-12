@@ -293,7 +293,7 @@
 											<h1>Weight</h1>
 											<p>Paragraph</p>
 										</div>
-										<div class="other_details" id="sterilization">
+										<div class="other_details" id="sterilization_status">
 											<h1><strong>Sterilization Status</strong></h1>
 											<p>Paragraph</p>
 										</div>
@@ -555,7 +555,7 @@
 						</div>
 					</div>
 				</div>
-				<div id="edit_pet_container" class="edit_pet">
+				<div id="edit_pet_container" class="view_pet">
 					<div class="edit_pet_back_btn_container">
 						<button class="btn edit_pet_back_btn" id="edit_pet_back_btn" type="button"><span class="edit_pet_back_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
   <g clip-path="url(#clip0_6089_3068)" filter="url(#filter0_d_6089_3068)">
@@ -683,6 +683,84 @@
 			</div>
 		</div>
 	</div>
+
+	<div id="add_medical_histo_success" class="modal fade" role="dialog" tabindex="-1">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content success_modal">
+				<div class="modal-header success_header">
+					<div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_6653_17305)">
+    <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6653_17305">
+      <rect width="32" height="32" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></div>
+				</div>
+				<div class="modal-body success_message">
+					<div>
+						<h1>Success!</h1>
+						<p>Medical history has been added.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="add_immunization_histo_success" class="modal fade" role="dialog" tabindex="-1">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content success_modal">
+				<div class="modal-header success_header">
+					<div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_6653_17305)">
+    <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6653_17305">
+      <rect width="32" height="32" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></div>
+				</div>
+				<div class="modal-body success_message">
+					<div>
+						<h1>Success!</h1>
+						<p>Immunization history has been added.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="add_surgery_histo_success" class="modal fade" role="dialog" tabindex="-1">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content success_modal">
+				<div class="modal-header success_header">
+					<div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_6653_17305)">
+    <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6653_17305">
+      <rect width="32" height="32" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></div>
+				</div>
+				<div class="modal-body success_message">
+					<div>
+						<h1>Success!</h1>
+						<p>Surgery history has been added.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="modal fade show" role="dialog" tabindex="-1" id="save_changes_success">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content success_modal">
@@ -811,96 +889,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal fade" role="dialog" tabindex="-1" id="add_pet_record_modal">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content add_pet_record_modal">
-				<div class="modal-header">
-					<h1 class="modal-title">Add Pet Record</h1>
-					<button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
-				</div>
-				<div class="modal-body" style="width:100%;">
-					<form id="add_pet_form" class="add_client"><img src="{{ asset('assets/img/image%2010.png') }}">
-						<div class="mb-3 input_container">
-							<div class="new_input_row">
-								<div class="form-floating" style="width:100%;">
-									<input class="form-control" type="text" id="pet_name" data-id="pet_name" placeholder="Pet Name" maxlength="255">
-									<label class="form-label" for="pet_name">Pet Name<span>&nbsp;*</span></label>
-									<div id="error-pet_name" class="error-message"><span>• Please enter pet name.</span></div>
-									<div id="guide-pet_name" class="guide-message"><span>• Please enter pet name.</span></div>
-								</div>
-								<div class="form-floating" style="width:100%;">
-									<select class="form-select" id="gender" data-id="gender-" placeholder="Gender">
-										<option value="" selected="">Select Sex</option>
-										<option value="Male">Male</option>
-										<option value="Female">Female</option>
-									</select>
-									<label class="form-label" for="gender">Sex<span>&nbsp;*</span></label>
-									<div id="error-gender" class="error-message"><span>• Please select gender of pet.</span></div>
-									<div id="guide-gender" class="guide-message"><span>• Please select gender of pet.</span></div>
-								</div>
-							</div>
-							<div class="new_input_row">
-								<div class="form-floating" style="width:100%;">
-									<select class="form-select" id="pet_type" data-id="pet_type-" placeholder="Pet Type">
-										<option value="" selected="">Select Pet Type</option>
-										<option value="Dog">Dog</option>
-										<option value="Cat">Cat</option>
-									</select>
-									<label class="form-label" for="pet_type">Pet Type<span>&nbsp;*</span></label>
-									<div id="error-pet_type" class="error-message"><span>• Please select pet type</span></div>
-									<div id="guide-pet_type" class="guide-message"><span>• Please select pet type</span></div>
-								</div>
-								<div class="form-floating" style="width:100%;">
-									<select class="form-select" id="breed" data-id="breed" disabled="" placeholder="Breed">
-										<option value="none" selected="">Select a Pet Type first.</option>
-									</select>
-									<label class="form-label" for="breed">Breed<span>&nbsp;*</span></label>
-									<div id="error-breed" class="error-message"><span>• Please select a breed.</span></div>
-									<div id="guide-breed" class="guide-message"><span>• Please select a breed.</span></div>
-								</div>
-							</div>
-							<div class="new_input_row">
-								<div class="form-floating" style="width:100%;">
-									<input class="form-control" id="pet_birthdate" data-id="pet_birthdate" placeholder="Birthdate" type="date">
-									<label class="form-label" for="pet_birthdate">Birthdate<span>&nbsp;*</span></label>
-									<div id="error-pet_birthdate" class="error-message"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
-									<div id="guide_pet_birthdate" class="guide-message"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
-								</div>
-								<div class="form-floating" style="width:100%;">
-									<input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" id="age" data-id="age" title="Please select pet type and enter the birthdate first." maxlength="3" disabled="" placeholder="Please select pet type, breed, and enter the birthdate first.">
-									<label class="form-label" for="age">Age</label>
-									<div id="error-age" class="error-message" style="color:red;"></div>
-								</div>
-							</div>
-							<div class="new_input_row">
-								<div class="form-floating" style="width:100%;">
-									<input class="form-control" type="number" id="weight" data-id="weight" maxlength="10" placeholder="Weight">
-									<label class="form-label" for="weight">Weight<span>&nbsp;*</span></label>
-									<div id="error-weight" class="error-message"><span>• Please enter weight of pet.</span><span>• Only numerical inputs will be accepted</span></div>
-									<div id="guide_pet_weight" class="guide-message"><span>• Please enter weight of pet.</span><span>• Only numerical inputs will be accepted</span></div>
-								</div>
-								<div class="form-floating" style="width:100%;">
-									<select class="form-select" id="sterilization_status" data-id="sterilization_status" placeholder="Sterilization Status">
-										<option value="" selected="">Select Status</option>
-										<option value="None">None</option>
-										<option value="Spayed">Spayed</option>
-										<option value="Neutered">Neutered</option>
-									</select>
-									<label class="form-label" for="sterilization_status">Sterilization Status<span>&nbsp;*</span></label>
-									<div id="error-sterilization_status" class="error-message"><span>• Please select a sterilization status.</span></div>
-									<div id="guide-sterilization_status" class="guide-message"><span>• Please select a sterilization status.</span></div>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer add_product_button">
-					<button class="btn clear_form" id="clear_form" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_pet" id="submit_Pet" type="submit" title="Complete the fields first to make this clickable."><span class="submit_product_base">Submit</span></button>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	<div class="modal fade" role="dialog" tabindex="-1" id="add_pet_record_modal-1">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content add_pet_record_modal">
@@ -912,8 +901,8 @@
 					<form action="{{ route('emr.pet') }}" method="POST" id="add_pet_form-1" class="add_client">
                         @csrf
 						<div class="mb-3 input_container">
-                            <div class="input_container">
-                                    <select class="admin_petInfo_select" id="name" name="owner_id" placeholder="Owner Name">
+                            <div class="form-floating">
+                                    <select class="admin_petInfo_select form-control w-100" id="name" name="owner_id" placeholder="Owner Name">
                                         <option value=""disabled selected>Select Owner: </option>
                                         @foreach ($owners as $owners)
                                             <option value="{{ $owners->id }}">{{ $owners->first_name }} {{ $owners->middle_name }} {{ $owners->last_name }} {{ $owners->suffix }}</option>
@@ -994,18 +983,19 @@
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_form-1" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_pet" id="submit_Pet-" type="submit" title="Complete the fields first to make this clickable."><span class="submit_product_base">Submit</span></button>
+					<button class="btn submit_pet" id="submit_Pet" type="submit" title="Complete the fields first to make this clickable."><span class="submit_product_base">Submit</span></button>
 				</div>
                 </form>
 			</div>
 		</div>
 	</div>
+
 	<div class="modal fade" role="dialog" tabindex="-1" id="add_medical_history_modal">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content add_pet_record_modal">
 				<div class="modal-header">
 					<h1 class="modal-title">Add Diagnosis</h1>
-					<button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+					<button class="btn-close" id="close_diagnosis" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
 					<form action="{{ route('med.history') }}" method="POST" class="add_client" id="add_pet_form">
@@ -1014,53 +1004,49 @@
 						<div class="mb-3 input_container">
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" name="diagnosis" data-id="diagnosis" id="diagnosis" placeholder="Diagnosis">
+									<select class="form-select form-select" data-id="diagnosis" id="diagnosis" placeholder="Diagnosis">
 										<option value="" selected="">Select Diagnosis</option>
 										<option value="Diagnosis 1">Diagnosis 1</option>
 										<option value="Diagnosis 2">Diagnosis 2</option>
 										<option value="Diagnosis 3">Diagnosis 3</option>
 									</select>
 									<label class="form-label form-label" for="diagnosis">Diagnosis<span>&nbsp;*</span></label>
-									<div class="error-message" id="error-pet_type"><span>• Please select pet type</span></div>
-									<div class="guide-message" id="guide-pet_type"><span>• Please select pet type</span></div>
+									<div class="error-message" id="error-pet_type"><span>• Please select diagnosis</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" name="diagnosis_date" data-id="diagnosis_date" id="diagnosis_date" placeholder="Date" type="date">
+									<input class="form-control form-control" data-id="diagnosis_date" id="diagnosis_date" placeholder="Date" type="date">
 									<label class="form-label form-label" for="diagnosis_date">Date<span>&nbsp;*</span></label>
-									<div class="error-message" id="error-pet_birthdate"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
-									<div class="guide-message" id="guide_pet_birthdate"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
+									<div class="error-message" id="error-pet_birthdate"><span>• Please click the calendar icon on the right part, and select diagnosis date.</span></div>
+									
 								</div>
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" name="treatment" data-id="treatment_plan" id="treatment_plan" placeholder="Treatment Plan">
+									<select class="form-select form-select"  data-id="treatment_plan" id="treatment_plan" placeholder="Treatment Plan">
 										<option value="" selected="">Select Treatment</option>
 										<option value="Treatment 1">Treatment 1</option>
 										<option value="Treatment 2">Treatment 2</option>
 										<option value="Treatment 3">Treatment 3</option>
 									</select>
 									<label class="form-label form-label" for="diagnosis">Treatment Plan<span>&nbsp;*</span></label>
-									<div class="error-message" id="error-pet_type-3"><span>• Please select pet type</span></div>
-									<div class="guide-message" id="guide-pet_type-3"><span>• Please select pet type</span></div>
+									<div class="error-message" id="error-pet_type-3"><span>• Please select treatment plan</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select" id="medication" name="medication" data-id="medication" placeholder="Medication">
+									<select class="form-select" id="medication" data-id="medication" placeholder="Medication">
 										<option value="" disabled selected>Medication</option>
 										@foreach ($medInfo as $medInfo)
 										<option value="{{ $medInfo->id }}">{{ $medInfo->item_name }}</option>
 										@endforeach
 									</select>
 									<label class="form-label form-label" for="medication">Medication<span>&nbsp;*</span></label>
-									<div class="error-message" id="error-pet_type-4"><span>• Please select pet type</span></div>
-									<div class="guide-message" id="guide-pet_type-4"><span>• Please select pet type</span></div>
+									<div class="error-message" id="error-pet_type-4"><span>• Please select medication</span></div>
 								</div>
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<textarea class="form-control form-control" name="diagnosis_desc" data-id="diagnosis_description" id="diagnosis_description" placeholder="Diagnosis Description"></textarea>
+									<textarea class="form-control form-control" data-id="diagnosis_description" id="diagnosis_description" placeholder="Diagnosis Description"></textarea>
 									<label class="form-label form-label" for="diagnosis_description">Diagnosis Description<span>&nbsp;*</span></label>
-									<div class="error-message" id="error-diagnosis_description"><span>• Please select a sterilization status.</span></div>
-									<div class="guide-message" id="guide-diagnosis_description"><span>• Please select a sterilization status.</span></div>
+									<div class="error-message" id="error-diagnosis_description"><span>• Please enter diagnosis description.</span></div>
 								</div>
 							</div>
 						</div>
@@ -1078,7 +1064,7 @@
 			<div class="modal-content add_pet_record_modal">
 				<div class="modal-header">
 					<h1 class="modal-title">Add Vaccination History</h1>
-					<button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+					<button class="btn-close" id="close_vaccination" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
 					<form action="{{ route('vax.history') }}" method="POST" class="add_client" id="add_pet_form-2">
@@ -1106,7 +1092,7 @@
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<textarea class="form-control form-control" id="vaccination_description" placeholder="Vaccination Details"></textarea>
+									<textarea class="form-control form-control" name="vaccination_description" id="vaccination_description" placeholder="Vaccination Details"></textarea>
 									<label class="form-label" for="vaccination_description">Vaccination Details<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_type-5"><span>• Please select pet type</span></div>
 									<div class="guide-message" id="guide-pet_type-5"><span>• Please select pet type</span></div>
@@ -1146,7 +1132,7 @@
 			<div class="modal-content add_pet_record_modal">
 				<div class="modal-header">
 					<h1 class="modal-title">Add Surgery</h1>
-					<button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+					<button class="btn-close" id="close_surgery" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
 					<form action="{{ route('surg.history') }}" method="POST" class="add_client" id="add_pet_form-3">
@@ -1155,7 +1141,7 @@
 						<div class="mb-3 input_container">
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" name="surgery_type" id="surgery" data-id="surgery" placeholder="Surgery">
+									<select class="form-select form-select" name="surgery_type" id="surgery_type" data-id="surgery_type" placeholder="Surgery">
 										<option value="" selected="">Surgery</option>
 										<option value="Surgery 1">Surgery 1</option>
 										<option value="Surgery 2">Surgery 2</option>
@@ -1174,31 +1160,31 @@
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select" id="surgery_reason" name="severity" data-id="surgery_reason" placeholder="Reason for surgery">
+									<select class="form-select" id="severity" name="severity" data-id="severity" placeholder="Reason for surgery">
 										<option value="" selected="">Severity</option>
 										<option value="Reason surgery 1">Low Risk</option>
 										<option value="Reason surgery 2">Intermediate Risk</option>
 										<option value="Reason surgery 3">High Risk</option>
 									</select>
-									<label class="form-label form-label" for="surgery_reason">Reason for surgery<span>&nbsp;*</span></label>
+									<label class="form-label form-label" for="severity">Severity<span>&nbsp;*</span></label>
 									<div id="error-medication-2" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-medication-2" class="guide-message"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select" id="medication-1" name="med_id" data-id="medication-1" placeholder="Medication">
+									<select class="form-select" id="med_id" name="med_id" data-id="med_id" placeholder="Medication">
 										<option value=""disabled selected>Medication</option>
 										@foreach ($med_info as $med_info)
 										<option value="{{ $med_info->id }}">{{ $med_info->item_name }}</option>
 										@endforeach
 									</select>
-									<label class="form-label form-label" for="medication-1">Medication<span>&nbsp;*</span></label>
+									<label class="form-label form-label" for="med_id">Medication<span>&nbsp;*</span></label>
 									<div id="error-medication-1" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-medication-1" class="guide-message"><span>• Please select pet type</span></div>
 								</div>
 							</div>
 							<div class="d-flex justify-content-end align-items-end align-content-end align-self-end newinput_row" style="width: 100%;">
 								<div class="form-floating" style="width: 100%;">
-									<textarea class="form-control form-control" name="surgery_notes" id="notes" placeholder="Notes"></textarea>
+									<textarea class="form-control form-control" name="notes" id="notes" data-id="notes" placeholder="Notes"></textarea>
 									<label class="form-label" for="notes">Notes<span>&nbsp;*</span></label>
 									<div id="error-notes" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-notes" class="guide-message"><span>• Please select pet type</span></div>
@@ -1214,7 +1200,10 @@
 			</div>
 		</div>
 	</div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
 @if (session('success'))
     <script>
@@ -1299,7 +1288,7 @@ $(document).ready(function() {
 					$('#birthdate p').text(data.petInfo.birthdate);
 					$('#weight p').text(data.petInfo.weight);
 					$('#sex p').text(data.petInfo.gender);
-					$('#sterilization p').text(data.petInfo.sterilization);
+					$('#sterilization_status p').text(data.petInfo.sterilization);
 					$('#ownerName p').text(data.ownerInfo.first_name + ' ' + 
 					(data.ownerInfo.middle_name ? data.ownerInfo.middle_name + ' ' : '') + 
 					data.ownerInfo.last_name + (data.ownerInfo.suffix ? ' ' + data.ownerInfo.suffix : ''));
@@ -1439,6 +1428,8 @@ $(document).ready(function() {
 <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/sidebar.js') }}"></script>
 <script src="{{ asset('assets/js/pet_records.js') }}"></script>
+
+
 </body>
 
 </html>
