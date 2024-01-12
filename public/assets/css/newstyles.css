@@ -1331,7 +1331,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
   }
   
-  .submit_product, .edit_save_changes, .add_stock, .submit_pet, .book_appointment {
+  .submit_product, .edit_save_changes, .add_stock, .submit_pet, .book_appointment, .submit_surgery, .submit_immunization, .submit_diagnosis {
     display: flex;
     height: 56px;
     min-width: 100px;
@@ -1385,7 +1385,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     background: var(--colors-actions-action, #045B62);
   }
   
-  .submit_product.disabled {
+  .submit_product.disabled, .submit_diagnosis:disabled, .submit_vaccination:disabled, .submit_surgery:disabled {
     border-radius: var(--radius-s, 8px);
     opacity: 0.7;
     background: var(--colors-actions-action, #045B62);
@@ -3814,6 +3814,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-spacing-m, 24px);
+    padding: 16px;
     align-self: stretch;
   }
   
@@ -3850,11 +3851,11 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   
   .pet_details_container {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-spacing-xs, 12px);
     flex: 1 0 0;
-    align-self: stretch;
   }
   
   .new_inputs_row {
