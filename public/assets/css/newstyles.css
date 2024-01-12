@@ -4023,6 +4023,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     flex-wrap: wrap !important; 
     justify-content: flex-start;
     overflow: auto;
+    position: relative;
   }
   
   .pet_information {
@@ -5200,6 +5201,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
       inset: 0px 0px auto auto;
       margin: 0px;
       transform: translate3d(-85px, 15px, 0px);
+      z-index: 1;
     }
       
       #approvedTableBody td:nth-child(n + 3):nth-child(-n + 8), #pendingTableBody td:nth-child(n + 3):nth-child(-n + 8), #rejectedTableBody td:nth-child(n + 3):nth-child(-n + 8) {
