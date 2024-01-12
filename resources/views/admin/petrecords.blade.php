@@ -218,21 +218,18 @@
 								<div class="pet_detail_body">
 									<div class="pet_upper_detail">
 										<div class="pet_sex_container">
-											<h1>Sex</h1>
+											<h1>Owner</h1>
 											<p>{{ $petrecord->pet->gender }}</p>
 										</div>
-										<div class="pet_age_container">
-											<h1>Age</h1>
-											<p>{{ $petrecord->pet->age }}</p>
-										</div>
+									
 									</div>
 									<div class="pet_lower_detail">
 										<div class="pet_weight_container">
-											<h1>Weight</h1>
+											<h1>Email</h1>
 											<p>{{ $petrecord->pet->weight }}</p>
 										</div>
 										<div class="pet_sterilization_status_container">
-											<h1>Sterilization Status</h1>
+											<h1>Contact Number</h1>
 											<p>{{ $petrecord->pet->sterilization }}</p>
 										</div>
 									</div>
@@ -582,9 +579,9 @@
 						<div class="detail_body">
 							<div class="pet_details_container">
 								<div class="align-self-stretch form-floating">
-									<input type="text" class="form-control">
+									<input type="text" class="form-control" id="pet_name_edit">
 									<label class="form-label" for="pet_name">Pet Name</label>
-									<div class="error-message"><span>• Error Message</span></div>
+									<div class="error-message" id="edit_pet_error"><span>• Error Message</span></div>
 									<div class="guide-message"><span>• Guide Message</span></div>
 								</div>
 								<div class="align-self-stretch form-floating">
@@ -599,25 +596,27 @@
 								</div>
 								<div class="new_input_row">
 									<div class="form-floating" style="width: 100%;">
-										<input class="form-control" type="date">
-										<label class="form-label">Label</label>
-										<div class="error-message"></div>
+										<input class="form-control" id="pet_birthdate_edit" type="date">
+										<label class="form-label">Birth Date</label>
+										<div class="error-message" id="edit_birthdate_error"><span>• Error Message</span></div>
 										<div class="guide-message"></div>
 									</div>
-									<div class="form-floating" style="width: 100%;">
-										<input type="text" class="form-control">
+									<div class="form-floating" id="pet_age_edit" style="width: 100%;">
+										<input type="text" id="age_input_edit" class="form-control">
 										<label class="form-label">Age</label>
+										<div class="error-message" id="edit_age_error"><span>• Error Message</span></div>
+										<div class="guide-message"></div>
 									</div>
 								</div>
 								<div class="new_input_row">
 									<div class="form-floating" style="width: 543px;">
-										<select class="form-select" aria-label="Floating label select example">
+										<select class="form-select" id="pet_type_edit" aria-label="Floating label select example">
 											<option value="" selected="">Pet Type</option>
 											<option value="Dog">Dog</option>
 											<option value="Cat">Cat</option>
 										</select>
 										<label class="form-label" for="">Pet Type</label>
-										<div class="error-message"><span>• Error Message</span></div>
+										<div class="error-message" id="edit_pet_type_error"><span>• Error Message</span></div>
 										<div class="guide-message"><span>• Guide Message</span></div>
 									</div>
 									<div class="new_inputs_row">
@@ -627,13 +626,13 @@
 												<option value="other">Other</option>
 											</select>
 											<label class="form-label" for="">Breed</label>
-											<div class="error-message"><span>• Error Message</span></div>
+											<div class="error-message" id="edit_breed_error"><span>• Error Message</span></div>
 											<div class="guide-message"><span>• Guide Message</span></div>
 										</div>
 										<div class="form-floating" id="pet_breed_specify" style="width: 100%; display: none;">
 											<input type="text" class="form-control" id="pet_breed1" placeholder="Specify Breed">
 											<label class="form-label" for="pet_breed1">Specify Breed</label>
-											<div class="error-message"><span>• Error Message</span></div>
+											<div class="error-message" id="edit_breed_error1"><span>• Error Message</span></div>
 											<div class="guide-message"><span>• Guide Message</span></div>
 										</div>
 										<div class="align-self-stretch form-floating" id="specific_breed">
@@ -895,13 +894,13 @@
 			<div class="modal-content add_pet_record_modal">
 				<div class="modal-header">
 					<h1 class="modal-title">Add Pet Record</h1>
-					<button class="btn-close" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+					<button class="btn-close" id="close_pet_modal" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
 					<form action="{{ route('emr.pet') }}" method="POST" id="add_pet_form-1" class="add_client">
                         @csrf
 						<div class="mb-3 input_container">
-                            <div class="form-floating">
+                            <div class="form-floating align-self-stretch">
                                     <select class="admin_petInfo_select form-control w-100" id="name" name="owner_id" placeholder="Owner Name">
                                         <option value=""disabled selected>Select Owner: </option>
                                         @foreach ($owners as $owners)
@@ -912,7 +911,7 @@
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
 									<input class="form-control" type="text" name="pet_name" id="pet_name-1" data-id="pet_name-1" placeholder="Pet Name" maxlength="255">
-									<label class="form-label" for="pet_name">Pet Name<span>&nbsp;*</span></label>
+									<label class="form-label" for="pet_name-1">Pet Name<span>&nbsp;*</span></label>
 									<div id="error-pet_name-1" class="error-message"><span>• Please enter pet name.</span></div>
 									<div id="guide-pet_name-1" class="guide-message"><span>• Please enter pet name.</span></div>
 								</div>
@@ -922,7 +921,7 @@
 										<option value="Male">Male</option>
 										<option value="Female">Female</option>
 									</select>
-									<label class="form-label" for="gender">Sex<span>&nbsp;*</span></label>
+									<label class="form-label" for="gender-1">Sex<span>&nbsp;*</span></label>
 									<div id="error-gender-1" class="error-message"><span>• Please select gender of pet.</span></div>
 									<div id="guide-gender-1" class="guide-message"><span>• Please select gender of pet.</span></div>
 								</div>
@@ -934,7 +933,7 @@
 										<option value="Dog">Dog</option>
 										<option value="Cat">Cat</option>
 									</select>
-									<label class="form-label" for="pet_type">Pet Type<span>&nbsp;*</span></label>
+									<label class="form-label" for="pet_type-1">Pet Type<span>&nbsp;*</span></label>
 									<div id="error-pet_type-1" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-pet_type-1" class="guide-message"><span>• Please select pet type</span></div>
 								</div>
@@ -942,7 +941,7 @@
 									<select class="form-select" name="breed" id="breed-1" data-id="breed-1" disabled="" placeholder="Breed">
 										<option value="none" selected="">Select a Pet Type first.</option>
 									</select>
-									<label class="form-label" for="breed">Breed<span>&nbsp;*</span></label>
+									<label class="form-label" for="breed-1">Breed<span>&nbsp;*</span></label>
 									<div id="error-breed-1" class="error-message"><span>• Please select a breed.</span></div>
 									<div id="guide-breed-1" class="guide-message"><span>• Please select a breed.</span></div>
 								</div>
@@ -950,13 +949,13 @@
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
 									<input class="form-control" name="pet_birthday" id="pet_birthdate-1" data-id="pet_birthdate-1" placeholder="Birthdate" type="date">
-									<label class="form-label" for="pet_birthdate">Birthdate<span>&nbsp;*</span></label>
+									<label class="form-label" for="pet_birthdate-1">Birthdate<span>&nbsp;*</span></label>
 									<div id="error-pet_birthdate-1" class="error-message"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 									<div id="guide_pet_birthdate-1" class="guide-message"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
 									<input class="form-control" type="text" name="pet_age" data-bs-toggle="tooltip" data-bss-tooltip="" id="age-1" data-id="age-1" title="Please select pet type and enter the birthdate first." maxlength="3" disabled="" placeholder="Please select pet type, breed, and enter the birthdate first.">
-									<label class="form-label" for="age">Age</label>
+									<label class="form-label" for="age-1">Age</label>
 									<div id="error-age-1" class="error-message" style="color:red;"></div>
 								</div>
 							</div>
@@ -974,7 +973,7 @@
 										<option value="Spayed">Spayed</option>
 										<option value="Neutered">Neutered</option>
 									</select>
-									<label class="form-label" for="sterilization_status">Sterilization Status<span>&nbsp;*</span></label>
+									<label class="form-label" for="sterilization_status-1">Sterilization Status<span>&nbsp;*</span></label>
 									<div id="error-sterilization_status-1" class="error-message"><span>• Please select a sterilization status.</span></div>
 									<div id="guide-sterilization_status-1" class="guide-message"><span>• Please select a sterilization status.</span></div>
 								</div>
@@ -983,7 +982,7 @@
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_form-1" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_pet" id="submit_Pet" type="submit" title="Complete the fields first to make this clickable."><span class="submit_product_base">Submit</span></button>
+					<button class="btn submit_pet" id="submit_Pet-1" type="submit" value="submit" title="Complete the fields first to make this clickable."><span class="submit_product_base">Submit</span></button>
 				</div>
                 </form>
 			</div>
@@ -1053,7 +1052,7 @@
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_diagnosis" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_pet" id="submit_diagnosis" type="submit"><span class="submit_product_base">Submit</span></button>
+					<button class="btn submit_diagnosis" id="submit_diagnosis" type="submit"><span class="submit_product_base">Submit</span></button>
 				</div>
 				</form>
 			</div>
@@ -1121,7 +1120,7 @@
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_vaccination" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_pet" id="submit_vaccination" type="submit"><span class="submit_product_base">Submit</span></button>
+					<button class="btn submit_immunization" id="submit_vaccination" type="submit"><span class="submit_product_base">Submit</span></button>
 				</div>
 				</form>
 			</div>
@@ -1194,7 +1193,7 @@
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_surgery" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_pet" id="submit_surgery" type="submit"><span class="submit_product_base">Submit</span></button>
+					<button class="btn submit_surgery" id="submit_surgery" type="submit"><span class="submit_product_base">Submit</span></button>
 				</div>
 				</form>
 			</div>
