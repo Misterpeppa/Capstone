@@ -104,11 +104,11 @@ class EMRController extends Controller
             'diagnosis_date' => $request->input('diagnosis_date'),
             'treatment' => $request->input('treatment'),
             'med_id' => $request->input('medication'),
-            // 'diagnosis_desc' => $request->input('diagnosis_desc'),
+            'diagnosis_desc' => $request->input('diagnosis_desc'),
         ]);
         $medHistory->save();
 
-        return redirect()->route('admin_emr')->with('success', 'Pet Successfully Added');
+        return redirect()->route('admin_emr')->with('med_success', 'Pet Successfully Added');
     }
     public function vaxHistory(Request $request)
     {
@@ -117,10 +117,11 @@ class EMRController extends Controller
             'vax_id' => $request->input('vax_id'),
             'vaccination_date' => $request->input('vaccination_date'),
             'revaccination_date' => $request->input('revaccination_date'),
+            'status' => $request->input('status'),
         ]);
         $vaxHistory->save();
 
-        return redirect()->route('admin_emr')->with('success', 'Pet Successfully Added');
+        return redirect()->route('admin_emr')->with('vax_success', 'Pet Successfully Added');
     }
     public function surgHistory(Request $request)
     {
@@ -134,7 +135,7 @@ class EMRController extends Controller
         ]);
         $surgHistory->save();
 
-        return redirect()->route('admin_emr')->with('success', 'Pet Successfully Added');
+        return redirect()->route('admin_emr')->with('surg_success', 'Pet Successfully Added');
     }
 
     public function showMedHis($id)
