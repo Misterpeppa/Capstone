@@ -630,34 +630,37 @@ function showArchiveModal() {
 var petCards = document.querySelectorAll('.pet_card');
 var view_pets = document.querySelectorAll('.view_pet');
 
-// Add click event listeners to each button in each pet card
-petCards.forEach(petCard => {    
-    var viewButton = petCard.querySelector('.View_pet');
-    var editButton = petCard.querySelector('.Edit_pet');
-    var archiveButton = petCard.querySelector('.archive_pet');
-    
-    viewButton.addEventListener('click', function() {
-        // Show the view_pet section
-        viewPetSection.style.display = 'flex';
-        appointmentListContainer.style.display = 'none';
-        petContainer.style.display = 'none';
-        previousSection = currentSection;
-        currentSection = viewPetSection;
-    });
-    
-    editButton.addEventListener("click", function () {
-        // Show the edit_pet section
-        editPetSection.style.display = 'flex';
-        appointmentListContainer.style.display = 'none';
-        petContainer.style.display = 'none';
-        previousSection = currentSection;
-        currentSection = editPetSection;
-    });
 
-    archiveButton.addEventListener('click', function() {
-        // Assuming you have a function to show the modal (e.g., showArchiveModalFunction)
-        // Replace this with the actual function you use to show your modal
-        showArchiveModalFunction();
+
+
+document.querySelectorAll('.more_button button').forEach(function (button) {
+    button.addEventListener('click', function (event) {
+        event.preventDefault();
+        const action = this.getAttribute('data-action');
+        if (action === 'View_pet'){
+            // Show the view_pet section
+            viewPetSection.style.display = 'flex';
+            appointmentListContainer.style.display = 'none';
+            petContainer.style.display = 'none';
+            previousSection = currentSection;
+            currentSection = viewPetSection;
+            
+        }else if (action === 'Edit_pet') {
+        // Show the edit_pet section
+            editPetSection.style.display = 'flex';
+            appointmentListContainer.style.display = 'none';
+            petContainer.style.display = 'none';
+            previousSection = currentSection;
+            currentSection = editPetSection;
+            
+        }else if (action === 'Archive_pet') {
+
+            showArchiveModalFunction();
+        } else if (action === 'Create_appointment') {
+            var create_appointment_modal = new bootstrap.Modal(document.getElementById('create_appointment_modal'));
+            create_appointment_modal.show();
+        }
+
     });
 });
 
