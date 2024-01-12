@@ -134,7 +134,7 @@
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg><span>View</span></button><button id="Edit" class="btn dropdown-item Edit_pet" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+</svg><span>View</span></button><button data-action="Edit_pet" id="Edit"  class="btn dropdown-item Edit_pet" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_6590_18183)">
     <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -143,7 +143,7 @@
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg><span>Edit</span></button><button id="Archive" class="btn dropdown-item archive_pet" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+</svg><span>Edit</span></button><button data-action="Archive_pet" id="Archive" class="btn dropdown-item archive_pet" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_6590_18188)">
     <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -152,7 +152,7 @@
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg><span>Archive</span></button><button id="add_appointment" class="btn dropdown-item add_appointment" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+</svg><span>Archive</span></button><button data-action="Create_appointment" id="add_appointment" class="btn dropdown-item add_appointment" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_6590_18193)">
     <path d="M12.5 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H18C18.5304 5 19.0391 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V12M16 3V7M8 3V7M4 11H20M16 19H22M19 16V22" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
@@ -532,6 +532,37 @@
             </div>
         </div>
     </footer>
+
+	<div id="create_appointment_modal" class="modal fade show" role="dialog" tabindex="-1">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content create_appointment">
+				<div class="modal-header archive_header">
+					<h1>Create Appointment?</h1>
+				</div>
+				<div class="modal-body archive_message">
+					<div class="align-self-stretch form-floating"><select id="surgery_type" class="form-select" data-id="surgery_type">
+							<option value selected>Select a surgery</option>
+							<option value="Neuter">Neuter (𝘐𝘵 𝘪𝘴 𝘵𝘩𝘦 𝘴𝘶𝘳𝘨𝘪𝘤𝘢𝘭 𝘳𝘦𝘮𝘰𝘷𝘢𝘭 𝘰𝘧 𝘢 𝘮𝘢𝘭𝘦 𝘥𝘰𝘨&#39;𝘴 𝘵𝘦𝘴𝘵𝘪𝘤𝘭𝘦𝘴)</option>
+							<option value="Tooth Extraction">Tooth Extraction (𝘳𝘦𝘮𝘰𝘷𝘢𝘭 𝘰𝘧 𝘢 𝘵𝘰𝘰𝘵𝘩)</option>
+						</select><label class="form-label" for="surgery_type">Surgery Type<span> *</span></label>
+						<div id="error-surgery" class="error-message"><span>• Please select a surgery type</span></div>
+					</div>
+					<div class="align-self-stretch form-floating"><textarea id="floatingTextarea" class="form-control" data-id="floatingTextarea" placeholder="Additional Notes" type="text"></textarea><label class="form-label form-label" for="floatingTextarea">Additional Notes</label></div>
+					<div class="d-flex align-self-stretch flex-row justify-content-between input_row">
+						<div class="form-floating"><input id="appointment_date" class="form-control" type="date" style="width: 100%;" /><label class="form-label" for="appointment_date">Date<span> *</span></label>
+							<div id="error-appointment_date" class="error-message"><span>• Please enter appointment date.</span></div>
+						</div>
+						<div class="form-floating"><input id="appointment_time" class="form-control" type="time" style="width: 100%;" /><label class="form-label" for="appointment_time">Time<span> *</span></label>
+							<div id="error-appointment_time" class="error-message"><span>• Please enter time.</span></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer d-flex justify-content-end"><button id="book_appointment" class="btn next_btn" data-bs-dismiss="modal"type="button"><span class="archive_confirm_button_base">Book Appointment</span></button></div>
+			</div>
+		</div>
+	</div>
+
+
 	<div class="modal fade show" role="dialog" tabindex="-1" id="add_pet_success">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content success_modal">
