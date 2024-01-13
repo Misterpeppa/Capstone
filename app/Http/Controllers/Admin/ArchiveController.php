@@ -27,9 +27,9 @@ class ArchiveController extends Controller
         $petrecord = PetRecord::whereNotNull('archived_at')->get();
         $appointment = AppointmentApproved::whereNotNull('archived_at')->get();
 
-        $productInfo = $vax_info->concat($med_info)->concat($vit_info);
+        $archived = $vax_info->concat($med_info)->concat($vit_info)->concat($petrecord);
 
-        return view('admin/archive', compact('dataExist', 'productInfo', 'petrecord', 'appointment'));
+        return view('admin/archive', compact('dataExist', 'archived', 'petrecord', 'appointment'));
     }
     public function unarchived(Request $request, $product_type, $id)
     {
@@ -54,4 +54,5 @@ class ArchiveController extends Controller
         }
         return redirect()->back()->with('success', 'Unarchive');
     }
+
 }

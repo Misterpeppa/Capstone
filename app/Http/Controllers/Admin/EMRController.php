@@ -12,7 +12,7 @@ use App\Models\Admin\SurgHistory;
 use App\Models\Admin\VaxHistory;
 use App\Models\Admin\VaxInfo;
 use App\Models\User\Clients;
-
+use Svg\Tag\Rect;
 
 class EMRController extends Controller
 {
@@ -61,7 +61,8 @@ class EMRController extends Controller
     public function editPet(Request $request)
     {
         // Retrieve existing pet info or create a new one
-        $pet_infos = PetInfo::find($request->input('pet_id')) ?? new PetInfo;
+        $petId = $request->input('pet_id');
+        $pet_infos = PetInfo::find($petId);
 
         // Update or set the fields
         $pet_infos->name = $request->input('pet_name');
@@ -75,7 +76,7 @@ class EMRController extends Controller
         // Save the pet info
         $pet_infos->save();
         // Update or create the pet record
-        return redirect()->route('admin_emr')->with('success', 'Pet Successfully Updated');
+        return redirect()->route('admin_emr')->with('edit_success', 'Pet Successfully Updated');
     }
     public function viewRecord($id)
     {
@@ -89,9 +90,10 @@ class EMRController extends Controller
             'ownerInfo' => $ownerInfo,
         ]);
     }
-    public function archive($id)
+    public function archive(Request $request)
     {
-        $petrecord = PetRecord::findOrFail($id);
+        $petrecordId = $request->input('petrecord_id');
+        $petrecord = PetRecord::find($petrecordId);
         $petrecord->update(['archived_at' => now()]);
         return redirect()->route('admin_emr')->with('success', 'Pet Successfully Updated');
     }

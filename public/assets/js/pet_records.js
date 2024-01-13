@@ -144,12 +144,12 @@ edit_pet_btn.addEventListener('click', function(){
     var discardEditModal = new bootstrap.Modal(document.getElementById('edit_discard'));
 
     // Attach the function to the button click event
-    editSaveChangesButton.addEventListener('click', function(){
-        saveChangesSuccessModal.show();
-        setTimeout(function () {
-            saveChangesSuccessModal.hide();
-        }, 2000);
-    });
+    // editSaveChangesButton.addEventListener('click', function(){
+    //     saveChangesSuccessModal.show();
+    //     setTimeout(function () {
+    //         saveChangesSuccessModal.hide();
+    //     }, 2000);
+    // });
 
     cancelEditBtn.addEventListener('click', function(){
         discardEditModal.show();

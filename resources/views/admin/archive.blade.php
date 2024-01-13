@@ -199,15 +199,39 @@
                                 </tr>
                             </thead>
                             <tbody id="archive_table_body">
-                              @foreach ($productInfo as $index => $product)
+                              @foreach ($archived as $index => $record)
                                 <tr>
                                     <td><input type="checkbox" class="checkbox"></td>
                                     <td>{{ $index + 1 }}</td>
-                                    <td>{{ $product->item_name }}</td>
-                                    <td>Inventory</td>
-                                    <td>{{ $product->created_at->format('Y-m-d') }}</td>
-                                    <td>{{ $product->archived_at }}</td>
-                                    <td><button class="btn" id="revert_archived-1" type="button" data-product-type="{{ $product->product_type }}" data-product-id="{{ $product->id }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <td>
+                                        @if ($record instanceof App\Models\Admin\MedInfo)
+                                            {{ $record->item_name }} <!-- Display MedInfo-specific field -->
+                                        @elseif ($record instanceof App\Models\Admin\VaxInfo)
+                                            {{ $record->item_name }} <!-- Display VaxInfo-specific field -->
+                                        @elseif ($record instanceof App\Models\Admin\VitInfo)
+                                            {{ $record->item_name }} <!-- Display VitInfo-specific field -->
+                                        @elseif ($record instanceof App\Models\Admin\PetRecord)
+                                            {{ $record->pet->name }} <!-- Display PetRecord-specific field -->
+                                        @elseif ($record instanceof App\Models\AppointmentApproved)
+                                            {{ $record->appointment_name }} <!-- Display AppointmentApproved-specific field -->
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($record instanceof App\Models\Admin\MedInfo)
+                                            Inventory <!-- Display common label for MedInfo -->
+                                        @elseif ($record instanceof App\Models\Admin\VaxInfo)
+                                            Inventory <!-- Display common label for VaxInfo -->
+                                        @elseif ($record instanceof App\Models\Admin\VitInfo)
+                                            Inventory <!-- Display common label for VitInfo -->
+                                        @elseif ($record instanceof App\Models\Admin\PetRecord)
+                                            PetRecord <!-- Display common label for PetRecord -->
+                                        @elseif ($record instanceof App\Models\AppointmentApproved)
+                                            Appointment <!-- Display common label for AppointmentApproved -->
+                                        @endif
+                                    </td>
+                                    <td>{{ $record->created_at->format('Y-m-d') }}</td>
+                                    <td>{{ $record->archived_at }}</td>
+                                    <td><button class="btn" id="revert_archived-1" type="button" data-product-type="{{ $record->product_type }}" data-product-id="{{ $record->id }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                         <g clip-path="url(#clip0_6404_6376)">
                                           <path d="M9 14L5 10M5 10L9 6M5 10H16C17.0609 10 18.0783 10.4214 18.8284 11.1716C19.5786 11.9217 20 12.9391 20 14C20 15.0609 19.5786 16.0783 18.8284 16.8284C18.0783 17.5786 17.0609 18 16 18H15" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </g>

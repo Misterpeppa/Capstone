@@ -21,6 +21,7 @@ class PetRecord extends Model
         'existing_condtion',
         'current_medication',
         'archived_at',
+        'source',
     ];
 
     public function owner(): BelongsTo

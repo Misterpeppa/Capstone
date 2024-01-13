@@ -106,6 +106,7 @@ Route::middleware('admin', 'nocache')->group(function () {
     Route::post('/admin/emr/vaxhistory', [EMRController::class, 'vaxHistory'])->name('vax.history');
     Route::post('/admin/emr/surghistory', [EMRController::class, 'surgHistory'])->name('surg.history');
     Route::post('/admin/emr/edit', [EMRController::class, 'editPet'])->name('edit.petrecord');
+    Route::post('/admin/emr/archive', [EMRController::class, 'archive'])->name('archive.petrecord');
     Route::get('/admin/emr/medhis/{id}', [EMRController::class, 'showMedHis']);
     Route::get('/admin/emr/vaxhis/{id}', [EMRController::class, 'showVaxHis']);
     Route::get('/admin/emr/surghis/{id}', [EMRController::class, 'showSurgHis']);
