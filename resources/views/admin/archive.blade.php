@@ -212,8 +212,8 @@
                                             {{ $record->item_name }} <!-- Display VitInfo-specific field -->
                                         @elseif ($record instanceof App\Models\Admin\PetRecord)
                                             {{ $record->pet->name }} <!-- Display PetRecord-specific field -->
-                                        @elseif ($record instanceof App\Models\AppointmentApproved)
-                                            {{ $record->appointment_name }} <!-- Display AppointmentApproved-specific field -->
+                                        @elseif ($record instanceof App\Models\Admin\AppointmentApproved)
+                                            {{$record->clients->first_name }} {{$record->clients->middle_name}} {{$record->clients->last_name }} {{$record->clients->suffix }} <!-- Display AppointmentApproved-specific field -->
                                         @endif
                                     </td>
                                     <td>
@@ -225,13 +225,15 @@
                                             Inventory <!-- Display common label for VitInfo -->
                                         @elseif ($record instanceof App\Models\Admin\PetRecord)
                                             PetRecord <!-- Display common label for PetRecord -->
-                                        @elseif ($record instanceof App\Models\AppointmentApproved)
+                                        @elseif ($record instanceof App\Models\Admin\AppointmentApproved)
                                             Appointment <!-- Display common label for AppointmentApproved -->
                                         @endif
                                     </td>
                                     <td>{{ $record->created_at->format('Y-m-d') }}</td>
                                     <td>{{ $record->archived_at }}</td>
-                                    <td><button class="btn" id="revert_archived-1" type="button" data-product-type="{{ $record->product_type }}" data-product-id="{{ $record->id }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <td>
+                                      @if ($record instanceof App\Models\Admin\MedInfo)
+                                      <button class="btn unarchive_med" id="unarchive_med" type="button" data-product-type="{{ $record->product_type }}" data-record-id="{{ $record->id }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                         <g clip-path="url(#clip0_6404_6376)">
                                           <path d="M9 14L5 10M5 10L9 6M5 10H16C17.0609 10 18.0783 10.4214 18.8284 11.1716C19.5786 11.9217 20 12.9391 20 14C20 15.0609 19.5786 16.0783 18.8284 16.8284C18.0783 17.5786 17.0609 18 16 18H15" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </g>
@@ -240,7 +242,57 @@
                                             <rect width="24" height="24" fill="white"/>
                                           </clipPath>
                                         </defs>
-                                      </svg></span></button>
+                                        </svg></span>
+                                      </button>
+                                      @elseif ($record instanceof App\Models\Admin\VaxInfo)
+                                      <button class="btn unarchive_vax" id="unarchive_vax" type="button" data-product-type="{{ $record->product_type }}" data-product-id="{{ $record->id }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <g clip-path="url(#clip0_6404_6376)">
+                                          <path d="M9 14L5 10M5 10L9 6M5 10H16C17.0609 10 18.0783 10.4214 18.8284 11.1716C19.5786 11.9217 20 12.9391 20 14C20 15.0609 19.5786 16.0783 18.8284 16.8284C18.0783 17.5786 17.0609 18 16 18H15" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
+                                        <defs>
+                                          <clipPath id="clip0_6404_6376">
+                                            <rect width="24" height="24" fill="white"/>
+                                          </clipPath>
+                                        </defs>
+                                        </svg></span>
+                                      </button>
+                                      @elseif  ($record instanceof App\Models\Admin\VitInfo)
+                                      <button class="btn unarchive_vit" id="unarchive_vit" type="button" data-product-type="{{ $record->product_type }}" data-product-id="{{ $record->id }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <g clip-path="url(#clip0_6404_6376)">
+                                          <path d="M9 14L5 10M5 10L9 6M5 10H16C17.0609 10 18.0783 10.4214 18.8284 11.1716C19.5786 11.9217 20 12.9391 20 14C20 15.0609 19.5786 16.0783 18.8284 16.8284C18.0783 17.5786 17.0609 18 16 18H15" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
+                                        <defs>
+                                          <clipPath id="clip0_6404_6376">
+                                            <rect width="24" height="24" fill="white"/>
+                                          </clipPath>
+                                        </defs>
+                                        </svg></span>
+                                      </button>
+                                      @elseif ($record instanceof App\Models\Admin\PetRecord)
+                                      <button class="btn unarchive_petrec" id="unarchive_petrec" type="button" data-record-id="{{ $record->id }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <g clip-path="url(#clip0_6404_6376)">
+                                          <path d="M9 14L5 10M5 10L9 6M5 10H16C17.0609 10 18.0783 10.4214 18.8284 11.1716C19.5786 11.9217 20 12.9391 20 14C20 15.0609 19.5786 16.0783 18.8284 16.8284C18.0783 17.5786 17.0609 18 16 18H15" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
+                                        <defs>
+                                          <clipPath id="clip0_6404_6376">
+                                            <rect width="24" height="24" fill="white"/>
+                                          </clipPath>
+                                        </defs>
+                                        </svg></span>
+                                      </button>
+                                      @elseif ($record instanceof App\Models\Admin\AppointmentApproved)
+                                      <button class="btn unarchive_appointment" id="revert_archived-1" type="button" data-record-id="{{ $record->id }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <g clip-path="url(#clip0_6404_6376)">
+                                          <path d="M9 14L5 10M5 10L9 6M5 10H16C17.0609 10 18.0783 10.4214 18.8284 11.1716C19.5786 11.9217 20 12.9391 20 14C20 15.0609 19.5786 16.0783 18.8284 16.8284C18.0783 17.5786 17.0609 18 16 18H15" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
+                                        <defs>
+                                          <clipPath id="clip0_6404_6376">
+                                            <rect width="24" height="24" fill="white"/>
+                                          </clipPath>
+                                        </defs>
+                                        </svg></span>
+                                      </button>
+                                      @endif
                                     </td>
                                 </tr>
                               @endforeach
@@ -273,7 +325,8 @@
                         <p>You are about to restore the selected items. Continue?</p>
                     </div>
                 </div>
-                <div class="modal-footer discard_footer"><button class="btn return_btn" data-bs-dismiss="modal" type="button"><span class="return_btn_base">Cancel</span></button><button class="btn archive_confirm" id="archive_confirm_button" type="button" data-bs-dismiss="modal"><span class="archive_confirm_button_base">Continue</span></button></div>
+                <div class="modal-footer discard_footer"><button class="btn return_btn" data-bs-dismiss="modal" type="button"><span class="return_btn_base">Cancel</span></button>
+                <button class="btn archive_confirm" id="archive_confirm_button" type="button" data-bs-dismiss="modal"><span class="archive_confirm_button_base">Continue</span></button></div>
             </div>
         </div>
     </div>
@@ -302,29 +355,97 @@
   @endif
   <script>
     $(document).ready(function() {
-      $('#revert_archived-1').on('click', function() {
-            var row = $(this).closest('row-id');
-            const product_type = $(this).data('product-type');
-            const id = $(this).data('product-id');
-
-            // Send an AJAX request to the Laravel controller
+      $('.unarchive_med').on('click', function() {
+        const id = $(this).data('record-id');
+        $('#archive_modal').modal('show');
+        $('#archive_confirm_button').on('click', function() {
             $.ajax({
                 type: 'POST',
-                url: `/admin/archive/unarchived/${product_type}/${id}`,
+                url: `/admin/archive/medicine/${id}`,
                 data: {_token: '{{ csrf_token() }}'},
                 success: function(response) {
-                    // Handle success, e.g., show a success message
                     alert('Product has been unarchived');
-                    // Optionally, you can also reload the page or update the UI
-                    // location.reload();
+                    location.reload();
                 },
                 error: function(xhr) {
-                    // Handle errors
                     console.error(xhr.responseText);
                 }
             });
         });
       });
+      $('.unarchive_vax').on('click', function() {
+        const id = $(this).data('record-id');
+        $('#archive_modal').modal('show');
+        $('#archive_confirm_button').on('click', function() {
+            $.ajax({
+                type: 'POST',
+                url: `/admin/archive/vaccine/${id}`,
+                data: {_token: '{{ csrf_token() }}'},
+                success: function(response) {
+                    alert('Product has been unarchived');
+                    location.reload();
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+      });
+      $('.unarchive_vit').on('click', function() {
+        const id = $(this).data('record-id');
+        $('#archive_modal').modal('show');
+        $('#archive_confirm_button').on('click', function() {
+            $.ajax({
+                type: 'POST',
+                url: `/admin/archive/vitamin/${id}`,
+                data: {_token: '{{ csrf_token() }}'},
+                success: function(response) {
+                    alert('Product has been unarchived');
+                    location.reload();
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+      });
+      $('.unarchive_petrec').on('click', function() {
+        const id = $(this).data('record-id');
+        $('#archive_modal').modal('show');
+        $('#archive_confirm_button').on('click', function() {
+            $.ajax({
+                type: 'POST',
+                url: `/admin/archive/petrecord/${id}`,
+                data: {_token: '{{ csrf_token() }}'},
+                success: function(response) {
+                    alert('Pet Record has been unarchived');
+                    location.reload();
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+      });
+      $('.unarchive_appointment').on('click', function() {
+        const id = $(this).data('record-id');
+        $('#archive_modal').modal('show');
+        $('#archive_confirm_button').on('click', function() {
+            $.ajax({
+                type: 'POST',
+                url: `/admin/archive/appointment/${id}`,
+                data: {_token: '{{ csrf_token() }}'},
+                success: function(response) {
+                    alert('Appointment has been unarchived');
+                    location.reload();
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+      });
+    });
   </script>
 	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>

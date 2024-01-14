@@ -27,7 +27,7 @@ class ArchiveController extends Controller
         $petrecord = PetRecord::whereNotNull('archived_at')->get();
         $appointment = AppointmentApproved::whereNotNull('archived_at')->get();
 
-        $archived = $vax_info->concat($med_info)->concat($vit_info)->concat($petrecord);
+        $archived = $vax_info->concat($med_info)->concat($vit_info)->concat($petrecord)->concat($appointment);
 
         return view('admin/archive', compact('dataExist', 'archived', 'petrecord', 'appointment'));
     }
@@ -52,6 +52,46 @@ class ArchiveController extends Controller
             default:
                 return null;
         }
+        return redirect()->back()->with('success', 'Unarchive');
+    }
+    public function unarchiveMed(Request $request, $id)
+    {
+        $med_info = MedInfo::find($id);
+        $med_info->update(['archived_at' => null]);
+        $med_info->medBatch()->update(['archived_at' => null]);
+
+        return redirect()->back()->with('success', 'Unarchive');
+    }
+
+    public function unarchiveVax(Request $request, $id)
+    {
+        $vax_info = VaxInfo::find($id);
+        $vax_info->update(['archived_at' => null]);
+        $vax_info->vaxBatch()->update(['archived_at' => null]);
+
+        return redirect()->back()->with('success', 'Unarchive');
+    }
+
+    public function unarchiveVit(Request $request, $id)
+    {
+        $vit_info = VitInfo::find($id);
+        $vit_info->update(['archived_at' => null]);
+        $vit_info->vitBatch()->update(['archived_at' => null]);
+
+        return redirect()->back()->with('success', 'Unarchive');
+    }
+    public function unarchivePetRec(Request $request, $id)
+    {
+        $petrecord = PetRecord::find($id);
+        $petrecord->update(['archived_at' => null]);
+
+        return redirect()->back()->with('success', 'Unarchive');
+    }
+    public function unarchiveAppointment(Request $request, $id)
+    {
+        $appointment = AppointmentApproved::find($id);
+        $appointment->update(['archived_at' => null]);
+
         return redirect()->back()->with('success', 'Unarchive');
     }
 

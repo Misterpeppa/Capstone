@@ -22,6 +22,7 @@ class AppointmentApproved extends Model
         'appointmentDate',
         'appointmentTime',
         'completed_at',
+        'archived_at',
         'status',
         'source,'
     ];

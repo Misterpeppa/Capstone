@@ -98,6 +98,7 @@ Route::middleware('admin', 'nocache')->group(function () {
     Route::post('/admin/appointment/reject/{id}', [AppointmentController::class, 'reject'])->name('reject');
     Route::post('/admin/appointment/resched/{id}', [AppointmentController::class, 'resched'])->name('resched');
     Route::post('/admin/appointment/markascomplete/{id}', [AppointmentController::class, 'markAsComplete'])->name('appointment.complete');
+    Route::post('/admin/appointment/archive/{id}', [AppointmentController::class, 'archive'])->name('appointment.archive');
 
     Route::get('/admin/emr', [EMRController::class, 'show'])->name('admin_emr');
     Route::post('/admin/emr/petrecord', [EMRController::class, 'pet'])->name('emr.pet');
@@ -131,6 +132,12 @@ Route::middleware('admin', 'nocache')->group(function () {
 
     Route::get('admin/archive', [ArchiveController::class, 'show'])->name('admin_archive');
     Route::post('admin/archive/unarchived/{product_type}/{id}', [ArchiveController::class, 'unarchived'])->name('admin.unarchived');
+    Route::post('admin/archive/medicine/{id}', [ArchiveController::class, 'unarchiveMed'])->name('unarchive.med');
+    Route::post('admin/archive/vaccine/{id}', [ArchiveController::class, 'unarchiveVax'])->name('unarchive.vax');
+    Route::post('admin/archive/vitamin/{id}', [ArchiveController::class, 'unarchiveVit'])->name('unarchive.vit');
+    Route::post('admin/archive/petrecord/{id}', [ArchiveController::class, 'unarchivePetRec'])->name('unarchive.petrec');
+    Route::post('admin/archive/appointment/{id}', [ArchiveController::class, 'unarchiveAppointment'])->name('unarchive.appointment');
+
 });
 Auth::routes();
 
