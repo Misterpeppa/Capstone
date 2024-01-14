@@ -91,8 +91,10 @@
 					</svg> <a href="{{ route('admin_settings') }}">Settings</a></li>
 			</ul>
 		</div>
-		<button class="add" type="button">
-			<div class="add_base">
+
+
+										<button class="add" id="add" aria-expanded="false" data-bs-toggle="dropdown" type="button">
+										<div class="add_base">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 					<g clip-path="url(#clip0_5266_11673)" filter="url(#filter0_d_5266_11673)">
 						<path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
@@ -110,6 +112,130 @@
 							<rect width="24" height="24" fill="white" /> </clipPath>
 					</defs>
 				</svg> Add</div>
-		</button>
-	</div>
+										</button>
+										<div class="dropdown-menu more_button" data-bs-popper="none">
+										<button class="dropdown-item add_appointment_action" id="add_appointment">
+												Add Appointment
+											</button>
+											<button class="dropdown-item add_pet_action" id="add_pet">
+												Add Pet</button>
+											<button class="dropdown-item add_client_action" id="add_client">
+												Add Client</button>
+											<button class="dropdown-item add_product_action" id="add_product" >
+												Add Product
+											</button>
+										</div>
 </div>
+</div>
+
+
+<div class="modal fade" role="dialog" tabindex="-1" id="add_product_modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content add_client_modal">
+                <div class="modal-header">
+                    <h1 class="modal-title">Add New Product</h1><button class="btn-close" aria-label="Close"
+                        data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="add_product_form" method="POST" action="{{ route('inv.store') }}">
+                        @csrf
+                        <div class="mb-3 input_container">
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width: 100%;"><select
+                                        class="form-select form-select" name="product_type" data-id="product-categ"
+                                        id="product-categ">
+                                        <option value="none" selected="">Select a Product</option>
+                                        <option value="Medicine">Medicine</option>
+                                        <option value="Vaccine">Vaccine</option>
+                                        <option value="Vitamin">Vitamin</option>
+                                    </select><label class="form-label form-label" for="product-categ">Product
+                                        Category</label>
+                                    <div id="error-product_categ" class="error-message"><span>Please select a
+                                            category.</span></div>
+                                </div>
+                                <div class="form-floating" style="width: 100%;"><select
+                                        class="form-select form-select" name="item_name" data-id="product_name"
+                                        id="product_name">
+                                        <option value="none" selected="">Select a Product Name</option>
+                                    </select><label class="form-label form-label" for="product_name">Product
+                                        Name</label>
+                                    <div id="error-product_name" class="error-message"><span>Please select product
+                                            name.</span></div>
+                                </div>
+                                <div class="form-floating"style="width: 100%;"><input
+                                        class="form-control form-control" type="text" name="product_code"
+                                        data-id="product_code" id="product_code" placeholder="Product Code"><label
+                                        class="form-label form-label" for="product_code">Product Code</label>
+                                    <div class="error-message" id="error-product_code"><span>Please enter product
+                                            code.</span></div>
+                                </div>
+                                <div class="form-floating" style="width: 100%;"><input
+                                        class="form-control form-control" type="text" name="batch_no"
+                                        data-id="batch_number" id="batch_number" placeholder="Batch Number"><label
+                                        class="form-label form-label" for="batch_number">Batch Number</label>
+                                    <div class="error-message" id="error-batch_number"><span>Please enter batch
+                                            number.</span></div>
+                                </div>
+                            </div>
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><input
+                                        class="form-control form-control" name="manufacturing_date"
+                                        data-id="manufactured_date" id="manufactured_date"
+                                        placeholder="Manufactured Date" type="date"><label
+                                        class="form-label form-label" for="manufactured_date">Manufactured
+                                        Date</label>
+                                    <div class="error-message" id="error-manufactured_date"><span>Please enter the
+                                            manufactured date.</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><input
+                                        class="form-control form-control" name="expiration_date"
+                                        data-id="expiration_date" id="expiration_date" placeholder="Expiration Date"
+                                        type="date"><label class="form-label form-label"
+                                        for="expiration_date">Expiration Date</label>
+                                    <div class="error-message" id="error-expiration_date"><span>Please enter the
+                                            expiration date.</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><input
+                                        class="form-control form-control" name="date_stocked" data-id="datestocked"
+                                        id="datestocked" placeholder="Expiration Date" type="date"><label
+                                        class="form-label form-label" for="datestocked">Date Stocked</label>
+                                    <div class="error-message" id="error-datestocked"><span>Please enter the date
+                                            stocked.</span></div>
+                                </div>
+                            </div>
+                            <div class="form-floating" style="width:100%;">
+                                <textarea class="form-control" name="prod_desc" id="prod_description" data-id="prod_description"
+                                    placeholder="Product Description"></textarea><label class="form-label form-label"
+                                    for="prod_description">Product Description</label>
+                                <div id="error-prod_description" class="error-message"><span>Please enter product
+                                        description.</span></div>
+                            </div>
+                            <div class="quantity_input_container">
+                                <h1>Quantity</h1>
+                                <div class="form-floating">
+                                    <div class="quantity_input">
+                                        <button class="quantity_minus" type="button"
+                                            onclick="decrementQuantity()">-</button>
+                                        <input type="number" aria-labelledby="label-quantity" class="input_quantity"
+                                            data-id="quantity" id="quantity" min="0" name="quantity"
+                                            required="" value="0">
+                                        <button class="quantity_add" type="button"
+                                            onclick="incrementQuantity1()">+</button>
+                                        <div id="error-quantity" class="error-message"><span>Please input a quantity
+                                                value more than 0.</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer add_product_button"><button class="btn clear_form" type="button"
+                        role="button" aria-label="Clear Form" onclick="clearForm()"><span
+                            class="clear_form_base">Clear Form</span></button>
+                    <button class="btn disabled submit_product" id="submit_product" type="submit"
+                        disabled=""><span class="submit_product_base">Submit</span></button>
+                </div>
+            </div>
+            </form>
+
+        </div>
+    </div>

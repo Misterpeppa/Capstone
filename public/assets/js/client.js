@@ -477,13 +477,13 @@ var erroruser_phone = document.getElementById('error-user_phone');
 
 
 
-handleInputError(firstName, errorFname)  
-handleInputError(middleName, errormiddleName)  
-handleInputError(lastName, errorlastName)  
-handleInputError(birthdate, errorbirthdate)  
-handleInputError(address, erroraddress)  
-handleInputError(email, erroremail)
-handleInputError(user_phone, erroruser_phone)
+handleInputError(firstName, errorFname);
+handleInputError(middleName, errormiddleName);
+handleInputError(lastName, errorlastName);  
+handleInputError(birthdate, errorbirthdate);
+handleInputError(address, erroraddress);
+handleInputError(email, erroremail);
+handleInputError(user_phone, erroruser_phone);
 
 
 

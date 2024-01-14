@@ -871,7 +871,7 @@
                         data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body" style="width:100%;">
-                    <form action="{{ route('client.store') }}" method="POST" class="add_client" id="add_client_form"><img src="assets/img/image%2011%20(1).png">
+                    <form action="{{ route('client.store') }}" method="POST" class="add_client" id="add_client_form"><img src="assets/img/add_client.png">
                     @csrf
                     <div class="mb-3 input_container">
                             <div class="new_input_row">
@@ -953,6 +953,7 @@
             </div>
         </div>
     </div>
+
     <div class="modal fade" role="dialog" tabindex="-1" id="add_client_modal-1">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content add_client_modal">

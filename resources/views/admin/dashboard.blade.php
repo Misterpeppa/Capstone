@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch-toggle-switch.css') }}">
 </head>
 
@@ -39,7 +39,7 @@
 						<h1><strong>Welcome back, Lisa!</strong></h1>
 						<p>You have unread notifications for the last 3 days. Check now.</p>
 					</div>
-					<button class="btn add_patient_btn" id="add_patient_btn" type="button"><span class="add_patient_btn_base">Add Client</span></button>
+					<button class="btn add_patient_btn" id="add_patient_btn" type="button"><span class="add_patient_btn_base">Add Patient</span></button>
 				</div>
 				<div id="summary_container" class="summary_container">
 					<div class="card summary">
@@ -309,7 +309,7 @@
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_form" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_product" type="submit"><span class="submit_product_base">Submit</span></button>
+					<button class="btn submit_product" id="submit_client" type="submit" value="submit"><span class="submit_product_base">Submit</span></button>
 				</div>
                 </form>
 			</div>
@@ -319,7 +319,7 @@
 	<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('assets/js/bs-init.js') }}"></script>
 	<script src="{{ asset('assets/js/dashboard.js') }}"></script>
-	<script src="{{ asset('assets/js/sidebar.js') }}"></script>
+	<script src="{{ asset('assets/js/sidebar.js') }}"></script>	
 </body>
 
 </html>

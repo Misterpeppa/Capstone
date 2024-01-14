@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="{{ asset('css/user/forgotPass.css') }}">
 </head>
 
-<body style="overflow:hidden; margin: 0; padding: 0;">
+<body>
     <div class="container-fluid" style="margin: 0; padding: 0;">
         <div class="bg-img">
             <div class="overlay"></div>
             <img src="{{ asset('img/clientclinic.jpg') }}" alt="Logo">
         </div>
-        <div class="row custom-row justify-content-center align-items-center">
+        <div class="row custom-row justify-content-center align-items-center mb-5 w-100">
             <div class="col-md-4 forgot-pass mt-5">
-                <div id="initialState">
+                <div id="initialState d-none">
                     <div class="d-flex flex-column" style="height: 100%;">
                         <div class="d-flex justify-content-between mb-5 mt-3">
                             <button class="custom-back-btn" onclick="goBack()">
@@ -39,17 +39,21 @@
                             @csrf
                             <div class="mb-3">
                                 <div class="form-group">
-                                    <div class="input-container">
-                                        <span class="input-group-text bg-white" style="border-right: none; height: 38px;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="18" viewBox="0 0 21 18" fill="none">
-                                                <path d="M15.1176 6.17647L12.1718 8.52941C11.2024 9.30118 9.61177 9.30118 8.64235 8.52941L5.70588 6.17647M15.1176 17H5.70588C2.88235 17 1 15.5882 1 12.2941V5.70588C1 2.41176 2.88235 1 5.70588 1H15.1176C17.9412 1 19.8235 2.41176 19.8235 5.70588V12.2941C19.8235 15.5882 17.9412 17 15.1176 17Z" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-                                        </span>
-                                        <label for="email" class="visually-hidden">Email Address</label>
-                                        <input class="form-control" type="email" name="email" id="email" placeholder=" " required style="border-left: none;">
-                                        <div class="placeholder-label">Email Address</div>
+
+
+                                    <div class="input-group">
+                                        <div class="input_svg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><g opacity="0.5" clip-path="url(#clip0_6488_6539)"><path d="M3 7.5C3 6.96957 3.21071 6.46086 3.58579 6.08579C3.96086 5.71071 4.46957 5.5 5 5.5H19C19.5304 5.5 20.0391 5.71071 20.4142 6.08579C20.7893 6.46086 21 6.96957 21 7.5M3 7.5V17.5C3 18.0304 3.21071 18.5391 3.58579 18.9142C3.96086 19.2893 4.46957 19.5 5 19.5H19C19.5304 19.5 20.0391 19.2893 20.4142 18.9142C20.7893 18.5391 21 18.0304 21 17.5V7.5M3 7.5L12 13.5L21 7.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_6488_6539"><rect width="24" height="24" fill="white" transform="translate(0 0.5)"/></clipPath></defs></svg></div>
+                                        <div class="form-floating custom_form_floating">
+                                            
+                                            <input name="email" id="email" class="form-control custom_email" type="email" data-id="email" placeholder="Email Address" />
+                                            <label class="form-label" for="email">Email Address<span>&nbsp;*</span></label>
+                                            
+                                            <div id="error-email" class="error-message email"><span>• Invalid email format.</span></div>
+                                        </div>
                                     </div>
                                 </div>
+                                
                             </div>
                             <div class="text-center">
                                 <button class="btn custom-reset-btn" type="submit">Send Reset Instructions</button>
@@ -108,50 +112,53 @@
 
                             <div class="mb-3">
                                 <div class="form-group">
-                                    <div class="input-container">
-                                        <span class="input-group-text bg-white" style="border-right: none; height: 38px;">
+                                    <div class="input-group">
+                                        <div class="input_svg">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <g opacity="0.5" clip-path="url(#clip0_2019_2823)">
-                                                <path d="M15 9H15.01M16.555 3.84305L20.157 7.44505C20.4242 7.71221 20.6362 8.02939 20.7808 8.37847C20.9254 8.72755 20.9998 9.1017 20.9998 9.47955C20.9998 9.8574 20.9254 10.2316 20.7808 10.5806C20.6362 10.9297 20.4242 11.2469 20.157 11.5141L17.514 14.1571C17.2468 14.4243 16.9297 14.6362 16.5806 14.7808C16.2315 14.9254 15.8573 14.9999 15.4795 14.9999C15.1017 14.9999 14.7275 14.9254 14.3784 14.7808C14.0293 14.6362 13.7122 14.4243 13.445 14.1571L13.144 13.8561L6.586 20.4141C6.25372 20.7463 5.81507 20.9509 5.347 20.9921L5.172 21.0001H4C3.75507 21 3.51866 20.9101 3.33563 20.7473C3.15259 20.5846 3.03566 20.3603 3.007 20.1171L3 20.0001V18.8281C3.00011 18.3585 3.16543 17.904 3.467 17.5441L3.586 17.4141L4 17.0001H6V15.0001H8V13.0001L10.144 10.8561L9.843 10.5551C9.5758 10.2879 9.36384 9.97071 9.21923 9.62163C9.07462 9.27255 9.00019 8.8984 9.00019 8.52055C9.00019 8.1427 9.07462 7.76855 9.21923 7.41947C9.36384 7.07039 9.5758 6.75321 9.843 6.48605L12.486 3.84305C12.7532 3.57585 13.0703 3.36389 13.4194 3.21928C13.7685 3.07467 14.1427 3.00024 14.5205 3.00024C14.8983 3.00024 15.2725 3.07467 15.6216 3.21928C15.9707 3.36389 16.2878 3.57585 16.555 3.84305Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_2019_2823">
-                                                <rect width="24" height="24" fill="white"/>
-                                                </clipPath>
-                                            </defs>
+                                                <g opacity="0.5" clip-path="url(#clip0_6078_13877)"><path d="M8 11V7C8 5.93913 8.42143 4.92172 9.17157 4.17157C9.92172 3.42143 10.9391 3 12 3C13.0609 3 14.0783 3.42143 14.8284 4.17157C15.5786 4.92172 16 5.93913 16 7V11M5 13C5 12.4696 5.21071 11.9609 5.58579 11.5858C5.96086 11.2107 6.46957 11 7 11H17C17.5304 11 18.0391 11.2107 18.4142 11.5858C18.7893 11.9609 19 12.4696 19 13V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21H7C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19V13ZM11 16C11 16.2652 11.1054 16.5196 11.2929 16.7071C11.4804 16.8946 11.7348 17 12 17C12.2652 17 12.5196 16.8946 12.7071 16.7071C12.8946 16.5196 13 16.2652 13 16C13 15.7348 12.8946 15.4804 12.7071 15.2929C12.5196 15.1054 12.2652 15 12 15C11.7348 15 11.4804 15.1054 11.2929 15.2929C11.1054 15.4804 11 15.7348 11 16Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g><defs><clipPath id="clip0_6078_13877"><rect width="24" height="24" fill="white" /> </clipPath></defs>
                                             </svg>
-                                        </span>
-                                        <label for="password" class="visually-hidden">Password</label>
-                                        <input class="form-control" type="password" name="password" placeholder=" " required style="border-left: none;">
-                                        <div class="placeholder-label">Password</div>
+                                        </div>
+                                        <div class="form-floating custom_form_floating">
+                                            <input id="password" name="password" class="form-control custom_password" type="password" placeholder="Password" data-id="password">
+                                            <div id="eye-icon" class="eye-icon" onclick="togglePasswordVisibility()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><g opacity="0.5" clip-path="url(#clip0_6078_13948)"><path d="M21 9C18.6 11.667 15.6 13 12 13C8.4 13 5.4 11.667 3 9M3 15L5.5 11.2M20.9998 14.976L18.5078 11.2M9 17L9.5 13M15 17L14.5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
+                                                    <defs><clipPath id="clip0_6078_13948"><rect width="24" height="24" fill="white" /> </clipPath></defs>
+                                                </svg>
+                                            </div>
+                                            <label class="form-label" for="password">Password<span>&nbsp;*</span></label>
+                                            <div id="error-password" class="error-message password"><span>• Please enter your password.</span><span>• Password must have 8 or more characters.</span><span>• Password must have at least 1 uppercase character.</span><span>• Password must have at least 1 special character.</span></div>
+                                            <div id="guide_password" class="guide-message password"><span>• Password must have more than 8 characters.</span><span>• Password must have at least 1 uppercase character.</span><span>• Password must have at least 1 special character.</span></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="mb-3">
                                 <div class="form-group">
-                                    <div class="input-container">
-                                        <span class="input-group-text bg-white" style="border-right: none; height: 38px;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <g opacity="0.5" clip-path="url(#clip0_2019_2823)">
-                                                <path d="M15 9H15.01M16.555 3.84305L20.157 7.44505C20.4242 7.71221 20.6362 8.02939 20.7808 8.37847C20.9254 8.72755 20.9998 9.1017 20.9998 9.47955C20.9998 9.8574 20.9254 10.2316 20.7808 10.5806C20.6362 10.9297 20.4242 11.2469 20.157 11.5141L17.514 14.1571C17.2468 14.4243 16.9297 14.6362 16.5806 14.7808C16.2315 14.9254 15.8573 14.9999 15.4795 14.9999C15.1017 14.9999 14.7275 14.9254 14.3784 14.7808C14.0293 14.6362 13.7122 14.4243 13.445 14.1571L13.144 13.8561L6.586 20.4141C6.25372 20.7463 5.81507 20.9509 5.347 20.9921L5.172 21.0001H4C3.75507 21 3.51866 20.9101 3.33563 20.7473C3.15259 20.5846 3.03566 20.3603 3.007 20.1171L3 20.0001V18.8281C3.00011 18.3585 3.16543 17.904 3.467 17.5441L3.586 17.4141L4 17.0001H6V15.0001H8V13.0001L10.144 10.8561L9.843 10.5551C9.5758 10.2879 9.36384 9.97071 9.21923 9.62163C9.07462 9.27255 9.00019 8.8984 9.00019 8.52055C9.00019 8.1427 9.07462 7.76855 9.21923 7.41947C9.36384 7.07039 9.5758 6.75321 9.843 6.48605L12.486 3.84305C12.7532 3.57585 13.0703 3.36389 13.4194 3.21928C13.7685 3.07467 14.1427 3.00024 14.5205 3.00024C14.8983 3.00024 15.2725 3.07467 15.6216 3.21928C15.9707 3.36389 16.2878 3.57585 16.555 3.84305Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_2019_2823">
-                                                <rect width="24" height="24" fill="white"/>
-                                                </clipPath>
-                                            </defs>
+                                    <div class="input-group">
+                                        <div class="input_svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><g opacity="0.5" clip-path="url(#clip0_6078_13877)"><path d="M8 11V7C8 5.93913 8.42143 4.92172 9.17157 4.17157C9.92172 3.42143 10.9391 3 12 3C13.0609 3 14.0783 3.42143 14.8284 4.17157C15.5786 4.92172 16 5.93913 16 7V11M5 13C5 12.4696 5.21071 11.9609 5.58579 11.5858C5.96086 11.2107 6.46957 11 7 11H17C17.5304 11 18.0391 11.2107 18.4142 11.5858C18.7893 11.9609 19 12.4696 19 13V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21H7C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19V13ZM11 16C11 16.2652 11.1054 16.5196 11.2929 16.7071C11.4804 16.8946 11.7348 17 12 17C12.2652 17 12.5196 16.8946 12.7071 16.7071C12.8946 16.5196 13 16.2652 13 16C13 15.7348 12.8946 15.4804 12.7071 15.2929C12.5196 15.1054 12.2652 15 12 15C11.7348 15 11.4804 15.1054 11.2929 15.2929C11.1054 15.4804 11 15.7348 11 16Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g><defs><clipPath id="clip0_6078_13877">
+                                                <rect width="24" height="24" fill="white" /> </clipPath></defs>
                                             </svg>
-                                        </span>
-                                        <label for="password" class="visually-hidden">Repeat Password</label>
-                                        <input class="form-control" type="password" name="confirm_password" placeholder=" " required style="border-left: none;">                                   
-                                        <div class="placeholder-label">Repeat Password</div>
+                                        </div>
+                                        <div class="align-self-stretch form-floating custom_form_floating">
+                                            <input id="password_confirmation" class="form-control custom_password" type="password" placeholder="Repeat Password" data-id="password_confirmation">
+                                            <div class="eye-icon1" onclick="togglePasswordVisibility1()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><g opacity="0.5" clip-path="url(#clip0_6078_13948)"><path d="M21 9C18.6 11.667 15.6 13 12 13C8.4 13 5.4 11.667 3 9M3 15L5.5 11.2M20.9998 14.976L18.5078 11.2M9 17L9.5 13M15 17L14.5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g><defs>
+                                                    <clipPath id="clip0_6078_13948"><rect width="24" height="24" fill="white" /> </clipPath></defs>
+                                                </svg>
+                                            </div>
+                                            <label class="form-label" for="password_confirmation">Repeat Password<span>&nbsp;*</span></label>
+                                            <div id="error-password_confirmation" class="error-message password_confirmation"><span>•&nbsp;Please enter your password first.</span></div>
+                                            <div id="error-password_confirmation_1" class="error-message password_confirmation"><span>• Password does not match.</span></div>
+                                            <div id="guide_password_confirmation" class="guide-message password_confirmation"><span>• Password and Repeat Password must be matched.</span></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                   
                             <div class="text-center">
-                                <button class="btn custom-reset-btn" type="submit">Reset Password</button>
+                                <button class="btn custom-reset-btn" id="reset_pass" type="submit" value="submit">Reset Password</button>
                             </div>
                         </form>
                     </div>
@@ -214,8 +221,161 @@
                     $('#finalState').removeClass('d-none');
                 }, 2000);
             });
+
+
+            var eyeIcon = document.querySelector(".eye-icon");
+ var eyeIcon1 = document.querySelector(".eye-icon1");
+eyeIcon.addEventListener('mousedown', function (event) {
+// Prevent the default behavior to stop the input from losing focus
+event.preventDefault();
+togglePasswordVisibility();
+});    
+eyeIcon1.addEventListener('mousedown', function (event) {
+// Prevent the default behavior to stop the input from losing focus
+event.preventDefault();
+togglePasswordVisibility1();
+});   
+
+function togglePasswordVisibility() {
+  var passwordInput = document.getElementById("password");
+  var eyeIcon = document.querySelector(".eye-icon");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    // Change the eye-icon to the visible state
+    eyeIcon.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <g clip-path="url(#clip0_1917_11689)">
+          <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_1917_11689">
+            <rect width="24" height="24" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>`;
+  } else {
+    passwordInput.type = "password";
+    // Change the eye-icon to the initial state
+    eyeIcon.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <g clip-path="url(#clip0_1917_11666)">
+          <path d="M21 9C18.6 11.667 15.6 13 12 13C8.4 13 5.4 11.667 3 9M3 15L5.5 11.2M20.9998 14.976L18.5078 11.2M9 17L9.5 13M15 17L14.5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_1917_11666">
+            <rect width="24" height="24" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>`;
+  }
+}
+
+function togglePasswordVisibility1() {
+
+var passwordInput1 = document.getElementById("password_confirmation");
+  var eyeIcon1 = document.querySelector(".eye-icon1");
+
+  if (passwordInput1.type === "password") {
+    passwordInput1.type = "text";
+    // Change the eye-icon to the visible state
+    eyeIcon1.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <g clip-path="url(#clip0_1917_11689)">
+          <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_1917_11689">
+            <rect width="24" height="24" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>`;
+  } else {
+    passwordInput1.type = "password";
+    // Change the eye-icon to the initial state
+    eyeIcon1.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <g clip-path="url(#clip0_1917_11666)">
+          <path d="M21 9C18.6 11.667 15.6 13 12 13C8.4 13 5.4 11.667 3 9M3 15L5.5 11.2M20.9998 14.976L18.5078 11.2M9 17L9.5 13M15 17L14.5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_1917_11666">
+            <rect width="24" height="24" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>`;
+  }
+}
         });
     </script>
+
+
+<script>
+    var password = document.getElementById("password");
+    var errorPassword = document.getElementById('error-password');
+    var password_confirmation = document.getElementById("password_confirmation");
+    var errorConfirmPassword = document.getElementById('error-password_confirmation');
+
+    var reset_pass = document.getElementById("reset_pass");
+
+    // Initially disable the reset_pass button
+reset_pass.disabled = true;
+
+    function handleInputError(input, error) {
+      function onBlur() {
+      if (input.value.trim() === '' || input.value.trim() === '0') {
+          error.style.display = 'flex'; // Show the error message
+          input.classList.add('is-invalid');
+          input.classList.add('error-border');
+      } else if (input.type === 'email' && !isValidEmail(input.value.trim())) {
+          error.style.display = 'flex'; // Show the error message
+          input.classList.add('is-invalid');
+          input.classList.add('error-border');
+      } else {
+          error.style.display = 'none'; // Hide the error message
+          input.classList.remove('is-invalid');
+          input.classList.remove('error-border');
+      }
+  }
+  
+  
+      function onFocus() {
+          error.style.display = 'none'; // Hide the error message
+          input.classList.remove('is-invalid');
+          input.classList.remove('error-border');
+      }
+  
+      // Add event listeners to inputs
+      input.addEventListener('blur', onBlur);
+      input.addEventListener('focus', onFocus);
+  } 
+
+handleInputError(password, errorPassword);
+handleInputError(password_confirmation, errorConfirmPassword);
+
+
+
+
+
+
+// Function to check if password and password_confirmation match
+function checkPasswordMatch() {
+    var passwordValue = password.value;
+    var confirmationValue = password_confirmation.value;
+
+    // Check if password meets the criteria
+    var isValidPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/.test(passwordValue);
+
+    // Enable the reset_pass button if the passwords match and meet the criteria, otherwise disable it
+    reset_pass.disabled = !(passwordValue === confirmationValue && isValidPassword);
+}
+
+// Add event listeners to password and password_confirmation fields
+password.addEventListener("input", checkPasswordMatch);
+password_confirmation.addEventListener("input", checkPasswordMatch);
+</script>
 </body>
 
 </html>
