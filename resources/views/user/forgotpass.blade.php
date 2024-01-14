@@ -85,13 +85,13 @@
                                 <!-- Add 6 input boxes for the reset code -->
                                 <input class="form-controls" type="text" name="digit1" maxlength="1" required>
                                 <input class="form-controls" type="text" name="digit2" maxlength="1" required>
-                                <input class="form-controls" type="text" name="digit3" maxlength="1" required>
-                                <input class="form-controls" type="text" name="digit4" maxlength="1" required>
-                                <input class="form-controls" type="text" name="digit5" maxlength="1" required>
-                                <input class="form-controls" type="text" name="digit6" maxlength="1" required>
+                                <input class="form-controls"  type="text" name="digit3" maxlength="1" required>
+                                <input class="form-controls"  type="text" name="digit4" maxlength="1" required>
+                                <input class="form-controls"  type="text" name="digit5" maxlength="1" required>
+                                <input class="form-controls"  type="text" name="digit6" maxlength="1" required>
                             </div>
                             <div class="text-center">
-                                <button class="btn custom-reset-btn" type="submit">Continue</button>
+                                <button class="btn custom-reset-btn" id="continue_button" type="submit">Continue</button>
                             </div>
                         </form>
                     </div>
@@ -310,9 +310,39 @@ var passwordInput1 = document.getElementById("password_confirmation");
 }
         });
     </script>
+    <script>
+// Get all the elements with the name "digit1" through "digit6"
+var digitInputs = document.querySelectorAll('[name^="digit"]');
+
+// Get the continue_button element
+var continueButton = document.getElementById('continue_button');
+
+// Initially disable the continue_button
+continueButton.disabled = true;
+
+// Function to check if all digit inputs have values
+function checkDigitInputs() {
+    // Convert NodeList to an array and use every() to check if all inputs have values
+    var allInputsFilled = Array.from(digitInputs).every(function(input) {
+        return input.value.trim() !== ''; // Check if the input value is not empty after trimming
+    });
+
+    // Enable or disable the continue_button based on the result
+    continueButton.disabled = !allInputsFilled;
+}
+
+// Add event listeners to each digit input
+digitInputs.forEach(function(input) {
+    input.addEventListener('input', checkDigitInputs);
+});
+
+    </script>
 
 
 <script>
+
+
+
     var password = document.getElementById("password");
     var errorPassword = document.getElementById('error-password');
     var password_confirmation = document.getElementById("password_confirmation");
