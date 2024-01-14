@@ -9,6 +9,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const allLinks = document.querySelectorAll('.sidebar a');
 
 
+    
+
+
+    
+    sidebarArrow.addEventListener('click', toggleSidebar);
+    logoLink.addEventListener('click', () => {
+        if (sidebar.classList.contains('collapsed')) {
+            toggleSidebar();
+        }
+    });
+        
+
     //added function para sa mga modals n lilitaw pagka click ng add buytton sa sidebar
     //buttons
     var add_appointment = document.getElementById('add_appointment');
@@ -41,16 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
     add_product.addEventListener('click', function () {
         add_product_modal.show();
     });
-
-
-    
-    sidebarArrow.addEventListener('click', toggleSidebar);
-    logoLink.addEventListener('click', () => {
-        if (sidebar.classList.contains('collapsed')) {
-            toggleSidebar();
-        }
-    });
-        
     
     
     
