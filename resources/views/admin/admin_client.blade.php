@@ -278,9 +278,8 @@
                                 </defs>
                             </svg> Add Client</span></button>
                 </div>
-                <div id="client_table_container" class="client_table_container">
-                    <table id="client_table" class="table table-striped table-bordered" cellspacing="0"
-                        width="100%">
+                <div id="client_table_container" class="table-responsive w-100" style="overflow: auto; display: none;">
+                    <table id="client_table" class="table approve_table">
                         <thead>
                             <tr>
                                 <th><input id="SelectAll" type="checkbox" class="checkbox"></th>
@@ -359,7 +358,9 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="pagination">
+                    
+                </div>
+                <div class="pagination">
                         <div class="pagination-menu">
                             <span>Go to:</span>
                             <select class="paginationGoToSelect" onchange="changePage(this)">
@@ -394,11 +395,6 @@
                             </select>
                         </div>
                     </div>
-
-
-
-
-                </div>
             </div>
             <div id="edit_client_detail_header" class="prod_detail_header">
                 <h1>Edit Client Information</h1>
