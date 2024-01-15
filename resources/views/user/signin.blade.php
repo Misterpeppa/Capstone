@@ -33,17 +33,12 @@
                         <h1>Welcome</h1>
                         <p>Please sign in to your account.</p>
                     </div>
-                    @if($errors->has('usernameNotice'))
-                                    <div class="alert alert-danger">
-                                        {{ $errors->first('usernameNotice') }}
-                                    </div>
-                                @endif
-
-                                @if($errors->has('passwordNotice'))
-                                    <div class="alert alert-danger">
-                                        {{ $errors->first('passwordNotice') }}
-                                    </div>
-                                @endif
+                    @error('email')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                    @error('password')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                     <form action="{{ route('client.auth') }}" method="POST" id="signin_custom_container" class="signin_custom_container">
                         @csrf
                         <div class="signin_inputs_container">
@@ -57,7 +52,8 @@
                                             
                                             <input name="email" id="email" class="form-control custom_email" type="email" data-id="email" placeholder="Email Address" />
                                             <label class="form-label" for="email">Email Address<span>&nbsp;*</span></label>
-                                            
+                                          
+                                            <div id="guide_email_message" class="guide-message email"><span>• Please enter your email.<br>(e.g. pogiako@gmail.com/pogiako@yahoo.com)</span></div>
                                             <div id="error-email" class="error-message email"><span>• Invalid email format.</span></div>
                                         </div>
                                     </div>
@@ -77,6 +73,7 @@
                                     </div>
                                     <label class="form-label" for="password">Password<span>&nbsp;*</span></label>
                                     
+                                    <div id="guide_password" class="guide-message password"><span>• Please enter your password.</span></div>
                                     <div id="error-password" class="error-message password"><span>• Please enter your password.</span></div>
                                 </div>
                             </div>

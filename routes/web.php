@@ -95,7 +95,10 @@ Route::middleware('admin', 'nocache')->group(function () {
 
     Route::get('/admin/appointment', [AppointmentController::class, 'adminShow'])->name('admin_appointment');
     Route::post('/admin/appointment/approve/{id}', [AppointmentController::class, 'approve']);
-    Route::post('/admin/appointment/reject/{id}', [AppointmentController::class, 'reject']);
+    Route::post('/admin/appointment/reject/{id}', [AppointmentController::class, 'reject'])->name('reject');
+    Route::post('/admin/appointment/resched/{id}', [AppointmentController::class, 'resched'])->name('resched');
+    Route::post('/admin/appointment/markascomplete/{id}', [AppointmentController::class, 'markAsComplete'])->name('appointment.complete');
+    Route::post('/admin/appointment/archive/{id}', [AppointmentController::class, 'archive'])->name('appointment.archive');
 
     Route::get('/admin/emr', [EMRController::class, 'show'])->name('admin_emr');
     Route::post('/admin/emr/petrecord', [EMRController::class, 'pet'])->name('emr.pet');
@@ -103,6 +106,8 @@ Route::middleware('admin', 'nocache')->group(function () {
     Route::post('/admin/emr/medhistory', [EMRController::class, 'medHistory'])->name('med.history');
     Route::post('/admin/emr/vaxhistory', [EMRController::class, 'vaxHistory'])->name('vax.history');
     Route::post('/admin/emr/surghistory', [EMRController::class, 'surgHistory'])->name('surg.history');
+    Route::post('/admin/emr/edit', [EMRController::class, 'editPet'])->name('edit.petrecord');
+    Route::post('/admin/emr/archive', [EMRController::class, 'archive'])->name('archive.petrecord');
     Route::get('/admin/emr/medhis/{id}', [EMRController::class, 'showMedHis']);
     Route::get('/admin/emr/vaxhis/{id}', [EMRController::class, 'showVaxHis']);
     Route::get('/admin/emr/surghis/{id}', [EMRController::class, 'showSurgHis']);
@@ -117,6 +122,7 @@ Route::middleware('admin', 'nocache')->group(function () {
 
     Route::get('admin/client', [ClientController::class, 'show'])->name('admin_client');
     Route::post('admin/client', [ClientController::class, 'store'])->name(('client.store'));
+    Route::post('admin/client/edit', [ClientController::class, 'editClient'])->name(('client.edit'));
     Route::get('admin/client/reports', [ReportController::class, 'clientPDF'])->name('report.client');
 
     Route::get('admin/dashboard', [DashboardController::class, 'show'])->name('admin_dashboard');
@@ -126,6 +132,12 @@ Route::middleware('admin', 'nocache')->group(function () {
 
     Route::get('admin/archive', [ArchiveController::class, 'show'])->name('admin_archive');
     Route::post('admin/archive/unarchived/{product_type}/{id}', [ArchiveController::class, 'unarchived'])->name('admin.unarchived');
+    Route::post('admin/archive/medicine/{id}', [ArchiveController::class, 'unarchiveMed'])->name('unarchive.med');
+    Route::post('admin/archive/vaccine/{id}', [ArchiveController::class, 'unarchiveVax'])->name('unarchive.vax');
+    Route::post('admin/archive/vitamin/{id}', [ArchiveController::class, 'unarchiveVit'])->name('unarchive.vit');
+    Route::post('admin/archive/petrecord/{id}', [ArchiveController::class, 'unarchivePetRec'])->name('unarchive.petrec');
+    Route::post('admin/archive/appointment/{id}', [ArchiveController::class, 'unarchiveAppointment'])->name('unarchive.appointment');
+
 });
 Auth::routes();
 

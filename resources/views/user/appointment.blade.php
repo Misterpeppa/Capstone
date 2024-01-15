@@ -129,7 +129,7 @@
                                                     <rect width="24" height="24" fill="white"/>
                                                     </clipPath>
                                                 </defs>
-                                                </svg></span></button><button class="btn remove_form" id="remove_form" data-bs-toggle="tooltip" data-bss-tooltip="" id="remove_form" type="button" title="Remove Pet"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                </svg></span></button><button class="btn remove_form" data-bs-toggle="tooltip" data-bss-tooltip="" id="remove_form" type="button" title="Remove Pet"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                 <g clip-path="url(#clip0_2291_11324)">
                                                     <path d="M5 12H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </g>
@@ -138,7 +138,7 @@
                                                     <rect width="24" height="24" fill="white"/>
                                                     </clipPath>
                                                 </defs>
-                                                </svg></span></button><button class="btn remove_form" id="remove_form-1" data-bs-toggle="tooltip" data-bss-tooltip="" id="remove_form-1" type="button" title="Remove Pet"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                </svg></span></button><button class="btn remove_form" data-bs-toggle="tooltip" data-bss-tooltip="" id="remove_form-1" type="button" title="Remove Pet"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                 <g clip-path="url(#clip0_2291_11324)">
                                                     <path d="M5 12H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </g>
@@ -302,7 +302,6 @@
                                                         <div class="d-flex flex-column align-items-start align-self-stretch details" id="details">
                                                             <div class="d-flex align-items-center align-self-stretch details_confirmation_1strow" id="details_confirmation_1strow">
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                    <input type="text" name="count" id="click_count" class="d-none">
                                                                     <h1>Pet Name</h1>
                                                                     <p id="confirm_Pet_Name" class="confirm_Pet_Name">Pet Name</p>
                                                                     <input type="hidden" name="petName" id="hidden_petName">                                                                </div>
@@ -314,11 +313,13 @@
                                                                     <h1>Breed</h1>
                                                                     <p id="confirm_breed" class="confirm_breed">Breed</p>
                                                                     <input type="hidden" name="breed" id="hidden_breed">                                                                </div>
+                                                                    <input type="hidden" name="breed" id="hidden_breed">                                                                </div>
                                                             </div>
                                                             <div class="d-flex align-items-start align-self-stretch details_confirmation_2ndrow" id="details_confirmation_2ndrow">
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Surgery Type</h1>
                                                                     <p id="confirm_surgery_Type" class="confirm_surgery_Type">Surgery Type</p>
+                                                                    <input type="hidden" name="appointmentType" id="hidden_appointmentType">                                                                </div>
                                                                     <input type="hidden" name="appointmentType" id="hidden_appointmentType">                                                                </div>
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Additional Notes</h1>
@@ -460,10 +461,21 @@
         </div>
     </div>
     <div id="success_modal" class="modal fade show" role="dialog" tabindex="-1">
+    <div id="success_modal" class="modal fade show" role="dialog" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content success_modal">
                 <div class="modal-header success_header">
                     <div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <g clip-path="url(#clip0_5910_17688)">
+                            <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_5910_17688">
+                            <rect width="32" height="32" fill="white"/>
+                            </clipPath>
+                        </defs>
+                        </svg></span>
+                    </div>
                         <g clip-path="url(#clip0_5910_17688)">
                             <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </g>
@@ -482,12 +494,33 @@
                     </div>
                 </div>
                 <div class="modal-footer"><a href="{{ route('appointment.list') }}" class="btn view_appointments" role="button"><span class="view_appointments_base">View Appointments</span></a></div>
+                <div class="modal-footer"><a href="{{ route('appointment.list') }}" class="btn view_appointments" role="button"><span class="view_appointments_base">View Appointments</span></a></div>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @if (session('success'))
+    <script>
+        $(document).ready(function() {
+        // Show the modal
+        function showModal() {
+            $('#success_modal').show();
+            // Automatically hide the modal after 2 seconds
+            setTimeout(hideModal, 2000);
+        }
+
+        // Hide the modal
+        function hideModal() {
+            $('#success_modal').hide();
+        }
+
+        // Call showModal function when needed
+        showModal();
+    });
+    </script>
+    @endif
     @if (session('success'))
     <script>
         $(document).ready(function() {
@@ -550,13 +583,28 @@
          const appointmentTypeId2 = document.getElementById("confirm_surgery_Type-2");
          const notesId2 = document.getElementById("confirm_additional_Notes-2");
 
+
+         const petNameId2 = document.getElementById("confirm_Pet_Name-2");
+         const petTypeId2 = document.getElementById("confirm_Pet_type-2");
+         const breedId2 = document.getElementById("confirm_breed-2");
+         const appointmentTypeId2 = document.getElementById("confirm_surgery_Type-2");
+         const notesId2 = document.getElementById("confirm_additional_Notes-2");
+
          const petNameInput2 = document.getElementById("hidden_petName-2");
          const petTypeInput2 = document.getElementById("hidden_petType-2");
          const breedInput2 = document.getElementById("hidden_breed-2");
          const appointmentTypeInput2 = document.getElementById("hidden_appointmentType-2");
          const notesInput2 = document.getElementById("hidden_notes-2");
          
+         
          document.getElementById('book_appointment').addEventListener("click", function () {
+        
+         petNameInput2.value = petNameId2.innerText;
+         petTypeInput2.value = petTypeId2.innerText;
+         breedInput2.value = breedId2.innerText;
+         appointmentTypeInput2.value = appointmentTypeId2.innerText
+         notesInput2.value = notesId2.innerText;
+
         
          petNameInput2.value = petNameId2.innerText;
          petTypeInput2.value = petTypeId2.innerText;
