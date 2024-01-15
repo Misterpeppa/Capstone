@@ -7,3 +7,7 @@ var privacy_and_policy_modal = new bootstrap.Modal(document.getElementById('priv
 terms_and_conditions.addEventListener('click', function () {
     terms_and_conditions_modal.show();
 });
+
+privacy_policy.addEventListener('click', function (){
+    privacy_and_policy_modal.show();
+});

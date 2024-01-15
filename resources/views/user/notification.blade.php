@@ -402,7 +402,8 @@
 			</div>
 		</div>
 	</main>
-	<footer class="footer" style="position: relative;"><img src="assets/img/dogs&cats.png" style="width: 159.783px;height: 150px;flex-shrink: 0;"></footer>
+	@include('includes.footer')
+	
 	<div class="modal fade show" role="dialog" tabindex="-1" id="cancel_change_pass">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content discard_modal">
