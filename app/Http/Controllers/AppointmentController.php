@@ -182,7 +182,7 @@ class AppointmentController extends Controller
 
     public function adminShow()
     {
-        $appointment_approved= AppointmentApproved::orderByDesc('appointmentDate')->get();
+        $appointment_approved= AppointmentApproved::whereNull('archived_at')->orderByDesc('appointmentDate')->get();
         $appointment_rejected = AppointmentRejected::orderByDesc('appointmentDate')->get();
         $appointment_pending = AppointmentPending::orderByDesc('appointmentDate')->get();
         $approvedExist = $appointment_approved->isNotEmpty();
@@ -211,7 +211,7 @@ class AppointmentController extends Controller
 
     public function archive($id)
     {
-        $appointment = AppointmentApproved::findOrFail($id);
+        $appointment = AppointmentApproved::find($id);
         $appointment->update(['archived_at' => now()]);
         return redirect()->back()->with('success', 'Appointment archived.');
     }

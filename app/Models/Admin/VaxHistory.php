@@ -16,6 +16,7 @@ class VaxHistory extends Model
         'petrecord_id',
         'vaccination_date',
         'revaccination_date',
+        'status',
     ];
 
     public function vax(): BelongsTo

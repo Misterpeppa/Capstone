@@ -17,7 +17,8 @@ class MedHistory extends Model
         'diagnosis',
         'diagnosis_date',
         'treatment',
-        'med_id'
+        'med_id',
+        'diagnosis_desc',
     ];
 
     public function PetRecord(): BelongsTo

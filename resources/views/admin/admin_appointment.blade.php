@@ -489,16 +489,7 @@
         </clipPath>
     </defs>
     </svg> Reject</button>
-            <hr /><a class="dropdown-item archive-action"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <g clip-path="url(#clip0_6291_1005)">
-        <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-    <defs>
-        <clipPath id="clip0_6291_1005">
-        <rect width="24" height="24" fill="white"/>
-        </clipPath>
-    </defs>
-    </svg> Archive</a>
+            <hr />
         </div>
     </div>
 						</td>
@@ -726,16 +717,7 @@
         </clipPath>
     </defs>
     </svg> Reschedule</button>
-            <hr /><a class="dropdown-item archive-action"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <g clip-path="url(#clip0_6291_1005)">
-        <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-    <defs>
-        <clipPath id="clip0_6291_1005">
-        <rect width="24" height="24" fill="white"/>
-        </clipPath>
-    </defs>
-    </svg> Archive</a>
+            <hr />
         </div>
     </div>
 						</td>
@@ -1081,7 +1063,7 @@
 				<div class="modal-body archive_message">
 					<div>
 						<h1><strong>Archive appointment?</strong></h1>
-						<p>You are about to archive a rejected appointment. Do you wish to continue?</p>
+						<p>You are about to archive an appointment. Do you wish to continue?</p>
 					</div>
 				</div>
 				<div class="modal-footer discard_footer">
@@ -1158,23 +1140,24 @@
   <script>
     $(document).ready(function() {
         $('.archive-action').on('click', function() {
-              const id = $(this).data('id');
-                  $.ajax({
-                      type: 'POST',
-                      url: `/admin/inventory/archive/${product_type}/${id}`,
-                      data: {_token: '{{ csrf_token() }}'},
-                      success: function(response) {
-                          // Handle success, e.g., show a success message
-                          alert('Product has been archived');
-                          // Optionally, you can also reload the page or update the UI
-                          // location.reload();
-                      },
-                      error: function(xhr) {
-                          // Handle errors
-                          console.error(xhr.responseText);
-                      }
-                  });
+          const id = $(this).data('id');
+          $('#archive_modal').modal('show');
+          $('#archive_confirm_button').on('click', function() {
+              $.ajax({
+                  type: 'POST',
+                  url: `/admin/appointment/archive/${id}`,
+                  data: {_token: '{{ csrf_token() }}'},
+                  success: function(response) {
+                      alert('Appointment has been archived');
+                        location.reload();
+                  },
+                  error: function(xhr) {
+                      // Handle errors
+                      console.error(xhr.responseText);
+                  }
               });
+          });
+        });
         $('.accept-action').click(function() {
             var appointmentId = $(this).data('id');
 			      var acceptModal = new bootstrap.Modal(document.getElementById('accept_modal'));
