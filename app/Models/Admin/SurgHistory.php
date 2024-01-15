@@ -16,10 +16,11 @@ class SurgHistory extends Model
         'surgery_type',
         'severity',
         'med_id',
-        'surgery_date'
+        'surgery_date',
+        'surgery_note',
     ];
 
-    public function PetRecord(): BelongsTo
+    public function petRecord(): BelongsTo
     {
         return $this->belongsTo(PetRecord::class, 'petrecord_id');
     }

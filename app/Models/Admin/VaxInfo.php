@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\admin;
+namespace App\Models\Admin;
 
 use App\Models\Admin\PetRecord;
 use App\Models\Admin\VaxBatch;
@@ -17,16 +17,17 @@ class VaxInfo extends Model
     protected $fillable = [
         'item_name',
         'quantity',
-        'effects',
+        'prod_desc',
         'price',
         'product_type',
+        'archived_at'
     ];
 
-    public function VaxHistory(): HasMany
+    public function vaxHistory(): HasMany
     {
         return $this->hasMany(VaxHistory::class, 'vax_id');
     }
-    public function VaxBatch(): HasMany
+    public function vaxBatch(): HasMany
     {
         return $this->hasMany(VaxBatch::class, 'vax_id');
     }

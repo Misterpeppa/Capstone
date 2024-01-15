@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('vax_id');
             $table->unsignedBigInteger('petrecord_id');
             $table->date('vaccination_date');
+            $table->date('revaccionation_date');
             $table->timestamps();
 
             $table->foreign('vax_id')->references('id')->on('vax_info');

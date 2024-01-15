@@ -14,11 +14,14 @@ return new class extends Migration
         Schema::create('appointment_rejected', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id'); // Foreign key
+            $table->string('petName');
             $table->string('petType');
             $table->string('breed');
+            $table->string('notes')->nullable();
             $table->string('appointmentType');
             $table->date('appointmentDate');
             $table->time('appointmentTime');
+            $table->string('status')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('clients')->onDelete('cascade');

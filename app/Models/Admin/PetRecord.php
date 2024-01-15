@@ -32,16 +32,16 @@ class PetRecord extends Model
         return $this->belongsTo(PetInfo::class, 'pet_id');
     }
 
-    public function VaxHistory(): HasMany
+    public function vaxHistory(): HasMany
     {
         return $this->hasMany(VaxHistory::class, 'petrecord_id');
     }
 
-    public function MedHistory(): HasMany
+    public function medHistory(): HasMany
     {
         return $this->hasMany(MedHistory::class, 'petrecord_id');
     }
-    public function SurgHistory(): HasMany
+    public function surgHistory(): HasMany
     {
         return $this->hasMany(SurgHistory::class, 'petrecord_id');
     }

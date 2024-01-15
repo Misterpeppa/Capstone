@@ -15,13 +15,14 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('vit_id');
             $table->integer('batch_no');
-            $table->integer('product_code');
+            $table->bigInteger('product_code')->default(12);
             $table->date('manufacturing_date');
             $table->date('expiration_date');
             $table->date('date_stocked');
+            $table->timestamp('archived_at');
             $table->timestamps();
 
-            $table->foreign('vit_id')->references('id')->on('vit_info');
+            $table->foreign('vit_id')->references('id')->on('vit_info')->onDelete('cascade');
         });
     }
 
