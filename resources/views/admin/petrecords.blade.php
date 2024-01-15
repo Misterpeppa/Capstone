@@ -58,29 +58,32 @@
 				<div id="client_container" class="client_container">
 					<div class="container_header">
 						<div class="left_part_product_header">
+							<form action="{{ route('emr.search') }}" method="GET">
 							<div class="search_container">
-								<input type="search" class="search_input" placeholder="Search Pet Record">
+								<input type="search" name="search" class="search_input" placeholder="Search Pet Record">
 							</div>
+							</form>
 							<button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6404_12416)">
-    <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6404_12416">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Filter by</span></button>
-							<button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6404_20238)">
-    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6404_20238">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Sort by</span></button>
+							
+							<g clip-path="url(#clip0_6404_12416)">
+								<path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</g>
+							<defs>
+								<clipPath id="clip0_6404_12416">
+								<rect width="24" height="24" fill="white"/>
+								</clipPath>
+							</defs>
+							</svg> Filter by</span></button>
+														<button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+							<g clip-path="url(#clip0_6404_20238)">
+								<path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</g>
+							<defs>
+								<clipPath id="clip0_6404_20238">
+								<rect width="24" height="24" fill="white"/>
+								</clipPath>
+							</defs>
+							</svg> Sort by</span></button>
 						</div>
 						<div class="right_part_product_header">
 							<button class="btn archive_button" id="archive_button" type="button">

@@ -70,7 +70,7 @@ Route::middleware(['clients', 'nocache'])->group(function () {
     Route::get('/user/profile', [ProfileController::class, 'show'])->name('client.settings');
     Route::put('/user/profile/edit', [ProfileController::class, 'editProfile'])->name('client.profile');
     Route::post('/user/profile/delete', [ProfileController::class, 'deleteAccnt'])->name('client.delete');
-    Route::put('/user/profile/changepassword', [ProfileController::class, 'changePassword'])->name('client.changepassword');
+    Route::post('/user/profile/changepassword', [ProfileController::class, 'changePassword'])->name('client.changepassword');
     Route::get('/user/password', [ProfileController::class, 'showPass'])->name('client.password');
     Route::get('/user/pet_info', [ProfileController::class, 'showPetInfo'])->name('client.pet');
     Route::post('/user/pet_info', [PetInfoController::class, 'addPet'])->name('client.addPet');
@@ -111,6 +111,7 @@ Route::middleware('admin', 'nocache')->group(function () {
     Route::get('/admin/emr/medhis/{id}', [EMRController::class, 'showMedHis']);
     Route::get('/admin/emr/vaxhis/{id}', [EMRController::class, 'showVaxHis']);
     Route::get('/admin/emr/surghis/{id}', [EMRController::class, 'showSurgHis']);
+    Route::get('/admin/emr/search', [EMRController::class, 'search'])->name('emr.search');
 
     Route::get('/admin/inventory', [InvController::class, 'show'])->name('admin_inv');
     Route::post('/admin/inventory', [InvController::class, 'store'])->name('inv.store');

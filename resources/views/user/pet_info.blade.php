@@ -766,13 +766,13 @@
 	</script>
 	@else
 	<script>
-	$('#empty_state_container').hide();
+	$('#empty_state_container').show();
 	$('#user_new_pet_btn').hide();
-	$('#pet_card_container').show();
+	$('#pet_card_container').hide();
 	</script>
 	@endif
 	<script>
-$(document).ready(function() {
+	$(document).ready(function() {
 	$('.Edit_pet-action').click(function() {
 		const id = $(this).data(container-id);
 		$('#editId').val(id);

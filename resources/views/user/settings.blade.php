@@ -37,7 +37,7 @@
     </clipPath>
   </defs>
 </svg> My Profile</span></a></li>
-							<li class="nav-item" role="presentation"><a class="nav-link user_settings_nav_link" href="pet_information.html"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+							<li class="nav-item" role="presentation"><a class="nav-link user_settings_nav_link" href="{{ route('client.pet') }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_1917_11615)">
     <path d="M14.7003 13.5C13.6003 11.5 13.2593 11 12.0003 11C10.7413 11 10.2643 11.755 9.16426 13.747C8.22226 15.45 6.31826 15.592 5.84326 17.038C5.74626 17.303 5.69826 17.715 5.70026 18C5.70026 19.176 6.48726 20 7.50026 20C8.75926 20 10.5003 19 12.0003 19C13.5003 19 15.2413 20 16.5003 20C17.5133 20 18.3003 19.177 18.3003 18C18.3003 17.715 18.2513 17.303 18.1543 17.038C17.6793 15.587 15.6423 15.203 14.7003 13.5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M20.1882 8.082C20.0597 8.0277 19.9216 7.99981 19.7822 8H19.7672C19.0322 8.012 18.2072 8.75 17.7742 9.866C17.2552 11.201 17.4942 12.566 18.3122 12.918C18.4412 12.973 18.5792 13 18.7182 13C19.4572 13 20.2932 12.258 20.7292 11.134C21.2452 9.799 21.0012 8.434 20.1882 8.082Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -93,19 +93,19 @@
 													<div class="card_body_row">
 														<div class="form-floating" style="width: 100%;">
 															<input id="user_first_name" class="form-control" type="text" name="first_name" data-id="user_first_name" maxlength="50" placeholder="First Name" disabled />
-															<label class="form-label" for="user_first_name">First Name<span> *</span></label>
+															<label class="form-label" for="user_first_name">{{ $clientInfo->first_name }}<span> *</span></label>
 															<div id="error-user_first_name" class="error-message"><span>• Please enter your first name.</span></div>
 															<div id="guide_user_first_name" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
 														</div>
 														<div class="form-floating" style="width: 100%;">
 															<input id="user_middle_name" class="form-control" type="text" name="middle_name" data-id="user_middle_name" maxlength="50" placeholder="Middle Name" disabled />
-															<label class="form-label" for="user_middle_name">Middle Name<span> *</span></label>
+															<label class="form-label" for="user_middle_name">{{ $clientInfo->middle_name }}<span> *</span></label>
 															<div id="error-middle_name" class="error-message"><span>• Please enter your first name.</span></div>
 															<div id="guide-middle_name" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
 														</div>
 														<div class="form-floating" style="width: 100%;">
 															<input id="user_last_name" class="form-control" type="text" name="last_name" data-id="user_last_name" maxlength="50" placeholder="Last Name" disabled />
-															<label class="form-label" for="user_last_name">Last Name<span> *</span></label>
+															<label class="form-label" for="user_last_name">{{ $clientInfo->last_name }}<span> *</span></label>
 															<div id="error-last_name" class="error-message"><span>• Please enter your first name.</span></div>
 															<div id="guide-last_name" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
 														</div>
@@ -113,13 +113,13 @@
 													<div class="card_body_row">
 														<div class="form-floating" style="width: 100%;">
 															<input id="user_email" class="form-control" type="email" name="email" data-id="user_email" maxlength="50" placeholder="Email" disabled />
-															<label class="form-label" for="user_email">Email <span> *</span></label>
+															<label class="form-label" for="user_email">{{ $clientInfo->email }}<span> *</span></label>
 															<div id="error-user_email" class="error-message"><span>• Please enter your first name.</span></div>
 															<div id="guide-user_email" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
 														</div>
 														<div class="form-floating" style="width: 100%;">
 															<input id="user_phone_number" class="form-control" type="tel" name="phone" data-id="user_phone_number" maxlength="11" placeholder="Phone Number" disabled />
-															<label class="form-label" for="user_email">Phone Number <span> *</span></label>
+															<label class="form-label" for="user_email">{{ $clientInfo->phone }}<span> *</span></label>
 															<div id="error-user_phone_number" class="error-message"><span>• Please enter your first name.</span></div>
 															<div id="guide-user_phone_number" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
 														</div>
@@ -385,22 +385,9 @@
 			</div>
 		</div>
 	</main>
-	<footer class="text-center py-4" style="background: rgba(4, 91, 98, 0.10); width:100%; position: static; left: 0; bottom: 0;">
-        <div class="container-fluid">
-            <div class="row row-cols-1 row-cols-lg-3">
-                <div class="col-lg-3"><img src="{{ asset('assets/img/dogs_cats.png') }}" style="width: 50px;height: 50px;flex-shrink: 0;" /></div>
-                <div class="col">
-                    <p style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 0;">Copyright © 2023, MediPaws | All Rights Reserved |</p><a href="https://tabler.io/icons" style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 0;">Icons-by-Tabler-Icons</a>
-                </div>
-                <div class="col">
-                    <ul class="list-inline my-2">
-                        <li class="list-inline-item"><a id="terms_and_conditions" class="terms_and_conditions" style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-right: 20px;cursor: pointer;">Terms &amp; Conditions</a></li>
-                        <li class="list-inline-item"><a id="privacy_and_policy" class="terms_and_conditions" style="margin-left: 10px;margin-top: 0;margin-bottom: 0;color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;cursor: pointer;">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
+
+	@include('includes.footer')
+
 	<div class="modal fade show" role="dialog" tabindex="-1" id="cancel_change_pass">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content discard_modal">
@@ -587,6 +574,7 @@
   <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('assets/js/sidebar.js') }}"></script>
   <script src="{{ asset('assets/js/user_settings.js') }}"></script>
+  <script src="{{ asset('assets/js/footer.js') }}"></script>
 </body>
 
 </html>
