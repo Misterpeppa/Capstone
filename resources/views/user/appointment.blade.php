@@ -422,7 +422,7 @@
             </div>
         </div>
     </main>
-    <footer class="footer" style="position: relative;"><img src="{{ asset('assets/img/dogs_cats.png') }}" style="width: 159.783px;height: 150px;flex-shrink: 0;"></footer>
+    @include('includes.footer')
     <div class="modal fade" role="dialog" tabindex="-1" id="consent_modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content add_client_modal">

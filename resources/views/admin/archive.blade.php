@@ -15,8 +15,7 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch-toggle-switch.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
 </head>
 
 <body>
@@ -460,8 +459,6 @@
 	<script src="{{ asset('assets/js/pet_information.js') }}"></script>
 	<script src="{{ asset('assets/js/pet_records.js') }}"></script>
 	<script src="{{ asset('assets/js/sidebar.js') }}"></script>
-	<script src="{{ asset('assets/js/signin.js') }}"></script>
-	<script src="{{ asset('assets/js/signup.js') }}"></script>
 	<script src="{{ asset('assets/js/user_settings.js') }}"></script>
 </body>
 
