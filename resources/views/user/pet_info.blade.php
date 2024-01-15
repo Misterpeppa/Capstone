@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch-toggle-switch.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
 </head>
 
 <body>
@@ -86,7 +86,8 @@
 								<div class="empty_state_message_container">
 									<h1>NO PETS YET!</h1>
 									<div class="empty_state_paragraph_container">
-										<p>You can add a pet by clicking the button below.</p>
+										<p>Looks like you haven’t added any of your pets just yet.<br>
+										You can add a pet by clicking the button below.</p>
 									</div>
 								</div>
 							</div>
@@ -121,48 +122,50 @@
 											<h1>{{ $petrecord->pet->name }}</h1>
 											<p>{{ $petrecord->pet->breed }}</p>
 										</div>
-										<div class="dropdown more_button">
-											<button class="btn dropdown-toggle more_btn" aria-expanded="false" data-bs-toggle="dropdown" type="button"><span class="more_btn_base"><svg fill="none" height="18" viewbox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"></path><path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"></path><path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"></path></svg></span></button>
-											<div class="dropdown-menu more_button" data-bs-popper="none">
-												<a class="dropdown-item View_pet" id="View">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<g clip-path="url(#clip0_6230_1794)">
-															<path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-															<path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
-														<defs>
-															<clipPath id="clip0_6230_1794">
-																<rect width="24" height="24" fill="white" /> </clipPath>
-														</defs>
-													</svg>&nbsp;View</a>
-												<a class="dropdown-item Edit_pet" id="Edit">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<g clip-path="url(#clip0_6230_538)">
-															<path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
-														<defs>
-															<clipPath id="clip0_6230_538">
-																<rect width="24" height="24" fill="white" /> </clipPath>
-														</defs>
-													</svg>&nbsp;Edit</a>
-												<a class="dropdown-item archive_pet" id="Archive">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<g clip-path="url(#clip0_6230_1803)">
-															<path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
-														<defs>
-															<clipPath id="clip0_6230_1803">
-																<rect width="24" height="24" fill="white" /> </clipPath>
-														</defs>
-													</svg>&nbsp;Archive</a>
-												<a class="dropdown-item add_appointment" href="appointment.html" id="add_appointment">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<g clip-path="url(#clip0_6230_1769)">
-															<path d="M9 12H15M12 9V15M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
-														<defs>
-															<clipPath id="clip0_6230_1769">
-																<rect width="24" height="24" fill="white" /> </clipPath>
-														</defs>
-													</svg>&nbsp;Add Appointment</a>
-											</div>
-										</div>
+										<div class="dropdown more_button"><button class="btn dropdown-toggle more_btn" aria-expanded="false" data-bs-toggle="dropdown" type="button"><span><svg fill="none" height="18" viewBox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"></path>
+                <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"></path>
+                <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"></path>
+            </svg></span></button>
+    <div class="dropdown-menu more_button" data-bs-popper="none"><button data-action="View_pet" id="View" class="btn dropdown-item" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6590_18178)">
+    <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6590_18178">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg><span>View</span></button><button data-action="Edit_pet" id="Edit"  class="btn dropdown-item Edit_pet" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6590_18183)">
+    <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6590_18183">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg><span>Edit</span></button><button data-action="Archive_pet" id="Archive" class="btn dropdown-item archive_pet" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6590_18188)">
+    <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6590_18188">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg><span>Archive</span></button><button data-action="Create_appointment" id="add_appointment" class="btn dropdown-item add_appointment" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6590_18193)">
+    <path d="M12.5 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H18C18.5304 5 19.0391 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V12M16 3V7M8 3V7M4 11H20M16 19H22M19 16V22" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6590_18193">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg><span>Create Appointment</span></button></div>
+</div>
 									</div>
 									<div class="pet_detail_body">
 										<div class="pet_upper_detail">
@@ -191,7 +194,7 @@
 						</div>
 						@endforeach
 					</div>
-					<div id="edit_pet" class="edit_pet">
+					<div id="edit_pet" class="view_pet_detail">
 						<div class="edit_pet_back_btn_container">
 							<button class="btn edit_pet_back_btn" id="edit_pet_back_btn" type="button"><span class="edit_pet_back_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
 								<g clip-path="url(#clip0_6089_3068)" filter="url(#filter0_d_6089_3068)">
@@ -279,7 +282,7 @@
 							</div>
 						</div>
 					</div>
-					<div id="view_pet" class="view_pet">
+					<div id="view_pet" class="view_pet_detail">
 						<div class="view_pet_back_btn_container">
 							<button class="btn edit_pet_back_btn" id="view_pet_back_btn" type="button"><span class="edit_pet_back_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
   <g clip-path="url(#clip0_6089_3068)" filter="url(#filter0_d_6089_3068)">
@@ -303,7 +306,7 @@
 </svg> Back</span></button>
 						</div>
 						<div class="pet_record_item">
-							<div class="pet_record"><img src="assets/img/koda%201.png">
+							<div class="pet_record">
 								<div class="pet_record_details">
 									<div class="pet_record_details_second_row">
 										<div class="pet_name_breed_container">
@@ -423,7 +426,7 @@
 											</div>
 										</div>
 									</div>
-									<div id="medical_history_table_container" class="medical_history_table_container">
+									<div id="medical_history_table_container" class="table-responsive">
 										<div class="table-responsive" id="medical_history_table">
 											<table class="table">
 												<thead>
@@ -457,8 +460,7 @@
 											</div>
 										</div>
 									</div>
-									<div id="immunization_history_table_container" class="immunization_history_table_container">
-										<div class="table-responsive" id="immunization_history_table">
+									<div class="table-responsive" id="immunization_history_table">
 											<table class="table">
 												<thead>
 													<tr>
@@ -480,7 +482,6 @@
 												</tbody>
 											</table>
 										</div>
-									</div>
 								</div>
 								<div class="tab-pane pet_information" role="tabpanel" id="tab-4">
 									<div id="surgery_empty_state" class="pet_record_empty_state_message_container">
@@ -491,8 +492,7 @@
 											</div>
 										</div>
 									</div>
-									<div id="surgery_history_table_container" class="surgery_history_table_container">
-										<div class="table-responsive" id="surgery_history_table">
+									<div class="table-responsive" id="surgery_history_table">
 											<table class="table">
 												<thead>
 													<tr>
@@ -514,7 +514,6 @@
 												</tbody>
 											</table>
 										</div>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -523,7 +522,53 @@
 			</div>
 		</div>
 	</main>
-	<footer class="footer"><img src="assets/img/dogs&cats.png" style="width: 159.783px;height: 150px;flex-shrink: 0;"></footer>
+	<footer class="text-center py-4" style="background: rgba(4, 91, 98, 0.10); width:100%; position: static; left: 0; bottom: 0;">
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-lg-3">
+                <div class="col-lg-3"><img src="{{ asset('assets/img/dogs_cats.png') }}" style="width: 50px;height: 50px;flex-shrink: 0;" /></div>
+                <div class="col">
+                    <p style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 0;">Copyright © 2023, MediPaws | All Rights Reserved |</p><a href="https://tabler.io/icons" style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 0;">Icons-by-Tabler-Icons</a>
+                </div>
+                <div class="col">
+                    <ul class="list-inline my-2">
+                        <li class="list-inline-item"><a id="terms_and_conditions" class="terms_and_conditions" style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-right: 20px;cursor: pointer;">Terms &amp; Conditions</a></li>
+                        <li class="list-inline-item"><a id="privacy_and_policy" class="terms_and_conditions" style="margin-left: 10px;margin-top: 0;margin-bottom: 0;color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;cursor: pointer;">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+	<div id="create_appointment_modal" class="modal fade show" role="dialog" tabindex="-1">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content create_appointment">
+				<div class="modal-header archive_header">
+					<h1>Create Appointment?</h1>
+				</div>
+				<div class="modal-body archive_message">
+					<div class="align-self-stretch form-floating"><select id="surgery_type" class="form-select" data-id="surgery_type">
+							<option value selected>Select a surgery</option>
+							<option value="Neuter">Neuter (𝘐𝘵 𝘪𝘴 𝘵𝘩𝘦 𝘴𝘶𝘳𝘨𝘪𝘤𝘢𝘭 𝘳𝘦𝘮𝘰𝘷𝘢𝘭 𝘰𝘧 𝘢 𝘮𝘢𝘭𝘦 𝘥𝘰𝘨&#39;𝘴 𝘵𝘦𝘴𝘵𝘪𝘤𝘭𝘦𝘴)</option>
+							<option value="Tooth Extraction">Tooth Extraction (𝘳𝘦𝘮𝘰𝘷𝘢𝘭 𝘰𝘧 𝘢 𝘵𝘰𝘰𝘵𝘩)</option>
+						</select><label class="form-label" for="surgery_type">Surgery Type<span> *</span></label>
+						<div id="error-surgery" class="error-message"><span>• Please select a surgery type</span></div>
+					</div>
+					<div class="align-self-stretch form-floating"><textarea id="floatingTextarea" class="form-control" data-id="floatingTextarea" placeholder="Additional Notes" type="text"></textarea><label class="form-label form-label" for="floatingTextarea">Additional Notes</label></div>
+					<div class="d-flex align-self-stretch flex-row justify-content-between input_row">
+						<div class="form-floating"><input id="appointment_date" class="form-control" type="date" style="width: 100%;" /><label class="form-label" for="appointment_date">Date<span> *</span></label>
+							<div id="error-appointment_date" class="error-message"><span>• Please enter appointment date.</span></div>
+						</div>
+						<div class="form-floating"><input id="appointment_time" class="form-control" type="time" style="width: 100%;" /><label class="form-label" for="appointment_time">Time<span> *</span></label>
+							<div id="error-appointment_time" class="error-message"><span>• Please enter time.</span></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer d-flex justify-content-end"><button id="book_appointment" class="btn next_btn" data-bs-dismiss="modal"type="button"><span class="archive_confirm_button_base">Book Appointment</span></button></div>
+			</div>
+		</div>
+	</div>
+
+
 	<div class="modal fade show" role="dialog" tabindex="-1" id="add_pet_success">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content success_modal">
@@ -612,36 +657,36 @@
 										<option value="Dog">Dog</option>
 										<option value="Cat">Cat</option>
 									</select>
-									<label class="form-label form-label" for="pet_type">Pet Type<span>&nbsp;*</span></label>
+									<label class="form-label " for="pet_type">Pet Type<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_type"><span>• Please select pet type</span></div>
 									<div class="guide-message" id="guide-pet_type"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" data-id="breed" name="breed" disabled="" id="breed" placeholder="Breed">
+									<select class="form-select" data-id="breed" name="breed" disabled="" id="breed" placeholder="Breed">
 										<option value="none" selected="">Select a Pet Type first</option>
 									</select>
-									<label class="form-label form-label" for="breed">Breed<span>&nbsp;*</span></label>
+									<label class="form-label" for="breed">Breed<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-breed"><span>• Please select a breed.</span></div>
 									<div class="guide-message" id="guide-breed"><span>• Please select a breed.</span></div>
 								</div>
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" data-id="pet_birthdate" name="pet_birthdate" id="pet_birthdate" placeholder="Birthdate" type="date">
-									<label class="form-label form-label" for="pet_birthdate">Birthdate<span>&nbsp;*</span></label>
+									<input class="form-control" data-id="pet_birthdate" name="pet_birthdate" id="pet_birthdate" placeholder="Birthdate" type="date">
+									<label class="form-label " for="pet_birthdate">Birthdate<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_birthdate"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 									<div class="guide-message" id="guide_pet_birthdate"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" type="text" data-bs-toggle="tooltip" data-id="age" name="pet_age" disabled="" value=" " id="age" maxlength="3" placeholder="Please select pet type, breed, and enter the birthdate first." title="Please select pet type and enter the birthdate first.">
-									<label class="form-label form-label" for="age">Age</label>
+									<input class="form-control" type="text" data-bs-toggle="tooltip" data-id="age" name="pet_age" disabled="" value=" " id="age" maxlength="3" placeholder="Please select pet type, breed, and enter the birthdate first." title="Please select pet type and enter the birthdate first.">
+									<label class="form-label" for="age">Age</label>
 									<div class="error-message" id="error-age" style="color:red;"></div>
 								</div>
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" type="number" data-id="weight" name="weight" id="weight" maxlength="10" placeholder="Weight">
-									<label class="form-label form-label" for="weight">Weight<span>&nbsp;*</span></label>
+									<input class="form-control" type="number" data-id="weight" name="weight" id="weight" maxlength="10" placeholder="Weight">
+									<label class="form-label" for="weight">Weight<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-weight"><span>• Please enter weight of pet.</span><span>• Only numerical inputs will be accepted</span></div>
 									<div class="guide-message" id="guide_pet_weight"><span>• Please enter weight of pet.</span><span>• Only numerical inputs will be accepted</span></div>
 								</div>

@@ -52,6 +52,7 @@
                                             
                                             <input name="email" id="email" class="form-control custom_email" type="email" data-id="email" placeholder="Email Address" />
                                             <label class="form-label" for="email">Email Address<span>&nbsp;*</span></label>
+                                          
                                             <div id="guide_email_message" class="guide-message email"><span>• Please enter your email.<br>(e.g. pogiako@gmail.com/pogiako@yahoo.com)</span></div>
                                             <div id="error-email" class="error-message email"><span>• Invalid email format.</span></div>
                                         </div>
@@ -71,6 +72,7 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><g opacity="0.5" clip-path="url(#clip0_6488_16733)"><path d="M21 9.5C18.6 12.167 15.6 13.5 12 13.5C8.4 13.5 5.4 12.167 3 9.5M3 15.5L5.5 11.7M20.9998 15.476L18.5078 11.7M9 17.5L9.5 13.5M15 17.5L14.5 13.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><clipPath id="clip0_6488_16733"><rect width="24" height="24" fill="white" transform="translate(0 0.5)"/></clipPath></defs></svg>
                                     </div>
                                     <label class="form-label" for="password">Password<span>&nbsp;*</span></label>
+                                    
                                     <div id="guide_password" class="guide-message password"><span>• Please enter your password.</span></div>
                                     <div id="error-password" class="error-message password"><span>• Please enter your password.</span></div>
                                 </div>

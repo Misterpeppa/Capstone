@@ -19,8 +19,7 @@ body a {
   transition-duration: 0.15s;
   transition-timing-function: linear;
   transition-delay: 0s;
-  position: relative;
-  padding-top: 20px;
+  position:relative;
   color: rgba(108, 117, 125, 0.7);
   text-indent: -9999px;
   border: none;
@@ -39,9 +38,9 @@ body a {
   position: absolute;
   top: 0;
   left: 50%;
-  display: block;
-  width: 13px;
-  height: 13px;
+  width: 24px;
+  height: 24px;
+  display: flex;
   content: '';
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -52,7 +51,17 @@ body a {
   border-radius: 50%;
   background-color: #fff;
   box-sizing: border-box;
+
+  z-index: 3; /* Make sure it's above the span */
+}
+.multisteps-form__progress-btn span {
+  position: relative;
+  top: -5px;
+  color: black;
   z-index: 3;
+}
+.multisteps-form__progress-btn.js-active span {
+  color: #fff; /* Text color when the button is active */
 }
 
 .multisteps-form__progress-btn:after {
@@ -76,7 +85,7 @@ body a {
 }
 
 .multisteps-form__progress-btn.js-active {
-  color: #007bff;
+  color: #fff;
 }
 
 .multisteps-form__progress-btn.js-active:before {
@@ -165,14 +174,6 @@ body a {
 
 .days li:not(.active):hover::before {
   color: #ccc;
-}
-
-.days li.selected-date::before {
-  background-clip: content-box;
-  padding: 2px;
-  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
-  border-radius: var(--radius-s, 8px);
-  background: var(--colors-actions-action-active, #004D53);
 }
 
 .days li::before {
