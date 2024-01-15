@@ -1,4 +1,28 @@
+var completeActions = document.querySelectorAll('.complete-action');
+
+//mark complete modal that will appear after clicking completeAction
+
+//continue button for complete appointment
+var confirmCompleteAction = document.querySelector('.confirm_complete');
+confirmCompleteAction.addEventListener('click', updateStatusToCompleted);
+
+function updateStatusToCompleted() {
+    // Retrieve the selected row from the data attribute
+    var selectedRow = completeModal.relatedRow;
+
+    // Find the status cell within the selected row
+    var statusCell = selectedRow.querySelector('.upcoming');
+
+    // Change status if complete button was clicked
+    completeModal.hide();
+    statusCell.innerHTML = 'Completed';
+    statusCell.classList.add('completed');
+    
+    
+}
+  
 document.addEventListener('DOMContentLoaded', function () {
+    
     
 
     var approve_appointment_tab_button = document.getElementById('approve_appointment_tab_button');

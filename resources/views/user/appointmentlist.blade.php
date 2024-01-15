@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-	<title>appointmentformUserSide</title>
+	<title>Appointment List</title>
 	<link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
 	<link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
@@ -52,16 +52,13 @@
                         </div>
 					<div class="appointment_list_tabs">
 						<ul class="nav nav-tabs appointment_list_tab_items" role="tablist">
-							<li class="nav-item" role="presentation"><a class="nav-link active list_tab" role="tab" data-bs-toggle="tab" href="#tab-1">Upcoming<span id="upcoming-counter" class="counter counter-upcoming">0</span></a></li>
-							<li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-2">Completed<span id="history-counter" class="counter counter-recent">0</span></a></li>
+							<li class="nav-item" role="presentation"><a class="nav-link active list_tab" role="tab" data-bs-toggle="tab" href="#tab-1">Approved<span id="upcoming-counter" class="counter counter-upcoming">0</span></a></li>
+							<li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-2">Pending<span id="history-counter" class="counter counter-recent">0</span></a></li>
 						</ul>
 						<div class="tab-content" style="width: 100%;">
 							<div class="tab-pane active appointment_list_container" role="tabpanel" id="tab-1">
 								<div class="container_header">
 									<div class="left_part_product_header">
-										
-										
-										
 									</div>
 									<div class="right_part_product_header">
 										
@@ -82,7 +79,7 @@
 											</tr>
 										</thead>
 										<tbody id="appointment_table_body">
-                                        @foreach ($appointments as $index => $appointment)
+                                        @foreach ($appointmentapproved as $index => $appointment)
                                         <tr>
                                             <td class="text-style"></td> 
                                             <td class="text-style">{{ $index + 1 }}</td>
@@ -133,25 +130,26 @@
 											<input type="search" class="search_input" placeholder="Search Appointment">
 										</div>
 										<button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5284_15912)">
-    <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_5284_15912">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Filter by</span></button>
-										<button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_5284_15919)">
-    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_5284_15919">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Sort by</span></button>
+											<g clip-path="url(#clip0_5284_15912)">
+												<path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+											</g>
+											<defs>
+												<clipPath id="clip0_5284_15912">
+												<rect width="24" height="24" fill="white"/>
+												</clipPath>
+											</defs>
+											</svg> Filter by</span></button>
+																					<button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+											<g clip-path="url(#clip0_5284_15919)">
+												<path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+											</g>
+											<defs>
+												<clipPath id="clip0_5284_15919">
+												<rect width="24" height="24" fill="white"/>
+												</clipPath>
+											</defs>
+											</svg> Sort by</span>
+										</button>
 									</div>
 									<div class="right_part_product_header">
 										<button class="btn archive_button" id="archive_button-1" type="button">
@@ -181,7 +179,18 @@
 												<th>Actions</th>
 											</tr>
 										</thead>
-										<tbody id="appointment_table_body"></tbody>
+										<tbody id="appointment_table_body">
+										@foreach ($appointments as $index => $appointmentpending)
+                                        <tr>
+                                            <td class="text-style"></td> 
+                                            <td class="text-style">{{ $index + 1 }}</td>
+                                            <td class="text-style">{{ $appointmentpending['petType'] }} ({{ $appointment['breed'] }})</td>
+                                            <td class="text-style">{{ $appointmentpending['appointmentType'] }}</td>
+                                            <td class="text-style">{{ $appointmentpending['appointmentDate'] }}</td>
+                                            <td class="text-style">{{ $appointmentpending['appointmentTime'] }}</td>
+                                        </tr>
+                                        @endforeach
+										</tbody>
 									</table>
 									<div class="pagination">
 										<div class="pagination-menu"> <span>Go to:</span>

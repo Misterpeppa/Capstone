@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\MedBatch;
 use App\Models\Admin\MedInfo;
+use App\Models\Admin\PetRecord;
 use App\Models\Admin\VaxBatch;
 use App\Models\Admin\VaxInfo;
 use App\Models\Admin\VitBatch;
@@ -12,6 +13,7 @@ use App\Models\Admin\VitInfo;
 use App\Models\User\Clients;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
 
 class ReportController extends Controller
 {
@@ -47,5 +49,18 @@ class ReportController extends Controller
         $pdf = PDF::loadView('pdf.list_clients', $data);
 
         return $pdf->download('Client_List.pdf');
+    }
+    public function petrecsPDF()
+    {
+        $petrecord = PetRecord::all();
+
+        $data = [
+            'title' => 'Pet Records',
+            'petrecord' => $petrecord
+        ];
+
+        $pdf = PDF::loadView('pdf.petrecord', $data);
+
+        return $pdf->download('Pet_Records.pdf');
     }
 }
