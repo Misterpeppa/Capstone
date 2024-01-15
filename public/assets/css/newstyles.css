@@ -219,6 +219,7 @@ body{
 }
 .alert{
   display: none;
+  z-index: 999;
 }
 .user{
   justify-content: center;
@@ -276,7 +277,22 @@ body{
   background: var(--Colors-Actions-action-hover, #004D53);
   box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
 }
-
+.error{
+  display: flex;
+  padding: var(--Spacing-spacing-xs, 12px);
+  align-items: flex-start;
+  gap: var(--Spacing-spacing-s, 16px);
+  align-self: stretch;
+  background: rgba(195, 56, 52, 0.25);
+}
+.error_statement{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--Spacing-spacing-xxs, 8px);
+  flex: 1 0 0;
+}
 
 .error-message {
     position: absolute;
@@ -3296,10 +3312,14 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     gap: 25px;
   }
   
-  .dropdown-menu {
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
+
+
+  .dropdown-menu{
+    position: absolute;
+    inset: 0px 0px auto auto;
+    margin: 0px;
+    transform: translate3d(-85px, 15px, 0px);
+    z-index: 1;
   }
   
   .user {
