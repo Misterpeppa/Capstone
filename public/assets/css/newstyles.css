@@ -12,6 +12,34 @@ body{
   flex-direction: column;
   background: #EFEFEF;
 }
+.consent-text {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-self: stretch;
+  overflow: auto;
+}
+
+.consent-text p {
+  height: 200px;
+  color: rgba(28, 28, 28, 0.70);
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.consent-text span{
+  color: rgba(28, 28, 28, 0.70);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
 .logo_link img {
   width: 50px;
   height: 50px;
@@ -5155,17 +5183,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     align-self: stretch;
   }
   
-  .consent-text {
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    align-self: stretch;
-  }
-  .consent-text p, .consent-text span{
-    font-size: 12px;
-  }
+
   
   @media (min-width: 1400px){
 

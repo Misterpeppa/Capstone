@@ -407,15 +407,10 @@ body a {
   line-height: normal;
 }
 
-.consent-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: var(--spacing-spacing-xxs, 8px);
-  align-self: stretch;
-}
 
+
+
+  
 .custom-style {
   color: rgba(28, 28, 28, 0.70);
   font-family: Inter;
@@ -424,6 +419,7 @@ body a {
   font-weight: 700;
   line-height: normal;
 }
+
 
 .consent-text p {
   color: rgba(28, 28, 28, 0.70);

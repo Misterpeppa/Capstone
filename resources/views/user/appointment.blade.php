@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>appointmentformUserSide</title>
+    <title>Appointment</title>
     <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
@@ -22,6 +22,7 @@
 
 <body>
     @include('includes.user_header')
+    @include('includes.T&C_PP_modal')
     <main>
         <div class="container-fluid mb-5">
             <div class="row d-flex flex-column align-content-center flex-wrap">
@@ -56,7 +57,7 @@
                                                                 <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Cat" for="cat" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Cat</label><input type="radio" id="cat" class="custom-control-input" style="display: flex;width: 22px;height: 22px;justify-content: center;align-items: center;border-radius: 8px;background: var(--colors-main-neutral-light, #F5F5F5);box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;" name="cat"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="align-self-stretch form-floating breed_container"><select class="form-select" id="breed" required="" style="height: 100%;" disabled=""></select><label class="form-label breed_label" for="breed">Select a breed<span>&nbsp;*</span></label>
+                                                        <div class="align-self-stretch form-floating breed_container"><select class="form-select" id="breed" required="" style="height: 100%;" disabled=""></select><label class="form-label" for="breed">Select a breed<span>&nbsp;*</span></label>
                                                             <div id="error-breed" class="error-message"><span>• Please select a breed</span></div>
                                                         </div>
                                                     </div>
@@ -120,35 +121,36 @@
                                                     <div class="align-self-stretch form-floating"><textarea class="form-control" id="floatingTextarea-2" data-id="floatingTextarea-2" placeholder="Additional Notes" maxlength="255" minlength="0"></textarea><label class="form-label" for="floatingTextarea-2">Additional Notes</label></div>
                                                 </div>
                                                 <div class="add_form_btn_container"><button class="btn add_form" data-bs-toggle="tooltip" data-bss-tooltip="" id="add_form" type="button" title="Add Pet"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_1917_11656)">
-    <path d="M12 5V19M5 12H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_1917_11656">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg></span></button><button class="btn remove_form" data-bs-toggle="tooltip" data-bss-tooltip="" id="remove_form" type="button" title="Remove Pet"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_2291_11324)">
-    <path d="M5 12H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_2291_11324">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg></span></button><button class="btn remove_form" data-bs-toggle="tooltip" data-bss-tooltip="" id="remove_form-1" type="button" title="Remove Pet"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_2291_11324)">
-    <path d="M5 12H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_2291_11324">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg></span></button></div>
+                                                <g clip-path="url(#clip0_1917_11656)">
+                                                    <path d="M12 5V19M5 12H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_1917_11656">
+                                                    <rect width="24" height="24" fill="white"/>
+                                                    </clipPath>
+                                                </defs>
+                                                </svg></span></button><button class="btn remove_form" id="remove_form" data-bs-toggle="tooltip" data-bss-tooltip="" id="remove_form" type="button" title="Remove Pet"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <g clip-path="url(#clip0_2291_11324)">
+                                                    <path d="M5 12H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_2291_11324">
+                                                    <rect width="24" height="24" fill="white"/>
+                                                    </clipPath>
+                                                </defs>
+                                                </svg></span></button><button class="btn remove_form" id="remove_form-1" data-bs-toggle="tooltip" data-bss-tooltip="" id="remove_form-1" type="button" title="Remove Pet"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <g clip-path="url(#clip0_2291_11324)">
+                                                    <path d="M5 12H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_2291_11324">
+                                                    <rect width="24" height="24" fill="white"/>
+                                                    </clipPath>
+                                                </defs>
+                                                </svg></span></button>
+                                                </div>
                                             </div>
-                                            <div class="form_content_buttons mb-4"><button id="next_btn" class="btn border-primary ml-auto js-btn-next" type="button" title="Next" style="color: var(--colors-main-neutral, #FFF);text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;display: inline-flex;height: 56px;min-width: 100px;padding: var(--spacing-spacing-s, 16px) var(--spacing-spacing-m, 24px);justify-content: center;align-items: center;gap: var(--spacing-spacing-m, 24px);flex-shrink: 0;border-radius: var(--radius-s, 8px);background: var(--colors-actions-action, #045B62);box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);--bs-primary: #045B62;--bs-primary-rgb: 4,91,98;" disabled>Next</button></div>
+                                            <div class="form_content_buttons mb-4"><button id="next_btn" class="btn  border-primary ml-auto js-btn-next" type="button" title="Next" style="color: var(--colors-main-neutral, #FFF);text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;display: inline-flex;height: 56px;min-width: 100px;padding: var(--spacing-spacing-s, 16px) var(--spacing-spacing-m, 24px);justify-content: center;align-items: center;gap: var(--spacing-spacing-m, 24px);flex-shrink: 0;border-radius: var(--radius-s, 8px);background: var(--colors-actions-action, #045B62);box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);--bs-primary: #045B62;--bs-primary-rgb: 4,91,98;" disabled>Next</button></div>
                                         </div>
                                         <div id="single-form-next-prev" class="multisteps-form__panel" data-animation="scaleIn" style="display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 25px;align-self: stretch;">
                                             <div style="display: flex;flex-direction: column;align-items: flex-start;gap: 52px;align-self: stretch;">
@@ -246,26 +248,8 @@
                                                     <div class="d-flex justify-content-between align-items-start align-self-stretch calendar_time_container" style="padding: 0px var(--spacing-spacing-xl, 64px);">
                                                         <div class="calendar_container">
                                                             <div class="d-flex flex-column align-items-start align-self-stretch Appointment_wrapper" style="gap: var(--spacing-spacing-s, 16px);">
-                                                                <div class="d-flex justify-content-between align-items-center align-self-stretch Appointment_icons"><span id="prev" class="prev_month"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6550_20711)">
-    <path d="M15 6L9 12L15 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6550_20711">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg></span>
-                                                                    <p class="text-center current-date"></p><span id="next" class="next_month"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-  <g clip-path="url(#clip0_6550_20715)">
-    <path d="M9.5 6L15.5 12L9.5 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6550_20715">
-      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
-    </clipPath>
-  </defs>
-</svg></span>
+                                                                <div class="d-flex justify-content-between align-items-center align-self-stretch Appointment_icons"><span id="prev" class="prev_month"><i class="typcn typcn-chevron-left"></i></span>
+                                                                    <p class="text-center current-date"></p><span id="next" class="next_month"><i class="typcn typcn-chevron-right"></i></span>
                                                                 </div>
                                                                 <div class="d-flex flex-column justify-content-center align-items-center align-self-stretch Appointment_calendar">
                                                                     <ul class="text-start Appointment_weeks">
@@ -318,23 +302,24 @@
                                                         <div class="d-flex flex-column align-items-start align-self-stretch details" id="details">
                                                             <div class="d-flex align-items-center align-self-stretch details_confirmation_1strow" id="details_confirmation_1strow">
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <input type="text" name="count" id="click_count" class="d-none">
                                                                     <h1>Pet Name</h1>
                                                                     <p id="confirm_Pet_Name" class="confirm_Pet_Name">Pet Name</p>
                                                                     <input type="hidden" name="petName" id="hidden_petName">                                                                </div>
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Pet Type</h1>
                                                                     <p id="confirm_Pet_type" class="confirm_Pet_type">Pet Type</p>
-                                                                    <input type="hidden" name="petType[]" id="hidden_petType" value="">                                                                </div>
+                                                                    <input type="hidden" name="petType" id="hidden_petType" value="">                                                                </div>
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Breed</h1>
                                                                     <p id="confirm_breed" class="confirm_breed">Breed</p>
-                                                                    <input type="hidden" name="breed[]" id="hidden_breed">                                                                </div>
+                                                                    <input type="hidden" name="breed" id="hidden_breed">                                                                </div>
                                                             </div>
                                                             <div class="d-flex align-items-start align-self-stretch details_confirmation_2ndrow" id="details_confirmation_2ndrow">
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Surgery Type</h1>
                                                                     <p id="confirm_surgery_Type" class="confirm_surgery_Type">Surgery Type</p>
-                                                                    <input type="hidden" name="appointmentType[]" id="hidden_appointmentType">                                                                </div>
+                                                                    <input type="hidden" name="appointmentType" id="hidden_appointmentType">                                                                </div>
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Additional Notes</h1>
                                                                     <p id="confirm_additional_Notes" class="confirm_additional_Notes">Additional Notes</p>
@@ -364,7 +349,7 @@
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Surgery Type</h1>
                                                                     <p id="confirm_surgery_Type-1" class="confirm_surgery_Type">Surgery Type</p>
-                                                                    <input type="hidden" name="appointmentType1" id="hidden_appointmentType-1">                                                                </div>
+                                                                    <input type="text" name="appointmentType1" id="hidden_appointmentType-1" class="d-none">                                                                </div>
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Additional Notes</h1>
                                                                     <p id="confirm_additional_Notes-1" class="confirm_additional_Notes">Additional Notes</p>
@@ -384,21 +369,21 @@
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Pet Type</h1>
                                                                     <p id="confirm_Pet_type-2" class="confirm_Pet_type">Pet Type</p>
-                                                                    <input type="hidden" name="petType2" id="hidden_petType-2">                                                                </div>
+                                                                    <input type="text" name="petType2" id="hidden_petType-2" class="d-none">                                                                </div>
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Breed</h1>
                                                                     <p id="confirm_breed-2" class="confirm_breed">Breed</p>
-                                                                    <input type="hidden" name="breed2" id="hidden_breed-2">                                                                </div>
+                                                                    <input type="text" name="breed2" id="hidden_breed-2" class="d-none">                                                                </div>
                                                             </div>
                                                             <div class="d-flex align-items-start align-self-stretch details_confirmation_2ndrow" id="details_confirmation_2ndrow-2">
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Surgery Type</h1>
                                                                     <p id="confirm_surgery_Type-2" class="confirm_surgery_Type">Surgery Type</p>
+                                                                    <input type="hidden" name="appointmentType2" id="hidden_appointmentType-2">                                                                </div>
                                                                     <h1>Additional Notes</h1>
                                                                     <p id="confirm_additional_Notes-2" class="confirm_additional_Notes">Additional Notes</p>
-                                                                    <input type="hidden" name="appointmentType2" id="hidden_appointmentType-2">                                                                </div>
-                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <input type="hidden" name="notes2" id="hidden_notes-2">                                                                </div>
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <p></p>
                                                                 </div>
@@ -411,10 +396,15 @@
                                                             <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                 <h1>Date</h1>
                                                                 <p id="confirm_date" class="confirm_date">Date</p>
+                                                                <input type="hidden" name="appointmentDate" id="hidden_appointmentDate">                                                                </div>
                                                             </div>
                                                             <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                 <h1>Time</h1>
-                                                                <p class="confirm_time">Time</p>
+                                                                <p id="confirm_time" class="confirm_time">Time</p>
+                                                                <input type="hidden" name="appointmentTime" id="hidden_appointmentTime">                                                                </div>
+                                                            </div>
+                                                            <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                <p></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -442,7 +432,7 @@
                 <div class="col">
                     <ul class="list-inline my-2">
                         <li class="list-inline-item"><a id="terms_and_conditions" class="terms_and_conditions" style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-right: 20px;cursor: pointer;">Terms &amp; Conditions</a></li>
-                        <li class="list-inline-item"><a id="privacy_and_policy" class="terms_and_conditions" style="margin-left: 10px;margin-top: 0;margin-bottom: 0;color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;cursor: pointer;">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a id="privacy_policy" class="terms_and_conditions" style="margin-left: 10px;margin-top: 0;margin-bottom: 0;color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;cursor: pointer;">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -464,18 +454,18 @@
   </defs>
 </svg></div>
                 </div>
-                <div class="modal-body consent-message">
+                <div class="modal-body">
                     <div class="consent-title">
-                        <h1 style="margin: 0;">Informed Consent and Acknowledgement</h1>
-                        <p>Before scheduling your pet&#39;s surgery, please carefully read and acknowledge the following:</p>
+                        <h1>Informed Consent and Acknowledgement</h1>
+                        <p>Before scheduling your pet's surgery, please carefully read and acknowledge the following:</p>
                     </div>
                     <div class="consent-text">
                         <p><span class="custom-style">1. Understanding the Procedure:</span> I understand that my pet will undergo a surgical procedure as recommended by the veterinarian. I have received information about the procedure, its risks, and its benefits.</p>
-                        <p><span class="custom-style">2. Health Status:</span> I confirm that I have provided accurate information about my pet&#39;s health, including any known medical conditions, allergies, or medications.</p>
+                        <p><span class="custom-style">2. Health Status:</span> I confirm that I have provided accurate information about my pet's health, including any known medical conditions, allergies, or medications.</p>
                         <p><span class="custom-style">3. Financial Responsibility:</span> I acknowledge that I am responsible for the cost of the surgical procedure and any related services. I have discussed the estimated costs with the clinic.</p>
-                        <p><span class="custom-style">4. Postoperative Care:</span> I understand that postoperative care is essential for my pet&#39;s recovery. I will follow the post-surgery care instructions provided by the clinic.</p>
+                        <p><span class="custom-style">4. Postoperative Care:</span> I understand that postoperative care is essential for my pet's recovery. I will follow the post-surgery care instructions provided by the clinic.</p>
                         <p><span class="custom-style">5. Emergency Contact:</span> I have provided a valid emergency contact person and phone number in case of unforeseen circumstances during or after the surgery.</p>
-                        <p>By clicking &quot;I Agree,&quot; I confirm that I have read, understood, and agree to the terms and conditions mentioned above. I consent to my pet undergoing the scheduled surgery.</p>
+                        <p>By clicking "I Agree," I confirm that I have read, understood, and agree to the terms and conditions mentioned above. I consent to my pet undergoing the scheduled surgery.</p>
                         <p>Please note that your agreement is required to proceed with scheduling the surgery for your pet.</p>
                     </div>
                 </div>
@@ -483,20 +473,21 @@
             </div>
         </div>
     </div>
-    <div class="modal fade show" role="dialog" tabindex="-1">
+    <div id="success_modal" class="modal fade show" role="dialog" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content success_modal">
                 <div class="modal-header success_header">
                     <div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-  <g clip-path="url(#clip0_5910_17688)">
-    <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_5910_17688">
-      <rect width="32" height="32" fill="white"/>
-    </clipPath>
-  </defs>
-</svg></span></div>
+                        <g clip-path="url(#clip0_5910_17688)">
+                            <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_5910_17688">
+                            <rect width="32" height="32" fill="white"/>
+                            </clipPath>
+                        </defs>
+                        </svg></span>
+                    </div>
                 </div>
                 <div class="modal-body success_message">
                     <div>
@@ -504,12 +495,32 @@
                         <p>Please wait for your appointment to be confirmed.</p>
                     </div>
                 </div>
-                <div class="modal-footer"><a class="btn view_appointments" role="button"><span class="view_appointments_base">View Appointments</span></a></div>
+                <div class="modal-footer"><a href="{{ route('appointment.list') }}" class="btn view_appointments" role="button"><span class="view_appointments_base">View Appointments</span></a></div>
             </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @if (session('success'))
+    <script>
+        $(document).ready(function() {
+        // Show the modal
+        function showModal() {
+            $('#success_modal').show();
+            // Automatically hide the modal after 2 seconds
+            setTimeout(hideModal, 2000);
+        }
+
+        // Hide the modal
+        function hideModal() {
+            $('#success_modal').hide();
+        }
+
+        // Call showModal function when needed
+        showModal();
+    });
+    </script>
+    @endif
     <script>
   // Wait for the document to be ready
      document.addEventListener("DOMContentLoaded", function () {
@@ -530,14 +541,6 @@
          const appointmentDateId1 = document.getElementById("confirm_date-1");
          const appointmentTimeId1 = document.getElementById("confirm_time-1");
 
-         const petNameId2 = document.getElementById("confirm_Pet_Name-2");
-         const petTypeId2 = document.getElementById("confirm_Pet_type-2");
-         const breedId2 = document.getElementById("confirm_breed-2");
-         const appointmentTypeId2 = document.getElementById("confirm_surgery_Type-2");
-         const notesId2 = document.getElementById("confirm_additional_Notes-2");
-         const appointmentDateId2 = document.getElementById("confirm_date-2");
-         const appointmentTimeId2 = document.getElementById("confirm_time-2");
-
          const petNameInput = document.getElementById("hidden_petName");
          const petTypeInput = document.getElementById("hidden_petType");
          const breedInput = document.getElementById("hidden_breed");
@@ -553,17 +556,27 @@
          const notesInput1 = document.getElementById("hidden_notes-1");
          const appointmentDateInput1 = document.getElementById("hidden_appointmentDate-1");
          const appointmentTimeInput1 = document.getElementById("hidden_appointmentTime-1");
-         
+
+         const petNameId2 = document.getElementById("confirm_Pet_Name-2");
+         const petTypeId2 = document.getElementById("confirm_Pet_type-2");
+         const breedId2 = document.getElementById("confirm_breed-2");
+         const appointmentTypeId2 = document.getElementById("confirm_surgery_Type-2");
+         const notesId2 = document.getElementById("confirm_additional_Notes-2");
+
          const petNameInput2 = document.getElementById("hidden_petName-2");
          const petTypeInput2 = document.getElementById("hidden_petType-2");
          const breedInput2 = document.getElementById("hidden_breed-2");
          const appointmentTypeInput2 = document.getElementById("hidden_appointmentType-2");
          const notesInput2 = document.getElementById("hidden_notes-2");
-         const appointmentDateInput2 = document.getElementById("hidden_appointmentDate-2");
-         const appointmentTimeInput2 = document.getElementById("hidden_appointmentTime-2");
-
-         // Set the values of the hidden <input> elements to the values from the <span> elements
+         
          document.getElementById('book_appointment').addEventListener("click", function () {
+        
+         petNameInput2.value = petNameId2.innerText;
+         petTypeInput2.value = petTypeId2.innerText;
+         breedInput2.value = breedId2.innerText;
+         appointmentTypeInput2.value = appointmentTypeId2.innerText
+         notesInput2.value = notesId2.innerText;
+
          petNameInput.value = petNameId.innerText;
          petTypeInput.value = petTypeId.innerText;
          breedInput.value = breedId.innerText;
@@ -579,14 +592,6 @@
          notesInput1.value = notesId1.innerText;
          appointmentDateInput1.value = appointmentDateId1.innerText;
          appointmentTimeInput1.value = appointmentTimeId1.innerText;
-
-         petNameInput2.value = petNameId2.innerText;
-         petTypeInput2.value = petTypeId2.innerText;
-         breedInput2.value = breedId2.innerText;
-         appointmentTypeInput2.value = appointmentTypeId2.innerText;
-         notesInput2.value = notesId2.innerText;
-         appointmentDateInput2.value = appointmentDateId2.innerText;
-         appointmentTimeInput2.value = appointmentTimeId2.innerText;
 
          });
     });
@@ -624,27 +629,14 @@
             });
         }
     </script>
-    <script>
-    $(document).ready(function() {
-        // Initialize click count
-        let petCount = 0;
 
-        // Click event for the button
-        $('#add_form').on('click', function() {
-            // Increment click count
-            petCount++;
-            // Update hidden input value
-            $('#click_count').val(petCount);
-             // Log the current value to the console
-            console.log('clickCount:', petCount);
-        });
-    });
-</script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/bs-init.js') }}"></script>
+    <script src="{{ asset('assets/js/appointment_list.js') }}"></script>
     <script src="{{ asset('assets/js/appointmentforms.js') }}"></script>
     <script src="{{ asset('assets/js/Multi-step-form-script.js') }}"></script>
+    <script src="{{ asset('assets/js/footer.js') }}"></script>
 </body>
 
 </html>
