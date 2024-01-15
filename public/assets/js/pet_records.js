@@ -144,12 +144,12 @@ edit_pet_btn.addEventListener('click', function(){
     var discardEditModal = new bootstrap.Modal(document.getElementById('edit_discard'));
 
     // Attach the function to the button click event
-    editSaveChangesButton.addEventListener('click', function(){
-        saveChangesSuccessModal.show();
-        setTimeout(function () {
-            saveChangesSuccessModal.hide();
-        }, 2000);
-    });
+    // editSaveChangesButton.addEventListener('click', function(){
+    //     saveChangesSuccessModal.show();
+    //     setTimeout(function () {
+    //         saveChangesSuccessModal.hide();
+    //     }, 2000);
+    // });
 
     cancelEditBtn.addEventListener('click', function(){
         discardEditModal.show();
@@ -482,6 +482,11 @@ function setupAgeCalculation(birthdateId, ageId, petTypeId) {
     dateInput.addEventListener('keydown', function (e) {
         e.preventDefault();
     });
+
+    const ageInput1 = document.getElementById(ageId);
+    ageInput1.addEventListener('keydown', function (e) {
+        e.preventDefault();
+    });
     
     var birthdateInput = document.getElementById(birthdateId);
     var ageInput = document.getElementById(ageId);
@@ -499,10 +504,11 @@ function setupAgeCalculation(birthdateId, ageId, petTypeId) {
             ageInput.value = formatAge(age);
             ageInput.placeholder = ''; // Clear the placeholder
             document.getElementById('error-' + ageInput.id).innerText = ''; // Clear the error message
+
         }
     });
     
-    ageInput.disabled = true; // Disable the input initially
+    ageInput.disabled = false; // Disable the input initially
     
     function calculateAge(birthdate, petType) {
         var today = new Date();

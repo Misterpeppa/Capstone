@@ -3,6 +3,7 @@
 namespace App\Models\Admin;
 
 use App\Models\admin\MedInfo;
+use App\Models\admin\PetRecord;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,7 +17,8 @@ class MedHistory extends Model
         'diagnosis',
         'diagnosis_date',
         'treatment',
-        'med_id'
+        'med_id',
+        'diagnosis_desc',
     ];
 
     public function PetRecord(): BelongsTo

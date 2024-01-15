@@ -5,7 +5,6 @@
     <title>TAGAPO CATS & DOGS</title>
     <meta charset="utf-8">
     <meta charset="UTF-8">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
@@ -16,7 +15,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
-
 </head>
 
 <style>

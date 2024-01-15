@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User\Clients;
- use Illuminate\Support\Facades\Session;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Session;
 
  use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
@@ -69,35 +70,26 @@ class ClientController extends Controller
     }
     
     
-    
-    
-
     public function store(Request $request)
     {
         $email = $request->input('email');
         $phone = $request->input('phone');
-        $password = $request->input('password');
         $first_name = $request->input('first_name');
         $middle_name = $request->input('middle_name');
         $last_name = $request->input('last_name');
         $gender = $request->input('gender');
         $birthdate = $request->input('birthdate');
-
         $emailExists = Clients::where('email', $request->email)->exists();
-
         if ($emailExists) {
             return redirect()->back()->withErrors(['email' => 'The email has already been taken.']);
         }
-
         $request->validate([
-            // Add any validation rules you need
             'suffix' => 'required',
             'specify_suffix' => 'required_if:suffix,Other',
         ]);
         $suffix = $request->input('suffix');
         $specifySuffix = $request->input('specify_suffix');
 
-        // Create a new client
         $clients = new Clients();
         $clients->first_name = $first_name;
         $clients->middle_name = $middle_name;
@@ -106,16 +98,38 @@ class ClientController extends Controller
         $clients->birthdate = $birthdate;
         $clients->email = $email;
         $clients->phone = $phone;
-        $clients->password = bcrypt($password);
         if ($suffix === 'Other') {
             $clients->suffix = $specifySuffix;
         } else {
             $clients->suffix = $suffix;
         }
         $clients->save();
-
-        // Redirect to a success page or perform any additional actions
-        return redirect('/admin/client');
+        return redirect()->route('admin_client')->with('success', 'Client registered successfully');
     }
+    public function editClient(Request $request)
+    {
+        $clients = Clients::find($request->input('client_id')) ?? new Clients();
+        $clients->first_name = $request->input('first_name');
+        $clients->middle_name = $request->input('middle_name');
+        $clients->last_name = $request->input('last_name');
+        $clients->gender = $request->input('gender');
+        $clients->birthdate = $request->input('birthdate');
+        $clients->email = $request->input('email');
+        $clients->phone = $request->input('phone');
+        $request->validate([
+            // Add any validation rules you need
+            'suffix' => 'required',
+            'specify_suffix' => 'required_if:suffix,Other',
+        ]);
+        $suffix = $request->input('suffix');
+        $specifySuffix = $request->input('specify_suffix');
+        if ($suffix === 'Other') {
+            $clients->suffix = $specifySuffix;
+        } else {
+            $clients->suffix = $suffix;
+        }
+        $clients->save();
+    }
+
 
 }

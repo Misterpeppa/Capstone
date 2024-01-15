@@ -12,15 +12,14 @@ use App\Models\Admin\SurgHistory;
 use App\Models\Admin\VaxHistory;
 use App\Models\Admin\VaxInfo;
 use App\Models\User\Clients;
-
+use Svg\Tag\Rect;
 
 class EMRController extends Controller
 {
     public function show()
     {
         $owners = Clients::withTrashed()->get();
-        $petrecord = PetRecord::with('pet', 'owner')->get();
-        $petrecordExists = $petrecord->isNotEmpty();
+        $petrecord = PetRecord::with('pet', 'owner')->whereNull('archived_at')->get();
         $medHistory = MedHistory::all();
         $vaxHistory = VaxHistory::all();
         $surgHistory = SurgHistory::all();
@@ -58,7 +57,26 @@ class EMRController extends Controller
 
         return redirect()->route('admin_emr')->with('success', 'Pet Successfully Added');
     }
-    
+    public function editPet(Request $request)
+    {
+        // Retrieve existing pet info or create a new one
+        $petId = $request->input('pet_id');
+        $pet_infos = PetInfo::find($petId);
+
+        // Update or set the fields
+        $pet_infos->name = $request->input('pet_name');
+        $pet_infos->age = $request->input('pet_age');
+        $pet_infos->species = $request->input('species');
+        $pet_infos->breed = $request->input('breed');
+        $pet_infos->birthdate = $request->input('pet_birthday');
+        $pet_infos->gender = $request->input('gender');
+        $pet_infos->weight = $request->input('weight');
+        $pet_infos->sterilization = $request->input('sterilization');
+        // Save the pet info
+        $pet_infos->save();
+        // Update or create the pet record
+        return redirect()->route('admin_emr')->with('edit_success', 'Pet Successfully Updated');
+    }
     public function viewRecord($id)
     {
         $petrecord = PetRecord::with('owner', 'pet')->find($id);
@@ -71,6 +89,13 @@ class EMRController extends Controller
             'ownerInfo' => $ownerInfo,
         ]);
     }
+    public function archive(Request $request)
+    {
+        $petrecordId = $request->input('petrecord_id');
+        $petrecord = PetRecord::find($petrecordId);
+        $petrecord->update(['archived_at' => now()]);
+        return redirect()->route('admin_emr')->with('success', 'Pet Successfully Updated');
+    }
 
     public function medHistory(Request $request)
     {
@@ -80,11 +105,10 @@ class EMRController extends Controller
             'diagnosis_date' => $request->input('diagnosis_date'),
             'treatment' => $request->input('treatment'),
             'med_id' => $request->input('medication'),
-            // 'diagnosis_desc' => $request->input('diagnosis_desc'),
-        ]);
+            'diagnosis_desc' => $request->input('diagnosis_desc'),
         $medHistory->save();
 
-        return redirect()->route('admin_emr')->with('success', 'Pet Successfully Added');
+        return redirect()->route('admin_emr')->with('med_success', 'Pet Successfully Added');
     }
     public function vaxHistory(Request $request)
     {
@@ -93,10 +117,11 @@ class EMRController extends Controller
             'vax_id' => $request->input('vax_id'),
             'vaccination_date' => $request->input('vaccination_date'),
             'revaccination_date' => $request->input('revaccination_date'),
+            'status' => $request->input('status'),
         ]);
         $vaxHistory->save();
 
-        return redirect()->route('admin_emr')->with('success', 'Pet Successfully Added');
+        return redirect()->route('admin_emr')->with('vax_success', 'Pet Successfully Added');
     }
     public function surgHistory(Request $request)
     {
@@ -110,7 +135,7 @@ class EMRController extends Controller
         ]);
         $surgHistory->save();
 
-        return redirect()->route('admin_emr')->with('success', 'Pet Successfully Added');
+        return redirect()->route('admin_emr')->with('surg_success', 'Pet Successfully Added');
     }
 
     public function showMedHis($id)

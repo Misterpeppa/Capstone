@@ -183,7 +183,7 @@
 											</svg>
 										</button>
 										<div class="dropdown-menu more_button" data-bs-popper="none">
-										<button class="dropdown-item add_diagnosis-action" id="add_diagnosis">
+										<button class="dropdown-item add_diagnosis-action" id="add_diagnosis" data-container-id="{{ $petrecord->id }}">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6230_1794)">
 														<path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -194,7 +194,7 @@
 													</defs>
 												</svg>Add Diagnosis
 											</button>
-											<button class="dropdown-item add_immunization_action" id="add_immunization">
+											<button class="dropdown-item add_immunization_action" id="add_immunization" data-container-id="{{ $petrecord->id }}">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6230_538)">
 														<path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
@@ -203,7 +203,7 @@
 															<rect width="24" height="24" fill="white" /> </clipPath>
 													</defs>
 												</svg>Add Vaccine</button>
-											<button class="dropdown-item add_surgery_action" id="add_surgery">
+											<button class="dropdown-item add_surgery_action" id="add_surgery" data-container-id="{{ $petrecord->id }}">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6230_1803)">
 														<path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
@@ -225,7 +225,7 @@
 													</defs>
 												</svg>&nbsp;View
 											</button>
-											<button class="dropdown-item Edit_pet-action" id="Edit" data-container-id="{{ $petrecord->id }}">
+											<button class="dropdown-item Edit_pet-action" id="Edit" data-container-id="{{ $petrecord->pet->id }}">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6230_538)">
 														<path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
@@ -234,7 +234,7 @@
 															<rect width="24" height="24" fill="white" /> </clipPath>
 													</defs>
 												</svg>&nbsp;Edit</button>
-											<button class="dropdown-item archive_pet-action" id="Archive" data-container-id="{{ $petrecord->id }}">
+											<button class="dropdown-item archive_pet-action" id="Archive1" data-container-id="{{ $petrecord->id }}">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6230_1803)">
 														<path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
@@ -250,18 +250,18 @@
 									<div class="pet_upper_detail">
 										<div class="pet_sex_container">
 											<h1>Owner</h1>
-											<p>{{ $petrecord->pet->gender }}</p>
+											<p>{{ $petrecord->owner->first_name }} {{ $petrecord->owner->middle_name}} {{ $petrecord->owner->last_name}} {{ $petrecord->owner->suffix }}</p>
 										</div>
 									
 									</div>
 									<div class="pet_lower_detail">
 										<div class="pet_weight_container">
 											<h1>Email</h1>
-											<p>{{ $petrecord->pet->weight }}</p>
+											<p>{{ $petrecord->owner->email }}</p>
 										</div>
 										<div class="pet_sterilization_status_container">
 											<h1>Contact Number</h1>
-											<p>{{ $petrecord->pet->sterilization }}</p>
+											<p>{{ $petrecord->owner->phone }}</p>
 										</div>
 									</div>
 								</div>
@@ -398,8 +398,7 @@
 												<p></p>
 											</div>
 											<div class="owner_detail_container" id="">
-												<h1>Address</h1>
-												<p>Namek</p>
+												
 											</div>
 										</div>
 										<div class="owner_details_row">
@@ -586,37 +585,41 @@
 				<div id="edit_pet_container" class="view_pet">
 					<div class="edit_pet_back_btn_container">
 						<button class="btn edit_pet_back_btn" id="edit_pet_back_btn" type="button"><span class="edit_pet_back_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-  <g clip-path="url(#clip0_6089_3068)" filter="url(#filter0_d_6089_3068)">
-    <path d="M5.5 12H19.5M5.5 12L11.5 18M5.5 12L11.5 6" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <filter id="filter0_d_6089_3068" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-      <feOffset dy="2"/>
-      <feGaussianBlur stdDeviation="1"/>
-      <feComposite in2="hardAlpha" operator="out"/>
-      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6089_3068"/>
-      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6089_3068" result="shape"/>
-    </filter>
-    <clipPath id="clip0_6089_3068">
-      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
-    </clipPath>
-  </defs>
-</svg> Back</span></button>
+							<g clip-path="url(#clip0_6089_3068)" filter="url(#filter0_d_6089_3068)">
+								<path d="M5.5 12H19.5M5.5 12L11.5 18M5.5 12L11.5 6" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</g>
+							<defs>
+								<filter id="filter0_d_6089_3068" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+								<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+								<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+								<feOffset dy="2"/>
+								<feGaussianBlur stdDeviation="1"/>
+								<feComposite in2="hardAlpha" operator="out"/>
+								<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+								<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6089_3068"/>
+								<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6089_3068" result="shape"/>
+								</filter>
+								<clipPath id="clip0_6089_3068">
+								<rect width="24" height="24" fill="white" transform="translate(0.5)"/>
+								</clipPath>
+							</defs>
+							</svg> Back</span>
+						</button>
 					</div>
 					<div class="input_details_container">
 						<div class="detail_body">
+							<form action="{{ route('edit.petrecord') }}" method="POST">
+								@csrf
 							<div class="pet_details_container">
+								<input type="hidden" name="pet_id" id="editpetId">
 								<div class="align-self-stretch form-floating">
-									<input type="text" class="form-control" id="pet_name_edit">
+									<input type="text" class="form-control" name="pet_name" id="pet_name_edit">
 									<label class="form-label" for="pet_name">Pet Name</label>
 									<div class="error-message" id="edit_pet_error"><span>• Error Message</span></div>
 									<div class="guide-message"><span>• Guide Message</span></div>
 								</div>
 								<div class="align-self-stretch form-floating">
-									<select aria-label="Floating label select example" class="form-select" id="pet_sex">
+									<select aria-label="Floating label select example" name="gender" class="form-select" id="pet_sex">
 										<option value="" selected="">Select sex</option>
 										<option value="1">Male</option>
 										<option value="2">Female</option>
@@ -627,13 +630,13 @@
 								</div>
 								<div class="new_input_row">
 									<div class="form-floating" style="width: 100%;">
-										<input class="form-control" id="pet_birthdate_edit" type="date">
+										<input class="form-control" id="pet_birthdate_edit" name="pet_birthday" type="date">
 										<label class="form-label">Birth Date</label>
 										<div class="error-message" id="edit_birthdate_error"><span>• Error Message</span></div>
 										<div class="guide-message"></div>
 									</div>
 									<div class="form-floating" id="pet_age_edit" style="width: 100%;">
-										<input type="text" id="age_input_edit" class="form-control">
+										<input type="text" id="age_input_edit" name="pet_age" class="form-control">
 										<label class="form-label">Age</label>
 										<div class="error-message" id="edit_age_error"><span>• Error Message</span></div>
 										<div class="guide-message"></div>
@@ -641,7 +644,7 @@
 								</div>
 								<div class="new_input_row">
 									<div class="form-floating" style="width: 543px;">
-										<select class="form-select" id="pet_type_edit" aria-label="Floating label select example">
+										<select class="form-select" id="pet_type_edit" name="species" aria-label="Floating label select example">
 											<option value="" selected="">Pet Type</option>
 											<option value="Dog">Dog</option>
 											<option value="Cat">Cat</option>
@@ -652,7 +655,7 @@
 									</div>
 									<div class="new_inputs_row">
 										<div class="form-floating" style="width: 100%;">
-											<select class="form-select" id="pet_breed" aria-label="Floating label select example">
+											<select class="form-select" id="pet_breed" name="breed" aria-label="Floating label select example">
 												<option value="" selected="">Breed</option>
 												<option value="other">Other</option>
 											</select>
@@ -679,9 +682,10 @@
 					</div>
 					<div class="mb-3 prod_detail_fields_buttons">
 						<button id="cancel_edit" class="btn cancel_edit" type="button"><span class="cancel_edit_base">Cancel</span></button>
-						<button id="edit_save_changes" class="btn edit_save_changes" type="button"><span class="edit_save_changes_base">Save Changes</span></button>
+						<button id="edit_save_changes" class="btn edit_save_changes" type="submit"><span class="edit_save_changes_base">Save Changes</span></button>
 					</div>
 				</div>
+				</form>
 			</div>
 		</div>
 	</main>
@@ -714,7 +718,7 @@
 		</div>
 	</div>
 
-	<div id="add_medical_histo_success" class="modal fade" role="dialog" tabindex="-1">
+	<div id="add_medical_histo_success" class="modal fade show" role="dialog" tabindex="-1">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content success_modal">
 				<div class="modal-header success_header">
@@ -740,7 +744,7 @@
 	</div>
 
 
-	<div id="add_immunization_histo_success" class="modal fade" role="dialog" tabindex="-1">
+	<div id="add_immunization_histo_success" class="modal fade show" role="dialog" tabindex="-1">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content success_modal">
 				<div class="modal-header success_header">
@@ -766,7 +770,7 @@
 	</div>
 
 
-	<div id="add_surgery_histo_success" class="modal fade" role="dialog" tabindex="-1">
+	<div id="add_surgery_histo_success" class="modal fade show" role="dialog" tabindex="-1">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content success_modal">
 				<div class="modal-header success_header">
@@ -906,6 +910,9 @@
   </defs>
 </svg></span></div>
 				</div>
+				<form action="{{ route('archive.petrecord') }}" method="POST">
+					@csrf
+				<input type="hidden" name="petrecord_id" id="archiveId">
 				<div class="modal-body archive_message">
 					<div>
 						<h1>Archive Pet?</h1>
@@ -914,8 +921,9 @@
 				</div>
 				<div class="modal-footer discard_footer">
 					<button class="btn return_btn" data-bs-dismiss="modal" type="button"><span class="return_btn_base">Cancel</span></button>
-					<button class="btn archive_confirm" id="archive_confirm_button-2" type="button" data-bs-dismiss="modal"><span class="archive_confirm_button_base">Archive</span></button>
+					<button class="btn archive_confirm" id="archive_confirm_button-2" type="submit" data-bs-dismiss="modal"><span class="archive_confirm_button_base">Archive</span></button>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -985,7 +993,8 @@
 									<div id="guide_pet_birthdate-1" class="guide-message"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" type="text" name="pet_age" data-bs-toggle="tooltip" data-bss-tooltip="" id="age-1" data-id="age-1" title="Please select pet type and enter the birthdate first." maxlength="3" disabled="" placeholder="Please select pet type, breed, and enter the birthdate first.">
+									<input class="form-control" value="" type="text" name="pet_age" data-bs-toggle="tooltip" data-bss-tooltip="" id="age-1" data-id="age-1" 
+									title="Please select pet type and enter the birthdate first." maxlength="3" disabled="" placeholder="Please select pet type, breed, and enter the birthdate first.">
 									<label class="form-label" for="age-1">Age</label>
 									<div id="error-age-1" class="error-message" style="color:red;"></div>
 								</div>
@@ -1034,7 +1043,7 @@
 						<div class="mb-3 input_container">
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" data-id="diagnosis" id="diagnosis" placeholder="Diagnosis">
+									<select class="form-select form-select" name="diagnosis" data-id="diagnosis" id="diagnosis" placeholder="Diagnosis">
 										<option value="" selected="">Select Diagnosis</option>
 										<option value="Diagnosis 1">Diagnosis 1</option>
 										<option value="Diagnosis 2">Diagnosis 2</option>
@@ -1044,7 +1053,7 @@
 									<div class="error-message" id="error-pet_type"><span>• Please select diagnosis</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" data-id="diagnosis_date" id="diagnosis_date" placeholder="Date" type="date">
+									<input class="form-control form-control" name="diagnosis_date" data-id="diagnosis_date" id="diagnosis_date" placeholder="Date" type="date">
 									<label class="form-label form-label" for="diagnosis_date">Date<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_birthdate"><span>• Please click the calendar icon on the right part, and select diagnosis date.</span></div>
 									
@@ -1052,7 +1061,7 @@
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select"  data-id="treatment_plan" id="treatment_plan" placeholder="Treatment Plan">
+									<select class="form-select form-select" name="treatment" data-id="treatment_plan" id="treatment_plan" placeholder="Treatment Plan">
 										<option value="" selected="">Select Treatment</option>
 										<option value="Treatment 1">Treatment 1</option>
 										<option value="Treatment 2">Treatment 2</option>
@@ -1062,7 +1071,7 @@
 									<div class="error-message" id="error-pet_type-3"><span>• Please select treatment plan</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select" id="medication" data-id="medication" placeholder="Medication">
+									<select class="form-select" name="medication" id="medication" data-id="medication" placeholder="Medication">
 										<option value="" disabled selected>Medication</option>
 										@foreach ($medInfo as $medInfo)
 										<option value="{{ $medInfo->id }}">{{ $medInfo->item_name }}</option>
@@ -1074,7 +1083,7 @@
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<textarea class="form-control form-control" data-id="diagnosis_description" id="diagnosis_description" placeholder="Diagnosis Description"></textarea>
+									<textarea class="form-control form-control" name="diagnosis_desc" data-id="diagnosis_description" id="diagnosis_description" placeholder="Diagnosis Description"></textarea>
 									<label class="form-label form-label" for="diagnosis_description">Diagnosis Description<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-diagnosis_description"><span>• Please enter diagnosis description.</span></div>
 								</div>
@@ -1136,7 +1145,7 @@
 							</div>
 							<div class="d-flex justify-content-end align-items-end align-content-end align-self-end newinput_row" style="width: 100%;">
 								<div class="form-floating" style="width: 49.3%;">
-									<select class="form-select" data-id="status" id="status">
+									<select class="form-select" name="status" data-id="status" id="status">
 										<option value="" selected="">Status</option>
 										<option value="Status 1">Status 1</option>
 										<option value="Status 2">Status 2</option>
@@ -1214,7 +1223,7 @@
 							</div>
 							<div class="d-flex justify-content-end align-items-end align-content-end align-self-end newinput_row" style="width: 100%;">
 								<div class="form-floating" style="width: 100%;">
-									<textarea class="form-control form-control" name="notes" id="notes" data-id="notes" placeholder="Notes"></textarea>
+									<textarea class="form-control form-control" name="surgery_note" id="notes" data-id="notes" placeholder="Notes"></textarea>
 									<label class="form-label" for="notes">Notes<span>&nbsp;*</span></label>
 									<div id="error-notes" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-notes" class="guide-message"><span>• Please select pet type</span></div>
@@ -1241,6 +1250,46 @@
             $('#add_pet_success').show();
             setTimeout(function() {
                 $('#add_pet_success').hide();
+            }, 2000);
+        });
+    </script>
+@endif
+@if (session('edit_success'))
+    <script>
+        $(document).ready(function() {
+            $('#save_changes_success').show();
+            setTimeout(function() {
+                $('#save_changes_success').hide();
+            }, 2000);
+        });
+    </script>
+@endif
+@if (session('med_success'))
+    <script>
+        $(document).ready(function() {
+            $('#add_medical_histo_success').show();
+            setTimeout(function() {
+                $('#add_medical_histo_success').hide();
+            }, 2000);
+        });
+    </script>
+@endif
+@if (session('vax_success'))
+    <script>
+        $(document).ready(function() {
+            $('#add_immunization_histo_success').show();
+            setTimeout(function() {
+                $('#add_immunization_histo_success').hide();
+            }, 2000);
+        });
+    </script>
+@endif
+@if (session('surg_success'))
+    <script>
+        $(document).ready(function() {
+            $('#add_surgery_histo_success').show();
+            setTimeout(function() {
+                $('#add_surgery_histo_success').hide();
             }, 2000);
         });
     </script>
@@ -1299,6 +1348,26 @@ $('#surgery_history_table_container').hide();
 @endif
 <script>
 $(document).ready(function() {
+	$('.archive_pet-action').click(function() {
+		const id = $(this).data('container-id');
+		$('#archiveId').val(id);
+	});
+	$('.Edit_pet-action').click(function() {
+		const id = $(this).data('container-id');
+		$('#editpetId').val(id);
+	});
+	$('.add_diagnosis-action').click(function() {
+		const id = $(this).data('container-id');
+		$('#medhisId').val(id);
+	});
+	$('.add_immunization_action').click(function() {
+		const id = $(this).data('container-id');
+		$('#vaxhisId').val(id);
+	});
+	$('.add_surgery_action').click(function() {
+		const id = $(this).data('container-id');
+		$('#surghisId').val(id);
+	});
 	$('.View_pet-action').click(function() {
 			const id = $(this).data('container-id');
 			displayMedicalHistoryTable(id);
@@ -1342,6 +1411,7 @@ $(document).ready(function() {
 							'<td>' + medhisto.diagnosis_date + '</td>' +
 							'<td>' + medhisto.treatment + '</td>' +
 							'<td>' + medhisto.med.item_name + '</td>' +
+							'<td>' + medhisto.diagnosis_desc + '</td>' +
 							'</tr>';
 						$('#medhisto_Table tbody').append(newRow);
 					});
@@ -1361,6 +1431,7 @@ $(document).ready(function() {
 						'<td>' + vaxhisto.vax.item_name + '</td>' +
 						'<td>' + vaxhisto.vax.prod_desc + '</td>' +
 						'<td>' + vaxhisto.revaccination_date + '</td>' +
+						'<td>' + vaxhisto.status + '</td>' +
 						'</tr>';
 					$('#immuno_Table tbody').append(newRow);
 
@@ -1394,63 +1465,6 @@ $(document).ready(function() {
 			
 			
 		});
-
-	function displayMedicalHistoryTable(id) {
-	// Make an AJAX request to fetch medical history data for the specific petrecord_id
-	
-	}
-
-	function displayVaxHistoryTable(id) {
-	
-	$.ajax({
-		type: 'GET',
-		url: '/admin/emr/vaxhis/' + id,
-		success: function(data) {
-			$('#immunization_histo_Table tbody').empty();
-
-			$.each(data, function(index, vax) {
-				var newRow = '<tr>' +
-				'<td>' + vax.vaccination_date + '</td>' +
-				'<td>' + vax.Vax.item_name + '</td>' +
-				'<td>' + vax.Vax.prod_desc + '</td>' +
-				'<td>' + vax.revaccination_date + '</td>' +
-				'</tr>';
-			$('#immunization_histo_Table tbody').append(newRow);
-
-			});
-		},
-		error: function(xhr) {
-			console.log(xhr.responseText);
-		}
-	});
-	}
-
-	function displaySurgHistoryTable(id) {
-	
-	$.ajax({
-		type: 'GET',
-		url: '/admin/emr/surghis/' + id,
-		success: function(data) {
-			$('#surgery_histo_Table tbody').empty();
-
-			$.each(data, function(index, surgery){
-				var newRow = '<tr>' +
-				'<td>' + surgery.surgery_type + '</td>' +
-				'<td>' + surgery.surgery_date + '</td>' +
-				'<td>' + surgery.severity + '</td>' +
-				'<td>' + surgery.Med.item_name + '</td>' +
-				'<td>' + surgery.surgery_note + '</td>' +
-				'</tr>';
-			$('#surgery_histo_Table tbody').append(newRow);
-
-			});
-		},
-		error: function(xhr) {
-			console.log(xhr.responseText);
-		}
-	})
-	}
-
 });
 </script>
 
