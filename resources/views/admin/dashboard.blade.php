@@ -133,40 +133,18 @@
                             <td class="text-style">{{ $appointment['appointmentDate'] }}</td>
                             <td>{{ \Carbon\Carbon::parse($appointment['appointmentTime'])->format('g:ia') }}</td>
                             <td class="text-style">{{ $appointment['appointmentType'] }}</td>
-                            
+                            <td>Action</td>
                             </tr>
                         @endforeach 
                         </tbody>
 					</table>
 					<div class="pagination">
-						<div class="pagination-menu"> <span>Go to:</span>
-							<select class="paginationGoToSelect">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-							</select>
+						<div class="pagination-pages">
+							{{ $appointment_approved->appends([
+				
+							  ])->links() }}
 						</div>
-						<div class="pagination-pages"> <span class="pagination-arrow previous-page">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
-                          <path d="M5.48 12L1.36452 7.88384C0.878492 7.39773 0.878492 6.60227 1.36452 6.11616L5.48 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
-                        </svg>
-                      </span>
-							<div class="pages"> <span class="pagination-page active">1</span> <span class="pagination-page">2</span> <span class="pagination-page">3</span> <span class="pagination-page">4</span> <span class="pagination-page">5</span> </div> <span class="pagination-arrow next-page">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
-                          <path d="M1.47998 12L5.59546 7.88384C6.08149 7.39773 6.08149 6.60227 5.59546 6.11616L1.47998 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
-                        </svg>
-                      </span> </div>
-						<div class="pagination-items"> <span>Show:</span>
-							<select class="paginationItemsSelect">
-								<option value="2">2 items</option>
-								<option value="3">3 items</option>
-								<option value="4">4 items</option>
-								<option value="5">5 items</option>
-								<option value="6">6 items</option>
-							</select>
-						</div>
+					
 					</div>
 				</div>
 				<div id="inventory_table_container" class="dashboard_table_container">
@@ -186,42 +164,33 @@
 								<th>Date Stocked</th>
 								<th>Expiration Date</th>
 								<th>Status</th>
-								<th></th>
+								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody id="dashboard_table_body" class="dashboard_table_body">
+							@foreach ($products as $product)
+                            <tr>
+                          
+                            <td class="text-style">{{ $loop->index + 1 }}</td>
+                            <td class="text-style">{{ $product->item_name }}</td> 
+							<td>{{ $product->item_name }}</td>
+							<td>{{ $product->product_type }}</td>
+							<td>{{ $product->info_quantity }}</td>
+							<td>{{ $product->date_stocked }}</td>
+							<td>{{ $product->expiration_date }}</td>
+							<td>Action</td>
                             
+                            </tr>
+                        @endforeach 
                         </tbody>
 					</table>
 					<div class="pagination">
-						<div class="pagination-menu"> <span>Go to:</span>
-							<select class="paginationGoToSelect">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-							</select>
+						<div class="pagination-pages text-center">
+							{{ $products->appends([
+				
+							  ])->links() }}
 						</div>
-						<div class="pagination-pages"> <span class="pagination-arrow previous-page">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
-                          <path d="M5.48 12L1.36452 7.88384C0.878492 7.39773 0.878492 6.60227 1.36452 6.11616L5.48 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
-                        </svg>
-                      </span>
-							<div class="pages"> <span class="pagination-page active">1</span> <span class="pagination-page">2</span> <span class="pagination-page">3</span> <span class="pagination-page">4</span> <span class="pagination-page">5</span> </div> <span class="pagination-arrow next-page">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
-                          <path d="M1.47998 12L5.59546 7.88384C6.08149 7.39773 6.08149 6.60227 5.59546 6.11616L1.47998 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
-                        </svg>
-                      </span> </div>
-						<div class="pagination-items"> <span>Show:</span>
-							<select class="paginationItemsSelect">
-								<option value="2">2 items</option>
-								<option value="3">3 items</option>
-								<option value="4">4 items</option>
-								<option value="5">5 items</option>
-								<option value="6">6 items</option>
-							</select>
-						</div>
+					
 					</div>
 				</div>
 			</div>

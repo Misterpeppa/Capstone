@@ -13,6 +13,11 @@ use App\Models\User\Clients;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
+
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
+use ErlandMuchasaj\Sanitize\Sanitize;
+
 class AppointmentController extends Controller
 {
     public function showForm()
@@ -180,11 +185,70 @@ class AppointmentController extends Controller
         return response()->json(['message' => 'Appointment successfully rescheduled.']);
     }
 
-    public function adminShow()
+    public function adminShow(Request $request)
     {
-        $appointment_approved= AppointmentApproved::whereNull('archived_at')->orderByDesc('appointmentDate')->get();
-        $appointment_rejected = AppointmentRejected::orderByDesc('appointmentDate')->get();
-        $appointment_pending = AppointmentPending::orderByDesc('appointmentDate')->get();
+        $query = $request->input('qApproved');
+        $perPage = $request->input('perPage');
+        $sortItem = $request->input('sortItems');
+        $sortOrder = $request->input('sortOrder');
+
+        $pendingQuery = $request->input('qPending');
+        $rejectQuery = $request->input('qReject');
+       
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $appointment_approved = AppointmentApproved::with('clients')->whereNull('archived_at')->join('clients', 'appointment_approved.user_id', '=', 'clients.id');
+        $appointment_pending = AppointmentPending::with('clients')->join('clients', 'appointment_pending.user_id', '=', 'clients.id');
+        $appointment_rejected = AppointmentRejected::with('clients')->join('clients', 'appointment_rejected.user_id', '=', 'clients.id');
+
+        if($query){
+            $appointment_approved->search($query);
+        }
+ 
+        $appointment_approved->petType($request);
+        $appointment_approved->status($request);
+
+        if($pendingQuery){
+            $appointment_pending->search($pendingQuery);
+        }
+        $appointment_pending->petType($request);
+
+        if($rejectQuery){
+            $appointment_rejected->search($rejectQuery);
+        }
+        $appointment_rejected->petType($request);
+
+        $sortField = [
+            0 => 'STR_TO_DATE(appointmentDate, "%W, %M %d, %Y")',  // Assuming the format is "Weekday, Month Day, Year"
+            1 => 'status',
+            2 => 'petType',
+            3 => 'clients.first_name',
+            4 => 'appointmentType',
+        ][$sortItem] ?? 'STR_TO_DATE(appointmentDate, "%W, %M %d, %Y")';
+        
+        
+        
+        
+        $sortDirection = $sortOrder === null ? 'desc' : ($sortOrder == 1 ? 'desc' : 'asc');
+        
+        $appointment_approved->orderByRaw($sortField . ' ' . $sortDirection);
+        $appointment_pending->orderByRaw($sortField . ' ' . $sortDirection);
+        $appointment_rejected->orderByRaw($sortField . ' ' . $sortDirection);
+        
+
+
+        $perPage = filter_var($perPage, FILTER_VALIDATE_INT);
+        if ($perPage === false || $perPage < 5) {
+            $perPage = 5; 
+        }
+        $appointment_approved = $appointment_approved->paginate($perPage, ['*'], 'approvedPage');
+        $appointment_approved->withPath('/admin/appointment');
+
+        $appointment_pending = $appointment_pending->paginate($perPage,['*'], 'pendingPage');
+        $appointment_pending->withPath('/admin/appointment');
+
+        $appointment_rejected = $appointment_rejected->paginate($perPage,['*'], 'rejectPage');
+        $appointment_rejected->withPath('/admin/appointment');
+
         $approvedExist = $appointment_approved->isNotEmpty();
         $rejectedExist = $appointment_rejected->isNotEmpty();
         $pendingExist = $appointment_pending->isNotEmpty();
