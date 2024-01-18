@@ -31,7 +31,7 @@ class ProfileController extends Controller
         $clientInfo = Clients::find($clientId);
         if (!$clientInfo || !$clientInfo->email_verified_at) {
             session()->flash('error', 'Please verify your email.');
-            return view('user/landing', compact('clientInfo'));
+            return view('user/landing', compact('clientInfo'));        
         }
         return view('user/landing', compact('clientInfo'));
     }
@@ -82,18 +82,17 @@ class ProfileController extends Controller
     public function changePassword(Request $request)
     {
         $clientId = Auth::guard('clients')->id();
-
-        $request->validate([
-            'current_password' => 'required',
-            'new_password' => 'required|min:8|different:current_password',
-            'new_password_confirmation' => 'required|same:new_password',
-        ]);
         $client = Clients::find($clientId);
-        if (Hash::check($request->current_password, $client->password)) {
-            $client->update($request->only(['password' => Hash::make($request->new_password)]));
-
-            return redirect()->route('home')->with('success', 'Password changed successfully.');
+        $currentPassword = $request->input('current_password');
+        $newPassword = $request->input('new_password');
+        $newPasswordConfirm = $request->input('new_password_confirmation');
+        if (Hash::check($currentPassword, $client->password)) {
+            $client->password = Hash::make($newPassword);
+            $client->save();
+            return redirect()->route('client.settings')->with('success', 'Password changed successfully.');
         } else {
+            dd('Current password is incorrect');
+
             return redirect()->back()->withErrors(['current_password' => 'Incorrect current password.']);
         }
     }

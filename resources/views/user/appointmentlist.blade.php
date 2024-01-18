@@ -184,7 +184,7 @@
                                         <tr>
                                             <td class="text-style"></td> 
                                             <td class="text-style">{{ $index + 1 }}</td>
-                                            <td class="text-style">{{ $appointmentpending['petType'] }} ({{ $appointment['breed'] }})</td>
+                                            <td class="text-style">{{ $appointmentpending['petType'] }} ({{ $appointmentpending['breed'] }})</td>
                                             <td class="text-style">{{ $appointmentpending['appointmentType'] }}</td>
                                             <td class="text-style">{{ $appointmentpending['appointmentDate'] }}</td>
                                             <td class="text-style">{{ $appointmentpending['appointmentTime'] }}</td>

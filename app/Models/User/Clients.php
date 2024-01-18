@@ -59,7 +59,7 @@ class Clients extends Authenticatable implements MustVerifyEmailContract
     }
     public function pet(): HasMany
     {
-        return $this->hasMany(PetInfo::class, 'user_id');
+        return $this->hasMany(PetInfo::class, 'owner_id');
     }
     public function petRecord(): HasMany
     {
