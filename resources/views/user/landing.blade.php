@@ -62,7 +62,7 @@
                 <div class="modal-body discard_message">
                     <div>
                         <h1>User not verified!</h1>
-                        <p>User cannot receive appointment notifications. Please verify your email.</p>
+                        <p>Please verify your email to receive appointment notifications.</p>
                     </div>
                 </div>
 

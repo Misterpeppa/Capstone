@@ -220,7 +220,7 @@ main{
   line-height: normal;
 }
 .alert{
-  display: none;
+  display: flex;
   z-index: 999;
 }
 .user{
