@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 
  use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use ErlandMuchasaj\Sanitize\Sanitize;
 
 class ClientController extends Controller
 {
@@ -30,20 +31,27 @@ class ClientController extends Controller
         $query = $request->input('q');
         $sort = $request->input('sortBy'); 
         $sortOrder = $request->input('sortOrder'); 
-        
-        
         $clients = Clients::query();
-        
         if ($query) {
-            $clients->where(function ($queryBuilder) use ($query) {
-                $queryBuilder->where('first_name', 'like', '%' . $query . '%')
-                             ->orWhere('last_name', 'like', '%' . $query . '%')
-                             ->orWhere('middle_name', 'like', '%' . $query . '%')
-                             ->orWhere('suffix', 'like', '%' . $query . '%')
-                             ->orWhere('email', 'like', '%' . $query . '%')
-                             ->orWhere('phone', 'like', '%' . $query . '%')
-                             ->orWhere('birthdate', 'like', '%' . $query . '%');
-            });
+            $query = explode(' ', $query);
+            foreach ($query as $term) {
+                $query = Sanitize::sanitize($term,true,true); // <== clean user input
+            
+                $query = str_replace(['%', '_'], ['\\%', '\\_'], $query);
+            
+                $searchTerm = '%'.$query.'%';
+    
+                $clients->where(function ($queryBuilder) use ($searchTerm) {
+                    $queryBuilder->where('first_name', 'like', '%' . $searchTerm . '%')
+                                 ->orWhere('last_name', 'like', '%' . $searchTerm . '%')
+                                 ->orWhere('middle_name', 'like', '%' . $searchTerm . '%')
+                                 ->orWhere('suffix', 'like', '%' . $searchTerm . '%')
+                                 ->orWhere('email', 'like', '%' . $searchTerm . '%')
+                                 ->orWhere('phone', 'like', '%' . $searchTerm . '%')
+                                 ->orWhere('birthdate', 'like', '%' . $searchTerm . '%');
+                });
+            }
+
         }
 
         $sortField = [

@@ -209,12 +209,11 @@
                                           <!-- Size of the default switch will increase 1.8 times -->
                                           <input class="form-check-input my-3"
                                                 {{ request()->input('medSwitch') == 'on' ? 'checked' : '' }}
-                                                 name ="medSwicth" 
+                                                 name ="medSwitch" 
                                                  type="checkbox" 
                                                  role="switch" 
                                                  id="medSwitch" 
                                                  style="transform: scale(1.5);"
-                                                 
                                                  >
                                           <label class="form-check-label fs-6 my-1" 
                                                  for="medSwitch" 
@@ -518,23 +517,26 @@
                                         <th>On Hand</th>
                                         <th>Date Stocked</th>
                                         <th>Expiration Date</th>
-                                        <th>Action</th>
+                                        <th style="width:13%" class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody id="inventory_table_body" class="inventoryTableBody">
                                   
                                     @foreach ($products as $product)
+                                    
                                         @php
                                             $medBatch = $productBatch->where('med_id', $product->id)->first();
+                                        
                                         @endphp
+                               
                                         <tr data-row-id="{{ $product->id }}">
                                           <td><input type="checkbox"></td>
                                           <td>{{ $product->item_name }}</td>
                                           <td>{{ $product->product_type }}</td>
-                                          <td>{{ $product->quantity }}</td>
+                                          <td>{{ $product->info_quantity }}</td>
                                           <td>{{ $product->date_stocked }}</td>
                                           <td>{{ $product->expiration_date }}</td>
-                                          <td class="button-action">
+                                          <td class="button-action text-center">
                                             <button 
                                             data-action="AddStock" 
                                             data-product-type="{{ $product->product_type }}"
@@ -1416,7 +1418,7 @@
                         // Handle success, e.g., show a success message
                         alert('Product has been archived');
                         // Optionally, you can also reload the page or update the UI
-                        // location.reload();
+                        location.reload();
                     },
                     error: function(xhr) {
                         // Handle errors
