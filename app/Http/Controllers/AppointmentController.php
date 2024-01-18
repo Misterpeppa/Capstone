@@ -71,6 +71,12 @@ class AppointmentController extends Controller
     ]);
     $appointmentDate = $request->input('appointmentDate');
     $appointmentTime = $request->input('appointmentTime');
+    $existingAppointments = AppointmentPending::where('user_id', $clientId)
+        ->whereDate('appointmentDate', $appointmentDate)
+        ->get();
+    if ($existingAppointments->count() >= 3) {
+        return redirect()->back()->with('error', 'You have reached the maximum limit of appointments for today.');
+    }
     AppointmentPending::create([
         'user_id' => $clientId,
         'petName' => $validatedData['petName'],

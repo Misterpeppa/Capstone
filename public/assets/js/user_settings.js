@@ -1,4 +1,26 @@
+document.getElementById('edit_profile_personal_info').addEventListener('click', function () {
+  // Enable the input fields for editing
+  document.getElementById('user_first_name').disabled = false;
+  document.getElementById('user_middle_name').disabled = false;
+  document.getElementById('user_last_name').disabled = false;
+  document.getElementById('user_email').disabled = false;
+  document.getElementById('user_phone_number').disabled = false;
+    document.getElementById('edit_personal_info_buttons').style.display = 'flex';
+});
+document.getElementById('cancel_edit_profile').addEventListener('click', function (){
+  $('#cancel_change_user_info').modal('show');
+})
+document.getElementById('discard_btn-2').addEventListener('click', function () {
+  // Reset the input values
+  // kung ano sana yung initial display rito, babalik doon pagka click ng discard
+  document.getElementById('user_first_name').value = '';
+  document.getElementById('user_middle_name').value = '';
+  document.getElementById('user_last_name').value = '';
+  document.getElementById('user_email').value = '';
+  document.getElementById('user_phone_number').value = '';
+  $('#cancel_change_user_info').modal('hide');
 
+});
 document.addEventListener('DOMContentLoaded', function () {
  
     // Get references to the elements

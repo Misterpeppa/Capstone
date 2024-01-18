@@ -93,19 +93,20 @@
 													<div class="card_body_row">
 														<div class="form-floating" style="width: 100%;">
 															<input id="user_first_name" class="form-control user_first_name" type="text" name="first_name" data-id="user_first_name" maxlength="50" placeholder="First Name" disabled />
-															<label class="form-label" for="user_first_name">First Name<span> *</span></label>
+															<label class="form-label" for="user_first_name">{ $clientInfo->first_name }}<span> *</span></label>
+
 															<div id="error-user_first_name" class="error-message"><span>• Please enter your first name.</span></div>
 															<div id="guide_user_first_name" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
 														</div>
 														<div class="form-floating" style="width: 100%;">
 															<input id="user_middle_name" class="form-control" type="text" name="middle_name" data-id="user_middle_name" maxlength="50" placeholder="Middle Name" disabled />
-															<label class="form-label" for="user_middle_name">Middle Name<span> *</span></label>
+															<label class="form-label" for="user_middle_name">{{ $clientInfo->middle_name }}<span> *</span></label>
 															<div id="error-middle_name" class="error-message"><span>• Please enter your first name.</span></div>
 															<div id="guide-middle_name" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
 														</div>
 														<div class="form-floating" style="width: 100%;">
 															<input id="user_last_name" class="form-control" type="text" name="last_name" data-id="user_last_name" maxlength="50" placeholder="Last Name" disabled />
-															<label class="form-label" for="user_last_name">Last Name<span> *</span></label>
+															<label class="form-label" for="user_last_name">{{ $clientInfo->last_name }}<span> *</span></label>
 															<div id="error-last_name" class="error-message"><span>• Please enter your first name.</span></div>
 															<div id="guide-last_name" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
 														</div>
@@ -113,13 +114,13 @@
 													<div class="card_body_row">
 														<div class="form-floating" style="width: 100%;">
 															<input id="user_email" class="form-control" type="email" name="email" data-id="user_email" maxlength="50" placeholder="Email" disabled />
-															<label class="form-label" for="user_email">Email <span> *</span></label>
+															<label class="form-label" for="user_email">{{ $clientInfo->email }}<span> *</span></label>
 															<div id="error-user_email" class="error-message"><span>• Please enter your first name.</span></div>
 															<div id="guide-user_email" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
 														</div>
 														<div class="form-floating" style="width: 100%;">
 															<input id="user_phone_number" class="form-control" type="tel" name="phone" data-id="user_phone_number" maxlength="11" placeholder="Phone Number" disabled />
-															<label class="form-label" for="user_email">Phone Number <span> *</span></label>
+															<label class="form-label" for="user_email">{{ $clientInfo->phone }}<span> *</span></label>
 															<div id="error-user_phone_number" class="error-message"><span>• Please enter your first name.</span></div>
 															<div id="guide-user_phone_number" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
 														</div>

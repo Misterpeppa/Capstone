@@ -27,7 +27,6 @@
     width: 100%;
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.00) 0%, #1C1C1C 100%), url('{{ asset('img/clientclinic.jpg') }}') no-repeat center/cover;
 }
-
 </style>
 
 

@@ -300,7 +300,8 @@
                                                         <div class="d-flex flex-column align-items-start align-self-stretch details" id="details">
                                                             <div class="d-flex align-items-center align-self-stretch details_confirmation_1strow" id="details_confirmation_1strow">
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                    <input type="text" name="count" id="click_count" class="d-none">
+
+                                                                    <input type="hidden" name="count" id="click_count">
                                                                     <h1>Pet Name</h1>
                                                                     <p id="confirm_Pet_Name" class="confirm_Pet_Name">Pet Name</p>
                                                                     <input type="hidden" name="petName" id="hidden_petName">                                                                </div>
