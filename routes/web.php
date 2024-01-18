@@ -74,6 +74,11 @@ Route::middleware(['clients', 'nocache'])->group(function () {
     Route::get('/user/password', [ProfileController::class, 'showPass'])->name('client.password');
     Route::get('/user/pet_info', [ProfileController::class, 'showPetInfo'])->name('client.pet');
     Route::post('/user/pet_info', [PetInfoController::class, 'addPet'])->name('client.addPet');
+    Route::post('/user/pet_info/edit', [PetInfoController::class, 'editPet'])->name('client_pet.edit');
+    Route::get('/user/pet_info/view/{id}', [PetInfoController::class, 'viewRecord']);
+    Route::get('/user/pet_info/medhis/{id}', [PetInfoController::class, 'showMedHis']);
+    Route::get('/user/pet_info/vaxhis/{id}', [PetInfoController::class, 'showVaxHis']);
+    Route::get('/user/pet_info/surghis/{id}', [PetInfoController::class, 'showSurgHis']);
     
     Route::get('/user/appointment', [AppointmentController::class, 'showForm'])->name('appointment.form');
     Route::post('/user/appointment', [AppointmentController::class, 'store'])->name('appointment.store');

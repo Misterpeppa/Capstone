@@ -101,8 +101,8 @@ document.addEventListener('DOMContentLoaded', function () {
           displayConfirmationDetails();
       }
       
-      const addFormButton = document.getElementById('add_form');
-      addFormButton.disabled = (clickCount > 0);
+      var addFormButton = document.getElementById('add_form');
+      addFormButton.disabled = false;
   }
   
   function checkEnableNextButton1() {
@@ -118,8 +118,8 @@ document.addEventListener('DOMContentLoaded', function () {
           displayConfirmationDetails1();
       }
       
-      const addFormButton = document.getElementById('add_form');
-  addFormButton.disabled = (clickCount > 0);
+      var addFormButton = document.getElementById('add_form');
+  addFormButton.disabled = false;
 
   }
   
@@ -135,8 +135,8 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!nextButton.disabled) {
           displayConfirmationDetails2();
       }
-      const addFormButton = document.getElementById('add_form');
-  addFormButton.disabled = (clickCount > 0);
+      var addFormButton = document.getElementById('add_form');
+  addFormButton.disabled = false;
   }
 
 
@@ -180,6 +180,13 @@ document.addEventListener('DOMContentLoaded', function () {
   var form_fields2 = document.getElementById('form_fields-2');
   
 let clickCount = 0;
+// Initialize click count to 1
+let petCount = 1;
+
+// Update hidden input value on page load
+$('#click_count').val(petCount);
+
+
 
 function toggleForm() {
       clickCount++;
@@ -202,6 +209,14 @@ function toggleForm() {
               details1.style.display = 'flex';
               remove_form.style.display = 'flex';
               remove_form1.style.display = 'none';
+
+              // Increment click count up to a maximum of 3
+              petCount = Math.min(3, petCount + 1);
+              // Update hidden input value
+              $('#click_count').val(petCount);
+              // Log the current value to the console
+              console.log('clickCount:', clickCount);
+              console.log('petCount:', petCount);
           }
           
           // Disable the add_form button after the second click
@@ -215,6 +230,14 @@ function toggleForm() {
               add_form.style.display = 'none';
               remove_form.style.display = 'none';
               remove_form1.style.display = 'flex';
+
+              // Increment click count up to a maximum of 3
+              petCount = Math.min(3, petCount + 1);
+              // Update hidden input value
+              $('#click_count').val(petCount);
+              // Log the current value to the console
+              console.log('clickCount:', clickCount);
+              console.log('petCount:', petCount);
           }
       }
   }
@@ -235,11 +258,20 @@ remove_form.addEventListener('click', function(){
       if (clickCount === 2) {
           document.getElementById('add_form').disabled = false;
       }
+      setFormHeight();
+          // Decrement click count with a minimum value of 1
+      petCount = Math.max(1, petCount - 1);
+      // Update hidden input value
+      $('#click_count').val(petCount);
+      // Log the current value to the console
+      console.log('clickCount:', clickCount);
+      console.log('petCount:', petCount);
    }
 
 })
   
 remove_form1.addEventListener('click', function(){
+  
 if (clickCount > 0) {
   checkEnableNextButton1();
   clickCount--;
@@ -258,6 +290,14 @@ if (clickCount > 0) {
   if (clickCount !== 2) {
       document.getElementById('add_form').disabled = false;
   }
+  setFormHeight();
+      // Decrement click count with a minimum value of 1
+      petCount = Math.max(1, petCount - 1);
+      // Update hidden input value
+      $('#click_count').val(petCount);
+      // Log the current value to the console
+      console.log('clickCount:', clickCount);
+      console.log('petCount:', petCount);
 }
   
 })
@@ -505,8 +545,7 @@ function displayConfirmationDetails2() {
 const daysTag = document.querySelector(".days");
 const currentDate = document.querySelector(".current-date");
 const selectedDateElement = document.getElementById("selected_date");
-const prevNextIcon = document.querySelectorAll(".Appointment_icons span");
-const timeOptionsContainer = document.getElementById("Appointment_time_options");
+var prevNextIcon = document.querySelectorAll(".Appointment_icons span");
 
 let selectedDayElement = null;
 
@@ -582,26 +621,32 @@ currentDate.setHours(0, 0, 0, 0); // Remove time portion for comparison
 
 // Check if the clicked day is not in the past
 if (selectedDate >= currentDate) {
-  if (selectedDayElement) {
-    selectedDayElement.classList.remove("selected-date");
-  }
-  day.classList.add("selected-date");
-  selectedDayElement = day;
-  day.dataset.selectedDate = selectedDate.toISOString(); // Store the selected date in ISO format
+  const dayOfWeek = selectedDate.getDay(); // Get the day of the week (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
 
-  // Update the 'date' variable with the selected date
-  date = selectedDate;
+  if (dayOfWeek !== 0 && dayOfWeek !== 6) { // Check if it's not Sunday (0) or Saturday (6)
+    if (selectedDayElement) {
+      selectedDayElement.classList.remove("selected-date");
+    }
+    day.classList.add("selected-date");
+    selectedDayElement = day;
+    day.dataset.selectedDate = selectedDate.toISOString(); // Store the selected date in ISO format
 
-  const confirmDateElement = document.getElementById('confirm_date');
+    // Update the 'date' variable with the selected date
+    date = selectedDate;
 
+    const confirmDateElement = document.getElementById('confirm_date');
 
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  selectedDateElement.innerText = date.toLocaleDateString(undefined, options);
-  confirmDateElement.innerText = selectedDateElement.innerText; // Update the confirmDateElement with the selected date
-  
-  updateAppointmentTimeOptionsDisplay(); // Call the function after updating the selectedDayElement
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    selectedDateElement.innerText = date.toLocaleDateString(undefined, options);
+    confirmDateElement.innerText = selectedDateElement.innerText; // Update the confirmDateElement with the selected date
+    
+    updateAppointmentTimeOptionsDisplay(); // Call the function after updating the selectedDayElement
     displayConfirmationDetails1();
+
+    setFormHeight();
+  }
 }
+
 });
 
     
@@ -686,7 +731,7 @@ function checkSelectionAndEnableButton() {
 // Call this function at the end of the event listeners for selecting date and time
 function updateAppointmentTimeOptionsDisplay() {
 const selectedDateElement = document.querySelector('.selected-date');
-const timeOptionsContainer = document.getElementById('Appointment_time_options');
+var timeOptionsContainer = document.getElementById('Appointment_time_options');
   var date_required_message = document.getElementById('date_required_message');
 
 if (selectedDateElement && selectedDateElement.classList.contains('selected-date')) {

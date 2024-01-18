@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
-    
 </head>
 
 <body>
@@ -26,17 +25,17 @@
         <div class="container-fluid mb-5">
             <div class="row d-flex flex-column align-content-center flex-wrap">
                 <div class="col-9 user_appointment">
-                    <div class="appointment_head_texts d-flex flex-column align-items-center align-self-stretch">
-                        <div class="appointment_heading_text d-flex flex-column align-items-start">
-                            <h1 class="text-center align-self-stretch">BOOK AN</h1>
-                            <h2 class="text-center" style="color: #045B62;font-size: 50px;--bs-body-font-weight: 700;font-family: Inter;">APPOINTMENT</h2>
+                    <div class="d-flex flex-column align-items-center align-self-stretch">
+                        <div class="d-flex flex-column align-items-start">
+                            <h1 class="text-center align-self-stretch" style="color: #1C1C1C;font-size: 36px;font-family: Inter;">BOOK AN</h1>
+                            <h1 class="text-center" style="color: #045B62;font-size: 50px;--bs-body-font-weight: 700;font-family: Inter;">APPOINTMENT</h1>
                         </div>
                         <p class="text-center" style="color: #1c1c1c;font-size: 20px;font-family: Inter;--bs-body-font-weight: 500;">Please input complete and accurate details to secure a slot for your appointment.</p>
                     </div>
                     <section class="multi_step_section">
                         <div class="d-flex multiple-step-form-n overflow-visible" id="multple-step-form-n">
                             <div id="progress-bar-button" class="multisteps-form" style="padding-top: 10px;">
-                                <div class="multisteps-form__progress"><a class="btn link-success multisteps-form__progress-btn js-active" role="button" title="1" style="--bs-success:#045B62;--bs-success-rgb:4,91,98;"></a><a class="btn link-success multisteps-form__progress-btn" role="button" title="2" style="--bs-success: #045B62;--bs-success-rgb: 4,91,98;"></a><a class="btn link-success multisteps-form__progress-btn" role="button" title="User Info" style="--bs-success: #045B62;--bs-success-rgb: 4,91,98;"></a></div>
+                                <div class="multisteps-form__progress"><a class="btn link-success multisteps-form__progress-btn js-active" role="button" title="1" style="--bs-success:#045B62;--bs-success-rgb:4,91,98;"><span>1</span></a><a class="btn link-success multisteps-form__progress-btn" role="button" title="2" style="--bs-success: #045B62;--bs-success-rgb: 4,91,98;"><span>2</span></a><a class="btn link-success multisteps-form__progress-btn" role="button" title="User Info" style="--bs-success: #045B62;--bs-success-rgb: 4,91,98;"><span>3</span></a></div>
                             </div>
                             <div id="multistep-start-row" class="row" style="display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 25px;align-self: stretch;">
                                 <div id="multistep-start-column" class="col-12 col-lg-8 m-auto" style="width: 100%;">
@@ -301,7 +300,7 @@
                                                         <div class="d-flex flex-column align-items-start align-self-stretch details" id="details">
                                                             <div class="d-flex align-items-center align-self-stretch details_confirmation_1strow" id="details_confirmation_1strow">
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                    <input type="hidden" name="count" id="click_count">
+                                                                    <input type="text" name="count" id="click_count" class="d-none">
                                                                     <h1>Pet Name</h1>
                                                                     <p id="confirm_Pet_Name" class="confirm_Pet_Name">Pet Name</p>
                                                                     <input type="hidden" name="petName" id="hidden_petName">                                                                </div>
@@ -348,7 +347,7 @@
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Surgery Type</h1>
                                                                     <p id="confirm_surgery_Type-1" class="confirm_surgery_Type">Surgery Type</p>
-                                                                    <input type="text" name="appointmentType1" id="hidden_appointmentType-1">                                                                </div>
+                                                                    <input type="text" name="appointmentType1" id="hidden_appointmentType-1" class="d-none">                                                                </div>
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Additional Notes</h1>
                                                                     <p id="confirm_additional_Notes-1" class="confirm_additional_Notes">Additional Notes</p>
@@ -368,25 +367,27 @@
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Pet Type</h1>
                                                                     <p id="confirm_Pet_type-2" class="confirm_Pet_type">Pet Type</p>
-                                                                    <input type="text" name="petType2" id="hidden_petType-2">                                                                </div>
+                                                                    <input type="text" name="petType2" id="hidden_petType-2" class="d-none">                                                                </div>
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Breed</h1>
                                                                     <p id="confirm_breed-2" class="confirm_breed">Breed</p>
-                                                                    <input type="text" name="breed2" id="hidden_breed-2">                                                                </div>
+                                                                    <input type="text" name="breed2" id="hidden_breed-2" class="d-none">                                                                </div>
                                                             </div>
                                                             <div class="d-flex align-items-start align-self-stretch details_confirmation_2ndrow" id="details_confirmation_2ndrow-2">
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Surgery Type</h1>
                                                                     <p id="confirm_surgery_Type-2" class="confirm_surgery_Type">Surgery Type</p>
                                                                     <input type="hidden" name="appointmentType2" id="hidden_appointmentType-2">                                                                </div>
+                                                                    <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Additional Notes</h1>
                                                                     <p id="confirm_additional_Notes-2" class="confirm_additional_Notes">Additional Notes</p>
-                                                                    <input type="hidden" name="notes2" id="hidden_notes-2">                                                                </div>
-                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                    <input type="hidden" name="notes2" id="hidden_notes-2">
+                                                                </div>  
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <p></p>
                                                                 </div>
-                                                            </div>
+                                                                                                                                    </div>
+                                                                
                                                         </div>
                                                     </div>
                                                     <div class="date_and_time">
@@ -421,23 +422,7 @@
             </div>
         </div>
     </main>
-    <footer class="text-center py-4" style="background: rgba(4, 91, 98, 0.10); width:100%; position: static; left: 0; bottom: 0;">
-        <div class="container-fluid">
-            <div class="row row-cols-1 row-cols-lg-3">
-                <div class="col-lg-3"><img src="{{ asset('assets/img/dogs_cats.png') }}" style="width: 50px;height: 50px;flex-shrink: 0;" /></div>
-                <div class="col">
-                    <p style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 0;">Copyright © 2023, MediPaws | All Rights Reserved |</p><a href="https://tabler.io/icons" style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 0;">Icons-by-Tabler-Icons</a>
-                </div>
-                <div class="col">
-                    <ul class="list-inline my-2">
-                        <li class="list-inline-item"><a id="terms_and_conditions" class="terms_and_conditions" style="color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;margin-right: 20px;cursor: pointer;">Terms &amp; Conditions</a></li>
-                        <li class="list-inline-item"><a id="privacy_and_policy" class="terms_and_conditions" style="margin-left: 10px;margin-top: 0;margin-bottom: 0;color: #000;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 400;line-height: normal;cursor: pointer;">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+    @include('includes.footer')
     <div class="modal fade" role="dialog" tabindex="-1" id="consent_modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content add_client_modal">
@@ -628,34 +613,8 @@
             });
         }
     </script>
-    <script>
-$(document).ready(function() {
-    // Initialize click count to 1
-    let petCount = 1;
 
-    // Update hidden input value on page load
-    $('#click_count').val(petCount);
 
-    // Click event for the add button
-    $('#add_form').on('click', function() {
-        // Increment click count up to a maximum of 3
-        petCount = Math.min(3, petCount + 1);
-        // Update hidden input value
-        $('#click_count').val(petCount);
-        // Log the current value to the console
-        console.log('clickCount:', petCount);
-    });
-
-    // Click event for the remove button
-    $('.remove_form').on('click', function() {
-        // Decrement click count with a minimum value of 1
-        petCount = Math.max(1, petCount - 1);
-        // Update hidden input value
-        $('#click_count').val(petCount);
-        // Log the current value to the console
-        console.log('clickCount:', petCount);
-    });
-});
 
 </script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
@@ -663,8 +622,8 @@ $(document).ready(function() {
     <script src="{{ asset('assets/js/bs-init.js') }}"></script>
     <script src="{{ asset('assets/js/appointment_list.js') }}"></script>
     <script src="{{ asset('assets/js/appointmentforms.js') }}"></script>
-    <script src="{{ asset('assets/js/calendar.js') }}"></script>
     <script src="{{ asset('assets/js/Multi-step-form-script.js') }}"></script>
+    <script src="{{ asset('assets/js/footer.js') }}"></script>
 </body>
 
 </html>
