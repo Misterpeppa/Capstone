@@ -30,13 +30,13 @@ class ProfileController extends Controller
         $clientId = Auth::guard('clients')->id();
         $clientInfo = Clients::find($clientId);
         if (!$clientInfo || !$clientInfo->email_verified_at) {
-            session()->flash('error', 'Please verify your email.');
+            session()->flash('error');
             return view('user/landing', compact('clientInfo'));
         }
         return view('user/landing', compact('clientInfo'));
     }
     public function showPetInfo()
-    {
+    {   
         $clientId = Auth::guard('clients')->id();
         $clientInfo = Clients::find($clientId);
         $petrecords = PetRecord::where('owner_id', $clientId)->get();

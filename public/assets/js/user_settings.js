@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('user_last_name').disabled = false;
         document.getElementById('user_email').disabled = false;
         document.getElementById('user_phone_number').disabled = false;
-          document.getElementById('edit_personal_info_buttons').style.display = 'flex';
+        document.getElementById('edit_personal_info_buttons').style.display = 'flex';
       });
     
     
@@ -174,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     // Example usage
+    var edit_save_changes = document.getElementById("edit_save_changes");
     var oldPasswordInput = document.getElementById("old_password");
     var oldPasswordEyeIcon = document.getElementById("eye-icon-old-password");
     
@@ -188,13 +189,39 @@ document.addEventListener('DOMContentLoaded', function () {
       togglePasswordVisibility2(newPasswordInput, newPasswordEyeIcon);
     });
     
-    
+
     var confirmPasswordInput = document.getElementById("confirm_password");
     var confirmPasswordEyeIcon = document.getElementById("eye-icon-confirm-password");
     
     confirmPasswordEyeIcon.addEventListener("click", function() {
       togglePasswordVisibility2(confirmPasswordInput, confirmPasswordEyeIcon);
     });
+    //validation for change password
+    function checkInputs() {
+      var newPassword = newPasswordInput.value.trim();  // Trim to remove leading and trailing whitespaces
+      var confirmPassword = confirmPasswordInput.value.trim();
+  
+      if (
+          oldPasswordInput.value !== '' &&
+          newPassword !== '' &&
+          confirmPassword !== '' &&
+          newPassword === confirmPassword
+      ) {
+          edit_save_changes.removeAttribute('disabled');
+          edit_save_changes.classList.remove('disabled');
+      } else {
+          edit_save_changes.setAttribute('disabled', 'true');
+          edit_save_changes.classList.add('disabled');
+      }
+  }
+  
+  // Call the function whenever the inputs change
+  oldPasswordInput.addEventListener('input', checkInputs);
+  newPasswordInput.addEventListener('input', checkInputs);
+  confirmPasswordInput.addEventListener('input', checkInputs);
+  
+  // Initial check when the page loads
+  checkInputs();
     
      const inputs = ['user_first_name', 'user_middle_name', 'user_last_name'];   
         

@@ -1,3 +1,23 @@
+// Add an event listener for the buttons inside dropdown-content
+document.querySelectorAll('.button-action button').forEach(function (button) {
+  button.addEventListener('click', function (event) {
+      event.preventDefault();
+      const action = this.getAttribute('data-action');
+      if (action === 'Accept'){
+        var accept_modal = new bootstrap.Modal(document.getElementById('accept_modal'));
+        accept_modal.show();
+          
+      }else if (action === 'Reject') {
+
+          
+      }else if (action === 'Reschedule') {
+
+      }
+
+  });
+});
+
+
 document.addEventListener('DOMContentLoaded', function () {
   var add_patient_btn = document.getElementById('add_patient_btn');
   var add_patient_modal = new bootstrap.Modal(document.getElementById('add_patient_modal'));
@@ -177,6 +197,22 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
 
 }
 
+
+
+
+
+
+
+var selectAllAppointment = document.getElementById("SelectAll_appointment");
+
+selectAllAppointment.addEventListener("click", function () {
+    var tableBody = document.getElementById('dashboard_table_body');
+    var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
+
+    rowCheckboxes.forEach(function (checkbox) {
+        checkbox.checked = !checkbox.checked; // Toggle the state
+    });
+});
 
 });
 
@@ -425,3 +461,6 @@ setupFormValidation(
 'clear_form'
 
 );
+
+
+

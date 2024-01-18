@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch-toggle-switch.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
 </head>
 
@@ -26,7 +26,7 @@
 			<div class="row d-flex flex-column align-content-center flex-wrap">
 				<div class="col-9 user_settings_col">
 					<div class="d-flex flex-row user_settings" style="width: 100%;height: 100%;">
-						<ul class="nav nav-tabs" role="tablist">
+						<ul class="nav nav-tabs user_nav_tabs" role="tablist">
 							<li class="nav-item" role="presentation"><a class="nav-link active user_settings_nav_link" role="tab" data-bs-toggle="tab" href="#tab-1"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_6220_17646)">
     <path d="M13.5 6.50024L17.5 10.5002M4 20.0003H8L18.5 9.5003C19.0304 8.96987 19.3284 8.25045 19.3284 7.5003C19.3284 6.75016 19.0304 6.03074 18.5 5.5003C17.9696 4.96987 17.2501 4.67188 16.5 4.67188C15.7499 4.67187 15.0304 4.96987 14.5 5.5003L4 16.0003V20.0003Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -92,7 +92,7 @@
 												<div class="card_body user_settings_card">
 													<div class="card_body_row">
 														<div class="form-floating" style="width: 100%;">
-															<input id="user_first_name" class="form-control" type="text" name="first_name" data-id="user_first_name" maxlength="50" placeholder="First Name" disabled />
+															<input id="user_first_name" class="form-control user_first_name" type="text" name="first_name" data-id="user_first_name" maxlength="50" placeholder="First Name" disabled />
 															<label class="form-label" for="user_first_name">First Name<span> *</span></label>
 															<div id="error-user_first_name" class="error-message"><span>• Please enter your first name.</span></div>
 															<div id="guide_user_first_name" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
