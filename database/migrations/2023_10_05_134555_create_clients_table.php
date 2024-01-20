@@ -24,6 +24,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('phone')->nullable()->unique();
             $table->string('password')->nullable();
+            $table->string('archived_at')->nullable();
             $table->rememberToken();
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();

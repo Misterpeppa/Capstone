@@ -20,7 +20,8 @@ class MedInfo extends Model
         'prod_desc',
         'price',
         'product_type',
-        'archived_at'
+        'archived_at',
+        'source',
     ];
 
     public function medHistory(): HasMany
@@ -35,5 +36,34 @@ class MedInfo extends Model
     {
         return $this->hasMany(MedBatch::class, 'med_id', 'id');
     }
+    public function archived_at($query){
+        $query->whereNull('archived_at');
+    }
+    public function scopeSearch($query, $searchTerm)
+    {
+        // Split the search term into an array of individual terms
+        $searchTerms = explode(' ', $searchTerm);
+    
+        return $query->where(function ($query) use ($searchTerms) {
+            foreach ($searchTerms as $term) {
+                $term = '%' . $term . '%';
+    
+                $query->orWhere(function ($query) use ($term) {
+                    $query->where('item_name', 'like', $term)
+                    ->orWhere('med_info.quantity', 'like', $term)
+                        ->orWhere('product_type', 'like', $term);
+                });
+                $query->orWhereHas('medBatch', function ($query) use ($term) {
+                    $query->where('expiration_date', 'like', $term)
+                 
+                        ->orWhere('date_stocked', 'like', $term);
+                });
+            }
+    
+            $query->whereNull('med_info.archived_at')
+                  ->whereNull('med_batch.archived_at');
+        });
+    }
+    
 
 }

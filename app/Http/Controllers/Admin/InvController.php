@@ -60,7 +60,7 @@ class InvController extends Controller
     // Retrieve user-selected filter criteria and search term
     $selectedType = $request->input('type');
     $searchTerm = $request->input('q');
-    $perPage = $request->input('perPage',6);
+    $perPage = $request->input('perPage',5);
     $sortItem = $request->input('sortItems');
     $sortOrder = $request->input('sortOrder');
 
@@ -82,57 +82,50 @@ class InvController extends Controller
         $vaxSwitch = true;
         $vitSwitch = true;
     }
+
+
+
     if($medSwitch || $vaxSwitch || $vitSwitch){
       if($medSwitch){
-        $med = MedInfo::select('med_info.*', 'med_batch.expiration_date', 'med_batch.date_stocked')
-        ->join('med_batch', function ($join) {
-            $join->on('med_batch.med_id', '=', 'med_info.id')
-                ->whereRaw('med_batch.expiration_date = (
-                    SELECT MIN(expiration_date) FROM med_batch WHERE med_id = med_info.id
-                )');
-        });
+        $med = MedInfo::leftJoin('med_batch', function ($join) {
+            $join->on('med_info.id', '=', 'med_batch.med_id')
+                ->whereNull('med_info.archived_at')
+                ->whereRaw('med_batch.id = (SELECT id FROM med_batch WHERE med_id = med_info.id AND archived_at IS NULL ORDER BY expiration_date ASC LIMIT 1)');
+        })
+        ->select('med_info.*', 'med_batch.expiration_date', 'med_batch.date_stocked','med_info.quantity as info_quantity')
+        ->whereNull('med_info.archived_at');
+    
         if($searchTerm){
-            $med->where('med_info.item_name', 'like', '%' . $searchTerm . '%')
-            ->orWhere('med_info.quantity', 'like', '%' . $searchTerm . '%')
-            ->orWhere('med_info.product_type', 'like', '%' . $searchTerm . '%')
-            ->orWhere('med_batch.expiration_date', 'like', '%' . $searchTerm . '%')
-            ->orWhere('med_batch.date_stocked', 'like', '%' . $searchTerm . '%');
+            $med->search($searchTerm);
         }
 
         $queries[] = $med;
       }
       if($vaxSwitch){
-        $vax = VaxInfo::select('vax_info.*', 'vax_batch.expiration_date', 'vax_batch.date_stocked')
-        ->join('vax_batch', function ($join) {
-            $join->on('vax_batch.vax_id', '=', 'vax_info.id')
-                ->whereRaw('vax_batch.expiration_date = (
-                    SELECT MIN(expiration_date) FROM vax_batch WHERE vax_id = vax_info.id
-                )');
-        });
+        $vax = VaxInfo::leftJoin('vax_batch', function ($join) {
+            $join->on('vax_info.id', '=', 'vax_batch.vax_id')
+                ->whereNull('vax_batch.archived_at')
+                ->whereRaw('vax_batch.id = (SELECT id FROM vax_batch WHERE vax_id = vax_info.id AND archived_at IS NULL ORDER BY expiration_date ASC LIMIT 1)');
+        })
+        ->select('vax_info.*', 'vax_batch.expiration_date', 'vax_batch.date_stocked','vax_info.quantity as info_quantity')
+        ->whereNull('vax_info.archived_at');
         if($searchTerm){
-            $vax->where('vax_info.item_name', 'like', '%' . $searchTerm . '%')
-            ->orWhere('vax_info.quantity', 'like', '%' . $searchTerm . '%')
-            ->orWhere('vax_info.product_type', 'like', '%' . $searchTerm . '%')
-            ->orWhere('vax_batch.expiration_date', 'like', '%' . $searchTerm . '%')
-            ->orWhere('vax_batch.date_stocked', 'like', '%' . $searchTerm . '%');
-        }
+            $vax->search($searchTerm);
+          }
+     
         $queries[] = $vax;
     
       }
       if($vitSwitch){
-        $vit = VitInfo::select('vit_info.*', 'vit_batch.expiration_date', 'vit_batch.date_stocked')
-        ->join('vit_batch', function ($join) {
-            $join->on('vit_batch.vit_id', '=', 'vit_info.id')
-                ->whereRaw('vit_batch.expiration_date = (
-                    SELECT MIN(expiration_date) FROM vit_batch WHERE vit_id = vit_info.id
-                )');
-        });
+        $vit = VitInfo::leftJoin('vit_batch', function ($join) {
+            $join->on('vit_info.id', '=', 'vit_batch.vit_id')
+                ->whereNull('vit_batch.archived_at')
+                ->whereRaw('vit_batch.id = (SELECT id FROM vit_batch WHERE vit_id = vit_info.id AND archived_at IS NULL ORDER BY expiration_date ASC LIMIT 1)');
+        })
+        ->select('vit_info.*', 'vit_batch.expiration_date', 'vit_batch.date_stocked','vit_info.quantity as info_quantity')
+        ->whereNull('vit_info.archived_at');
         if($searchTerm){
-            $vit->where('vit_info.item_name', 'like', '%' . $searchTerm . '%')
-                ->orWhere('vit_info.quantity', 'like', '%' . $searchTerm . '%')
-                ->orWhere('vit_info.product_type', 'like', '%' . $searchTerm . '%')
-                ->orWhere('vit_batch.expiration_date', 'like', '%' . $searchTerm . '%')
-                ->orWhere('vit_batch.date_stocked', 'like', '%' . $searchTerm . '%');
+            $vit->search($searchTerm);
           }
           $queries[] = $vit;
       }  
@@ -143,6 +136,49 @@ class InvController extends Controller
             $products = $products->union($query);
         }
     }
+
+
+
+    // if($medSwitch || $vaxSwitch || $vitSwitch){
+    //     if($medSwitch){
+    //       $med = MedInfo::with('medBatch')
+    //       ->join('med_batch', 'med_info.id', '=', 'med_batch.med_id')
+    //       ->select('med_info.*','med_batch.*','med_info.quantity as info_quantity', 'med_batch.quantity as batch_quantity','med_info.id as id','med_batch.id as batch_id')
+    //       ->whereNull('med_info.archived_at')
+    //       ->whereNull('med_batch.archived_at');
+      
+    //       if($searchTerm){
+    //           $med->search($searchTerm);
+    //       }
+  
+    //       $queries[] = $med;
+    //     }
+    //     if($vaxSwitch){
+    //       $vax = VaxInfo::with('vaxBatch')
+    //       ->join('vax_batch', 'vax_info.id', '=', 'vax_batch.vax_id')
+    //       ->select('vax_info.*','vax_batch.*','vax_info.quantity as info_quantity', 'vax_batch.quantity as batch_quantity','vax_info.id as id','vax_info.id as batch_id')
+    //       ->whereNull('vax_info.archived_at');
+  
+    //       $queries[] = $vax;
+      
+    //     }
+    //     if($vitSwitch){
+    //       $vit = VitInfo::with('vitBatch')
+    //       ->join('vit_batch', 'vit_info.id', '=', 'vit_batch.vit_id')
+    //       ->select('vit_info.*','vit_batch.*','vit_info.quantity as info_quantity', 'vit_batch.quantity as batch_quantity','vit_info.id as id','vit_info.id as batch_id')
+    //       ->whereNull('vit_info.archived_at');
+    //       if($searchTerm){
+           
+    //         }
+    //         $queries[] = $vit;
+    //     }  
+    //   }
+    //   if (!empty($queries)) {
+    //       $products = array_shift($queries); // Get the first query
+    //       foreach ($queries as $query) {
+    //           $products = $products->union($query);
+    //       }
+    //   }
 
 
     $sortField = [
@@ -162,7 +198,7 @@ class InvController extends Controller
     // PAGINATION
     $perPage = filter_var($perPage, FILTER_VALIDATE_INT);
     if ($perPage === false || $perPage < 5) {
-        $perPage = 6; 
+        $perPage = 5; 
     }
     $currentPage = LengthAwarePaginator::resolveCurrentPage();
     $currentPageItems = $products->slice(($currentPage - 1) * $perPage, $perPage)->all();

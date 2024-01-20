@@ -1373,8 +1373,6 @@ $(document).ready(function() {
 	});
 	$('.View_pet-action').click(function() {
 			const id = $(this).data('container-id');
-			displayMedicalHistoryTable(id);
-			displayVaxHistoryTable(id);
 			$('#medhisId').val(id);
 			$('#vaxhisId').val(id);
 			$('#surghisId').val(id);

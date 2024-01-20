@@ -81,7 +81,9 @@ class EMRController extends Controller
     }
     public function pet(Request $request)
     {
+        $ownerId = $request->input('owner_id');
         $pet_infos = new PetInfo();
+        $pet_infos->owner_id = $ownerId;
         $pet_infos->name = $request->input('pet_name');
         $pet_infos->age = $request->input('pet_age');
         $pet_infos->species = $request->input('species');
@@ -92,7 +94,6 @@ class EMRController extends Controller
         $pet_infos->sterilization = $request->input('sterilization');
         $pet_infos->save();
         $petId = $pet_infos->id;
-        $ownerId = $request->input('owner_id');
 
         $petrecord = new PetRecord([
             'pet_id' => $petId,

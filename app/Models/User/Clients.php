@@ -34,7 +34,8 @@ class Clients extends Authenticatable implements MustVerifyEmailContract
         'password',
         'phone',
         'email_verified_at',
-        'deleted_at'
+        'deleted_at',
+        'archived_at'
     ];
 
     protected $hidden = [

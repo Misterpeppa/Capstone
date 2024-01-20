@@ -3,6 +3,7 @@ document.getElementById('edit_profile_personal_info').addEventListener('click', 
   document.getElementById('user_first_name').disabled = false;
   document.getElementById('user_middle_name').disabled = false;
   document.getElementById('user_last_name').disabled = false;
+  document.getElementById('suffix').disabled = false;
   document.getElementById('user_email').disabled = false;
   document.getElementById('user_phone_number').disabled = false;
     document.getElementById('edit_personal_info_buttons').style.display = 'flex';
@@ -16,9 +17,20 @@ document.getElementById('discard_btn-2').addEventListener('click', function () {
   document.getElementById('user_first_name').value = '';
   document.getElementById('user_middle_name').value = '';
   document.getElementById('user_last_name').value = '';
+  document.getElementById('suffix').value = 'none';
+  document.getElementById('specify_suffix').value = '';
   document.getElementById('user_email').value = '';
   document.getElementById('user_phone_number').value = '';
   $('#cancel_change_user_info').modal('hide');
+
+    // Enable the input fields for editing
+    document.getElementById('user_first_name').disabled = true;
+    document.getElementById('user_middle_name').disabled = true;
+    document.getElementById('user_last_name').disabled = true;
+    document.getElementById('suffix').disabled = true;
+    document.getElementById('user_email').disabled = true;
+    document.getElementById('user_phone_number').disabled = true;
+      document.getElementById('edit_personal_info_buttons').style.display = 'none';
 
 });
 document.addEventListener('DOMContentLoaded', function () {
@@ -110,6 +122,14 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('user_zip_code').value = '';
         document.getElementById('user_country').value = 'none';
         $('#cancel_change_user_info-1').modal('hide');
+
+        // Enable the input fields for editing
+        document.getElementById('user_house_unit').disabled = true;
+        document.getElementById('user_city').disabled = true;
+        document.getElementById('user_state').disabled = true;
+        document.getElementById('user_zip_code').disabled = true;
+        document.getElementById('user_country').disabled = true;
+        document.getElementById('edit_address_buttons').style.display = 'none';
     
       });      
         
@@ -138,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('user_last_name').disabled = false;
         document.getElementById('user_email').disabled = false;
         document.getElementById('user_phone_number').disabled = false;
-          document.getElementById('edit_personal_info_buttons').style.display = 'flex';
+        document.getElementById('edit_personal_info_buttons').style.display = 'flex';
       });
     
     
@@ -196,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     // Example usage
+    var edit_save_changes = document.getElementById("edit_save_changes");
     var oldPasswordInput = document.getElementById("old_password");
     var oldPasswordEyeIcon = document.getElementById("eye-icon-old-password");
     
@@ -210,13 +231,39 @@ document.addEventListener('DOMContentLoaded', function () {
       togglePasswordVisibility2(newPasswordInput, newPasswordEyeIcon);
     });
     
-    
+
     var confirmPasswordInput = document.getElementById("confirm_password");
     var confirmPasswordEyeIcon = document.getElementById("eye-icon-confirm-password");
     
     confirmPasswordEyeIcon.addEventListener("click", function() {
       togglePasswordVisibility2(confirmPasswordInput, confirmPasswordEyeIcon);
     });
+    //validation for change password
+    function checkInputs() {
+      var newPassword = newPasswordInput.value.trim();  // Trim to remove leading and trailing whitespaces
+      var confirmPassword = confirmPasswordInput.value.trim();
+  
+      if (
+          oldPasswordInput.value !== '' &&
+          newPassword !== '' &&
+          confirmPassword !== '' &&
+          newPassword === confirmPassword
+      ) {
+          edit_save_changes.removeAttribute('disabled');
+          edit_save_changes.classList.remove('disabled');
+      } else {
+          edit_save_changes.setAttribute('disabled', 'true');
+          edit_save_changes.classList.add('disabled');
+      }
+  }
+  
+  // Call the function whenever the inputs change
+  oldPasswordInput.addEventListener('input', checkInputs);
+  newPasswordInput.addEventListener('input', checkInputs);
+  confirmPasswordInput.addEventListener('input', checkInputs);
+  
+  // Initial check when the page loads
+  checkInputs();
     
      const inputs = ['user_first_name', 'user_middle_name', 'user_last_name'];   
         

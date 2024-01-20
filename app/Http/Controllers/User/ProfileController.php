@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\MedHistory;
 use App\Models\Admin\PetInfo;
+use App\Models\Admin\VaxInfo;
+use App\Models\Admin\MedInfo;
 use App\Models\Admin\PetRecord;
+use App\Models\Admin\SurgHistory;
+use App\Models\Admin\VaxHistory;
 use App\Models\User\Clients;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,8 +45,14 @@ class ProfileController extends Controller
         $clientId = Auth::guard('clients')->id();
         $clientInfo = Clients::find($clientId);
         $petrecords = PetRecord::where('owner_id', $clientId)->get();
-        $petExist = PetRecord::where('owner_id', $clientId)->exists(); // Corrected typo
-        return view('user/pet_info', compact('clientInfo', 'petExist', 'petrecords'));
+        $petExist = PetRecord::where('owner_id', $clientId)->exists();
+        $medHistory = MedHistory::all();
+        $vaxHistory = VaxHistory::all();
+        $surgHistory = SurgHistory::all();
+        $medHistoryExist = $medHistory->isNotEmpty();
+        $vaxHistoryExist = $vaxHistory->isNotEmpty();
+        $surgHistoryExist = $surgHistory->isNotEmpty();
+        return view('user/pet_info', compact('clientInfo', 'petExist', 'petrecords', 'medHistoryExist', 'vaxHistoryExist', 'surgHistoryExist'));
     }
     public function editProfile(Request $request)
     {

@@ -165,7 +165,7 @@
                             <div class="left_part_product_header">
                               <div class="search_container">
                                   <input type="text" class="search_input" name="q"
-                                      value="{{ request('q') }}" placeholder="Search Client">
+                                      value="{{ request('q') }}" placeholder="Search Inventory">
                                   <!-- Other input fields or elements for pagination -->
                                   <input type="hidden" id="pageForm" name="page"
                                       value="{{ request('page') }}">
@@ -208,12 +208,11 @@
                                           <!-- Size of the default switch will increase 1.8 times -->
                                           <input class="form-check-input my-3"
                                                 {{ request()->input('medSwitch') == 'on' ? 'checked' : '' }}
-                                                 name ="medSwicth" 
+                                                 name ="medSwitch" 
                                                  type="checkbox" 
                                                  role="switch" 
                                                  id="medSwitch" 
                                                  style="transform: scale(1.5);"
-                                                 
                                                  >
                                           <label class="form-check-label fs-6 my-1" 
                                                  for="medSwitch" 
@@ -506,31 +505,33 @@
                                         </defs>
                                     </svg> Add Product</span></button>
                         </div>
-                        <div id="product_table_container" class="product_table_container table-responsive">
-                            <table id="example" class="table table-striped table-bordered" 
-                                width="100%">
+                        <div id="product_table_container" class="table-responsive w-100">
+                            <table id="example" class="table">
                                 <thead>
                                     <tr>
-                                        <th><input id="SelectAll" type="checkbox" class="checkbox"></th>
+                                        <th><input id="SelectAll" type="radio" class="checkbox"></th>
                                         <th>Product Name</th>
                                         <th>Category</th>
                                         <th>On Hand</th>
                                         <th>Date Stocked</th>
                                         <th>Expiration Date</th>
-                                        <th>Action</th>
+                                        <th style="width:13%" class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody id="inventory_table_body" class="inventoryTableBody">
                                   
                                     @foreach ($products as $product)
+                                    
                                         @php
                                             $medBatch = $productBatch->where('med_id', $product->id)->first();
+                                        
                                         @endphp
+                               
                                         <tr data-row-id="{{ $product->id }}">
-                                          <td><input type="checkbox"></td>
+                                          <td><input type="radio" class="checkbox"></td>
                                           <td>{{ $product->item_name }}</td>
                                           <td>{{ $product->product_type }}</td>
-                                          <td>{{ $product->quantity }}</td>
+                                          <td>{{ $product->info_quantity }}</td>
                                           <td>{{ $product->date_stocked }}</td>
                                           <td>{{ $product->expiration_date }}</td>
                                           <td class="dropdown button-action">
@@ -1346,6 +1347,24 @@
     @endif
     <script>
         $(document).ready(function() {
+            $('.editButton').click(function() {
+            const invData = {
+                'first_name' :$(this).data('first-name'),
+                'middle_name' :$(this).data('middle-name'),
+                'last_name' :$(this).data('last-name'),
+                'suffix' :$(this).data('suffix'),
+                'birthdate' :$(this).data('birthdate'),
+                'email' :$(this).data('email'),
+                'phone' :$(this).data('phone'),
+            };      
+            $('#editFirstName').val(clientData.first_name);
+            $('#editMiddleName').val(clientData.middle_name);
+            $('#editLastName').val(clientData.last_name);
+            $('#editSuffix').val(clientData.suffix);
+            $('#editBirthdate').val(clientData.birthdate);
+            $('#editEmail').val(clientData.email);
+            $('#editPhone').val(clientData.phone);
+        });
             $('.viewButton').click(function() {
                 var rowId = $(this).closest('tr').data('row-id');
                 const product_type = $(this).data('product-type');
@@ -1445,7 +1464,7 @@
                         // Handle success, e.g., show a success message
                         alert('Product has been archived');
                         // Optionally, you can also reload the page or update the UI
-                        // location.reload();
+                        location.reload();
                     },
                     error: function(xhr) {
                         // Handle errors
@@ -1502,6 +1521,20 @@
         function submitForm() {
             document.getElementById('searchForm').submit();
         }
+    </script>
+
+<script>
+            var SelectAll = document.getElementById("SelectAll");
+
+            SelectAll.addEventListener("click", function () {
+    var tableBody = document.getElementById('inventory_table_body');
+    var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
+
+    rowCheckboxes.forEach(function (checkbox) {
+        checkbox.checked = !checkbox.checked; // Toggle the state
+    });
+
+});
     </script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
