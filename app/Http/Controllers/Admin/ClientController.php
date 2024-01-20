@@ -9,7 +9,7 @@ use App\Models\User\Clients;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Session;
 
- use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use ErlandMuchasaj\Sanitize\Sanitize;
 
@@ -31,11 +31,11 @@ class ClientController extends Controller
         $query = $request->input('q');
         $sort = $request->input('sortBy'); 
         $sortOrder = $request->input('sortOrder'); 
-        $clients = Clients::query();
+        $clients = Clients::query()->whereNull('archived_at');
         if ($query) {
             $query = explode(' ', $query);
             foreach ($query as $term) {
-                $query = Sanitize::sanitize($term,true,true); // <== clean user input
+                $query = $term; // <== clean user input
             
                 $query = str_replace(['%', '_'], ['\\%', '\\_'], $query);
             
@@ -137,6 +137,15 @@ class ClientController extends Controller
             $clients->suffix = $suffix;
         }
         $clients->save();
+    }
+    public function archiveClient(Request $request)
+    {
+        $clientId = $request->input('client_id');
+        $client = Clients::find($clientId);
+        dd($clientId);
+        $client->archived_at = now();
+        $client->save();
+        return redirect()->back()->with('success', 'Client archived successfully.');
     }
 
 

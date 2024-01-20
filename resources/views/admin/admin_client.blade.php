@@ -142,7 +142,7 @@
                                       </li>
                                     </ul>
                                 </div>
-</form>
+                    </form>
                     </div>
                     <div class="right_part_product_header">
                         <button class="btn archive_button" id="archive_button"
@@ -288,35 +288,44 @@
                                 <th>Email</th>
                                 <th>Phone Number</th>
                                 <th>Birthdate</th>
-                                <th>Visit</th>
-                                <th>Last Visit</th>
+                                <th>Last Appointment</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="client_table_body">
                             @foreach ($clients as $clientInfo)
-                                <tr>
+                            @php
+                                $latestAppointment = $clientInfo->appointmentApproved->whereNotNull('completed_at')->sortByDesc('appointmentDate')->first();
+                            @endphp                                
+                            <tr>
                                     <td><input type="checkbox"></td>
                                     <td>{{ $clientInfo->first_name }} {{ $clientInfo->middle_name }}
                                         {{ $clientInfo->last_name }} {{ $clientInfo->suffix }}</td>
                                     <td>{{ $clientInfo->email }}</td>
                                     <td>{{ $clientInfo->phone }}</td>
                                     <td>{{ $clientInfo->birthdate }}</td>
-                                    <td></td>
-                                    <td></td>
+                                    @if ($latestAppointment)
+                                        <td>{{ $latestAppointment->appointmentDate }}</td>
+                                    @else
+                                        <td>No recent appointments</td>
+                                    @endif
                                     <td class="button-action">
                                         <button
                                         data-action="View"
-                                        data-product-id="{{ $clientInfo->id }}"
+                                        data-id="{{ $clientInfo->id }}"
                                         class="btn border-0 viewButton"style="color:gray"><i class="fa-solid fa-eye"></i></button>
                                         <button 
                                         data-action="Edit" id="editButton"
-                                        data-product-id="{{ $clientInfo->id }}"
-                                        class="btn border-0"style="color:gray"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        data-container-id="{{ $clientInfo->id }}"
+                                        data-first-name="{{ $clientInfo->first_name }}" data-middle-name="{{ $clientInfo->middle_name}}"
+                                        data-last-name="{{ $clientInfo->last_name }}" data-suffix="{{ $clientInfo->suffix}}"
+                                        data-birthdate="{{ $clientInfo->birthdate}}" data-email="{{ $clientInfo->email}}" data-phone="{{ $clientInfo->phone }}"
+                                        class="btn border-0 editButton"style="color:gray"><i class="fa-solid fa-pen-to-square"></i></button>
                                         <button 
-                                        data-action="Archive"
-                                        class="btn border-0"style="color:gray"><i class="fa-solid fa-box-archive"></i></button></td>
-                                  
+                                        data-action="Archive" id="archiveButton"
+                                        data-container-id="{{ $clientInfo->id }}"
+                                        class="btn border-0 archiveButton"style="color:gray"><i class="fa-solid fa-box-archive"></i></button>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -746,20 +755,20 @@
                                 </defs>
                             </svg> Back</span></button></div>
                 <div class="prod_detail_body">
-                    <form id="add_client_form-3" class="client_detail_fields_container"><img
-                            src="assets/img/image%2011%20(1).png">
+                    <form action="{{ route('client.edit') }}" method="POST" id="add_client_form-3" class="client_detail_fields_container">
+                        @csrf
+                        <input type="hidden" name="client_id" id="editId">
                         <div class="new_input_row">
-                            <div class="form-floating" style="width:100%;"><input
+                            <div class="form-floating" style="width:100%;"><input name="first_name"
                                     class="form-control form-control form-control form-control" type="text"
-                                    data-id="first_name" id="first_name-3" placeholder="First Name"><label
+                                    data-id="first_name" id="editFirstName" placeholder="First Name"><label
                                     class="form-label form-label form-label form-label" for="first_name">First
                                     Name</label>
-                                <div id="error-first_name-3" class="error-message"><span>Please enter your first
-                                        name.</span></div>
+                                <div id="error-first_name-3" class="error-message"><span>Please enter your firstname.</span></div>
                             </div>
-                            <div class="form-floating" style="width:100%;"><input
+                            <div class="form-floating" style="width:100%;"><input name="middle_name"
                                     class="form-control form-control form-control form-control" type="text"
-                                    data-id="middle_name" id="middle_name-3" placeholder="Middle Name"><label
+                                    data-id="middle_name" id="editMiddleName" placeholder="Middle Name"><label
                                     class="form-label form-label form-label form-label" for="middle_name">Middle
                                     Name</label>
                                 <div id="error-middle_name-3" class="error-message"><span>Please enter your middle
@@ -767,15 +776,15 @@
                             </div>
                         </div>
                         <div class="new_input_row">
-                            <div class="form-floating" style="width:100%;"><input class="form-control"
-                                    type="text" id="last_name-4" data-id="last_name"
+                            <div class="form-floating" style="width:100%;"><input name="last_name" class="form-control"
+                                    type="text" id="editLastName" data-id="last_name"
                                     placeholder="Last Name"><label class="form-label" for="last_name">Last
                                     Name</label>
                                 <div id="error-last_name-4" class="error-message"><span>Please enter your last
                                         name.</span></div>
                             </div>
-                            <div class="form-floating" style="width:100%;"><select class="form-select"
-                                    id="suffix-4" data-id="suffix">
+                            <div class="form-floating" style="width:100%;"><select class="form-select" name="suffix"
+                                    id="editSuffix" data-id="suffix">
                                     <option value="none" selected="">Select a Suffix</option>
                                     <option value="Jr">Jr</option>
                                     <option value="Sr">Sr</option>
@@ -786,8 +795,8 @@
                                         suffix.</span></div>
                             </div>
                         </div>
-                        <div class="form-floating" style="width:100%;"><input class="form-control"
-                                id="client_birthdate-3" data-id="manufactured_date" placeholder="Manufactured Date"
+                        <div class="form-floating" style="width:100%;"><input name="birthdate" class="form-control"
+                                id="editBirthdate" data-id="manufactured_date" placeholder="Manufactured Date"
                                 type="date"><label class="form-label" for="client_birthdate">Birthdate</label>
                             <div id="error-client_birthdate-3" class="error-message"><span>Please enter the
                                     manufactured date.</span></div>
@@ -797,25 +806,26 @@
                             <div id="error-client_address-3" class="error-message"><span>Please enter your
                                     address.</span></div>
                         </div>
-                        <div class="form-floating" style="width:100%;"><input class="form-control" type="email"
-                                id="client_email-3" data-id="client_email" placeholder="Email"><label
+                        <div class="form-floating" style="width:100%;"><input name="email" class="form-control" type="email"
+                                id="editEmail" data-id="client_email" placeholder="Email"><label
                                 class="form-label" for="client_email">Email
                                 Address</label>
                             <div id="error-client_email-3" class="error-message"><span>Please enter a valid email
                                     address.</span></div>
                         </div>
-                        <div class="form-floating" style="width:100%;"><input class="form-control" type="tel"
-                                id="user_phone-3" data-id="user_phone" placeholder="Phone Number"><label
+                        <div class="form-floating" style="width:100%;"><input name="phone" class="form-control" type="tel"
+                                id="editPhone" data-id="user_phone" placeholder="Phone Number"><label
                                 class="form-label" for="user_phone">Phone
                                 Number</label>
                             <div id="error-user_phone-3" class="error-message"><span>Please enter a valid phone
                                     number.</span></div>
                         </div>
-                    </form>
                     <div class="mb-3 prod_detail_fields_buttons"><button class="btn cancel_edit" id="cancel_edit"
                             type="button"><span class="cancel_edit_base">Cancel</span></button><button
-                            class="btn disabled edit_save_changes" id="edit_save_changes" type="button"
-                            disabled=""><span class="edit_save_changes_base">Save Changes</span></button></div>
+                            class="btn disabled edit_save_changes" id="edit_save_changes" type="submit"
+                            disabled=""><span class="edit_save_changes_base">Save Changes</span></button>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -1415,6 +1425,9 @@
                                 </defs>
                             </svg></span></div>
                 </div>
+                <form action="{{ route('client.archive') }}" method="POST">
+                    @csrf
+                <input type="hidden" name="client_id" id="archiveId" value="">
                 <div class="modal-body archive_message">
                     <div>
                         <h1>Archive client?</h1>
@@ -1422,9 +1435,11 @@
                     </div>
                 </div>
                 <div class="modal-footer discard_footer"><button class="btn return_btn" data-bs-dismiss="modal"
-                        type="button"><span class="return_btn_base">Cancel</span></button><button
-                        class="btn archive_confirm" id="archive_confirm_button" type="button"><span
-                            class="archive_confirm_button_base">Archive</span></button></div>
+                    type="button"><span class="return_btn_base">Cancel</span></button><button
+                    class="btn archive_confirm" id="archive_confirm_button" type="submit"><span
+                    class="archive_confirm_button_base">Archive</span></button>
+                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -1554,10 +1569,30 @@
     @endif
     <script>
     $(document).ready(function() {
-	$('#editButton').click(function() {
-		const id = $(this).data(container-id);
-		$('#editId').val(id);
-	});
+        $('.editButton').click(function() {
+            const id = $(this).data('container-id');
+            $('#editId').val(id);
+            const clientData = {
+                'first_name' :$(this).data('first-name'),
+                'middle_name' :$(this).data('middle-name'),
+                'last_name' :$(this).data('last-name'),
+                'suffix' :$(this).data('suffix'),
+                'birthdate' :$(this).data('birthdate'),
+                'email' :$(this).data('email'),
+                'phone' :$(this).data('phone'),
+            };      
+            $('#editFirstName').val(clientData.first_name);
+            $('#editMiddleName').val(clientData.middle_name);
+            $('#editLastName').val(clientData.last_name);
+            $('#editSuffix').val(clientData.suffix);
+            $('#editBirthdate').val(clientData.birthdate);
+            $('#editEmail').val(clientData.email);
+            $('#editPhone').val(clientData.phone);
+        });
+        $('.archiveButton').click(function() {
+            const id = $(this).data('container-id');
+            $('#archiveId').val(id);
+        });
     });
     </script>
     <script>

@@ -166,7 +166,7 @@
                             <div class="left_part_product_header">
                               <div class="search_container">
                                   <input type="text" class="search_input" name="q"
-                                      value="{{ request('q') }}" placeholder="Search Client">
+                                      value="{{ request('q') }}" placeholder="Search Inventory">
                                   <!-- Other input fields or elements for pagination -->
                                   <input type="hidden" id="pageForm" name="page"
                                       value="{{ request('page') }}">
@@ -1319,6 +1319,24 @@
     @endif
     <script>
         $(document).ready(function() {
+            $('.editButton').click(function() {
+            const invData = {
+                'first_name' :$(this).data('first-name'),
+                'middle_name' :$(this).data('middle-name'),
+                'last_name' :$(this).data('last-name'),
+                'suffix' :$(this).data('suffix'),
+                'birthdate' :$(this).data('birthdate'),
+                'email' :$(this).data('email'),
+                'phone' :$(this).data('phone'),
+            };      
+            $('#editFirstName').val(clientData.first_name);
+            $('#editMiddleName').val(clientData.middle_name);
+            $('#editLastName').val(clientData.last_name);
+            $('#editSuffix').val(clientData.suffix);
+            $('#editBirthdate').val(clientData.birthdate);
+            $('#editEmail').val(clientData.email);
+            $('#editPhone').val(clientData.phone);
+        });
             $('.viewButton').click(function() {
                 var rowId = $(this).closest('tr').data('row-id');
                 const product_type = $(this).data('product-type');
