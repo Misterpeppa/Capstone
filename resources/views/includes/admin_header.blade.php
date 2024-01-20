@@ -91,8 +91,10 @@
 					</svg> <a href="{{ route('admin_settings') }}">Settings</a></li>
 			</ul>
 		</div>
-		<button class="add" type="button">
-			<div class="add_base">
+
+
+										<button class="add" id="add" aria-expanded="false" data-bs-toggle="dropdown" type="button">
+										<div class="add_base">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 					<g clip-path="url(#clip0_5266_11673)" filter="url(#filter0_d_5266_11673)">
 						<path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
@@ -110,6 +112,170 @@
 							<rect width="24" height="24" fill="white" /> </clipPath>
 					</defs>
 				</svg> Add</div>
-		</button>
-	</div>
+										</button>
+										<div class="dropdown-menu more_button" data-bs-popper="none">
+										<button class="dropdown-item add_appointment_action" id="add_appointment">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_1917_11625)">
+    <path d="M12.5 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H18C18.5304 5 19.0391 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V12M16 3V7M8 3V7M4 11H20M16 19H22M19 16V22" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_1917_11625">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>	Add Appointment
+											</button>
+											<button class="dropdown-item add_pet_action" id="add_pet">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_1917_11615)">
+    <path d="M14.7003 13.5C13.6003 11.5 13.2593 11 12.0003 11C10.7413 11 10.2643 11.755 9.16426 13.747C8.22226 15.45 6.31826 15.592 5.84326 17.038C5.74626 17.303 5.69826 17.715 5.70026 18C5.70026 19.176 6.48726 20 7.50026 20C8.75926 20 10.5003 19 12.0003 19C13.5003 19 15.2413 20 16.5003 20C17.5133 20 18.3003 19.177 18.3003 18C18.3003 17.715 18.2513 17.303 18.1543 17.038C17.6793 15.587 15.6423 15.203 14.7003 13.5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20.1882 8.082C20.0597 8.0277 19.9216 7.99981 19.7822 8H19.7672C19.0322 8.012 18.2072 8.75 17.7742 9.866C17.2552 11.201 17.4942 12.566 18.3122 12.918C18.4412 12.973 18.5792 13 18.7182 13C19.4572 13 20.2932 12.258 20.7292 11.134C21.2452 9.799 21.0012 8.434 20.1882 8.082Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9.47358 9C9.52858 9 9.58258 9 9.63658 8.989C10.5806 8.861 11.1696 7.643 10.9566 6.267C10.7536 4.97 9.90958 4 9.02458 4C8.96958 4 8.91558 4 8.86158 4.011C7.91758 4.139 7.32858 5.357 7.54158 6.733C7.74558 8.026 8.58958 9 9.47458 9H9.47358Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.4559 6.733C16.6699 5.357 16.0809 4.139 15.1359 4.011C15.0822 4.00357 15.0281 3.99989 14.9739 4C14.0889 4 13.2459 4.97 13.0439 6.267C12.8299 7.643 13.4189 8.861 14.3639 8.989C14.4179 8.996 14.4719 9 14.5259 9C15.4109 9 16.2559 8.026 16.4559 6.733Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M5.68982 12.918C6.50582 12.566 6.74382 11.199 6.22582 9.866C5.78982 8.742 4.95482 8 4.21682 8C4.07682 8 3.93982 8.027 3.80982 8.082C2.99382 8.434 2.75582 9.801 3.27382 11.134C3.70982 12.258 4.54482 13 5.28282 13C5.42282 13 5.55982 12.973 5.68982 12.918Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_1917_11615">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>	Add Pet</button>
+											<button class="dropdown-item add_client_action" id="add_client">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_1917_11636)">
+    <path d="M3 21V19C3 17.9391 3.42143 16.9217 4.17157 16.1716C4.92172 15.4214 5.93913 15 7 15H11C11.96 15 12.84 15.338 13.53 15.901M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88M16 19H22M19 16V22M5 7C5 8.06087 5.42143 9.07828 6.17157 9.82843C6.92172 10.5786 7.93913 11 9 11C10.0609 11 11.0783 10.5786 11.8284 9.82843C12.5786 9.07828 13 8.06087 13 7C13 5.93913 12.5786 4.92172 11.8284 4.17157C11.0783 3.42143 10.0609 3 9 3C7.93913 3 6.92172 3.42143 6.17157 4.17157C5.42143 4.92172 5 5.93913 5 7Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_1917_11636">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>	Add Client</button>
+											<button class="dropdown-item add_product_action" id="add_product" >
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_1917_11691)">
+    <path d="M9 7H15M9 11H15M9 15H13M5 5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21H7C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19V5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_1917_11691">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>	Add Product
+											</button>
+										</div>
 </div>
+</div>
+
+
+<div class="modal fade" role="dialog" tabindex="-1" id="add_product_modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content add_client_modal">
+                <div class="modal-header">
+                    <h1 class="modal-title">Add New Product</h1><button class="btn-close" aria-label="Close"
+                        data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="add_product_form" method="POST" action="{{ route('inv.store') }}">
+                        @csrf
+                        <div class="mb-3 input_container">
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width: 100%;"><select
+                                        class="form-select form-select" name="product_type" data-id="product-categ"
+                                        id="product-categ">
+                                        <option value="none" selected="">Select a Product</option>
+                                        <option value="Medicine">Medicine</option>
+                                        <option value="Vaccine">Vaccine</option>
+                                        <option value="Vitamin">Vitamin</option>
+                                    </select><label class="form-label form-label" for="product-categ">Product
+                                        Category</label>
+                                    <div id="error-product_categ" class="error-message"><span>Please select a
+                                            category.</span></div>
+                                </div>
+                                <div class="form-floating" style="width: 100%;"><select
+                                        class="form-select form-select" name="item_name" data-id="product_name"
+                                        id="product_name">
+                                        <option value="none" selected="">Select a Product Name</option>
+                                    </select><label class="form-label form-label" for="product_name">Product
+                                        Name</label>
+                                    <div id="error-product_name" class="error-message"><span>Please select product
+                                            name.</span></div>
+                                </div>
+                                <div class="form-floating"style="width: 100%;"><input
+                                        class="form-control form-control" type="text" name="product_code"
+                                        data-id="product_code" id="product_code" placeholder="Product Code"><label
+                                        class="form-label form-label" for="product_code">Product Code</label>
+                                    <div class="error-message" id="error-product_code"><span>Please enter product
+                                            code.</span></div>
+                                </div>
+                                <div class="form-floating" style="width: 100%;"><input
+                                        class="form-control form-control" type="text" name="batch_no"
+                                        data-id="batch_number" id="batch_number" placeholder="Batch Number"><label
+                                        class="form-label form-label" for="batch_number">Batch Number</label>
+                                    <div class="error-message" id="error-batch_number"><span>Please enter batch
+                                            number.</span></div>
+                                </div>
+                            </div>
+                            <div class="new_input_row">
+                                <div class="form-floating" style="width:100%;"><input
+                                        class="form-control form-control" name="manufacturing_date"
+                                        data-id="manufactured_date" id="manufactured_date"
+                                        placeholder="Manufactured Date" type="date"><label
+                                        class="form-label form-label" for="manufactured_date">Manufactured
+                                        Date</label>
+                                    <div class="error-message" id="error-manufactured_date"><span>Please enter the
+                                            manufactured date.</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><input
+                                        class="form-control form-control" name="expiration_date"
+                                        data-id="expiration_date" id="expiration_date" placeholder="Expiration Date"
+                                        type="date"><label class="form-label form-label"
+                                        for="expiration_date">Expiration Date</label>
+                                    <div class="error-message" id="error-expiration_date"><span>Please enter the
+                                            expiration date.</span></div>
+                                </div>
+                                <div class="form-floating" style="width:100%;"><input
+                                        class="form-control form-control" name="date_stocked" data-id="datestocked"
+                                        id="datestocked" placeholder="Expiration Date" type="date"><label
+                                        class="form-label form-label" for="datestocked">Date Stocked</label>
+                                    <div class="error-message" id="error-datestocked"><span>Please enter the date
+                                            stocked.</span></div>
+                                </div>
+                            </div>
+                            <div class="form-floating" style="width:100%;">
+                                <textarea class="form-control" name="prod_desc" id="prod_description" data-id="prod_description"
+                                    placeholder="Product Description"></textarea><label class="form-label form-label"
+                                    for="prod_description">Product Description</label>
+                                <div id="error-prod_description" class="error-message"><span>Please enter product
+                                        description.</span></div>
+                            </div>
+                            <div class="quantity_input_container">
+                                <h1>Quantity</h1>
+                                <div class="form-floating">
+                                    <div class="quantity_input">
+                                        <button class="quantity_minus" type="button"
+                                            onclick="decrementQuantity()">-</button>
+                                        <input type="number" aria-labelledby="label-quantity" class="input_quantity"
+                                            data-id="quantity" id="quantity" min="0" name="quantity"
+                                            required="" value="0">
+                                        <button class="quantity_add" type="button"
+                                            onclick="incrementQuantity1()">+</button>
+                                        <div id="error-quantity" class="error-message"><span>Please input a quantity
+                                                value more than 0.</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer add_product_button"><button class="btn clear_form" type="button"
+                        role="button" aria-label="Clear Form" onclick="clearForm()"><span
+                            class="clear_form_base">Clear Form</span></button>
+                    <button class="btn disabled submit_product" id="submit_product" type="submit"
+                        disabled=""><span class="submit_product_base">Submit</span></button>
+                </div>
+            </div>
+            </form>
+
+        </div>
+    </div>

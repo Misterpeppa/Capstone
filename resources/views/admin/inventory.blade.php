@@ -1163,13 +1163,13 @@
         </div>
     </div>
     <div id="add_stock_modal" class="modal fade" role="dialog" tabindex="-1">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content add_stock_modal">
                 <div class="modal-header">
                     <h1 class="modal-title">Add Stock</h1><button class="btn-close" aria-label="Close"
                         data-bs-dismiss="modal" type="button"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body add_stock_modal">
                     @foreach ($products as $productInfo)
                         <form
                             action="{{ route('product.stock', ['product_type' => $productInfo->product_type, 'id' => $productInfo->id]) }}"
@@ -1538,12 +1538,7 @@
     </script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/appointmentforms.js') }}"></script>
-    <script src="{{ asset('assets/js/calendar.js') }}"></script>
     <script src="{{ asset('assets/js/inventory.js') }}"></script>
-    <script src="{{ asset('assets/js/Multi-step-form-script.js') }}"></script>
-    <script src="{{ asset('assets/js/signin.js') }}"></script>
-    <script src="{{ asset('assets/js/signup.js') }}"></script>
 
 </body>
 

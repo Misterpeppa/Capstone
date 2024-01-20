@@ -109,7 +109,7 @@
                                             <path d="M7.91187 3.33001C8.08095 4.4114 8.60433 5.40602 9.39986 6.15776C10.1954 6.9095 11.218 7.37579 12.3072 7.48343M0.742188 17H15.259M9.01676 2.1606L2.39549 9.16899C2.14548 9.43513 1.90353 9.95935 1.85514 10.3223L1.55674 12.9353C1.4519 13.8789 2.12935 14.5241 3.06488 14.3628L5.66177 13.9192C6.02469 13.8547 6.53278 13.5886 6.78279 13.3143L13.4041 6.30596C14.5493 5.09622 15.0654 3.71713 13.2831 2.03157C11.5088 0.362135 10.162 0.950872 9.01676 2.1606Z" stroke="#1C1C1C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                         </svg></span></button>
 												</div>
-												<div class="card_body">
+												<div class="card_body user_settings">
 													<div class="card_body_row mt-3">
 														<div class="form-floating" style="width: 100%;">
 															<input id="user_first_name" class="form-control" type="text" data-id="user_first_name" maxlength="50" placeholder="First Name" disabled />
