@@ -128,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Add an event listener for the buttons inside dropdown-content
         document.querySelectorAll('.button-action button').forEach(function (button) {
     button.addEventListener('click', function (event) {
+        closeDropdownMenus();
         event.preventDefault();
         const action = this.getAttribute('data-action');
         if (action === 'Add_Pet') {
@@ -1049,3 +1050,6 @@ setupDateValidation('client_birthdate');
 // Example usage for client_birthdate-1
 setupDateValidation('client_birthdate-1');
 setupDateValidation('client_birthdate-2');
+
+
+

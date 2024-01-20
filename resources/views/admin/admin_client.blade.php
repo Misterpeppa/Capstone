@@ -3,25 +3,24 @@
 
 <head>
     <meta charset="utf-8">
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Admin | Client</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" />
+    <title>Admin | Clients</title>
     <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
-    <link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch-toggle-switch.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <style>
@@ -278,12 +277,11 @@
                                 </defs>
                             </svg> Add Client</span></button>
                 </div>
-                <div id="client_table_container" class="client_table_container">
-                    <table id="client_table" class="table table-striped table-bordered" cellspacing="0"
-                        width="100%">
+                <div id="client_table_container" class="table-responsive w-100">
+                    <table class="table" >
                         <thead>
                             <tr>
-                                <th><input id="SelectAll" type="checkbox" class="checkbox"></th>
+                                <th><input id="SelectAll" type="radio" class="checkbox"></th>
                                 <th>Client</th>
                                 <th>Email</th>
                                 <th>Phone Number</th>
@@ -330,7 +328,8 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="pagination">
+                </div>
+                <div class="pagination">
                         <div class="pagination-menu">
                             <span>Go to:</span>
                             <select class="paginationGoToSelect" onchange="changePage(this)">
@@ -365,11 +364,6 @@
                             </select>
                         </div>
                     </div>
-
-
-
-
-                </div>
             </div>
             <div id="edit_client_detail_header" class="prod_detail_header">
                 <h1>Edit Client Information</h1>
@@ -789,11 +783,16 @@
                                     <option value="Jr">Jr</option>
                                     <option value="Sr">Sr</option>
                                     <option value="II">II</option>
-                                    <option value="">Other</option>
+                                    <option value="Other">Other</option>
                                 </select><label class="form-label" for="suffix">Suffix</label>
                                 <div id="error-suffix-4" class="error-message"><span>Please select a
                                         suffix.</span></div>
                             </div>
+
+                            <div id="specify_user_suffix" class="form-floating" style="width: 100%;display: none;"><input id="suffix" class="form-control" type="text" data-id="suffix" /><label class="form-label" for="suffix">Suffix</label>
+                                <div id="error-suffix-2" class="error-message"><span>Please select a suffix.</span></div>
+                            </div>
+                            
                         </div>
                         <div class="form-floating" style="width:100%;"><input name="birthdate" class="form-control"
                                 id="editBirthdate" data-id="manufactured_date" placeholder="Manufactured Date"
@@ -1617,6 +1616,34 @@
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/sidebar.js') }}"></script>
     <script src="{{ asset('assets/js/client.js') }}"></script>
+
+    <script>
+            var SelectAll = document.getElementById("SelectAll");
+
+            SelectAll.addEventListener("click", function () {
+    var tableBody = document.getElementById('client_table_body');
+    var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
+
+    rowCheckboxes.forEach(function (checkbox) {
+        checkbox.checked = !checkbox.checked; // Toggle the state
+    });
+
+});
+    </script>
+
+    <script>
+            document.getElementById('suffix-4').addEventListener('change', function() {
+        var specifySuffixDiv = document.getElementById('specify_user_suffix');
+        var selectedValue = this.value;
+
+        if (selectedValue === 'Other') {
+            specifySuffixDiv.style.display = 'flex';
+        } else {
+            specifySuffixDiv.style.display = 'none';
+        }
+    });
+    </script>
+
 
 </body>
 

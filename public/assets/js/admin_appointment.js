@@ -807,7 +807,7 @@ var selectAllapproved = document.getElementById("selectAll_approve");
 
 selectAllapproved.addEventListener("click", function () {
     var tableBody = document.getElementById('approvedTableBody');
-    var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
+    var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
 
     rowCheckboxes.forEach(function (checkbox) {
         checkbox.checked = !checkbox.checked; // Toggle the state
@@ -820,7 +820,7 @@ var selectAllpending = document.getElementById("selectAll_pending");
 
 selectAllpending.addEventListener("click", function () {
     var tableBody = document.getElementById('pendingTableBody');
-    var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
+    var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
 
     rowCheckboxes.forEach(function (checkbox) {
         checkbox.checked = !checkbox.checked; // Toggle the state
