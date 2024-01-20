@@ -282,7 +282,7 @@
                     <table id="client_table" class="table" >
                         <thead>
                             <tr>
-                                <th><input id="SelectAll" type="checkbox" class="checkbox"></th>
+                                <th><input id="SelectAll" type="radio" class="checkbox"></th>
                                 <th>Client</th>
                                 <th>Email</th>
                                 <th>Phone Number</th>
@@ -295,7 +295,7 @@
                         <tbody id="client_table_body">
                             @foreach ($clients as $clientInfo)
                                 <tr>
-                                    <td><input type="checkbox"></td>
+                                    <td><input type="radio" class="checkbox"></td>
                                     <td>{{ $clientInfo->first_name }} {{ $clientInfo->middle_name }}
                                         {{ $clientInfo->last_name }} {{ $clientInfo->suffix }}</td>
                                     <td>{{ $clientInfo->email }}</td>
@@ -1625,6 +1625,21 @@
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/sidebar.js') }}"></script>
     <script src="{{ asset('assets/js/client.js') }}"></script>
+
+    <script>
+            var SelectAll = document.getElementById("SelectAll");
+
+            SelectAll.addEventListener("click", function () {
+    var tableBody = document.getElementById('client_table_body');
+    var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
+
+    rowCheckboxes.forEach(function (checkbox) {
+        checkbox.checked = !checkbox.checked; // Toggle the state
+    });
+
+});
+    </script>
+
     <script>
             document.getElementById('suffix-4').addEventListener('change', function() {
         var specifySuffixDiv = document.getElementById('specify_user_suffix');
@@ -1637,6 +1652,7 @@
         }
     });
     </script>
+
 
 </body>
 

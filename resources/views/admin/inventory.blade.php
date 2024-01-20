@@ -509,7 +509,7 @@
                             <table id="example" class="table">
                                 <thead>
                                     <tr>
-                                        <th><input id="SelectAll" type="checkbox" class="checkbox"></th>
+                                        <th><input id="SelectAll" type="radio" class="checkbox"></th>
                                         <th>Product Name</th>
                                         <th>Category</th>
                                         <th>On Hand</th>
@@ -528,7 +528,7 @@
                                         @endphp
                                
                                         <tr data-row-id="{{ $product->id }}">
-                                          <td><input type="checkbox"></td>
+                                          <td><input type="radio" class="checkbox"></td>
                                           <td>{{ $product->item_name }}</td>
                                           <td>{{ $product->product_type }}</td>
                                           <td>{{ $product->info_quantity }}</td>
@@ -1503,6 +1503,20 @@
         function submitForm() {
             document.getElementById('searchForm').submit();
         }
+    </script>
+
+<script>
+            var SelectAll = document.getElementById("SelectAll");
+
+            SelectAll.addEventListener("click", function () {
+    var tableBody = document.getElementById('inventory_table_body');
+    var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
+
+    rowCheckboxes.forEach(function (checkbox) {
+        checkbox.checked = !checkbox.checked; // Toggle the state
+    });
+
+});
     </script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
