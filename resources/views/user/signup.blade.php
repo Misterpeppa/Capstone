@@ -118,22 +118,23 @@
 					<div class="justify-content-between signup_header" id="signup_header">
 						<button id="signup_back_btn" class="signup_back_btn" type="button">
 						<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-							<g clip-path="url(#clip0_6550_4693)" filter="url(#filter0_d_6550_4693)">
-								<path d="M5.5 12H19.5M5.5 12L11.5 18M5.5 12L11.5 6" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-							</g>
-							<defs>
-								<filter id="filter0_d_6550_4693" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-								<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-								<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-								<feOffset dy="2"/>
-								<feGaussianBlur stdDeviation="1"/>
-								<feComposite in2="hardAlpha" operator="out"/>
-								<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-								<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6550_4693"/>
-								<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6550_4693" result="shape"/>
-								</filter>
-								<clipPath id="clip0_6550_4693"><rect width="24" height="24" fill="white" transform="translate(0.5)"/></clipPath></defs>
-							</svg> Back
+  <g clip-path="url(#clip0_6550_4693)" filter="url(#filter0_d_6550_4693)">
+    <path d="M5.5 12H19.5M5.5 12L11.5 18M5.5 12L11.5 6" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <filter id="filter0_d_6550_4693" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="2"/>
+      <feGaussianBlur stdDeviation="1"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6550_4693"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6550_4693" result="shape"/>
+    </filter>
+    <clipPath id="clip0_6550_4693"><rect width="24" height="24" fill="white" transform="translate(0.5)"/></clipPath></defs>
+</svg> Back
+
 						</button>
 					</div>
 					<div class="heading">

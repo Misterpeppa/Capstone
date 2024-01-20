@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
   var add_patient_btn = document.getElementById('add_patient_btn');
   var add_patient_modal = new bootstrap.Modal(document.getElementById('add_patient_modal'));
+  var submit_client = document.getElementById('submit_client');
+
+  
+
   
   add_patient_btn.addEventListener('click', function () {
     add_patient_modal.show();
@@ -10,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
     submit_client.addEventListener('click', function () {
          submitClient();
     modal.hide();
+
+
+
   });
     
     
@@ -199,92 +206,7 @@ inputs.forEach(inputId => {
     
     
     
-function setupFormValidation(inputIds, buttonId, clearButtonId, close_client_modalId) {
-    var inputs = inputIds.map(id => document.getElementById(id));
-    var submitButton = document.getElementById(buttonId);
-    var clearButton = document.getElementById(clearButtonId);
-    var close_client_btn = document.getElementById(close_client_modalId);
 
-    // Function to check if all required input fields have values
-    function areAllInputsFilled() {
-        return inputs.every(input => {
-            if (input.tagName === 'SELECT') {
-                // For select elements, check if a valid option is selected
-                return input.options[input.selectedIndex].value.trim() !== '';
-            } else {
-                // For other input types, check if the value is present
-                return input.value.trim() !== '';
-            }
-        });
-    }
-
-    // Disable the submit button by default
-    submitButton.disabled = true;
-
-    // Add an event listener to each input field for the 'input' event
-    inputs.forEach(input => input.addEventListener('input', enableSubmitButton));
-
-    function enableSubmitButton() {
-        // Enable or disable the submit button based on the condition
-        submitButton.disabled = !areAllInputsFilled();
-    }
-
-    // Add an event listener to the submit button for the 'click' event
-    submitButton.addEventListener('click', function () {
-        console.log("Submit button clicked!");
-        // Add your logic for handling the form submission
-        // For example, you can call a function to process the form data
-
-        // Reset all input fields
-        inputs.forEach(input => {
-            if (input.tagName === 'SELECT') {
-                // For select elements, set the selectedIndex to the default one
-                input.selectedIndex = 0;
-            } else {
-                // For other input types, set the value to an empty string
-                input.value = '';
-            }
-        });
-
-        // Disable the submit button after submission
-        submitButton.disabled = true;
-    });
-
-    // Add an event listener to the clear button for the 'click' event
-    clearButton.addEventListener('click', function () {
-        // Clear all input fields
-        inputs.forEach(input => {
-            if (input.tagName === 'SELECT') {
-                // For select elements, set the selectedIndex to the default one
-                input.selectedIndex = 0;
-            } else {
-                // For other input types, set the value to an empty string
-                input.value = '';
-            }
-        });
-
-        // Disable the submit button after clearing
-        submitButton.disabled = true;
-    });
-    // Disable or enable the submit button based on the initial state of the form
-    submitButton.disabled = !areAllInputsFilled();
-    
-    close_client_btn.addEventListener('click', function () {
-        // Clear all input fields
-        inputs.forEach(input => {
-            if (input.tagName === 'SELECT') {
-                // For select elements, set the selectedIndex to the default one
-                input.selectedIndex = 0;
-            } else {
-                // For other input types, set the value to an empty string
-                input.value = '';
-            }
-        });
-
-        // Disable the submit button after clearing
-        submitButton.disabled = true;
-    });
-}
 
 function setupDateValidation(inputId) {
     const today = new Date();
@@ -424,13 +346,82 @@ function isValidEmail(email) {
 
 
 
-// Example usage for the first set of inputs, submit button, and clear button
+
+
+
+function setupFormValidation(inputIds, buttonClass, clearButtonId, formId) {
+  var inputs = inputIds.map(id => document.getElementById(id));
+  var submitButton = document.querySelector('.' + buttonClass);
+  var clearButton = document.getElementById(clearButtonId);
+  var form = document.getElementById(formId);
+
+  function areAllInputsFilled() {
+      return inputs.every(input => {
+          if (input.tagName === 'SELECT') {
+              return input.options[input.selectedIndex].value.trim() !== '';
+          } else {
+              return input.value.trim() !== '';
+          }
+      });
+  }
+
+  submitButton.disabled = true;
+
+  inputs.forEach(input => input.addEventListener('input', enableSubmitButton));
+
+  function enableSubmitButton() {
+      submitButton.disabled = !areAllInputsFilled();
+  }
+
+  submitButton.type = 'submit';
+
+  submitButton.addEventListener('click', function (event) {
+      console.log("Submit button clicked!");
+      
+      if (areAllInputsFilled()) {
+          // Your logic for handling the form submission
+          // For example, you can submit the form programmatically
+          form.submit();
+          
+          // Clear input fields
+          inputs.forEach(input => {
+              if (input.tagName === 'SELECT') {
+                  input.selectedIndex = 0;
+              } else {
+                  input.value = '';
+              }
+          });
+
+          // Disable the submit button again
+          submitButton.disabled = true;
+      }
+
+      // Prevent the default form submission behavior
+      event.preventDefault();
+  }); 
+
+  clearButton.addEventListener('click', function () {
+      console.log("Clear button clicked!");
+      inputs.forEach(input => {
+          if (input.tagName === 'SELECT') {
+              input.selectedIndex = 0;
+          } else {
+              input.value = '';
+          }
+      });
+
+      // After clearing, also disable the submit button
+      submitButton.disabled = true;
+  });
+
+  // Disable or enable the submit button based on the initial state of the form
+  console.log("Initial form state:", areAllInputsFilled());
+  submitButton.disabled = !areAllInputsFilled();
+}
+
 setupFormValidation(
-    ['first_name', 'middle_name', 'last_name', 'client_birthdate', 'client_address', 'client_email', 'user_phone'],
-    'submit_Client',
-    'clear_form', 
-    'close_client_modal'
+['first_name','middle_name', 'last_name', 'client_birthdate', 'client_address', 'client_email', 'user_phone'],
+'submit_client',
+'clear_form'
+
 );
-    
-
-

@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     var emailInput = document.getElementById('email');
     var errorEmail = document.getElementById('error-email');
-    var guideEmailMessage = document.getElementById('guide_email_message');
-      var guide_password = document.getElementById('guide_password');
     var passwordInput = document.getElementById('password');
     var errorPassword = document.getElementById('error-password');
     var signInBtn = document.getElementById('signin_btn');
@@ -24,66 +22,45 @@ document.addEventListener('DOMContentLoaded', function () {
         signInBtn.classList.add('disabled'); // Add the 'disabled' class
       }
     }
-  
-    // Function to show error message if email is clicked and left without a value
-  
-    function checkEmailOnBlur() {
-      if (emailInput.value.trim() === '') {
-        errorEmail.style.display = 'flex'; // Show the email error message
-        emailInput.classList.add('is-invalid');
-        emailInput.classList.add('error-border');
-      } else if (!(emailInput.value.includes('@gmail.com') || emailInput.value.includes('@yahoo.com'))) {
-        errorEmail.style.display = 'flex'; // Show the email error message
-        emailInput.classList.add('is-invalid');
-        emailInput.classList.add('error-border');
+    
+
+    function handleInputError(input, error) {
+      function onBlur() {
+      if (input.value.trim() === '' || input.value.trim() === '0') {
+          error.style.display = 'flex'; // Show the error message
+          input.classList.add('is-invalid');
+          input.classList.add('error-border');
+      } else if (input.type === 'email' && !isValidEmail(input.value.trim())) {
+          error.style.display = 'flex'; // Show the error message
+          input.classList.add('is-invalid');
+          input.classList.add('error-border');
+      } else {
+          error.style.display = 'none'; // Hide the error message
+          input.classList.remove('is-invalid');
+          input.classList.remove('error-border');
       }
-    }
+  }
   
-    // Function to hide error message when email is focused
-    function hideErrorOnEmailFocus() {
-      errorEmail.style.display = 'none'; // Hide the email error message
-      guideEmailMessage.style.display = 'flex'; // Show the guide email message
-        emailInput.classList.remove('is-invalid');
-      emailInput.classList.remove('error-border');
-    }
   
-    // Function to hide guide email message when email is blurred
-    function hideGuideEmailMessage() {
-      guideEmailMessage.style.display = 'none'; // Hide the guide email message
-    }
+      function onFocus() {
+          error.style.display = 'none'; // Hide the error message
+          input.classList.remove('is-invalid');
+          input.classList.remove('error-border');
+      }
   
-    // Function to show error message if password is clicked and left without a value
-    function checkPasswordOnBlur() {
-      if (passwordInput.value.trim() === '') {
-        errorPassword.style.display = 'flex'; // Show the password error message
-                  passwordInput.classList.add('is-invalid');
-      passwordInput.classList.add('error-border');
-          guide_password.style.display = 'none';
-      } 
-    }
-  
-    // Function to hide error message when password is focused
-    function hideErrorOnPasswordFocus() {
-      errorPassword.style.display = 'none'; // Hide the password error message
-        guide_password.style.display = 'flex'; // Show the guide password 
-        passwordInput.classList.remove('is-invalid');
-      passwordInput.classList.remove('error-border');
-    }
-      
-      function hideGuidePasswordMessage() {
-      guide_password.style.display = 'none'; // Hide the guide password message
-    }
-  
+      // Add event listeners to inputs
+      input.addEventListener('blur', onBlur);
+      input.addEventListener('focus', onFocus);
+  }   
+
+  handleInputError(passwordInput,errorPassword);
+  handleInputError(emailInput, errorEmail);
     // Add event listeners to inputs to check on input change
     emailInput.addEventListener('input', checkInputs);
-    emailInput.addEventListener('blur', checkEmailOnBlur);
-    emailInput.addEventListener('focus', hideErrorOnEmailFocus);
-    emailInput.addEventListener('blur', hideGuideEmailMessage);
+    
     
     passwordInput.addEventListener('input', checkInputs);
-    passwordInput.addEventListener('blur', checkPasswordOnBlur);
-    passwordInput.addEventListener('focus', hideErrorOnPasswordFocus);
-  passwordInput.addEventListener('blur', hideGuidePasswordMessage);
+  
   });
 
 
