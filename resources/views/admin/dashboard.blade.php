@@ -15,8 +15,8 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch-toggle-switch.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch.css') }}">
 </head>
 
 <body>
@@ -108,11 +108,12 @@
 						<h1>Appointments</h1>
 						<button class="btn dashboard_view_btn" type="button"><span class="dashboard_view_btn_base">View</span></button>
 					</div>
-					<table id="dashboard_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+					<div class="table-responsive w-100">
+					<table id="dashboard_table" class="table">
 						<thead>
 							<tr>
 								<th>
-									<input id="SelectAll" type="checkbox" class="checkbox">
+									<input id="SelectAll" type="radio" class="checkbox">
 								</th>
 								<th>No.</th>
 								<th>Client</th>
@@ -126,18 +127,20 @@
 						<tbody id="dashboard_table_body" class="dashboard_table_body">
                         @foreach ($appointment_approved as $index => $appointment)
                             <tr>
-                            <td class="text-style"></td> 
-                            <td class="text-style">{{ $index + 1 }}</td>
-                            <td class="text-style">{{ $appointment->clients->first_name }} {{ $appointment->clients->last_name }}</td> 
-                            <td class="text-style">{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
-                            <td class="text-style">{{ $appointment['appointmentDate'] }}</td>
+                            <td > <input type="radio" class="checkbox"></td> 
+                            <td >{{ $index + 1 }}</td>
+                            <td >{{ $appointment->clients->first_name }} {{ $appointment->clients->last_name }}</td> 
+                            <td >{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
+                            <td >{{ $appointment['appointmentDate'] }}</td>
                             <td>{{ \Carbon\Carbon::parse($appointment['appointmentTime'])->format('g:ia') }}</td>
-                            <td class="text-style">{{ $appointment['appointmentType'] }}</td>
+                            <td >{{ $appointment['appointmentType'] }}</td>
                             <td>Action</td>
                             </tr>
                         @endforeach 
                         </tbody>
 					</table>
+					</div>
+					
 					<div class="pagination">
 						<div class="pagination-pages">
 							{{ $appointment_approved->appends([
@@ -156,7 +159,7 @@
 						<thead>
 							<tr>
 								<th>
-									<input id="SelectAll" type="checkbox" class="checkbox">
+									<input id="SelectAll" type="radio" class="checkbox">
 								</th>
 								<th>Product Name</th>
 								<th>Category</th>
@@ -170,9 +173,9 @@
 						<tbody id="dashboard_table_body" class="dashboard_table_body">
 							@foreach ($products as $product)
                             <tr>
-                          
-                            <td class="text-style">{{ $loop->index + 1 }}</td>
-                            <td class="text-style">{{ $product->item_name }}</td> 
+							<td><input type="radio" class="checkbox"></td>
+                            <td >{{ $loop->index + 1 }}</td>
+                            <td >{{ $product->item_name }}</td> 
 							<td>{{ $product->item_name }}</td>
 							<td>{{ $product->product_type }}</td>
 							<td>{{ $product->info_quantity }}</td>

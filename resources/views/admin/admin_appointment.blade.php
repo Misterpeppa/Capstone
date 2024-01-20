@@ -17,8 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/pagination.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -55,7 +54,7 @@
             <div class="main_content">
                 <div id="client_header" class="client_header">
                     <div class="header_text_container">
-                        <h1><strong>Appointment</h1>
+                        <h1><strong>Appointment</strong></h1>
                     </div>
                     <div class="btn-group split_btn" id="add_approve_appointment_split_btn" style="display: none;">
                         <button class="btn add_Product_btn" id="approved_appointment_btn" type="button"><span
@@ -561,8 +560,7 @@
                                             </defs>
                                         </svg> New Appointment</span></button>
                             </div>
-                            <div class="table-responsive mt-3" id="approved_table"
-                                style="overflow: visible; display: none;">
+                            <div class="table-responsive mt-3" id="approved_table">
                                 <table class="table approve_table" id="approve_table">
                                     <thead>
                                         <tr>
@@ -582,21 +580,21 @@
                                     <tbody id="approvedTableBody">
                                         @foreach ($appointment_approved as $index => $appointment)
                                             <tr data-row-id="{{ $appointment->id }}">
-                                                <td class="text-style"></td>
-                                                <td class="text-style">{{ $index + 1 }}</td>
-                                                <td class="text-style">{{ $appointment->clients->first_name }}
+                                                <td ><input type="radio" class="checkbox"></td>
+                                                <td >{{ $index + 1 }}</td>
+                                                <td >{{ $appointment->clients->first_name }}
                                                     {{ $appointment->clients->middle_name }}
                                                     {{ $appointment->clients->last_name }}
                                                     {{ $appointment->clients->suffix }}</td>
-                                                <td class="text-style">{{ $appointment->status }}</td>
-                                                <td class="text-style">{{ $appointment['petType'] }}
+                                                <td >{{ $appointment->status }}</td>
+                                                <td >{{ $appointment['petType'] }}
                                                     ({{ $appointment['breed'] }})</td>
-                                                <td class="text-style">{{ $appointment['appointmentDate'] }} |
+                                                <td >{{ $appointment['appointmentDate'] }} |
                                                     {{ $appointment['appointmentTime'] }}</td>
-                                                <td class="text-style">{{ $appointment['appointmentType'] }}</td>
-                                                <td class="text-style">{{ $appointment->notes }}</td>
-                                                <td>
-                                                    <div class="dropdown"><button class="btn dropbtn dropdown-toggle"
+                                                <td >{{ $appointment['appointmentType'] }}</td>
+                                                <td >{{ $appointment->notes }}</td>
+                                                <td class="dropdown button-action">
+                                                <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"
                                                             aria-expanded="false" data-bs-toggle="dropdown"
                                                             type="button"><svg xmlns="http://www.w3.org/2000/svg"
                                                                 width="18" height="18" viewBox="0 0 18 18"
@@ -643,7 +641,6 @@
                                                                     </defs>
                                                                 </svg> Archive</a>
                                                         </div>
-                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -1040,8 +1037,7 @@
                                             </defs>
                                         </svg> New Appointment</span></button>
                             </div>
-                            <div class="table-responsive mt-3" id="pending_table"
-                                style="overflow: visible; display: none;">
+                            <div class="table-responsive mt-3" id="pending_table">
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -1060,20 +1056,20 @@
                                     <tbody id="pendingTableBody">
                                         @foreach ($appointment_pending as $index => $appointment)
                                             <tr>
-                                                <td class="text-style"></td>
-                                                <td class="text-style">{{ $index + 1 }}</td>
-                                                <td class="text-style">{{ $appointment->clients->first_name }}
+                                                <td ><input type="radio" class="checkbox"></td></td>
+                                                <td >{{ $index + 1 }}</td>
+                                                <td >{{ $appointment->clients->first_name }}
                                                     {{ $appointment->clients->middle_name }}
                                                     {{ $appointment->clients->last_name }}
                                                     {{ $appointment->clients->suffix }}</td>
-                                                <td class="text-style">{{ $appointment->status }}</td>
-                                                <td class="text-style">{{ $appointment['petType'] }}
+                                                <td >{{ $appointment->status }}</td>
+                                                <td >{{ $appointment['petType'] }}
                                                     ({{ $appointment['breed'] }})</td>
-                                                <td class="text-style">{{ $appointment['appointmentDate'] }} |
+                                                <td >{{ $appointment['appointmentDate'] }} |
                                                     {{ $appointment['appointmentTime'] }}</td>
-                                                <td class="text-style">{{ $appointment['appointmentType'] }}</td>
+                                                <td >{{ $appointment['appointmentType'] }}</td>
                                                 <td>
-                                                    <div class="dropdown"><button class="btn dropbtn dropdown-toggle"
+                                                    <div class="dropdown"><button class="dropbtn" style="background-color: transparent; border:none;"
                                                             aria-expanded="false" data-bs-toggle="dropdown"
                                                             type="button"><svg xmlns="http://www.w3.org/2000/svg"
                                                                 width="18" height="18" viewBox="0 0 18 18"
@@ -1544,20 +1540,20 @@
                                     <tbody id="rejectedTableBody">
                                         @foreach ($appointment_rejected as $index => $appointment)
                                             <tr>
-                                                <td class="text-style"></td>
-                                                <td class="text-style">{{ $index + 1 }}</td>
-                                                <td class="text-style">{{ $appointment->clients->first_name }}
+                                                <td ><input type="radio" class="checkbox"></td></td>
+                                                <td >{{ $index + 1 }}</td>
+                                                <td >{{ $appointment->clients->first_name }}
                                                     {{ $appointment->clients->middle_name }}
                                                     {{ $appointment->clients->last_name }}
                                                     {{ $appointment->clients->suffix }}</td>
-                                                <td class="text-style">{{ $appointment['petType'] }}
+                                                <td >{{ $appointment['petType'] }}
                                                     ({{ $appointment['breed'] }})</td>
-                                                <td class="text-style">{{ $appointment['appointmentDate'] }} |
+                                                <td >{{ $appointment['appointmentDate'] }} |
                                                     {{ $appointment['appointmentTime'] }}</td>
-                                                <td class="text-style">{{ $appointment['appointmentType'] }}</td>
-                                                <td class="text-style">{{ $appointment->notes }}</td>
+                                                <td >{{ $appointment['appointmentType'] }}</td>
+                                                <td >{{ $appointment->notes }}</td>
                                                 <td>
-                                                    <div class="dropdown"><button class="btn dropbtn dropdown-toggle"
+                                                    <div class="dropdown"><button class="dropbtn" style="background-color: transparent; border:none;"
                                                             aria-expanded="false" data-bs-toggle="dropdown"
                                                             type="button"><svg xmlns="http://www.w3.org/2000/svg"
                                                                 width="18" height="18" viewBox="0 0 18 18"

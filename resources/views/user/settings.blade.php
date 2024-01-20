@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch-toggle-switch.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
 </head>
 
@@ -92,34 +92,54 @@
 												<div class="card_body user_settings_card">
 													<div class="card_body_row">
 														<div class="form-floating" style="width: 100%;">
-															<input id="user_first_name" class="form-control" type="text" name="first_name" data-id="user_first_name" maxlength="50" placeholder="First Name" disabled />
-															<label class="form-label" for="user_first_name">{{ $clientInfo->first_name }}<span> *</span></label>
+															<input id="user_first_name" class="form-control" type="text" name="first_name" value="{{ $clientInfo->first_name }}" data-id="user_first_name" maxlength="50" placeholder="First Name" disabled />
+															<label class="form-label" for="user_first_name">First Name<span> *</span></label>
 															<div id="error-user_first_name" class="error-message"><span>• Please enter your first name.</span></div>
 															<div id="guide_user_first_name" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
 														</div>
 														<div class="form-floating" style="width: 100%;">
-															<input id="user_middle_name" class="form-control" type="text" name="middle_name" data-id="user_middle_name" maxlength="50" placeholder="Middle Name" disabled />
-															<label class="form-label" for="user_middle_name">{{ $clientInfo->middle_name }}<span> *</span></label>
+															<input id="user_middle_name" class="form-control" type="text" name="middle_name" value="{{ $clientInfo->middle_name }}" data-id="user_middle_name" maxlength="50" placeholder="Middle Name" disabled />
+															<label class="form-label" for="user_middle_name">Middle Name<span> *</span></label>
 															<div id="error-middle_name" class="error-message"><span>• Please enter your first name.</span></div>
 															<div id="guide-middle_name" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
 														</div>
-														<div class="form-floating" style="width: 100%;">
-															<input id="user_last_name" class="form-control" type="text" name="last_name" data-id="user_last_name" maxlength="50" placeholder="Last Name" disabled />
-															<label class="form-label" for="user_last_name">{{ $clientInfo->last_name }}<span> *</span></label>
+														
+														
+													</div>
+
+													<div class="card_body_row">
+													<div class="form-floating" style="width: 100%;">
+															<input id="user_last_name" class="form-control" type="text" name="last_name" value="{{ $clientInfo->last_name }}" data-id="user_last_name" maxlength="50" placeholder="Last Name" disabled />
+															<label class="form-label" for="user_last_name">Last Name <span> *</span></label>
 															<div id="error-last_name" class="error-message"><span>• Please enter your first name.</span></div>
 															<div id="guide-last_name" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
+														</div>
+														<div class="form-floating" style="width:100%;"><select class="form-select"
+																id="suffix" data-id="suffix" disabled>
+																<option value="none" selected="">Select a Suffix</option>
+																<option value="Jr">Jr</option>
+																<option value="Sr">Sr</option>
+																<option value="II">II</option>
+																<option value="Other">Other</option>
+															</select><label class="form-label" for="suffix">Suffix</label>
+															<div id="error-suffix" class="error-message"><span>Please select a
+																	suffix.</span></div>
+														</div>
+
+														<div id="specify_user_suffix" class="form-floating" style="width: 100%;display: none;"><input id="specify_suffix" class="form-control" type="text" data-id="specify_suffix" /><label class="form-label" for="suffix">Specify Suffix</label>
+															<div id="error-suffix-2" class="error-message"><span>Please select a suffix.</span></div>
 														</div>
 													</div>
 													<div class="card_body_row">
 														<div class="form-floating" style="width: 100%;">
-															<input id="user_email" class="form-control" type="email" name="email" data-id="user_email" maxlength="50" placeholder="Email" disabled />
-															<label class="form-label" for="user_email">{{ $clientInfo->email }}<span> *</span></label>
+															<input id="user_email" class="form-control" type="email" name="email" value="{{ $clientInfo->email }}" data-id="user_email" maxlength="50" placeholder="Email" disabled />
+															<label class="form-label" for="user_email">Email<span> *</span></label>
 															<div id="error-user_email" class="error-message"><span>• Please enter your first name.</span></div>
 															<div id="guide-user_email" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
 														</div>
 														<div class="form-floating" style="width: 100%;">
-															<input id="user_phone_number" class="form-control" type="tel" name="phone" data-id="user_phone_number" maxlength="11" placeholder="Phone Number" disabled />
-															<label class="form-label" for="user_email">{{ $clientInfo->phone }}<span> *</span></label>
+															<input id="user_phone_number" class="form-control" type="tel" name="phone" value="{{ $clientInfo->phone }}" data-id="user_phone_number" maxlength="11" placeholder="Phone Number" disabled />
+															<label class="form-label" for="user_email">Phone Number<span> *</span></label>
 															<div id="error-user_phone_number" class="error-message"><span>• Please enter your first name.</span></div>
 															<div id="guide-user_phone_number" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
 														</div>
@@ -569,6 +589,19 @@
         });
     </script>
 	@endif
+
+	<script>
+            document.getElementById('suffix').addEventListener('change', function() {
+        var specifySuffixDiv = document.getElementById('specify_user_suffix');
+        var selectedValue = this.value;
+
+        if (selectedValue === 'Other') {
+            specifySuffixDiv.style.display = 'flex';
+        } else {
+            specifySuffixDiv.style.display = 'none';
+        }
+    });
+    </script>
 
   <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
   <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
