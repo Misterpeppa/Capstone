@@ -228,7 +228,10 @@
 													</defs>
 												</svg>&nbsp;View
 											</button>
-											<button class="dropdown-item Edit_pet-action" id="Edit" data-container-id="{{ $petrecord->pet->id }}">
+											<button class="dropdown-item Edit_pet-action" id="Edit" 
+											data-container-id="{{ $petrecord->pet->id }}" data-pet_name="{{ $petrecord->pet->name }}"
+											data-gender="{{ $petrecord->pet->gender }}" data-birthdate="{{ $petrecord->pet->birthdate}}"
+											data-age="{{ $petrecord->pet->age}}" data-specied="{{ $petrecord->pet->species}}" data-breed="{{ $petrecord->pet->breed }}">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6230_538)">
 														<path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
@@ -616,13 +619,13 @@
 							<div class="pet_details_container">
 								<input type="hidden" name="pet_id" id="editpetId">
 								<div class="align-self-stretch form-floating">
-									<input type="text" class="form-control" name="pet_name" id="pet_name_edit">
+									<input type="text" class="form-control" name="pet_name" id="editPetName">
 									<label class="form-label" for="pet_name">Pet Name</label>
 									<div class="error-message" id="edit_pet_error"><span>• Error Message</span></div>
 									<div class="guide-message"><span>• Guide Message</span></div>
 								</div>
 								<div class="align-self-stretch form-floating">
-									<select aria-label="Floating label select example" name="gender" class="form-select" id="pet_sex">
+									<select aria-label="Floating label select example" name="gender" class="form-select editGender" id="editGender">
 										<option value="" selected="">Select sex</option>
 										<option value="1">Male</option>
 										<option value="2">Female</option>
@@ -633,13 +636,13 @@
 								</div>
 								<div class="new_input_row">
 									<div class="form-floating" style="width: 100%;">
-										<input class="form-control" id="pet_birthdate_edit" name="pet_birthday" type="date">
+										<input class="form-control" id="editBirthdate" name="pet_birthday" type="date">
 										<label class="form-label">Birth Date</label>
 										<div class="error-message" id="edit_birthdate_error"><span>• Error Message</span></div>
 										<div class="guide-message"></div>
 									</div>
 									<div class="form-floating" id="pet_age_edit" style="width: 100%;">
-										<input type="text" id="age_input_edit" name="pet_age" class="form-control">
+										<input type="text" id="editAge" name="pet_age" class="form-control">
 										<label class="form-label">Age</label>
 										<div class="error-message" id="edit_age_error"><span>• Error Message</span></div>
 										<div class="guide-message"></div>
@@ -647,7 +650,7 @@
 								</div>
 								<div class="new_input_row">
 									<div class="form-floating" style="width: 543px;">
-										<select class="form-select" id="pet_type_edit" name="species" aria-label="Floating label select example">
+										<select class="form-select" id="editSpecies" name="species" aria-label="Floating label select example">
 											<option value="" selected="">Pet Type</option>
 											<option value="Dog">Dog</option>
 											<option value="Cat">Cat</option>
@@ -658,7 +661,7 @@
 									</div>
 									<div class="new_inputs_row">
 										<div class="form-floating" style="width: 100%;">
-											<select class="form-select" id="pet_breed" name="breed" aria-label="Floating label select example">
+											<select class="form-select" id="editBreed" name="breed" aria-label="Floating label select example">
 												<option value="" selected="">Breed</option>
 												<option value="other">Other</option>
 											</select>
@@ -1358,6 +1361,21 @@ $(document).ready(function() {
 	$('.Edit_pet-action').click(function() {
 		const id = $(this).data('container-id');
 		$('#editpetId').val(id);
+		const petrecData = {
+			'pet_name' :$(this).data('pet_name'),
+			'gender' :$(this).data('gender'),
+			'birthdate' :$(this).data('birthdate'),
+			'age' :$(this).data('age'),
+			'species' :$(this).data('species'),
+			'breed' :$(this).data('breed'),
+			'gender' :$(this).data('gender'),
+		};
+		$('#editPetName').val(petrecData.pet_name);
+		$('.editGender').val(petrecData.gender);
+		$('#editBirthdate').val(petrecData.birthdate);
+		$('#editAge').val(petrecData.age);
+		$('#editSpecies').val(petrecData.species);
+		$('#editBreed').val(petrecData.breed);
 	});
 	$('.add_diagnosis-action').click(function() {
 		const id = $(this).data('container-id');

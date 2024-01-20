@@ -20,6 +20,7 @@ class EMRController extends Controller
     {
         $owners = Clients::withTrashed()->get();
         $petrecord = PetRecord::with('pet', 'owner')->whereNull('archived_at')->get();
+        $petrecordExists = PetRecord::exists();
         $medHistory = MedHistory::all();
         $vaxHistory = VaxHistory::all();
         $surgHistory = SurgHistory::all();
@@ -152,7 +153,10 @@ class EMRController extends Controller
             'treatment' => $request->input('treatment'),
             'med_id' => $request->input('medication'),
             'diagnosis_desc' => $request->input('diagnosis_desc'),
+        ]);
+        
         $medHistory->save();
+        
 
         return redirect()->route('admin_emr')->with('med_success', 'Pet Successfully Added');
     }
