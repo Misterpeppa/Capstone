@@ -202,7 +202,7 @@ class AppointmentController extends Controller
         $rejectQuery = $request->input('qReject');
        
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
-        $appointment_approved = AppointmentApproved::with('clients')->whereNull('archived_at')->join('clients', 'appointment_approved.user_id', '=', 'clients.id');
+        $appointment_approved = AppointmentApproved::with('clients')->whereNull('appointment_approved.archived_at')->join('clients', 'appointment_approved.user_id', '=', 'clients.id');
         $appointment_pending = AppointmentPending::with('clients')->join('clients', 'appointment_pending.user_id', '=', 'clients.id');
         $appointment_rejected = AppointmentRejected::with('clients')->join('clients', 'appointment_rejected.user_id', '=', 'clients.id');
 
