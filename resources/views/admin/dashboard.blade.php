@@ -108,6 +108,190 @@
 						<h1>Appointments</h1>
 						<button class="btn dashboard_view_btn" type="button"><span class="dashboard_view_btn_base">View</span></button>
 					</div>
+					<div class="container_header">
+                                <form action="" id="approvedForm">
+                                    <div class="left_part_product_header">
+                                        <div class="search_container">
+                                            <input type="text" class="search_input" name="qApproved"
+                                            value="{{ request('qApproved') }}" placeholder="Search Appointment">
+                                            <input type="hidden" id="pageForm" name="page"
+                                            value="{{ request('page') }}">
+                                            <input type="hidden" id="perPageForm" name="perPage"
+                                                value="{{ request('perPage') }}">
+
+                                        </div>
+                                        <button type="submit" form="approvedForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+                                        <div class="dropdown">
+                                            <button class="filter_btn dropdown-toggle fw-bold" type="button"
+                                                id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
+                                                aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
+                                                  <g clip-path="url(#clip0_3674_15869)" filter="url(#filter0_d_3674_15869)">
+                                                    <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                  </g>
+                                                  <defs>
+                                                    <filter id="filter0_d_3674_15869" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                                      <feOffset dy="2"/>
+                                                      <feGaussianBlur stdDeviation="1"/>
+                                                      <feComposite in2="hardAlpha" operator="out"/>
+                                                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3674_15869"/>
+                                                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3674_15869" result="shape"/>
+                                                    </filter>
+                                                    <clipPath id="clip0_3674_15869">
+                                                      <rect width="24" height="24" fill="white"/>
+                                                    </clipPath>
+                                                  </defs>
+                                              </svg>Filter By
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown-item ">
+                                                  <div class="form-check form-switch">
+                                                    <!-- Size of the default switch will increase 1.8 times -->
+                                                    <input class="form-check-input my-3"
+                                                          {{ request()->input('approvedCheck') == 'on' ? 'checked' : '' }}
+                                                           name ="approvedCheck" 
+                                                           type="checkbox" 
+                                                           role="switch" 
+                                                           id="approvedCheck" 
+                                                           style="transform: scale(1.5);"
+                                                           >
+                                                    <label class="form-check-label fs-6 my-1" 
+                                                           for="approvedCheck" 
+                                                           >Approved</label>
+                                                  </div>
+                                          
+                                                </li>
+                                                <li class="dropdown-item ">
+                                                  <div class="form-check form-switch">
+                                                    <!-- Size of the default switch will increase 1.8 times -->
+                                                    <input class="form-check-input my-3"
+                                                          {{ request()->input('completedCheck') == 'on' ? 'checked' : '' }}
+                                                           name ="completedCheck" 
+                                                           type="checkbox" 
+                                                           role="switch" 
+                                                           id="completedCheck" 
+                                                           style="transform: scale(1.5);"
+                                                           >
+                                                  
+                                                    <label class="form-check-label fs-6 my-1" 
+                                                           for="completedCheck" 
+                                                           >Completed</label>
+                                                  </div>
+                                                </li>
+                                                <li class="dropdown-item ">
+                                                  <div class="form-check form-switch">
+                                                    <!-- Size of the default switch will increase 1.8 times -->
+                                                    <input class="form-check-input my-3"
+                                                          {{ request()->input('dogCheck') == 'on' ? 'checked' : '' }}
+                                                           name ="dogCheck" 
+                                                           type="checkbox" 
+                                                           role="switch" 
+                                                           id="dogCheck" 
+                                                           style="transform: scale(1.5);"
+                                                           >
+                                                  
+                                                    <label class="form-check-label fs-6 my-1" 
+                                                           for="dogCheck" 
+                                                           >Dog</label>
+                                                  </div>
+                                          
+                                                </li>
+                                                <li class="dropdown-item ">
+                                                    <div class="form-check form-switch">
+                                                      <!-- Size of the default switch will increase 1.8 times -->
+                                                      <input class="form-check-input my-3"
+                                                            {{ request()->input('catCheck') == 'on' ? 'checked' : '' }}
+                                                             name ="catCheck" 
+                                                             type="checkbox" 
+                                                             role="switch" 
+                                                             id="catCheck" 
+                                                             style="transform: scale(1.5);"
+                                                             >
+                                                    
+                                                      <label class="form-check-label fs-6 my-1" 
+                                                             for="catCheck" 
+                                                             >Cat</label>
+                                                    </div>
+                                            
+                                                  </li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="dropdown">
+                                            <button class="filter_btn dropdown-toggle fw-bold" type="button"
+                                                id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
+                                                aria-expanded="false">
+                                                <i class="fa-solid fa-arrow-down-short-wide"></i>Sort
+                                                By
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown-item ">
+                                                    <input class="form-check-input me-1" type="radio" id = "radio1"
+                                                        name="sortItems"{{ request()->input('sortItems', '0') == '0' ? 'checked' : '' }}  value="0">
+                                                    <label class="form-check-label ms-1 fs-6" for="radio1">
+                                                        Appointment
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <input class="form-check-input me-1" type="radio" id = "radio2"
+                                                        name="sortItems" {{ request()->input('sortItems') == '1' ? 'checked' : '' }} value="1">
+                                                    <label class="form-check-label ms-1 fs-6" for="radio2">
+                                                        Status
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <input class="form-check-input me-1" type="radio" id = "radio3"
+                                                        name="sortItems" {{ request()->input('sortItems') == '2' ? 'checked' : '' }} value="2">
+                                                    <label class="form-check-label ms-1 fs-6" for="radio3">
+                                                        Patient
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <input class="form-check-input me-1" type="radio" id = "radio4"
+                                                        name="sortItems" {{ request()->input('sortItems') == '3' ? 'checked' : '' }} value="3">
+                                                    <label class="form-check-label ms-1 fs-6" for="radio4">
+                                                        Client
+                                                </li>
+                                                <li>
+                                                  <li class="dropdown-item">
+                                                    <input class="form-check-input me-1" type="radio" id = "radio5"
+                                                        name="sortItems" {{ request()->input('sortItems') == '4' ? 'checked' : '' }} value="4">
+                                                    <label class="form-check-label ms-1 fs-6" for="radio5">
+                                                        Surgery Type
+                                                </li>
+                                                <li>
+                                                    <hr class="dropdown-divider me-2 ms-2">
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <input class="form-check-input me-1" type="radio" id = "radio6"
+                                                        name="sortOrder" {{ request()->input('sortOrder') == '0' ? 'checked' : '' }} value="0">
+                                                    <label class="form-check-label ms-1 fs-6" for="radio6">
+                                                        Ascending
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <input class="form-check-input me-1" type="radio" id = "radio7"
+                                                        name="sortOrder" {{ request()->input('sortOrder', '1') == '1' ? 'checked' : '' }} value="1">
+                                                    <label class="form-check-label ms-1 fs-6" for="radio7">
+                                                        Descending
+                                                </li>
+                                                <li class="dropdown-item ">
+                                                  <div class="row">
+                                                      <div class="col-md-6">
+                                                          <button type = "reset" class="btn btn-outline-secondary btn-sm me-3">Cancel</button>
+                                                      </div>
+                                                      <div class="col-md-6 text-center">
+                                                          <button type="submit" form="approvedForm" class="btn btn-primary btn-sm ms-3">Apply</button>
+                                                      </div>
+                                                  </div>
+                                              </li>
+                                            </ul>
+                                        </div>
+          
+                                    </div>
+                                </form>
+
+
+                            </div>
 					<div class="table-responsive w-100" style="overflow: auto;">
 						<table class="table">
 							<thead>
@@ -190,12 +374,42 @@
 					</div>
 					
 					<div class="pagination">
+						<div class="pagination-menu">
+                                    <span>Go to:</span>
+                                    <select class="paginationGoToSelect" onchange="changePage(this)">
+                                        @for ($i = 1; $i <= $appointment_approved->lastPage(); $i++)
+                                            <option value="{{ $i }}"
+                                                {{ request()->input('page') == $i ? 'selected' : '' }}>
+                                                {{ $i }}
+                                            </option>
+                                        @endfor
+                                    </select>
+  
+                            </div>
 						<div class="pagination-pages">
 							{{ $appointment_approved->appends([
 				
 							  ])->links() }}
 						</div>
-					
+						
+						<div class="pagination-items">
+                                    <span>Show:</span>
+                                    <select class="paginationItemsSelect" onchange="changeItemsPerPage(this)">
+                                        <option value="5"
+                                            {{ request()->input('perPage') == 5 ? 'selected' : '' }}>5
+                                            items</option>
+                                        <option value="10"
+                                            {{ request()->input('perPage') == 10 ? 'selected' : '' }}>10
+                                            items</option>
+                                        <option value="25"
+                                            {{ request()->input('perPage') == 25 ? 'selected' : '' }}>25
+                                            items</option>
+                                        <option value="100"
+                                            {{ request()->input('perPage') == 100 ? 'selected' : '' }}>
+                                            100 items</option>
+  
+                                    </select>
+                                </div>
 					</div>
 				</div>
 				<div id="inventory_table_container" class="dashboard_table_container">
@@ -203,6 +417,215 @@
 						<h1>Inventory</h1>
 						<button class="btn dashboard_view_btn" type="button"><span class="dashboard_view_btn_base">View</span></button>
 					</div>
+
+					<div class="container_header">
+                          <form action="" method="GET" role="search" id="searchForm">
+                            <div class="left_part_product_header">
+                              <div class="search_container">
+                                  <input type="text" class="search_input" name="q"
+                                      value="{{ request('q') }}" placeholder="Search Client">
+                                  <!-- Other input fields or elements for pagination -->
+                                  <input type="hidden" id="pageForm" name="page"
+                                      value="{{ request('page') }}">
+                                  <input type="hidden" id="perPageForm" name="perPage"
+                                      value="{{ request('perPage') }}">
+
+                              </div>
+                              <button type="submit" form="searchForm" class="btn filter_btn">
+                                  <i class="fa-solid fa-magnifying-glass" style="size: 56px"></i>
+                                  Search
+                                </button>
+                                <div class="dropdown">
+                                  <button class="filter_btn dropdown-toggle" type="button"
+                                      id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
+                                      aria-expanded="false">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
+                                        <g clip-path="url(#clip0_3674_15869)" filter="url(#filter0_d_3674_15869)">
+                                          <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
+                                        <defs>
+                                          <filter id="filter0_d_3674_15869" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                            <feOffset dy="2"/>
+                                            <feGaussianBlur stdDeviation="1"/>
+                                            <feComposite in2="hardAlpha" operator="out"/>
+                                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3674_15869"/>
+                                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3674_15869" result="shape"/>
+                                          </filter>
+                                          <clipPath id="clip0_3674_15869">
+                                            <rect width="24" height="24" fill="white"/>
+                                          </clipPath>
+                                        </defs>
+                                    </svg>Filter By
+                                  </button>
+                                  <ul class="dropdown-menu">
+                                      <li class="dropdown-item ">
+                                        <div class="form-check form-switch">
+                                          <!-- Size of the default switch will increase 1.8 times -->
+                                          <input class="form-check-input my-3"
+                                                {{ request()->input('medSwitch') == 'on' ? 'checked' : '' }}
+                                                 name ="medSwitch" 
+                                                 type="checkbox" 
+                                                 role="switch" 
+                                                 id="medSwitch" 
+                                                 style="transform: scale(1.5);"
+                                                 >
+                                          <label class="form-check-label fs-6 my-1" 
+                                                 for="medSwitch" 
+                                                 >Medicine</label>
+                                        </div>
+                                
+                                      </li>
+                                      <li class="dropdown-item ">
+                                        <div class="form-check form-switch">
+                                          <!-- Size of the default switch will increase 1.8 times -->
+                                          <input class="form-check-input my-3"
+                                                {{ request()->input('vaxSwitch') == 'on' ? 'checked' : '' }}
+                                                 name ="vaxSwitch" 
+                                                 type="checkbox" 
+                                                 role="switch" 
+                                                 id="vaxSwitch" 
+                                                 style="transform: scale(1.5);"
+                                                 >
+                                        
+                                          <label class="form-check-label fs-6 my-1" 
+                                                 for="vaxSwitch" 
+                                                 >Vaccine</label>
+                                        </div>
+                                      </li>
+                                      <li class="dropdown-item ">
+                                        <div class="form-check form-switch">
+                                          <!-- Size of the default switch will increase 1.8 times -->
+                                          <input class="form-check-input my-3"
+                                                {{ request()->input('vitSwitch') == 'on' ? 'checked' : '' }}
+                                                 name ="vitSwitch" 
+                                                 type="checkbox" 
+                                                 role="switch" 
+                                                 id="vitSwitch" 
+                                                 style="transform: scale(1.5);"
+                                                 >
+                                        
+                                          <label class="form-check-label fs-6 my-1" 
+                                                 for="vitSwitch" 
+                                                 >Vitamin</label>
+                                        </div>
+                                
+                                      </li>
+                                  </ul>
+                              </div>
+
+
+
+                              <div class="dropdown">
+                                  <button class="filter_btn dropdown-toggle" type="button"
+                                      id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
+                                      aria-expanded="false">
+                                      <i class="fa-solid fa-arrow-down-short-wide"></i>Sort
+                                      By
+                                  </button>
+                                  <ul class="dropdown-menu">
+                                      <li class="dropdown-item ">
+                                          <input class="form-check-input me-1" type="radio" id = "radio1"
+                                              name="sortItems"{{ request()->input('sortItems', '0') == '0' ? 'checked' : '' }}  value="0">
+                                          <label class="form-check-label ms-1 fs-6" for="radio1">
+                                              Product Name
+                                      </li>
+                                      <li class="dropdown-item">
+                                          <input class="form-check-input me-1" type="radio" id = "radio2"
+                                              name="sortItems" {{ request()->input('sortItems') == '1' ? 'checked' : '' }} value="1">
+                                          <label class="form-check-label ms-1 fs-6" for="radio2">
+                                              Category
+                                      </li>
+                                      <li class="dropdown-item">
+                                          <input class="form-check-input me-1" type="radio" id = "radio3"
+                                              name="sortItems" {{ request()->input('sortItems') == '2' ? 'checked' : '' }} value="2">
+                                          <label class="form-check-label ms-1 fs-6" for="radio3">
+                                              On Hand
+                                      </li>
+                                      <li class="dropdown-item">
+                                          <input class="form-check-input me-1" type="radio" id = "radio4"
+                                              name="sortItems" {{ request()->input('sortItems') == '3' ? 'checked' : '' }} value="3">
+                                          <label class="form-check-label ms-1 fs-6" for="radio4">
+                                              Date Stocked
+                                      </li>
+                                      <li>
+                                        <li class="dropdown-item">
+                                          <input class="form-check-input me-1" type="radio" id = "radio5"
+                                              name="sortItems" {{ request()->input('sortItems') == '4' ? 'checked' : '' }} value="4">
+                                          <label class="form-check-label ms-1 fs-6" for="radio5">
+                                              Expiration Date
+                                      </li>
+                                      <li>
+                                          <hr class="dropdown-divider">
+                                      </li>
+                                      <li class="dropdown-item">
+                                          <input class="form-check-input me-1" type="radio" id = "radio6"
+                                              name="sortOrder" {{ request()->input('sortOrder', '0') == '0' ? 'checked' : '' }} value="0">
+                                          <label class="form-check-label ms-1 fs-6" for="radio6">
+                                              Ascending
+                                      </li>
+                                      <li class="dropdown-item">
+                                          <input class="form-check-input me-1" type="radio" id = "radio7"
+                                              name="sortOrder" {{ request()->input('sortOrder') == '1' ? 'checked' : '' }} value="1">
+                                          <label class="form-check-label ms-1 fs-6" for="radio7">
+                                              Descending
+                                      </li>
+                                      <li class="dropdown-item ">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <button class="btn btn-outline-secondary btn-sm me-3">Cancel</button>
+                                            </div>
+                                            <div class="col-md-6 text-center">
+                                                <button type="submit" form="searchForm" class="btn btn-primary btn-sm ms-3">Apply</button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                  </ul>
+                              </div>
+
+
+
+                          </div>
+
+                          </form>
+       
+                            <div class="right_part_product_header">
+                                <div class="inventory_header_right_btn_icon_container"><button
+                                        class="btn inventory_header_left_btn" type="button"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <g clip-path="url(#clip0_1917_11682)">
+                                                <path
+                                                    d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z"
+                                                    stroke="black" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_1917_11682">
+                                                    <rect width="24" height="24" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg></button></div>
+                                <div class="inventory_header_right_btn_icon_container"><button
+                                        class="btn inventory_header_right_btn" type="button"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <g clip-path="url(#clip0_3686_18447)">
+                                                <path
+                                                    d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14"
+                                                    stroke="black" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_3686_18447">
+                                                    <rect width="24" height="24" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg></button></div>
+                            </div>
+                        </div>
 					<div class="table-responsive w-100">
 					<table id="dashboard_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
 						<thead>
@@ -293,11 +716,41 @@
 					</div>
 					
 					<div class="pagination">
+					<div class="pagination-menu">
+                                    <span>Go to:</span>
+                                    <select class="paginationGoToSelect" onchange="changePage(this)">
+                                        @for ($i = 1; $i <= $products->lastPage(); $i++)
+                                            <option value="{{ $i }}"
+                                                {{ request()->input('page') == $i ? 'selected' : '' }}>
+                                                {{ $i }}
+                                            </option>
+                                        @endfor
+                                    </select>
+
+                                </div>
 						<div class="pagination-pages text-center">
 							{{ $products->appends([
 				
 							  ])->links() }}
 						</div>
+						<div class="pagination-items">
+                                    <span>Show:</span>
+                                    <select class="paginationItemsSelect" onchange="changeItemsPerPage(this)">
+                                        <option value="5"
+                                            {{ request()->input('perPage') == 5 ? 'selected' : '' }}>5
+                                            items</option>
+                                        <option value="10"
+                                            {{ request()->input('perPage') == 10 ? 'selected' : '' }}>10
+                                            items</option>
+                                        <option value="25"
+                                            {{ request()->input('perPage') == 25 ? 'selected' : '' }}>25
+                                            items</option>
+                                        <option value="100"
+                                            {{ request()->input('perPage') == 100 ? 'selected' : '' }}>
+                                            100 items</option>
+
+                                    </select>
+                                </div>
 					
 					</div>
 				</div>
@@ -418,6 +871,25 @@ checkbox.checked = !checkbox.checked; // Toggle the state
 
 });
     </script>
+
+<script>
+        function changePage(select) {
+            let pageNumber = select.value;
+            document.getElementById('pageForm').value = pageNumber; // Update page hidden input
+            document.getElementById('approvedForm').submit(); // Submit the form after updating values
+        }
+  
+        function changeItemsPerPage(select) {
+            let itemsPerPage = select.value;
+            document.getElementById('perPageForm').value = itemsPerPage; // Update perPage hidden input
+            document.getElementById('pageForm').value = 1; // Reset page to 1 when changing items per page
+            document.getElementById('approvedForm').submit(); // Submit the form after updating values
+        }
+  
+        function submitForm() {
+            document.getElementById('approvedForm').submit();
+        }
+      </script>
 </body>
 
 </html>
