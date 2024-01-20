@@ -4307,7 +4307,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   
   thead tr th {
     color: rgba(28, 28, 28, 0.50) !important;
-    text-align: center;
+    text-align: start;
     font-family: Inter;
     font-size: 16px !important;
     font-style: normal !important;
@@ -4322,8 +4322,10 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 
   tbody tr td {
     max-width: 250px;
-    white-space: nowrap;
+    flex-wrap: wrap;
     overflow: hidden;
+    justify-content: center !important;
+    align-items: center !important;
     text-overflow: ellipsis;
     color: rgba(28, 28, 28, 0.70) !important;
     text-align: start !important; /* Center the text */
@@ -5285,7 +5287,9 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
       align-self: stretch;
     }
     
-
+    #approvedTableBody tr td:nth-child(7) {
+      max-width: 50px !important;
+  }
       
       #approvedTableBody td:nth-child(n + 3):nth-child(-n + 8), #pendingTableBody td:nth-child(n + 3):nth-child(-n + 8), #rejectedTableBody td:nth-child(n + 3):nth-child(-n + 8) {
         max-width: 150px;

@@ -109,7 +109,7 @@
 						<button class="btn dashboard_view_btn" type="button"><span class="dashboard_view_btn_base">View</span></button>
 					</div>
 					<div class="table-responsive w-100" style="overflow: auto;">
-						<table id="dashboard_table" class="table">
+						<table class="table">
 							<thead>
 								<tr>
 									<th>
@@ -124,7 +124,7 @@
 									<th>Action</th>
 								</tr>
 							</thead>
-							<tbody id="dashboard_appointments_table_body" class="dashboard_table_body">
+							<tbody id="dashboard_appointments_table_body">
 							@foreach ($appointment_approved as $index => $appointment)
 								<tr>
 								<td > <input type="radio" class="checkbox"></td> 
@@ -134,8 +134,8 @@
 								<td >{{ $appointment['appointmentDate'] }}</td>
 								<td>{{ \Carbon\Carbon::parse($appointment['appointmentTime'])->format('g:ia') }}</td>
 								<td >{{ $appointment['appointmentType'] }}</td>
-								<td>
-                                                    <div class="dropdown"><button class="dropbtn" style="background-color: transparent; border:none;"
+								<td class="dropdown button-action">
+                                                <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"
                                                             aria-expanded="false" data-bs-toggle="dropdown"
                                                             type="button"><svg xmlns="http://www.w3.org/2000/svg"
                                                                 width="18" height="18" viewBox="0 0 18 18"
@@ -150,63 +150,38 @@
                                                                     d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z"
                                                                     fill="#045B62" />
                                                             </svg></button>
-                                                        <div class="dropdown-menu"><a
-                                                                class="dropdown-item accept-action"><svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24" height="24"
-                                                                    viewBox="0 0 24 24" fill="none">
-                                                                    <g clip-path="url(#clip0_6291_1355)">
-                                                                        <path d="M5 12L10 17L20 7" stroke="#1C1C1C"
-                                                                            stroke-opacity="0.7" stroke-width="2"
-                                                                            stroke-linecap="round"
-                                                                            stroke-linejoin="round" />
-                                                                    </g>
-                                                                    <defs>
-                                                                        <clipPath id="clip0_6291_1355">
-                                                                            <rect width="24" height="24"
-                                                                                fill="white" />
-                                                                        </clipPath>
-                                                                    </defs>
-                                                                </svg> Accept</a><a
-                                                                class="dropdown-item reject-action"><svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24" height="24"
-                                                                    viewBox="0 0 24 24" fill="none">
-                                                                    <g clip-path="url(#clip0_6291_1893)">
-                                                                        <path d="M18 6L6 18M6 6L18 18"
-                                                                            stroke="#1C1C1C" stroke-opacity="0.7"
-                                                                            stroke-width="2" stroke-linecap="round"
-                                                                            stroke-linejoin="round" />
-                                                                    </g>
-                                                                    <defs>
-                                                                        <clipPath id="clip0_6291_1893">
-                                                                            <rect width="24" height="24"
-                                                                                fill="white" />
-                                                                        </clipPath>
-                                                                    </defs>
-                                                                </svg> Reject</a><button
-                                                                class="dropdown-item resched-action"
+                                                        <div class="dropdown-menu"><button
+                                                                data-id="{{ $appointment->id }}"
+                                                                class="dropdown-item complete-action"><svg
+                                                                    xmlns="http://www.w3.org/2000/svg" width="22"
+                                                                    height="12" viewBox="0 0 22 12"
+                                                                    fill="none">
+                                                                    <path d="M6 6L11 11L21 1M1 6L6 11M11 6L16 1"
+                                                                        stroke="#1C1C1C" stroke-opacity="0.7"
+                                                                        stroke-width="2" stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                </svg> Mark as complete</button>
+                                                            <hr />
+                                                            <a class="dropdown-item archive-action"
                                                                 data-id="{{ $appointment->id }}"><svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24" height="24"
-                                                                    viewBox="0 0 24 24" fill="none">
-                                                                    <g clip-path="url(#clip0_6291_2186)">
+                                                                    xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24"
+                                                                    fill="none">
+                                                                    <g clip-path="url(#clip0_6291_1005)">
                                                                         <path
-                                                                            d="M15.5 12H12V7M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z"
+                                                                            d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14"
                                                                             stroke="#1C1C1C" stroke-opacity="0.7"
                                                                             stroke-width="2" stroke-linecap="round"
                                                                             stroke-linejoin="round" />
                                                                     </g>
                                                                     <defs>
-                                                                        <clipPath id="clip0_6291_2186">
+                                                                        <clipPath id="clip0_6291_1005">
                                                                             <rect width="24" height="24"
                                                                                 fill="white" />
                                                                         </clipPath>
                                                                     </defs>
-                                                                </svg> Reschedule</button>
-                                                            
+                                                                </svg> Archive</a>
                                                         </div>
-                                                    </div>
                                                 </td>
 								</tr>
 							@endforeach 

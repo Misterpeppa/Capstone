@@ -1121,7 +1121,6 @@
                                                                         </clipPath>
                                                                     </defs>
                                                                 </svg> Reject</button>
-                                                            <hr />
                                                         </div>
                                                     </div>
                                                 </td>
@@ -1622,7 +1621,6 @@
                                                                         </clipPath>
                                                                     </defs>
                                                                 </svg> Reschedule</button>
-                                                            <hr />
                                                         </div>
                                                     </div>
                                                 </td>
