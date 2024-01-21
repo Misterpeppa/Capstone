@@ -29,17 +29,12 @@
                         <div class="d-flex flex-column align-items-start">
                             <h1 class="text-center align-self-stretch" style="color: #1C1C1C;font-size: 36px;font-family: Inter;">BOOK AN</h1>
                             <h1 class="text-center" style="color: #045B62;font-size: 50px;--bs-body-font-weight: 700;font-family: Inter;">APPOINTMENT</h1>
-                    <div class="d-flex flex-column align-items-center align-self-stretch">
-                        <div class="d-flex flex-column align-items-start">
-                            <h1 class="text-center align-self-stretch" style="color: #1C1C1C;font-size: 36px;font-family: Inter;">BOOK AN</h1>
-                            <h1 class="text-center" style="color: #045B62;font-size: 50px;--bs-body-font-weight: 700;font-family: Inter;">APPOINTMENT</h1>
                         </div>
                         <p class="text-center" style="color: #1c1c1c;font-size: 20px;font-family: Inter;--bs-body-font-weight: 500;">Please input complete and accurate details to secure a slot for your appointment.</p>
                     </div>
                     <section class="multi_step_section">
                         <div class="d-flex multiple-step-form-n overflow-visible" id="multple-step-form-n">
                             <div id="progress-bar-button" class="multisteps-form" style="padding-top: 10px;">
-                                <div class="multisteps-form__progress"><a class="btn link-success multisteps-form__progress-btn js-active" role="button" title="1" style="--bs-success:#045B62;--bs-success-rgb:4,91,98;"><span>1</span></a><a class="btn link-success multisteps-form__progress-btn" role="button" title="2" style="--bs-success: #045B62;--bs-success-rgb: 4,91,98;"><span>2</span></a><a class="btn link-success multisteps-form__progress-btn" role="button" title="User Info" style="--bs-success: #045B62;--bs-success-rgb: 4,91,98;"><span>3</span></a></div>
                                 <div class="multisteps-form__progress"><a class="btn link-success multisteps-form__progress-btn js-active" role="button" title="1" style="--bs-success:#045B62;--bs-success-rgb:4,91,98;"><span>1</span></a><a class="btn link-success multisteps-form__progress-btn" role="button" title="2" style="--bs-success: #045B62;--bs-success-rgb: 4,91,98;"><span>2</span></a><a class="btn link-success multisteps-form__progress-btn" role="button" title="User Info" style="--bs-success: #045B62;--bs-success-rgb: 4,91,98;"><span>3</span></a></div>
                             </div>
                             <div id="multistep-start-row" class="row" style="display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 25px;align-self: stretch;">
@@ -371,7 +366,6 @@
                                                                     <h1>Surgery Type</h1>
                                                                     <p id="confirm_surgery_Type-1" class="confirm_surgery_Type">Surgery Type</p>
                                                                     <input type="text" name="appointmentType1" id="hidden_appointmentType-1" class="d-none">                                                                </div>
-                                                                    <input type="text" name="appointmentType1" id="hidden_appointmentType-1" class="d-none">                                                                </div>
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Additional Notes</h1>
                                                                     <p id="confirm_additional_Notes-1" class="confirm_additional_Notes">Additional Notes</p>
@@ -392,11 +386,9 @@
                                                                     <h1>Pet Type</h1>
                                                                     <p id="confirm_Pet_type-2" class="confirm_Pet_type">Pet Type</p>
                                                                     <input type="text" name="petType2" id="hidden_petType-2" class="d-none">                                                                </div>
-                                                                    <input type="text" name="petType2" id="hidden_petType-2" class="d-none">                                                                </div>
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Breed</h1>
                                                                     <p id="confirm_breed-2" class="confirm_breed">Breed</p>
-                                                                    <input type="text" name="breed2" id="hidden_breed-2" class="d-none">                                                                </div>
                                                                     <input type="text" name="breed2" id="hidden_breed-2" class="d-none">                                                                </div>
                                                             </div>
                                                             <div class="d-flex align-items-start align-self-stretch details_confirmation_2ndrow" id="details_confirmation_2ndrow-2">
@@ -405,18 +397,13 @@
                                                                     <p id="confirm_surgery_Type-2" class="confirm_surgery_Type">Surgery Type</p>
                                                                     <input type="hidden" name="appointmentType2" id="hidden_appointmentType-2">                                                                </div>
                                                                     <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                    <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <h1>Additional Notes</h1>
                                                                     <p id="confirm_additional_Notes-2" class="confirm_additional_Notes">Additional Notes</p>
-                                                                    <input type="hidden" name="notes2" id="hidden_notes-2">
-                                                                </div>  
                                                                     <input type="hidden" name="notes2" id="hidden_notes-2">
                                                                 </div>  
                                                                 <div class="d-flex flex-column align-items-start detail_confirmation">
                                                                     <p></p>
                                                                 </div>
-                                                                                                                                    </div>
-                                                                
                                                                                                                                     </div>
                                                                 
                                                         </div>
@@ -450,7 +437,6 @@
             </div>
         </div>
     </main>
-    @include('includes.footer')
     @include('includes.footer')
     <div class="modal fade" role="dialog" tabindex="-1" id="consent_modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -645,15 +631,12 @@
 
 
 
-
-
 </script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/bs-init.js') }}"></script>
     <script src="{{ asset('assets/js/appointmentforms.js') }}"></script>
     <script src="{{ asset('assets/js/Multi-step-form-script.js') }}"></script>
-    <script src="{{ asset('assets/js/footer.js') }}"></script>
     <script src="{{ asset('assets/js/footer.js') }}"></script>
 </body>
 
