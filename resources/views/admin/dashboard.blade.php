@@ -57,7 +57,7 @@
 									</div>
 									<div class="lower_part_summary"><span class="count_of_staff">{{ $clients }}</span></div>
 								</div>
-								<div class="card_body_summary_count"><span class="count_today_label">Today:</span><span class="staff_count">15</span></div>
+								<div class="card_body_summary_count"><span class="count_today_label">Client with Appointments:</span><span class="staff_count">{{ $clientsWithAppointments }}</span></div>
 							</div>
 						</div>
 					</div>
@@ -98,7 +98,7 @@
 									</div>
 									<div class="lower_part_summary"><span class="count_of_staff">{{ $appointmentCount }}</span></div>
 								</div>
-								<div class="card_body_summary_count"><span class="count_today_label">Completed Today:</span><span class="staff_count">2</span></div>
+								<div class="card_body_summary_count"><span class="count_today_label">Appointment For Today:</span><span class="staff_count">{{ $upcomingAppointment }}</span></div>
 							</div>
 						</div>
 					</div>

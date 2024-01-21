@@ -8,7 +8,9 @@ use App\Models\Admin\MedInfo;
 use App\Models\Admin\PetRecord;
 use App\Models\Admin\VaxInfo;
 use App\Models\Admin\VitInfo;
+use App\Models\User\Clients;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ArchiveController extends Controller
 {
@@ -19,7 +21,8 @@ class ArchiveController extends Controller
         $vit_exist = VitInfo::whereNotNull('archived_at')->exists();
         $petrecord_exist = PetRecord::whereNotNull('archived_at')->exists();
         $appointment_exist = AppointmentApproved::whereNotNull('archived_at')->exists();
-        $dataExist = $med_exist || $vax_exist || $vit_exist || $petrecord_exist || $appointment_exist;
+        $client_exist = Clients::whereNotNull('archived_at')->exists();
+        $dataExist = $med_exist || $vax_exist || $vit_exist || $petrecord_exist || $appointment_exist || $client_exist;
 
         $search = $request->input('search');
         
@@ -49,15 +52,19 @@ class ArchiveController extends Controller
         ->where(function ($query) use ($search) {
             $query->where('source', 'LIKE', "%$search%")
             ->orWhereHas('clients', function ($subQuery) use ($search){
-                $subQuery->where('first_name', 'LIKE', "%$search%")
-                ->orWhere('middle_name', 'LIKE', "%$search%")
-                ->orWhere('last_name', 'LIKE', "%$search%")
-                ->orWhere('suffix', 'LIKR', "%$search%"); });
+                $subQuery->where('first_name', 'LIKE', "%$search%")->orWhere('middle_name', 'LIKE', "%$search%")
+                ->orWhere('last_name', 'LIKE', "%$search%")->orWhere('suffix', 'LIKR', "%$search%"); });
             })->get();
 
-        $archived = $vax_info->concat($med_info)->concat($vit_info)->concat($petrecord)->concat($appointment);
+        $client = Clients::whereNotNull('archived_at')
+        ->where(function ($query) use ($search){
+            $query->where('first_name', 'LIKE', "%$search%")->orWhere('middle_name', 'LIKE', "%$search%")
+            ->orWhere('last_name', 'LIKE', "%$search%")->orWhere('suffix', 'LIKR', "%$search%"); 
+        })->get();
 
-        return view('admin/archive', compact('dataExist', 'archived', 'petrecord', 'appointment'));
+        $archived = $vax_info->concat($med_info)->concat($vit_info)->concat($petrecord)->concat($appointment)->concat($client);
+
+        return view('admin/archive', compact('dataExist', 'archived', 'petrecord', 'appointment', 'client'));
     }
     public function search(Request $request)
     {
@@ -124,6 +131,13 @@ class ArchiveController extends Controller
     {
         $appointment = AppointmentApproved::find($id);
         $appointment->update(['archived_at' => null]);
+
+        return redirect()->back()->with('success', 'Unarchive');
+    }
+    public function unarchiveClient(Request $request, $id)
+    {
+        $client = Clients::find($id);
+        $client->update(['archived_at' => null]);
 
         return redirect()->back()->with('success', 'Unarchive');
     }

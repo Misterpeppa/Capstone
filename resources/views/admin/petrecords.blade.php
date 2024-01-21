@@ -58,9 +58,9 @@
 				<div id="client_container" class="client_container">
 					<div class="container_header">
 						<div class="left_part_product_header">
-							<form action="{{ route('emr.search') }}" method="GET">
+							<form action=" " method="GET">
 							<div class="search_container">
-								<input type="search" name="search" class="search_input" placeholder="Search Pet Record">
+								<input type="search" name="search" value="{{ request('search') }}" class="search_input" placeholder="Search Pet Record">
 							</div>
 							</form>
 							<button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

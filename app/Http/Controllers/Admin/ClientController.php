@@ -142,7 +142,6 @@ class ClientController extends Controller
     {
         $clientId = $request->input('client_id');
         $client = Clients::find($clientId);
-        dd($clientId);
         $client->archived_at = now();
         $client->save();
         return redirect()->back()->with('success', 'Client archived successfully.');

@@ -1348,7 +1348,7 @@
     @endif
     <script>
         $(document).ready(function() {
-            $('.editButton').click(function() {
+            $('.editButton1').click(function() {
             const invData = {
                 'item_name' :$(this).data('item_name'),
                 'middle_name' :$(this).data('middle-name'),

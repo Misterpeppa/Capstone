@@ -258,9 +258,13 @@ class AppointmentController extends Controller
         $approvedExist = $appointment_approved->isNotEmpty();
         $rejectedExist = $appointment_rejected->isNotEmpty();
         $pendingExist = $appointment_pending->isNotEmpty();
+
+        $approvedCount = AppointmentApproved::whereNull('archived_at')->count();
+        $pendingCount = AppointmentPending::count();
+        $rejectedCount = AppointmentRejected::count();
                 
         return view('admin/admin_appointment', compact( 'appointment_approved', 'appointment_rejected', 'appointment_pending', 
-        'approvedExist', 'pendingExist', 'rejectedExist'));
+        'approvedExist', 'pendingExist', 'rejectedExist', 'approvedCount', 'pendingCount', 'rejectedCount'));
     }
 
     public function list()

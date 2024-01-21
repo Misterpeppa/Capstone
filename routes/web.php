@@ -144,6 +144,8 @@ Route::middleware('admin', 'nocache')->group(function () {
     Route::post('admin/archive/vitamin/{id}', [ArchiveController::class, 'unarchiveVit'])->name('unarchive.vit');
     Route::post('admin/archive/petrecord/{id}', [ArchiveController::class, 'unarchivePetRec'])->name('unarchive.petrec');
     Route::post('admin/archive/appointment/{id}', [ArchiveController::class, 'unarchiveAppointment'])->name('unarchive.appointment');
+    Route::post('admin/archive/client/{id}', [ArchiveController::class, 'unarchiveClient'])->name('unarchive.client');
+
 
 });
 Auth::routes();

@@ -1,6 +1,8 @@
+@php
+    use Carbon\Carbon;
+@endphp
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
-
 <head>
     <meta charset="utf-8">
 <meta charset="UTF-8">
@@ -222,7 +224,9 @@
                                             {{ $record->pet->name }} <!-- Display PetRecord-specific field -->
                                         @elseif ($record instanceof App\Models\Admin\AppointmentApproved)
                                             {{$record->clients->first_name }} {{$record->clients->middle_name}} {{$record->clients->last_name }} {{$record->clients->suffix }} <!-- Display AppointmentApproved-specific field -->
-                                        @endif
+                                        @elseif ($record instanceof App\Models\User\Clients)
+                                            {{$record->first_name }} {{$record->middle_name}} {{$record->last_name }} {{$record->suffix }} <!-- Display AppointmentApproved-specific field -->
+                                        @endif                                    
                                     </td>
                                     <td>
                                         @if ($record instanceof App\Models\Admin\MedInfo)
@@ -235,10 +239,11 @@
                                             PetRecord <!-- Display common label for PetRecord -->
                                         @elseif ($record instanceof App\Models\Admin\AppointmentApproved)
                                             Appointment <!-- Display common label for AppointmentApproved -->
-                                        @endif
-                                    </td>
+                                        @elseif ($record instanceof App\Models\User\Clients)
+                                            Client <!-- Display common label for AppointmentApproved -->
+                                        @endif                                    </td>
                                     <td>{{ $record->created_at->format('Y-m-d') }}</td>
-                                    <td>{{ $record->archived_at }}</td>
+                                    <td>{{ Carbon::parse($record->archived_at)->format('Y-m-d') }}</td>
                                     <td>
                                       @if ($record instanceof App\Models\Admin\MedInfo)
                                       <button class="btn unarchive_med" id="unarchive_med" type="button" data-product-type="{{ $record->product_type }}" data-record-id="{{ $record->id }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -300,7 +305,19 @@
                                         </defs>
                                         </svg></span>
                                       </button>
-                                      @endif
+                                      @elseif ($record instanceof App\Models\User\Clients)
+                                      <button class="btn unarchive_client" id="revert_archived-1" type="button" data-record-id="{{ $record->id }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <g clip-path="url(#clip0_6404_6376)">
+                                          <path d="M9 14L5 10M5 10L9 6M5 10H16C17.0609 10 18.0783 10.4214 18.8284 11.1716C19.5786 11.9217 20 12.9391 20 14C20 15.0609 19.5786 16.0783 18.8284 16.8284C18.0783 17.5786 17.0609 18 16 18H15" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
+                                        <defs>
+                                          <clipPath id="clip0_6404_6376">
+                                            <rect width="24" height="24" fill="white"/>
+                                          </clipPath>
+                                        </defs>
+                                        </svg></span>
+                                      </button>
+                                      @endif                                    
                                     </td>
                                 </tr>
                               @endforeach
@@ -445,6 +462,24 @@
                 data: {_token: '{{ csrf_token() }}'},
                 success: function(response) {
                     alert('Appointment has been unarchived');
+                    location.reload();
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+      });
+      $('.unarchive_client').on('click', function() {
+        const id = $(this).data('record-id');
+        $('#archive_modal').modal('show');
+        $('#archive_confirm_button').on('click', function() {
+            $.ajax({
+                type: 'POST',
+                url: `/admin/archive/client/${id}`,
+                data: {_token: '{{ csrf_token() }}'},
+                success: function(response) {
+                    alert('Client has been unarchived');
                     location.reload();
                 },
                 error: function(xhr) {

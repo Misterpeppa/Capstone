@@ -169,14 +169,14 @@
                     <ul class="nav nav-tabs pet_nav_tabs" role="tablist">
                         <li class="nav-item" role="presentation" id="approve_tab"><a
                                 class="nav-link  list_tab" role="tab" data-bs-toggle="tab"
-                                href="#approved_tab">Approved<span id="approvedCount" class="tab-count">0</span></a>
+                                href="#approved_tab">Approved<span id="approvedCounts" class="tab-count">{{ $approvedCount }}</span></a>
                         </li>
                         <li class="nav-item" role="presentation" id="pending-tab"><a class="nav-link list_tab"
                                 role="tab" data-bs-toggle="tab" href="#pending_tab">Pending<span
-                                    id="pendingCount" class="tab-count">0</span></a></li>
+                                    id="pendingCounts" class="tab-count">{{ $pendingCount}}</span></a></li>
                         <li class="nav-item" role="presentation" id="reject_tab"><a class="nav-link list_tab"
                                 role="tab" data-bs-toggle="tab" href="#rejected_tab">Rejected<span
-                                    id="rejectedCount" class="tab-count">0</span></a></li>
+                                    id="rejectedCounts" class="tab-count">{{ $rejectedCount }}</span></a></li>
                     </ul>
                     <div class="tab-content appointment_tab_content">
                         <div class="tab-pane  align-self-stretch appointment_tab" role="tabpanel"
