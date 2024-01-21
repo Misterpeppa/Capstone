@@ -296,9 +296,18 @@
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                aria-expanded="false">
-                                                <i class="fa-solid fa-arrow-down-short-wide"></i>Sort
-                                                By
+                                                aria-expanded="false"><span class="filter_btn_base">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+													<g clip-path="url(#clip0_6770_15021)">
+														<path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+													</g>
+													<defs>
+														<clipPath id="clip0_6770_15021">
+														<rect width="24" height="24" fill="white"/>
+														</clipPath>
+													</defs>
+													</svg>Sort By
+												</span>
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li class="dropdown-item ">

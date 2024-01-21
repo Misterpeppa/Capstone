@@ -2,11 +2,11 @@
 <html data-bs-theme="light" lang="en">
 
 <head>
-    <title>TAGAPO CATS & DOGS</title>
     <meta charset="utf-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>TAGAPO CATS & DOGS</title>
     <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
+
 </head>
 
 <style>
@@ -25,6 +27,17 @@
     width: 100%;
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.00) 0%, #1C1C1C 100%), url('{{ asset('img/clientclinic.jpg') }}') no-repeat center/cover;
 }
+
+.notification-dropdown {
+      width: 300px;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    .notification-item {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
 </style>
 
 
@@ -37,16 +50,42 @@
     </div>
     @endif
     @if(session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-        @if(Auth::guard('clients')->user() && !Auth::guard('clients')->user()->hasVerifiedEmail())
-            <form method="POST" action="{{ route('resend', ['clientId' => $clientInfo->id]) }}">
-                @csrf
-                <button type="submit" class="btn btn-link">Resend Email Verification</button>
-            </form>
-        @endif
+    <div id="unverified_user"  class="alert modal fade show" role="dialog" tabindex="-1" style="display:none;">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content discard_modal">
+                <div class="modal-header discard_header">
+                    <div class="discard_icon_container">
+                        <span class="discard_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_6746_5377)">
+    <path d="M13.3333 13.3333L18.6667 18.6667M18.6667 13.3333L13.3333 18.6667M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#DA534F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6746_5377">
+      <rect width="32" height="32" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-body discard_message">
+                    <div>
+                        <h1>User not verified!</h1>
+                        <p>Please verify your email to receive appointment notifications.</p>
+                    </div>
+                </div>
+
+                @if(Auth::guard('clients')->user() && !Auth::guard('clients')->user()->hasVerifiedEmail())
+                    <form method="POST" action="{{ route('resend', ['clientId' => $clientInfo->id]) }}">
+                        @csrf
+                        <button type="submit" class="btn btn-link">Resend Email Verification</button>
+                    </form>
+                @endif
+            </div> <!-- Close modal-content tag here -->
+        </div>
     </div>
-    @endif
+@endif
         <div class="container-fluid" style="padding:0; margin:0;">
             <div class="customized-row row d-flex align-items-center justify-content-end">
                 <div class="customized-col col-8 col-md-6 mt-4 mt-md-0 d-flex flex-column justify-content-center align-items-start">
@@ -56,17 +95,23 @@
                     </div>
 
                     <div class="landing_btns">
+                    <div class="landing_headers">
+                        <h1>Welcome to</h1>
+                        <h2>Tagapo Dogs &amp; Cats Veterinary Clinic</h2>
+                    </div>
+
+                    <div class="landing_btns">
                         <a class="btn custom-book-appointment-btn" role="button" href="{{ route('appointment.form') }}">
                             BOOK AN APPOINTMENT
                         </a>
-                        <a class="btn custom-btn-check-schedule" role="button" href="{{ route('appointment.list') }}">
+                        <a class="btn custom-btn-check-schedule w-100" role="button" href="{{ route('appointment.list') }}">
                             CHECK SCHEDULE
                         </a>
                     </div>
                 </div>
             </div>
 
-            <div class="floating-div">
+            <div class="floating-div mt-4">
                 <div class="row w-100 d-flex justify-content-center ">
                     <div class="col-8 mb-3">
                         <div class="card service_icons">
@@ -101,6 +146,7 @@
 
 
          
+                <div class="row w-100 loc_and_working_hours d-flex justify-content-center">
                 <div class="row w-100 loc_and_working_hours d-flex justify-content-center">
                     <div class="col-8 col-md-4">
                         <div class="card location mb-4">
@@ -153,16 +199,75 @@
         </div>
         
     </main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-@include('includes.footer')
-</body>
-<script>
+
+    @include('includes.footer')
+
+    <script>
     window.onload = function () {
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
         }
     }
 </script>
+<script>
+      // Dummy data for notifications
+  const notifications = [
+    "New message received",
+    "You have 3 new friend requests",
+    "Your post has been liked",
+    "New message received",
+    "You have 3 new friend requests",
+    "Your post has been liked",
+    "New message received",
+    "You have 3 new friend requests",
+    "Your post has been liked",
+    "New message received",
+    "You have 3 new friend requests",
+    "Your post has been liked",
+    "New message received",
+    "You have 3 new friend requests",
+    "Your post has been liked",
+    "New message received",
+    "You have 3 new friend requests",
+    "Your post has been liked",
+    "New message received",
+    "You have 3 new friend requests",
+    "Your post has been liked",
+    "New message received",
+    "You have 3 new friend requests",
+    "Your post has been liked",
+  ];
+
+  // Function to populate the notification dropdown
+  function populateNotifications() {
+    const dropdown = document.querySelector('.notification-dropdown');
+
+    // Clear existing items
+    dropdown.innerHTML = '';
+
+    // Add new notification items
+    notifications.forEach(notification => {
+      const listItem = document.createElement('li');
+      listItem.classList.add('notification-item');
+      listItem.textContent = notification;
+      dropdown.appendChild(listItem);
+    });
+  }
+
+  // Event listener for button click to populate and show the dropdown
+  const notificationButton = document.getElementById('notification');
+  notificationButton.addEventListener('click', () => {
+    populateNotifications();
+  });
+</script>
+
+
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/bs-init.js') }}"></script>
 <script src="{{ asset('assets/js/footer.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    
+</body>
+
 </html>
