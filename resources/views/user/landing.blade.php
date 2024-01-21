@@ -95,6 +95,12 @@
                     </div>
 
                     <div class="landing_btns">
+                    <div class="landing_headers">
+                        <h1>Welcome to</h1>
+                        <h2>Tagapo Dogs &amp; Cats Veterinary Clinic</h2>
+                    </div>
+
+                    <div class="landing_btns">
                         <a class="btn custom-book-appointment-btn" role="button" href="{{ route('appointment.form') }}">
                             BOOK AN APPOINTMENT
                         </a>
@@ -140,6 +146,7 @@
 
 
          
+                <div class="row w-100 loc_and_working_hours d-flex justify-content-center">
                 <div class="row w-100 loc_and_working_hours d-flex justify-content-center">
                     <div class="col-8 col-md-4">
                         <div class="card location mb-4">

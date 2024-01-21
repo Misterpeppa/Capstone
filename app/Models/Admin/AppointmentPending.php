@@ -67,7 +67,7 @@ class AppointmentPending extends Model
                 });
                 
             }
-            $query->whereNull('archived_at');
+           // $query->whereNull('archived_at');
         });
     }
 

@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class ArchiveController extends Controller
 {
-    public function show()
+    public function show(Request $request)
     {
         $med_exist = MedInfo::whereNotNull('archived_at')->exists();
         $vax_exist = VaxInfo::whereNotNull('archived_at')->exists();
@@ -21,16 +21,49 @@ class ArchiveController extends Controller
         $appointment_exist = AppointmentApproved::whereNotNull('archived_at')->exists();
         $dataExist = $med_exist || $vax_exist || $vit_exist || $petrecord_exist || $appointment_exist;
 
-        $med_info = MedInfo::whereNotNull('archived_at')->get();
-        $vax_info = VaxInfo::whereNotNull('archived_at')->get();
-        $vit_info = VitInfo::whereNotNull('archived_at')->get();
-        $petrecord = PetRecord::whereNotNull('archived_at')->get();
-        $appointment = AppointmentApproved::whereNotNull('archived_at')->get();
+        $search = $request->input('search');
+        
+        $med_info = MedInfo::whereNotNull('archived_at')
+        ->where(function ($query) use ($search) {
+            $query->where('item_name',  'LIKE', "%$search%")
+            ->orWhere('source', 'LIKE', "%$search%"); })->get();
+
+        $vax_info = VaxInfo::whereNotNull('archived_at')
+        ->where(function ($query) use ($search) {
+            $query->where('item_name', 'LIKE', "%$search%")
+            ->orWhere('source', 'LIKE', "%$search%"); })->get();
+
+        $vit_info = VitInfo::whereNotNull('archived_at')
+        ->where(function ($query) use ($search) {
+            $query->where('item_name', 'LIKE', "%$search%")
+            ->orWhere('source', 'LIKE', "%$search%"); })->get();
+            
+        $petrecord = PetRecord::whereNotNull('archived_at')
+        ->where(function ($query) use ($search) {
+            $query->where('source', 'LIKE', "%$search%")
+            ->orWhereHas('pet', function ($subQuery) use ($search) {
+                $subQuery->where('name', 'LIKE', "%$search%"); });
+            })->get();
+
+        $appointment = AppointmentApproved::whereNotNull('archived_at')
+        ->where(function ($query) use ($search) {
+            $query->where('source', 'LIKE', "%$search%")
+            ->orWhereHas('clients', function ($subQuery) use ($search){
+                $subQuery->where('first_name', 'LIKE', "%$search%")
+                ->orWhere('middle_name', 'LIKE', "%$search%")
+                ->orWhere('last_name', 'LIKE', "%$search%")
+                ->orWhere('suffix', 'LIKR', "%$search%"); });
+            })->get();
 
         $archived = $vax_info->concat($med_info)->concat($vit_info)->concat($petrecord)->concat($appointment);
 
         return view('admin/archive', compact('dataExist', 'archived', 'petrecord', 'appointment'));
     }
+    public function search(Request $request)
+    {
+
+    }
+
     public function unarchived(Request $request, $product_type, $id)
     {
         switch ($product_type) {

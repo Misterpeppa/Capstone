@@ -124,7 +124,7 @@
 										<div class="dropdown more_button">
 											<button class="btn dropdown-toggle more_btn" aria-expanded="false" data-bs-toggle="dropdown" type="button"><span class="more_btn_base"><svg fill="none" height="18" viewbox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"></path><path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"></path><path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"></path></svg></span></button>
 											<div class="dropdown-menu more_button" data-bs-popper="none">
-												<a class="dropdown-item View_pet" id="View">
+												<a class="dropdown-item View_pet" id="View" data-container-id="{{ $petrecord->id }}">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 														<g clip-path="url(#clip0_6230_1794)">
 															<path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -178,7 +178,7 @@
 										<div class="pet_lower_detail">
 											<div class="pet_weight_container">
 												<h1>Weight</h1>
-												<p>{{ $petrecord->pet->weigth }}</p>
+												<p>{{ $petrecord->pet->weight }}kg</p>
 											</div>
 											<div class="pet_sterilization_status_container">
 												<h1>Sterilization Status</h1>
@@ -216,6 +216,8 @@
 							</button>
 						</div>
 						<div class="input_details_container">
+							<form action="{{ route('client_pet.edit') }}" method="POST">
+								@csrf
 							<div class="detail_body">
 								<div class="pet_details_container">
 									<div class="align-self-stretch form-floating">
@@ -275,6 +277,7 @@
 											</div>
 										</div>
 									</div>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -303,35 +306,35 @@
 </svg> Back</span></button>
 						</div>
 						<div class="pet_record_item">
-							<div class="pet_record"><img src="assets/img/koda%201.png">
+							<div class="pet_record">
 								<div class="pet_record_details">
 									<div class="pet_record_details_second_row">
-										<div class="pet_name_breed_container">
+										<div class="pet_name_breed_container" id="petInfo">
 											<h1>Pet Name</h1>
 											<p>Breed</p>
 										</div>
 									</div>
 									<div class="pet_record_details_first_row">
 										<div class="pet_other_details">
-											<div class="other_details">
+											<div class="other_details" id="sex">
 												<h1>Sex</h1>
-												<p>Paragraph</p>
+												<p></p>
 											</div>
-											<div class="other_details">
+											<div class="other_details" id="birthdate">
 												<h1>Birth Date</h1>
-												<p>Paragraph</p>
+												<p></p>
 											</div>
-											<div class="other_details">
+											<div class="other_details" id="age">
 												<h1>Age</h1>
-												<p>Paragraph</p>
+												<p></p>
 											</div>
-											<div class="other_details">
+											<div class="other_details" id="weight">
 												<h1>Weight</h1>
-												<p>Paragraph</p>
+												<p></p>
 											</div>
-											<div class="other_details">
+											<div class="other_details" id="sterilization">
 												<h1><strong>Sterilization Status</strong></h1>
-												<p>Paragraph</p>
+												<p></p>
 											</div>
 										</div>
 									</div>
@@ -366,23 +369,19 @@
 										</div>
 										<div class="owner_details">
 											<div class="owner_details_row">
-												<div class="owner_detail_container">
+												<div class="owner_detail_container" id="ownerName">
 													<h1>Name</h1>
-													<p>Harold</p>
-												</div>
-												<div class="owner_detail_container">
-													<h1>Address</h1>
-													<p>Name</p>
+													<p></p>
 												</div>
 											</div>
 											<div class="owner_details_row">
-												<div class="owner_detail_container">
+												<div class="owner_detail_container" id="ownerEmail">
 													<h1>Email</h1>
-													<p>r@gmail.com</p>
+													<p></p>
 												</div>
-												<div class="owner_detail_container">
+												<div class="owner_detail_container" id="ownerPhone">
 													<h1>Contact Number</h1>
-													<p>+63 948 745 1489</p>
+													<p></p>
 												</div>
 											</div>
 										</div>
@@ -425,7 +424,7 @@
 									</div>
 									<div id="medical_history_table_container" class="medical_history_table_container">
 										<div class="table-responsive" id="medical_history_table">
-											<table class="table">
+											<table class="table" id="medhisto_Table">
 												<thead>
 													<tr>
 														<th>Diagnosis</th>
@@ -436,13 +435,7 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr>
-														<td>Cell 1</td>
-														<td>Cell 1</td>
-														<td>Cell 1</td>
-														<td>Cell 2</td>
-														<td>Cell 2</td>
-													</tr>
+													
 												</tbody>
 											</table>
 										</div>
@@ -459,7 +452,7 @@
 									</div>
 									<div id="immunization_history_table_container" class="immunization_history_table_container">
 										<div class="table-responsive" id="immunization_history_table">
-											<table class="table">
+											<table class="table" id="immuno_Table">
 												<thead>
 													<tr>
 														<th>Date</th>
@@ -470,13 +463,7 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr>
-														<td>Cell 1</td>
-														<td>Cell 1</td>
-														<td>Cell 1</td>
-														<td>Cell 2</td>
-														<td>Cell 2</td>
-													</tr>
+													
 												</tbody>
 											</table>
 										</div>
@@ -493,7 +480,7 @@
 									</div>
 									<div id="surgery_history_table_container" class="surgery_history_table_container">
 										<div class="table-responsive" id="surgery_history_table">
-											<table class="table">
+											<table class="table" id="surghisto_Table">
 												<thead>
 													<tr>
 														<th>Surgery Performed</th>
@@ -504,13 +491,7 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr>
-														<td>Cell 1</td>
-														<td>Cell 1</td>
-														<td>Cell 1</td>
-														<td>Cell 2</td>
-														<td>Cell 2</td>
-													</tr>
+												
 												</tbody>
 											</table>
 										</div>
@@ -771,6 +752,43 @@
 	$('#pet_card_container').hide();
 	</script>
 	@endif
+	@if ($medHistoryExist)
+	<script>
+	$('#medical_empty_state').hide();
+	$('#medical_history_table_container').css('display', 'flex');
+	</script>
+	@else
+	<script>
+	$('#medical_empty_state').css('display', 'flex');
+	$('#medical_history_table_container').hide();
+	</script> 
+	@endif
+	@if ($vaxHistoryExist)
+	<script>
+	$('#immunization_empty_state').hide();
+	$('#add_immunization').css('display', 'flex');
+	$('#immunization_history_table_container').css('display', 'flex');
+	</script>
+	@else
+	<script>
+	$('#immunization_empty_state').css('display', 'flex');
+	$('#add_immunization').hide();
+	$('#immunization_history_table_container').hide();
+	</script> 
+	@endif
+	@if ($surgHistoryExist)
+	<script>
+	$('#surgery_empty_state').hide();
+	$('#add_surgery').css('display', 'flex');
+	$('#surgery_history_table_container').css('display', 'flex');
+	</script>
+	@else
+	<script>
+	$('#surgery_empty_state').css('display', 'flex');
+	$('#add_surgery').hide();
+	$('#surgery_history_table_container').hide();
+	</script> 
+	@endif
 	<script>
 	$(document).ready(function() {
 	$('.Edit_pet-action').click(function() {
@@ -779,21 +797,16 @@
 	});
 	$('.View_pet').click(function() {
 			const id = $(this).data('container-id');
-			$('#medhisId').val(id);
-			$('#vaxhisId').val(id);
-			$('#surghisId').val(id);
-			$('#editId').val(id);
-			// Make an AJAX request to retrieve data
 			$.ajax({
 				type: 'GET',
-				url: `/admin/emr/view/${id}`,
+				url: `/user/pet_info/view/${id}`,
 				success: function(data) {
 					// Update the HTML elements with the retrieved data
 					$('#petInfo h1').text(data.petInfo.name);
 					$('#petInfo p').text(data.petInfo.breed);
 					$('#age p').text(data.petInfo.age);
 					$('#birthdate p').text(data.petInfo.birthdate);
-					$('#weight p').text(data.petInfo.weight);
+					$('#weight p').text(data.petInfo.weight + 'kg');
 					$('#sex p').text(data.petInfo.gender);
 					$('#sterilization p').text(data.petInfo.sterilization);
 					$('#ownerName p').text(data.ownerInfo.first_name + ' ' + 
@@ -809,7 +822,7 @@
 			});
 			$.ajax({
 				type: 'GET',
-				url: '/admin/emr/medhis/' + id, // Replace with your actual endpoint
+				url: '/user/pet_info/medhis/' + id, // Replace with your actual endpoint
 				success: function(data) {
 					$('#medhisto_Table tbody').empty();
 					console.log('Success: Data received', data);
@@ -818,7 +831,7 @@
 							'<td>' + medhisto.diagnosis + '</td>' +
 							'<td>' + medhisto.diagnosis_date + '</td>' +
 							'<td>' + medhisto.treatment + '</td>' +
-							'<td>' + medhisto.med.item_name + '</td>' +
+							//'<td>' + medhisto.med.item_name + '</td>' +
 							'</tr>';
 						$('#medhisto_Table tbody').append(newRow);
 					});
@@ -829,14 +842,14 @@
 			});
 			$.ajax({
 				type: 'GET',
-				url: '/admin/emr/vaxhis/' + id,
+				url: '/user/pet_info/vaxhis/' + id,
 				success: function(data) {
 					$('#immuno_Table tbody').empty();
 					$.each(data, function(index, vaxhisto) {
 						var newRow = '<tr>' +
 						'<td>' + vaxhisto.vaccination_date + '</td>' +
-						'<td>' + vaxhisto.vax.item_name + '</td>' +
-						'<td>' + vaxhisto.vax.prod_desc + '</td>' +
+						'<td>' + ' ' + '</td>' +
+						'<td>' + ' ' + '</td>' +
 						'<td>' + vaxhisto.revaccination_date + '</td>' +
 						'</tr>';
 					$('#immuno_Table tbody').append(newRow);
@@ -849,7 +862,7 @@
 			});
 			$.ajax({
 				type: 'GET',
-				url: '/admin/emr/surghis/' + id,
+				url: '/user/pet_info/surghis/' + id,
 				success: function(data) {
 					$('#surghisto_Table tbody').empty();
 					$.each(data, function(index, surgery){
@@ -857,7 +870,7 @@
 						'<td>' + surgery.surgery_type + '</td>' +
 						'<td>' + surgery.surgery_date + '</td>' +
 						'<td>' + surgery.reason + '</td>' +
-						'<td>' + surgery.med.item_name + '</td>' +
+						'<td>' + ' ' + '</td>' +
 						'<td>' + surgery.surgery_note + '</td>' +
 						'</tr>';
 					$('#surghisto_Table tbody').append(newRow);
@@ -872,61 +885,6 @@
 			
 		});
 
-	function displayMedicalHistoryTable(id) {
-	// Make an AJAX request to fetch medical history data for the specific petrecord_id
-	
-	}
-
-	function displayVaxHistoryTable(id) {
-	
-	$.ajax({
-		type: 'GET',
-		url: '/admin/emr/vaxhis/' + id,
-		success: function(data) {
-			$('#immunization_histo_Table tbody').empty();
-
-			$.each(data, function(index, vax) {
-				var newRow = '<tr>' +
-				'<td>' + vax.vaccination_date + '</td>' +
-				'<td>' + vax.Vax.item_name + '</td>' +
-				'<td>' + vax.Vax.prod_desc + '</td>' +
-				'<td>' + vax.revaccination_date + '</td>' +
-				'</tr>';
-			$('#immunization_histo_Table tbody').append(newRow);
-
-			});
-		},
-		error: function(xhr) {
-			console.log(xhr.responseText);
-		}
-	});
-	}
-
-	function displaySurgHistoryTable(id) {
-	
-	$.ajax({
-		type: 'GET',
-		url: '/admin/emr/surghis/' + id,
-		success: function(data) {
-			$('#surgery_histo_Table tbody').empty();
-
-			$.each(data, function(index, surgery){
-				var newRow = '<tr>' +
-				'<td>' + surgery.surgery_type + '</td>' +
-				'<td>' + surgery.surgery_date + '</td>' +
-				'<td>' + surgery.severity + '</td>' +
-				'<td>' + surgery.Med.item_name + '</td>' +
-				'<td>' + surgery.surgery_note + '</td>' +
-				'</tr>';
-			$('#surgery_histo_Table tbody').append(newRow);
-
-			});
-		},
-		error: function(xhr) {
-			console.log(xhr.responseText);
-		}
-	})
-	}
 
 });
 </script>

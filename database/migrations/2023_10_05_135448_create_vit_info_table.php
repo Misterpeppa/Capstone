@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('price')->nullable();
             $table->string('product_type');
             $table->string('archived_at');
+            $table->string('source')->default('Inventory');
             $table->timestamps();
         });
     }

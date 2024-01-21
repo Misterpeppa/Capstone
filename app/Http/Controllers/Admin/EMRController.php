@@ -20,7 +20,7 @@ class EMRController extends Controller
     {
         $owners = Clients::withTrashed()->get();
         $petrecord = PetRecord::with('pet', 'owner')->whereNull('archived_at')->get();
-        $petrecordExists = $petrecord->isNotEmpty();
+        $petrecordExists = PetRecord::exists();
         $medHistory = MedHistory::all();
         $vaxHistory = VaxHistory::all();
         $surgHistory = SurgHistory::all();
@@ -82,7 +82,9 @@ class EMRController extends Controller
     }
     public function pet(Request $request)
     {
+        $ownerId = $request->input('owner_id');
         $pet_infos = new PetInfo();
+        $pet_infos->owner_id = $ownerId;
         $pet_infos->name = $request->input('pet_name');
         $pet_infos->age = $request->input('pet_age');
         $pet_infos->species = $request->input('species');
@@ -93,7 +95,6 @@ class EMRController extends Controller
         $pet_infos->sterilization = $request->input('sterilization');
         $pet_infos->save();
         $petId = $pet_infos->id;
-        $ownerId = $request->input('owner_id');
 
         $petrecord = new PetRecord([
             'pet_id' => $petId,
@@ -153,7 +154,9 @@ class EMRController extends Controller
             'med_id' => $request->input('medication'),
             'diagnosis_desc' => $request->input('diagnosis_desc'),
         ]);
+        
         $medHistory->save();
+        
 
         return redirect()->route('admin_emr')->with('med_success', 'Pet Successfully Added');
     }

@@ -1,10 +1,18 @@
-body {
-    margin: 0;
+*{
     padding: 0;
+    margin: 0;
+  }
+  html{
     height: 100%;
-    user-select: none;
-    overflow: hidden;
-}
+  }
+  body{
+    display: flex;
+    min-width: 100%;
+    min-height: 100%;
+    flex-direction: column;
+    background: #EFEFEF;
+    overflow: auto;
+  }
 
 .bg-img {
     min-height: 100%;
@@ -66,10 +74,87 @@ body {
     border-radius: 0 5px 5px 0; /* Added to remove border-radius on the left side */
 }
 
+.error-message.email, .error-message.phone, .error-message.password, .error-message.repeat_password, .error-message.phone_number, .error-message.password, .error-message.password_confirmation {
+    position: absolute;
+    left: 40px;
+    top: 100%;
+    color: red;
+    display: none;
+    font-size: 12px;
+    padding: var(--spacing-spacing-xxs, 8px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--radius-xs, 4px);
+    border-radius: var(--radius-s, 8px);
+    border: 0.8px solid var(--colors-main-neutral, #FFF);
+    background: var(--colors-main-neutral-dark, #F9F9F9);
+    box-shadow: 0px 1px 3px 0px rgba(28, 28, 28, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+    z-index: 3;
+  }
+
+  .guide-message.email, .guide-message.phone, .guide-message.password, .guide-message.repeat_password, .guide-message.phone_number, .guide-message.password, .guide-message.password_confirmation {
+    position: absolute;
+    left: 40px;
+    top: 100%;
+    color: #48A0A7;
+    display: none;
+    font-size: 12px;
+    padding: var(--spacing-spacing-xxs, 8px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--radius-xs, 4px);
+    border-radius: var(--radius-s, 8px);
+    border: 0.8px solid var(--colors-main-neutral, #FFF);
+    background: var(--colors-main-neutral-dark, #F9F9F9);
+    box-shadow: 0px 1px 3px 0px rgba(28, 28, 28, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+    z-index: 1000;
+  }
+
+  .eye-icon, .eye-icon1 {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .eye-icon svg, .eye-icon1 svg {
+    opacity: 0.7;
+  }
+  .form-floating input:focus, .group-input input:focus{
+    outline: none;
+    box-shadow: none;
+    border-color: #48A0A7;
+  }
+
+  .custom_email, .custom_password{
+    width: 100%;
+    text-indent: 24px;
+    border-radius: var(--radius-s, 8px) !important;
+    background: #FFF;
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05) !important;
+    border: 0.5px solid rgba(0, 0, 0, 0.30);
+  }
+  label span {
+    color: var(--bs-red);
+  }
 .input:focus{
     outline: none;
 }
-
+.input-group {
+    position: relative; /* Add this to create a positioning context for absolute positioning */
+  }
+.input_svg {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 998; /* Set z-index to be below the guide message */
+}
+.custom_form_floating label{
+    left: 24px;
+  }
 .input-group-text {
     border-right: none;
     border-radius: 5px 0 0 5px ; /* Added to remove border-radius on the right side */
@@ -220,12 +305,13 @@ box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
 .group-input{
     display: flex;
     align-items: flex-start;
+    justify-content: center;
     gap: var(--spacing-spacing-xxs, 10px);
     align-self: stretch;
 }
 .group-input .form-controls{
     display: flex;
-    width: 60px;
+    width: 59px;
     height: 80px;
     flex-direction: column;
     justify-content: center;

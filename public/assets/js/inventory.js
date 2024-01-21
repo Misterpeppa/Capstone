@@ -103,6 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
             modal2.show();
           } else if (action === "View") {
             const view_product = document.getElementById("view_product");
+            var product_table_container = document.getElementById("product_table_container");
+            var batch_products = document.getElementById("batch_products");
             const inventory_header = document.getElementById(
               "inventory_header"
             );
@@ -110,6 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
               "prod_info_header"
             );
             view_product.style.display = "flex";
+            product_table_container.style.display = "none";
+            batch_products.style.display = "flex";
 
             inventory_header.style.display = "none";
             prod_info_header.style.display = "flex";
@@ -138,14 +142,17 @@ document.addEventListener("DOMContentLoaded", function () {
             // const dropdownContent = this.parentElement;
             // dropdownContent.style.display = "none";
           } else if (action === "Archive") {
-            // Handle the "Archive" action here
+            var archive_modal = new bootstrap.Modal(document.getElementById('archive_modal'));
+            archive_modal.show();
+            var archive_confirm_button = document.getElementById('archive_confirm_button');
+            archive_confirm_button.addEventListener('click', function(){
+                          // Handle the "Archive" action here
             // Add your logic for this action
             var row = button.closest("tr");
-
-            // Optionally, you can add an animation or confirmation dialog before archiving
-
             // Perform the archiving logic (e.g., hide the row)
             row.style.display = "none";
+            });
+
           }
         });
       });
@@ -156,13 +163,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add a click event listener to the "Back" button
     backButton.addEventListener("click", function () {
       // Hide the view_product
-      const view_product = document.querySelector(".view_product");
-      const inventory_header = document.getElementById("inventory_header");
-      const prod_info_header = document.getElementById("prod_info_header");
+      var view_product = document.querySelector(".view_product");
+      var inventory_header = document.getElementById("inventory_header");
+      var prod_info_header = document.getElementById("prod_info_header");
+      var product_table_container = document.getElementById("product_table_container");
 
       view_product.style.display = "none";
       inventory_header.style.display = "flex";
       prod_info_header.style.display = "none";
+      product_table_container.style.display = "flex";
     });
 
     // Get the "Back" button sa prod_detail element
@@ -190,6 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Toggle the visibility of dropdown-content when the Actions button is clicked
     document.querySelectorAll(".dropbtn").forEach(function (button) {
       button.addEventListener("click", function (event) {
+        closeDropdownMenus();
         event.stopPropagation(); // Prevent the click event from propagating
         const content = this.nextElementSibling;
         if (content.style.display === "block") {
@@ -201,6 +211,25 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     });
+    closeDropdownMenus();
+
+    function closeDropdownMenus() {
+      document.querySelectorAll('.dropdown-content').forEach(function (content) {
+          content.style.display = 'none';
+      });
+    }
+
+
+    
+
+    // Event listener to close dropdown menus when clicking outside
+    document.addEventListener('click', function (event) {
+      if (!event.target.matches('.dropbtn')) {
+          closeDropdownMenus();
+      }
+    });
+
+  
 
   function addBlurListener(input, error) {
     input.addEventListener("blur", function () {
@@ -940,5 +969,3 @@ function handleSelectAll() {
     checkbox.checked = selectAllCheckbox.checked;
   });
 }
-
-

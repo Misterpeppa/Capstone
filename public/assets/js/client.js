@@ -275,7 +275,7 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
     
     function closeEditClientInfo(){
         const client_header = document.getElementById('client_header');
-        const view_client = document.getElementById('view_client');
+        const view_client = document.getElementById('client_container'); 
         const edit_client_detail_header = document.getElementById('edit_client_detail_header');
         const edit_client = document.getElementById('edit_client');
 

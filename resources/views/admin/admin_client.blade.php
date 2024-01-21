@@ -141,7 +141,7 @@
                                       </li>
                                     </ul>
                                 </div>
-</form>
+                    </form>
                     </div>
                     <div class="right_part_product_header">
                         <button class="btn archive_button" id="archive_button"
@@ -286,74 +286,44 @@
                                 <th>Email</th>
                                 <th>Phone Number</th>
                                 <th>Birthdate</th>
-                                <th>Visit</th>
-                                <th>Last Visit</th>
+                                <th>Last Appointment</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="client_table_body">
                             @foreach ($clients as $clientInfo)
-                                <tr>
-                                    <td><input type="radio" class="checkbox"></td>
+                            @php
+                                $latestAppointment = $clientInfo->appointmentApproved->whereNotNull('completed_at')->sortByDesc('appointmentDate')->first();
+                            @endphp                                
+                            <tr>
+                                    <td><input type="checkbox"></td>
                                     <td>{{ $clientInfo->first_name }} {{ $clientInfo->middle_name }}
                                         {{ $clientInfo->last_name }} {{ $clientInfo->suffix }}</td>
                                     <td>{{ $clientInfo->email }}</td>
                                     <td>{{ $clientInfo->phone }}</td>
                                     <td>{{ $clientInfo->birthdate }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="dropdown button-action">
-                                        <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"aria-expanded="false" data-bs-toggle="dropdown"
-                                                            type="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-  <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
-  <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
-  <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
-</svg></button>
-                                        <div class="dropdown-content"><div class="button-group">
-                                            <button
-                                                data-action="View"
-                                                data-product-id="{{ $clientInfo->id }}"
-                                                class="btn border-0 viewButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <g clip-path="url(#clip0_6559_23849)">
-        <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-    <defs>
-        <clipPath id="clip0_6559_23849">
-        <rect width="24" height="24" fill="white"/>
-        </clipPath>
-    </defs>
-    </svg> View</div></button>
-                                                <button 
-                                                data-action="Edit" id="editButton"
-                                                data-product-id="{{ $clientInfo->id }}"
-                                                class="btn border-0"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6559_23478)">
-    <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6559_23478">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Edit</div></button>
-                                                <button 
-                                                data-action="Archive"
-                                                class="btn border-0"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6559_23857)">
-    <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6559_23857">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Archive</div></button>
-                                        </div>
-                                            
-                                        </div>
-                                        </td>
-                                  
+                                    @if ($latestAppointment)
+                                        <td>{{ $latestAppointment->appointmentDate }}</td>
+                                    @else
+                                        <td>No recent appointments</td>
+                                    @endif
+                                    <td class="button-action">
+                                        <button
+                                        data-action="View"
+                                        data-id="{{ $clientInfo->id }}"
+                                        class="btn border-0 viewButton"style="color:gray"><i class="fa-solid fa-eye"></i></button>
+                                        <button 
+                                        data-action="Edit" id="editButton"
+                                        data-container-id="{{ $clientInfo->id }}"
+                                        data-first-name="{{ $clientInfo->first_name }}" data-middle-name="{{ $clientInfo->middle_name}}"
+                                        data-last-name="{{ $clientInfo->last_name }}" data-suffix="{{ $clientInfo->suffix}}"
+                                        data-birthdate="{{ $clientInfo->birthdate}}" data-email="{{ $clientInfo->email}}" data-phone="{{ $clientInfo->phone }}"
+                                        class="btn border-0 editButton"style="color:gray"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button 
+                                        data-action="Archive" id="archiveButton"
+                                        data-container-id="{{ $clientInfo->id }}"
+                                        class="btn border-0 archiveButton"style="color:gray"><i class="fa-solid fa-box-archive"></i></button>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -779,20 +749,20 @@
                                 </defs>
                             </svg> Back</span></button></div>
                 <div class="prod_detail_body">
-                    <form id="add_client_form-3" class="client_detail_fields_container"><img
-                            src="assets/img/image%2011%20(1).png">
+                    <form action="{{ route('client.edit') }}" method="POST" id="add_client_form-3" class="client_detail_fields_container">
+                        @csrf
+                        <input type="hidden" name="client_id" id="editId">
                         <div class="new_input_row">
-                            <div class="form-floating" style="width:100%;"><input
+                            <div class="form-floating" style="width:100%;"><input name="first_name"
                                     class="form-control form-control form-control form-control" type="text"
-                                    data-id="first_name" id="first_name-3" placeholder="First Name"><label
+                                    data-id="first_name" id="editFirstName" placeholder="First Name"><label
                                     class="form-label form-label form-label form-label" for="first_name">First
                                     Name</label>
-                                <div id="error-first_name-3" class="error-message"><span>Please enter your first
-                                        name.</span></div>
+                                <div id="error-first_name-3" class="error-message"><span>Please enter your firstname.</span></div>
                             </div>
-                            <div class="form-floating" style="width:100%;"><input
+                            <div class="form-floating" style="width:100%;"><input name="middle_name"
                                     class="form-control form-control form-control form-control" type="text"
-                                    data-id="middle_name" id="middle_name-3" placeholder="Middle Name"><label
+                                    data-id="middle_name" id="editMiddleName" placeholder="Middle Name"><label
                                     class="form-label form-label form-label form-label" for="middle_name">Middle
                                     Name</label>
                                 <div id="error-middle_name-3" class="error-message"><span>Please enter your middle
@@ -800,15 +770,15 @@
                             </div>
                         </div>
                         <div class="new_input_row">
-                            <div class="form-floating" style="width:100%;"><input class="form-control"
-                                    type="text" id="last_name-4" data-id="last_name"
+                            <div class="form-floating" style="width:100%;"><input name="last_name" class="form-control"
+                                    type="text" id="editLastName" data-id="last_name"
                                     placeholder="Last Name"><label class="form-label" for="last_name">Last
                                     Name</label>
                                 <div id="error-last_name-4" class="error-message"><span>Please enter your last
                                         name.</span></div>
                             </div>
-                            <div class="form-floating" style="width:100%;"><select class="form-select"
-                                    id="suffix-4" data-id="suffix">
+                            <div class="form-floating" style="width:100%;"><select class="form-select" name="suffix"
+                                    id="editSuffix" data-id="suffix">
                                     <option value="none" selected="">Select a Suffix</option>
                                     <option value="Jr">Jr</option>
                                     <option value="Sr">Sr</option>
@@ -824,8 +794,8 @@
                             </div>
                             
                         </div>
-                        <div class="form-floating" style="width:100%;"><input class="form-control"
-                                id="client_birthdate-3" data-id="manufactured_date" placeholder="Manufactured Date"
+                        <div class="form-floating" style="width:100%;"><input name="birthdate" class="form-control"
+                                id="editBirthdate" data-id="manufactured_date" placeholder="Manufactured Date"
                                 type="date"><label class="form-label" for="client_birthdate">Birthdate</label>
                             <div id="error-client_birthdate-3" class="error-message"><span>Please enter the
                                     manufactured date.</span></div>
@@ -835,25 +805,26 @@
                             <div id="error-client_address-3" class="error-message"><span>Please enter your
                                     address.</span></div>
                         </div>
-                        <div class="form-floating" style="width:100%;"><input class="form-control" type="email"
-                                id="client_email-3" data-id="client_email" placeholder="Email"><label
+                        <div class="form-floating" style="width:100%;"><input name="email" class="form-control" type="email"
+                                id="editEmail" data-id="client_email" placeholder="Email"><label
                                 class="form-label" for="client_email">Email
                                 Address</label>
                             <div id="error-client_email-3" class="error-message"><span>Please enter a valid email
                                     address.</span></div>
                         </div>
-                        <div class="form-floating" style="width:100%;"><input class="form-control" type="tel"
-                                id="user_phone-3" data-id="user_phone" placeholder="Phone Number"><label
+                        <div class="form-floating" style="width:100%;"><input name="phone" class="form-control" type="tel"
+                                id="editPhone" data-id="user_phone" placeholder="Phone Number"><label
                                 class="form-label" for="user_phone">Phone
                                 Number</label>
                             <div id="error-user_phone-3" class="error-message"><span>Please enter a valid phone
                                     number.</span></div>
                         </div>
-                    </form>
                     <div class="mb-3 prod_detail_fields_buttons"><button class="btn cancel_edit" id="cancel_edit"
                             type="button"><span class="cancel_edit_base">Cancel</span></button><button
-                            class="btn disabled edit_save_changes" id="edit_save_changes" type="button"
-                            disabled=""><span class="edit_save_changes_base">Save Changes</span></button></div>
+                            class="btn disabled edit_save_changes" id="edit_save_changes" type="submit"
+                            disabled=""><span class="edit_save_changes_base">Save Changes</span></button>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -1453,6 +1424,9 @@
                                 </defs>
                             </svg></span></div>
                 </div>
+                <form action="{{ route('client.archive') }}" method="POST">
+                    @csrf
+                <input type="hidden" name="client_id" id="archiveId" value="">
                 <div class="modal-body archive_message">
                     <div>
                         <h1>Archive client?</h1>
@@ -1460,9 +1434,11 @@
                     </div>
                 </div>
                 <div class="modal-footer discard_footer"><button class="btn return_btn" data-bs-dismiss="modal"
-                        type="button"><span class="return_btn_base">Cancel</span></button><button
-                        class="btn archive_confirm" id="archive_confirm_button" type="button"><span
-                            class="archive_confirm_button_base">Archive</span></button></div>
+                    type="button"><span class="return_btn_base">Cancel</span></button><button
+                    class="btn archive_confirm" id="archive_confirm_button" type="submit"><span
+                    class="archive_confirm_button_base">Archive</span></button>
+                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -1592,10 +1568,30 @@
     @endif
     <script>
     $(document).ready(function() {
-	$('#editButton').click(function() {
-		const id = $(this).data(container-id);
-		$('#editId').val(id);
-	});
+        $('.editButton').click(function() {
+            const id = $(this).data('container-id');
+            $('#editId').val(id);
+            const clientData = {
+                'first_name' :$(this).data('first-name'),
+                'middle_name' :$(this).data('middle-name'),
+                'last_name' :$(this).data('last-name'),
+                'suffix' :$(this).data('suffix'),
+                'birthdate' :$(this).data('birthdate'),
+                'email' :$(this).data('email'),
+                'phone' :$(this).data('phone'),
+            };      
+            $('#editFirstName').val(clientData.first_name);
+            $('#editMiddleName').val(clientData.middle_name);
+            $('#editLastName').val(clientData.last_name);
+            $('#editSuffix').val(clientData.suffix);
+            $('#editBirthdate').val(clientData.birthdate);
+            $('#editEmail').val(clientData.email);
+            $('#editPhone').val(clientData.phone);
+        });
+        $('.archiveButton').click(function() {
+            const id = $(this).data('container-id');
+            $('#archiveId').val(id);
+        });
     });
     </script>
     <script>

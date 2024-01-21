@@ -20,7 +20,8 @@ class VaxInfo extends Model
         'prod_desc',
         'price',
         'product_type',
-        'archived_at'
+        'archived_at',
+        'source',
     ];
 
     public function vaxHistory(): HasMany
