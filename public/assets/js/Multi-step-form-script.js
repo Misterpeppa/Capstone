@@ -75,6 +75,7 @@ const getActivePanel = () => {
 
 };
 
+
 //open active panel (and close unactive panels)
 const setActivePanel = activePanelNum => {
 
@@ -117,7 +118,7 @@ const setFormHeight = () => {
   DOMstrings.stepsForm.style.height = `${totalHeight}px`;
 };
 
-
+setFormHeight();
 
 //PREV/NEXT BTNS CLICK
 DOMstrings.stepsForm.addEventListener('click', e => {
