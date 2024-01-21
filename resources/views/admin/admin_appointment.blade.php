@@ -197,8 +197,7 @@
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
+                                                aria-expanded="false"><div class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
                                                   <g clip-path="url(#clip0_3674_15869)" filter="url(#filter0_d_3674_15869)">
                                                     <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                   </g>
@@ -217,7 +216,8 @@
                                                       <rect width="24" height="24" fill="white"/>
                                                     </clipPath>
                                                   </defs>
-                                              </svg>Filter By
+                                              </svg>Filter By</div>
+                                                
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li class="dropdown-item ">
@@ -294,12 +294,19 @@
                                         </div>
                                         
                                         <div class="dropdown">
-                                            <button class="filter_btn dropdown-toggle fw-bold" type="button"
-                                                id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                aria-expanded="false">
-                                                <i class="fa-solid fa-arrow-down-short-wide"></i>Sort
-                                                By
-                                            </button>
+                                        <button class="filter_btn dropdown-toggle" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
+                                        aria-expanded="false"><div class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6770_15021)">
+    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6770_15021">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>Sort By</div>
+                                    </button>
                                             <ul class="dropdown-menu">
                                                 <li class="dropdown-item ">
                                                     <input class="form-check-input me-1" type="radio" id = "radio1"
