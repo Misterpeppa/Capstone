@@ -52,7 +52,7 @@
                         </defs>
                         </svg> Add Record</span></button>
 						<button class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown" data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-						<div class="dropdown-menu"><a class="dropdown-item" href="#">Generate Report</a></div>
+						<div class="dropdown-menu"><a class="dropdown-item" href="{{ route('report.emr') }}">Generate Report</a></div>
 					</div>
 				</div>
 				<div id="client_container" class="client_container">

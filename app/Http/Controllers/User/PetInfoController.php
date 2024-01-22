@@ -45,7 +45,6 @@ class PetInfoController extends Controller
         $petId = $request->input('pet_id');
         $pet_infos = PetInfo::find($petId);
         $ownerId = Auth::guard('clients')->id();
-
         // Update or set the fields
         $pet_infos->owner_id = $ownerId;
         $pet_infos->name = $request->input('pet_name');
@@ -77,21 +76,21 @@ class PetInfoController extends Controller
     {
         $ownerId = Auth::guard('clients')->id();
         $petrecord = PetRecord::where('owner_id', $ownerId)->where('id', $id)->first();
-        $medHistory = $petrecord->medHistory;
+        $medHistory = MedHistory::with('med')->where('petrecord_id', $petrecord->id)->get();
         return response()->json($medHistory);
     }
     public function showVaxHis($id)
     {
         $ownerId = Auth::guard('clients')->id();
         $petrecord = PetRecord::where('owner_id', $ownerId)->where('id',$id)->first();
-        $vaxHistory = $petrecord->vaxHistory;
+        $vaxHistory = VaxHistory::with('vax')->where('petrecord_id', $petrecord->id)->get();
         return response()->json($vaxHistory);
     }
     public function showSurgHis($id)
     {
         $ownerId = Auth::guard('clients')->id();
         $petrecord = PetRecord::where('owner_id', $ownerId)->where('id',$id)->first();
-        $surgHistory = $petrecord->surgHistory;
+        $surgHistory = SurgHistory::with('med')->where('petrecord_id', $petrecord->id)->get();
         return response()->json($surgHistory);
     }
     

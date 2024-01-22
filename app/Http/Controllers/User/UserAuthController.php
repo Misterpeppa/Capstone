@@ -153,11 +153,13 @@ class UserAuthController extends Controller
         }
         
         $resetCode = str_pad(mt_rand(1, 999999), 6, '0', STR_PAD_LEFT);
+        $hashedResetCode = Hash::make($resetCode);
+
         Cache::put('reset_code_' , $resetCode, now()->addMinutes(10));
         session(['reset_email' => $clients->email]);
 
         Mail::to($clients->email)->send(new ForgotPass($resetCode));
-        return redirect()->route('code.form', ['resetCode' => $resetCode]);
+        return redirect()->route('code.form', ['resetCode' => $hashedResetCode]);
 
     }
     
@@ -179,7 +181,7 @@ class UserAuthController extends Controller
 
         if ($resetCode == $clientId) {
             // The reset code is valid, allow the user to reset the password
-            return redirect()->route('reset.form', ['resetCode' => $resetCode]);
+            return redirect()->route('reset.form');
         } else {
             // Invalid reset code, redirect back with an error message
             return back()->with('error', 'Invalid reset code. Please check your code and try again.');
@@ -190,11 +192,11 @@ class UserAuthController extends Controller
         $email = session('reset_email');    
         return view('user/forgotpassCode', ['email' => $email]);
     }
-    public function showPasswordReset($resetCode)
+    public function showPasswordReset()
     {
         $email = session('reset_email');
 
-        return view('user/forgotpassReset',['resetCode' => $resetCode, 'email' => $email]);
+        return view('user/forgotpassReset',['email' => $email]);
     }
     public function resetPassword(Request $request)
     {
@@ -212,48 +214,3 @@ class UserAuthController extends Controller
 
 }
 
-// switch (count($validatedData['breed'])) {
-//     case 1:
-//         AppointmentPending::create([
-//             'user_id' => $clientId, // Use the same $clientId for all records
-//             'petType' => $validatedData['petType'][0],
-//             'breed' => $validatedData['breed'][0],
-//             'appointmentType' => $validatedData['appointmentType'][0],
-//             'appointmentDate' => $validatedData['appointmentDate'][0],
-//             'appointmentTime' => $validatedData['appointmentTime'][0],
-//         ]);
-//         break;
-
-//     case 2:
-//         for ($i = 0; $i < 2; $i++) {
-//             if (isset($validatedData['breed'][$i])) {
-//                 AppointmentPending::create([
-//                     'user_id' => $clientId, // Use the same $clientId for all records
-//                     'petType' => $validatedData['petType'][$i],
-//                     'breed' => $validatedData['breed'][$i],
-//                     'appointmentType' => $validatedData['appointmentType'][$i],
-//                     'appointmentDate' => $validatedData['appointmentDate'][$i],
-//                     'appointmentTime' => $validatedData['appointmentTime'][$i],
-//                 ]);
-//             }
-//         }
-//         break;
-
-//     case 3:
-//         for ($i = 0; $i < 3; $i++) {
-//             if (isset($validatedData['breed'][$i])) {
-//                 AppointmentPending::create([
-//                     'user_id' => $clientId, // Use the same $clientId for all records
-//                     'petType' => $validatedData['petType'][$i],
-//                     'breed' => $validatedData['breed'][$i],
-//                     'appointmentType' => $validatedData['appointmentType'][$i],
-//                     'appointmentDate' => $validatedData['appointmentDate'][$i],
-//                     'appointmentTime' => $validatedData['appointmentTime'][$i],
-//                 ]);
-//             }
-//         }
-//         break;
-//     default:
-//         // Handle unexpected number of pets
-//         break;
-// }

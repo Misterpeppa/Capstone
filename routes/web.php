@@ -21,6 +21,7 @@ use App\Models\Admin\PetInfo;
 use Carbon\Cli\Invoker;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Auth;
+use SebastianBergmann\CodeCoverage\Report\Xml\Report;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,8 +53,8 @@ Route::middleware(['signedout', 'nocache'])->group(function () {
 Route::get('user/forgotpassword', [UserAuthController::class, 'showForgotpass'])->name('client.forgotpass');
 Route::post('user/forgotpassword', [UserAuthController::class, 'forgotPass'])->name('password.form');
 Route::post('user/forgotpasswordcode', [UserAuthController::class, 'checkResetCode'])->name('password.code');
-Route::get('user/forgotpasswordcode/{resetCode}', [UserAuthController::class, 'showCodeForm'])->name('code.form');
-Route::get('user/forgotpasswordreset/{resetCode}', [UserAuthController::class, 'showPasswordReset'])->name('reset.form');
+Route::get('user/forgotpasswordcode', [UserAuthController::class, 'showCodeForm'])->name('code.form');
+Route::get('user/forgotpasswordreset', [UserAuthController::class, 'showPasswordReset'])->name('reset.form');
 Route::post('user/forgotpassReset', [UserAuthController::class, 'resetPassword'])->name('reset.password');
 
 
@@ -116,6 +117,7 @@ Route::middleware('admin', 'nocache')->group(function () {
     Route::get('/admin/emr/medhis/{id}', [EMRController::class, 'showMedHis']);
     Route::get('/admin/emr/vaxhis/{id}', [EMRController::class, 'showVaxHis']);
     Route::get('/admin/emr/surghis/{id}', [EMRController::class, 'showSurgHis']);
+    Route::get('/admin/emr/reports', [ReportController::class, 'petrecordPDF'])->name('report.emr');
     Route::get('/admin/emr/search', [EMRController::class, 'search'])->name('emr.search');
 
     Route::get('/admin/inventory', [InvController::class, 'show'])->name('admin_inv');
