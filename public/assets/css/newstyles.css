@@ -854,6 +854,7 @@ main{
     flex-direction: column;
     background-color: #E8F0F0;
     overflow: auto;
+    width: 100%;
     max-height: 300vh;
   }
   
@@ -1500,7 +1501,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     box-shadow: -1px 0px 10px 0px rgba(0, 0, 0, 0.25) inset !important;
   }
   
-  .submit_product:disabled, .edit_save_changes:disabled, .add_stock:disabled, .add:disabled, .archive_confirm:disabled, .submit_pet:disabled, .signin_btn:disabled, .signin_btn:disabled, .reschedule_btn:disabled {
+  .submit_surgery:disabled, .submit_immunization:disabled, .submit_product:disabled, .edit_save_changes:disabled, .add_stock:disabled, .add:disabled, .archive_confirm:disabled, .submit_pet:disabled, .signin_btn:disabled, .signin_btn:disabled, .reschedule_btn:disabled {
     border-radius: var(--radius-s, 8px);
     opacity: 0.7;
     background: var(--colors-actions-action, #045B62);
@@ -1512,7 +1513,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     background: var(--colors-actions-action, #045B62);
   }
   
-  .add_product:hover, .submit_product:hover, .edit_save_changes:hover, .add_stock:hover, .add_patient_btn:hover, .add_client_button:hover, .add:hover, .archive_confirm:hover, .submit_pet:hover, .book_appointment:hover, .agree:hover, .new_appointment_btn:hover, .add_new_pet:hover, .signin_btn:hover, .user_new_pet_btn:hover, .add_history:hover {
+  .submit_surgery:hover, .submit_immunization:hover, .submit_diagnosis:hover, .add_product:hover, .submit_product:hover, .edit_save_changes:hover, .add_stock:hover, .add_patient_btn:hover, .add_client_button:hover, .add:hover, .archive_confirm:hover, .submit_pet:hover, .book_appointment:hover, .agree:hover, .new_appointment_btn:hover, .add_new_pet:hover, .signin_btn:hover, .user_new_pet_btn:hover, .add_history:hover {
     border-radius: var(--radius-s, 8px) !important;
     background: var(--colors-actions-action-hover, #004D53) !important;
     box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05) !important;
@@ -2400,16 +2401,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     align-self: stretch;
   }
   
-  .content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    background-color: #E8F0F0;
-    overflow: auto;
-    width: 1366px;
-    max-width: 100%;
-    max-height: 300vh;
-  }
+
   
 
   
@@ -2463,16 +2455,8 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     width: 100%;
   }
   
-  .content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    background-color: #E8F0F0;
-    overflow: auto;
-    width: 1366px;
-    max-width: 100%;
-    max-height: 300vh;
-  }
+
+
   
   .rotate180 {
     transform: rotate(180deg);
@@ -6719,7 +6703,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
       background: var(--colors-main-neutral-light, #F5F5F5);
       box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
     }
-    .modal-body.add_stock_modal{
+    .modal-body.add_stock_modal_body{
       width: 400px;
       height: auto;
     }
@@ -6808,6 +6792,28 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 
 
 @media (max-width: 576px){
+  .pagination-menu, .pagination-items{
+    display: none;
+  }
+  .pagination{
+    display: flex;
+    justify-content: center;
+  }
+    .modal-content.add_stock_modal {
+      display: inline-flex;
+      width: 400px;
+      padding: var(--spacing-spacing-s, 16px);
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-spacing-s, 12px);
+      border-radius: var(--radius-s, 8px);
+      background: var(--colors-main-neutral-light, #F5F5F5);
+      box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+    }
+    .modal-body.add_stock_modal_body{
+      width: 400px;
+      height: auto;
+    }
   .form-label{
     font-size: 10px !important;
   }

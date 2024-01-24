@@ -182,13 +182,13 @@ initializeForm(submit_pet1, pet_nameInput1, pet_TypeInput1, breedInput1, pet_Gen
 
 
 // reset input and select fields
-function resetPetForm(nameInput, genderInput, typeInput, breedInput, weightInput, sterilizationStatusInput, birthdateInput, ageInput) {
+function resetPetForm(nameInput, genderInput, typeInput, breedInput, pet_weightInput, sterilizationStatusInput, birthdateInput, ageInput) {
     nameInput.value = '';
     genderInput.value = 'none';
     typeInput.value = '';
     breedInput.value = 'none';
     breedInput.disabled = true;
-    weightInput.value = '';
+    pet_weightInput.value = '';
     sterilizationStatusInput.value = 'none';
     birthdateInput.value = '';
     ageInput.value = '';
@@ -203,7 +203,7 @@ function resetPetForm(nameInput, genderInput, typeInput, breedInput, weightInput
     // Attach the resetForm function to both clear form buttons
     clearFormButton.addEventListener('click', resetPetForm.bind(null, pet_nameInput, pet_GenderInput, pet_TypeInput, breedInput, pet_weightInput, pet_sterilizationStatusInput, pet_birthdateInput, pet_ageInput));
     clearFormButton1.addEventListener('click', resetPetForm.bind(null, pet_nameInput1, pet_GenderInput1, pet_TypeInput1, breedInput1, pet_weightInput1, pet_sterilizationStatusInput1, pet_birthdateInput1, pet_ageInput1));
-  
+    
     //close button sa pet record modal, when clicked, reset ang form
     close_pet_modal.addEventListener('click', resetPetForm.bind(null, pet_nameInput, pet_GenderInput, pet_TypeInput, breedInput, pet_weightInput, pet_sterilizationStatusInput, pet_birthdateInput, pet_ageInput));
     
@@ -338,10 +338,10 @@ function setupAgeCalculation(birthdateId, ageId, petTypeId) {
     }
 }
 // Example usage for the first set of IDs
-setupAgeCalculation('pet_birthdate', 'age', 'pet_type');
+setupAgeCalculation('pet_birthdate', 'pet_age', 'pet_type');
 
 // Example usage for the second set of IDs
-setupAgeCalculation('pet_birthdate-1', 'age-1', 'pet_type-1');
+setupAgeCalculation('pet_birthdate-1', 'pet_age', 'pet_type-1');
 
 submit_Pet.addEventListener('click', function (event) {
     //paalis nalang nito if needed
