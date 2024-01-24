@@ -506,26 +506,38 @@ function submitFormData(formData) {
     return selectedDate <= today;
   }
 
+  var manufacturing_date = document.getElementById('manufacturing_date');
+  var expired_date = document.getElementById('expired_date');
+  var date_stocked = document.getElementById('date_stocked');
+
+
   // Set the maximum allowed date to today
   const today = new Date();
   const todayString = today.toISOString().split("T")[0];
   manufactured_dateInput.max = todayString;
+  manufacturing_date.max = todayString;
   manufactured_dateInput1.max = todayString;
   expiration_dateInput.min = todayString;
   expiration_dateInput1.min = todayString;
+  expired_date.min = todayString;
   datestockedInput.max = todayString;
   datestockedInput1.max = todayString;
+  date_stocked.max = todayString;
 
   // Function to handle date selection for manufactured_date
   function handleManufacturedDateSelection() {
     const selectedDate = manufactured_dateInput.value;
     const selectedDate1 = manufactured_dateInput1.value;
+    const selectDate2 = manufacturing_date.value;
     if (isFutureDate(selectedDate && selectedDate1)) {
       alert("Please select a previous date for Manufactured Date.");
       manufactured_dateInput.value = ""; // Clear the input value
       manufactured_dateInput.focus(); // Set focus back to the input
       manufactured_dateInput1.value = "";
       manufactured_dateInput1.focus();
+      manufacturing_date.value ="";
+      manufacturing_date.focus();
+      
       return false;
     }
     // Set the default minimum date for datestocked to the manufactured_date
@@ -543,6 +555,9 @@ function submitFormData(formData) {
       expiration_dateInput.focus(); // Set focus back to the input
       expiration_dateInput1.value = "";
       expiration_dateInput1.focus();
+      expired_date.value = "";
+      expired_date.focus(); 
+     
       return false;
     }
     return true;
@@ -552,9 +567,11 @@ function submitFormData(formData) {
   function handleDateStockedSelection() {
     const selectedDate = dateStockedInput.value;
     const selectedDate1 = datestockedInput1.value;
+    const selectedDate2 = date_stocked.value;
     if (
       (isFutureDate(selectedDate) ||selectedDate < manufactured_dateInput.value) ||
-      (isFutureDate(selectedDate1) || selectedDate1 <manufactured_dateInput1.value)
+      (isFutureDate(selectedDate1) || selectedDate1 <manufactured_dateInput1.value) ||
+      (isFutureDate(selectedDate2) || selectedDate2 <manufacturing_date.value)
     ) {
       alert(
         "Please select a date after Manufactured Date and up to the current date for Date Stocked."
@@ -563,6 +580,8 @@ function submitFormData(formData) {
       datestockedInput.focus(); // Set focus back to the input
       datestockedInput1.value = "";
       datestockedInput1.focus();
+      date_stocked.value = "";
+      date_stocked.focus();
       return false;
     }
     return true;
@@ -573,6 +592,9 @@ function submitFormData(formData) {
     manufactured_dateInput,
     expiration_dateInput,
     datestockedInput,
+    manufacturing_date,
+    expired_date,
+    date_stocked,
   ];
   dateInputs.forEach((input) => {
     input.addEventListener("keydown", function (e) {

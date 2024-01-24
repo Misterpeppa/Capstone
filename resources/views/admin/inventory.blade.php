@@ -160,7 +160,7 @@
                     </div>
                     <div id="InventoryContainer" class="InventoryContainer">
                     <div class="container_header">
-                                <form action="" id="approvedForm">
+                                <form action="" id="approvedForm" class="w-100">
                                     <div class="left_part_product_header">
                                         <div class="search_container">
                                             <input type="text" class="search_input" name="qApproved"
@@ -488,8 +488,8 @@
                                         </defs>
                                     </svg> Add Product</span></button>
                         </div>
-                        <div id="product_table_container" class="w-100">
-                            <table class="table table-responsive w-100 mt-3"   style="overflow: auto;">
+                        <div id="product_table_container" class="w-100" >
+                            <table class="table table-responsive w-100 mt-3" style="overflow: auto;">
                                 <thead>
                                     <tr>
                                         <th><input id="SelectAll" type="radio" class="checkbox"></th>
@@ -789,7 +789,7 @@
                             @csrf
                             @method('PUT')
                             <div class="new_input_row">
-                                <div class="form-floating"><select name="produt_type" class="form-select form-select"
+                                <div class="form-floating w-100"><select name="produt_type" class="form-select form-select"
                                         data-id="product-categ" id="product-categ-3">
                                         <option value="none" selected="">Select a Product</option>
                                         <option value="Medicine">Medicine</option>
@@ -800,7 +800,7 @@
                                     <div id="error-product_categ-3" class="error-message"><span>Please select a
                                             category.</span></div>
                                 </div>
-                                <div class="form-floating"><select name="item_name" class="form-select form-select"
+                                <div class="form-floating w-100"><select name="item_name" class="form-select form-select"
                                         data-id="product_name" id="editItemName">
                                         <option value="none" selected="">Select a Product Name</option>
                                     </select><label class="form-label form-label" for="product_name">Product
@@ -808,14 +808,14 @@
                                     <div id="error-product_name-3" class="error-message"><span>Please select product
                                             name.</span></div>
                                 </div>
-                                <div class="form-floating"><input class="form-control form-control" type="text"
+                                <div class="form-floating w-100"><input class="form-control" type="text"
                                         name="product_code" id="product_code" data-id="product_code"
                                         id="product_code-3" placeholder="Product Code"><label
                                         class="form-label form-label" for="product_code">Product Code</label>
                                     <div class="error-message" id="error-product_code-3"><span>Please enter product
                                             code.</span></div>
                                 </div>
-                                <div class="form-floating"><input class="form-control form-control" type="text"
+                                <div class="form-floating w-100"><input class="form-control" type="text"
                                         name="batch_no" id="batch_number" data-id="batch_number" id="batch_number-3"
                                         placeholder="Batch Number"><label class="form-label form-label"
                                         for="batch_number">Batch Number</label>
@@ -825,7 +825,7 @@
                             </div>
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input
-                                        class="form-control form-control" name="manufacturing_date"
+                                        class="form-control" name="manufacturing_date"
                                         id="manufactured_date" data-id="manufactured_date" id="manufactured_date-3"
                                         placeholder="Manufactured Date" type="date"><label
                                         class="form-label form-label" for="manufactured_date">Manufactured
@@ -919,14 +919,14 @@
                                             name.</span></div>
                                 </div>
                                 <div class="form-floating"style="width: 100%;"><input
-                                        class="form-control form-control" type="text" name="product_code"
+                                        class="form-control" type="text" name="product_code"
                                         data-id="product_code" id="product_code" placeholder="Product Code"><label
                                         class="form-label form-label" for="product_code">Product Code</label>
                                     <div class="error-message" id="error-product_code"><span>Please enter product
                                             code.</span></div>
                                 </div>
                                 <div class="form-floating" style="width: 100%;"><input
-                                        class="form-control form-control" type="text" name="batch_no"
+                                        class="form-control" type="text" name="batch_no"
                                         data-id="batch_number" id="batch_number" placeholder="Batch Number"><label
                                         class="form-label form-label" for="batch_number">Batch Number</label>
                                     <div class="error-message" id="error-batch_number"><span>Please enter batch
@@ -935,7 +935,7 @@
                             </div>
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input
-                                        class="form-control form-control" name="manufacturing_date"
+                                        class="form-control" name="manufacturing_date"
                                         data-id="manufactured_date" id="manufactured_date"
                                         placeholder="Manufactured Date" type="date"><label
                                         class="form-label form-label" for="manufactured_date">Manufactured
@@ -1037,7 +1037,7 @@
                                             code.</span></div>
                                 </div>
                                 <div class="form-floating" style="width: 100%;"><input
-                                        class="form-control form-control" type="text" name="batch_no"
+                                        class="form-control" type="text" name="batch_no"
                                         data-id="batch_number" id="batch_number-1"
                                         placeholder="Batch Number"><label class="form-label form-label"
                                         for="batch_number">Batch Number</label>
@@ -1047,7 +1047,7 @@
                             </div>
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input
-                                        class="form-control form-control" name="manufacturing_date"
+                                        class="form-control" name="manufacturing_date"
                                         data-id="manufactured_date" id="manufactured_date-1"
                                         placeholder="Manufactured Date" type="date"><label
                                         class="form-label form-label" for="manufactured_date">Manufactured
@@ -1111,9 +1111,9 @@
             <div class="modal-content add_stock_modal">
                 <div class="modal-header">
                     <h1 class="modal-title">Add Stock</h1><button class="btn-close" aria-label="Close"
-                        data-bs-dismiss="modal" type="button"></button>
+                        data-bs-dismiss="modal" onClick="cancelStock()" type="button"></button>
                 </div>
-                <div class="modal-body add_stock_modal">
+                <div class="modal-body add_stock_modal_body">
                     @foreach ($products as $productInfo)
                         <form
                             action="{{ route('product.stock', ['product_type' => $productInfo->product_type, 'id' => $productInfo->id]) }}"
@@ -1125,8 +1125,8 @@
                     <div class="mb-3 stock_input_container">
                         <div class="stock_image_container"><span class="product_name">Product Name</span></div>
                         <div class="new_input_row">
-                            <div class="form-floating batch_number"><input id="batch_number" name="batch_no"
-                                    class="form-control form-control" type="text" data-id="batch_number"
+                            <div class="form-floating batch_number"><input id="batch_no" name="batch_no"
+                                    class="form-control" type="text" data-id="batch_no"
                                     placeholder="Batch Number" /><label class="form-label form-label"
                                     for="batch_number">Batch Number</label>
                                 <div id="error-batch_number-2" class="error-message"><span>Please enter batch
@@ -1134,24 +1134,24 @@
                             </div>
                         </div>
                         <div class="new_input_row">
-                            <div class="form-floating" style="width: 100%;"><input id="manufactured_date-1"
-                                    name="manufacturing_date" class="form-control form-control"
-                                    data-id="manufactured_date" placeholder="Manufactured Date"
+                            <div class="form-floating" ><input id="manufacturing_date"
+                                    name="manufacturing_date" class="form-control"
+                                    data-id="manufacturing_date" placeholder="Manufactured Date"
                                     type="date" /><label class="form-label form-label"
-                                    for="manufactured_date">Manufactured Date</label>
+                                    for="manufacturing_date">Manufactured Date</label>
                                 <div id="error-manufactured_date-2" class="error-message"><span>Please enter the
                                         manufactured date.</span></div>
                             </div>
-                            <div class="form-floating" style="width: 100%;"><input id="expiration_date"
-                                    name="expiration_date" class="form-control form-control"
-                                    data-id="expiration_date" placeholder="Expiration Date"
+                            <div class="form-floating" ><input id="expired_date"
+                                    name="expiration_date" class="form-control"
+                                    data-id="expired_date" placeholder="Expiration Date"
                                     type="date" /><label class="form-label form-label"
                                     for="expiration_date">Expiration Date</label>
                                 <div id="error-expiration_date-2" class="error-message"><span>Please enter the
                                         expiration date.</span></div>
                             </div>
-                            <div class="form-floating" style="width: 100%;"><input id="datestocked"
-                                    name="date_stocked" class="form-control form-control" data-id="datestocked"
+                            <div class="form-floating" ><input id="date_stocked"
+                                    name="date_stocked" class="form-control form-control" data-id="date_stocked"
                                     placeholder="Expiration Date" type="date" /><label
                                     class="form-label form-label" for="datestocked">Date Stocked</label>
                                 <div id="error-datestocked-2" class="error-message"><span>Please enter the date
@@ -1162,12 +1162,12 @@
                             <h1>Quantity</h1>
                             <div class="form-floating">
                                 <div class="quantity_input">
-                                    <button class="quantity_minus" onclick="decrementQuantity()"
+                                    <button class="quantity_minus" onclick="decrementQuantity2()"
                                         type="button">-</button>
-                                    <input id="quantity" class="input_quantity" type="number"
-                                        aria-labelledby="label-quantity" data-id="quantity" min="0"
+                                    <input id="quantity-2" class="input_quantity" type="number"
+                                        aria-labelledby="label-quantity" data-id="quantity-2" min="0"
                                         name="quantity" required value="0" />
-                                    <button class="quantity_add" onclick="incrementQuantity()"
+                                    <button class="quantity_add" onclick="incrementQuantity2()"
                                         type="button">+</button>
                                     <div id="error-quantity-2" class="error-message"><span>Please input a quantity
                                             value more than 0.</span></div>
@@ -1177,9 +1177,9 @@
                     </div>
                 </div>
                 <div class="modal-footer add_stock_buttons">
-                    <button class="btn cancel_btn" type="button" role="button" aria-label="Cancel"><span
+                    <button class="btn cancel_btn" id="cancel_btn" onClick="cancelStock()" data-bs-dismiss="modal" type="button" role="button" aria-label="Cancel"><span
                             class="cancel_btn_base">Cancel</span></button>
-                    <button id="add_stock" class="btn add_stock" type="submit"><span class="add_stock_base">Add
+                    <button id="add_stock" class="btn add_stock" type="submit" disabled><span class="add_stock_base">Add
                             Stock</span></button>
                 </div>
                 </form>
@@ -1480,6 +1480,8 @@
 
 });
     </script>
+
+
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/inventory.js') }}"></script>
