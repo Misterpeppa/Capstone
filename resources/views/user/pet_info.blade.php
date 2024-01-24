@@ -616,7 +616,7 @@
 									<div class="guide-message" id="guide_pet_birthdate"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" type="text" data-bs-toggle="tooltip" data-id="age" name="pet_age" disabled="" value=" " id="age" maxlength="3" placeholder="Please select pet type, breed, and enter the birthdate first." title="Please select pet type and enter the birthdate first.">
+									<input class="form-control form-control" type="text" data-bs-toggle="tooltip" data-id="pet_age" name="pet_age" disabled="" value=" " id="pet_age" maxlength="3" placeholder="Please select pet type, breed, and enter the birthdate first." title="Please select pet type and enter the birthdate first.">
 									<label class="form-label form-label" for="age">Age</label>
 									<div class="error-message" id="error-age" style="color:red;"></div>
 								</div>
