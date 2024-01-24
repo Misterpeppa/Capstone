@@ -33,7 +33,7 @@ border-bottom: 1px solid #ccc;
 .search_input::placeholder{
   color: rgba(28, 28, 28, 0.50);
   font-family: Inter;
-  font-size: 16px ;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: normal ;
@@ -6719,6 +6719,136 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 
 
 @media (max-width: 576px){
+  .modal-content.add_client_modal{
+    width: 400px!important;
+    height: 590px;
+  }
+  .modal-body.consent-message{
+    height: 300px;
+  }
+  .consent-title h1{
+    font-size: 16px !important;
+  }
+  .consent-title p{
+    font-size: 12px;
+  }
+  .custom-style{
+    font-size: 14px !important;
+  }
+  .consent-text p{
+    font-size: 12px !important;
+  }
+  .consent-text{
+    height: 280px;
+    overflow: auto;
+  }
+  .multisteps-form__progress-btn span {
+    position: relative;
+    top: -15px;
+    color: black;
+    z-index: 3;
+    font-size: 8px;
+  }
+  .calendar_time_container{
+    width: 100% !important;
+  }
+
+  .current-date{
+    font-size: 14px !important;
+  }
+
+  .Appointment_weeks{
+    display: flex;
+    padding: 0;
+    height: 18px;
+    margin: 0;
+    align-items: center !important;
+  }
+  .days{
+    padding: 0;
+    margin: 0;
+  }
+  .days li{
+    font-size: 8px;
+  }
+  .selected_fullyBooked{
+    display: flex;
+    flex-direction: column;
+  }
+  .fully_booked, .selected_Calendar_date{
+    width: 50%;
+    padding: 4px !important;
+    
+  }
+  .fully_booked p, .selected_Calendar_date p{
+    font-size: 8px !important;
+  }
+  .selected_date{
+    margin-top: 12px;
+    font-size: 16px !important;
+  }
+  .time_options{
+    padding: 8px;
+  }
+  .date_required_message{
+    margin-top: 12px;
+    font-size: 8px !important;
+  }
+  .Appointment_weeks li{
+    text-align: center;
+    font-size: 8px !important;
+    align-self: flex-start !important;
+
+  }
+  .form-label {
+    color: rgba(28, 28, 28, 0.50);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal ;
+  }
+  .multiple-step-form-n{
+    gap: 8px;
+  }
+  .multisteps-form__progress-btn:before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    display: flex;
+    content: '';
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    transition: all 0.15s linear 0s, -webkit-transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+    transition: all 0.15s linear 0s, transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+    transition: all 0.15s linear 0s, transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s, -webkit-transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    background-color: #fff;
+    box-sizing: border-box;
+  
+    z-index: 3; /* Make sure it's above the span */
+  }
+  .user_appointment{
+    gap: 4px;
+  }
+  .appointment_header{
+    width: 100%;
+  }
+  .appointment_heading p{
+    font-size: 12px !important;
+  }
+  .appointment_header h1{
+    width: 100%;
+  }
+  .heading_1{
+    font-size: 18px !important;
+  }
+  .heading_2{
+    font-size: 24px !important;
+  }
   .services{
     display: flex;
     flex-direction: column;
@@ -6897,7 +7027,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 2px;
+    gap: 4px;
   }
   .time_options{
     padding: 0;
@@ -6935,7 +7065,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     color: var(--colors-main-brand, #045B62);
     text-align: center;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 10px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -6947,19 +7077,23 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 10px;
   }
   
   
   .time_options li {
     display: flex;
-    width: 180px;
+    width: 128px;
+    height: 30px;
     padding: 10px 30px;
     justify-content: center;
     align-items: center;
     gap: 10px;
     border-radius: var(--radius-s, 8px);
     border: 0.5px solid rgba(0, 0, 0, 0.30);
+  }
+  .time_options li .form-label{
+    margin: 0;
   }
   .detail_confirmation h1, .pet_Detail h1 {
     color: rgba(28, 28, 28, 0.50);
