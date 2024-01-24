@@ -25,10 +25,10 @@
         <div class="container-fluid mb-5">
             <div class="row d-flex flex-column align-content-center flex-wrap">
                 <div class="col-9 user_appointment">
-                    <div class="d-flex flex-column align-items-center align-self-stretch">
-                        <div class="d-flex flex-column align-items-start">
-                            <h1 class="text-center align-self-stretch" style="color: #1C1C1C;font-size: 36px;font-family: Inter;">BOOK AN</h1>
-                            <h1 class="text-center" style="color: #045B62;font-size: 50px;--bs-body-font-weight: 700;font-family: Inter;">APPOINTMENT</h1>
+                    <div class="d-flex flex-column align-items-center align-self-stretch appointment_heading">
+                        <div class="d-flex flex-column align-items-start appointment_header">
+                            <h1 class="heading_1 text-center align-self-stretch" style="color: #1C1C1C;font-size: 36px;font-family: Inter;">BOOK AN</h1>
+                            <h1 class="heading_2 text-center" style="color: #045B62;font-size: 50px;--bs-body-font-weight: 700;font-family: Inter;">APPOINTMENT</h1>
                         </div>
                         <p class="text-center" style="color: #1c1c1c;font-size: 20px;font-family: Inter;--bs-body-font-weight: 500;">Please input complete and accurate details to secure a slot for your appointment.</p>
                     </div>
@@ -86,8 +86,8 @@
                                                     </div>
                                                     <div class="align-self-stretch form-floating"><select class="form-select form-select-sm" id="surgery_type-1" data-id="surgery_type-1">
                                                             <option value="none" selected="">Select a surgery</option>
-                                                            <option value="Neuter">Neuter</option>
-                                                            <option value="Tooth Extraction">Tooth Extraction</option>
+                                                            <option value="Neuter">Neuter (𝘐𝘵 𝘪𝘴 𝘵𝘩𝘦 𝘴𝘶𝘳𝘨𝘪𝘤𝘢𝘭 𝘳𝘦𝘮𝘰𝘷𝘢𝘭 𝘰𝘧 𝘢 𝘮𝘢𝘭𝘦 𝘥𝘰𝘨'𝘴 𝘵𝘦𝘴𝘵𝘪𝘤𝘭𝘦𝘴)</option>
+                                                            <option value="Tooth Extraction">Tooth Extraction (𝘳𝘦𝘮𝘰𝘷𝘢𝘭 𝘰𝘧 𝘢 𝘵𝘰𝘰𝘵𝘩)</option>
                                                         </select><label class="form-label" for="surgery_type-1">Surgery Type<span>&nbsp;*</span></label>
                                                         <div id="error-surgery-1" class="error-message"><span>• Please select a surgery type</span></div>
                                                     </div>
@@ -111,8 +111,8 @@
                                                     </div>
                                                     <div class="align-self-stretch form-floating"><select class="form-select form-select-sm" id="surgery_type-2" data-id="surgery_type-2">
                                                             <option value="none" selected="">Select a surgery</option>
-                                                            <option value="Neuter">Neuter</option>
-                                                            <option value="Tooth Extraction">Tooth Extraction</option>
+                                                            <option value="Neuter">Neuter (𝘐𝘵 𝘪𝘴 𝘵𝘩𝘦 𝘴𝘶𝘳𝘨𝘪𝘤𝘢𝘭 𝘳𝘦𝘮𝘰𝘷𝘢𝘭 𝘰𝘧 𝘢 𝘮𝘢𝘭𝘦 𝘥𝘰𝘨'𝘴 𝘵𝘦𝘴𝘵𝘪𝘤𝘭𝘦𝘴)</option>
+                                                            <option value="Tooth Extraction">Tooth Extraction (𝘳𝘦𝘮𝘰𝘷𝘢𝘭 𝘰𝘧 𝘢 𝘵𝘰𝘰𝘵𝘩)</option>
                                                         </select><label class="form-label" for="surgery_type-2">Surgery Type<span>&nbsp;*</span></label>
                                                         <div id="error-surgery-2" class="error-message"><span>• Please select a surgery type</span></div>
                                                     </div>
@@ -438,7 +438,7 @@
         </div>
     </main>
     @include('includes.footer')
-    <div class="modal fade" role="dialog" tabindex="-1" id="consent_modal">
+    <div class="modal fade show" role="dialog" tabindex="-1" id="consent_modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content add_client_modal">
                 <div class="modal-header">
@@ -453,11 +453,12 @@
   </defs>
 </svg></div>
                 </div>
-                <div class="modal-body consent-message">
-                    <div class="consent-title">
+                <div class="consent-title">
                         <h1 style="margin: 0;">Informed Consent and Acknowledgement</h1>
                         <p>Before scheduling your pet&#39;s surgery, please carefully read and acknowledge the following:</p>
                     </div>
+                <div class="modal-body consent-message">
+                    
                     <div class="consent-text">
                         <p><span class="custom-style">1. Understanding the Procedure:</span> I understand that my pet will undergo a surgical procedure as recommended by the veterinarian. I have received information about the procedure, its risks, and its benefits.</p>
                         <p><span class="custom-style">2. Health Status:</span> I confirm that I have provided accurate information about my pet&#39;s health, including any known medical conditions, allergies, or medications.</p>
@@ -474,7 +475,7 @@
     </div>
     <div id="success_modal" class="modal fade show" role="dialog" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content success_modal">
+            <div class="modal-content success_modal" style="display: block">
                 <div class="modal-header success_header">
                     <div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <g clip-path="url(#clip0_5910_17688)">
