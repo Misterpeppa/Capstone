@@ -1064,7 +1064,7 @@
                                     </thead>
                                     <tbody id="pendingTableBody">
                                         @foreach ($appointment_pending as $index => $appointment)
-                                            <tr>
+                                            <tr data-row-id="{{ $appointment->id }}">
                                                 <td ><input type="radio" class="checkbox"></td></td>
                                                 <td >{{ $index + 1 }}</td>
                                                 <td >{{ $appointment->clients->first_name }}
@@ -2189,12 +2189,11 @@
                 $('#confirm_approve_appointment_btn').off('click').on('click', function() {
                     $.ajax({
                         type: 'POST',
-                        url: '/admin/appointment/approve/' + appointmentId,
+                        url: '/admin/appointment/reject/' + appointmentId,
                         data: {
                             _token: '{{ csrf_token() }}'
                         },
                         success: function(response) {
-                            $('#row_' + appointmentId).remove();
                             alert('Appointment has been approved');
                             window.location.href = '/admin/appointment';
                         },
