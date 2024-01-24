@@ -15,9 +15,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class Clients extends Authenticatable implements MustVerifyEmailContract
 {
+    // use AuthenticatesUsers;
     use MustVerifyEmailTrait;
     use SoftDeletes;
     use HasFactory, Notifiable;

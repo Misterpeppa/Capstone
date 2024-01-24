@@ -184,32 +184,19 @@
                                                     <input class="form-check-input me-1" type="radio" id = "radio1"
                                                         name="sortItems"{{ request()->input('sortItems', '0') == '0' ? 'checked' : '' }}  value="0">
                                                     <label class="form-check-label ms-1 fs-6" for="radio1">
-                                                        Appointment
+                                                        Pet Name
                                                 </li>
                                                 <li class="dropdown-item">
                                                     <input class="form-check-input me-1" type="radio" id = "radio2"
                                                         name="sortItems" {{ request()->input('sortItems') == '1' ? 'checked' : '' }} value="1">
                                                     <label class="form-check-label ms-1 fs-6" for="radio2">
-                                                        Status
+                                                        Breed
                                                 </li>
                                                 <li class="dropdown-item">
                                                     <input class="form-check-input me-1" type="radio" id = "radio3"
                                                         name="sortItems" {{ request()->input('sortItems') == '2' ? 'checked' : '' }} value="2">
                                                     <label class="form-check-label ms-1 fs-6" for="radio3">
-                                                        Patient
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <input class="form-check-input me-1" type="radio" id = "radio4"
-                                                        name="sortItems" {{ request()->input('sortItems') == '3' ? 'checked' : '' }} value="3">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio4">
-                                                        Client
-                                                </li>
-                                                <li>
-                                                  <li class="dropdown-item">
-                                                    <input class="form-check-input me-1" type="radio" id = "radio5"
-                                                        name="sortItems" {{ request()->input('sortItems') == '4' ? 'checked' : '' }} value="4">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio5">
-                                                        Surgery Type
+                                                        Owner's Name
                                                 </li>
                                                 <li>
                                                     <hr class="dropdown-divider me-2 ms-2">

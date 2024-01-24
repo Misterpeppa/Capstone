@@ -110,13 +110,8 @@
 					<form action="" id="approvedForm">
                                     <div class="left_part_product_header">
                                         <div class="search_container">
-                                            <input type="text" class="search_input" name="qApproved"
-                                            value="{{ request('qApproved') }}" placeholder="Search Appointment">
-                                            <input type="hidden" id="pageForm" name="page"
-                                            value="{{ request('page') }}">
-                                            <input type="hidden" id="perPageForm" name="perPage"
-                                                value="{{ request('perPage') }}">
-
+                                            <input type="text" class="search_input" name="search"
+                                            value="{{ request('search') }}" placeholder="Search Appointment">
                                         </div>
                                         <button type="submit" form="approvedForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
                                         <div class="dropdown">
@@ -239,32 +234,25 @@
                                                     <input class="form-check-input me-1" type="radio" id = "radio1"
                                                         name="sortItems"{{ request()->input('sortItems', '0') == '0' ? 'checked' : '' }}  value="0">
                                                     <label class="form-check-label ms-1 fs-6" for="radio1">
-                                                        Appointment
+                                                        Title
                                                 </li>
                                                 <li class="dropdown-item">
                                                     <input class="form-check-input me-1" type="radio" id = "radio2"
                                                         name="sortItems" {{ request()->input('sortItems') == '1' ? 'checked' : '' }} value="1">
                                                     <label class="form-check-label ms-1 fs-6" for="radio2">
-                                                        Status
+                                                        Source
                                                 </li>
                                                 <li class="dropdown-item">
                                                     <input class="form-check-input me-1" type="radio" id = "radio3"
                                                         name="sortItems" {{ request()->input('sortItems') == '2' ? 'checked' : '' }} value="2">
                                                     <label class="form-check-label ms-1 fs-6" for="radio3">
-                                                        Patient
+                                                        Created Date
                                                 </li>
                                                 <li class="dropdown-item">
                                                     <input class="form-check-input me-1" type="radio" id = "radio4"
                                                         name="sortItems" {{ request()->input('sortItems') == '3' ? 'checked' : '' }} value="3">
                                                     <label class="form-check-label ms-1 fs-6" for="radio4">
-                                                        Client
-                                                </li>
-                                                <li>
-                                                  <li class="dropdown-item">
-                                                    <input class="form-check-input me-1" type="radio" id = "radio5"
-                                                        name="sortItems" {{ request()->input('sortItems') == '4' ? 'checked' : '' }} value="4">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio5">
-                                                        Surgery Type
+                                                        Archived Date
                                                 </li>
                                                 <li>
                                                     <hr class="dropdown-divider me-2 ms-2">

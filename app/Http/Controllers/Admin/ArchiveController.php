@@ -53,17 +53,43 @@ class ArchiveController extends Controller
             $query->where('source', 'LIKE', "%$search%")
             ->orWhereHas('clients', function ($subQuery) use ($search){
                 $subQuery->where('first_name', 'LIKE', "%$search%")->orWhere('middle_name', 'LIKE', "%$search%")
-                ->orWhere('last_name', 'LIKE', "%$search%")->orWhere('suffix', 'LIKR', "%$search%"); });
+                ->orWhere('last_name', 'LIKE', "%$search%")->orWhere('suffix', 'LIKE', "%$search%"); });
             })->get();
 
         $client = Clients::whereNotNull('archived_at')
         ->where(function ($query) use ($search){
             $query->where('first_name', 'LIKE', "%$search%")->orWhere('middle_name', 'LIKE', "%$search%")
-            ->orWhere('last_name', 'LIKE', "%$search%")->orWhere('suffix', 'LIKR', "%$search%"); 
+            ->orWhere('last_name', 'LIKE', "%$search%")->orWhere('suffix', 'LIKE', "%$search%"); 
         })->get();
 
         $archived = $vax_info->concat($med_info)->concat($vit_info)->concat($petrecord)->concat($appointment)->concat($client);
 
+        $sortItem = $request->input('sortItems');
+        $sortOrder = $request->input('sortOrder');
+        $sortField = [
+            0 => 'item_name',
+            1 => 'source',
+            2 => 'created_at',
+            3 => 'archived_at',
+        ][$sortItem] ?? 'item_name';
+        $sortDirection = $sortOrder == 1 ? 'desc' : 'asc';
+        $archived = $archived->sortBy($sortField, SORT_NATURAL, $sortOrder == 1);
+
+        // $archived = $archived->sortBy(function ($item) use ($sortField, $sortOrder) {
+        //     // If $sortField is an array, iterate over its elements
+        //     if (is_array($sortField)) {
+        //         foreach ($sortField as $field) {
+        //             // Perform sorting based on each field
+        //             $archived = $item->$field ?? null;
+        //         }
+        //     } else {
+        //         // If $sortField is a single value, use it directly
+        //         $archived = $item->$sortField ?? null;
+        //     }
+        
+        //     // Return the final value for sorting
+        //     return $archived;
+        // }, SORT_NATURAL, $sortOrder == 1);
         return view('admin/archive', compact('dataExist', 'archived', 'petrecord', 'appointment', 'client'));
     }
     public function search(Request $request)
