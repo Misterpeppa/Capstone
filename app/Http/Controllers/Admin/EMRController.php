@@ -16,25 +16,25 @@ use Svg\Tag\Rect;
 
 class EMRController extends Controller
 {
-    public function show()
-    {
-        $owners = Clients::withTrashed()->get();
-        $petrecord = PetRecord::with('pet', 'owner')->whereNull('archived_at')->get();
-        $medHistory = MedHistory::all();
-        $vaxHistory = VaxHistory::all();
-        $surgHistory = SurgHistory::all();
-        $medHistoryExist = $medHistory->isNotEmpty();
-        $vaxHistoryExist = $vaxHistory->isNotEmpty();
-        $surgHistoryExist = $surgHistory->isNotEmpty();
-        $medInfo = MedInfo::all();
-        $med_info = MedInfo::all();
-        $vaxInfo = VaxInfo::all();
+    // public function show()
+    // {
+    //     $owners = Clients::withTrashed()->get();
+    //     $petrecord = PetRecord::with('pet', 'owner')->whereNull('archived_at')->get();
+    //     $medHistory = MedHistory::all();
+    //     $vaxHistory = VaxHistory::all();
+    //     $surgHistory = SurgHistory::all();
+    //     $medHistoryExist = $medHistory->isNotEmpty();
+    //     $vaxHistoryExist = $vaxHistory->isNotEmpty();
+    //     $surgHistoryExist = $surgHistory->isNotEmpty();
+    //     $medInfo = MedInfo::all();
+    //     $med_info = MedInfo::all();
+    //     $vaxInfo = VaxInfo::all();
         
-        return view('/admin/petrecords', compact('owners', 'petrecord','petrecordExists', 'medHistoryExist', 'vaxHistoryExist', 'surgHistoryExist', 
-        'medInfo', 'vaxInfo', 'med_info'));
-    }
+    //     return view('/admin/petrecords', compact('owners', 'petrecord','petrecordExists', 'medHistoryExist', 'vaxHistoryExist', 'surgHistoryExist', 
+    //     'medInfo', 'vaxInfo', 'med_info'));
+    // }
 
-    public function search(Request $request)
+    public function show(Request $request)
     {
         $petrecord = PetRecord::with('pet', 'owner')
         ->whereNull('pet_record.archived_at');
