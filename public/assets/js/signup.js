@@ -52,9 +52,10 @@ function checkInputs() {
             nextBtn.classList.add('disabled');
         }
     }
-checkInputs();
+
 
 emailInput.addEventListener('blur', function () {
+  checkInputs();
 var emailValue = emailInput.value.trim();
 
 if (emailValue === '') {
@@ -63,7 +64,6 @@ if (emailValue === '') {
     displayErrorEmail('Invalid email format');
 } else {
     hideErrorEmail();
-    
 }
 
 });
@@ -88,10 +88,11 @@ emailInput.classList.remove('error-border');
 }
 
 emailInput.addEventListener('focus', function () {
+  checkInputs();
       errorEmail.style.display = 'none';
       emailInput.classList.remove('is-invalid');
         emailInput.classList.remove('error-border');
-checkInputs();
+
 });
  
 // Add a focusout event listener to handle the condition when the input has a value and is not focused
@@ -103,6 +104,7 @@ checkInputs();
 
  
 phone_number.addEventListener('blur', function () {
+  checkInputs();
 var phoneNumberValue = phone_number.value.trim();
 
 if (phoneNumberValue === '') {
@@ -128,10 +130,11 @@ phoneNumberInput.classList.remove('error-border');
 }
  
 phone_number.addEventListener('focus', function () {
+  checkInputs();
       error_phone_number.style.display = 'none';
       phone_number.classList.remove('is-invalid');
         phone_number.classList.remove('error-border');
-checkInputs();
+
 });
  
 // Add a focusout event listener to handle the condition when the input has a value and is not focused
@@ -140,6 +143,7 @@ checkInputs();
 });
  
 document.getElementById("phone_number").oninput = function () {
+  checkInputs();
   // Limit the input to 11 characters
   if (this.value.length > 11) {
     this.value = this.value.slice(0, 11);
@@ -168,6 +172,7 @@ document.getElementById("phone_number").oninput = function () {
 
 
 passwordInput.addEventListener('blur', function () {
+  checkInputs();
 const passwordValue = passwordInput.value.trim();
 let errorMessages = [];
 
@@ -220,16 +225,18 @@ checkInputs();
  
    
 passwordInput.addEventListener('focus', function () {
+  checkInputs();
       errorPassword.style.display = 'none';
       passwordInput.classList.remove('is-invalid');
         passwordInput.classList.remove('error-border');
-checkInputs();
+
 });
  
  
 
 // Password confirmation input event listeners
 confirmPasswordInput.addEventListener('blur', function () {
+  checkInputs();
 if (confirmPasswordInput.value.trim() === '') {
     errorConfirmPassword.style.display = 'flex';
     confirmPasswordInput.classList.add('is-invalid');
@@ -248,17 +255,18 @@ if (confirmPasswordInput.value.trim() === '') {
 });
  
 confirmPasswordInput.addEventListener('focus', function () {
+  checkInputs();
 errorConfirmPassword.style.display = 'none';
 confirmPasswordInput.classList.remove('is-invalid');
 confirmPasswordInput.classList.remove('error-border');
-checkInputs();
+
 });
 
 // Add a focusout event listener to handle the condition when the password confirmation has a value and is not focused
 confirmPasswordInput.addEventListener('focusout', function () {
 checkInputs();
 });
-
+checkInputs();
 
 
 
@@ -329,6 +337,7 @@ if (fnameInput.value.trim() === '') {
       errorFname.style.display = 'none';
       fnameInput.classList.remove('is-invalid');
         fnameInput.classList.remove('error-border');
+        
 });
  
 
