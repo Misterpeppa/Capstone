@@ -1117,6 +1117,7 @@ cancelRescheduleBtn.addEventListener('click', function() {
     resetReschedInputFields();
 });
 
+ 
 
 //reset input for reschedule
 function resetReschedInputFields1() {
