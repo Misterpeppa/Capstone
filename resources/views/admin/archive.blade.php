@@ -337,7 +337,7 @@
                         <table class="table" id="client_table">
                             <thead>
                                 <tr>
-                                    <th><input type="checkbox" id="Select_All_Archive" class="checkbox"></th>
+                                    <th><input type="radio" id="Select_All_Archive" class="checkbox"></th>
                                     <th>ID</th>
                                     <th>title</th>
                                     <th>source</th>
@@ -349,7 +349,7 @@
                             <tbody id="archive_table_body">
                               @foreach ($archived as $index => $record)
                                 <tr>
-                                    <td><input type="checkbox" class="checkbox"></td>
+                                    <td><input type="radio" class="checkbox"></td>
                                     <td>{{ $index + 1 }}</td>
                                     <td>
                                         @if ($record instanceof App\Models\Admin\MedInfo)
@@ -516,6 +516,20 @@
         $('#archives_table_container').hide();
   </script>  
   @endif
+  <script>
+            var SelectAll = document.getElementById("Select_All_Archive");
+
+            SelectAll.addEventListener("click", function () {
+    var tableBody = document.getElementById('archive_table_body');
+    var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
+
+    rowCheckboxes.forEach(function (checkbox) {
+        checkbox.checked = !checkbox.checked; // Toggle the state
+    });
+
+});
+    </script>
+
   <script>
     $(document).ready(function() {
       $('.unarchive_med').on('click', function() {

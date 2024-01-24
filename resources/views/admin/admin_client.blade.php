@@ -277,8 +277,8 @@
                                 </defs>
                             </svg> Add Client</span></button>
                 </div>
-                <div id="client_table_container" class="table-responsive w-100">
-                    <table class="table" >
+                <div id="client_table_container" class="w-100" style="overflow: auto;">
+                    <table class="table table-responsive mt-3 w-100">
                         <thead>
                             <tr>
                                 <th><input id="SelectAll" type="radio" class="checkbox"></th>
@@ -286,48 +286,78 @@
                                 <th>Email</th>
                                 <th>Phone Number</th>
                                 <th>Birthdate</th>
-                                <th>Last Appointment</th>
+                                <th>Visit</th>
+                                <th>Last Visit</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="client_table_body">
                             @foreach ($clients as $clientInfo)
-                            @php
-                                $latestAppointment = $clientInfo->appointmentApproved->whereNotNull('completed_at')->sortByDesc('appointmentDate')->first();
-                            @endphp                                
-                            <tr>
-                                    <td><input type="checkbox"></td>
+                                <tr>
+                                    <td><input type="radio"></td>
                                     <td>{{ $clientInfo->first_name }} {{ $clientInfo->middle_name }}
                                         {{ $clientInfo->last_name }} {{ $clientInfo->suffix }}</td>
                                     <td>{{ $clientInfo->email }}</td>
                                     <td>{{ $clientInfo->phone }}</td>
                                     <td>{{ $clientInfo->birthdate }}</td>
-                                    @if ($latestAppointment)
-                                        <td>{{ $latestAppointment->appointmentDate }}</td>
-                                    @else
-                                        <td>No recent appointments</td>
-                                    @endif
-                                    <td class="button-action">
-                                        <button
-                                        data-action="View"
-                                        data-id="{{ $clientInfo->id }}"
-                                        class="btn border-0 viewButton"style="color:gray"><i class="fa-solid fa-eye"></i></button>
-                                        <button 
-                                        data-action="Edit" id="editButton"
-                                        data-container-id="{{ $clientInfo->id }}"
-                                        data-first-name="{{ $clientInfo->first_name }}" data-middle-name="{{ $clientInfo->middle_name}}"
-                                        data-last-name="{{ $clientInfo->last_name }}" data-suffix="{{ $clientInfo->suffix}}"
-                                        data-birthdate="{{ $clientInfo->birthdate}}" data-email="{{ $clientInfo->email}}" data-phone="{{ $clientInfo->phone }}"
-                                        class="btn border-0 editButton"style="color:gray"><i class="fa-solid fa-pen-to-square"></i></button>
-                                        <button 
-                                        data-action="Archive" id="archiveButton"
-                                        data-container-id="{{ $clientInfo->id }}"
-                                        class="btn border-0 archiveButton"style="color:gray"><i class="fa-solid fa-box-archive"></i></button>
-                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="dropdown button-action">
+                                        <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+  <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
+  <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
+  <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
+</svg></button>
+                                        <div class="dropdown-content"><div class="button-group">
+                                            <button
+                                                data-action="View"
+                                                data-product-id="{{ $clientInfo->id }}"
+                                                class="btn border-0 viewButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <g clip-path="url(#clip0_6559_23849)">
+        <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+        <clipPath id="clip0_6559_23849">
+        <rect width="24" height="24" fill="white"/>
+        </clipPath>
+    </defs>
+    </svg> View</div></button>
+                                                <button 
+                                                data-action="Edit" id="editButton"
+                                                data-product-id="{{ $clientInfo->id }}"
+                                                class="btn border-0"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6559_23478)">
+    <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6559_23478">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg> Edit</div></button>
+                                                <button 
+                                                data-action="Archive"
+                                                class="btn border-0"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6559_23857)">
+    <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6559_23857">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg> Archive</div></button>
+                                        </div>
+                                            
+                                        </div>
+                                        </td>
+                                  
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    
                 </div>
                 <div class="pagination">
                         <div class="pagination-menu">
@@ -478,19 +508,27 @@
                                     </defs>
                                 </svg> Sort by</span></button>
                     </div>
-                    <div class="right_part_product_header"><button class="btn add_pet_button" id="add_pet_button"
-                            type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="24" viewBox="0 0 24 24" fill="none">
-                                    <g clip-path="url(#clip0_5749_19213)">
-                                        <path d="M12 5V19M5 12H19" stroke="#1C1C1C" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_5749_19213">
-                                            <rect width="24" height="24" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg></span></button></div>
+                    <div class="right_part_product_header"><a id="add_pet_button" class="btn add_client_button" role="button" href="{{ route('admin_emr') }}"><span
+                            class="add_client_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+  <g clip-path="url(#clip0_6818_11565)" filter="url(#filter0_d_6818_11565)">
+    <path d="M5.5 12H19.5M19.5 12L13.5 18M19.5 12L13.5 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <filter id="filter0_d_6818_11565" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="2"/>
+      <feGaussianBlur stdDeviation="1"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6818_11565"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6818_11565" result="shape"/>
+    </filter>
+    <clipPath id="clip0_6818_11565">
+      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
+    </clipPath>
+  </defs>
+</svg> Go to Pet Records</span></a></div>
                 </div>
                 <div id="pet_empty_state_container" class="empty_state_container">
                     <div class="empty_state">
@@ -589,34 +627,30 @@
                                 <p>You can add a pet by clicking the button below.</p>
                             </div>
                         </div>
-                    </div><button class="btn add_client_button" id="add_pet_btn" type="button"><span
-                            class="add_client_base"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" viewBox="0 0 24 24" fill="none">
-                                <g clip-path="url(#clip0_5749_19901)" filter="url(#filter0_d_5749_19901)">
-                                    <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </g>
-                                <defs>
-                                    <filter id="filter0_d_5749_19901" x="-2" y="0" width="28" height="28"
-                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                        <feColorMatrix in="SourceAlpha" type="matrix"
-                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                        <feOffset dy="2" />
-                                        <feGaussianBlur stdDeviation="1" />
-                                        <feComposite in2="hardAlpha" operator="out" />
-                                        <feColorMatrix type="matrix"
-                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-                                        <feBlend mode="normal" in2="BackgroundImageFix"
-                                            result="effect1_dropShadow_5749_19901" />
-                                        <feBlend mode="normal" in="SourceGraphic"
-                                            in2="effect1_dropShadow_5749_19901" result="shape" />
-                                    </filter>
-                                    <clipPath id="clip0_5749_19901">
-                                        <rect width="24" height="24" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg> Add Pet</span></button>
+                    </div>
+                    
+                
+                    <a class="btn add_client_button" role="button" href="{{ route('admin_emr') }}"><span
+                            class="add_client_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+  <g clip-path="url(#clip0_6818_11565)" filter="url(#filter0_d_6818_11565)">
+    <path d="M5.5 12H19.5M19.5 12L13.5 18M19.5 12L13.5 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <filter id="filter0_d_6818_11565" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="2"/>
+      <feGaussianBlur stdDeviation="1"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6818_11565"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6818_11565" result="shape"/>
+    </filter>
+    <clipPath id="clip0_6818_11565">
+      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
+    </clipPath>
+  </defs>
+</svg> Go to Pet Records</span></a>
                 </div>
                 <div id="pet_card_container" class="pet_card_container">
                     <div class="card pet_card" id="pet_card" data-pet-id="pet_card_0">
@@ -1008,282 +1042,9 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="add_pet_record_modal">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content add_pet_record_modal">
-                <div class="modal-header">
-                    <h1 class="modal-title">Add Pet Record</h1><button class="btn-close" aria-label="Close"
-                        data-bs-dismiss="modal" type="button"></button>
-                </div>
-                <div class="modal-body" style="width:100%;">
-                    <form id="add_pet_form" class="add_client"><img src="assets/img/image%2010.png">
-                        <div class="mb-3 input_container">
-                            <div class="new_input_row">
-                                <div class="form-floating" style="width:100%;"><input class="form-control"
-                                        type="text" id="pet_name" data-id="pet_name"
-                                        placeholder="Pet Name"><label class="form-label" for="pet_name">Pet
-                                        Name</label>
-                                    <div id="error-pet_name" class="error-message"><span>Please enter pet
-                                            name.</span></div>
-                                </div>
-                                <div class="form-floating" style="width:100%;"><select class="form-select"
-                                        id="gender" data-id="gender" placeholder="Gender">
-                                        <option value="" selected="">Select Gender</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select><label class="form-label" for="gender">Gender</label>
-                                    <div id="error-gender" class="error-message"><span>Please select gender of
-                                            pet.</span></div>
-                                </div>
-                            </div>
-                            <div class="new_input_row">
-                                <div class="form-floating" style="width:100%;"><select class="form-select"
-                                        id="pet_type" data-id="pet_type" placeholder="Pet Type">
-                                        <option value="" selected="">Select Pet Type</option>
-                                        <option value="Dog">Dog</option>
-                                        <option value="Cat">Cat</option>
-                                    </select><label class="form-label" for="pet_type">Pet Type</label>
-                                    <div id="error-pet_type" class="error-message"><span>Please select pet
-                                            type</span></div>
-                                </div>
-                                <div class="form-floating" style="width:100%;"><select class="form-select"
-                                        id="breed" data-id="breed" disabled="" placeholder="Breed">
-                                        <option value="" selected="">Select a Pet Type first</option>
-                                    </select><label class="form-label" for="breed">Breed</label>
-                                    <div id="error-breed" class="error-message"><span>Please select a breed.</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="new_input_row">
-                                <div class="form-floating" style="width:100%;"><input class="form-control"
-                                        id="pet_birthdate" data-id="pet_birthdate" placeholder="Birthdate"
-                                        type="date"><label class="form-label"
-                                        for="pet_birthdate">Birthdate</label>
-                                    <div id="error-pet_birthdate" class="error-message"><span>Please enter the
-                                            birthdate of pet.</span></div>
-                                </div>
-                                <div class="form-floating" style="width:100%;"><input class="form-control"
-                                        type="text" id="age" data-id="age" disabled=""><label
-                                        class="form-label" for="age">Age</label>
-                                    <div id="error-age" class="error-message" style="color:red;"></div>
-                                </div>
-                            </div>
-                            <div class="new_input_row">
-                                <div class="form-floating" style="width:100%;"><input class="form-control"
-                                        type="text" id="weight" data-id="weight"
-                                        placeholder="Weight"><label class="form-label"
-                                        for="weight">Weight</label>
-                                    <div id="error-weight" class="error-message"><span>Please enter weight of
-                                            pet.</span></div>
-                                </div>
-                                <div class="form-floating" style="width:100%;"><select class="form-select"
-                                        id="sterilization_status" data-id="sterilization_status"
-                                        placeholder="Sterilization Status">
-                                        <option value="" selected="">Select Sterilization Status</option>
-                                        <option value="None">None</option>
-                                        <option value="Spayed">Spayed</option>
-                                        <option value="Neutered">Neutered</option>
-                                    </select><label class="form-label" for="sterilization_status">Sterilization
-                                        Status</label>
-                                    <div id="error-sterilization_status" class="error-message"><span>Please select a
-                                            sterilization status.</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer add_product_button"><button class="btn clear_form" id="clear_form-2"
-                        aria-label="Clear Form" role="button" type="button"><span
-                            class="clear_form_base">Clear Form</span></button><button class="btn submit_pet"
-                        id="submit_pet" type="submit"><span class="submit_product_base">Submit</span></button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="add_pet_record_modal-1">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content add_pet_record_modal">
-                <div class="modal-header">
-                    <h1 class="modal-title">Add Pet Record</h1><button class="btn-close" aria-label="Close"
-                        data-bs-dismiss="modal" type="button"></button>
-                </div>
-                <div class="modal-body" style="width:100%;">
-                    <form id="add_pet_form-1" class="add_client"><img src="assets/img/image%2010.png">
-                        <div class="mb-3 input_container">
-                            <div class="new_input_row">
-                                <div class="form-floating" style="width:100%;"><input class="form-control"
-                                        type="text" id="pet_name-1" data-id="pet_name"
-                                        placeholder="Pet Name"><label class="form-label" for="pet_name">Pet
-                                        Name</label>
-                                    <div id="error-pet_name-1" class="error-message"><span>Please enter pet
-                                            name.</span></div>
-                                </div>
-                                <div class="form-floating" style="width:100%;"><select class="form-select"
-                                        id="gender-1" data-id="gender" placeholder="Gender">
-                                        <option value="" selected="">Select Gender</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select><label class="form-label" for="gender">Gender</label>
-                                    <div id="error-gender-1" class="error-message"><span>Please select gender of
-                                            pet.</span></div>
-                                </div>
-                            </div>
-                            <div class="new_input_row">
-                                <div class="form-floating" style="width:100%;"><select class="form-select"
-                                        id="pet_type-1" data-id="pet_type" placeholder="Pet Type">
-                                        <option value="" selected="">Select Pet Type</option>
-                                        <option value="Dog">Dog</option>
-                                        <option value="Cat">Cat</option>
-                                    </select><label class="form-label" for="pet_type">Pet Type</label>
-                                    <div id="error-pet_type-1" class="error-message"><span>Please select pet
-                                            type</span></div>
-                                </div>
-                                <div class="form-floating" style="width:100%;"><select class="form-select"
-                                        id="breed-1" data-id="breed" disabled="" placeholder="Breed">
-                                        <option value="" selected="">Select a Pet Type first</option>
-                                    </select><label class="form-label" for="breed">Breed</label>
-                                    <div id="error-breed-1" class="error-message"><span>Please select a
-                                            breed.</span></div>
-                                </div>
-                            </div>
-                            <div class="new_input_row">
-                                <div class="form-floating" style="width:100%;"><input class="form-control"
-                                        id="pet_birthdate-1" data-id="pet_birthdate" placeholder="Birthdate"
-                                        type="date"><label class="form-label"
-                                        for="pet_birthdate">Birthdate</label>
-                                    <div id="error-pet_birthdate-1" class="error-message"><span>Please enter the
-                                            birthdate of pet.</span></div>
-                                </div>
-                                <div class="form-floating" style="width:100%;"><input class="form-control"
-                                        type="text" id="age-1" data-id="age" disabled=""><label
-                                        class="form-label" for="age">Age</label>
-                                    <div id="error-age-1" class="error-message" style="color:red;"></div>
-                                </div>
-                            </div>
-                            <div class="new_input_row">
-                                <div class="form-floating" style="width:100%;"><input class="form-control"
-                                        type="text" id="weight-1" data-id="weight"
-                                        placeholder="Weight"><label class="form-label"
-                                        for="weight">Weight</label>
-                                    <div id="error-weight-1" class="error-message"><span>Please enter weight of
-                                            pet.</span></div>
-                                </div>
-                                <div class="form-floating" style="width:100%;"><select class="form-select"
-                                        id="sterilization_status-1" data-id="sterilization_status"
-                                        placeholder="Sterilization Status">
-                                        <option value="" selected="">Select Sterilization Status</option>
-                                        <option value="None">None</option>
-                                        <option value="Spayed">Spayed</option>
-                                        <option value="Neutered">Neutered</option>
-                                    </select><label class="form-label" for="sterilization_status">Sterilization
-                                        Status</label>
-                                    <div id="error-sterilization_status-1" class="error-message"><span>Please select
-                                            a sterilization status.</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer add_product_button"><button class="btn clear_form" id="clear_form-3"
-                        aria-label="Clear Form" role="button" type="button"><span
-                            class="clear_form_base">Clear Form</span></button><button class="btn submit_pet"
-                        id="submit_pet-1" type="submit"><span class="submit_product_base">Submit</span></button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="add_pet_record_modal-2">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content add_pet_record_modal">
-                <div class="modal-header">
-                    <h1 class="modal-title">Add Pet Record</h1><button class="btn-close" aria-label="Close"
-                        data-bs-dismiss="modal" type="button"></button>
-                </div>
-                <div class="modal-body" style="width:100%;">
-                    <form id="add_pet_form-2" class="add_client"><img src="assets/img/image%2010.png">
-                        <div class="mb-3 input_container">
-                            <div class="new_input_row">
-                                <div class="form-floating" style="width:100%;"><input class="form-control"
-                                        type="text" id="pet_name-2" data-id="pet_name"
-                                        placeholder="Pet Name"><label class="form-label" for="pet_name">Pet
-                                        Name</label>
-                                    <div id="error-pet_name-2" class="error-message"><span>Please enter pet
-                                            name.</span></div>
-                                </div>
-                                <div class="form-floating" style="width:100%;"><select class="form-select"
-                                        id="gender-2" data-id="gender" placeholder="Gender">
-                                        <option value="" selected="">Select Gender</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select><label class="form-label" for="gender">Gender</label>
-                                    <div id="error-gender-2" class="error-message"><span>Please select gender of
-                                            pet.</span></div>
-                                </div>
-                            </div>
-                            <div class="new_input_row">
-                                <div class="form-floating" style="width:100%;"><select class="form-select"
-                                        id="pet_type-2" data-id="pet_type" placeholder="Pet Type">
-                                        <option value="" selected="">Select Pet Type</option>
-                                        <option value="Dog">Dog</option>
-                                        <option value="Cat">Cat</option>
-                                    </select><label class="form-label" for="pet_type">Pet Type</label>
-                                    <div id="error-pet_type-2" class="error-message"><span>Please select pet
-                                            type</span></div>
-                                </div>
-                                <div class="form-floating" style="width:100%;"><select class="form-select"
-                                        id="breed-2" data-id="breed" disabled="" placeholder="Breed">
-                                        <option value="" selected="">Select a Pet Type first</option>
-                                    </select><label class="form-label" for="breed">Breed</label>
-                                    <div id="error-breed-2" class="error-message"><span>Please select a
-                                            breed.</span></div>
-                                </div>
-                            </div>
-                            <div class="new_input_row">
-                                <div class="form-floating" style="width:100%;"><input class="form-control"
-                                        id="pet_birthdate-2" data-id="pet_birthdate" placeholder="Birthdate"
-                                        type="date"><label class="form-label"
-                                        for="pet_birthdate">Birthdate</label>
-                                    <div id="error-pet_birthdate-2" class="error-message"><span>Please enter the
-                                            birthdate of pet.</span></div>
-                                </div>
-                                <div class="form-floating" style="width:100%;"><input class="form-control"
-                                        type="text" id="age-2" data-id="age" disabled=""><label
-                                        class="form-label" for="age">Age</label>
-                                    <div id="error-age-2" class="error-message" style="color:red;"></div>
-                                </div>
-                            </div>
-                            <div class="new_input_row">
-                                <div class="form-floating" style="width:100%;"><input class="form-control"
-                                        type="text" id="weight-2" data-id="weight"
-                                        placeholder="Weight"><label class="form-label"
-                                        for="weight">Weight</label>
-                                    <div id="error-weight-2" class="error-message"><span>Please enter weight of
-                                            pet.</span></div>
-                                </div>
-                                <div class="form-floating" style="width:100%;"><select class="form-select"
-                                        id="sterilization_status-2" data-id="sterilization_status"
-                                        placeholder="Sterilization Status">
-                                        <option value="" selected="">Select Sterilization Status</option>
-                                        <option value="None">None</option>
-                                        <option value="Spayed">Spayed</option>
-                                        <option value="Neutered">Neutered</option>
-                                    </select><label class="form-label" for="sterilization_status">Sterilization
-                                        Status</label>
-                                    <div id="error-sterilization_status-2" class="error-message"><span>Please select
-                                            a sterilization status.</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer add_product_button"><button class="btn clear_form" id="clear_form-4"
-                        aria-label="Clear Form" role="button" type="button"><span
-                            class="clear_form_base">Clear Form</span></button><button class="btn submit_pet"
-                        id="submit_pet-2" type="submit"><span class="submit_product_base">Submit</span></button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+    
+    
     <div class="modal fade show" role="dialog" tabindex="-1" id="edit_discard">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content discard_modal">
@@ -1346,35 +1107,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade show" role="dialog" tabindex="-1" id="add_pet_success">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content success_modal">
-                <div class="modal-header success_header">
-                    <div class="success_icon_container"><span class="success_icon"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-                                viewBox="0 0 32 32" fill="none">
-                                <g clip-path="url(#clip0_5693_10654)">
-                                    <path
-                                        d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z"
-                                        stroke="#5BB85A" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_5693_10654">
-                                        <rect width="32" height="32" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg></span></div>
-                </div>
-                <div class="modal-body success_message">
-                    <div>
-                        <h1>Success!</h1>
-                        <p>Pet have been successfully saved.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <div class="modal fade show" role="dialog" tabindex="-1" id="add_client_success">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content success_modal">

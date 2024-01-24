@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch-toggle-switch.css') }}"> </head>
+	<link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch.css') }}"> </head>
 
 <body>
 	<main class="d-flex flex-row container-fluid" style="padding: 0;">
@@ -244,10 +244,16 @@
 											<div class="align-self-stretch form-floating">
 												<input class="form-control form-control form-control" type="password" data-id="old_password" id="old_password" placeholder="Old Password">
 												<div id="eye-icon-old-password" class="eye-icon">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<path d="M21 9C18.6 11.667 15.6 13 12 13C8.4 13 5.4 11.667 3 9M3 15L5.5 11.2M20.9998 14.976L18.5078 11.2M9 17L9.5 13M15 17L14.5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-														<rect width="24" height="24" fill="white"></rect>
-													</svg>
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g opacity="0.5" clip-path="url(#clip0_6818_21927)">
+    <path d="M21 9C18.6 11.667 15.6 13 12 13C8.4 13 5.4 11.667 3 9M3 15L5.5 11.2M20.9998 14.976L18.5078 11.2M9 17L9.5 13M15 17L14.5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6818_21927">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>
 												</div>
 												<label class="form-label form-label form-label" for="old_password">Old Password<span>&nbsp;*</span></label>
 												<div id="error-old_password" class="error-message"><span>• Please enter your password.</span><span>• Password must have 8 or more characters.</span><span>• Password must have at least 1 uppercase character.</span><span>• Password must have at least 1 special character.</span></div>
@@ -256,10 +262,16 @@
 											<div class="align-self-stretch form-floating">
 												<input class="form-control form-control form-control" type="password" data-id="new_password" id="new_password" placeholder="New Password">
 												<div id="eye-icon-new-password" class="eye-icon">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<path d="M21 9C18.6 11.667 15.6 13 12 13C8.4 13 5.4 11.667 3 9M3 15L5.5 11.2M20.9998 14.976L18.5078 11.2M9 17L9.5 13M15 17L14.5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-														<rect width="24" height="24" fill="white"></rect>
-													</svg>
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g opacity="0.5" clip-path="url(#clip0_6818_21927)">
+    <path d="M21 9C18.6 11.667 15.6 13 12 13C8.4 13 5.4 11.667 3 9M3 15L5.5 11.2M20.9998 14.976L18.5078 11.2M9 17L9.5 13M15 17L14.5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6818_21927">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>
 												</div>
 												<label class="form-label form-label form-label" for="new_password">New Password<span>&nbsp;*</span></label>
 												<div id="error-new_password" class="error-message"><span>• Please enter your password.</span><span>• Password must have 8 or more characters.</span><span>• Password must have at least 1 uppercase character.</span><span>• Password must have at least 1 special character.</span></div>
@@ -268,10 +280,16 @@
 											<div class="align-self-stretch form-floating">
 												<input class="form-control form-control form-control" type="password" data-id="confirm_password" id="confirm_password" placeholder="Confirm Password">
 												<div id="eye-icon-confirm-password" class="eye-icon">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<path d="M21 9C18.6 11.667 15.6 13 12 13C8.4 13 5.4 11.667 3 9M3 15L5.5 11.2M20.9998 14.976L18.5078 11.2M9 17L9.5 13M15 17L14.5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-														<rect width="24" height="24" fill="white"></rect>
-													</svg>
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g opacity="0.5" clip-path="url(#clip0_6818_21927)">
+    <path d="M21 9C18.6 11.667 15.6 13 12 13C8.4 13 5.4 11.667 3 9M3 15L5.5 11.2M20.9998 14.976L18.5078 11.2M9 17L9.5 13M15 17L14.5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6818_21927">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>
 												</div>
 												<label class="form-label form-label form-label" for="confirm_password">Confirm Password<span>&nbsp;*</span></label>
 												<div id="error-confirm_password" class="error-message"><span>• Please enter your password.</span><span>• Password must have 8 or more characters.</span><span>• Password must have at least 1 uppercase character.</span><span>• Password must have at least 1 special character.</span></div>
@@ -355,19 +373,141 @@
 	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('assets/js/bs-init.js') }}"></script>
-	<script src="{{ asset('assets/js/admin_signin.js') }}"></script>
-	<script src="{{ asset('assets/js/appointment_list.js') }}"></script>
-	<script src="{{ asset('assets/js/appointmentforms.js') }}"></script>
-	<script src="{{ asset('assets/js/client.js') }}"></script>
-	<script src="{{ asset('assets/js/dashboard.js') }}"></script>
-	<script src="{{ asset('assets/js/inventory.js') }}"></script>
-	<script src="{{ asset('assets/js/Multi-step-form-script.js') }}"></script>
-	<script src="{{ asset('assets/js/pet_information.js') }}"></script>
-	<script src="{{ asset('assets/js/pet_records.js') }}"></script>
-	<script src="{{ asset('assets/js/sidebar.js') }}"></script>
-	<script src="{{ asset('assets/js/signin.js') }}"></script>
-	<script src="{{ asset('assets/js/signup.js') }}"></script>
-	<script src="{{ asset('assets/js/user_settings.js') }}"></script>
+
+	<script>
+		// Get references to the elements
+		const passAndSecurityBox = document.getElementById('pass_and_security_box');
+      const changePasswordDiv = document.getElementById('change_password');
+      const changePasswordBtn = document.getElementById('change_password_btn');
+    
+      // Add click event listener to the button
+      changePasswordBtn.addEventListener('click', function () {
+        // Hide pass_and_security_box
+        passAndSecurityBox.style.display = 'none';
+        // Show change_password
+        changePasswordDiv.style.display = 'flex';
+      });
+
+	  document.getElementById('edit_save_changes').addEventListener('click', function () {
+        // Show the Bootstrap modal
+        $('#save_changes_success').modal('show');
+         
+         // Hide the modal after 2 seconds
+        setTimeout(function () {
+          $('#save_changes_success').modal('hide');
+        }, 2000);
+        
+        // Reset the input values
+        document.getElementById('old_password').value = '';
+        document.getElementById('new_password').value = '';
+        document.getElementById('confirm_password').value = '';
+      });
+	</script>
+
+	<script>
+		function togglePasswordVisibility2(inputField, eyeIcon) {
+      if (inputField.type === "password") {
+        inputField.type = "text";
+        // Change the eye-icon to the visible state
+        eyeIcon.innerHTML = getVisibleEyeIcon();
+      } else {
+        inputField.type = "password";
+        // Change the eye-icon to the initial state
+        eyeIcon.innerHTML = getHiddenEyeIcon();
+      }
+    }
+    
+    function getVisibleEyeIcon() {
+      return `
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <g clip-path="url(#clip0_1917_11689)">
+                  <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_1917_11689">
+                    <rect width="24" height="24" fill="white"/>
+                  </clipPath>
+                </defs>
+              </svg>`;
+    }
+    
+    function getHiddenEyeIcon() {
+      return `
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <g clip-path="url(#clip0_1917_11666)">
+                  <path d="M21 9C18.6 11.667 15.6 13 12 13C8.4 13 5.4 11.667 3 9M3 15L5.5 11.2M20.9998 14.976L18.5078 11.2M9 17L9.5 13M15 17L14.5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_1917_11666">
+                    <rect width="24" height="24" fill="white"/>
+                  </clipPath>
+                </defs>
+              </svg>`;
+    }
+	
+		    function togglePasswordVisibility2(inputField, eyeIcon) {
+      if (inputField.type === "password") {
+        inputField.type = "text";
+        // Change the eye-icon to the visible state
+        eyeIcon.innerHTML = getVisibleEyeIcon();
+      } else {
+        inputField.type = "password";
+        // Change the eye-icon to the initial state
+        eyeIcon.innerHTML = getHiddenEyeIcon();
+      }
+    }
+		// Example usage
+		var edit_save_changes = document.getElementById("edit_save_changes");
+    var oldPasswordInput = document.getElementById("old_password");
+    var oldPasswordEyeIcon = document.getElementById("eye-icon-old-password");
+    
+    oldPasswordEyeIcon.addEventListener("click", function() {
+      togglePasswordVisibility2(oldPasswordInput, oldPasswordEyeIcon);
+    });
+    
+    var newPasswordInput = document.getElementById("new_password");
+    var newPasswordEyeIcon = document.getElementById("eye-icon-new-password");
+    
+    newPasswordEyeIcon.addEventListener("click", function() {
+      togglePasswordVisibility2(newPasswordInput, newPasswordEyeIcon);
+    });
+    
+
+    var confirmPasswordInput = document.getElementById("confirm_password");
+    var confirmPasswordEyeIcon = document.getElementById("eye-icon-confirm-password");
+    
+    confirmPasswordEyeIcon.addEventListener("click", function() {
+      togglePasswordVisibility2(confirmPasswordInput, confirmPasswordEyeIcon);
+    });
+    //validation for change password
+    function checkInputs() {
+      var newPassword = newPasswordInput.value.trim();  // Trim to remove leading and trailing whitespaces
+      var confirmPassword = confirmPasswordInput.value.trim();
+  
+      if (
+          oldPasswordInput.value !== '' &&
+          newPassword !== '' &&
+          confirmPassword !== '' &&
+          newPassword === confirmPassword
+      ) {
+          edit_save_changes.removeAttribute('disabled');
+          edit_save_changes.classList.remove('disabled');
+      } else {
+          edit_save_changes.setAttribute('disabled', 'true');
+          edit_save_changes.classList.add('disabled');
+      }
+  }
+  
+  // Call the function whenever the inputs change
+  oldPasswordInput.addEventListener('input', checkInputs);
+  newPasswordInput.addEventListener('input', checkInputs);
+  confirmPasswordInput.addEventListener('input', checkInputs);
+  
+  // Initial check when the page loads
+  checkInputs();
+	</script>
+
 </body>
 
 </html>

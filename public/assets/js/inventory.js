@@ -105,12 +105,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const view_product = document.getElementById("view_product");
             var product_table_container = document.getElementById("product_table_container");
             var batch_products = document.getElementById("batch_products");
-            const inventory_header = document.getElementById(
-              "inventory_header"
-            );
-            const prod_info_header = document.getElementById(
-              "prod_info_header"
-            );
+            var inventory_header = document.getElementById("inventory_header");
+            var prod_info_header = document.getElementById("prod_info_header");
+            
             view_product.style.display = "flex";
             product_table_container.style.display = "none";
             batch_products.style.display = "flex";
@@ -509,26 +506,38 @@ function submitFormData(formData) {
     return selectedDate <= today;
   }
 
+  var manufacturing_date = document.getElementById('manufacturing_date');
+  var expired_date = document.getElementById('expired_date');
+  var date_stocked = document.getElementById('date_stocked');
+
+
   // Set the maximum allowed date to today
   const today = new Date();
   const todayString = today.toISOString().split("T")[0];
   manufactured_dateInput.max = todayString;
+  manufacturing_date.max = todayString;
   manufactured_dateInput1.max = todayString;
   expiration_dateInput.min = todayString;
   expiration_dateInput1.min = todayString;
+  expired_date.min = todayString;
   datestockedInput.max = todayString;
   datestockedInput1.max = todayString;
+  date_stocked.max = todayString;
 
   // Function to handle date selection for manufactured_date
   function handleManufacturedDateSelection() {
     const selectedDate = manufactured_dateInput.value;
     const selectedDate1 = manufactured_dateInput1.value;
+    const selectDate2 = manufacturing_date.value;
     if (isFutureDate(selectedDate && selectedDate1)) {
       alert("Please select a previous date for Manufactured Date.");
       manufactured_dateInput.value = ""; // Clear the input value
       manufactured_dateInput.focus(); // Set focus back to the input
       manufactured_dateInput1.value = "";
       manufactured_dateInput1.focus();
+      manufacturing_date.value ="";
+      manufacturing_date.focus();
+      
       return false;
     }
     // Set the default minimum date for datestocked to the manufactured_date
@@ -546,6 +555,9 @@ function submitFormData(formData) {
       expiration_dateInput.focus(); // Set focus back to the input
       expiration_dateInput1.value = "";
       expiration_dateInput1.focus();
+      expired_date.value = "";
+      expired_date.focus(); 
+     
       return false;
     }
     return true;
@@ -555,9 +567,11 @@ function submitFormData(formData) {
   function handleDateStockedSelection() {
     const selectedDate = dateStockedInput.value;
     const selectedDate1 = datestockedInput1.value;
+    const selectedDate2 = date_stocked.value;
     if (
       (isFutureDate(selectedDate) ||selectedDate < manufactured_dateInput.value) ||
-      (isFutureDate(selectedDate1) || selectedDate1 <manufactured_dateInput1.value)
+      (isFutureDate(selectedDate1) || selectedDate1 <manufactured_dateInput1.value) ||
+      (isFutureDate(selectedDate2) || selectedDate2 <manufacturing_date.value)
     ) {
       alert(
         "Please select a date after Manufactured Date and up to the current date for Date Stocked."
@@ -566,6 +580,8 @@ function submitFormData(formData) {
       datestockedInput.focus(); // Set focus back to the input
       datestockedInput1.value = "";
       datestockedInput1.focus();
+      date_stocked.value = "";
+      date_stocked.focus();
       return false;
     }
     return true;
@@ -576,6 +592,9 @@ function submitFormData(formData) {
     manufactured_dateInput,
     expiration_dateInput,
     datestockedInput,
+    manufacturing_date,
+    expired_date,
+    date_stocked,
   ];
   dateInputs.forEach((input) => {
     input.addEventListener("keydown", function (e) {
@@ -666,6 +685,8 @@ validationProductCode(productCodeInput1);
   });
 });
 
+
+
 function clearForm() {
   // Clear product-categ, product_name, and quantity
   var productCategSelect = document.getElementById("product-categ");
@@ -740,6 +761,9 @@ function updateQuantityErrorMessage() {
     errorQuantity.style.display = "none";
   }
 }
+
+
+
 
 function enableSubmitButton() {
   var productCateg = document.getElementById("product-categ").value;
@@ -827,6 +851,10 @@ function incrementQuantity1() {
   enableSubmitButton1();
 }
 
+
+
+
+
 // Function to update quantity error message visibility
 function updateQuantityErrorMessage1() {
   var quantityInput = document.getElementById("quantity-1");
@@ -839,6 +867,8 @@ function updateQuantityErrorMessage1() {
     errorQuantity.style.display = "none";
   }
 }
+
+
 
 //cloned function for submit product button sa modal sa add product
 function enableSubmitButton1() {
@@ -931,6 +961,108 @@ function clearForm1() {
   // Enable submit button if the form is cleared
   enableSubmitButton1();
 }
+
+function cancelStock() {
+
+  var batch_number = document.getElementById("batch_no");
+  var manufactured_date1 = document.getElementById("manufacturing_date");
+  var expiration_date = document.getElementById("expired_date");
+  var datestocked = document.getElementById("date_stocked");
+  var quantityInput = document.getElementById("quantity-2");
+
+  var add_stock = document.getElementById("add_stock");
+
+  add_stock.disabled = true;
+
+  batch_number.value = "";
+  manufactured_date1.value = "";
+  expiration_date.value = "";
+  datestocked.value = "";
+  quantityInput.value = 0;
+}
+
+
+function enableAddStock() {
+  var batch_number = document.getElementById("batch_no").value;
+  var manufactured_date1 = document.getElementById("manufacturing_date").value;
+  var expiration_date = document.getElementById("expired_date").value;
+  var datestocked = document.getElementById("date_stocked").value;
+  var quantity = document.getElementById("quantity-2").value;
+  var add_stock = document.getElementById("add_stock");
+
+  // Add additional validation conditions as needed
+  if (
+      batch_number.trim() !== "" &&
+      manufactured_date1.trim() !== "" &&
+      expiration_date.trim() !== "" &&
+      datestocked.trim() !== "" &&
+      quantity >= 1
+  ) {
+      add_stock.disabled = false;
+  } else {
+      add_stock.disabled = true;
+  }
+
+  // Logging values for debugging
+  console.log('batch_number:', batch_number);
+  console.log('manufactured_date1:', manufactured_date1);
+  console.log('expired_date:', expiration_date);
+  console.log('datestocked:', datestocked);
+  console.log('quantity:', quantity);
+  console.log('add_stock.disabled:', add_stock.disabled);
+}
+
+document.getElementById("batch_no").addEventListener("input", enableAddStock);
+document.getElementById("manufacturing_date").addEventListener("input", enableAddStock);
+document.getElementById("expired_date").addEventListener("input", enableAddStock);
+document.getElementById("date_stocked").addEventListener("input", enableAddStock);
+document.getElementById("quantity-2").addEventListener("input", enableAddStock);
+
+// Triggering the function initially
+enableAddStock();
+
+
+function decrementQuantity2() {
+  enableAddStock();
+  var quantityInput = document.getElementById("quantity-2");
+  var currentQuantity = parseInt(quantityInput.value);
+
+  // Ensure the quantity is not less than 1
+  if (currentQuantity > 0) {
+    quantityInput.value = currentQuantity - 1;
+    updateQuantityErrorMessage1();
+  }
+
+  // Trigger the input event manually
+  var inputEvent = new Event('input', { bubbles: true });
+  quantityInput.dispatchEvent(inputEvent);
+
+  
+
+  // Logging for debugging
+  console.log('Decrement - currentQuantity:', quantityInput.value);
+}
+
+function incrementQuantity2() {
+  enableAddStock();
+  var quantityInput = document.getElementById("quantity-2");
+  var currentQuantity = parseInt(quantityInput.value);
+
+  // Increment the quantity
+  quantityInput.value = currentQuantity + 1;
+  quantityInput.setAttribute('value', quantityInput.value); // Update the attribute as well
+  updateQuantityErrorMessage1();
+
+  // Trigger the input event manually
+  var inputEvent = new Event('input', { bubbles: true });
+  quantityInput.dispatchEvent(inputEvent);
+
+  
+
+  // Logging for debugging
+  console.log('Increment - currentQuantity:', quantityInput.value);
+}
+
 
 //show prod details clickign view
 function handleEditProdDetailClick() {
