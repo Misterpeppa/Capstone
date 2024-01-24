@@ -469,7 +469,7 @@
                         <p>Please note that your agreement is required to proceed with scheduling the surgery for your pet.</p>
                     </div>
                 </div>
-                <div class="modal-footer consent_buttons"><button class="btn disagree" id="disagree" type="button"><span class="disagree_base">I disagree</span></button><button class="btn agree" id="agree" type="submit"><span class="agree_base">I Agree</span></button></div>
+                <div class="modal-footer consent_buttons"><button class="btn disagree" id="disagree" type="button" data-bs-dismiss="modal"><span class="disagree_base">I disagree</span></button><button class="btn agree" id="agree" type="submit" data-bs-dismiss="modal"><span class="agree_base">I Agree</span></button></div>
             </div>
         </div>
     </div>
@@ -507,8 +507,6 @@
         // Show the modal
         function showModal() {
             $('#success_modal').show();
-            // Automatically hide the modal after 2 seconds
-            setTimeout(hideModal, 2000);
         }
 
         // Hide the modal
