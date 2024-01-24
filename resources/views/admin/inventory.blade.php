@@ -580,7 +580,7 @@
                                                     </svg> Edit</div></button>
                                                 <button 
                                                 data-action="Archive"
-                                                class="btn border-0"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
+                                                class="btn border-0 archiveButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
                                                 <path d="M17 5C17.5304 5 18.0391 4.78929 18.4142 4.41421C18.7893 4.03914 19 3.53043 19 3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3C1 3.53043 1.21071 4.03914 1.58579 4.41421C1.96086 4.78929 2.46957 5 3 5M17 5H3M17 5V15C17 15.5304 16.7893 16.0391 16.4142 16.4142C16.0391 16.7893 15.5304 17 15 17H5C4.46957 17 3.96086 16.7893 3.58579 16.4142C3.21071 16.0391 3 15.5304 3 15V5M8 9H12" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg> Archive</div></button>
                                         </div>
@@ -1348,18 +1348,18 @@
     @endif
     <script>
         $(document).ready(function() {
-            $('.editButton1').click(function() {
+            $('#editButton').click(function() {
             const invData = {
                 'item_name' :$(this).data('item_name'),
-                'middle_name' :$(this).data('middle-name'),
+                'prodoct_code' :$(this).data('product_code'),
                 'last_name' :$(this).data('last-name'),
                 'suffix' :$(this).data('suffix'),
                 'birthdate' :$(this).data('birthdate'),
                 'email' :$(this).data('email'),
                 'phone' :$(this).data('phone'),
             };      
-            $('#editItemName').val(clientData.item_name);
-            $('#editMiddleName').val(clientData.middle_name);
+            $('#editItemName').val(invData.item_name);
+            $('#product_code').val(invData.middle_name);
             $('#editLastName').val(clientData.last_name);
             $('#editSuffix').val(clientData.suffix);
             $('#editBirthdate').val(clientData.birthdate);

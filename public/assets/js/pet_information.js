@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
       // Function to show error message if email is clicked and left without a value
     add_pet.addEventListener('click', function () {
-        add_pet_modal.show();
+        add_pet_modal1.show();
       });  
     
     user_new_pet_btn.addEventListener('click', function () {
@@ -269,6 +269,10 @@ function setupAgeCalculation(birthdateId, ageId, petTypeId) {
     dateInput.addEventListener('keydown', function (e) {
         e.preventDefault();
     });
+    const ageInput1 = document.getElementById(ageId);
+    ageInput1.addEventListener('keydown', function (e) {
+        e.preventDefault();
+    });
     
     var birthdateInput = document.getElementById(birthdateId);
     var ageInput = document.getElementById(ageId);
@@ -289,7 +293,7 @@ function setupAgeCalculation(birthdateId, ageId, petTypeId) {
         }
     });
 
-    ageInput.disabled = true; // Disable the input initially
+    ageInput.disabled = false; // Disable the input initially
 
     function calculateAge(birthdate, petType) {
         var today = new Date();
@@ -479,16 +483,7 @@ submit_pet1.addEventListener('click', function() {
         
         add_pet_modal1.hide();
         // Clear input values using the resetPetForm function
-    resetPetForm(
-        pet_nameInput1,
-        pet_GenderInput1,
-        pet_TypeInput1,
-        breedInput1,
-        pet_weightInput1,
-        pet_sterilizationStatusInput1,
-        pet_birthdateInput1,
-        pet_ageInput1
-    );
+    
         
     });
 
