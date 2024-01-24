@@ -663,6 +663,8 @@ validationProductCode(productCodeInput1);
   });
 });
 
+
+
 function clearForm() {
   // Clear product-categ, product_name, and quantity
   var productCategSelect = document.getElementById("product-categ");
@@ -737,6 +739,9 @@ function updateQuantityErrorMessage() {
     errorQuantity.style.display = "none";
   }
 }
+
+
+
 
 function enableSubmitButton() {
   var productCateg = document.getElementById("product-categ").value;
@@ -824,6 +829,10 @@ function incrementQuantity1() {
   enableSubmitButton1();
 }
 
+
+
+
+
 // Function to update quantity error message visibility
 function updateQuantityErrorMessage1() {
   var quantityInput = document.getElementById("quantity-1");
@@ -836,6 +845,8 @@ function updateQuantityErrorMessage1() {
     errorQuantity.style.display = "none";
   }
 }
+
+
 
 //cloned function for submit product button sa modal sa add product
 function enableSubmitButton1() {
@@ -928,6 +939,108 @@ function clearForm1() {
   // Enable submit button if the form is cleared
   enableSubmitButton1();
 }
+
+function cancelStock() {
+
+  var batch_number = document.getElementById("batch_no");
+  var manufactured_date1 = document.getElementById("manufacturing_date");
+  var expiration_date = document.getElementById("expired_date");
+  var datestocked = document.getElementById("date_stocked");
+  var quantityInput = document.getElementById("quantity-2");
+
+  var add_stock = document.getElementById("add_stock");
+
+  add_stock.disabled = true;
+
+  batch_number.value = "";
+  manufactured_date1.value = "";
+  expiration_date.value = "";
+  datestocked.value = "";
+  quantityInput.value = 0;
+}
+
+
+function enableAddStock() {
+  var batch_number = document.getElementById("batch_no").value;
+  var manufactured_date1 = document.getElementById("manufacturing_date").value;
+  var expiration_date = document.getElementById("expired_date").value;
+  var datestocked = document.getElementById("date_stocked").value;
+  var quantity = document.getElementById("quantity-2").value;
+  var add_stock = document.getElementById("add_stock");
+
+  // Add additional validation conditions as needed
+  if (
+      batch_number.trim() !== "" &&
+      manufactured_date1.trim() !== "" &&
+      expiration_date.trim() !== "" &&
+      datestocked.trim() !== "" &&
+      quantity >= 1
+  ) {
+      add_stock.disabled = false;
+  } else {
+      add_stock.disabled = true;
+  }
+
+  // Logging values for debugging
+  console.log('batch_number:', batch_number);
+  console.log('manufactured_date1:', manufactured_date1);
+  console.log('expired_date:', expiration_date);
+  console.log('datestocked:', datestocked);
+  console.log('quantity:', quantity);
+  console.log('add_stock.disabled:', add_stock.disabled);
+}
+
+document.getElementById("batch_no").addEventListener("input", enableAddStock);
+document.getElementById("manufacturing_date").addEventListener("input", enableAddStock);
+document.getElementById("expired_date").addEventListener("input", enableAddStock);
+document.getElementById("date_stocked").addEventListener("input", enableAddStock);
+document.getElementById("quantity-2").addEventListener("input", enableAddStock);
+
+// Triggering the function initially
+enableAddStock();
+
+
+function decrementQuantity2() {
+  enableAddStock();
+  var quantityInput = document.getElementById("quantity-2");
+  var currentQuantity = parseInt(quantityInput.value);
+
+  // Ensure the quantity is not less than 1
+  if (currentQuantity > 0) {
+    quantityInput.value = currentQuantity - 1;
+    updateQuantityErrorMessage1();
+  }
+
+  // Trigger the input event manually
+  var inputEvent = new Event('input', { bubbles: true });
+  quantityInput.dispatchEvent(inputEvent);
+
+  
+
+  // Logging for debugging
+  console.log('Decrement - currentQuantity:', quantityInput.value);
+}
+
+function incrementQuantity2() {
+  enableAddStock();
+  var quantityInput = document.getElementById("quantity-2");
+  var currentQuantity = parseInt(quantityInput.value);
+
+  // Increment the quantity
+  quantityInput.value = currentQuantity + 1;
+  quantityInput.setAttribute('value', quantityInput.value); // Update the attribute as well
+  updateQuantityErrorMessage1();
+
+  // Trigger the input event manually
+  var inputEvent = new Event('input', { bubbles: true });
+  quantityInput.dispatchEvent(inputEvent);
+
+  
+
+  // Logging for debugging
+  console.log('Increment - currentQuantity:', quantityInput.value);
+}
+
 
 //show prod details clickign view
 function handleEditProdDetailClick() {
