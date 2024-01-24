@@ -1,6 +1,8 @@
+@php
+    use Carbon\Carbon;
+@endphp
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
-
 <head>
     <meta charset="utf-8">
 <meta charset="UTF-8">
@@ -105,7 +107,7 @@
                 </div>
                 <div id="client_container" class="client_container">
                 <div class="container_header">
-                                <form action="" id="approvedForm">
+					<form action="" id="approvedForm">
                                     <div class="left_part_product_header">
                                         <div class="search_container">
                                             <input type="text" class="search_input" name="qApproved"
@@ -120,7 +122,8 @@
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                aria-expanded="false"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
+                                                aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
                                                   <g clip-path="url(#clip0_3674_15869)" filter="url(#filter0_d_3674_15869)">
                                                     <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                   </g>
@@ -139,8 +142,7 @@
                                                       <rect width="24" height="24" fill="white"/>
                                                     </clipPath>
                                                   </defs>
-                                              </svg>Filter By</span>
-                                                
+                                              </svg>Filter By
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li class="dropdown-item ">
@@ -156,7 +158,7 @@
                                                            >
                                                     <label class="form-check-label fs-6 my-1" 
                                                            for="approvedCheck" 
-                                                           >Approved</label>
+                                                           >Appointment</label>
                                                   </div>
                                           
                                                 </li>
@@ -174,7 +176,7 @@
                                                   
                                                     <label class="form-check-label fs-6 my-1" 
                                                            for="completedCheck" 
-                                                           >Completed</label>
+                                                           >Client</label>
                                                   </div>
                                                 </li>
                                                 <li class="dropdown-item ">
@@ -191,7 +193,7 @@
                                                   
                                                     <label class="form-check-label fs-6 my-1" 
                                                            for="dogCheck" 
-                                                           >Dog</label>
+                                                           >Product</label>
                                                   </div>
                                           
                                                 </li>
@@ -209,7 +211,7 @@
                                                     
                                                       <label class="form-check-label fs-6 my-1" 
                                                              for="catCheck" 
-                                                             >Cat</label>
+                                                             >Pet Record</label>
                                                     </div>
                                             
                                                   </li>
@@ -219,45 +221,47 @@
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                aria-expanded="false"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6770_15021)">
-    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6770_15021">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg>Sort By</span>
-                                            </button>
+                                                aria-expanded="false"><span class="filter_btn_base">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+													<g clip-path="url(#clip0_6770_15021)">
+														<path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+													</g>
+													<defs>
+														<clipPath id="clip0_6770_15021">
+														<rect width="24" height="24" fill="white"/>
+														</clipPath>
+													</defs>
+													</svg>Sort By 
+												</span>
+                                                </button>
                                             <ul class="dropdown-menu">
                                                 <li class="dropdown-item ">
-                                                    <input class="checkbox me-1" type="radio" id = "radio1"
+                                                    <input class="form-check-input me-1" type="radio" id = "radio1"
                                                         name="sortItems"{{ request()->input('sortItems', '0') == '0' ? 'checked' : '' }}  value="0">
                                                     <label class="form-check-label ms-1 fs-6" for="radio1">
                                                         Appointment
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio2"
+                                                    <input class="form-check-input me-1" type="radio" id = "radio2"
                                                         name="sortItems" {{ request()->input('sortItems') == '1' ? 'checked' : '' }} value="1">
                                                     <label class="form-check-label ms-1 fs-6" for="radio2">
                                                         Status
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio3"
+                                                    <input class="form-check-input me-1" type="radio" id = "radio3"
                                                         name="sortItems" {{ request()->input('sortItems') == '2' ? 'checked' : '' }} value="2">
                                                     <label class="form-check-label ms-1 fs-6" for="radio3">
                                                         Patient
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio4"
+                                                    <input class="form-check-input me-1" type="radio" id = "radio4"
                                                         name="sortItems" {{ request()->input('sortItems') == '3' ? 'checked' : '' }} value="3">
                                                     <label class="form-check-label ms-1 fs-6" for="radio4">
                                                         Client
                                                 </li>
                                                 <li>
                                                   <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio5"
+                                                    <input class="form-check-input me-1" type="radio" id = "radio5"
                                                         name="sortItems" {{ request()->input('sortItems') == '4' ? 'checked' : '' }} value="4">
                                                     <label class="form-check-label ms-1 fs-6" for="radio5">
                                                         Surgery Type
@@ -266,13 +270,13 @@
                                                     <hr class="dropdown-divider me-2 ms-2">
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio6"
+                                                    <input class="form-check-input me-1" type="radio" id = "radio6"
                                                         name="sortOrder" {{ request()->input('sortOrder') == '0' ? 'checked' : '' }} value="0">
                                                     <label class="form-check-label ms-1 fs-6" for="radio6">
                                                         Ascending
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio7"
+                                                    <input class="form-check-input me-1" type="radio" id = "radio7"
                                                         name="sortOrder" {{ request()->input('sortOrder', '1') == '1' ? 'checked' : '' }} value="1">
                                                     <label class="form-check-label ms-1 fs-6" for="radio7">
                                                         Descending
@@ -283,7 +287,7 @@
                                                           <button type = "reset" class="btn cancel_filter btn-sm me-3"><span class="cancel_filter_base">Cancel</span></button>
                                                       </div>
                                                       <div class="col-md-5 text-center">
-                                                          <button type="submit" form="approvedForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply Filter</span></button>
+                                                          <button type="submit" form="approvedForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply Sort</span></button>
                                                       </div>
                                                   </div>
                                               </li>
@@ -292,9 +296,7 @@
           
                                     </div>
                                 </form>
-
-
-                            </div>
+			</div>
                     <div id="archives_empty_state_container" class="empty_state_container">
                         <div class="empty_state"><div><svg xmlns="http://www.w3.org/2000/svg" width="176" height="110" viewBox="0 0 176 110" fill="none">
   <g clip-path="url(#clip0_6278_24732)">
@@ -372,7 +374,9 @@
                                             {{ $record->pet->name }} <!-- Display PetRecord-specific field -->
                                         @elseif ($record instanceof App\Models\Admin\AppointmentApproved)
                                             {{$record->clients->first_name }} {{$record->clients->middle_name}} {{$record->clients->last_name }} {{$record->clients->suffix }} <!-- Display AppointmentApproved-specific field -->
-                                        @endif
+                                        @elseif ($record instanceof App\Models\User\Clients)
+                                            {{$record->first_name }} {{$record->middle_name}} {{$record->last_name }} {{$record->suffix }} <!-- Display AppointmentApproved-specific field -->
+                                        @endif                                    
                                     </td>
                                     <td>
                                         @if ($record instanceof App\Models\Admin\MedInfo)
@@ -385,10 +389,11 @@
                                             PetRecord <!-- Display common label for PetRecord -->
                                         @elseif ($record instanceof App\Models\Admin\AppointmentApproved)
                                             Appointment <!-- Display common label for AppointmentApproved -->
-                                        @endif
-                                    </td>
+                                        @elseif ($record instanceof App\Models\User\Clients)
+                                            Client <!-- Display common label for AppointmentApproved -->
+                                        @endif                                    </td>
                                     <td>{{ $record->created_at->format('Y-m-d') }}</td>
-                                    <td>{{ $record->archived_at }}</td>
+                                    <td>{{ Carbon::parse($record->archived_at)->format('Y-m-d') }}</td>
                                     <td>
                                       @if ($record instanceof App\Models\Admin\MedInfo)
                                       <button class="btn unarchive_med" id="unarchive_med" type="button" data-product-type="{{ $record->product_type }}" data-record-id="{{ $record->id }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -450,14 +455,25 @@
                                         </defs>
                                         </svg></span>
                                       </button>
-                                      @endif
+                                      @elseif ($record instanceof App\Models\User\Clients)
+                                      <button class="btn unarchive_client" id="revert_archived-1" type="button" data-record-id="{{ $record->id }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <g clip-path="url(#clip0_6404_6376)">
+                                          <path d="M9 14L5 10M5 10L9 6M5 10H16C17.0609 10 18.0783 10.4214 18.8284 11.1716C19.5786 11.9217 20 12.9391 20 14C20 15.0609 19.5786 16.0783 18.8284 16.8284C18.0783 17.5786 17.0609 18 16 18H15" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
+                                        <defs>
+                                          <clipPath id="clip0_6404_6376">
+                                            <rect width="24" height="24" fill="white"/>
+                                          </clipPath>
+                                        </defs>
+                                        </svg></span>
+                                      </button>
+                                      @endif                                    
                                     </td>
                                 </tr>
                               @endforeach
                             </tbody>
                         </table>
                     </div>
-                    
                 </div>
             </div>
         </div>
@@ -512,6 +528,20 @@
         $('#archives_table_container').hide();
   </script>  
   @endif
+  <script>
+            var SelectAll = document.getElementById("Select_All_Archive");
+
+            SelectAll.addEventListener("click", function () {
+    var tableBody = document.getElementById('archive_table_body');
+    var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
+
+    rowCheckboxes.forEach(function (checkbox) {
+        checkbox.checked = !checkbox.checked; // Toggle the state
+    });
+
+});
+    </script>
+
   <script>
     $(document).ready(function() {
       $('.unarchive_med').on('click', function() {
@@ -604,22 +634,26 @@
             });
         });
       });
+      $('.unarchive_client').on('click', function() {
+        const id = $(this).data('record-id');
+        $('#archive_modal').modal('show');
+        $('#archive_confirm_button').on('click', function() {
+            $.ajax({
+                type: 'POST',
+                url: `/admin/archive/client/${id}`,
+                data: {_token: '{{ csrf_token() }}'},
+                success: function(response) {
+                    alert('Client has been unarchived');
+                    location.reload();
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+      });
     });
   </script>
-
-<script>
-            var SelectAll = document.getElementById("Select_All_Archive");
-
-            SelectAll.addEventListener("click", function () {
-    var tableBody = document.getElementById('archive_table_body');
-    var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
-
-    rowCheckboxes.forEach(function (checkbox) {
-        checkbox.checked = !checkbox.checked; // Toggle the state
-    });
-
-});
-    </script>
 	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('assets/js/bs-init.js') }}"></script>

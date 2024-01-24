@@ -36,13 +36,12 @@
                         <form  method="POST" action="{{ route('password.code') }}">
                             @csrf
                             <div class="input-group group-input mb-3">
-                                <!-- Add 6 input boxes for the reset code -->
-                                <input class="form-controls" type="text" name="digit1" maxlength="1" required>
-                                <input class="form-controls" type="text" name="digit2" maxlength="1" required>
-                                <input class="form-controls" type="text" name="digit3" maxlength="1" required>
-                                <input class="form-controls" type="text" name="digit4" maxlength="1" required>
-                                <input class="form-controls" type="text" name="digit5" maxlength="1" required>
-                                <input class="form-controls" type="text" name="digit6" maxlength="1" required>
+                            <input class="form-controls" type="text" name="digit1" id="digit1" maxlength="1" required>
+                            <input class="form-controls" type="text" name="digit2" id="digit2" maxlength="1" required>
+                            <input class="form-controls" type="text" name="digit3" id="digit3" maxlength="1" required>
+                            <input class="form-controls" type="text" name="digit4" id="digit4" maxlength="1" required>
+                            <input class="form-controls" type="text" name="digit5" id="digit5" maxlength="1" required>
+                            <input class="form-controls" type="text" name="digit6" id="digit6" maxlength="1" required>
                             </div>
                             <div class="text-center">
                                 <button class="btn custom-reset-btn" type="submit">Continue</button>
@@ -68,6 +67,37 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.form-controls').on('input', function(e) {
+                var maxLength = parseInt($(this).attr('maxlength'));
+                var currentLength = $(this).val().length;
+
+                if (currentLength === maxLength) {
+                    // Move focus to the next input field
+                    $(this).next('.form-controls').focus();
+                }
+            });
+
+            $('.form-controls').on('keydown', function(e) {
+                if (e.key === 'Backspace' && $(this).val().length === 0) {
+                    // Move focus to the previous input field
+                    $(this).prev('.form-controls').focus();
+                }
+            });
+        });
+    </script>
+    <script>
+  // Add an input event listener to each input field
+  ['digit1', 'digit2', 'digit3', 'digit4', 'digit5', 'digit6'].forEach(function(id) {
+    var input = document.getElementById(id);
+
+    // Prevent non-numeric inputs
+    input.addEventListener('input', function() {
+      this.value = this.value.replace(/\D/g, ''); // Allow only digits (0-9)
+    });
+  });
+</script>
     <script>
         function goBack() {
             window.history.back();

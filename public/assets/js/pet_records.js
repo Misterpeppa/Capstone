@@ -157,7 +157,7 @@ edit_pet_btn.addEventListener('click', function(){
     
     
     //buttons
-    var add_pet_btn1 = document.getElementById('add_pet_btn-1');
+    var add_pet_btn1 = document.getElementById('add_pet_btn');
     var add_pet_split_btn = document.getElementById('add_pet_split_btn');
     var clearFormButton = document.getElementById('clear_form');
     var clearFormButton1 = document.getElementById('clear_form-1');

@@ -25,7 +25,19 @@ body{
   max-height: 500px;
   margin-left: 90%;
 }
-
+.btn-link{
+  display: flex;
+  height: 56px;
+  padding: 16px var(--Spacing-spacing-m, 24px);
+  justify-content: center;
+  align-items: center;
+  gap: var(--Spacing-spacing-m, 24px);
+  border-radius: var(--radius-s, 8px);
+  border: 0.5px solid rgba(0, 0, 0, 0.15);
+  background: var(--Colors-Actions-action-neut, #F9F9F9);
+  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  text-decoration: none;
+}
 .notification-item {
 padding: 10px;
 border-bottom: 1px solid #ccc;
@@ -1772,6 +1784,90 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     background-color: #D9D9D9;
   }
   
+
+  .filter_btn_base{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--Spacing-spacing-xxs, 8px);
+    color: #1C1C1C;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  .cancel_filter{
+    display: flex;
+    height: 31px;
+    width: 70px;
+    padding: 16px var(--Spacing-spacing-m, 24px);
+    justify-content: center;
+    align-items: center;
+    gap: var(--Spacing-spacing-m, 24px);
+    border-radius: var(--radius-s, 8px);
+    border: 0.5px solid rgba(0, 0, 0, 0.15);
+    background: var(--Colors-Actions-action-neut, #F9F9F9);
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  }
+  .cancel_filter:hover{
+    border-radius: var(--radius-s, 8px);
+    border: 0.5px solid rgba(0, 0, 0, 0.15);
+    background: var(--Colors-Actions-action-neut-hover, #ECECEC);
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  }
+  .cancel_filter.active{
+    border-radius: var(--radius-s, 8px);
+    background: var(--Colors-Actions-action-neut-active, #ECECEC);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+  }
+  .cancel_filter_base{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--Spacing-spacing-xs, 12px);
+    color: #1C1C1C;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  .apply_filter{
+    display: flex;
+    height: 31px;
+    width: 70px;
+    padding: 16px var(--Spacing-spacing-m, 24px);
+    justify-content: center;
+    align-items: center;
+    gap: var(--Spacing-spacing-m, 24px);
+    border-radius: var(--radius-s, 8px);
+    background: var(--Colors-Actions-action, #045B62);
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  }
+  .apply_filter:hover{
+    border-radius: var(--radius-s, 8px);
+    background: var(--Colors-Actions-action-hover, #004D53);
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  }
+  .apply_filter.active{
+    border-radius: var(--radius-s, 8px);
+    background: var(--Colors-Actions-action-active, #004D53);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset;
+  }
+  .apply_filter_base{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--Spacing-spacing-xs, 12px);
+    color: var(--Colors-Main-neutral, #FFF);
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
 
   .filter_btn_base{
     display: flex;
@@ -6265,7 +6361,6 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     }
     .custom-book-appointment-btn {
       display: flex;
-      height: 36px;
       min-width: 100%;
       padding: 0px var(--Spacing-spacing-s, 24px);
       justify-content: center;
@@ -6285,7 +6380,6 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     .custom-btn-check-schedule {
       display: inline-flex;
       width: 100%;
-      height: 36px;
       padding: 8px 16px;
       justify-content: center;
       align-items: center;
@@ -6529,12 +6623,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
       width: 5px;
     }
     .search_input::placeholder{
-      color: rgba(28, 28, 28, 0.50);
-      font-family: Inter;
-      font-size: 14px !important;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
+      font-size: 10px;
     }
     .filter_btn, .sort_btn{
       height: 42px;
@@ -6719,6 +6808,59 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 
 
 @media (max-width: 576px){
+  .clinic_logo p{
+    display: none;
+  }
+  #user{
+    position: inherit;
+    display: flex;
+    gap: 4px;
+  }
+  .spacer {
+    display: block;
+    flex-grow: 1;
+  }
+  .user{
+    display: none;
+  }
+  .user_icon{
+    display: flex;
+  }
+  .admin_btn .user_name{
+    display: none;
+  }
+  .admin_btn a{
+    font-family: Inter !important;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .nav-item{
+    display: flex;
+    height: 42px;
+    min-width: 164px;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius-s, 8px);
+  }
+  .nav-item .nav-link{
+    display: flex;
+    min-width: 140px;
+    align-items: center;
+    gap: var(--Spacing-spacing-xs, 12px);
+    color: rgba(28, 28, 28, 0.70);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .nav-item:hover{
+    border-radius: var(--radius-s, 8px);
+    background: #ECECEC;
+  }
   .container_header{
     display: flex;
     flex-wrap: wrap;

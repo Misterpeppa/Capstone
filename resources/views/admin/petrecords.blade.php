@@ -58,27 +58,23 @@
                         </defs>
                         </svg> Add Record</span></button>
 						<button class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown" data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-						<div class="dropdown-menu"><a class="dropdown-item" href="#">Generate Report</a></div>
+						<div class="dropdown-menu"><a class="dropdown-item" href="{{ route('report.emr') }}">Generate Report</a></div>
 					</div>
 				</div>
 				<div id="client_container" class="client_container">
-				<div class="container_header">
-                                <form action="" id="approvedForm">
+					<div class="container_header">
+					<form action="" id="approvedForm">
                                     <div class="left_part_product_header">
                                         <div class="search_container">
-                                            <input type="text" class="search_input" name="qApproved"
-                                            value="{{ request('qApproved') }}" placeholder="Search Appointment">
-                                            <input type="hidden" id="pageForm" name="page"
-                                            value="{{ request('page') }}">
-                                            <input type="hidden" id="perPageForm" name="perPage"
-                                                value="{{ request('perPage') }}">
-
+                                            <input type="text" class="search_input" name="search"
+                                            value="{{ request('search') }}" placeholder="Search Appointment">
                                         </div>
                                         <button type="submit" form="approvedForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                aria-expanded="false"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
+                                                aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
                                                   <g clip-path="url(#clip0_3674_15869)" filter="url(#filter0_d_3674_15869)">
                                                     <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                   </g>
@@ -97,8 +93,7 @@
                                                       <rect width="24" height="24" fill="white"/>
                                                     </clipPath>
                                                   </defs>
-                                              </svg>Filter By</span>
-                                                
+                                              </svg>Filter By
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li class="dropdown-item ">
@@ -177,45 +172,47 @@
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                aria-expanded="false"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6770_15021)">
-    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6770_15021">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg>Sort By</span>
-                                            </button>
+                                                aria-expanded="false"><span class="filter_btn_base">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+													<g clip-path="url(#clip0_6770_15021)">
+														<path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+													</g>
+													<defs>
+														<clipPath id="clip0_6770_15021">
+														<rect width="24" height="24" fill="white"/>
+														</clipPath>
+													</defs>
+													</svg>Sort By 
+												</span>
+                                                </button>
                                             <ul class="dropdown-menu">
                                                 <li class="dropdown-item ">
-                                                    <input class="checkbox me-1" type="radio" id = "radio1"
+                                                    <input class="form-check-input me-1" type="radio" id = "radio1"
                                                         name="sortItems"{{ request()->input('sortItems', '0') == '0' ? 'checked' : '' }}  value="0">
                                                     <label class="form-check-label ms-1 fs-6" for="radio1">
                                                         Appointment
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio2"
+                                                    <input class="form-check-input me-1" type="radio" id = "radio2"
                                                         name="sortItems" {{ request()->input('sortItems') == '1' ? 'checked' : '' }} value="1">
                                                     <label class="form-check-label ms-1 fs-6" for="radio2">
                                                         Status
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio3"
+                                                    <input class="form-check-input me-1" type="radio" id = "radio3"
                                                         name="sortItems" {{ request()->input('sortItems') == '2' ? 'checked' : '' }} value="2">
                                                     <label class="form-check-label ms-1 fs-6" for="radio3">
                                                         Patient
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio4"
+                                                    <input class="form-check-input me-1" type="radio" id = "radio4"
                                                         name="sortItems" {{ request()->input('sortItems') == '3' ? 'checked' : '' }} value="3">
                                                     <label class="form-check-label ms-1 fs-6" for="radio4">
                                                         Client
                                                 </li>
                                                 <li>
                                                   <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio5"
+                                                    <input class="form-check-input me-1" type="radio" id = "radio5"
                                                         name="sortItems" {{ request()->input('sortItems') == '4' ? 'checked' : '' }} value="4">
                                                     <label class="form-check-label ms-1 fs-6" for="radio5">
                                                         Surgery Type
@@ -224,13 +221,13 @@
                                                     <hr class="dropdown-divider me-2 ms-2">
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio6"
+                                                    <input class="form-check-input me-1" type="radio" id = "radio6"
                                                         name="sortOrder" {{ request()->input('sortOrder') == '0' ? 'checked' : '' }} value="0">
                                                     <label class="form-check-label ms-1 fs-6" for="radio6">
                                                         Ascending
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio7"
+                                                    <input class="form-check-input me-1" type="radio" id = "radio7"
                                                         name="sortOrder" {{ request()->input('sortOrder', '1') == '1' ? 'checked' : '' }} value="1">
                                                     <label class="form-check-label ms-1 fs-6" for="radio7">
                                                         Descending
@@ -241,7 +238,7 @@
                                                           <button type = "reset" class="btn cancel_filter btn-sm me-3"><span class="cancel_filter_base">Cancel</span></button>
                                                       </div>
                                                       <div class="col-md-5 text-center">
-                                                          <button type="submit" form="approvedForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply Filter</span></button>
+                                                          <button type="submit" form="approvedForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply Sort</span></button>
                                                       </div>
                                                   </div>
                                               </li>
@@ -250,10 +247,10 @@
           
                                     </div>
                                 </form>
+			</div>
 
-
-                            </div>
-
+							
+                        
 					<div id="empty_state_container" class="empty_state_container">
 						<div class="empty_state">
 							<div>
@@ -342,7 +339,7 @@
 											</svg>
 										</button>
 										<div class="dropdown-menu more_button" data-bs-popper="none">
-										<button class="dropdown-item add_diagnosis-action" id="add_diagnosis" data-container-id="{{ $petrecord->id }}">
+										<button class="dropdown-item add_diagnosis-action" data-container-id="{{ $petrecord->id }}">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6230_1794)">
 														<path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -353,7 +350,7 @@
 													</defs>
 												</svg>Add Diagnosis
 											</button>
-											<button class="dropdown-item add_immunization_action" id="add_immunization" data-container-id="{{ $petrecord->id }}">
+											<button class="dropdown-item add_immunization_action" data-container-id="{{ $petrecord->id }}">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6230_538)">
 														<path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
@@ -362,7 +359,7 @@
 															<rect width="24" height="24" fill="white" /> </clipPath>
 													</defs>
 												</svg>Add Vaccine</button>
-											<button class="dropdown-item add_surgery_action" id="add_surgery" data-container-id="{{ $petrecord->id }}">
+											<button class="dropdown-item add_surgery_action" data-container-id="{{ $petrecord->id }}">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6230_1803)">
 														<path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
@@ -384,7 +381,10 @@
 													</defs>
 												</svg>&nbsp;View
 											</button>
-											<button class="dropdown-item Edit_pet-action" id="Edit" data-container-id="{{ $petrecord->pet->id }}">
+											<button class="dropdown-item Edit_pet-action" id="Edit" 
+											data-container-id="{{ $petrecord->pet->id }}" data-pet_name="{{ $petrecord->pet->name }}"
+											data-gender="{{ $petrecord->pet->gender }}" data-birthdate="{{ $petrecord->pet->birthdate}}"
+											data-age="{{ $petrecord->pet->age}}" data-specied="{{ $petrecord->pet->species}}" data-breed="{{ $petrecord->pet->breed }}">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6230_538)">
 														<path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
@@ -772,13 +772,13 @@
 							<div class="pet_details_container">
 								<input type="hidden" name="pet_id" id="editpetId">
 								<div class="align-self-stretch form-floating">
-									<input type="text" class="form-control" name="pet_name" id="pet_name_edit">
+									<input type="text" class="form-control" name="pet_name" id="editPetName">
 									<label class="form-label" for="pet_name">Pet Name</label>
 									<div class="error-message" id="edit_pet_error"><span>• Error Message</span></div>
 									<div class="guide-message"><span>• Guide Message</span></div>
 								</div>
 								<div class="align-self-stretch form-floating">
-									<select aria-label="Floating label select example" name="gender" class="form-select" id="pet_sex">
+									<select aria-label="Floating label select example" name="gender" class="form-select editGender" id="editGender">
 										<option value="" selected="">Select sex</option>
 										<option value="1">Male</option>
 										<option value="2">Female</option>
@@ -789,13 +789,13 @@
 								</div>
 								<div class="new_input_row">
 									<div class="form-floating" style="width: 100%;">
-										<input class="form-control" id="pet_birthdate_edit" name="pet_birthday" type="date">
+										<input class="form-control" id="editBirthdate" name="pet_birthday" type="date">
 										<label class="form-label">Birth Date</label>
 										<div class="error-message" id="edit_birthdate_error"><span>• Error Message</span></div>
 										<div class="guide-message"></div>
 									</div>
 									<div class="form-floating" id="pet_age_edit" style="width: 100%;">
-										<input type="text" id="age_input_edit" name="pet_age" class="form-control">
+										<input type="text" id="editAge" name="pet_age" class="form-control">
 										<label class="form-label">Age</label>
 										<div class="error-message" id="edit_age_error"><span>• Error Message</span></div>
 										<div class="guide-message"></div>
@@ -803,7 +803,7 @@
 								</div>
 								<div class="new_input_row">
 									<div class="form-floating" style="width: 543px;">
-										<select class="form-select" id="pet_type_edit" name="species" aria-label="Floating label select example">
+										<select class="form-select" id="editSpecies" name="species" aria-label="Floating label select example">
 											<option value="" selected="">Pet Type</option>
 											<option value="Dog">Dog</option>
 											<option value="Cat">Cat</option>
@@ -814,7 +814,7 @@
 									</div>
 									<div class="new_inputs_row">
 										<div class="form-floating" style="width: 100%;">
-											<select class="form-select" id="pet_breed" name="breed" aria-label="Floating label select example">
+											<select class="form-select" id="editBreed" name="breed" aria-label="Floating label select example">
 												<option value="" selected="">Breed</option>
 												<option value="other">Other</option>
 											</select>
@@ -846,6 +846,7 @@
 				</div>
 				</form>
 			</div>
+			
 		</div>
 	</main>
 	<div class="modal fade show" role="dialog" tabindex="-1" id="edit_discard">
@@ -1514,6 +1515,21 @@ $(document).ready(function() {
 	$('.Edit_pet-action').click(function() {
 		const id = $(this).data('container-id');
 		$('#editpetId').val(id);
+		const petrecData = {
+			'pet_name' :$(this).data('pet_name'),
+			'gender' :$(this).data('gender'),
+			'birthdate' :$(this).data('birthdate'),
+			'age' :$(this).data('age'),
+			'species' :$(this).data('species'),
+			'breed' :$(this).data('breed'),
+			'gender' :$(this).data('gender'),
+		};
+		$('#editPetName').val(petrecData.pet_name);
+		$('.editGender').val(petrecData.gender);
+		$('#editBirthdate').val(petrecData.birthdate);
+		$('#editAge').val(petrecData.age);
+		$('#editSpecies').val(petrecData.species);
+		$('#editBreed').val(petrecData.breed);
 	});
 	$('.add_diagnosis-action').click(function() {
 		const id = $(this).data('container-id');
