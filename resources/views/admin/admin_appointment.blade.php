@@ -569,8 +569,8 @@
                                             </defs>
                                         </svg> New Appointment</span></button>
                             </div>
-                            <div class="table-responsive mt-3" id="approved_table">
-                                <table class="table approve_table" id="approve_table">
+                            <div id="approved_table" class="w-100" style="overflow: auto;">
+                                <table class="table table-responsive mt-3 w-100">
                                     <thead>
                                         <tr>
                                             <th>
@@ -1046,8 +1046,8 @@
                                             </defs>
                                         </svg> New Appointment</span></button>
                             </div>
-                            <div class="table-responsive mt-3" id="pending_table">
-                                <table class="table">
+                            <div id="pending_table" class="w-100" style="overflow: auto;">
+                                <table class="table table-responsive mt-3 w-100">
                                     <thead>
                                         <tr>
                                             <th>
@@ -1528,9 +1528,8 @@
                                             </defs>
                                         </svg> New Appointment</span></button>
                             </div>
-                            <div class="table-responsive mt-3" id="rejected_table"
-                                style="overflow: visible; display:none;">
-                                <table class="table">
+                            <div id="rejected_table" class="w-100" style="overflow: auto;">
+                                <table class="table table-responsive mt-3 w-100">
                                     <thead>
                                         <tr>
                                             <th>

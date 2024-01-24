@@ -831,7 +831,7 @@ var selectAllreject = document.getElementById("selectAll_rejected");
 
 selectAllreject.addEventListener("click", function () {
     var tableBody = document.getElementById('rejectedTableBody');
-    var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
+    var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
 
     rowCheckboxes.forEach(function (checkbox) {
         checkbox.checked = !checkbox.checked; // Toggle the state

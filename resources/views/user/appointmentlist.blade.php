@@ -2,20 +2,25 @@
 <html data-bs-theme="light" lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-	<title>Appointment List</title>
-	<link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
-	<link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
-	<link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" />
+    <title>Appointment List</title>
+    <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+    <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body> 
@@ -52,103 +57,36 @@
                         </div>
 					<div class="appointment_list_tabs">
 						<ul class="nav nav-tabs appointment_list_tab_items" role="tablist">
-							<li class="nav-item" role="presentation"><a class="nav-link active list_tab" role="tab" data-bs-toggle="tab" href="#tab-1">Approved<span id="upcoming-counter" class="counter counter-upcoming">0</span></a></li>
-							<li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-2">Pending<span id="history-counter" class="counter counter-recent">0</span></a></li>
+							<li class="nav-item" role="presentation"><a class="nav-link active list_tab" role="tab" data-bs-toggle="tab" href="#tab-1">Upcoming<span id="upcoming-counter" class="counter counter-upcoming">0</span></a></li>
+							<li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-2">Completed<span id="history-counter" class="counter counter-recent">0</span></a></li>
 						</ul>
 						<div class="tab-content" style="width: 100%;">
-							<div class="tab-pane active appointment_list_container" role="tabpanel" id="tab-1">
-								<div class="container_header">
-									<div class="left_part_product_header">
-									</div>
-									<div class="right_part_product_header">
-										
-									</div>
-								</div>
-								<div id="appointment_table_container" class="appointment_table_container mt-3">
-									<table id="appointment_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
-										<thead>
-											<tr>
-												<th>
-													<input id="SelectAll" type="checkbox" class="checkbox">
-												</th>
-												<th>No.</th>
-												<th>Patient Info</th>
-												<th>Surgery Type</th>
-												<th>Appointment Date</th>
-												<th>Appointment Time</th>
-											</tr>
-										</thead>
-										<tbody id="appointment_table_body">
-                                        @foreach ($appointmentapproved as $index => $appointment)
-                                        <tr>
-                                            <td class="text-style"></td> 
-                                            <td class="text-style">{{ $index + 1 }}</td>
-                                            <td class="text-style">{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
-                                            <td class="text-style">{{ $appointment['appointmentType'] }}</td>
-                                            <td class="text-style">{{ $appointment['appointmentDate'] }}</td>
-                                            <td class="text-style">{{ $appointment['appointmentTime'] }}</td>
-                                        </tr>
-                                        @endforeach
-                                        </tbody>
-									</table>
-									<div class="pagination">
-										<div class="pagination-menu"> <span>Go to:</span>
-											<select class="paginationGoToSelect">
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-												<option value="5">5</option>
-											</select>
-										</div>
-										<div class="pagination-pages"> <span class="pagination-arrow previous-page">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
-                          <path d="M5.48 12L1.36452 7.88384C0.878492 7.39773 0.878492 6.60227 1.36452 6.11616L5.48 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
-                        </svg>
-                      </span>
-											<div class="pages"> <span class="pagination-page active">1</span> <span class="pagination-page">2</span> <span class="pagination-page">3</span> <span class="pagination-page">4</span> <span class="pagination-page">5</span> </div> <span class="pagination-arrow next-page">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
-                          <path d="M1.47998 12L5.59546 7.88384C6.08149 7.39773 6.08149 6.60227 5.59546 6.11616L1.47998 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
-                        </svg>
-                      </span> </div>
-										<div class="pagination-items"> <span>Show:</span>
-											<select class="paginationItemsSelect">
-												<option value="2">2 items</option>
-												<option value="3">3 items</option>
-												<option value="4">4 items</option>
-												<option value="5">5 items</option>
-												<option value="6">6 items</option>
-											</select>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="tab-pane appointment_list_container" role="tabpanel" id="tab-2">
-								<div class="container_header">
+							<div class="tab-pane active appointment_list_container" role="tabpanel" id="tab-1" style="overflow:auto;">
+							<div class="container_header">
 									<div class="left_part_product_header">
 										<div class="search_container">
 											<input type="search" class="search_input" placeholder="Search Appointment">
 										</div>
-										<button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+										<button class="btn filter_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 											<g clip-path="url(#clip0_5284_15912)">
-												<path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+												<path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-width="2" stroke-opacity="0.7" stroke-linecap="round" stroke-linejoin="round"/>
 											</g>
 											<defs>
 												<clipPath id="clip0_5284_15912">
 												<rect width="24" height="24" fill="white"/>
 												</clipPath>
 											</defs>
-											</svg> Filter by</span></button>
-																					<button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+											</svg><span class="filter_btn_base">Filter by</span></button>
+																					<button class="btn sort_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 											<g clip-path="url(#clip0_5284_15919)">
-												<path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+												<path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-width="2" stroke-opacity="0.7" stroke-linecap="round" stroke-linejoin="round"/>
 											</g>
 											<defs>
 												<clipPath id="clip0_5284_15919">
 												<rect width="24" height="24" fill="white"/>
 												</clipPath>
 											</defs>
-											</svg> Sort by</span>
+											</svg><span class="sort_btn_base">Sort by</span>
 										</button>
 									</div>
 									<div class="right_part_product_header">
@@ -164,35 +102,36 @@
 										</button>
 									</div>
 								</div>
-								<div id="appointment_table_container" class="appointment_table_container mt-3">
-									<table id="appointment_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+								<div id="appointment_table_container"  class="w-100" style="overflow: auto;">
+									<table class="table table-responsive mt-3 w-100">
 										<thead>
 											<tr>
 												<th>
-													<input id="SelectAll" type="checkbox" class="checkbox">
+													<input id="SelectAll" type="radio" class="checkbox">
 												</th>
+												<th>No.</th>
 												<th>Patient Info</th>
-												<th>Appointment</th>
 												<th>Surgery Type</th>
-												<th>Status</th>
-												<th>Additional Notes</th>
-												<th>Actions</th>
+												<th>Appointment Date</th>
+												<th>Appointment Time</th>
 											</tr>
 										</thead>
 										<tbody id="appointment_table_body">
-										@foreach ($appointments as $index => $appointmentpending)
+                                        @foreach ($appointmentapproved as $index => $appointment)
                                         <tr>
-                                            <td class="text-style"></td> 
+                                            <td class="text-style"><input type="radio" class="checkbox"></td> 
                                             <td class="text-style">{{ $index + 1 }}</td>
-                                            <td class="text-style">{{ $appointmentpending['petType'] }} ({{ $appointmentpending['breed'] }})</td>
-                                            <td class="text-style">{{ $appointmentpending['appointmentType'] }}</td>
-                                            <td class="text-style">{{ $appointmentpending['appointmentDate'] }}</td>
-                                            <td class="text-style">{{ $appointmentpending['appointmentTime'] }}</td>
+                                            <td class="text-style">{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
+                                            <td class="text-style">{{ $appointment['appointmentType'] }}</td>
+                                            <td class="text-style">{{ $appointment['appointmentDate'] }}</td>
+                                            <td class="text-style">{{ $appointment['appointmentTime'] }}</td>
                                         </tr>
                                         @endforeach
-										</tbody>
+                                        </tbody>
 									</table>
-									<div class="pagination">
+									
+								</div>
+								<div class="pagination">
 										<div class="pagination-menu"> <span>Go to:</span>
 											<select class="paginationGoToSelect">
 												<option value="1">1</option>
@@ -222,7 +161,156 @@
 											</select>
 										</div>
 									</div>
+							</div>
+							<div class="tab-pane appointment_list_container" role="tabpanel" id="tab-2" style="overflow:auto;">
+								<div class="container_header">
+									<div class="left_part_product_header">
+										<div class="search_container">
+											<input type="search" class="search_input" placeholder="Search Appointment">
+										</div>
+										<button class="btn filter_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+											<g clip-path="url(#clip0_5284_15912)">
+												<path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-width="2" stroke-opacity="0.7" stroke-linecap="round" stroke-linejoin="round"/>
+											</g>
+											<defs>
+												<clipPath id="clip0_5284_15912">
+												<rect width="24" height="24" fill="white"/>
+												</clipPath>
+											</defs>
+											</svg><span class="filter_btn_base">Filter by</span></button>
+																					<button class="btn sort_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+											<g clip-path="url(#clip0_5284_15919)">
+												<path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-opacity="0.7" stroke-linecap="round" stroke-linejoin="round"/>
+											</g>
+											<defs>
+												<clipPath id="clip0_5284_15919">
+												<rect width="24" height="24" fill="white"/>
+												</clipPath>
+											</defs>
+											</svg> <span class="sort_btn_base">Sort by</span>
+										</button>
+									</div>
+									<div class="right_part_product_header">
+										<button class="btn archive_button" id="archive_button-1" type="button">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+												<g clip-path="url(#clip0_5824_17335)">
+													<path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
+												<defs>
+													<clipPath id="clip0_5824_17335">
+														<rect width="24" height="24" fill="white" /> </clipPath>
+												</defs>
+											</svg>
+										</button>
+									</div>
 								</div>
+								<table class="table table-responsive mt-3 w-100" id="approved_table">
+										<thead>
+											<tr>
+												<th>
+													<input id="SelectAllPending" type="radio" class="checkbox">
+												</th>
+												<th></th>
+												<th>Patient Info</th>
+												<th>Appointment</th>
+												<th>Surgery Type</th>
+												<th>Status</th>
+												<th>Additional Notes</th>
+												<th>Actions</th>
+											</tr>
+										</thead>
+										<tbody id="appointment_pending_table_body">
+										@foreach ($appointments as $index => $appointmentpending)
+                                        <tr>
+                                            <td class="text-style"><input type="radio" class="checkbox"></td> 
+                                            <td class="text-style">{{ $index + 1 }}</td>
+                                            <td class="text-style">{{ $appointmentpending['petType'] }} ({{ $appointmentpending['breed'] }})</td>
+                                            <td class="text-style">{{ $appointmentpending['appointmentType'] }}</td>
+                                            <td class="text-style">{{ $appointmentpending['appointmentDate'] }} {{ $appointmentpending['appointmentTime'] }}</td>
+                                            <td class="text-style"></td>
+											<td></td>
+											<td class="dropdown button-action">
+                                                <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"
+                                                            aria-expanded="false" data-bs-toggle="dropdown"
+                                                            type="button"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                width="18" height="18" viewBox="0 0 18 18"
+                                                                fill="none">
+                                                                <path
+                                                                    d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z"
+                                                                    fill="#045B62" />
+                                                                <path
+                                                                    d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z"
+                                                                    fill="#045B62" />
+                                                                <path
+                                                                    d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z"
+                                                                    fill="#045B62" />
+                                                            </svg></button>
+                                                        <div class="dropdown-menu"><button
+                                                                data-id=""
+                                                                class="dropdown-item complete-action"><svg
+                                                                    xmlns="http://www.w3.org/2000/svg" width="22"
+                                                                    height="12" viewBox="0 0 22 12"
+                                                                    fill="none">
+                                                                    <path d="M6 6L11 11L21 1M1 6L6 11M11 6L16 1"
+                                                                        stroke="#1C1C1C" stroke-opacity="0.7"
+                                                                        stroke-width="2" stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                </svg> Mark as complete</button>
+                                                            <hr />
+                                                            <a class="dropdown-item archive-action"
+                                                                data-id=""><svg
+                                                                    xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                    height="24" viewBox="0 0 24 24"
+                                                                    fill="none">
+                                                                    <g clip-path="url(#clip0_6291_1005)">
+                                                                        <path
+                                                                            d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14"
+                                                                            stroke="#1C1C1C" stroke-opacity="0.7"
+                                                                            stroke-width="2" stroke-linecap="round"
+                                                                            stroke-linejoin="round" />
+                                                                    </g>
+                                                                    <defs>
+                                                                        <clipPath id="clip0_6291_1005">
+                                                                            <rect width="24" height="24"
+                                                                                fill="white" />
+                                                                        </clipPath>
+                                                                    </defs>
+                                                                </svg> Archive</a>
+                                                        </div>
+                                                </td>
+                                        </tr>
+                                        @endforeach
+										</tbody>
+									</table>
+								<div class="pagination">
+										<div class="pagination-menu"> <span>Go to:</span>
+											<select class="paginationGoToSelect">
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+											</select>
+										</div>
+										<div class="pagination-pages"> <span class="pagination-arrow previous-page">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
+                          <path d="M5.48 12L1.36452 7.88384C0.878492 7.39773 0.878492 6.60227 1.36452 6.11616L5.48 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+											<div class="pages"> <span class="pagination-page active">1</span> <span class="pagination-page">2</span> <span class="pagination-page">3</span> <span class="pagination-page">4</span> <span class="pagination-page">5</span> </div> <span class="pagination-arrow next-page">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
+                          <path d="M1.47998 12L5.59546 7.88384C6.08149 7.39773 6.08149 6.60227 5.59546 6.11616L1.47998 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
+                        </svg>
+                      </span> </div>
+										<div class="pagination-items"> <span>Show:</span>
+											<select class="paginationItemsSelect">
+												<option value="2">2 items</option>
+												<option value="3">3 items</option>
+												<option value="4">4 items</option>
+												<option value="5">5 items</option>
+												<option value="6">6 items</option>
+											</select>
+										</div>
+									</div>
 							</div>
 						</div>
 					</div>
@@ -365,22 +453,39 @@
 			</div>
 		</div>
 	</div>
+	
+	<script>
+            var SelectAll = document.getElementById("SelectAll");
+
+            SelectAll.addEventListener("click", function () {
+    var tableBody = document.getElementById('appointment_table_body');
+    var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
+
+    rowCheckboxes.forEach(function (checkbox) {
+        checkbox.checked = !checkbox.checked; // Toggle the state
+    });
+
+});
+
+var SelectAllPending = document.getElementById("SelectAllPending");
+
+SelectAllPending.addEventListener("click", function () {
+var tableBody = document.getElementById('appointment_pending_table_body');
+var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
+
+rowCheckboxes.forEach(function (checkbox) {
+checkbox.checked = !checkbox.checked; // Toggle the state
+});
+
+});
+    </script>
+
+							
 	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('assets/js/bs-init.js') }}"></script>
-	<script src="{{ asset('assets/js/admin_signin.js') }}"></script>
 	<script src="{{ asset('assets/js/appointment_list.js') }}"></script>
-	<script src="{{ asset('assets/js/appointmentforms.js') }}"></script>
-	<script src="{{ asset('assets/js/client.js') }}"></script>
-	<script src="{{ asset('assets/js/dashboard.js') }}"></script>
-	<script src="{{ asset('assets/js/inventory.js') }}"></script>
-	<script src="{{ asset('assets/js/Multi-step-form-script.js') }}"></script>
-	<script src="{{ asset('assets/js/pet_information.js') }}"></script>
-	<script src="{{ asset('assets/js/pet_records.js') }}"></script>
-	<script src="{{ asset('assets/js/sidebar.js') }}"></script>
-	<script src="{{ asset('assets/js/signin.js') }}"></script>
-	<script src="{{ asset('assets/js/signup.js') }}"></script>
-	<script src="{{ asset('assets/js/user_settings.js') }}"></script>
+
 </body>
 
 </html>

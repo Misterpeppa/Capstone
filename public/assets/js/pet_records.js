@@ -763,26 +763,7 @@ function resetSurgeryFields() {
 
 
 
-setupFormValidation(
-    ['diagnosis', 'diagnosis_date', 'treatment_plan', 'medication', 'diagnosis_description'],
-    'submit_diagnosis',
-    'clear_diagnosis', 
-    'close_diagnosis'
-);
 
-setupFormValidation(
-    ['vaccination', 'vaccination_date', 'vaccination_description', 'next_schedule', 'status'],
-    'submit_vaccination',
-    'clear_vaccination', 
-    'close_vaccination'
-);
-
-setupFormValidation(
-    ['surgery_type', 'surgery_date', 'severity', 'med_id', 'notes'],
-    'submit_surgery',
-    'clear_surgery', 
-    'close_surgery'
-);
 
 
 submit_diagnosis.addEventListener('click', function () {

@@ -2,20 +2,26 @@
 <html data-bs-theme="light" lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-	<title>Admin | Pet Records</title>
-	<link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
-	<link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
-	<link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}"> 
+<meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Admin | Pet Records</title>
+    <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+    <link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -748,7 +754,7 @@
 					</div>
 					<div class="input_details_container">
 						<div class="detail_body">
-							<form action="{{ route('edit.petrecord') }}" method="POST">
+							<form action="{{ route('edit.petrecord') }}" method="POST" style="width:100%;">
 								@csrf
 							<div class="pet_details_container">
 								<input type="hidden" name="pet_id" id="editpetId">
@@ -1175,7 +1181,7 @@
 			<div class="modal-content add_pet_record_modal">
 				<div class="modal-header">
 					<h1 class="modal-title">Add Diagnosis</h1>
-					<button class="btn-close" id="close_diagnosis" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+					<button class="btn-close" id="close_diagnosis" onClick="cancelDiagnosis()" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
 					<form action="{{ route('med.history') }}" method="POST" class="add_client" id="add_pet_form">
@@ -1232,8 +1238,8 @@
 						</div>
 				</div>
 				<div class="modal-footer add_product_button">
-					<button class="btn clear_form" id="clear_diagnosis" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_diagnosis" id="submit_diagnosis" type="submit"><span class="submit_product_base">Submit</span></button>
+					<button class="btn clear_form" id="clear_diagnosis" onClick="cancelDiagnosis()" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
+					<button class="btn submit_diagnosis" id="submit_diagnosis" type="submit" disabled><span class="submit_product_base">Submit</span></button>
 				</div>
 				</form>
 			</div>
@@ -1244,7 +1250,7 @@
 			<div class="modal-content add_pet_record_modal">
 				<div class="modal-header">
 					<h1 class="modal-title">Add Vaccination History</h1>
-					<button class="btn-close" id="close_vaccination" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+					<button class="btn-close" id="close_vaccination" onClick="cancelVaxx()" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
 					<form action="{{ route('vax.history') }}" method="POST" class="add_client" id="add_pet_form-2">
@@ -1300,8 +1306,8 @@
 						</div>
 				</div>
 				<div class="modal-footer add_product_button">
-					<button class="btn clear_form" id="clear_vaccination" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_immunization" id="submit_vaccination" type="submit"><span class="submit_product_base">Submit</span></button>
+					<button class="btn clear_form" id="clear_vaccination" onClick="cancelVaxx()" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
+					<button class="btn submit_immunization" id="submit_vaccination" type="submit" disabled><span class="submit_product_base">Submit</span></button>
 				</div>
 				</form>
 			</div>
@@ -1312,7 +1318,7 @@
 			<div class="modal-content add_pet_record_modal">
 				<div class="modal-header">
 					<h1 class="modal-title">Add Surgery</h1>
-					<button class="btn-close" id="close_surgery" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+					<button class="btn-close" id="close_surgery" onClick="cancelSurgery()" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
 					<form action="{{ route('surg.history') }}" method="POST" class="add_client" id="add_pet_form-3">
@@ -1373,8 +1379,8 @@
 						</div>
 				</div>
 				<div class="modal-footer add_product_button">
-					<button class="btn clear_form" id="clear_surgery" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_surgery" id="submit_surgery" type="submit"><span class="submit_product_base">Submit</span></button>
+					<button class="btn clear_form" id="clear_surgery" onClick="cancelSurgery()" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
+					<button class="btn submit_surgery" id="submit_surgery" type="submit" disabled><span class="submit_product_base">Submit</span></button>
 				</div>
 				</form>
 			</div>
@@ -1620,6 +1626,186 @@ $(document).ready(function() {
 			
 		});
 });
+</script>
+<script>
+	function enableSubmitDiagnosis() {
+	var diagnosis = document.getElementById("diagnosis").value;
+	var diagnosis_date = document.getElementById("diagnosis_date").value;
+	var treatment_plan = document.getElementById("treatment_plan").value;
+	var medication = document.getElementById("medication").value;
+	var diagnosis_description = document.getElementById("diagnosis_description").value;
+	var submit_diagnosis = document.getElementById("submit_diagnosis");
+
+	// Add additional validation conditions as needed
+  if (
+    diagnosis.trim() !== "" &&
+    diagnosis_date.trim() !== "" &&
+    treatment_plan.trim() !== "" &&
+    medication.trim() !== "" &&
+    diagnosis_description.trim() !== ""
+  ) {
+    submit_diagnosis.disabled = false;
+  } else {
+    submit_diagnosis.disabled = true;
+  }
+  
+
+	// Logging values for debugging
+	console.log('diagnosis:', diagnosis);
+	console.log('diagnosis_date:', diagnosis_date);
+	console.log('treatment_plan:', treatment_plan);
+	console.log('medication:', medication);
+	console.log('diagnosis_description:', diagnosis_description);
+	console.log('submit_diagnosis.disabled:', submit_diagnosis.disabled);
+	}
+
+	document.getElementById("diagnosis").addEventListener("change", enableSubmitDiagnosis);
+	document.getElementById("diagnosis_date").addEventListener("input", enableSubmitDiagnosis);
+	document.getElementById("treatment_plan").addEventListener("change", enableSubmitDiagnosis);
+	document.getElementById("medication").addEventListener("change", enableSubmitDiagnosis);
+	document.getElementById("diagnosis_description").addEventListener("input", enableSubmitDiagnosis);
+
+	function cancelDiagnosis() {
+
+		var diagnosis = document.getElementById("diagnosis");
+	var diagnosis_date = document.getElementById("diagnosis_date");
+	var treatment_plan = document.getElementById("treatment_plan");
+	var medication = document.getElementById("medication");
+	var diagnosis_description = document.getElementById("diagnosis_description");
+	var clear_diagnosis = document.getElementById("clear_diagnosis");
+	var submit_diagnosis = document.getElementById("submit_diagnosis");
+
+
+	submit_diagnosis.disabled = true;
+
+	diagnosis.value = "";
+	diagnosis_date.value = "";
+	treatment_plan.value = "";
+	medication.value = "";
+	diagnosis_description.value = "";
+	}
+
+
+	function enableSubmitVaxx() {
+  var vaccination = document.getElementById("vaccination").value;
+  var vaccination_date = document.getElementById("vaccination_date").value;
+  var vaccination_description = document.getElementById("vaccination_description").value;
+  var next_schedule = document.getElementById("next_schedule").value;
+  var status = document.getElementById("status").value;
+  var submit_vaccination = document.getElementById("submit_vaccination");
+
+  // Add additional validation conditions as needed
+  if (
+    vaccination.trim() !== "" &&
+    vaccination_date.trim() !== "" &&
+    vaccination_description.trim() !== "" &&
+    next_schedule.trim() !== "" &&
+    status.trim() !== ""
+  ) {
+    submit_vaccination.disabled = false;
+  } else {
+    submit_vaccination.disabled = true;
+  }
+
+  // Logging values for debugging
+  console.log('vaccination:', vaccination);
+  console.log('vaccination_date:', vaccination_date);
+  console.log('vaccination_description:', vaccination_description);
+  console.log('next_schedule:', next_schedule);
+  console.log('status:', status);
+  console.log('submit_vaccination.disabled:', submit_vaccination.disabled);
+}
+
+document.getElementById("vaccination").addEventListener("change", enableSubmitVaxx);
+document.getElementById("vaccination_date").addEventListener("input", enableSubmitVaxx);
+document.getElementById("vaccination_description").addEventListener("change", enableSubmitVaxx);
+document.getElementById("next_schedule").addEventListener("input", enableSubmitVaxx);
+document.getElementById("status").addEventListener("change", enableSubmitVaxx);
+
+
+	function cancelVaxx() {
+
+		var vaccination = document.getElementById("vaccination");
+	var vaccination_date = document.getElementById("vaccination_date");
+	var vaccination_description = document.getElementById("vaccination_description");
+	var next_schedule = document.getElementById("next_schedule");
+	var status = document.getElementById("status");
+	var clear_diagnosis = document.getElementById("clear_vaccination");
+	var submit_vaccination = document.getElementById("submit_vaccination");
+
+
+	submit_vaccination.disabled = true;
+
+	vaccination.value = "";
+	vaccination_date.value = "";
+	vaccination_description.value = "";
+	next_schedule.value = "";
+	status.value = "";
+	}
+
+
+	function enableSubmitSurgery() {
+
+
+  var surgery_type = document.getElementById("surgery_type").value;
+  var surgery_date = document.getElementById("surgery_date").value;
+  var severity = document.getElementById("severity").value;
+  var med_id = document.getElementById("med_id").value;
+  var notes = document.getElementById("notes").value;
+  var submit_surgery = document.getElementById("submit_surgery");
+
+  // Add additional validation conditions as needed
+  if (
+    surgery_type.trim() !== "" &&
+    surgery_date.trim() !== "" &&
+    severity.trim() !== "" &&
+    med_id.trim() !== "" &&
+    notes.trim() !== ""
+  ) {
+    submit_surgery.disabled = false;
+  } else {
+    submit_surgery.disabled = true;
+  }
+
+  // Logging values for debugging
+  console.log('surgery_type:', surgery_type);
+  console.log('surgery_date:', surgery_date);
+  console.log('severity:', severity);
+  console.log('med_id:', med_id);
+  console.log('notes:', notes);
+  console.log('submit_surgery.disabled:', submit_surgery.disabled);
+}
+
+document.getElementById("surgery_type").addEventListener("change", enableSubmitSurgery);
+document.getElementById("surgery_date").addEventListener("input", enableSubmitSurgery);
+document.getElementById("severity").addEventListener("change", enableSubmitSurgery);
+document.getElementById("med_id").addEventListener("change", enableSubmitSurgery);
+document.getElementById("notes").addEventListener("input", enableSubmitSurgery);
+
+
+function cancelSurgery() {
+
+	var surgery_type = document.getElementById("surgery_type");
+  var surgery_date = document.getElementById("surgery_date");
+  var severity = document.getElementById("severity");
+  var med_id = document.getElementById("med_id");
+  var notes = document.getElementById("notes");
+  
+  var submit_surgery = document.getElementById("submit_surgery");
+
+
+
+  submit_surgery.disabled = true;
+
+  surgery_type.value = "";
+  surgery_date.value = "";
+  severity.value = "";
+  med_id.value = "";
+  notes.value = "";
+}
+
+
+
 </script>
 
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
