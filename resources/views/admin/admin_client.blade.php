@@ -277,8 +277,8 @@
                                 </defs>
                             </svg> Add Client</span></button>
                 </div>
-                <div id="client_table_container" class="table-responsive w-100">
-                    <table class="table" >
+                <div id="client_table_container" class="w-100" style="overflow: auto;">
+                    <table class="table table-responsive mt-3 w-100">
                         <thead>
                             <tr>
                                 <th><input id="SelectAll" type="radio" class="checkbox"></th>
@@ -286,48 +286,78 @@
                                 <th>Email</th>
                                 <th>Phone Number</th>
                                 <th>Birthdate</th>
-                                <th>Last Appointment</th>
+                                <th>Visit</th>
+                                <th>Last Visit</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="client_table_body">
                             @foreach ($clients as $clientInfo)
-                            @php
-                                $latestAppointment = $clientInfo->appointmentApproved->whereNotNull('completed_at')->sortByDesc('appointmentDate')->first();
-                            @endphp                                
-                            <tr>
-                                    <td><input type="checkbox"></td>
+                                <tr>
+                                    <td><input type="radio"></td>
                                     <td>{{ $clientInfo->first_name }} {{ $clientInfo->middle_name }}
                                         {{ $clientInfo->last_name }} {{ $clientInfo->suffix }}</td>
                                     <td>{{ $clientInfo->email }}</td>
                                     <td>{{ $clientInfo->phone }}</td>
                                     <td>{{ $clientInfo->birthdate }}</td>
-                                    @if ($latestAppointment)
-                                        <td>{{ $latestAppointment->appointmentDate }}</td>
-                                    @else
-                                        <td>No recent appointments</td>
-                                    @endif
-                                    <td class="button-action">
-                                        <button
-                                        data-action="View"
-                                        data-id="{{ $clientInfo->id }}"
-                                        class="btn border-0 viewButton"style="color:gray"><i class="fa-solid fa-eye"></i></button>
-                                        <button 
-                                        data-action="Edit" id="editButton"
-                                        data-container-id="{{ $clientInfo->id }}"
-                                        data-first-name="{{ $clientInfo->first_name }}" data-middle-name="{{ $clientInfo->middle_name}}"
-                                        data-last-name="{{ $clientInfo->last_name }}" data-suffix="{{ $clientInfo->suffix}}"
-                                        data-birthdate="{{ $clientInfo->birthdate}}" data-email="{{ $clientInfo->email}}" data-phone="{{ $clientInfo->phone }}"
-                                        class="btn border-0 editButton"style="color:gray"><i class="fa-solid fa-pen-to-square"></i></button>
-                                        <button 
-                                        data-action="Archive" id="archiveButton"
-                                        data-container-id="{{ $clientInfo->id }}"
-                                        class="btn border-0 archiveButton"style="color:gray"><i class="fa-solid fa-box-archive"></i></button>
-                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="dropdown button-action">
+                                        <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+  <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
+  <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
+  <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
+</svg></button>
+                                        <div class="dropdown-content"><div class="button-group">
+                                            <button
+                                                data-action="View"
+                                                data-product-id="{{ $clientInfo->id }}"
+                                                class="btn border-0 viewButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <g clip-path="url(#clip0_6559_23849)">
+        <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+        <clipPath id="clip0_6559_23849">
+        <rect width="24" height="24" fill="white"/>
+        </clipPath>
+    </defs>
+    </svg> View</div></button>
+                                                <button 
+                                                data-action="Edit" id="editButton"
+                                                data-product-id="{{ $clientInfo->id }}"
+                                                class="btn border-0"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6559_23478)">
+    <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6559_23478">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg> Edit</div></button>
+                                                <button 
+                                                data-action="Archive"
+                                                class="btn border-0"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6559_23857)">
+    <path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6559_23857">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg> Archive</div></button>
+                                        </div>
+                                            
+                                        </div>
+                                        </td>
+                                  
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    
                 </div>
                 <div class="pagination">
                         <div class="pagination-menu">
