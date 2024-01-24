@@ -169,14 +169,14 @@
                     <ul class="nav nav-tabs pet_nav_tabs" role="tablist">
                         <li class="nav-item" role="presentation" id="approve_tab"><a
                                 class="nav-link  list_tab" role="tab" data-bs-toggle="tab"
-                                href="#approved_tab">Approved<span id="approvedCount" class="tab-count">0</span></a>
+                                href="#approved_tab">Approved<span id="approvedCounts" class="tab-count">{{ $approvedCount }}</span></a>
                         </li>
                         <li class="nav-item" role="presentation" id="pending-tab"><a class="nav-link list_tab"
                                 role="tab" data-bs-toggle="tab" href="#pending_tab">Pending<span
-                                    id="pendingCount" class="tab-count">0</span></a></li>
+                                    id="pendingCounts" class="tab-count">{{ $pendingCount}}</span></a></li>
                         <li class="nav-item" role="presentation" id="reject_tab"><a class="nav-link list_tab"
                                 role="tab" data-bs-toggle="tab" href="#rejected_tab">Rejected<span
-                                    id="rejectedCount" class="tab-count">0</span></a></li>
+                                    id="rejectedCounts" class="tab-count">{{ $rejectedCount }}</span></a></li>
                     </ul>
                     <div class="tab-content appointment_tab_content">
                         <div class="tab-pane  align-self-stretch appointment_tab" role="tabpanel"
@@ -296,9 +296,18 @@
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                aria-expanded="false">
-                                                <i class="fa-solid fa-arrow-down-short-wide"></i>Sort
-                                                By
+                                                aria-expanded="false"><span class="filter_btn_base">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+													<g clip-path="url(#clip0_6770_15021)">
+														<path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+													</g>
+													<defs>
+														<clipPath id="clip0_6770_15021">
+														<rect width="24" height="24" fill="white"/>
+														</clipPath>
+													</defs>
+													</svg>Sort By
+												</span>
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li class="dropdown-item ">
@@ -560,8 +569,8 @@
                                             </defs>
                                         </svg> New Appointment</span></button>
                             </div>
-                            <div class="table-responsive mt-3" id="approved_table">
-                                <table class="table approve_table" id="approve_table">
+                            <div id="approved_table" class="w-100" style="overflow: auto;">
+                                <table class="table table-responsive mt-3 w-100">
                                     <thead>
                                         <tr>
                                             <th>
@@ -1037,8 +1046,8 @@
                                             </defs>
                                         </svg> New Appointment</span></button>
                             </div>
-                            <div class="table-responsive mt-3" id="pending_table">
-                                <table class="table">
+                            <div id="pending_table" class="w-100" style="overflow: auto;">
+                                <table class="table table-responsive mt-3 w-100">
                                     <thead>
                                         <tr>
                                             <th>
@@ -1519,9 +1528,8 @@
                                             </defs>
                                         </svg> New Appointment</span></button>
                             </div>
-                            <div class="table-responsive mt-3" id="rejected_table"
-                                style="overflow: visible; display:none;">
-                                <table class="table">
+                            <div id="rejected_table" class="w-100" style="overflow: auto;">
+                                <table class="table table-responsive mt-3 w-100">
                                     <thead>
                                         <tr>
                                             <th>

@@ -124,8 +124,7 @@
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                aria-expanded="false">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
+                                                aria-expanded="false"><div class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
                                                   <g clip-path="url(#clip0_3674_15869)" filter="url(#filter0_d_3674_15869)">
                                                     <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                   </g>
@@ -144,7 +143,8 @@
                                                       <rect width="24" height="24" fill="white"/>
                                                     </clipPath>
                                                   </defs>
-                                              </svg>Filter By
+                                              </svg>Filter By</div>
+                                                
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li class="dropdown-item ">
@@ -223,38 +223,45 @@
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                aria-expanded="false">
-                                                <i class="fa-solid fa-arrow-down-short-wide"></i>Sort
-                                                By
+                                                aria-expanded="false"><div class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6770_4127)">
+    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6770_4127">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg> Sort By</div>
                                             </button>
                                             <ul class="dropdown-menu">
                                                 <li class="dropdown-item ">
-                                                    <input class="form-check-input me-1" type="radio" id = "radio1"
+                                                    <input class="checkbox me-1" type="radio" id = "radio1"
                                                         name="sortItems"{{ request()->input('sortItems', '0') == '0' ? 'checked' : '' }}  value="0">
                                                     <label class="form-check-label ms-1 fs-6" for="radio1">
                                                         Appointment
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <input class="form-check-input me-1" type="radio" id = "radio2"
+                                                    <input class="checkbox me-1" type="radio" id = "radio2"
                                                         name="sortItems" {{ request()->input('sortItems') == '1' ? 'checked' : '' }} value="1">
                                                     <label class="form-check-label ms-1 fs-6" for="radio2">
                                                         Status
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <input class="form-check-input me-1" type="radio" id = "radio3"
+                                                    <input class="checkbox me-1" type="radio" id = "radio3"
                                                         name="sortItems" {{ request()->input('sortItems') == '2' ? 'checked' : '' }} value="2">
                                                     <label class="form-check-label ms-1 fs-6" for="radio3">
                                                         Patient
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <input class="form-check-input me-1" type="radio" id = "radio4"
+                                                    <input class="checkbox me-1" type="radio" id = "radio4"
                                                         name="sortItems" {{ request()->input('sortItems') == '3' ? 'checked' : '' }} value="3">
                                                     <label class="form-check-label ms-1 fs-6" for="radio4">
                                                         Client
                                                 </li>
                                                 <li>
                                                   <li class="dropdown-item">
-                                                    <input class="form-check-input me-1" type="radio" id = "radio5"
+                                                    <input class="checkbox me-1" type="radio" id = "radio5"
                                                         name="sortItems" {{ request()->input('sortItems') == '4' ? 'checked' : '' }} value="4">
                                                     <label class="form-check-label ms-1 fs-6" for="radio5">
                                                         Surgery Type
@@ -263,24 +270,24 @@
                                                     <hr class="dropdown-divider me-2 ms-2">
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <input class="form-check-input me-1" type="radio" id = "radio6"
+                                                    <input class="checkbox me-1" type="radio" id = "radio6"
                                                         name="sortOrder" {{ request()->input('sortOrder') == '0' ? 'checked' : '' }} value="0">
                                                     <label class="form-check-label ms-1 fs-6" for="radio6">
                                                         Ascending
                                                 </li>
                                                 <li class="dropdown-item">
-                                                    <input class="form-check-input me-1" type="radio" id = "radio7"
+                                                    <input class="checkbox me-1" type="radio" id = "radio7"
                                                         name="sortOrder" {{ request()->input('sortOrder', '1') == '1' ? 'checked' : '' }} value="1">
                                                     <label class="form-check-label ms-1 fs-6" for="radio7">
                                                         Descending
                                                 </li>
                                                 <li class="dropdown-item ">
                                                   <div class="row">
-                                                      <div class="col-md-6">
-                                                          <button type = "reset" class="btn btn-outline-secondary btn-sm me-3">Cancel</button>
+                                                      <div class="col-md-5">
+                                                          <button type = "reset" class="btn cancel_filter btn-sm me-3"><div class="cancel_filter_base">Cancel</div></button>
                                                       </div>
-                                                      <div class="col-md-6 text-center">
-                                                          <button type="submit" form="approvedForm" class="btn btn-primary btn-sm ms-3">Apply</button>
+                                                      <div class="col-md-5 text-center">
+                                                          <button type="submit" form="approvedForm" class="btn apply_filter btn-sm ms-3"><div class="apply_filter_base">Apply Filter</div></button>
                                                       </div>
                                                   </div>
                                               </li>
@@ -292,8 +299,8 @@
 
 
                             </div>
-					<div class="table-responsive w-100" style="overflow: auto;">
-						<table class="table">
+					<div class="w-100" style="overflow: auto;">
+						<table class="table table-responsive mt-3 w-100">
 							<thead>
 								<tr>
 									<th>
@@ -438,8 +445,7 @@
                                 <div class="dropdown">
                                   <button class="filter_btn dropdown-toggle" type="button"
                                       id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                      aria-expanded="false">
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
+                                      aria-expanded="false"><div class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
                                         <g clip-path="url(#clip0_3674_15869)" filter="url(#filter0_d_3674_15869)">
                                           <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </g>
@@ -458,7 +464,8 @@
                                             <rect width="24" height="24" fill="white"/>
                                           </clipPath>
                                         </defs>
-                                    </svg>Filter By
+                                    </svg>Filter By</div>
+                                      
                                   </button>
                                   <ul class="dropdown-menu">
                                       <li class="dropdown-item ">
@@ -521,38 +528,45 @@
                               <div class="dropdown">
                                   <button class="filter_btn dropdown-toggle" type="button"
                                       id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                      aria-expanded="false">
-                                      <i class="fa-solid fa-arrow-down-short-wide"></i>Sort
-                                      By
+                                      aria-expanded="false"><div class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6770_4127)">
+    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6770_4127">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg> Sort By</div>
                                   </button>
                                   <ul class="dropdown-menu">
                                       <li class="dropdown-item ">
-                                          <input class="form-check-input me-1" type="radio" id = "radio1"
+                                          <input class="checkbox me-1" type="radio" id = "radio1"
                                               name="sortItems"{{ request()->input('sortItems', '0') == '0' ? 'checked' : '' }}  value="0">
                                           <label class="form-check-label ms-1 fs-6" for="radio1">
                                               Product Name
                                       </li>
                                       <li class="dropdown-item">
-                                          <input class="form-check-input me-1" type="radio" id = "radio2"
+                                          <input class="checkbox me-1" type="radio" id = "radio2"
                                               name="sortItems" {{ request()->input('sortItems') == '1' ? 'checked' : '' }} value="1">
                                           <label class="form-check-label ms-1 fs-6" for="radio2">
                                               Category
                                       </li>
                                       <li class="dropdown-item">
-                                          <input class="form-check-input me-1" type="radio" id = "radio3"
+                                          <input class="checkbox me-1" type="radio" id = "radio3"
                                               name="sortItems" {{ request()->input('sortItems') == '2' ? 'checked' : '' }} value="2">
                                           <label class="form-check-label ms-1 fs-6" for="radio3">
                                               On Hand
                                       </li>
                                       <li class="dropdown-item">
-                                          <input class="form-check-input me-1" type="radio" id = "radio4"
+                                          <input class="checkbox me-1" type="radio" id = "radio4"
                                               name="sortItems" {{ request()->input('sortItems') == '3' ? 'checked' : '' }} value="3">
                                           <label class="form-check-label ms-1 fs-6" for="radio4">
                                               Date Stocked
                                       </li>
                                       <li>
                                         <li class="dropdown-item">
-                                          <input class="form-check-input me-1" type="radio" id = "radio5"
+                                          <input class="checkbox me-1" type="radio" id = "radio5"
                                               name="sortItems" {{ request()->input('sortItems') == '4' ? 'checked' : '' }} value="4">
                                           <label class="form-check-label ms-1 fs-6" for="radio5">
                                               Expiration Date
@@ -561,24 +575,24 @@
                                           <hr class="dropdown-divider">
                                       </li>
                                       <li class="dropdown-item">
-                                          <input class="form-check-input me-1" type="radio" id = "radio6"
+                                          <input class="checkbox me-1" type="radio" id = "radio6"
                                               name="sortOrder" {{ request()->input('sortOrder', '0') == '0' ? 'checked' : '' }} value="0">
                                           <label class="form-check-label ms-1 fs-6" for="radio6">
                                               Ascending
                                       </li>
                                       <li class="dropdown-item">
-                                          <input class="form-check-input me-1" type="radio" id = "radio7"
+                                          <input class="checkbox me-1" type="radio" id = "radio7"
                                               name="sortOrder" {{ request()->input('sortOrder') == '1' ? 'checked' : '' }} value="1">
                                           <label class="form-check-label ms-1 fs-6" for="radio7">
                                               Descending
                                       </li>
                                       <li class="dropdown-item ">
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <button class="btn btn-outline-secondary btn-sm me-3">Cancel</button>
+                                            <div class="col-md-5">
+                                                <button class="btn cancel_filter btn-sm me-3"><div class="cancel_filter_base">Cancel</div></button>
                                             </div>
-                                            <div class="col-md-6 text-center">
-                                                <button type="submit" form="searchForm" class="btn btn-primary btn-sm ms-3">Apply</button>
+                                            <div class="col-md-5 text-center">
+                                                <button type="submit" form="searchForm" class="btn apply_filter btn-sm ms-3"><div class="apply_filter_base">Apply Filter</div></button>
                                             </div>
                                         </div>
                                     </li>
@@ -626,8 +640,8 @@
                                         </svg></button></div>
                             </div>
                         </div>
-					<div class="table-responsive w-100">
-					<table id="dashboard_table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+					<div class="w-100" style="overflow: auto;">
+					<table id="dashboard_table" class="table table-responsive w-100 mt-3">
 						<thead>
 							<tr>
 								<th>
@@ -654,8 +668,8 @@
 							<td>{{ $product->info_quantity }}</td>
 							<td>{{ $product->date_stocked }}</td>
 							<td>{{ $product->expiration_date }}</td>
-							<td>
-							<div class="dropdown"><button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;" aria-expanded="false" data-bs-toggle="dropdown"
+							<td class="dropdown button-action">
+							<button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;" aria-expanded="false" data-bs-toggle="dropdown"
                                                             type="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
   <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
   <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
@@ -703,7 +717,7 @@
                                                 class="btn border-0"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
   <path d="M17 5C17.5304 5 18.0391 4.78929 18.4142 4.41421C18.7893 4.03914 19 3.53043 19 3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3C1 3.53043 1.21071 4.03914 1.58579 4.41421C1.96086 4.78929 2.46957 5 3 5M17 5H3M17 5V15C17 15.5304 16.7893 16.0391 16.4142 16.4142C16.0391 16.7893 15.5304 17 15 17H5C4.46957 17 3.96086 16.7893 3.58579 16.4142C3.21071 16.0391 3 15.5304 3 15V5M8 9H12" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg> Archive</div></button>
-                                        </div></div>
+                                        </div>
                                             
                                             
 
