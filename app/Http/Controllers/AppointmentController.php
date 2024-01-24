@@ -202,7 +202,7 @@ class AppointmentController extends Controller
         $rejectQuery = $request->input('qReject');
        
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
-        $appointment_approved = AppointmentApproved::with('clients')->whereNull('archived_at')->join('clients', 'appointment_approved.user_id', '=', 'clients.id');
+        $appointment_approved = AppointmentApproved::with('clients')->whereNull('appointment_approved.archived_at')->join('clients', 'appointment_approved.user_id', '=', 'clients.id');
         $appointment_pending = AppointmentPending::with('clients')->join('clients', 'appointment_pending.user_id', '=', 'clients.id');
         $appointment_rejected = AppointmentRejected::with('clients')->join('clients', 'appointment_rejected.user_id', '=', 'clients.id');
 
@@ -258,9 +258,13 @@ class AppointmentController extends Controller
         $approvedExist = $appointment_approved->isNotEmpty();
         $rejectedExist = $appointment_rejected->isNotEmpty();
         $pendingExist = $appointment_pending->isNotEmpty();
+
+        $approvedCount = AppointmentApproved::whereNull('archived_at')->count();
+        $pendingCount = AppointmentPending::count();
+        $rejectedCount = AppointmentRejected::count();
                 
         return view('admin/admin_appointment', compact( 'appointment_approved', 'appointment_rejected', 'appointment_pending', 
-        'approvedExist', 'pendingExist', 'rejectedExist'));
+        'approvedExist', 'pendingExist', 'rejectedExist', 'approvedCount', 'pendingCount', 'rejectedCount'));
     }
 
     public function list()

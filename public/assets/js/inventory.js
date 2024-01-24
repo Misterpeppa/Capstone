@@ -105,12 +105,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const view_product = document.getElementById("view_product");
             var product_table_container = document.getElementById("product_table_container");
             var batch_products = document.getElementById("batch_products");
-            const inventory_header = document.getElementById(
-              "inventory_header"
-            );
-            const prod_info_header = document.getElementById(
-              "prod_info_header"
-            );
+            var inventory_header = document.getElementById("inventory_header");
+            var prod_info_header = document.getElementById("prod_info_header");
+            
             view_product.style.display = "flex";
             product_table_container.style.display = "none";
             batch_products.style.display = "flex";

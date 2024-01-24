@@ -114,14 +114,15 @@ class UserAuthController extends Controller
             if (!$client) {
                 // Incorrect email
                 return back()
-                    ->withErrors(['email' => 'Email and password do not match.'])
+                    ->withErrors(['email' => 'Your email address and password does not match. Please check and try again.'])
                     ->withInput($request->except('password'));
             } else {
                 // Incorrect password
                 return back()
-                    ->withErrors(['password' => 'Email and password do not match.'])
+                    ->withErrors(['password' => 'Your email address and password does not match. Please check and try again.'])
                     ->withInput($request->except('password'));
             }
+
         }
         
     }
