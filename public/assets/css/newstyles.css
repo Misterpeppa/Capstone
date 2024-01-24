@@ -6719,6 +6719,54 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 
 
 @media (max-width: 576px){
+  .container_header{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row !important;
+  }
+  .left_part_product_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    gap: 4px;
+  }
+  .archive_button{
+    width: 40px;
+    height: 40px;
+  }
+  .search_container{
+    width: 150px;
+    height: 42px;
+  }
+  .search_input{
+    width: 100%;
+    padding: 0 !important;
+  }
+  .search_container{
+    width: 200px;
+  }
+  .filter_btn_base svg{
+    display: block;
+    height: 5px;
+    width: 5px;
+  }
+  .search_input::placeholder{
+    color: rgba(28, 28, 28, 0.50);
+    font-family: Inter;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .filter_btn, .sort_btn{
+    height: 42px;
+    width: 42px !important;
+    padding: 0 !important;
+  }
+  .filter_btn_base, .sort_btn_base{
+    display: none;
+  }
   .modal-content.add_client_modal{
     width: 400px!important;
     height: 590px;
