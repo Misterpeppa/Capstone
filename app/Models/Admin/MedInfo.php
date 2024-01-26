@@ -64,6 +64,12 @@ class MedInfo extends Model
                   ->whereNull('med_batch.archived_at');
         });
     }
-    
+    public function filter($query, $request)
+    {
+         $query->where(function ($query) use ($request) {
+            $request->input('appointmentChech')=='on';
+            $query->orWhere('soure', 'LIKE', 'Appointment');
+        });
+    }
 
 }

@@ -1064,7 +1064,7 @@
                                     <tbody id="pendingTableBody">
                                         @foreach ($appointment_pending as $index => $appointment)
                                             <tr>
-                                                <td ><input type="radio" class="checkbox"></td></td>
+                                                <td ><input type="radio" class="checkbox action-checkbox" data-id="{{ $appointment->id }}"></td>
                                                 <td >{{ $index + 1 }}</td>
                                                 <td >{{ $appointment->clients->first_name }}
                                                     {{ $appointment->clients->middle_name }}
@@ -2159,6 +2159,9 @@
     @endif
     <script>
         $(document).ready(function() {
+            $('.action-checkbox').on('click', function(event) {
+                var appointmentId = $(this).data('id');
+            });
             $('.archive-action').on('click', function() {
                 const id = $(this).data('id');
                 $('#archive_modal').modal('show');
@@ -2170,7 +2173,6 @@
                             _token: '{{ csrf_token() }}'
                         },
                         success: function(response) {
-                            alert('Appointment has been archived');
                             location.reload();
                         },
                         error: function(xhr) {
@@ -2279,7 +2281,7 @@
                             id: appointmentId
                         },
                         success: function(response) {
-                            console.log('Appointment marked as completed:', response);
+                            location.reload();
                             // You can update the UI or perform additional actions as needed
                         },
                         error: function(error) {

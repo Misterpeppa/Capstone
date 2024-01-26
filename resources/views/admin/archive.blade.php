@@ -144,8 +144,8 @@
                                                   <div class="form-check form-switch">
                                                     <!-- Size of the default switch will increase 1.8 times -->
                                                     <input class="form-check-input my-3"
-                                                          {{ request()->input('approvedCheck') == 'on' ? 'checked' : '' }}
-                                                           name ="approvedCheck" 
+                                                          {{ request()->input('appointmentCheck') == 'on' ? 'checked' : '' }}
+                                                           name ="appointment" 
                                                            type="checkbox" 
                                                            role="switch" 
                                                            id="approvedCheck" 
@@ -374,7 +374,7 @@
                                         @elseif ($record instanceof App\Models\Admin\VitInfo)
                                             Inventory <!-- Display common label for VitInfo -->
                                         @elseif ($record instanceof App\Models\Admin\PetRecord)
-                                            PetRecord <!-- Display common label for PetRecord -->
+                                            Pet Record <!-- Display common label for PetRecord -->
                                         @elseif ($record instanceof App\Models\Admin\AppointmentApproved)
                                             Appointment <!-- Display common label for AppointmentApproved -->
                                         @elseif ($record instanceof App\Models\User\Clients)
