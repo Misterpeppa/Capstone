@@ -160,15 +160,17 @@
                     </div>
                     <div id="InventoryContainer" class="InventoryContainer">
                     <div class="container_header">
-                                <form action="" id="approvedForm" class="w-100">
-                                    <div class="left_part_product_header">
-                                        <div class="search_container">
-                                            <input type="text" class="search_input" name="qApproved"
-                                            value="{{ request('qApproved') }}" placeholder="Search Appointment">
-                                            <input type="hidden" id="pageForm" name="page"
-                                            value="{{ request('page') }}">
-                                            <input type="hidden" id="perPageForm" name="perPage"
-                                                value="{{ request('perPage') }}">
+                    <form action="" method="GET" role="search" id="searchForm">
+                            <div class="left_part_product_header">
+                              <div class="search_container">
+                                  <input type="text" class="search_input" name="q"
+                                      value="{{ request('q') }}" placeholder="Search Client">
+                                  <!-- Other input fields or elements for pagination -->
+                                  <input type="hidden" id="pageForm" name="page"
+                                      value="{{ request('page') }}">
+                                  <input type="hidden" id="perPageForm" name="perPage"
+                                      value="{{ request('perPage') }}">
+
 
                                         </div>
                                         <button type="submit" form="approvedForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
@@ -197,78 +199,60 @@
                                               </svg>Filter By</span>
                                                 
                                             </button>
-                                            <ul class="dropdown-menu">
-                                                <li class="dropdown-item ">
-                                                  <div class="form-check form-switch">
-                                                    <!-- Size of the default switch will increase 1.8 times -->
-                                                    <input class="form-check-input my-3"
-                                                          {{ request()->input('approvedCheck') == 'on' ? 'checked' : '' }}
-                                                           name ="approvedCheck" 
-                                                           type="checkbox" 
-                                                           role="switch" 
-                                                           id="approvedCheck" 
-                                                           style="transform: scale(1.5);"
-                                                           >
-                                                    <label class="form-check-label fs-6 my-1" 
-                                                           for="approvedCheck" 
-                                                           >Approved</label>
-                                                  </div>
-                                          
-                                                </li>
-                                                <li class="dropdown-item ">
-                                                  <div class="form-check form-switch">
-                                                    <!-- Size of the default switch will increase 1.8 times -->
-                                                    <input class="form-check-input my-3"
-                                                          {{ request()->input('completedCheck') == 'on' ? 'checked' : '' }}
-                                                           name ="completedCheck" 
-                                                           type="checkbox" 
-                                                           role="switch" 
-                                                           id="completedCheck" 
-                                                           style="transform: scale(1.5);"
-                                                           >
-                                                  
-                                                    <label class="form-check-label fs-6 my-1" 
-                                                           for="completedCheck" 
-                                                           >Completed</label>
-                                                  </div>
-                                                </li>
-                                                <li class="dropdown-item ">
-                                                  <div class="form-check form-switch">
-                                                    <!-- Size of the default switch will increase 1.8 times -->
-                                                    <input class="form-check-input my-3"
-                                                          {{ request()->input('dogCheck') == 'on' ? 'checked' : '' }}
-                                                           name ="dogCheck" 
-                                                           type="checkbox" 
-                                                           role="switch" 
-                                                           id="dogCheck" 
-                                                           style="transform: scale(1.5);"
-                                                           >
-                                                  
-                                                    <label class="form-check-label fs-6 my-1" 
-                                                           for="dogCheck" 
-                                                           >Dog</label>
-                                                  </div>
-                                          
-                                                </li>
-                                                <li class="dropdown-item ">
-                                                    <div class="form-check form-switch">
-                                                      <!-- Size of the default switch will increase 1.8 times -->
-                                                      <input class="form-check-input my-3"
-                                                            {{ request()->input('catCheck') == 'on' ? 'checked' : '' }}
-                                                             name ="catCheck" 
-                                                             type="checkbox" 
-                                                             role="switch" 
-                                                             id="catCheck" 
-                                                             style="transform: scale(1.5);"
-                                                             >
-                                                    
-                                                      <label class="form-check-label fs-6 my-1" 
-                                                             for="catCheck" 
-                                                             >Cat</label>
-                                                    </div>
-                                            
-                                                  </li>
-                                            </ul>
+                                             <ul class="dropdown-menu">
+                                      <li class="dropdown-item ">
+                                        <div class="form-check form-switch">
+                                          <!-- Size of the default switch will increase 1.8 times -->
+                                          <input class="form-check-input my-3"
+                                                {{ request()->input('medSwitch') == 'on' ? 'checked' : '' }}
+                                                 name ="medSwitch" 
+                                                 type="checkbox" 
+                                                 role="switch" 
+                                                 id="medSwitch" 
+                                                 style="transform: scale(1.5);"
+                                                 >
+                                          <label class="form-check-label fs-6 my-1" 
+                                                 for="medSwitch" 
+                                                 >Medicine</label>
+                                        </div>
+                                
+                                      </li>
+                                      <li class="dropdown-item ">
+                                        <div class="form-check form-switch">
+                                          <!-- Size of the default switch will increase 1.8 times -->
+                                          <input class="form-check-input my-3"
+                                                {{ request()->input('vaxSwitch') == 'on' ? 'checked' : '' }}
+                                                 name ="vaxSwitch" 
+                                                 type="checkbox" 
+                                                 role="switch" 
+                                                 id="vaxSwitch" 
+                                                 style="transform: scale(1.5);"
+                                                 >
+                                        
+                                          <label class="form-check-label fs-6 my-1" 
+                                                 for="vaxSwitch" 
+                                                 >Vaccine</label>
+                                        </div>
+                                      </li>
+                                      <li class="dropdown-item ">
+                                        <div class="form-check form-switch">
+                                          <!-- Size of the default switch will increase 1.8 times -->
+                                          <input class="form-check-input my-3"
+                                                {{ request()->input('vitSwitch') == 'on' ? 'checked' : '' }}
+                                                 name ="vitSwitch" 
+                                                 type="checkbox" 
+                                                 role="switch" 
+                                                 id="vitSwitch" 
+                                                 style="transform: scale(1.5);"
+                                                 >
+                                        
+                                          <label class="form-check-label fs-6 my-1" 
+                                                 for="vitSwitch" 
+                                                 >Vitamin</label>
+                                        </div>
+                                
+                                      </li>
+                                  </ul>
                                         </div>
                                         
                                         <div class="dropdown">
@@ -286,63 +270,63 @@
 </svg>Sort By</span>
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li class="dropdown-item ">
-                                                    <input class="checkbox me-1" type="radio" id = "radio1"
-                                                        name="sortItems"{{ request()->input('sortItems', '0') == '0' ? 'checked' : '' }}  value="0">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio1">
-                                                        Appointment
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio2"
-                                                        name="sortItems" {{ request()->input('sortItems') == '1' ? 'checked' : '' }} value="1">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio2">
-                                                        Status
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio3"
-                                                        name="sortItems" {{ request()->input('sortItems') == '2' ? 'checked' : '' }} value="2">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio3">
-                                                        Patient
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio4"
-                                                        name="sortItems" {{ request()->input('sortItems') == '3' ? 'checked' : '' }} value="3">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio4">
-                                                        Client
-                                                </li>
-                                                <li>
-                                                  <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio5"
-                                                        name="sortItems" {{ request()->input('sortItems') == '4' ? 'checked' : '' }} value="4">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio5">
-                                                        Surgery Type
-                                                </li>
-                                                <li>
-                                                    <hr class="dropdown-divider me-2 ms-2">
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio6"
-                                                        name="sortOrder" {{ request()->input('sortOrder') == '0' ? 'checked' : '' }} value="0">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio6">
-                                                        Ascending
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio7"
-                                                        name="sortOrder" {{ request()->input('sortOrder', '1') == '1' ? 'checked' : '' }} value="1">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio7">
-                                                        Descending
-                                                </li>
-                                                <li class="dropdown-item ">
-                                                  <div class="row">
-                                                      <div class="col-md-5">
-                                                          <button type = "reset" class="btn cancel_filter btn-sm me-3"><span class="cancel_filter_base">Cancel</span></button>
-                                                      </div>
-                                                      <div class="col-md-5 text-center">
-                                                          <button type="submit" form="approvedForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply Filter</span></button>
-                                                      </div>
-                                                  </div>
-                                              </li>
-                                            </ul>
+                                      <li class="dropdown-item ">
+                                          <input class="form-check-input me-1" type="radio" id = "radio1"
+                                              name="sortItems"{{ request()->input('sortItems', '0') == '0' ? 'checked' : '' }}  value="0">
+                                          <label class="form-check-label ms-1 fs-6" for="radio1">
+                                              Product Name
+                                      </li>
+                                      <li class="dropdown-item">
+                                          <input class="form-check-input me-1" type="radio" id = "radio2"
+                                              name="sortItems" {{ request()->input('sortItems') == '1' ? 'checked' : '' }} value="1">
+                                          <label class="form-check-label ms-1 fs-6" for="radio2">
+                                              Category
+                                      </li>
+                                      <li class="dropdown-item">
+                                          <input class="form-check-input me-1" type="radio" id = "radio3"
+                                              name="sortItems" {{ request()->input('sortItems') == '2' ? 'checked' : '' }} value="2">
+                                          <label class="form-check-label ms-1 fs-6" for="radio3">
+                                              On Hand
+                                      </li>
+                                      <li class="dropdown-item">
+                                          <input class="form-check-input me-1" type="radio" id = "radio4"
+                                              name="sortItems" {{ request()->input('sortItems') == '3' ? 'checked' : '' }} value="3">
+                                          <label class="form-check-label ms-1 fs-6" for="radio4">
+                                              Date Stocked
+                                      </li>
+                                      <li>
+                                        <li class="dropdown-item">
+                                          <input class="form-check-input me-1" type="radio" id = "radio5"
+                                              name="sortItems" {{ request()->input('sortItems') == '4' ? 'checked' : '' }} value="4">
+                                          <label class="form-check-label ms-1 fs-6" for="radio5">
+                                              Expiration Date
+                                      </li>
+                                      <li>
+                                          <hr class="dropdown-divider">
+                                      </li>
+                                      <li class="dropdown-item">
+                                          <input class="form-check-input me-1" type="radio" id = "radio6"
+                                              name="sortOrder" {{ request()->input('sortOrder', '0') == '0' ? 'checked' : '' }} value="0">
+                                          <label class="form-check-label ms-1 fs-6" for="radio6">
+                                              Ascending
+                                      </li>
+                                      <li class="dropdown-item">
+                                          <input class="form-check-input me-1" type="radio" id = "radio7"
+                                              name="sortOrder" {{ request()->input('sortOrder') == '1' ? 'checked' : '' }} value="1">
+                                          <label class="form-check-label ms-1 fs-6" for="radio7">
+                                              Descending
+                                      </li>
+                                      <li class="dropdown-item ">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <button class="btn btn-outline-secondary btn-sm me-3">Cancel</button>
+                                            </div>
+                                            <div class="col-md-6 text-center">
+                                                <button type="submit" form="searchForm" class="btn btn-primary btn-sm ms-3">Apply</button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                  </ul>
                                         </div>
           
                                     </div>

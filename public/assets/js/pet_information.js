@@ -345,7 +345,7 @@ function setupAgeCalculation(birthdateId, ageId, petTypeId) {
 setupAgeCalculation('pet_birthdate', 'pet_age', 'pet_type');
 
 // Example usage for the second set of IDs
-setupAgeCalculation('pet_birthdate-1', 'pet_age', 'pet_type-1');
+setupAgeCalculation('pet_birthdate-1', 'age-1', 'pet_type-1');
 
 submit_Pet.addEventListener('click', function (event) {
     //paalis nalang nito if needed

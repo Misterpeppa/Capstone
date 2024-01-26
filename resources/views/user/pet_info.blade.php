@@ -112,8 +112,8 @@
 								</svg> Add Pet</span>
 							</button>
 						</div>
-						@foreach ($petrecords as $petrecord)
 						<div id="pet_card_container" class="pet_card_container">
+						@foreach ($petrecords as $petrecord)
 							<div class="card pet_card">
 								<div class="card-body pet_card_body">
 									<div class="pet_detail_header">
@@ -143,15 +143,6 @@
 																<rect width="24" height="24" fill="white" /> </clipPath>
 														</defs>
 													</svg>&nbsp;Edit</button>
-												<button class="dropdown-item archive_pet" data-action="Archive_pet" id="Archive">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<g clip-path="url(#clip0_6230_1803)">
-															<path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
-														<defs>
-															<clipPath id="clip0_6230_1803">
-																<rect width="24" height="24" fill="white" /> </clipPath>
-														</defs>
-													</svg>&nbsp;Archive</button>
 												<button class="dropdown-item add_appointment" data-action="Create_appointment" id="add_appointment">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 														<g clip-path="url(#clip0_6230_1769)">
@@ -188,8 +179,8 @@
 									</div>
 								</div>
 							</div>
+							@endforeach
 						</div>
-						@endforeach
 					</div>
 					<div id="edit_pet" class="edit_pet">
 						<div class="edit_pet_back_btn_container">
@@ -794,6 +785,11 @@
 	@endif
 	<script>
 	$(document).ready(function() {
+	$('.add_appointment').click(function() {
+		const id = $(this).data('container-id');
+		$('#create_appointment_modal').css('display', 'flex');
+		$('#editId').val(id);
+	});
 	$('.Edit_pet').click(function() {
 		const id = $(this).data('container-id');
 		$('#editId').val(id);

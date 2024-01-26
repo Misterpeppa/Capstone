@@ -107,7 +107,7 @@
                 </div>
                 <div id="client_container" class="client_container">
                 <div class="container_header">
-					<form action="" id="approvedForm">
+					                <form action="" method="GET" role="search" id="archivedForm">
                                     <div class="left_part_product_header">
                                         <div class="search_container">
                                             <input type="text" class="search_input" name="search"
@@ -145,7 +145,7 @@
                                                     <!-- Size of the default switch will increase 1.8 times -->
                                                     <input class="form-check-input my-3"
                                                           {{ request()->input('appointmentCheck') == 'on' ? 'checked' : '' }}
-                                                           name ="appointment" 
+                                                           name ="appointmentCheck" 
                                                            type="checkbox" 
                                                            role="switch" 
                                                            id="approvedCheck" 
@@ -161,8 +161,8 @@
                                                   <div class="form-check form-switch">
                                                     <!-- Size of the default switch will increase 1.8 times -->
                                                     <input class="form-check-input my-3"
-                                                          {{ request()->input('completedCheck') == 'on' ? 'checked' : '' }}
-                                                           name ="completedCheck" 
+                                                          {{ request()->input('clientCheck') == 'on' ? 'checked' : '' }}
+                                                           name ="clientCheck" 
                                                            type="checkbox" 
                                                            role="switch" 
                                                            id="completedCheck" 
@@ -178,8 +178,8 @@
                                                   <div class="form-check form-switch">
                                                     <!-- Size of the default switch will increase 1.8 times -->
                                                     <input class="form-check-input my-3"
-                                                          {{ request()->input('dogCheck') == 'on' ? 'checked' : '' }}
-                                                           name ="dogCheck" 
+                                                          {{ request()->input('inventoryCheck') == 'on' ? 'checked' : '' }}
+                                                           name ="inventoryCheck" 
                                                            type="checkbox" 
                                                            role="switch" 
                                                            id="dogCheck" 
@@ -196,8 +196,8 @@
                                                     <div class="form-check form-switch">
                                                       <!-- Size of the default switch will increase 1.8 times -->
                                                       <input class="form-check-input my-3"
-                                                            {{ request()->input('catCheck') == 'on' ? 'checked' : '' }}
-                                                             name ="catCheck" 
+                                                            {{ request()->input('petrecordCheck') == 'on' ? 'checked' : '' }}
+                                                             name ="petrecordCheck" 
                                                              type="checkbox" 
                                                              role="switch" 
                                                              id="catCheck" 
@@ -275,7 +275,7 @@
                                                           <button type = "reset" class="btn cancel_filter btn-sm me-3"><span class="cancel_filter_base">Cancel</span></button>
                                                       </div>
                                                       <div class="col-md-5 text-center">
-                                                          <button type="submit" form="approvedForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply Sort</span></button>
+                                                          <button type="submit" form="archivedForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply Sort</span></button>
                                                       </div>
                                                   </div>
                                               </li>

@@ -25,26 +25,29 @@ class ArchiveController extends Controller
         $dataExist = $med_exist || $vax_exist || $vit_exist || $petrecord_exist || $appointment_exist || $client_exist;
 
         $search = $request->input('search');
+        $sortItem = $request->input('sortItems');
+        $sortOrder = $request->input('sortOrder');
+        $filter = $request->input('filter');
         
-        $med_info = MedInfo::whereNotNull('archived_at')
+        $med_info = MedInfo::inventory($request)->whereNotNull('archived_at')
         ->where(function ($query) use ($search) {
             $query->where('item_name',  'LIKE', "%$search%")
             ->orWhere('source', 'LIKE', "%$search%"); })
             ->select('med_info.item_name as name', 'med_info.*')->get();
 
-        $vax_info = VaxInfo::whereNotNull('archived_at')
+        $vax_info = VaxInfo::inventory($request)->whereNotNull('archived_at')
         ->where(function ($query) use ($search) {
             $query->where('item_name', 'LIKE', "%$search%")
             ->orWhere('source', 'LIKE', "%$search%"); })
             ->select('vax_info.item_name as name', 'vax_info.*')->get();
 
-        $vit_info = VitInfo::whereNotNull('archived_at')
+        $vit_info = VitInfo::inventory($request)->whereNotNull('archived_at')
         ->where(function ($query) use ($search) {
             $query->where('item_name', 'LIKE', "%$search%")
             ->orWhere('source', 'LIKE', "%$search%"); })
             ->select('vit_info.item_name as name', 'vit_info.*')->get();
             
-        $petrecord = PetRecord::with('pet')->whereNotNull('archived_at')
+        $petrecord = PetRecord::petrecord($request)->with('pet')->whereNotNull('archived_at')
         ->where(function ($query) use ($search) {
             $query->where('source', 'LIKE', "%$search%")
             ->orWhereHas('pet', function ($subQuery) use ($search) {
@@ -52,7 +55,7 @@ class ArchiveController extends Controller
             })->join('pet_info', 'pet_record.pet_id', '=', 'pet_info.id')
               ->select('pet_info.name as name', 'pet_info.*', 'pet_record.*')->get();
 
-        $appointment = AppointmentApproved::with('clients')->whereNotNull('appointment_approved.archived_at')
+        $appointment = AppointmentApproved::appointment($request)->with('clients')->whereNotNull('appointment_approved.archived_at')
         ->where(function ($query) use ($search) {
             $query->where('source', 'LIKE', "%$search%")
             ->orWhereHas('clients', function ($subQuery) use ($search){
@@ -71,13 +74,12 @@ class ArchiveController extends Controller
 
         $sortItem = $request->input('sortItems');
         $sortOrder = $request->input('sortOrder');
-        $filter = $request->input('filter');
         $sortField = [
             0 => 'name',
             1 => 'source',
             2 => 'created_at',
             3 => 'archived_at',
-        ][$filter] ?? 'item_name';
+        ][$sortItem] ?? 'item_name';
         $sortDirection = $sortOrder == 1 ? 'desc' : 'asc';
         $archived = $archived->sortBy($sortField, SORT_NATURAL, $sortOrder == 1);
 
