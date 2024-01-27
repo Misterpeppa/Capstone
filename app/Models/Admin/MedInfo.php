@@ -64,6 +64,12 @@ class MedInfo extends Model
                   ->whereNull('med_batch.archived_at');
         });
     }
-    
+    public function scopeInventory($query, $request)
+    {
+         $query->where(function ($query) use ($request) {
+            $request->input('inventoryCheck')=='on';
+            $query->orWhere('source', 'LIKE', 'Inventory');
+        });
+    }
 
 }

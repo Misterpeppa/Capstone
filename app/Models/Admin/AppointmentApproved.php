@@ -86,5 +86,11 @@ class AppointmentApproved extends Model
             $query->whereNull('archived_at');
         });
     }
-    
+    public function scopeAppointment($query, $request)
+    {
+         $query->where(function ($query) use ($request) {
+            $request->input('appointmentCheck')=='on';
+            $query->orWhere('source', 'LIKE', 'Appointment');
+        });
+    }
 }

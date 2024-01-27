@@ -232,6 +232,7 @@ class InvController extends Controller
         switch ($productType) {
             case 'Medicine':
                 $medInfo = new MedInfo($validatedData);
+                $medInfo->archived_at = null; // Set archived_at to null
                 $medInfo->save();
     
                 $medBatchData = [
@@ -241,6 +242,7 @@ class InvController extends Controller
                     'manufacturing_date' => $validatedData['manufacturing_date'],
                     'expiration_date' => $validatedData['expiration_date'],
                     'date_stocked' => $validatedData['date_stocked'],
+                    'archived_at' => null, // Set it to null explicitly
                 ];
     
                 $medBatch = new MedBatch($medBatchData);

@@ -1,5 +1,192 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    var pet_nameInput = document.getElementById('pet_name-1');
+var pet_TypeInput = document.getElementById('pet_type-1');
+var breedInput = document.getElementById('breed-1');
+var pet_GenderInput = document.getElementById('gender-1');
+var pet_birthdateInput = document.getElementById('pet_birthdate-1');
+var pet_ageInput = document.getElementById('age-1');
+var pet_weightInput = document.getElementById('weight-1');
+var pet_sterilizationStatusInput = document.getElementById('sterilization_status-1');
+
+function capitalizeFirstLetterOfWords(inputElement) {
+    inputElement.addEventListener('input', function () {
+        let inputValue = this.value;
+
+        // Capitalize the first letter of each word
+        let formattedValue = inputValue.replace(/\b\w/g, match => match.toUpperCase());
+
+        // Update the input value
+        this.value = formattedValue;
+    });
+}
+    
+capitalizeFirstLetterOfWords(pet_nameInput);
+
+function setupBreedOptions(petTypeId, breedId, breedOptions) {
+    // Get references to the pet type and breed select elements
+    var petTypeSelect = document.getElementById(petTypeId);
+    var breedSelect = document.getElementById(breedId);
+
+    // Event listener for the pet type select change event
+    petTypeSelect.addEventListener('change', function () {
+        // Enable the breed select and clear its options
+        breedSelect.disabled = false;
+        breedSelect.innerHTML = '<option value="none" selected>Select a Breed</option>';
+
+        // Get the selected pet type
+        const selectedPetType = petTypeSelect.value;
+
+        // Add breed options based on the selected pet type
+        if (breedOptions.hasOwnProperty(selectedPetType)) {
+            addBreedOptions(breedOptions[selectedPetType]);
+        }
+    });
+
+    // Function to add breed options to the breed select element
+    function addBreedOptions(breeds) {
+        breeds.forEach(function (breed) {
+            var option = document.createElement('option');
+            option.value = breed;
+            option.text = breed;
+            breedSelect.appendChild(option);
+        });
+    }
+}
+
+// Example usage for the first set of IDs and breed options
+setupBreedOptions('pet_type-1', 'breed-1', {
+    'Dog': ["Affenpinscher","Afghan Hound","Airedale Terrier","Akita","Alaskan Malamute","American Bulldog","American Eskimo Dog","American Foxhound","American Pit Bull Terrier","American Staffordshire Terrier","Anatolian Shepherd Dog","Australian Cattle Dog","Australian Shepherd","Australian Terrier","Basenji","Basset Hound","Beagle","Bearded Collie","Bedlington Terrier","Belgian Malinois","Belgian Sheepdog","Belgian Tervuren","Bernese Mountain Dog","Bichon Frise","Black and Tan Coonhound","Bloodhound","Border Collie","Border Terrier","Borzoi","Boston Terrier","Bouvier des Flandres","Boxer","Boykin Spaniel","Briard","Brittany","Brussels Griffon","Bull Terrier","Bulldog","Bullmastiff","Cairn Terrier","Canaan Dog","Cane Corso","Cardigan Welsh Corgi","Cavalier King Charles Spaniel","Chesapeake Bay Retriever","Chihuahua","Chinese Crested","Chinese Shar-Pei","Chow Chow","Clumber Spaniel","Cockapoo","Collie","Coonhound","Corgi","Coton de Tulear","Curly-Coated Retriever","Dachshund","Dalmatian","Dandie Dinmont Terrier","Doberman Pinscher","Dogue de Bordeaux","Dutch Shepherd","English Bulldog","English Cocker Spaniel","English Foxhound","English Setter","English Springer Spaniel","English Toy Spaniel","Entlebucher Mountain Dog","Eskimo Dog","Finnish Lapphund","Finnish Spitz","Flat-Coated Retriever","French Bulldog","German Pinscher","German Shepherd Dog","German Shorthaired Pointer","German Wirehaired Pointer","Giant Schnauzer","Glen of Imaal Terrier","Goldador","Golden Retriever","Goldendoodle","Gordon Setter","Great Dane","Great Pyrenees","Greater Swiss Mountain Dog","Greyhound","Harrier","Havanese","Hound","Hovawart","Hungarian Puli","Hungarian Shepherd","Hungarian Vizsla","Husky","Ibizan Hound","Icelandic Sheepdog","Irish Setter","Irish Terrier","Irish Water Spaniel","Irish Wolfhound","Italian Greyhound","Jack Russell Terrier","Japanese Chin","Japanese Spitz","Japanese Terrier","Keeshond","Kerry Blue Terrier","King Charles Spaniel","Klee Kai","Kuvasz","Labradoodle","Labrador Retriever","Lakeland Terrier","Lancashire Heeler","Leonberger","Lhasa Apso","Lowchen","Maltese","Manchester Terrier","Maremma Sheepdog","Mastiff","Miniature Bull Terrier","Miniature Pinscher","Miniature Schnauzer","Mixed Breed","Mountain Cur","Mountain Dog","Neapolitan Mastiff","Newfoundland","Norfolk Terrier","Norwegian Buhund","Norwegian Elkhound","Norwegian Lundehund","Norwich Terrier","Nova Scotia Duck Tolling Retriever","Old English Sheepdog","Otterhound","Papillon","Pekingese","Pembroke Welsh Corgi","Pharaoh Hound","Pinscher","Pit Bull Terrier","Plott Hound","Podenco Canario","Pointer","Polish Lowland Sheepdog","Pomeranian","Poodle","Portuguese Water Dog","Presacanario","Pug","Puggle","Puli","Pumi","Pyrenees","Redbone Coonhound","Retriever","Rhodesian Ridgeback","Rottweiler","Saint Bernard","Saluki","Samoyed","Schipperke","Scottish Deerhound","Scottish Terrier","Sealyham Terrier","Setter","Shar-Pei","Sheltie","Shiba Inu","Shih Tzu","Siberian Husky","Silky Terrier","Skye Terrier","Sloughi","Small Munsterlander Pointer","Spaniel","Spanish Water Dog","Spitz","Springer Spaniel","Staffordshire Bull Terrier","Standard Schnauzer","Sussex Spaniel","Swedish Vallhund","Terrier","Thai Ridgeback","Tibetan Mastiff","Tibetan Spaniel","Tibetan Terrier","Tosa Inu","Toy Fox Terrier","Treeing Walker Coonhound","Vizsla","Weimaraner","Welsh Corgi","Welsh Terrier","West Highland White Terrier","Whippet","White Shepherd","Wirehaired Pointing Griffon","Xoloitzcuintli","Yorkshire Terrier"],
+    'Cat': ["Abyssinian","American Bobtail","American Curl","American Shorthair","American Wirehair","Balinese","Bengal","Birman","Bombay","British Shorthair","Burmese","Chartreux","Chausie","Cornish Rex","Cymric","Devon Rex","Egyptian Mau","European Burmese","Exotic Shorthair","Havana Brown","Himalayan","Japanese Bobtail","Javanese","Korat","LaPerm","Maine Coon","Manx","Munchkin","Nebelung","Norwegian Forest","Ocicat","Oriental","Persian","Pixie-Bob","Ragamuffin","Ragdoll","Russian Blue","Savannah","Scottish Fold","Selkirk Rex","Siamese","Siberian","Singapura","Snowshoe","Somali","Sphynx","Tonkinese","Turkish Angora","Turkish Van"]
+});
+
+function setupAgeCalculation(birthdateId, ageId, petTypeId) {
+    const today = new Date();
+    const minDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate()).toISOString().split('T')[0];
+    
+    const dateInput = document.getElementById(birthdateId);
+    dateInput.setAttribute('max', today.toISOString().split('T')[0]);  // Set max date to today
+    dateInput.setAttribute('min', minDate);
+    
+    dateInput.addEventListener('keydown', function (e) {
+        e.preventDefault();
+    });
+
+    const ageInput1 = document.getElementById(ageId);
+    ageInput1.addEventListener('keydown', function (e) {
+        e.preventDefault();
+    });
+    
+    var birthdateInput = document.getElementById(birthdateId);
+    var ageInput = document.getElementById(ageId);
+    var petTypeSelect = document.getElementById(petTypeId);
+    
+    birthdateInput.addEventListener('change', function () {
+        var selectedBirthdate = new Date(birthdateInput.value);
+        var petType = petTypeSelect.value;
+
+        if (petType === 'none' || !selectedBirthdate) {
+            ageInput.value = '';
+            ageInput.placeholder = 'Please select pet type, breed, and enter the birthdate first.';
+        } else {
+            var age = calculateAge(selectedBirthdate, petType);
+            ageInput.value = formatAge(age);
+            ageInput.placeholder = ''; // Clear the placeholder
+            document.getElementById('error-' + ageInput.id).innerText = ''; // Clear the error message
+
+        }
+    });
+    
+    ageInput.disabled = false; // Disable the input initially
+    
+    function calculateAge(birthdate, petType) {
+        var today = new Date();
+        var age;
+    
+        if (petType === 'Dog') {
+            age = calculateDogAge(birthdate, today);
+        } else if (petType === 'Cat') {
+            age = calculateCatAge(birthdate, today);
+        } else {
+            age = calculateDefaultAge(birthdate, today);
+        }
+    
+        return age;
+    }
+    
+    function calculateDogAge(birthdate, today) {
+        var ageInMilliseconds = today - birthdate;
+        var ageInDogYears;
+    
+        if (ageInMilliseconds < 2 * 365 * 24 * 60 * 60 * 1000) {
+            ageInDogYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000) * 10.5;
+        } else {
+            ageInDogYears = 2 * 10.5 + (ageInMilliseconds - 2 * 365 * 24 * 60 * 60 * 1000) / (365 * 24 * 60 * 60 * 1000) * 4;
+        }
+    
+        var years = Math.floor(ageInDogYears);
+        var months = Math.floor((ageInDogYears - years) * 12);
+        var days = Math.floor((ageInDogYears - years) * 365 % 30);
+    
+        return { years: years, months: months, days: days };
+    }
+    
+    function calculateCatAge(birthdate, today) {
+        var ageInMilliseconds = today - birthdate;
+        var ageInCatYears;
+    
+        if (ageInMilliseconds < 2 * 365 * 24 * 60 * 60 * 1000) {
+            ageInCatYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000) * 12;
+        } else {
+            ageInCatYears = 2 * 12 + (ageInMilliseconds - 2 * 365 * 24 * 60 * 60 * 1000) / (365 * 24 * 60 * 60 * 1000) * 4;
+        }
+    
+        var years = Math.floor(ageInCatYears);
+        var months = Math.floor((ageInCatYears - years) * 12);
+        var days = Math.floor((ageInCatYears - years) * 365 % 30);
+    
+        return { years: years, months: months, days: days };
+    }
+    
+    function calculateDefaultAge(birthdate, today) {
+        var ageInMilliseconds = today - birthdate;
+        var years = Math.floor(ageInMilliseconds / (365 * 24 * 60 * 60 * 1000));
+        var months = Math.floor((ageInMilliseconds % (365 * 24 * 60 * 60 * 1000)) / (30 * 24 * 60 * 60 * 1000));
+        var days = Math.floor((ageInMilliseconds % (30 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
+    
+        return { years: years, months: months, days: days };
+    }
+    
+    function formatAge(age) {
+        var formattedAge = '';
+
+        if (age.years > 0) {
+            formattedAge += age.years + ' year' + (age.years > 1 ? 's' : '') + ' ';
+        }
+        if (age.months > 0) {
+            formattedAge += age.months + ' month' + (age.months > 1 ? 's' : '') + ' ';
+        }
+        if (age.days > 0) {
+            formattedAge += age.days + ' day' + (age.days > 1 ? 's' : '');
+        }
+
+        return formattedAge.trim();
+    }
+    }
+// Example usage for the first set of IDs
+setupAgeCalculation('pet_birthdate-1', 'age-1', 'pet_type-1');  
+
+// function weightInputLimit(inputElement) {
+//     inputElement.addEventListener('input', function () {
+//         if (inputElement.value.length > 10) {
+//             inputElement.value = inputElement.value.slice(0, 10);
+//         }
+//     });
+// }
+    
+// weightInputLimit(pet_weightInput);
+
+
     var addDiagnosisActions = document.querySelectorAll('.add_diagnosis-action');
     var addVaccinesActions = document.querySelectorAll('.add_immunization_action');
     var addSurgeryActions = document.querySelectorAll('.add_surgery_action');
@@ -391,30 +578,30 @@ handleInputError(pet_breed, edit_breed_error);
 
 
 // Function to update the pet card with input values
-function updatePetCard() {
-    var petName = pet_nameInput.value;
-    var petBreed = breedInput.value;
-    var sex1 = pet_GenderInput.value;
-    var age1 = pet_ageInput.value;
-    var weight1 = pet_weightInput.value;
-    var sterilizationStatus1 = pet_sterilizationStatusInput.value;
+// function updatePetCard() {
+//     var petName = pet_nameInput.value;
+//     var petBreed = breedInput.value;
+//     var sex1 = pet_GenderInput.value;
+//     var age1 = pet_ageInput.value;
+//     var weight1 = pet_weightInput.value;
+//     var sterilizationStatus1 = pet_sterilizationStatusInput.value;
 
-    // Get the pet card elements
-    var petNameElement = document.querySelector('.pet_detail_heading_text_container h1');
-    var petBreedElement = document.querySelector('.pet_detail_heading_text_container p');
-    var sexElement = document.querySelector('.pet_sex_container p');
-    var ageElement = document.querySelector('.pet_age_container p');
-    var weightElement = document.querySelector('.pet_weight_container p');
-    var sterilizationStatusElement = document.querySelector('.pet_sterilization_status_container p');
+//     // Get the pet card elements
+//     var petNameElement = document.querySelector('.pet_detail_heading_text_container h1');
+//     var petBreedElement = document.querySelector('.pet_detail_heading_text_container p');
+//     var sexElement = document.querySelector('.pet_sex_container p');
+//     var ageElement = document.querySelector('.pet_age_container p');
+//     var weightElement = document.querySelector('.pet_weight_container p');
+//     var sterilizationStatusElement = document.querySelector('.pet_sterilization_status_container p');
 
-    // Update the content of the pet card
-    petNameElement.textContent = petName;
-    petBreedElement.textContent = petBreed;
-    sexElement.textContent = sex1;
-    ageElement.textContent = age1;
-    weightElement.textContent = weight1 + ' kg';
-    sterilizationStatusElement.textContent = sterilizationStatus1;
-} 
+//     // Update the content of the pet card
+//     petNameElement.textContent = petName;
+//     petBreedElement.textContent = petBreed;
+//     sexElement.textContent = sex1;
+//     ageElement.textContent = age1;
+//     weightElement.textContent = weight1 + ' kg';
+//     sterilizationStatusElement.textContent = sterilizationStatus1;
+// } 
      
     
 

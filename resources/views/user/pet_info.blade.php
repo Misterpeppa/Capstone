@@ -112,8 +112,8 @@
 								</svg> Add Pet</span>
 							</button>
 						</div>
-						@foreach ($petrecords as $petrecord)
 						<div id="pet_card_container" class="pet_card_container">
+						@foreach ($petrecords as $petrecord)
 							<div class="card pet_card">
 								<div class="card-body pet_card_body">
 									<div class="pet_detail_header">
@@ -143,15 +143,6 @@
 																<rect width="24" height="24" fill="white" /> </clipPath>
 														</defs>
 													</svg>&nbsp;Edit</button>
-												<button class="dropdown-item archive_pet" data-action="Archive_pet" id="Archive">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<g clip-path="url(#clip0_6230_1803)">
-															<path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
-														<defs>
-															<clipPath id="clip0_6230_1803">
-																<rect width="24" height="24" fill="white" /> </clipPath>
-														</defs>
-													</svg>&nbsp;Archive</button>
 												<button class="dropdown-item add_appointment" data-action="Create_appointment" id="add_appointment">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 														<g clip-path="url(#clip0_6230_1769)">
@@ -188,8 +179,8 @@
 									</div>
 								</div>
 							</div>
+							@endforeach
 						</div>
-						@endforeach
 					</div>
 					<div id="edit_pet" class="edit_pet">
 						<div class="edit_pet_back_btn_container">
@@ -567,7 +558,7 @@
 					<button class="btn-close" id="close_pet_modal" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
-					<form action="{{ route('client.addPet') }}" method="POST" class="add_client" id="add_pet_form">
+					<form action="#" method="POST" class="add_client" id="add_pet_form">
 						@csrf
 						<div class="mb-3 input_container">
 							<div class="new_input_row">
@@ -658,17 +649,18 @@
 					<button class="btn-close" id="close_pet_modal-1" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
-					<form class="add_client" id="add_pet_form-1"><img src="assets/img/image%2010.png">
+					<form action="{{ route('client.addPet') }}" method="POST" class="add_client" id="add_pet_form-1">
+						@csrf
 						<div class="mb-3 input_container">
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" type="text" data-id="pet_name" id="pet_name-1" maxlength="255" placeholder="Pet Name">
+									<input class="form-control form-control" type="text" data-id="pet_name" name="pet_name" id="pet_name-1" maxlength="255" placeholder="Pet Name">
 									<label class="form-label form-label" for="pet_name">Pet Name<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_name-1"><span>• Please enter pet name.</span></div>
 									<div class="guide-message" id="guide-pet_name-1"><span>• Please enter pet name.</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" data-id="gender" id="gender-1" placeholder="Gender">
+									<select class="form-select form-select" data-id="gender" name="gender" id="gender-1" placeholder="Gender">
 										<option value="none" selected="">Select Sex</option>
 										<option value="Male">Male</option>
 										<option value="Female">Female</option>
@@ -680,7 +672,7 @@
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" data-id="pet_type" id="pet_type-1" placeholder="Pet Type">
+									<select class="form-select form-select" name="species" data-id="pet_type" id="pet_type-1" placeholder="Pet Type">
 										<option value="" selected="">Select Pet Type</option>
 										<option value="Dog">Dog</option>
 										<option value="Cat">Cat</option>
@@ -690,7 +682,7 @@
 									<div class="guide-message" id="guide-pet_type-1"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" data-id="breed" disabled="" id="breed-1" placeholder="Breed">
+									<select class="form-select form-select" name="breed" data-id="breed" disabled="" id="breed-1" placeholder="Breed">
 										<option value="none" selected="">Select a Pet Type first</option>
 									</select>
 									<label class="form-label form-label" for="breed">Breed<span>&nbsp;*</span></label>
@@ -700,26 +692,26 @@
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" data-id="pet_birthdate" id="pet_birthdate-1" placeholder="Birthdate" type="date">
+									<input class="form-control form-control" name="pet_birthdate" data-id="pet_birthdate" id="pet_birthdate-1" placeholder="Birthdate" type="date">
 									<label class="form-label form-label" for="pet_birthdate">Birthdate<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_birthdate-1"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 									<div class="guide-message" id="guide_pet_birthdate-1"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" type="text" data-bs-toggle="tooltip" data-id="age" disabled="" id="age-1" maxlength="3" placeholder="Please select pet type, breed, and enter the birthdate first." title="Please select pet type and enter the birthdate first.">
+									<input class="form-control form-control" type="text" data-bs-toggle="tooltip" name="pet_age" data-id="age" disabled="" id="age-1" maxlength="3" placeholder="Please select pet type, breed, and enter the birthdate first." title="Please select pet type and enter the birthdate first.">
 									<label class="form-label form-label" for="age">Age</label>
 									<div class="error-message" id="error-age-1" style="color:red;"></div>
 								</div>
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" type="number" data-id="weight" id="weight-1" maxlength="10" placeholder="Weight">
+									<input class="form-control form-control" type="number" name="weight" data-id="weight" id="weight-1" maxlength="10" placeholder="Weight">
 									<label class="form-label form-label" for="weight">Weight<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-weight-1"><span>• Please enter weight of pet.</span><span>• Only numerical inputs will be accepted</span></div>
 									<div class="guide-message" id="guide_pet_weight-1"><span>• Please enter weight of pet.</span><span>• Only numerical inputs will be accepted</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" data-id="sterilization_status" id="sterilization_status-1" placeholder="Sterilization Status">
+									<select class="form-select form-select" name="sterilization" data-id="sterilization_status" id="sterilization_status-1" placeholder="Sterilization Status">
 										<option value="none" selected="">Select Status</option>
 										<option value="None">None</option>
 										<option value="Spayed">Spayed</option>
@@ -731,12 +723,12 @@
 								</div>
 							</div>
 						</div>
-					</form>
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" aria-label="Clear Form" id="clear_form-1" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
 					<button class="btn submit_pet" id="submit_Pet-1" title="Complete the fields first to make this clickable." type="submit"><span class="submit_product_base">Submit</span></button>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -793,6 +785,11 @@
 	@endif
 	<script>
 	$(document).ready(function() {
+	$('.add_appointment').click(function() {
+		const id = $(this).data('container-id');
+		$('#create_appointment_modal').css('display', 'flex');
+		$('#editId').val(id);
+	});
 	$('.Edit_pet').click(function() {
 		const id = $(this).data('container-id');
 		$('#editId').val(id);

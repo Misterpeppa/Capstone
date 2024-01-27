@@ -47,5 +47,12 @@ class PetRecord extends Model
     {
         return $this->hasMany(SurgHistory::class, 'petrecord_id');
     }
+    public function scopePetrecord($query, $request)
+    {
+        if ($request->has('petrecordCheck') && $request->input('petrecordCheck') == 'on') {
+            $query->where('source', 'LIKE', 'Pet Record');
+        }
+    }
+    
 
 }
