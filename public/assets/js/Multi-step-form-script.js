@@ -75,6 +75,7 @@ const getActivePanel = () => {
 
 };
 
+
 //open active panel (and close unactive panels)
 const setActivePanel = activePanelNum => {
 

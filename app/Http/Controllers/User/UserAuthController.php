@@ -20,6 +20,8 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Support\Facades\Cache;
 
 class UserAuthController extends Controller
@@ -27,7 +29,6 @@ class UserAuthController extends Controller
     public function showSignup()
     {
         if (Auth::guard('clients')->check()) {
-            // Redirect to the home page or another appropriate route
             return redirect()->route('landing');
         }
         return view('user/signup');
@@ -54,7 +55,6 @@ class UserAuthController extends Controller
         ]);
         $suffix = $request->input('suffix');
         $specifySuffix = $request->input('specify_suffix');
-
         // Create a new client
         $clients = new Clients();
         $clients->first_name = $first_name;
@@ -71,10 +71,8 @@ class UserAuthController extends Controller
             $clients->suffix = $suffix;
         }
         $clients->save();
-        
         // Log in the user
         Auth::login($clients);
-
         // Redirect to a success page or perform any additional actions
         return redirect()->route('client.signup')->with('success', 'User registered successfully');
     }
@@ -93,6 +91,10 @@ class UserAuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
+        // if ($this->hasTooManyLoginAttempts($request)) {
+        //     $this->fireLockoutEvent($request);
+        //     return $this->sendLockoutResponse($request);
+        // }
         $credentials = $request->only('email', 'password');
         $remember = $request->has('remember_me');
         
@@ -101,27 +103,25 @@ class UserAuthController extends Controller
             $request->session()->regenerate();
             $client = Auth::guard('clients')->user();
             Auth::login($client,$remember = true);
-
             // Check if the email is already verified
             if ($client->email_verified_at === null) {
-                //Send the email verification
                 $this->sendVerificationEmail($client);
             }
+            //$this->clearLoginAttempts($request); // Reset the login attempts
             return redirect()->route('landing');
         } else {
-            // Authentication failed
+           // $this->incrementLoginAttempts($request); // Increment login attempts
             $client = Clients::where('email', $request->email)->first();
             if (!$client) {
-                // Incorrect email
                 return back()
-                    ->withErrors(['email' => 'Email and password do not match.'])
+                    ->withErrors(['email' => 'Your email address and password does not match. Please check and try again.'])
                     ->withInput($request->except('password'));
             } else {
-                // Incorrect password
                 return back()
-                    ->withErrors(['password' => 'Email and password do not match.'])
+                    ->withErrors(['password' => 'Your email address and password does not match. Please check and try again.'])
                     ->withInput($request->except('password'));
             }
+
         }
         
     }
@@ -143,7 +143,7 @@ class UserAuthController extends Controller
     }
     public function forgotPass(Request $request)
     {
-         $request->validate([
+        $request->validate([
             'email' => 'required|email|exists:clients,email',
         ]);
         $clients = Clients::where('email', $request->email)->first();
@@ -153,11 +153,13 @@ class UserAuthController extends Controller
         }
         
         $resetCode = str_pad(mt_rand(1, 999999), 6, '0', STR_PAD_LEFT);
+        $hashedResetCode = Hash::make($resetCode);
+
         Cache::put('reset_code_' , $resetCode, now()->addMinutes(10));
         session(['reset_email' => $clients->email]);
 
         Mail::to($clients->email)->send(new ForgotPass($resetCode));
-        return redirect()->route('code.form', ['resetCode' => $resetCode]);
+        return redirect()->route('code.form', ['resetCode' => $hashedResetCode]);
 
     }
     
@@ -179,7 +181,7 @@ class UserAuthController extends Controller
 
         if ($resetCode == $clientId) {
             // The reset code is valid, allow the user to reset the password
-            return redirect()->route('reset.form', ['resetCode' => $resetCode]);
+            return redirect()->route('reset.form');
         } else {
             // Invalid reset code, redirect back with an error message
             return back()->with('error', 'Invalid reset code. Please check your code and try again.');
@@ -190,11 +192,11 @@ class UserAuthController extends Controller
         $email = session('reset_email');    
         return view('user/forgotpassCode', ['email' => $email]);
     }
-    public function showPasswordReset($resetCode)
+    public function showPasswordReset()
     {
         $email = session('reset_email');
 
-        return view('user/forgotpassReset',['resetCode' => $resetCode, 'email' => $email]);
+        return view('user/forgotpassReset',['email' => $email]);
     }
     public function resetPassword(Request $request)
     {
@@ -209,51 +211,6 @@ class UserAuthController extends Controller
 
         return redirect()->route('client.signin')->with('success', 'Password updated successfully. You can now login with your new password.');
     }
-
+    
 }
 
-// switch (count($validatedData['breed'])) {
-//     case 1:
-//         AppointmentPending::create([
-//             'user_id' => $clientId, // Use the same $clientId for all records
-//             'petType' => $validatedData['petType'][0],
-//             'breed' => $validatedData['breed'][0],
-//             'appointmentType' => $validatedData['appointmentType'][0],
-//             'appointmentDate' => $validatedData['appointmentDate'][0],
-//             'appointmentTime' => $validatedData['appointmentTime'][0],
-//         ]);
-//         break;
-
-//     case 2:
-//         for ($i = 0; $i < 2; $i++) {
-//             if (isset($validatedData['breed'][$i])) {
-//                 AppointmentPending::create([
-//                     'user_id' => $clientId, // Use the same $clientId for all records
-//                     'petType' => $validatedData['petType'][$i],
-//                     'breed' => $validatedData['breed'][$i],
-//                     'appointmentType' => $validatedData['appointmentType'][$i],
-//                     'appointmentDate' => $validatedData['appointmentDate'][$i],
-//                     'appointmentTime' => $validatedData['appointmentTime'][$i],
-//                 ]);
-//             }
-//         }
-//         break;
-
-//     case 3:
-//         for ($i = 0; $i < 3; $i++) {
-//             if (isset($validatedData['breed'][$i])) {
-//                 AppointmentPending::create([
-//                     'user_id' => $clientId, // Use the same $clientId for all records
-//                     'petType' => $validatedData['petType'][$i],
-//                     'breed' => $validatedData['breed'][$i],
-//                     'appointmentType' => $validatedData['appointmentType'][$i],
-//                     'appointmentDate' => $validatedData['appointmentDate'][$i],
-//                     'appointmentTime' => $validatedData['appointmentTime'][$i],
-//                 ]);
-//             }
-//         }
-//         break;
-//     default:
-//         // Handle unexpected number of pets
-//         break;
-// }

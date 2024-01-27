@@ -53,4 +53,11 @@ class VaxInfo extends Model
             }
         });
     }
+    public function scopeInventory($query, $request)
+    {
+         $query->where(function ($query) use ($request) {
+            $request->input('inventoryCheck')=='on';
+            $query->orWhere('source', 'LIKE', 'Inventory');
+        });
+    }
 }

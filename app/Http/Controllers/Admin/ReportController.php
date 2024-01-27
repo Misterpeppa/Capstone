@@ -50,7 +50,7 @@ class ReportController extends Controller
 
         return $pdf->download('Client_List.pdf');
     }
-    public function petrecsPDF()
+    public function petrecordPDF()
     {
         $petrecord = PetRecord::all();
 
@@ -59,7 +59,7 @@ class ReportController extends Controller
             'petrecord' => $petrecord
         ];
 
-        $pdf = PDF::loadView('pdf.petrecord', $data);
+        $pdf = PDF::loadView('pdf.petrecord_reports', $data);
 
         return $pdf->download('Pet_Records.pdf');
     }

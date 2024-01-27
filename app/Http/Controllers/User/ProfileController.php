@@ -44,7 +44,8 @@ class ProfileController extends Controller
     {
         $clientId = Auth::guard('clients')->id();
         $clientInfo = Clients::find($clientId);
-        $petrecords = PetRecord::where('owner_id', $clientId)->get();
+        $petrecords = PetRecord::where('owner_id', $clientId)->whereNull('archived_at')->get();
+        //$petrecordExist = $petrecords->isNotEmpty();
         $petExist = PetRecord::where('owner_id', $clientId)->exists();
         $medHistory = MedHistory::all();
         $vaxHistory = VaxHistory::all();

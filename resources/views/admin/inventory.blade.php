@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" />
     <title>Admin | Inventory</title>
     <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
@@ -13,15 +14,13 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
-    <link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <style>
@@ -160,49 +159,47 @@
                         </div>
                     </div>
                     <div id="InventoryContainer" class="InventoryContainer">
-                        <div class="container_header">
-                          <form action="" method="GET" role="search" id="searchForm">
+                    <div class="container_header">
+                    <form action="" method="GET" role="search" id="searchForm">
                             <div class="left_part_product_header">
                               <div class="search_container">
                                   <input type="text" class="search_input" name="q"
-                                      value="{{ request('q') }}" placeholder="Search Inventory">
+                                      value="{{ request('q') }}" placeholder="Search Client">
                                   <!-- Other input fields or elements for pagination -->
                                   <input type="hidden" id="pageForm" name="page"
                                       value="{{ request('page') }}">
                                   <input type="hidden" id="perPageForm" name="perPage"
                                       value="{{ request('perPage') }}">
 
-                              </div>
-                              <button type="submit" form="searchForm" class="btn filter_btn">
-                                  <i class="fa-solid fa-magnifying-glass" style="size: 56px"></i>
-                                  Search
-                                </button>
-                                <div class="dropdown">
-                                  <button class="filter_btn dropdown-toggle" type="button"
-                                      id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                      aria-expanded="false">
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
-                                        <g clip-path="url(#clip0_3674_15869)" filter="url(#filter0_d_3674_15869)">
-                                          <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </g>
-                                        <defs>
-                                          <filter id="filter0_d_3674_15869" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                            <feOffset dy="2"/>
-                                            <feGaussianBlur stdDeviation="1"/>
-                                            <feComposite in2="hardAlpha" operator="out"/>
-                                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-                                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3674_15869"/>
-                                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3674_15869" result="shape"/>
-                                          </filter>
-                                          <clipPath id="clip0_3674_15869">
-                                            <rect width="24" height="24" fill="white"/>
-                                          </clipPath>
-                                        </defs>
-                                    </svg>Filter By
-                                  </button>
-                                  <ul class="dropdown-menu">
+
+                                        </div>
+                                        <button type="submit" form="approvedForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+                                        <div class="dropdown">
+                                            <button class="filter_btn dropdown-toggle fw-bold" type="button"
+                                                id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
+                                                aria-expanded="false"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
+                                                  <g clip-path="url(#clip0_3674_15869)" filter="url(#filter0_d_3674_15869)">
+                                                    <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                  </g>
+                                                  <defs>
+                                                    <filter id="filter0_d_3674_15869" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                                      <feOffset dy="2"/>
+                                                      <feGaussianBlur stdDeviation="1"/>
+                                                      <feComposite in2="hardAlpha" operator="out"/>
+                                                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3674_15869"/>
+                                                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3674_15869" result="shape"/>
+                                                    </filter>
+                                                    <clipPath id="clip0_3674_15869">
+                                                      <rect width="24" height="24" fill="white"/>
+                                                    </clipPath>
+                                                  </defs>
+                                              </svg>Filter By</span>
+                                                
+                                            </button>
+                                             <ul class="dropdown-menu">
                                       <li class="dropdown-item ">
                                         <div class="form-check form-switch">
                                           <!-- Size of the default switch will increase 1.8 times -->
@@ -256,18 +253,23 @@
                                 
                                       </li>
                                   </ul>
-                              </div>
-
-
-
-                              <div class="dropdown">
-                                  <button class="filter_btn dropdown-toggle" type="button"
-                                      id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                      aria-expanded="false">
-                                      <i class="fa-solid fa-arrow-down-short-wide"></i>Sort
-                                      By
-                                  </button>
-                                  <ul class="dropdown-menu">
+                                        </div>
+                                        
+                                        <div class="dropdown">
+                                            <button class="filter_btn dropdown-toggle fw-bold" type="button"
+                                                id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
+                                                aria-expanded="false"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <g clip-path="url(#clip0_6770_15021)">
+    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_6770_15021">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>Sort By</span>
+                                            </button>
+                                            <ul class="dropdown-menu">
                                       <li class="dropdown-item ">
                                           <input class="form-check-input me-1" type="radio" id = "radio1"
                                               name="sortItems"{{ request()->input('sortItems', '0') == '0' ? 'checked' : '' }}  value="0">
@@ -325,49 +327,14 @@
                                         </div>
                                     </li>
                                   </ul>
-                              </div>
+                                        </div>
+          
+                                    </div>
+                                </form>
 
 
-
-                          </div>
-
-                          </form>
-       
-                            <div class="right_part_product_header">
-                                <div class="inventory_header_right_btn_icon_container"><button
-                                        class="btn inventory_header_left_btn" type="button"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none">
-                                            <g clip-path="url(#clip0_1917_11682)">
-                                                <path
-                                                    d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z"
-                                                    stroke="black" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_1917_11682">
-                                                    <rect width="24" height="24" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg></button></div>
-                                <div class="inventory_header_right_btn_icon_container"><button
-                                        class="btn inventory_header_right_btn" type="button"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none">
-                                            <g clip-path="url(#clip0_3686_18447)">
-                                                <path
-                                                    d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14"
-                                                    stroke="black" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_3686_18447">
-                                                    <rect width="24" height="24" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg></button></div>
                             </div>
-                        </div>
+                            
                         <div id="empty_state_container" class="empty_state_container">
                             <div class="empty_state">
                                 <div><svg xmlns="http://www.w3.org/2000/svg" width="176" height="110"
@@ -505,8 +472,8 @@
                                         </defs>
                                     </svg> Add Product</span></button>
                         </div>
-                        <div id="product_table_container" class="table-responsive w-100">
-                            <table id="example" class="table">
+                        <div id="product_table_container" class="w-100" >
+                            <table class="table table-responsive w-100 mt-3" style="overflow: auto;">
                                 <thead>
                                     <tr>
                                         <th><input id="SelectAll" type="radio" class="checkbox"></th>
@@ -536,52 +503,53 @@
                                           <td>{{ $product->expiration_date }}</td>
                                           <td class="dropdown button-action">
                                             <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-  <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
-  <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
-  <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
-</svg></button>
+                                                <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
+                                                <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
+                                                <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
+                                                </svg></button>
                                         <div class="dropdown-content"><div class="button-group">
                                             <button
 		            data-action="AddStock" 
                                             data-product-type="{{ $product->product_type }}"
                                             data-product-id="{{ $product->id }}"
                                                 class="btn border-0 addStock"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-  <path d="M7 10H13M10 7V13M1 10C1 11.1819 1.23279 12.3522 1.68508 13.4442C2.13738 14.5361 2.80031 15.5282 3.63604 16.364C4.47177 17.1997 5.46392 17.8626 6.55585 18.3149C7.64778 18.7672 8.8181 19 10 19C11.1819 19 12.3522 18.7672 13.4442 18.3149C14.5361 17.8626 15.5282 17.1997 16.364 16.364C17.1997 15.5282 17.8626 14.5361 18.3149 13.4442C18.7672 12.3522 19 11.1819 19 10C19 8.8181 18.7672 7.64778 18.3149 6.55585C17.8626 5.46392 17.1997 4.47177 16.364 3.63604C15.5282 2.80031 14.5361 2.13738 13.4442 1.68508C12.3522 1.23279 11.1819 1 10 1C8.8181 1 7.64778 1.23279 6.55585 1.68508C5.46392 2.13738 4.47177 2.80031 3.63604 3.63604C2.80031 4.47177 2.13738 5.46392 1.68508 6.55585C1.23279 7.64778 1 8.8181 1 10Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg> Add Stock</div></button>
+                                            <path d="M7 10H13M10 7V13M1 10C1 11.1819 1.23279 12.3522 1.68508 13.4442C2.13738 14.5361 2.80031 15.5282 3.63604 16.364C4.47177 17.1997 5.46392 17.8626 6.55585 18.3149C7.64778 18.7672 8.8181 19 10 19C11.1819 19 12.3522 18.7672 13.4442 18.3149C14.5361 17.8626 15.5282 17.1997 16.364 16.364C17.1997 15.5282 17.8626 14.5361 18.3149 13.4442C18.7672 12.3522 19 11.1819 19 10C19 8.8181 18.7672 7.64778 18.3149 6.55585C17.8626 5.46392 17.1997 4.47177 16.364 3.63604C15.5282 2.80031 14.5361 2.13738 13.4442 1.68508C12.3522 1.23279 11.1819 1 10 1C8.8181 1 7.64778 1.23279 6.55585 1.68508C5.46392 2.13738 4.47177 2.80031 3.63604 3.63604C2.80031 4.47177 2.13738 5.46392 1.68508 6.55585C1.23279 7.64778 1 8.8181 1 10Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg> Add Stock</div></button>
                                                 <button 
                                                 data-action="View"
                                                 data-product-type="{{ $product->product_type }}"
                                                 data-product-id="{{ $product->id }}"
                                                 class="btn border-0 viewButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6559_23708)">
-    <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6559_23708">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> View</div></button>
+                                                <g clip-path="url(#clip0_6559_23708)">
+                                                    <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_6559_23708">
+                                                    <rect width="24" height="24" fill="white"/>
+                                                    </clipPath>
+                                                </defs>
+                                                </svg> View</div></button>
                                                 <button 
                                                 data-action="Edit" id="editButton"
                                                 data-product-type="{{ $product->product_type }}"
                                                 data-product-id="{{ $product->id }}"
+                                                data-item_name="{{ $product->item_name }}" data-product_code="{{ $product->product_code}}"
                                                 class="btn border-0"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6559_23808)">
-    <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6559_23808">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Edit</div></button>
+                                                    <g clip-path="url(#clip0_6559_23808)">
+                                                        <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_6559_23808">
+                                                        <rect width="24" height="24" fill="white"/>
+                                                        </clipPath>
+                                                    </defs>
+                                                    </svg> Edit</div></button>
                                                 <button 
                                                 data-action="Archive"
-                                                class="btn border-0"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
-  <path d="M17 5C17.5304 5 18.0391 4.78929 18.4142 4.41421C18.7893 4.03914 19 3.53043 19 3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3C1 3.53043 1.21071 4.03914 1.58579 4.41421C1.96086 4.78929 2.46957 5 3 5M17 5H3M17 5V15C17 15.5304 16.7893 16.0391 16.4142 16.4142C16.0391 16.7893 15.5304 17 15 17H5C4.46957 17 3.96086 16.7893 3.58579 16.4142C3.21071 16.0391 3 15.5304 3 15V5M8 9H12" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg> Archive</div></button>
+                                                class="btn border-0 archiveButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
+                                                <path d="M17 5C17.5304 5 18.0391 4.78929 18.4142 4.41421C18.7893 4.03914 19 3.53043 19 3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3C1 3.53043 1.21071 4.03914 1.58579 4.41421C1.96086 4.78929 2.46957 5 3 5M17 5H3M17 5V15C17 15.5304 16.7893 16.0391 16.4142 16.4142C16.0391 16.7893 15.5304 17 15 17H5C4.46957 17 3.96086 16.7893 3.58579 16.4142C3.21071 16.0391 3 15.5304 3 15V5M8 9H12" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg> Archive</div></button>
                                         </div>
                                             
                                         </div>
@@ -713,7 +681,11 @@
                         
                                 </tbody>
                             </table>
-                            <div class="pagination">
+                            
+
+
+                        </div>
+                        <div class="pagination">
                                 <div class="pagination-menu">
                                     <span>Go to:</span>
                                     <select class="paginationGoToSelect" onchange="changePage(this)">
@@ -756,50 +728,6 @@
                                     </select>
                                 </div>
                             </div>
-
-
-                            {{-- <div class="pagination">
-                <div class="pagination-menu">
-                  <span>Go to:</span>
-                  <select class="paginationGoToSelect">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                  </select>
-                </div>
-                <div class="pagination-pages">
-                  <span class="pagination-arrow previous-page">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
-                      <path d="M5.48 12L1.36452 7.88384C0.878492 7.39773 0.878492 6.60227 1.36452 6.11616L5.48 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round" />
-                    </svg>
-                  </span>
-                  <div class="pages">
-                    <span class="pagination-page active">1</span>
-                    <span class="pagination-page">2</span>
-                    <span class="pagination-page">3</span>
-                    <span class="pagination-page">4</span>
-                    <span class="pagination-page">5</span>
-                  </div>
-                  <span class="pagination-arrow next-page">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="14" viewBox="0 0 7 14" fill="none">
-                      <path d="M1.47998 12L5.59546 7.88384C6.08149 7.39773 6.08149 6.60227 5.59546 6.11616L1.47998 2" stroke="#1C1C1C" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round" />
-                    </svg>
-                  </span>
-                </div>
-                <div class="pagination-items">
-                  <span>Show:</span>
-                  <select class="paginationItemsSelect">
-                    <option value="2">2 items</option>
-                    <option value="3">3 items</option>
-                    <option value="4">4 items</option>
-                    <option value="5">5 items</option>
-                    <option value="6">6 items</option>
-                  </select>
-                </div>
-              </div> --}}
-                        </div>
                     </div>
                     <div id="prod_detail_header" class="prod_detail_header">
                         <h1>Edit Product Information</h1>
@@ -845,7 +773,7 @@
                             @csrf
                             @method('PUT')
                             <div class="new_input_row">
-                                <div class="form-floating"><select name="produt_type" class="form-select form-select"
+                                <div class="form-floating w-100"><select name="produt_type" class="form-select form-select"
                                         data-id="product-categ" id="product-categ-3">
                                         <option value="none" selected="">Select a Product</option>
                                         <option value="Medicine">Medicine</option>
@@ -856,22 +784,22 @@
                                     <div id="error-product_categ-3" class="error-message"><span>Please select a
                                             category.</span></div>
                                 </div>
-                                <div class="form-floating"><select name="item_name" class="form-select form-select"
-                                        data-id="product_name" id="product_name-3">
+                                <div class="form-floating w-100"><select name="item_name" class="form-select form-select"
+                                        data-id="product_name" id="editItemName">
                                         <option value="none" selected="">Select a Product Name</option>
                                     </select><label class="form-label form-label" for="product_name">Product
                                         Name</label>
                                     <div id="error-product_name-3" class="error-message"><span>Please select product
                                             name.</span></div>
                                 </div>
-                                <div class="form-floating"><input class="form-control form-control" type="text"
+                                <div class="form-floating w-100"><input class="form-control" type="text"
                                         name="product_code" id="product_code" data-id="product_code"
                                         id="product_code-3" placeholder="Product Code"><label
                                         class="form-label form-label" for="product_code">Product Code</label>
                                     <div class="error-message" id="error-product_code-3"><span>Please enter product
                                             code.</span></div>
                                 </div>
-                                <div class="form-floating"><input class="form-control form-control" type="text"
+                                <div class="form-floating w-100"><input class="form-control" type="text"
                                         name="batch_no" id="batch_number" data-id="batch_number" id="batch_number-3"
                                         placeholder="Batch Number"><label class="form-label form-label"
                                         for="batch_number">Batch Number</label>
@@ -881,7 +809,7 @@
                             </div>
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input
-                                        class="form-control form-control" name="manufacturing_date"
+                                        class="form-control" name="manufacturing_date"
                                         id="manufactured_date" data-id="manufactured_date" id="manufactured_date-3"
                                         placeholder="Manufactured Date" type="date"><label
                                         class="form-label form-label" for="manufactured_date">Manufactured
@@ -975,14 +903,14 @@
                                             name.</span></div>
                                 </div>
                                 <div class="form-floating"style="width: 100%;"><input
-                                        class="form-control form-control" type="text" name="product_code"
+                                        class="form-control" type="text" name="product_code"
                                         data-id="product_code" id="product_code" placeholder="Product Code"><label
                                         class="form-label form-label" for="product_code">Product Code</label>
                                     <div class="error-message" id="error-product_code"><span>Please enter product
                                             code.</span></div>
                                 </div>
                                 <div class="form-floating" style="width: 100%;"><input
-                                        class="form-control form-control" type="text" name="batch_no"
+                                        class="form-control" type="text" name="batch_no"
                                         data-id="batch_number" id="batch_number" placeholder="Batch Number"><label
                                         class="form-label form-label" for="batch_number">Batch Number</label>
                                     <div class="error-message" id="error-batch_number"><span>Please enter batch
@@ -991,7 +919,7 @@
                             </div>
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input
-                                        class="form-control form-control" name="manufacturing_date"
+                                        class="form-control" name="manufacturing_date"
                                         data-id="manufactured_date" id="manufactured_date"
                                         placeholder="Manufactured Date" type="date"><label
                                         class="form-label form-label" for="manufactured_date">Manufactured
@@ -1093,7 +1021,7 @@
                                             code.</span></div>
                                 </div>
                                 <div class="form-floating" style="width: 100%;"><input
-                                        class="form-control form-control" type="text" name="batch_no"
+                                        class="form-control" type="text" name="batch_no"
                                         data-id="batch_number" id="batch_number-1"
                                         placeholder="Batch Number"><label class="form-label form-label"
                                         for="batch_number">Batch Number</label>
@@ -1103,7 +1031,7 @@
                             </div>
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input
-                                        class="form-control form-control" name="manufacturing_date"
+                                        class="form-control" name="manufacturing_date"
                                         data-id="manufactured_date" id="manufactured_date-1"
                                         placeholder="Manufactured Date" type="date"><label
                                         class="form-label form-label" for="manufactured_date">Manufactured
@@ -1167,9 +1095,9 @@
             <div class="modal-content add_stock_modal">
                 <div class="modal-header">
                     <h1 class="modal-title">Add Stock</h1><button class="btn-close" aria-label="Close"
-                        data-bs-dismiss="modal" type="button"></button>
+                        data-bs-dismiss="modal" onClick="cancelStock()" type="button"></button>
                 </div>
-                <div class="modal-body add_stock_modal">
+                <div class="modal-body add_stock_modal_body">
                     @foreach ($products as $productInfo)
                         <form
                             action="{{ route('product.stock', ['product_type' => $productInfo->product_type, 'id' => $productInfo->id]) }}"
@@ -1181,8 +1109,8 @@
                     <div class="mb-3 stock_input_container">
                         <div class="stock_image_container"><span class="product_name">Product Name</span></div>
                         <div class="new_input_row">
-                            <div class="form-floating batch_number"><input id="batch_number" name="batch_no"
-                                    class="form-control form-control" type="text" data-id="batch_number"
+                            <div class="form-floating batch_number"><input id="batch_no" name="batch_no"
+                                    class="form-control" type="text" data-id="batch_no"
                                     placeholder="Batch Number" /><label class="form-label form-label"
                                     for="batch_number">Batch Number</label>
                                 <div id="error-batch_number-2" class="error-message"><span>Please enter batch
@@ -1190,24 +1118,24 @@
                             </div>
                         </div>
                         <div class="new_input_row">
-                            <div class="form-floating" style="width: 100%;"><input id="manufactured_date-1"
-                                    name="manufacturing_date" class="form-control form-control"
-                                    data-id="manufactured_date" placeholder="Manufactured Date"
+                            <div class="form-floating" ><input id="manufacturing_date"
+                                    name="manufacturing_date" class="form-control"
+                                    data-id="manufacturing_date" placeholder="Manufactured Date"
                                     type="date" /><label class="form-label form-label"
-                                    for="manufactured_date">Manufactured Date</label>
+                                    for="manufacturing_date">Manufactured Date</label>
                                 <div id="error-manufactured_date-2" class="error-message"><span>Please enter the
                                         manufactured date.</span></div>
                             </div>
-                            <div class="form-floating" style="width: 100%;"><input id="expiration_date"
-                                    name="expiration_date" class="form-control form-control"
-                                    data-id="expiration_date" placeholder="Expiration Date"
+                            <div class="form-floating" ><input id="expired_date"
+                                    name="expiration_date" class="form-control"
+                                    data-id="expired_date" placeholder="Expiration Date"
                                     type="date" /><label class="form-label form-label"
                                     for="expiration_date">Expiration Date</label>
                                 <div id="error-expiration_date-2" class="error-message"><span>Please enter the
                                         expiration date.</span></div>
                             </div>
-                            <div class="form-floating" style="width: 100%;"><input id="datestocked"
-                                    name="date_stocked" class="form-control form-control" data-id="datestocked"
+                            <div class="form-floating" ><input id="date_stocked"
+                                    name="date_stocked" class="form-control form-control" data-id="date_stocked"
                                     placeholder="Expiration Date" type="date" /><label
                                     class="form-label form-label" for="datestocked">Date Stocked</label>
                                 <div id="error-datestocked-2" class="error-message"><span>Please enter the date
@@ -1218,12 +1146,12 @@
                             <h1>Quantity</h1>
                             <div class="form-floating">
                                 <div class="quantity_input">
-                                    <button class="quantity_minus" onclick="decrementQuantity()"
+                                    <button class="quantity_minus" onclick="decrementQuantity2()"
                                         type="button">-</button>
-                                    <input id="quantity" class="input_quantity" type="number"
-                                        aria-labelledby="label-quantity" data-id="quantity" min="0"
+                                    <input id="quantity-2" class="input_quantity" type="number"
+                                        aria-labelledby="label-quantity" data-id="quantity-2" min="0"
                                         name="quantity" required value="0" />
-                                    <button class="quantity_add" onclick="incrementQuantity()"
+                                    <button class="quantity_add" onclick="incrementQuantity2()"
                                         type="button">+</button>
                                     <div id="error-quantity-2" class="error-message"><span>Please input a quantity
                                             value more than 0.</span></div>
@@ -1233,9 +1161,9 @@
                     </div>
                 </div>
                 <div class="modal-footer add_stock_buttons">
-                    <button class="btn cancel_btn" type="button" role="button" aria-label="Cancel"><span
+                    <button class="btn cancel_btn" id="cancel_btn" onClick="cancelStock()" data-bs-dismiss="modal" type="button" role="button" aria-label="Cancel"><span
                             class="cancel_btn_base">Cancel</span></button>
-                    <button id="add_stock" class="btn add_stock" type="submit"><span class="add_stock_base">Add
+                    <button id="add_stock" class="btn add_stock" type="submit" disabled><span class="add_stock_base">Add
                             Stock</span></button>
                 </div>
                 </form>
@@ -1347,18 +1275,18 @@
     @endif
     <script>
         $(document).ready(function() {
-            $('.editButton').click(function() {
+            $('#editButton').click(function() {
             const invData = {
-                'first_name' :$(this).data('first-name'),
-                'middle_name' :$(this).data('middle-name'),
+                'item_name' :$(this).data('item_name'),
+                'prodoct_code' :$(this).data('product_code'),
                 'last_name' :$(this).data('last-name'),
                 'suffix' :$(this).data('suffix'),
                 'birthdate' :$(this).data('birthdate'),
                 'email' :$(this).data('email'),
                 'phone' :$(this).data('phone'),
             };      
-            $('#editFirstName').val(clientData.first_name);
-            $('#editMiddleName').val(clientData.middle_name);
+            $('#editItemName').val(invData.item_name);
+            $('#product_code').val(invData.middle_name);
             $('#editLastName').val(clientData.last_name);
             $('#editSuffix').val(clientData.suffix);
             $('#editBirthdate').val(clientData.birthdate);
@@ -1536,6 +1464,8 @@
 
 });
     </script>
+
+
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/inventory.js') }}"></script>

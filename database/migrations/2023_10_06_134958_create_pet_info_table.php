@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string('weight');
             $table->string('sterilization')->nullable();
             $table->timestamps();
+
+            $table->foreign('owner_id')->references('id')->on('clients')->onDelete('cascade');
+
         });
     }
 

@@ -2,27 +2,33 @@
 <html data-bs-theme="light" lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-	<title>Admin | Pet Records</title>
-	<link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
-	<link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
-	<link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}"> 
+<meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Admin | Pet Records</title>
+    <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+    <link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
 	<main class="d-flex flex-row container-fluid" style="padding: 0;"> @php $activeTab = 'emr'; // Set the active tab @endphp @include('includes.admin_header')
 		<div class="content">
 			<div id="rectangle" class="rectangle"><button class="btn notification" id="notification" type="button"><span class="notification_base"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewbox="0 0 15 18" fill="none"><path d="M2.29482 10.4791L2.93736 10.866L2.93903 10.8632L2.29482 10.4791ZM1.38031 11.998L0.737787 11.6112L0.737673 11.6113L1.38031 11.998ZM2.23916 14.328L1.99871 15.0385L2.00149 15.0394L2.23916 14.328ZM12.7918 14.328L12.5564 13.6159L12.5542 13.6167L12.7918 14.328ZM13.6507 11.998L14.2938 11.6121L14.2932 11.6112L13.6507 11.998ZM12.7362 10.4791L12.0864 10.854L12.0937 10.866L12.7362 10.4791ZM8.99065 2.00199L8.78522 2.7233C9.0594 2.80139 9.35415 2.71728 9.54583 2.50625C9.7375 2.29522 9.79296 1.99376 9.68894 1.72833L8.99065 2.00199ZM6.0483 2.00199L5.35001 1.72833C5.24599 1.99376 5.30145 2.29522 5.49313 2.50625C5.68481 2.71728 5.97955 2.80139 6.25374 2.7233L6.0483 2.00199ZM5.83359 16.3002L5.30286 16.8301L5.30326 16.8305L5.83359 16.3002ZM7.51948 1.02137C4.47306 1.02137 1.99811 3.49632 1.99811 6.54274H3.49811C3.49811 4.32475 5.30148 2.52137 7.51948 2.52137V1.02137ZM1.99811 6.54274V8.84096H3.49811V6.54274H1.99811ZM1.99811 8.84096C1.99811 8.99314 1.96284 9.22832 1.89124 9.48627C1.8197 9.74398 1.72858 9.96429 1.65061 10.0951L2.93903 10.8632C3.10759 10.5804 3.24311 10.2242 3.33658 9.88749C3.42999 9.551 3.49811 9.17386 3.49811 8.84096H1.99811ZM1.6523 10.0923L0.737787 11.6112L2.02284 12.3849L2.93735 10.866L1.6523 10.0923ZM0.737673 11.6113C0.34933 12.2568 0.264391 12.9889 0.507 13.6441C0.749283 14.2984 1.2894 14.7984 1.99871 15.0384L2.47961 13.6176C2.15512 13.5078 1.98351 13.3119 1.91366 13.1233C1.84415 12.9355 1.84668 12.6776 2.02295 12.3847L0.737673 11.6113ZM2.00149 15.0394C5.58318 16.236 9.44782 16.236 13.0295 15.0394L12.5542 13.6167C9.28099 14.7103 5.75001 14.7103 2.47682 13.6167L2.00149 15.0394ZM13.0272 15.0401C14.4485 14.5703 15.0644 12.8965 14.2938 11.6121L13.0076 12.3839C13.2867 12.849 13.0596 13.4496 12.5564 13.6159L13.0272 15.0401ZM14.2932 11.6112L13.3787 10.0923L12.0937 10.866L13.0082 12.3849L14.2932 11.6112ZM13.3858 10.1043C13.3086 9.97054 13.2183 9.7472 13.1473 9.48852C13.0762 9.22901 13.0408 8.99336 13.0408 8.84096H11.5408C11.5408 9.17364 11.6089 9.55031 11.7008 9.88524C11.7928 10.221 11.9252 10.5742 12.0865 10.8539L13.3858 10.1043ZM13.0408 8.84096V6.54274H11.5408V8.84096H13.0408ZM13.0408 6.54274C13.0408 3.50428 10.5579 1.02137 7.51948 1.02137V2.52137C9.72952 2.52137 11.5408 4.3327 11.5408 6.54274H13.0408ZM9.19608 1.28067C8.10014 0.968542 6.93882 0.968542 5.84287 1.28067L6.25374 2.7233C7.08111 2.48766 7.95784 2.48766 8.78522 2.7233L9.19608 1.28067ZM6.7466 2.27564C6.86777 1.96645 7.16863 1.75 7.51948 1.75V0.25C6.53434 0.25 5.69008 0.860583 5.35001 1.72833L6.7466 2.27564ZM7.51948 1.75C7.87033 1.75 8.17119 1.96645 8.29236 2.27564L9.68894 1.72833C9.34888 0.860583 8.50461 0.25 7.51948 0.25V1.75ZM9.15516 14.6143C9.15516 15.5122 8.41739 16.25 7.51948 16.25V17.75C9.24582 17.75 10.6552 16.3407 10.6552 14.6143H9.15516ZM7.51948 16.25C7.07487 16.25 6.65887 16.0648 6.36392 15.7699L5.30326 16.8305C5.86716 17.3944 6.65991 17.75 7.51948 17.75V16.25ZM6.36432 15.7703C6.05752 15.463 5.88477 15.0468 5.88379 14.6126L4.38379 14.616C4.38567 15.4465 4.71607 16.2425 5.30286 16.8301L6.36432 15.7703Z" fill="#1C1C1C"></path></svg></span></button>
-                <div class="dropdown admin_btn"><button class="btn dropdown-toggle admin" aria-expanded="false" data-bs-toggle="dropdown" type="button"><img src="assets/img/image%2011%20(1).png" alt="Admin" width="40" height="40"></button>
+                <div class="dropdown admin_btn"><button class="btn dropdown-toggle admin" aria-expanded="false" data-bs-toggle="dropdown" type="button"><img src="{{ asset('assets/img/image%2011%20(1).png') }}" alt="Admin" width="40" height="40"></button>
                     <div class="dropdown-menu"><a class="dropdown-item" href="#">Sign Out</a></div>
                 </div>
             </div>
@@ -31,7 +37,7 @@
 					<div class="header_text_container">
 						<h1><strong>Pet Records</strong></h1> </div>
 					<div class="btn-group split_btn" id="add_pet_split_btn">
-						<button class="btn add_Product_btn" id="add_pet_btn-1" type="button"><span class="add_Product_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="27" viewBox="0 0 25 27" fill="none">
+						<button class="btn add_Product_btn" id="add_pet_btn" type="button"><span class="add_Product_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="27" viewBox="0 0 25 27" fill="none">
                         <g clip-path="url(#clip0_6404_17517)" filter="url(#filter0_d_6404_17517)">
                             <path d="M12.5 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H18C18.5304 5 19.0391 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V12M16 3V7M8 3V7M4 11H20M16 19H22M19 16V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </g>
@@ -52,52 +58,186 @@
                         </defs>
                         </svg> Add Record</span></button>
 						<button class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown" data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-						<div class="dropdown-menu"><a class="dropdown-item" href="#">Generate Report</a></div>
+						<div class="dropdown-menu"><a class="dropdown-item" href="{{ route('report.emr') }}">Generate Report</a></div>
 					</div>
 				</div>
 				<div id="client_container" class="client_container">
 					<div class="container_header">
-						<div class="left_part_product_header">
-							<form action="{{ route('emr.search') }}" method="GET">
-							<div class="search_container">
-								<input type="search" name="search" class="search_input" placeholder="Search Pet Record">
-							</div>
-							</form>
-							<button class="btn filter_btn" type="button"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+					<form action="" id="approvedForm">
+                                    <div class="left_part_product_header">
+                                        <div class="search_container">
+                                            <input type="text" class="search_input" name="search"
+                                            value="{{ request('search') }}" placeholder="Search Appointment">
+                                        </div>
+                                        <button type="submit" form="approvedForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+                                        <div class="dropdown">
+                                            <button class="filter_btn dropdown-toggle fw-bold" type="button"
+                                                id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
+                                                aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
+                                                  <g clip-path="url(#clip0_3674_15869)" filter="url(#filter0_d_3674_15869)">
+                                                    <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                  </g>
+                                                  <defs>
+                                                    <filter id="filter0_d_3674_15869" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                                      <feOffset dy="2"/>
+                                                      <feGaussianBlur stdDeviation="1"/>
+                                                      <feComposite in2="hardAlpha" operator="out"/>
+                                                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                                                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3674_15869"/>
+                                                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3674_15869" result="shape"/>
+                                                    </filter>
+                                                    <clipPath id="clip0_3674_15869">
+                                                      <rect width="24" height="24" fill="white"/>
+                                                    </clipPath>
+                                                  </defs>
+                                              </svg>Filter By
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown-item ">
+                                                  <div class="form-check form-switch">
+                                                    <!-- Size of the default switch will increase 1.8 times -->
+                                                    <input class="form-check-input my-3"
+                                                          {{ request()->input('approvedCheck') == 'on' ? 'checked' : '' }}
+                                                           name ="approvedCheck" 
+                                                           type="checkbox" 
+                                                           role="switch" 
+                                                           id="approvedCheck" 
+                                                           style="transform: scale(1.5);"
+                                                           >
+                                                    <label class="form-check-label fs-6 my-1" 
+                                                           for="approvedCheck" 
+                                                           >Approved</label>
+                                                  </div>
+                                          
+                                                </li>
+                                                <li class="dropdown-item ">
+                                                  <div class="form-check form-switch">
+                                                    <!-- Size of the default switch will increase 1.8 times -->
+                                                    <input class="form-check-input my-3"
+                                                          {{ request()->input('completedCheck') == 'on' ? 'checked' : '' }}
+                                                           name ="completedCheck" 
+                                                           type="checkbox" 
+                                                           role="switch" 
+                                                           id="completedCheck" 
+                                                           style="transform: scale(1.5);"
+                                                           >
+                                                  
+                                                    <label class="form-check-label fs-6 my-1" 
+                                                           for="completedCheck" 
+                                                           >Completed</label>
+                                                  </div>
+                                                </li>
+                                                <li class="dropdown-item ">
+                                                  <div class="form-check form-switch">
+                                                    <!-- Size of the default switch will increase 1.8 times -->
+                                                    <input class="form-check-input my-3"
+                                                          {{ request()->input('dogCheck') == 'on' ? 'checked' : '' }}
+                                                           name ="dogCheck" 
+                                                           type="checkbox" 
+                                                           role="switch" 
+                                                           id="dogCheck" 
+                                                           style="transform: scale(1.5);"
+                                                           >
+                                                  
+                                                    <label class="form-check-label fs-6 my-1" 
+                                                           for="dogCheck" 
+                                                           >Dog</label>
+                                                  </div>
+                                          
+                                                </li>
+                                                <li class="dropdown-item ">
+                                                    <div class="form-check form-switch">
+                                                      <!-- Size of the default switch will increase 1.8 times -->
+                                                      <input class="form-check-input my-3"
+                                                            {{ request()->input('catCheck') == 'on' ? 'checked' : '' }}
+                                                             name ="catCheck" 
+                                                             type="checkbox" 
+                                                             role="switch" 
+                                                             id="catCheck" 
+                                                             style="transform: scale(1.5);"
+                                                             >
+                                                    
+                                                      <label class="form-check-label fs-6 my-1" 
+                                                             for="catCheck" 
+                                                             >Cat</label>
+                                                    </div>
+                                            
+                                                  </li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="dropdown">
+                                            <button class="filter_btn dropdown-toggle fw-bold" type="button"
+                                                id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
+                                                aria-expanded="false"><span class="filter_btn_base">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+													<g clip-path="url(#clip0_6770_15021)">
+														<path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+													</g>
+													<defs>
+														<clipPath id="clip0_6770_15021">
+														<rect width="24" height="24" fill="white"/>
+														</clipPath>
+													</defs>
+													</svg>Sort By 
+												</span>
+                                                </button>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown-item ">
+                                                    <input class="form-check-input me-1" type="radio" id = "radio1"
+                                                        name="sortItems"{{ request()->input('sortItems', '0') == '0' ? 'checked' : '' }}  value="0">
+                                                    <label class="form-check-label ms-1 fs-6" for="radio1">
+                                                        Pet Name
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <input class="form-check-input me-1" type="radio" id = "radio2"
+                                                        name="sortItems" {{ request()->input('sortItems') == '1' ? 'checked' : '' }} value="1">
+                                                    <label class="form-check-label ms-1 fs-6" for="radio2">
+                                                        Breed
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <input class="form-check-input me-1" type="radio" id = "radio3"
+                                                        name="sortItems" {{ request()->input('sortItems') == '2' ? 'checked' : '' }} value="2">
+                                                    <label class="form-check-label ms-1 fs-6" for="radio3">
+                                                        Owner's Name
+                                                </li>
+                                                <li>
+                                                    <hr class="dropdown-divider me-2 ms-2">
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <input class="form-check-input me-1" type="radio" id = "radio6"
+                                                        name="sortOrder" {{ request()->input('sortOrder') == '0' ? 'checked' : '' }} value="0">
+                                                    <label class="form-check-label ms-1 fs-6" for="radio6">
+                                                        Ascending
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <input class="form-check-input me-1" type="radio" id = "radio7"
+                                                        name="sortOrder" {{ request()->input('sortOrder', '1') == '1' ? 'checked' : '' }} value="1">
+                                                    <label class="form-check-label ms-1 fs-6" for="radio7">
+                                                        Descending
+                                                </li>
+                                                <li class="dropdown-item ">
+                                                  <div class="row">
+                                                      <div class="col-md-5">
+                                                          <button type = "reset" class="btn cancel_filter btn-sm me-3"><span class="cancel_filter_base">Cancel</span></button>
+                                                      </div>
+                                                      <div class="col-md-5 text-center">
+                                                          <button type="submit" form="approvedForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply Sort</span></button>
+                                                      </div>
+                                                  </div>
+                                              </li>
+                                            </ul>
+                                        </div>
+          
+                                    </div>
+                                </form>
+			</div>
+
 							
-							<g clip-path="url(#clip0_6404_12416)">
-								<path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-							</g>
-							<defs>
-								<clipPath id="clip0_6404_12416">
-								<rect width="24" height="24" fill="white"/>
-								</clipPath>
-							</defs>
-							</svg> Filter by</span></button>
-														<button class="btn sort_btn" type="button"><span class="sort_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-							<g clip-path="url(#clip0_6404_20238)">
-								<path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-							</g>
-							<defs>
-								<clipPath id="clip0_6404_20238">
-								<rect width="24" height="24" fill="white"/>
-								</clipPath>
-							</defs>
-							</svg> Sort by</span></button>
-						</div>
-						<div class="right_part_product_header">
-							<button class="btn archive_button" id="archive_button" type="button">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-									<g clip-path="url(#clip0_5824_17335)">
-										<path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
-									<defs>
-										<clipPath id="clip0_5824_17335">
-											<rect width="24" height="24" fill="white" /> </clipPath>
-									</defs>
-								</svg>
-							</button>
-						</div>
-					</div>
+                        
 					<div id="empty_state_container" class="empty_state_container">
 						<div class="empty_state">
 							<div>
@@ -186,7 +326,7 @@
 											</svg>
 										</button>
 										<div class="dropdown-menu more_button" data-bs-popper="none">
-										<button class="dropdown-item add_diagnosis-action" id="add_diagnosis" data-container-id="{{ $petrecord->id }}">
+										<button class="dropdown-item add_diagnosis-action" data-container-id="{{ $petrecord->id }}">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6230_1794)">
 														<path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -197,7 +337,7 @@
 													</defs>
 												</svg>Add Diagnosis
 											</button>
-											<button class="dropdown-item add_immunization_action" id="add_immunization" data-container-id="{{ $petrecord->id }}">
+											<button class="dropdown-item add_immunization_action" data-container-id="{{ $petrecord->id }}">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6230_538)">
 														<path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
@@ -206,7 +346,7 @@
 															<rect width="24" height="24" fill="white" /> </clipPath>
 													</defs>
 												</svg>Add Vaccine</button>
-											<button class="dropdown-item add_surgery_action" id="add_surgery" data-container-id="{{ $petrecord->id }}">
+											<button class="dropdown-item add_surgery_action" data-container-id="{{ $petrecord->id }}">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6230_1803)">
 														<path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
@@ -228,7 +368,10 @@
 													</defs>
 												</svg>&nbsp;View
 											</button>
-											<button class="dropdown-item Edit_pet-action" id="Edit" data-container-id="{{ $petrecord->pet->id }}">
+											<button class="dropdown-item Edit_pet-action" id="Edit" 
+											data-container-id="{{ $petrecord->pet->id }}" data-pet_name="{{ $petrecord->pet->name }}"
+											data-gender="{{ $petrecord->pet->gender }}" data-birthdate="{{ $petrecord->pet->birthdate}}"
+											data-age="{{ $petrecord->pet->age}}" data-specied="{{ $petrecord->pet->species}}" data-breed="{{ $petrecord->pet->breed }}">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6230_538)">
 														<path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
@@ -611,18 +754,18 @@
 					</div>
 					<div class="input_details_container">
 						<div class="detail_body">
-							<form action="{{ route('edit.petrecord') }}" method="POST">
+							<form action="{{ route('edit.petrecord') }}" method="POST" style="width:100%;">
 								@csrf
 							<div class="pet_details_container">
 								<input type="hidden" name="pet_id" id="editpetId">
 								<div class="align-self-stretch form-floating">
-									<input type="text" class="form-control" name="pet_name" id="pet_name_edit">
+									<input type="text" class="form-control" name="pet_name" id="editPetName">
 									<label class="form-label" for="pet_name">Pet Name</label>
 									<div class="error-message" id="edit_pet_error"><span>• Error Message</span></div>
 									<div class="guide-message"><span>• Guide Message</span></div>
 								</div>
 								<div class="align-self-stretch form-floating">
-									<select aria-label="Floating label select example" name="gender" class="form-select" id="pet_sex">
+									<select aria-label="Floating label select example" name="gender" class="form-select editGender" id="editGender">
 										<option value="" selected="">Select sex</option>
 										<option value="1">Male</option>
 										<option value="2">Female</option>
@@ -633,13 +776,13 @@
 								</div>
 								<div class="new_input_row">
 									<div class="form-floating" style="width: 100%;">
-										<input class="form-control" id="pet_birthdate_edit" name="pet_birthday" type="date">
+										<input class="form-control" id="editBirthdate" name="pet_birthday" type="date">
 										<label class="form-label">Birth Date</label>
 										<div class="error-message" id="edit_birthdate_error"><span>• Error Message</span></div>
 										<div class="guide-message"></div>
 									</div>
 									<div class="form-floating" id="pet_age_edit" style="width: 100%;">
-										<input type="text" id="age_input_edit" name="pet_age" class="form-control">
+										<input type="text" id="editAge" name="pet_age" class="form-control">
 										<label class="form-label">Age</label>
 										<div class="error-message" id="edit_age_error"><span>• Error Message</span></div>
 										<div class="guide-message"></div>
@@ -647,7 +790,7 @@
 								</div>
 								<div class="new_input_row">
 									<div class="form-floating" style="width: 543px;">
-										<select class="form-select" id="pet_type_edit" name="species" aria-label="Floating label select example">
+										<select class="form-select" id="editSpecies" name="species" aria-label="Floating label select example">
 											<option value="" selected="">Pet Type</option>
 											<option value="Dog">Dog</option>
 											<option value="Cat">Cat</option>
@@ -658,7 +801,7 @@
 									</div>
 									<div class="new_inputs_row">
 										<div class="form-floating" style="width: 100%;">
-											<select class="form-select" id="pet_breed" name="breed" aria-label="Floating label select example">
+											<select class="form-select" id="editBreed" name="breed" aria-label="Floating label select example">
 												<option value="" selected="">Breed</option>
 												<option value="other">Other</option>
 											</select>
@@ -690,6 +833,7 @@
 				</div>
 				</form>
 			</div>
+			
 		</div>
 	</main>
 	<div class="modal fade show" role="dialog" tabindex="-1" id="edit_discard">
@@ -1037,7 +1181,7 @@
 			<div class="modal-content add_pet_record_modal">
 				<div class="modal-header">
 					<h1 class="modal-title">Add Diagnosis</h1>
-					<button class="btn-close" id="close_diagnosis" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+					<button class="btn-close" id="close_diagnosis" onClick="cancelDiagnosis()" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
 					<form action="{{ route('med.history') }}" method="POST" class="add_client" id="add_pet_form">
@@ -1094,8 +1238,8 @@
 						</div>
 				</div>
 				<div class="modal-footer add_product_button">
-					<button class="btn clear_form" id="clear_diagnosis" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_diagnosis" id="submit_diagnosis" type="submit"><span class="submit_product_base">Submit</span></button>
+					<button class="btn clear_form" id="clear_diagnosis" onClick="cancelDiagnosis()" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
+					<button class="btn submit_diagnosis" id="submit_diagnosis" type="submit" disabled><span class="submit_product_base">Submit</span></button>
 				</div>
 				</form>
 			</div>
@@ -1106,7 +1250,7 @@
 			<div class="modal-content add_pet_record_modal">
 				<div class="modal-header">
 					<h1 class="modal-title">Add Vaccination History</h1>
-					<button class="btn-close" id="close_vaccination" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+					<button class="btn-close" id="close_vaccination" onClick="cancelVaxx()" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
 					<form action="{{ route('vax.history') }}" method="POST" class="add_client" id="add_pet_form-2">
@@ -1162,8 +1306,8 @@
 						</div>
 				</div>
 				<div class="modal-footer add_product_button">
-					<button class="btn clear_form" id="clear_vaccination" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_immunization" id="submit_vaccination" type="submit"><span class="submit_product_base">Submit</span></button>
+					<button class="btn clear_form" id="clear_vaccination" onClick="cancelVaxx()" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
+					<button class="btn submit_immunization" id="submit_vaccination" type="submit" disabled><span class="submit_product_base">Submit</span></button>
 				</div>
 				</form>
 			</div>
@@ -1174,7 +1318,7 @@
 			<div class="modal-content add_pet_record_modal">
 				<div class="modal-header">
 					<h1 class="modal-title">Add Surgery</h1>
-					<button class="btn-close" id="close_surgery" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+					<button class="btn-close" id="close_surgery" onClick="cancelSurgery()" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
 					<form action="{{ route('surg.history') }}" method="POST" class="add_client" id="add_pet_form-3">
@@ -1235,8 +1379,8 @@
 						</div>
 				</div>
 				<div class="modal-footer add_product_button">
-					<button class="btn clear_form" id="clear_surgery" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_surgery" id="submit_surgery" type="submit"><span class="submit_product_base">Submit</span></button>
+					<button class="btn clear_form" id="clear_surgery" onClick="cancelSurgery()" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
+					<button class="btn submit_surgery" id="submit_surgery" type="submit" disabled><span class="submit_product_base">Submit</span></button>
 				</div>
 				</form>
 			</div>
@@ -1358,6 +1502,21 @@ $(document).ready(function() {
 	$('.Edit_pet-action').click(function() {
 		const id = $(this).data('container-id');
 		$('#editpetId').val(id);
+		const petrecData = {
+			'pet_name' :$(this).data('pet_name'),
+			'gender' :$(this).data('gender'),
+			'birthdate' :$(this).data('birthdate'),
+			'age' :$(this).data('age'),
+			'species' :$(this).data('species'),
+			'breed' :$(this).data('breed'),
+			'gender' :$(this).data('gender'),
+		};
+		$('#editPetName').val(petrecData.pet_name);
+		$('.editGender').val(petrecData.gender);
+		$('#editBirthdate').val(petrecData.birthdate);
+		$('#editAge').val(petrecData.age);
+		$('#editSpecies').val(petrecData.species);
+		$('#editBreed').val(petrecData.breed);
 	});
 	$('.add_diagnosis-action').click(function() {
 		const id = $(this).data('container-id');
@@ -1467,6 +1626,186 @@ $(document).ready(function() {
 			
 		});
 });
+</script>
+<script>
+	function enableSubmitDiagnosis() {
+	var diagnosis = document.getElementById("diagnosis").value;
+	var diagnosis_date = document.getElementById("diagnosis_date").value;
+	var treatment_plan = document.getElementById("treatment_plan").value;
+	var medication = document.getElementById("medication").value;
+	var diagnosis_description = document.getElementById("diagnosis_description").value;
+	var submit_diagnosis = document.getElementById("submit_diagnosis");
+
+	// Add additional validation conditions as needed
+  if (
+    diagnosis.trim() !== "" &&
+    diagnosis_date.trim() !== "" &&
+    treatment_plan.trim() !== "" &&
+    medication.trim() !== "" &&
+    diagnosis_description.trim() !== ""
+  ) {
+    submit_diagnosis.disabled = false;
+  } else {
+    submit_diagnosis.disabled = true;
+  }
+  
+
+	// Logging values for debugging
+	console.log('diagnosis:', diagnosis);
+	console.log('diagnosis_date:', diagnosis_date);
+	console.log('treatment_plan:', treatment_plan);
+	console.log('medication:', medication);
+	console.log('diagnosis_description:', diagnosis_description);
+	console.log('submit_diagnosis.disabled:', submit_diagnosis.disabled);
+	}
+
+	document.getElementById("diagnosis").addEventListener("change", enableSubmitDiagnosis);
+	document.getElementById("diagnosis_date").addEventListener("input", enableSubmitDiagnosis);
+	document.getElementById("treatment_plan").addEventListener("change", enableSubmitDiagnosis);
+	document.getElementById("medication").addEventListener("change", enableSubmitDiagnosis);
+	document.getElementById("diagnosis_description").addEventListener("input", enableSubmitDiagnosis);
+
+	function cancelDiagnosis() {
+
+		var diagnosis = document.getElementById("diagnosis");
+	var diagnosis_date = document.getElementById("diagnosis_date");
+	var treatment_plan = document.getElementById("treatment_plan");
+	var medication = document.getElementById("medication");
+	var diagnosis_description = document.getElementById("diagnosis_description");
+	var clear_diagnosis = document.getElementById("clear_diagnosis");
+	var submit_diagnosis = document.getElementById("submit_diagnosis");
+
+
+	submit_diagnosis.disabled = true;
+
+	diagnosis.value = "";
+	diagnosis_date.value = "";
+	treatment_plan.value = "";
+	medication.value = "";
+	diagnosis_description.value = "";
+	}
+
+
+	function enableSubmitVaxx() {
+  var vaccination = document.getElementById("vaccination").value;
+  var vaccination_date = document.getElementById("vaccination_date").value;
+  var vaccination_description = document.getElementById("vaccination_description").value;
+  var next_schedule = document.getElementById("next_schedule").value;
+  var status = document.getElementById("status").value;
+  var submit_vaccination = document.getElementById("submit_vaccination");
+
+  // Add additional validation conditions as needed
+  if (
+    vaccination.trim() !== "" &&
+    vaccination_date.trim() !== "" &&
+    vaccination_description.trim() !== "" &&
+    next_schedule.trim() !== "" &&
+    status.trim() !== ""
+  ) {
+    submit_vaccination.disabled = false;
+  } else {
+    submit_vaccination.disabled = true;
+  }
+
+  // Logging values for debugging
+  console.log('vaccination:', vaccination);
+  console.log('vaccination_date:', vaccination_date);
+  console.log('vaccination_description:', vaccination_description);
+  console.log('next_schedule:', next_schedule);
+  console.log('status:', status);
+  console.log('submit_vaccination.disabled:', submit_vaccination.disabled);
+}
+
+document.getElementById("vaccination").addEventListener("change", enableSubmitVaxx);
+document.getElementById("vaccination_date").addEventListener("input", enableSubmitVaxx);
+document.getElementById("vaccination_description").addEventListener("change", enableSubmitVaxx);
+document.getElementById("next_schedule").addEventListener("input", enableSubmitVaxx);
+document.getElementById("status").addEventListener("change", enableSubmitVaxx);
+
+
+	function cancelVaxx() {
+
+		var vaccination = document.getElementById("vaccination");
+	var vaccination_date = document.getElementById("vaccination_date");
+	var vaccination_description = document.getElementById("vaccination_description");
+	var next_schedule = document.getElementById("next_schedule");
+	var status = document.getElementById("status");
+	var clear_diagnosis = document.getElementById("clear_vaccination");
+	var submit_vaccination = document.getElementById("submit_vaccination");
+
+
+	submit_vaccination.disabled = true;
+
+	vaccination.value = "";
+	vaccination_date.value = "";
+	vaccination_description.value = "";
+	next_schedule.value = "";
+	status.value = "";
+	}
+
+
+	function enableSubmitSurgery() {
+
+
+  var surgery_type = document.getElementById("surgery_type").value;
+  var surgery_date = document.getElementById("surgery_date").value;
+  var severity = document.getElementById("severity").value;
+  var med_id = document.getElementById("med_id").value;
+  var notes = document.getElementById("notes").value;
+  var submit_surgery = document.getElementById("submit_surgery");
+
+  // Add additional validation conditions as needed
+  if (
+    surgery_type.trim() !== "" &&
+    surgery_date.trim() !== "" &&
+    severity.trim() !== "" &&
+    med_id.trim() !== "" &&
+    notes.trim() !== ""
+  ) {
+    submit_surgery.disabled = false;
+  } else {
+    submit_surgery.disabled = true;
+  }
+
+  // Logging values for debugging
+  console.log('surgery_type:', surgery_type);
+  console.log('surgery_date:', surgery_date);
+  console.log('severity:', severity);
+  console.log('med_id:', med_id);
+  console.log('notes:', notes);
+  console.log('submit_surgery.disabled:', submit_surgery.disabled);
+}
+
+document.getElementById("surgery_type").addEventListener("change", enableSubmitSurgery);
+document.getElementById("surgery_date").addEventListener("input", enableSubmitSurgery);
+document.getElementById("severity").addEventListener("change", enableSubmitSurgery);
+document.getElementById("med_id").addEventListener("change", enableSubmitSurgery);
+document.getElementById("notes").addEventListener("input", enableSubmitSurgery);
+
+
+function cancelSurgery() {
+
+	var surgery_type = document.getElementById("surgery_type");
+  var surgery_date = document.getElementById("surgery_date");
+  var severity = document.getElementById("severity");
+  var med_id = document.getElementById("med_id");
+  var notes = document.getElementById("notes");
+  
+  var submit_surgery = document.getElementById("submit_surgery");
+
+
+
+  submit_surgery.disabled = true;
+
+  surgery_type.value = "";
+  surgery_date.value = "";
+  severity.value = "";
+  med_id.value = "";
+  notes.value = "";
+}
+
+
+
 </script>
 
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>

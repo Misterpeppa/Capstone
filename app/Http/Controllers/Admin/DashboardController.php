@@ -81,10 +81,14 @@ class DashboardController extends Controller
         // $completedAppoitments = AppointmentApproved::where('status', 'completed')->count();
         // $staffCount = Staff::count();
         $clients = Clients::count();
-        $appointmentCount = AppointmentApproved::count();
+        $clientsWithAppointments = Clients::whereHas('appointmentApproved')->count();
+        $appointmentCount = AppointmentApproved::whereNull('archived_at')->count();
+        $presentDate = now()->format('l, F j, Y');
+        $query = AppointmentApproved::whereNull('archived_at')->where('appointmentDate', 'LIKE', '%' . $presentDate . '%');
+        $upcomingAppointment = $query->count();
         $pets = PetInfo::count();
 
-        return view('admin/dashboard', compact('appointment_approved', 'clients', 'appointmentCount', 'pets','products'));
+        return view('admin/dashboard', compact('appointment_approved', 'clients', 'appointmentCount', 'pets','products', 'upcomingAppointment', 'clientsWithAppointments'));
     }
 
     public function store(Request $request)

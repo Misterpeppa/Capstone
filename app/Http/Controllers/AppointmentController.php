@@ -146,9 +146,10 @@ class AppointmentController extends Controller
         // Delete the data from the "appointment_details" table
         $appointment->delete();
         
-        $client = Clients::find($appointment->user_id);
+        //$client = Clients::find($appointment->user_id);
         // Mail::to($client->email)->send(new AppointmentApprovedMail($appointment));
-        
+        return response()->json(['message' => 'Appointment Approved successfully.']);
+
     }
 
     public function reject(Request $request, $id)
@@ -169,8 +170,8 @@ class AppointmentController extends Controller
         // Delete the data from the "appointment_details" table
         $appointment->delete();
 
-        $client = Clients::find($appointment->user_id);
-        Mail::to($client->email)->send(new AppointmentRejectedMail($appointment));
+        //$client = Clients::find($appointment->user_id);
+        //Mail::to($client->email)->send(new AppointmentRejectedMail($appointment));
 
         return response()->json(['message' => 'Appointment Rejected successfully.']);
 
@@ -202,9 +203,13 @@ class AppointmentController extends Controller
         $rejectQuery = $request->input('qReject');
        
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
-        $appointment_approved = AppointmentApproved::with('clients')->whereNull('archived_at')->join('clients', 'appointment_approved.user_id', '=', 'clients.id');
-        $appointment_pending = AppointmentPending::with('clients')->join('clients', 'appointment_pending.user_id', '=', 'clients.id');
-        $appointment_rejected = AppointmentRejected::with('clients')->join('clients', 'appointment_rejected.user_id', '=', 'clients.id');
+        $appointment_approved = AppointmentApproved::with('clients')->whereNull('appointment_approved.archived_at')
+            ->join('clients', 'appointment_approved.user_id', '=', 'clients.id')
+            ->select('appointment_approved.id as appointment_id', 'clients.id as client_id', 'clients.*', 'appointment_approved.*');
+        $appointment_pending = AppointmentPending::with('clients')->join('clients', 'appointment_pending.user_id', '=', 'clients.id')
+            ->select('appointment_pending.id as appointment_id', 'clients.id as client_id', 'clients.*', 'appointment_pending.*');
+        $appointment_rejected = AppointmentRejected::with('clients')->join('clients', 'appointment_rejected.user_id', '=', 'clients.id')
+            ->select('appointment_rejected.id as appointment_id', 'clients.id as client_id', 'clients.*', 'appointment_rejected.*');
 
         if($query){
             $appointment_approved->search($query);
@@ -258,9 +263,13 @@ class AppointmentController extends Controller
         $approvedExist = $appointment_approved->isNotEmpty();
         $rejectedExist = $appointment_rejected->isNotEmpty();
         $pendingExist = $appointment_pending->isNotEmpty();
+
+        $approvedCount = AppointmentApproved::whereNull('archived_at')->count();
+        $pendingCount = AppointmentPending::count();
+        $rejectedCount = AppointmentRejected::count();
                 
         return view('admin/admin_appointment', compact( 'appointment_approved', 'appointment_rejected', 'appointment_pending', 
-        'approvedExist', 'pendingExist', 'rejectedExist'));
+        'approvedExist', 'pendingExist', 'rejectedExist', 'approvedCount', 'pendingCount', 'rejectedCount'));
     }
 
     public function list()
