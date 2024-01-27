@@ -19,6 +19,13 @@ body{
 #user{
   display: none;
 }
+.nav-item .nav-link span svg{
+  display: none;
+}
+.nav-item .nav-link p{
+  margin: 0;
+  display: flex;
+}
 .notification-dropdown {
   position: absolute;
   width: 300px;
@@ -141,6 +148,10 @@ main{
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+}
+.selected-time{
+  border-radius: var(--radius-s, 8px);
+  border: 2px solid var(--colors-actions-action-hover, #004D53) !important;
 }
 .time_options li input[type="radio"] {
   display: none;
@@ -572,7 +583,7 @@ main{
     box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
   }
   
-  .step {
+  .step, .form_step {
     display: none;
   }
   .vet_logo_and_text_container img{
@@ -583,6 +594,16 @@ main{
     display: flex;
     width: 700px;
     height: 773px;
+    padding: 48px 60px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-spacing-xl, 24px);
+    background: #F9F9F9;
+    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+  }
+  .form_step.active{
+    display: flex;
+    width: 700px;
     padding: 48px 60px;
     flex-direction: column;
     align-items: flex-start;
@@ -1091,7 +1112,7 @@ main{
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset !important;
   }
   
-  .add_product_base, .add_patient_btn_base, .add_client_base, .new_appointment_btn_base, .add_new_pet_base, .sign_in_btn_base, .user_new_pet_btn_base {
+  .submit_pet_base, .add_product_base, .add_patient_btn_base, .add_client_base, .new_appointment_btn_base, .add_new_pet_base, .sign_in_btn_base, .user_new_pet_btn_base {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1248,6 +1269,20 @@ main{
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-spacing-l, 32px);
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-main-neutral-light, #F5F5F5);
+    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+  }
+
+  .modal-content.create_appointment_modal {
+    display: flex;
+    width: 900px;
+    min-height: 375px;
+    max-height: 924px;
+    padding: var(--spacing-spacing-m, 24px);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-l, 16px);
     border-radius: var(--radius-s, 8px);
     background: var(--colors-main-neutral-light, #F5F5F5);
     box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
@@ -6099,6 +6134,12 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     font-weight: 500;
     line-height: normal;
   }
+  .nav-item .nav-link span svg{
+    display: flex;
+  }
+  .nav-item .nav-link p{
+    display: none;
+  }
   .nav-item{
     display: flex;
     height: 42px;
@@ -6800,6 +6841,12 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 
 
 @media (max-width: 576px){
+  .nav-item .nav-link span svg{
+    display: flex;
+  }
+  .nav-item .nav-link p{
+    display: none;
+  }
   .pagination-menu, .pagination-items{
     display: none;
   }
@@ -7017,31 +7064,80 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     font-weight: 500;
     line-height: normal;
   }
-  .nav-item{
+  .appointment_list_heading_button_container {
+    display: flex;
+    padding-left: var(--radius-xs, 4px);
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+.new_appointment_btn{
+  width: 100%;
+}
+  .pet_nav_tabs {
+    display: flex;
+    padding: 10px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--spacing-spacing-m, 8px);
+    border: none;
+}
+  .view_pet_nav_tabs{
     display: flex;
     height: 42px;
-    min-width: 164px;
+    width: 20%;
     padding: 12px;
     justify-content: center;
     align-items: center;
     border-radius: var(--radius-s, 8px);
   }
-  .nav-item .nav-link{
+  .view_pet_nav_tabs .nav-link {
     display: flex;
-    min-width: 140px;
+    height: 50px;
+    width: 50px;
     align-items: center;
     gap: var(--Spacing-spacing-xs, 12px);
     color: rgba(28, 28, 28, 0.70);
     font-family: Inter;
-    font-size: 12px;
+    font-size: 12px !important;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-  }
-  .nav-item:hover{
+}
+.view_pet_nav_tabs .nav-link p{
+  display: none;
+}
+.view_pet_nav_tabs .nav-link span{
+  display: flex;
+}
+
+  .view_pet_nav_tabs:hover a{
     border-radius: var(--radius-s, 8px);
     background: #ECECEC;
+    font-size: 12px !important;
   }
+  .my_pets_header {
+    display: flex;
+    flex-direction: column;
+    padding-left: var(--radius-xs, 4px);
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+.my_pets_button{
+  align-self: stretch;
+}
+.new_input_row{
+  display: flex;
+  flex-direction: column !important;
+}
+.new_inputs_row {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column !important;
+  gap: var(--spacing-spacing-xs, 12px);
+}
   .container_header{
     display: flex;
     flex-wrap: wrap;
@@ -7049,11 +7145,124 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   }
   .left_part_product_header {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: start;
     align-items: start;
     gap: 4px;
   }
+  .empty_state {
+    display: flex;
+    flex-direction: column;
+}
+  .empty_state_container {
+    display: flex;
+    padding: 60px 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-m, 24px);
+    align-self: stretch;
+    border-radius: var(--radius-s, 8px);
+}
+.empty_state_message_container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.card.pet_card {
+  display: flex;
+  padding: 24px;
+  width: 100%;
+  height: 450px;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: var(--spacing-spacing-l, 32px);
+  border-radius: var(--radius-s, 8px);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.card-body.pet_card_body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-spacing-l, 24px);
+  flex: 1 0 0;
+  margin: 0;
+  padding: 0;
+}
+.pet_upper_detail, .pet_lower_detail {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: start;
+  align-self: stretch;
+}
+
+.pet_record {
+  display: flex;
+  height: 470px;
+  align-items: flex-start;
+  gap: var(--Spacing-spacing-xl, 64px);
+  flex: 1 0 0;
+}
+.pet_record_details {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--Spacing-spacing-l, 32px);
+  flex: 1 0 0;
+}
+.pet_record_details_first_row {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  align-self: stretch;
+  height: 300px;
+}
+.pet_other_details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  align-self: stretch;
+  height: 100%;
+}
+
+.owner_details_row {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+  align-self: stretch;
+}
+.submit_pet, .clear_form {
+  width: 100% !important;
+}
+.edit_pet_back_btn_container {
+  display: flex;
+  padding: 0 !important;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+}
+.pet_type_and_breed_container {
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 12px var(--spacing-spacing-xs, 12px);
+  align-self: stretch;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+}
+.species_container{
+  width: 100% !important;
+}
+
   .archive_button{
     width: 40px;
     height: 40px;
@@ -7477,7 +7686,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     font-size: 10px;
   }
   
-  
+
   .time_options li {
     display: flex;
     width: 128px;
