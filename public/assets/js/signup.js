@@ -143,6 +143,7 @@ checkInputs();
 });
  
 document.getElementById("phone_number").oninput = function () {
+  
   checkInputs();
   // Limit the input to 11 characters
   if (this.value.length > 11) {

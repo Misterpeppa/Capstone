@@ -16,10 +16,12 @@ use Svg\Tag\Rect;
 
 class EMRController extends Controller
 {
+
     public function show()
     {
         $owners = Clients::withTrashed()->get();
         $petrecord = PetRecord::with('pet', 'owner')->whereNull('archived_at')->get();
+        $petrecordExists = PetRecord::exists();
         $medHistory = MedHistory::all();
         $vaxHistory = VaxHistory::all();
         $surgHistory = SurgHistory::all();
@@ -35,6 +37,7 @@ class EMRController extends Controller
     }
 
     public function search(Request $request)
+
     {
         $query = PetRecord::with('pet', 'owner')->whereNull('archived_at');
         $owners = Clients::withTrashed()->get();

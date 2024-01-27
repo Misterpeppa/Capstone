@@ -42,7 +42,10 @@
 					@enderror
 
 					<form id="form-1" class="signup_custom_container">
+
 						<div class="signup_inputs_container">
+
+
 							<div class="input-group">
 								<div class="input_svg">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -269,7 +272,11 @@
     @if ($errors->has('email'))
     <script>
         $(document).ready(function() {
-            $('#signup_error').modal('show');
+			var signup_error = new bootstrap.Modal(document.getElementById('signup_error'));
+			signup_error.show();
+			setTimeout(function () {
+				signup_error.hide();
+        }, 2000);
         });
     </script>
     @elseif (session('success'))
@@ -333,6 +340,7 @@
         });
     </script>
 
+	
 </body>
 
 </html>

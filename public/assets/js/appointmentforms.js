@@ -744,6 +744,4 @@ if (selectedDateElement && selectedDateElement.classList.contains('selected-date
 }
 
 
-  
-  
   });
