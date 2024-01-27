@@ -1957,10 +1957,10 @@
                     </div>
                     <div class="date_time_container">
                         <div class="form-floating" style="width:100%;">
-                            <input class="form-control" data-id="appointment_date-3" id="appointment_date-3"
+                            <input class="form-control" data-id="appointment_date" id="appointment_date"
                                 type="date">
                             <label class="form-label form-label"
-                                for="appointment_date-3">Date<span>&nbsp;*</span></label>
+                                for="appointment_date">Date<span>&nbsp;*</span></label>
                         </div>
                         <div class="form-floating" style="width:100%;">
                             <input class="form-control" data-id="appointment_time-3" id="appointment_time-3"
@@ -2026,10 +2026,10 @@
                         </div>
                         <div class="date_time_container">
                             <div class="form-floating" style="width:100%;">
-                                <input class="form-control" name="appointmentDate" data-id="appointment_date-4"
-                                    id="appointmentDate" type="date">
+                                <input class="form-control" name="appointmentDate" data-id="appointment_date"
+                                    id="appointment_date-1" type="date">
                                 <label class="form-label form-label"
-                                    for="appointment_date-4">Date<span>&nbsp;*</span></label>
+                                    for="appointment_date">Date<span>&nbsp;*</span></label>
                             </div>
                             <div class="form-floating" style="width:100%;">
                                 <input class="form-control" name="appointmentTime" data-id="appointment_time-4"
@@ -2043,9 +2043,9 @@
                 </div>
                 <div class="modal-footer d-flex justify-content-end align-items-center align-self-stretch">
                     <button class="btn cancel_btn" data-bs-dismiss="modal" id="cancel_reschedule_btn-1"
-                        type="button"><span class="return_btn_base">Cancel</span></button>
+                        type="button" onClick="cancelReschedule()"><span class="return_btn_base">Cancel</span></button>
                     <button id="reschedule_btn-1" class="btn reschedule_btn" type="button"
-                        data-bs-dismiss="modal"><span class="archive_confirm_button_base">Reschedule</span></button>
+                        data-bs-dismiss="modal" disabled><span class="archive_confirm_button_base">Reschedule</span></button>
                 </div>
                 </form>
             </div>
@@ -2339,6 +2339,45 @@
                   $('[href="#approved_tab"]').tab('show');
               }
           });
+      </script>
+
+      <script>
+        function enableRescheduleBtn() {
+  var appointment_date1 = document.getElementById("appointment_date-1").value;
+  var appointmentTime = document.getElementById("appointmentTime").value;
+
+  var reschedule_btn1 = document.getElementById("reschedule_btn-1");
+
+  // Add additional validation conditions as needed
+  if (
+    appointment_date1.trim() !== "" &&
+    appointmentTime.trim() !== ""
+  ) {
+    reschedule_btn1.removeAttribute("disabled");
+    reschedule_btn1.classList.remove("disabled");
+  } else {
+    reschedule_btn1.setAttribute("disabled", true);
+    reschedule_btn1.classList.add("disabled");
+  }
+}
+
+// Example: Call enableSubmitButton() on input change events
+document.getElementById("appointment_date-1").addEventListener("input", enableRescheduleBtn);
+document.getElementById("appointmentTime").addEventListener("input", enableRescheduleBtn);
+
+        function cancelReschedule() {
+  var appointment_date1 = document.getElementById("appointment_date-1");
+  var appointmentTime = document.getElementById("appointmentTime");
+
+  var reschedule_btn1 = document.getElementById("reschedule_btn-1");
+
+  appointment_date1.value = "";
+  appointmentTime.value = "";
+
+  reschedule_btn1.disabled = true;
+
+
+}
       </script>
       
 </body>
