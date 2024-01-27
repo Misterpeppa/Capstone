@@ -894,10 +894,7 @@ function setupDateInputRestrictions() {
     // Get the date input elements by their IDs
     var dateInputs = [
         document.getElementById('appointment_date'),
-        document.getElementById('appointment_date-1'),
-        document.getElementById('appointment_date-2'),
-        document.getElementById('appointment_date-3'),
-        document.getElementById('appointment_date-4')
+        document.getElementById('appointment_date-1')
     ];
 
     // Add event listeners to each date input
