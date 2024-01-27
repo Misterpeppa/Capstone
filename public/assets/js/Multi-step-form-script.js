@@ -120,8 +120,11 @@ const setFormHeight = () => {
 
 setFormHeight();
 
+
+
 //PREV/NEXT BTNS CLICK
 DOMstrings.stepsForm.addEventListener('click', e => {
+  let currentStep = 1;
 
   const eventTarget = e.target;
 
@@ -138,10 +141,11 @@ DOMstrings.stepsForm.addEventListener('click', e => {
 
   //set active step and active panel onclick
   if (eventTarget.classList.contains(`${DOMstrings.stepPrevBtnClass}`)) {
+    currentStep--;
     activePanelNum--;
 
   } else {
-
+    currentStep++;
     activePanelNum++;
 
   }
