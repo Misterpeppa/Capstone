@@ -1009,7 +1009,12 @@
                                 <div class="error-message" id="error-client_birthdate-1"><span>Please enter the
                                         client birthdate.</span></div>
                             </div>
-                           
+                            <div class="form-floating" style="width:100%;">
+                                <textarea class="form-control" id="client_address-1" data-id="client_address" placeholder="Address"></textarea><label class="form-label"
+                                    for="client_address">Address <span>&nbsp;*</span></label>
+                                <div class="error-message" id="error-client_address"><span>Please enter client
+                                        address.</span></div>
+                            </div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
                                     type="email" name="email" id="client_email-1" data-id="client_email"
                                     placeholder="Email"><label class="form-label" for="client_email">Email
@@ -1616,6 +1621,7 @@ function enableSubmitBtn() {
   var middle_name1 = document.getElementById("middle_name-1").value;
   var last_name1 = document.getElementById("last_name-1").value;
   var client_birthdate1 = document.getElementById("client_birthdate-1").value;
+  var client_address1 = document.getElementById("client_address-1").value;
   var client_email1 = document.getElementById("client_email-1").value;
   var user_phone1 = document.getElementById("user_phone-1").value;
 
@@ -1627,6 +1633,7 @@ function enableSubmitBtn() {
     middle_name1.trim() !== "" &&
     last_name1.trim() !== "" &&
     client_birthdate1.trim() !== "" &&
+    client_address1.trim() !== "" &&
     client_email1.trim() !== "" &&
     user_phone1.trim() !== ""
   ) {
@@ -1642,6 +1649,7 @@ function enableSubmitBtn() {
   console.log('middle_name:', middle_name1);
   console.log('last_name:', last_name1);
   console.log('client_birthdate:', client_birthdate1);
+  console.log('client_address:', client_address1);
   console.log('client_email:', client_email1);
   console.log('user_phone:', user_phone1);
   console.log('submit_Client disabled:', submit_Client1.disabled);
@@ -1651,6 +1659,7 @@ document.getElementById("first_name-1").addEventListener("input", enableSubmitBt
 document.getElementById("middle_name-1").addEventListener("input", enableSubmitBtn);
 document.getElementById("last_name-1").addEventListener("input", enableSubmitBtn);
 document.getElementById("client_birthdate-1").addEventListener("input", enableSubmitBtn);
+document.getElementById("client_address-1").addEventListener("input", enableSubmitBtn);
 document.getElementById("client_email-1").addEventListener("input", enableSubmitBtn);
 document.getElementById("user_phone-1").addEventListener("input", enableSubmitBtn);
 
