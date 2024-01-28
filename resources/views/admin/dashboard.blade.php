@@ -299,7 +299,7 @@
 
 
                             </div>
-					<div class="w-100" style="overflow: auto;">
+					<div class="w-100" style="overflow: visible;">
 						<table class="table table-responsive mt-3 w-100">
 							<thead>
 								<tr>
@@ -640,8 +640,8 @@
                                         </svg></button></div>
                             </div>
                         </div>
-					<div class="w-100" style="overflow: auto;">
-					<table id="dashboard_table" class="table table-responsive w-100 mt-3">
+					<div class="w-100" style="overflow: visible;">
+					<table class="table table-responsive mt-3 w-100">
 						<thead>
 							<tr>
 								<th>
@@ -669,13 +669,14 @@
 							<td>{{ $product->date_stocked }}</td>
 							<td>{{ $product->expiration_date }}</td>
 							<td class="dropdown button-action">
-							<button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;" aria-expanded="false" data-bs-toggle="dropdown"
+							<button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"
+                                                            aria-expanded="false" data-bs-toggle="dropdown"
                                                             type="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
   <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
   <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
   <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
 </svg></button>
-                                        <div class="dropdown-content"><div class="button-group">
+                                        <div class="dropdown-menu"><div class="button-group">
                                             <button
 		            data-action="AddStock" 
                                             data-product-type="{{ $product->product_type }}"
@@ -776,7 +777,7 @@
 			<div class="modal-content add_client_modal">
 				<div class="modal-header">
 					<h1 class="modal-title">Add Client</h1>
-					<button class="btn-close" id="close_client_modal" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+					<button class="btn-close" id="close_client_modal" onClick="cancelSubmit()" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
 					<form action="{{ route('dashboard.client.store') }}" method="POST" class="add_client" id="add_client_form">
@@ -841,14 +842,14 @@
 							<div class="form-floating" style="width:100%;">
 								<input class="form-control" type="number" id="user_phone" name="phone" data-id="user_phone" placeholder="Phone Number">
 								<label class="form-label" for="user_phone">Phone Number<span>&nbsp;*</span></label>
-								<div class="error-message" id="error-user_phone"><span>• Please enter 1-11 digits only. (e.g., 09172839117)</span><span>• Please enter a valid phone number.</span></div>
-								<div id="guide-user_phone" class="guide-message"><span>• Please enter 1-11 digits only. (e.g., 09172839117)</span></div>
+								<div class="error-message" id="error-user_phone"><span>• Please enter 11 digits only. (e.g., 09172839117)</span><span>• Please enter a valid phone number.</span></div>
+								<div id="guide-user_phone" class="guide-message"><span>• Please enter 11 digits only. (e.g., 09172839117)</span></div>
 							</div>
 						</div>
 				</div>
 				<div class="modal-footer add_product_button">
-					<button class="btn clear_form" id="clear_form" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_product" type="submit"><span class="submit_product_base">Submit</span></button>
+					<button class="btn clear_form" id="clear_form" onClick="cancelSubmit()" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
+					<button class="btn submit_product disabled" id="submit_client"  type="submit" ><span class="submit_product_base">Submit</span></button>
 				</div>
                 </form>
 			</div>
@@ -885,6 +886,76 @@ checkbox.checked = !checkbox.checked; // Toggle the state
 
 });
     </script>
+          <script>
+function enableSubmitBtn() {
+  var first_name = document.getElementById("first_name").value;
+  var middle_name = document.getElementById("middle_name").value;
+  var last_name = document.getElementById("last_name").value;
+  var client_birthdate = document.getElementById("client_birthdate").value;
+  var client_address = document.getElementById("client_address").value;
+  var client_email = document.getElementById("client_email").value;
+  var user_phone = document.getElementById("user_phone").value;
+
+  var submit_client = document.getElementById("submit_client");
+
+  // Add additional validation conditions as needed
+  if (
+    first_name.trim() !== "" &&
+    middle_name.trim() !== "" &&
+    last_name.trim() !== "" &&
+    client_birthdate.trim() !== "" &&
+    client_address.trim() !== "" &&
+    client_email.trim() !== "" &&
+    user_phone.trim().length === 11 && // Check for 11 digits
+    (client_email.includes("@gmail.com") || client_email.includes("@yahoo.com")) // Check for email format
+  ) {
+    submit_client.classList.remove("disabled");
+
+  } else {
+    submit_client.classList.add("disabled");
+  }
+
+  // Logging values for debugging
+  console.log('first_name:', first_name);
+  console.log('middle_name:', middle_name);
+  console.log('last_name:', last_name);
+  console.log('client_birthdate:', client_birthdate);
+  console.log('client_address:', client_address);
+  console.log('client_email:', client_email);
+  console.log('user_phone:', user_phone);
+  console.log('submit_client disabled:', submit_client.disabled);
+}
+
+// Attach event listeners to each input field
+["first_name", "middle_name", "last_name", "client_birthdate", "client_address", "client_email", "user_phone"]
+  .forEach(id => document.getElementById(id).addEventListener("input", enableSubmitBtn));
+
+
+
+function cancelSubmit() {
+
+    var first_name = document.getElementById("first_name");
+var middle_name = document.getElementById("middle_name");
+var last_name = document.getElementById("last_name");
+var client_birthdate = document.getElementById("client_birthdate");
+var client_address = document.getElementById("client_address");
+var client_email = document.getElementById("client_email");
+var user_phone = document.getElementById("user_phone");
+var submit_product = document.getElementById("submit_product");
+
+
+
+submit_product.disabled = true;
+
+first_name.value = "";
+middle_name.value = "";
+last_name.value = "";
+client_birthdate.value = "";
+client_address.value = "";
+client_email.value = "";
+user_phone.value = "";
+}
+      </script>
 
 <script>
         function changePage(select) {
@@ -904,6 +975,8 @@ checkbox.checked = !checkbox.checked; // Toggle the state
             document.getElementById('approvedForm').submit();
         }
       </script>
+
+
 </body>
 
 </html>

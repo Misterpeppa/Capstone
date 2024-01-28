@@ -863,21 +863,21 @@
                         data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body" style="width:100%;">
-                    <form action="{{ route('client.store') }}" method="POST" class="add_client" id="add_client_form"><img src="assets/img/add_client.png">
+                    <form action="{{ route('client.store') }}" method="POST" class="add_client" id="add_client_form">
                     @csrf
                     <div class="mb-3 input_container">
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input class="form-control"
                                         type="text" id="first_name" data-id="first_name"
                                         placeholder="First Name"><label class="form-label" for="first_name">First
-                                        Name</label>
+                                        Name <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-first_name"><span>Please enter client first
                                             name.</span></div>
                                 </div>
                                 <div class="form-floating" style="width:100%;"><input class="form-control"
                                         type="text" id="middle_name" data-id="middle_name"
                                         placeholder="Middle Name"><label class="form-label" for="middle_name">Middle
-                                        Name</label>
+                                        Name <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-middle_name"><span>Please enter client middle
                                             name.</span></div>
                                 </div>
@@ -886,7 +886,7 @@
                                 <div class="form-floating" style="width:100%;"><input class="form-control"
                                         type="text" id="last_name" data-id="last_name"
                                         placeholder="Last Name"><label class="form-label" for="last_name">Last
-                                        Name</label>
+                                        Name <span>&nbsp;*</span></label>
                                     <div id="error-last_name" class="error-message"><span>Please enter client last
                                             name.</span></div>
                                 </div>
@@ -911,27 +911,27 @@
                             </div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
                                     id="client_birthdate" data-id="client_birthdate" placeholder="Birthdate"
-                                    type="date"><label class="form-label" for="client_birthdate">Birthdate</label>
+                                    type="date"><label class="form-label" for="client_birthdate">Birthdate <span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-client_birthdate"><span>Please enter the client
                                         birthdate.</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;">
                                 <textarea class="form-control" id="client_address" data-id="client_address" placeholder="Address"></textarea><label class="form-label"
-                                    for="client_address">Address</label>
+                                    for="client_address">Address <span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-client_address"><span>Please enter client
                                         address.</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
                                     type="email" id="client_email" data-id="client_email"
                                     placeholder="Email"><label class="form-label" for="client_email">Email
-                                    Address</label>
+                                    Address <span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-client_email"><span>Please enter a valid email
                                         address.</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
                                     type="tel" id="user_phone" data-id="user_phone"
                                     placeholder="Phone Number"><label class="form-label" for="user_phone">Phone
-                                    Number</label>
+                                    Number <span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-user_phone"><span>Please enter a valid phone
                                         number.</span></div>
                             </div>

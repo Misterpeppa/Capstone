@@ -509,6 +509,7 @@ function submitFormData(formData) {
   var manufacturing_date = document.getElementById('manufacturing_date');
   var expired_date = document.getElementById('expired_date');
   var date_stocked = document.getElementById('date_stocked');
+  var expiry_date = document.getElementById('expiry_date');
 
 
   // Set the maximum allowed date to today
@@ -519,6 +520,7 @@ function submitFormData(formData) {
   manufactured_dateInput1.max = todayString;
   expiration_dateInput.min = todayString;
   expiration_dateInput1.min = todayString;
+  expiry_date.min = todayString;
   expired_date.min = todayString;
   datestockedInput.max = todayString;
   datestockedInput1.max = todayString;
@@ -557,6 +559,9 @@ function submitFormData(formData) {
       expiration_dateInput1.focus();
       expired_date.value = "";
       expired_date.focus(); 
+
+      expiry_date.value = "";
+      expiry_date.focus();
      
       return false;
     }
@@ -595,6 +600,7 @@ function submitFormData(formData) {
     manufacturing_date,
     expired_date,
     date_stocked,
+    expiry_date,
   ];
   dateInputs.forEach((input) => {
     input.addEventListener("keydown", function (e) {

@@ -55,41 +55,7 @@
                     <div class="header_text_container">
                         <h1><strong>Appointment</strong></h1>
                     </div>
-                    <div class="btn-group split_btn" id="add_approve_appointment_split_btn" style="display: none;">
-                        <button class="btn add_Product_btn" id="approved_appointment_btn" type="button"><span
-                                class="add_Product_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25"
-                                    height="27" viewBox="0 0 25 27" fill="none">
-                                    <g clip-path="url(#clip0_6356_20985)" filter="url(#filter0_d_6356_20985)">
-                                        <path
-                                            d="M12.5 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H18C18.5304 5 19.0391 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V12M16 3V7M8 3V7M4 11H20M16 19H22M19 16V22"
-                                            stroke="white" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </g>
-                                    <defs>
-                                        <filter id="filter0_d_6356_20985" x="-2" y="0" width="28" height="28"
-                                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                            <feColorMatrix in="SourceAlpha" type="matrix"
-                                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                            <feOffset dy="2" />
-                                            <feGaussianBlur stdDeviation="1" />
-                                            <feComposite in2="hardAlpha" operator="out" />
-                                            <feColorMatrix type="matrix"
-                                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-                                            <feBlend mode="normal" in2="BackgroundImageFix"
-                                                result="effect1_dropShadow_6356_20985" />
-                                            <feBlend mode="normal" in="SourceGraphic"
-                                                in2="effect1_dropShadow_6356_20985" result="shape" />
-                                        </filter>
-                                        <clipPath id="clip0_6356_20985">
-                                            <rect width="24" height="24" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg> Add Appointment</span></button><button
-                            class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown"
-                            data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Generate Report</a></div>
-                    </div>
+                    
                     <div class="btn-group split_btn" id="add_pending_appointment_split_btn" style="display: none;">
                         <button class="btn add_Product_btn" id="pending_appointment_btn" type="button"><span
                                 class="add_Product_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25"
@@ -126,42 +92,7 @@
                             data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
                         <div class="dropdown-menu"><a class="dropdown-item" href="#">Generate Report</a></div>
                     </div>
-                    <div class="btn-group split_btn" id="add_rejected_appointment_split_btn" style="display: none;">
-                        <button class="btn add_Product_btn" id="reject_appointment_btn" type="button"><span
-                                class="add_Product_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25"
-                                    height="27" viewBox="0 0 25 27" fill="none">
-                                    <g clip-path="url(#clip0_6356_20985)" filter="url(#filter0_d_6356_20985)">
-                                        <path
-                                            d="M12.5 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H18C18.5304 5 19.0391 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V12M16 3V7M8 3V7M4 11H20M16 19H22M19 16V22"
-                                            stroke="white" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </g>
-                                    <defs>
-                                        <filter id="filter0_d_6356_20985" x="-2" y="0" width="28" height="28"
-                                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                            <feColorMatrix in="SourceAlpha" type="matrix"
-                                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                                                result="hardAlpha" />
-                                            <feOffset dy="2" />
-                                            <feGaussianBlur stdDeviation="1" />
-                                            <feComposite in2="hardAlpha" operator="out" />
-                                            <feColorMatrix type="matrix"
-                                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-                                            <feBlend mode="normal" in2="BackgroundImageFix"
-                                                result="effect1_dropShadow_6356_20985" />
-                                            <feBlend mode="normal" in="SourceGraphic"
-                                                in2="effect1_dropShadow_6356_20985" result="shape" />
-                                        </filter>
-                                        <clipPath id="clip0_6356_20985">
-                                            <rect width="24" height="24" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg> Add Appointment</span></button>
-                        <button class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown"
-                            data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Generate Report</a></div>
-                    </div>
+                    
                 </div>
                 <div class="d-flex flex-column align-items-start align-self-stretch"
                     style="gap: var(--Spacing-spacing-xs, 12px);">
@@ -1696,10 +1627,8 @@
                 <div class="modal-body" style="width:100%;">
                     <form id="add_appointment_form-1" class="add_client">
                         <div class="mb-3 input_container">
-                            <div class="form-floating" style="width:100%;"><select class="form-select"
-                                    id="owner_name" data-id="owner_name">
-                                    <option value="" selected="">Select an owner</option>
-                                </select><label class="form-label" for="owner_name">Owner
+                            <div class="form-floating" style="width:100%;">
+                            <input class="form-control" id="owner_name" data-id="owner_name" placeholder="Owner Name"><label class="form-label" for="owner_name">Owner
                                     Name<span>&nbsp;*</span></label>
                                 <div id="error-owner_name-2" class="error-message"><span>• Please enter client first
                                         name.</span></div>
@@ -1709,10 +1638,8 @@
                             <div class="form-floating" style="width:100%;"><input class="form-control"
                                     type="text" id="email" data-id="email" placeholder="Email"><label
                                     class="form-label" for="email">Email<span>&nbsp;*</span></label></div>
-                            <div class="form-floating" style="width:100%;"><select class="form-select"
-                                    id="pet_name" data-id="pet_name">
-                                    <option value="" selected="">Select a pet</option>
-                                </select><label class="form-label" for="pet_name">Pet
+                            <div class="form-floating" style="width:100%;"><input class="form-control"
+                                    id="pet_name" data-id="pet_name" placeholder="Pet Name"> <label class="form-label" for="pet_name">Pet
                                     Name<span>&nbsp;*</span></label>
                                 <div id="error-pet_name-1" class="error-message"><span>• Please enter client first
                                         name.</span></div>

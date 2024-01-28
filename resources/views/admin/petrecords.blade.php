@@ -1080,19 +1080,22 @@
 			<div class="modal-content add_pet_record_modal">
 				<div class="modal-header">
 					<h1 class="modal-title">Add Pet Record</h1>
-					<button class="btn-close" id="close_pet_modal" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+					<button class="btn-close" id="close_pet_modal" onClick="cancelSubmitPet()" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
 					<form action="{{ route('emr.pet') }}" method="POST" id="add_pet_form-1" class="add_client">
                         @csrf
 						<div class="mb-3 input_container">
                             <div class="form-floating align-self-stretch">
-                                    <select class="admin_petInfo_select form-control w-100" id="name" name="owner_id" placeholder="Owner Name">
-                                        <option value=""disabled selected>Select Owner: </option>
-                                        @foreach ($owners as $owners)
+								<input class="admin_petInfo_select form-control w-100" list="options" id="name" name="owner_id" placeholder="Owner Name">
+								<label class="form-label" for="name">Owner Name<span>&nbsp;*</span></label>
+									<datalist id="options">
+									@foreach ($owners as $owners)
                                             <option value="{{ $owners->id }}">{{ $owners->first_name }} {{ $owners->middle_name }} {{ $owners->last_name }} {{ $owners->suffix }}</option>
                                         @endforeach
-                                    </select>
+									</datalist>
+                                    
+									
                                 </div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
@@ -1125,7 +1128,7 @@
 								</div>
 								<div class="form-floating" style="width:100%;">
 									<select class="form-select" name="breed" id="breed-1" data-id="breed-1" disabled="" placeholder="Breed">
-										<option value="none" selected="">Select a Pet Type first.</option>
+										<option value="" selected="">Select a Pet Type first.</option>
 									</select>
 									<label class="form-label" for="breed-1">Breed<span>&nbsp;*</span></label>
 									<div id="error-breed-1" class="error-message"><span>• Please select a breed.</span></div>
@@ -1168,8 +1171,8 @@
 						</div>
 				</div>
 				<div class="modal-footer add_product_button">
-					<button class="btn clear_form" id="clear_form-1" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_pet" id="submit_Pet-1" type="submit" value="submit" title="Complete the fields first to make this clickable."><span class="submit_product_base">Submit</span></button>
+					<button class="btn clear_form" id="clear_form-1" onClick="cancelSubmitPet()" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
+					<button class="btn submit_pet" id="submit_Pet-1" type="submit" disabled value="submit" title="Complete the fields first to make this clickable."><span class="submit_product_base">Submit</span></button>
 				</div>
                 </form>
 			</div>
@@ -1628,6 +1631,77 @@ $(document).ready(function() {
 });
 </script>
 <script>
+
+function enableSubmitPet() {
+  var name = document.getElementById("name").value;
+  var pet_name = document.getElementById("pet_name-1").value;
+  var gender = document.getElementById("gender-1").value;
+  var petType = document.getElementById("pet_type-1").value;
+  var breed = document.getElementById("breed-1").value;
+  var pet_birthdate = document.getElementById("pet_birthdate-1").value;
+  var weight = document.getElementById("weight-1").value;
+  var sterilization_status = document.getElementById("sterilization_status-1").value;
+
+  var submit_Pet = document.getElementById("submit_Pet-1");
+
+  // Add additional validation conditions as needed
+  if (
+    name.trim() !== "" &&
+    pet_name.trim() !== "" &&
+	gender.trim() !== "" &&
+	petType.trim() !== "" &&
+	breed.trim() !== "" &&
+	pet_birthdate.trim() !== "" &&
+	weight.trim() !== "" &&
+	sterilization_status.trim() !== ""
+	
+  ) {
+    submit_Pet.removeAttribute("disabled");
+    submit_Pet.classList.remove("disabled");
+  } else {
+    submit_Pet.setAttribute("disabled", true);
+    submit_Pet.classList.add("disabled");
+  }
+}
+
+// Example: Call enableSubmitButton() on input change events
+document.getElementById("name").addEventListener("change", enableSubmitPet);
+document.getElementById("pet_name-1").addEventListener("input", enableSubmitPet);
+document.getElementById("gender-1").addEventListener("change", enableSubmitPet);
+document.getElementById("pet_type-1").addEventListener("change", enableSubmitPet);
+document.getElementById("breed-1").addEventListener("change", enableSubmitPet);
+document.getElementById("pet_birthdate-1").addEventListener("input", enableSubmitPet);
+document.getElementById("weight-1").addEventListener("input", enableSubmitPet);
+document.getElementById("sterilization_status-1").addEventListener("change", enableSubmitPet);
+
+
+
+function cancelSubmitPet() {
+
+	var name = document.getElementById("name");
+  var pet_name = document.getElementById("pet_name-1");
+  var gender = document.getElementById("gender-1");
+  var petType = document.getElementById("pet_type-1");
+  var breed = document.getElementById("breed-1");
+  var pet_birthdate = document.getElementById("pet_birthdate-1");
+  var weight = document.getElementById("weight-1");
+  var sterilization_status = document.getElementById("sterilization_status-1");
+
+  var submit_Pet = document.getElementById("submit_Pet-1");
+
+
+  submit_Pet.disabled = true;
+
+  name.value = "";
+  pet_name.value = "";
+  gender.value = "";
+  petType.value = "";
+  breed.value = "";
+  pet_birthdate.value = "";
+  weight.value = "";
+  sterilization_status.value = "";
+}
+
 	function enableSubmitDiagnosis() {
 	var diagnosis = document.getElementById("diagnosis").value;
 	var diagnosis_date = document.getElementById("diagnosis_date").value;
@@ -1807,6 +1881,8 @@ function cancelSurgery() {
 
 
 </script>
+
+
 
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
