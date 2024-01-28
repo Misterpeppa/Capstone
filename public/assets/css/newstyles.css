@@ -876,7 +876,6 @@ main{
     background-color: #E8F0F0;
     overflow: auto;
     width: 100%;
-    max-height: 300vh;
   }
   
   .rectangle {
@@ -1238,7 +1237,7 @@ main{
     justify-content: center;
   }
   
-  .modal-content.add_client_modal {
+  .modal-content.add_client_modal, .modal-content.add_appointment_modal {
     display: flex;
     width: 800px!important;
     padding: var(--spacing-spacing-m, 24px);
@@ -1539,7 +1538,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .submit_surgery:disabled, .submit_immunization:disabled, .submit_product:disabled, .edit_save_changes:disabled, .add_stock:disabled, .add:disabled, .archive_confirm:disabled, .submit_pet:disabled, .signin_btn:disabled, .signin_btn:disabled, .reschedule_btn:disabled {
     border-radius: var(--radius-s, 8px);
     opacity: 0.7;
-    background: var(--colors-actions-action, #045B62);
+    background: var(--colors-actions-action, #045B62) !important;
   }
   
   .submit_product.disabled, .submit_diagnosis:disabled, .submit_vaccination:disabled, .submit_surgery:disabled {

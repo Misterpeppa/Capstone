@@ -941,7 +941,7 @@
                 <div class="modal-footer add_product_button"><button class="btn clear_form" id="clear_form"
                         aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear
                             Form</span></button><button class="btn submit_product" id="submit_Client"
-                        type="submit"><span class="submit_product_base">Submit</span></button></div>
+                        type="submit" ><span class="submit_product_base">Submit</span></button></div>
             </div>
         </div>
     </div>
@@ -954,6 +954,7 @@
                         data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body" style="width:100%;">
+                
                     <form class="add_client"
                         id="add_client_form-1">
                         <div class="mb-3 input_container">
@@ -961,14 +962,14 @@
                                 <div class="form-floating" style="width:100%;"><input class="form-control"
                                         type="text" name="first_name" id="first_name-1" data-id="first_name"
                                         placeholder="First Name"><label class="form-label" for="first_name">First
-                                        Name</label>
+                                        Name <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-first_name-1"><span>Please enter client first
                                             name.</span></div>
                                 </div>
                                 <div class="form-floating" style="width:100%;"><input class="form-control"
                                         type="text" name="middle_name" id="middle_name-1" data-id="middle_name"
                                         placeholder="Middle Name"><label class="form-label" for="middle_name">Middle
-                                        Name</label>
+                                        Name <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-middle_name-1"><span>Please enter client
                                             middle name.</span></div>
                                 </div>
@@ -977,7 +978,7 @@
                                 <div class="form-floating" style="width:100%;"><input class="form-control"
                                         type="text" name="last_name" id="last_name-1" data-id="last_name"
                                         placeholder="Last Name"><label class="form-label" for="last_name">Last
-                                        Name</label>
+                                        Name <span>&nbsp;*</span></label>
                                     <div id="error-last_name-1" class="error-message"><span>Please enter client last
                                             name.</span></div>
                                 </div>
@@ -1004,21 +1005,22 @@
                             <div class="form-floating" style="width:100%;"><input class="form-control"
                                     name="birthdate" id="client_birthdate-1" data-id="client_birthdate"
                                     placeholder="Birthdate" type="date"><label class="form-label"
-                                    for="client_birthdate">Birthdate</label>
+                                    for="client_birthdate">Birthdate <span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-client_birthdate-1"><span>Please enter the
                                         client birthdate.</span></div>
                             </div>
+                           
                             <div class="form-floating" style="width:100%;"><input class="form-control"
                                     type="email" name="email" id="client_email-1" data-id="client_email"
                                     placeholder="Email"><label class="form-label" for="client_email">Email
-                                    Address</label>
+                                    Address <span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-client_email-1"><span>Please enter a valid
                                         email address.</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
                                     type="tel" name="phone" id="user_phone-1" data-id="user_phone"
                                     placeholder="Phone Number"><label class="form-label" for="user_phone">Phone
-                                    Number</label>
+                                    Number <span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-user_phone-1"><span>Please enter a valid phone
                                         number.</span></div>
                             </div>
@@ -1027,7 +1029,7 @@
                 <div class="modal-footer add_product_button">
                     <button class="btn clear_form" id="clear_form-1" aria-label="Clear Form" role="button"
                         type="button"><span class="clear_form_base">Clear Form</span></button>
-                    <button class="btn submit_product" id="submit_Client-1"><span
+                    <button class="btn submit_product" id="submit_Client-1" disabled><span
                             class="submit_product_base">Submit</span></button>
                 </div>
                 </form>
@@ -1607,6 +1609,73 @@
     });
 
 });
+    </script>
+    <script>
+function enableSubmitBtn() {
+  var first_name1 = document.getElementById("first_name-1").value;
+  var middle_name1 = document.getElementById("middle_name-1").value;
+  var last_name1 = document.getElementById("last_name-1").value;
+  var client_birthdate1 = document.getElementById("client_birthdate-1").value;
+  var client_email1 = document.getElementById("client_email-1").value;
+  var user_phone1 = document.getElementById("user_phone-1").value;
+
+  var submit_Client1 = document.getElementById("submit_Client-1");
+
+  // Add additional validation conditions as needed
+  if (
+    first_name1.trim() !== "" &&
+    middle_name1.trim() !== "" &&
+    last_name1.trim() !== "" &&
+    client_birthdate1.trim() !== "" &&
+    client_email1.trim() !== "" &&
+    user_phone1.trim() !== ""
+  ) {
+    submit_Client1.removeAttribute("disabled");
+    submit_Client1.classList.remove("disabled");
+  } else {
+    submit_Client1.setAttribute("disabled", true);
+    submit_Client1.classList.add("disabled");
+  }
+
+  // Logging values for debugging
+  console.log('first_name:', first_name1);
+  console.log('middle_name:', middle_name1);
+  console.log('last_name:', last_name1);
+  console.log('client_birthdate:', client_birthdate1);
+  console.log('client_email:', client_email1);
+  console.log('user_phone:', user_phone1);
+  console.log('submit_Client disabled:', submit_Client1.disabled);
+}
+
+document.getElementById("first_name-1").addEventListener("input", enableSubmitBtn);
+document.getElementById("middle_name-1").addEventListener("input", enableSubmitBtn);
+document.getElementById("last_name-1").addEventListener("input", enableSubmitBtn);
+document.getElementById("client_birthdate-1").addEventListener("input", enableSubmitBtn);
+document.getElementById("client_email-1").addEventListener("input", enableSubmitBtn);
+document.getElementById("user_phone-1").addEventListener("input", enableSubmitBtn);
+
+
+ var user_phone1 = document.getElementById('user_phone-1');
+
+
+    function PhoneNumberInputLimit(inputElement) {
+    inputElement.addEventListener('input', function () {
+        if (this.value.length > 11) {
+        this.value = this.value.slice(0, 11);
+    }
+
+    // Ensure the first two characters are '09'
+    if (this.value.length >= 2 && this.value.slice(0, 2) !== '09') {
+        // Adjust the input to start with '09'
+        this.value = '09' + this.value.slice(2);
+    }
+    });
+}
+    
+    
+PhoneNumberInputLimit(user_phone1); 
+
+
     </script>
     <script>
         function changePage(select) {

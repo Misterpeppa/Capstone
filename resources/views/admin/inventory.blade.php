@@ -1172,7 +1172,7 @@
         </div>
     </div>
     <div class="modal fade show" role="dialog" tabindex="-1" id="add_product_success">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content success_modal">
                 <div class="modal-header success_header">
                     <div class="success_icon_container"><span class="success_icon"><svg
@@ -1201,7 +1201,7 @@
         </div>
     </div>
     <div class="modal fade show" role="dialog" tabindex="-1" id="save_changes_success">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content success_modal">
                 <div class="modal-header success_header">
                     <div class="success_icon_container"><span class="success_icon"><svg
@@ -1223,14 +1223,14 @@
                 <div class="modal-body success_message">
                     <div>
                         <h1>Success!</h1>
-                        <p>Your changes have been successfully saved.</p>
+                        <p>Product was successfully added.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal fade show" role="dialog" tabindex="-1" id="add_product_discard">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content discard_modal">
                 <div class="modal-header discard_header">
                     <div class="discard_icon_container"><span class="discard_icon"><svg

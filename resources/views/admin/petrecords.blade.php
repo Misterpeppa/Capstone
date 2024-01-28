@@ -1681,6 +1681,7 @@ function cancelSubmitPet() {
 	var name = document.getElementById("name");
   var pet_name = document.getElementById("pet_name-1");
   var gender = document.getElementById("gender-1");
+  var age = document.getElementById("age-1");
   var petType = document.getElementById("pet_type-1");
   var breed = document.getElementById("breed-1");
   var pet_birthdate = document.getElementById("pet_birthdate-1");
@@ -1697,6 +1698,7 @@ function cancelSubmitPet() {
   gender.value = "";
   petType.value = "";
   breed.value = "";
+  age.value = "";
   pet_birthdate.value = "";
   weight.value = "";
   sterilization_status.value = "";

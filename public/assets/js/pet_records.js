@@ -21,7 +21,10 @@ function capitalizeFirstLetterOfWords(inputElement) {
     });
 }
     
+var name = document.getElementById('name');
+
 capitalizeFirstLetterOfWords(pet_nameInput);
+capitalizeFirstLetterOfWords(name);
 
 function setupBreedOptions(petTypeId, breedId, breedOptions) {
     // Get references to the pet type and breed select elements

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var add_pet_btn = document.getElementById('add_pet_btn');
     var archive_button = document.getElementById('archive_button');
 
-    var add_client_modal = new bootstrap.Modal(document.getElementById('add_client_modal'));
+    var add_client_modal = new bootstrap.Modal(document.getElementById('add_client_modal-1'));
     var archive_modal = new bootstrap.Modal(document.getElementById('archive_modal'));
     var archive_modal1 = new bootstrap.Modal(document.getElementById('archive_modal-1'));
     var archive_modal2 = new bootstrap.Modal(document.getElementById('archive_modal-2'));
@@ -301,7 +301,7 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
     edit_client_detail.addEventListener('click', handleEditClientDetailClick);
 
     
- const inputs = ['first_name', 'middle_name', 'last_name'];
+ const inputs = ['first_name-1', 'middle_name-1', 'last_name-1'];
 
 inputs.forEach(inputId => {
     document.getElementById(inputId).addEventListener('input', function () {
@@ -326,110 +326,6 @@ inputs.forEach(inputId => {
 });   
     
     
-    
-function setupFormValidation(inputIds, buttonId, clearButtonId, close_client_modalId) {
-    var inputs = inputIds.map(id => document.getElementById(id));
-    var submitButton = document.getElementById(buttonId);
-    var clearButton = document.getElementById(clearButtonId);
-    var close_client_btn = document.getElementById(close_client_modalId);
-
-    // Function to check if all required input fields have values
-    function areAllInputsFilled() {
-        return inputs.every(input => {
-            if (input.tagName === 'SELECT') {
-                // For select elements, check if a valid option is selected
-                return input.options[input.selectedIndex].value.trim() !== '';
-            } else {
-                // For other input types, check if the value is present
-                return input.value.trim() !== '';
-            }
-        });
-    }
-
-    // Disable the submit button by default
-    submitButton.disabled = true;
-
-    // Add an event listener to each input field for the 'input' event
-    inputs.forEach(input => input.addEventListener('input', enableSubmitButton));
-
-    function enableSubmitButton() {
-        // Enable or disable the submit button based on the condition
-        submitButton.disabled = !areAllInputsFilled();
-    }
-
-    // Add an event listener to the submit button for the 'click' event
-    submitButton.addEventListener('click', function () {
-        console.log("Submit button clicked!");
-        // Add your logic for handling the form submission
-        // For example, you can call a function to process the form data
-
-        // Reset all input fields
-        inputs.forEach(input => {
-            if (input.tagName === 'SELECT') {
-                // For select elements, set the selectedIndex to the default one
-                input.selectedIndex = 0;
-            } else {
-                // For other input types, set the value to an empty string
-                input.value = '';
-            }
-        });
-
-        // Disable the submit button after submission
-        submitButton.disabled = true;
-    });
-
-    // Add an event listener to the clear button for the 'click' event
-    clearButton.addEventListener('click', function () {
-        // Clear all input fields
-        inputs.forEach(input => {
-            if (input.tagName === 'SELECT') {
-                // For select elements, set the selectedIndex to the default one
-                input.selectedIndex = 0;
-            } else {
-                // For other input types, set the value to an empty string
-                input.value = '';
-            }
-        });
-
-        // Disable the submit button after clearing
-        submitButton.disabled = true;
-    });
-    // Disable or enable the submit button based on the initial state of the form
-    submitButton.disabled = !areAllInputsFilled();
-    
-    close_client_btn.addEventListener('click', function () {
-        // Clear all input fields
-        inputs.forEach(input => {
-            if (input.tagName === 'SELECT') {
-                // For select elements, set the selectedIndex to the default one
-                input.selectedIndex = 0;
-            } else {
-                // For other input types, set the value to an empty string
-                input.value = '';
-            }
-        });
-
-        // Disable the submit button after clearing
-        submitButton.disabled = true;
-    });
-}
-
-
-   
- 
-     
-
-
-
-
-
-// Example usage for the first set of inputs, submit button, and clear button
-setupFormValidation(
-    ['first_name', 'middle_name', 'last_name', 'client_birthdate', 'client_address', 'client_email', 'user_phone'],
-    'submit_Client',
-    'clear_form', 
-    'close_client_modal'
-);
 
 
 
