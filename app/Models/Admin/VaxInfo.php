@@ -55,9 +55,10 @@ class VaxInfo extends Model
     }
     public function scopeInventory($query, $request)
     {
-         $query->where(function ($query) use ($request) {
-            $request->input('inventoryCheck')=='on';
-            $query->orWhere('source', 'LIKE', 'Inventory');
+        $query->where(function ($query) use ($request){
+            if ($request->has('inventoryCheck') && $request->input('inventoryCheck') == 'on') {
+                $query->where('source', 'LIKE', '&Inventory%');
+            }
         });
     }
 }
