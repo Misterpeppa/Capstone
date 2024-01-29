@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Log;
 
 class PetRecord extends Model
 {
@@ -49,10 +50,24 @@ class PetRecord extends Model
     }
     public function scopePetrecord($query, $request)
     {
-        if ($request->has('petrecordCheck') && $request->input('petrecordCheck') == 'on') {
-            $query->where('source', 'LIKE', 'Pet Record');
-        }
+        $query->where(function ($query) use ($request){
+            if ($request->has('petrecordCheck') && $request->input('petrecordCheck') == 'on') {
+                $query->where('source', 'LIKE', '&Pet Record%');
+            }
+        });
     }
-    
+    public function scopeSpecies($query, $request)
+    {
+        $query->whereHas('pet', function ($query) use ($request) {
+            if ($request->has('dogCheck') && $request->input('dogCheck') === 'on') {
+                $query->orWhere('species', 'like', '%Dog%');
+            }
+
+            if ($request->has('catCheck') && $request->input('catCheck') === 'on') {
+                $query->orWhere('species', 'like', '%Cat%');
+            }
+        });
+    }
+
 
 }

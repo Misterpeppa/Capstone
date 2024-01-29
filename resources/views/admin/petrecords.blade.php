@@ -63,13 +63,13 @@
 				</div>
 				<div id="client_container" class="client_container">
 					<div class="container_header">
-					<form action="" id="approvedForm">
+					<form action="" method="GET" role="search" id="petrecordForm">
                                     <div class="left_part_product_header">
                                         <div class="search_container">
                                             <input type="text" class="search_input" name="search"
-                                            value="{{ request('search') }}" placeholder="Search Appointment">
+                                            value="{{ request('search') }}" placeholder="Search Pet Record">
                                         </div>
-                                        <button type="submit" form="approvedForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+                                        <button type="submit" form="petrecordForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
@@ -96,40 +96,7 @@
                                               </svg>Filter By
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li class="dropdown-item ">
-                                                  <div class="form-check form-switch">
-                                                    <!-- Size of the default switch will increase 1.8 times -->
-                                                    <input class="form-check-input my-3"
-                                                          {{ request()->input('approvedCheck') == 'on' ? 'checked' : '' }}
-                                                           name ="approvedCheck" 
-                                                           type="checkbox" 
-                                                           role="switch" 
-                                                           id="approvedCheck" 
-                                                           style="transform: scale(1.5);"
-                                                           >
-                                                    <label class="form-check-label fs-6 my-1" 
-                                                           for="approvedCheck" 
-                                                           >Approved</label>
-                                                  </div>
-                                          
-                                                </li>
-                                                <li class="dropdown-item ">
-                                                  <div class="form-check form-switch">
-                                                    <!-- Size of the default switch will increase 1.8 times -->
-                                                    <input class="form-check-input my-3"
-                                                          {{ request()->input('completedCheck') == 'on' ? 'checked' : '' }}
-                                                           name ="completedCheck" 
-                                                           type="checkbox" 
-                                                           role="switch" 
-                                                           id="completedCheck" 
-                                                           style="transform: scale(1.5);"
-                                                           >
-                                                  
-                                                    <label class="form-check-label fs-6 my-1" 
-                                                           for="completedCheck" 
-                                                           >Completed</label>
-                                                  </div>
-                                                </li>
+                                                
                                                 <li class="dropdown-item ">
                                                   <div class="form-check form-switch">
                                                     <!-- Size of the default switch will increase 1.8 times -->
@@ -225,7 +192,7 @@
                                                           <button type = "reset" class="btn cancel_filter btn-sm me-3"><span class="cancel_filter_base">Cancel</span></button>
                                                       </div>
                                                       <div class="col-md-5 text-center">
-                                                          <button type="submit" form="approvedForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply Sort</span></button>
+                                                          <button type="submit" form="petrecordForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply Sort</span></button>
                                                       </div>
                                                   </div>
                                               </li>
