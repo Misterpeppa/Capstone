@@ -82,40 +82,39 @@ class ClientController extends Controller
     
     public function store(Request $request)
     {
-        $email = $request->input('email');
-        $phone = $request->input('phone');
-        $first_name = $request->input('first_name');
-        $middle_name = $request->input('middle_name');
-        $last_name = $request->input('last_name');
-        $gender = $request->input('gender');
-        $birthdate = $request->input('birthdate');
-        $emailExists = Clients::where('email', $request->email)->exists();
-        if ($emailExists) {
-            return redirect()->back()->withErrors(['email' => 'The email has already been taken.']);
-        }
         $request->validate([
-            'suffix' => 'required',
+            'email' => 'required|email|unique:clients,email',
+            'phone' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'gender' => 'nullable', // Make gender nullable
+            'birthdate' => 'required',
+            'suffix' => 'nullable', // Make suffix nullable
             'specify_suffix' => 'required_if:suffix,Other',
         ]);
-        $suffix = $request->input('suffix');
-        $specifySuffix = $request->input('specify_suffix');
 
         $clients = new Clients();
-        $clients->first_name = $first_name;
-        $clients->middle_name = $middle_name;
-        $clients->last_name = $last_name;
-        $clients->gender = $gender;
-        $clients->birthdate = $birthdate;
-        $clients->email = $email;
-        $clients->phone = $phone;
+        $clients->first_name = $request->input('first_name');
+        $clients->middle_name = $request->input('middle_name');
+        $clients->last_name = $request->input('last_name');
+        $clients->gender = $request->input('gender');
+        $clients->birthdate = $request->input('birthdate');
+        $clients->email = $request->input('email');
+        $clients->phone = $request->input('phone');
+        
+        $suffix = $request->input('suffix');
+        $specifySuffix = $request->input('specify_suffix');
         if ($suffix === 'Other') {
             $clients->suffix = $specifySuffix;
         } else {
             $clients->suffix = $suffix;
         }
+
         $clients->save();
+
         return redirect()->route('admin_client')->with('success', 'Client registered successfully');
     }
+
     public function editClient(Request $request)
     {
         $clients = Clients::find($request->input('client_id')) ?? new Clients();

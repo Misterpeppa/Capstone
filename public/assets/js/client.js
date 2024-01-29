@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var add_pet_btn = document.getElementById('add_pet_btn');
     var archive_button = document.getElementById('archive_button');
 
-    var add_client_modal = new bootstrap.Modal(document.getElementById('add_client_modal-1'));
+    var add_client_modal = new bootstrap.Modal(document.getElementById('add_client_modal'));
+    var add_client_modal1 = new bootstrap.Modal(document.getElementById('add_client_modal-1'));
     var archive_modal = new bootstrap.Modal(document.getElementById('archive_modal'));
     var archive_modal1 = new bootstrap.Modal(document.getElementById('archive_modal-1'));
     var archive_modal2 = new bootstrap.Modal(document.getElementById('archive_modal-2'));
@@ -23,16 +24,13 @@ document.addEventListener('DOMContentLoaded', function () {
   });
     
     add_client_btn.addEventListener('click', function () {
-    add_client_modal.show();
+    add_client_modal1.show();
   });
     
     add_client_btn_1.addEventListener('click', function () {
-    add_client_modal.show();
+    add_client_modal1.show();
   });
-    
-    add_pet_btn.addEventListener('click', function () {
-    add_pet_record_modal.show();
-  });
+
     
     submit_Client.addEventListener('click', function () {
         add_client_modal.hide();
@@ -237,6 +235,7 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
         }, 2000);
       });
     
+    
     function showAddClientSplitBtn() {
     var addClientSplitBtn = document.getElementById("add_client_split_btn");
     if (addClientSplitBtn) {
@@ -273,6 +272,10 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
         edit_client.style.display = 'none';
     }
 
+ 
+        
+
+
 
        
     
@@ -299,9 +302,67 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
 
     // Add event listener to the edit_prod_detail button
     edit_client_detail.addEventListener('click', handleEditClientDetailClick);
+    
+
+
+// Add a click event listener to each "Archive" menu inside a pet_card
+document.querySelectorAll('.pet_card .dropdown-menu.more_button .dropdown-item#Archive').forEach(function (archiveMenu) {
+    archiveMenu.addEventListener('click', function (event) {
+        // Stop the event from propagating to the parent dropdown, which might hide the dropdown prematurely
+        event.stopPropagation();
+
+        // Find the closest parent with the class 'pet_card'
+        var petCard = this.closest('.pet_card');
+
+        // Check if a pet_card was found
+        if (petCard) {
+            // Get the unique ID from the pet_card's data-pet-id attribute
+            var petCardId = petCard.dataset.petId;
+
+            // Call the archivePetCard function with the specific petCardId
+            archivePetCard(petCardId);
+        }
+    });
+});
 
     
- const inputs = ['first_name-1', 'middle_name-1', 'last_name-1'];
+
+function archivePetCard(petCardId) {
+    var archive_modal2 = document.getElementById('archive_modal-2');
+
+    if (archive_modal2) {
+        // Display the modal using Bootstrap's modal methods
+        var bootstrapModal = new bootstrap.Modal(archive_modal2);
+        bootstrapModal.show();
+
+        // Optionally, you can attach an event listener to the modal's confirm button
+        var confirmButton = document.getElementById('archive_confirm_button-2');
+
+        if (confirmButton) {
+            confirmButton.addEventListener('click', function () {
+                // User confirmed the archiving action
+                // Add your logic for this action
+
+                var pet_card = document.getElementById(petCardId);
+
+                if (pet_card) {
+                    // Hide or remove the pet_card based on your requirements
+                    pet_card.style.display = 'none';
+
+                    // Optionally, you can add an animation or confirmation dialog before archiving
+                }
+
+                // Close the archive_modal after archiving
+                bootstrapModal.hide();
+            });
+        }
+    }
+
+    // You can add additional logic here to perform any other actions related to archiving
+    // For example, you might want to make an API request to update the server that the pet is archived.
+}
+    
+ const inputs = ['first_name', 'middle_name', 'last_name', 'first_name-1', 'middle_name-1', 'last_name-1', 'pet_name', 'pet_name-1', 'first_name-2', 'middle_name-2', 'last_name-2'];
 
 inputs.forEach(inputId => {
     document.getElementById(inputId).addEventListener('input', function () {
@@ -326,6 +387,144 @@ inputs.forEach(inputId => {
 });   
     
     
+    
+function setupFormValidation(inputIds, buttonId, clearButtonId, close_client_modalId) {
+    var inputs = inputIds.map(id => document.getElementById(id));
+    var submitButton = document.getElementById(buttonId);
+    var clearButton = document.getElementById(clearButtonId);
+    var close_client_btn = document.getElementById(close_client_modalId);
+
+    // Function to check if all required input fields have values
+    function areAllInputsFilled() {
+        return inputs.every(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, check if a valid option is selected
+                return input.options[input.selectedIndex].value.trim() !== '';
+            } else {
+                // For other input types, check if the value is present
+                return input.value.trim() !== '';
+            }
+        });
+    }
+
+    // Disable the submit button by default
+    submitButton.disabled = true;
+
+    // Add an event listener to each input field for the 'input' event
+    inputs.forEach(input => input.addEventListener('input', enableSubmitButton));
+
+    function enableSubmitButton() {
+        // Enable or disable the submit button based on the condition
+        submitButton.disabled = !areAllInputsFilled();
+    }
+
+    // Add an event listener to the submit button for the 'click' event
+    submitButton.addEventListener('click', function () {
+        console.log("Submit button clicked!");
+        // Add your logic for handling the form submission
+        // For example, you can call a function to process the form data
+
+        // Reset all input fields
+        inputs.forEach(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, set the selectedIndex to the default one
+                input.selectedIndex = 0;
+            } else {
+                // For other input types, set the value to an empty string
+                input.value = '';
+            }
+        });
+
+        // Disable the submit button after submission
+        submitButton.disabled = true;
+    });
+
+    // Add an event listener to the clear button for the 'click' event
+    clearButton.addEventListener('click', function () {
+        // Clear all input fields
+        inputs.forEach(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, set the selectedIndex to the default one
+                input.selectedIndex = 0;
+            } else {
+                // For other input types, set the value to an empty string
+                input.value = '';
+            }
+        });
+
+        // Disable the submit button after clearing
+        submitButton.disabled = true;
+    });
+    // Disable or enable the submit button based on the initial state of the form
+    submitButton.disabled = !areAllInputsFilled();
+    
+    close_client_btn.addEventListener('click', function () {
+        // Clear all input fields
+        inputs.forEach(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, set the selectedIndex to the default one
+                input.selectedIndex = 0;
+            } else {
+                // For other input types, set the value to an empty string
+                input.value = '';
+            }
+        });
+
+        // Disable the submit button after clearing
+        submitButton.disabled = true;
+    });
+}
+
+
+   
+ 
+     
+
+
+
+
+
+// Example usage for the first set of inputs, submit button, and clear button
+setupFormValidation(
+    ['first_name', 'middle_name', 'last_name', 'client_birthdate', 'client_address', 'client_email', 'user_phone'],
+    'submit_Client',
+    'clear_form', 
+    'close_client_modal'
+);
+    
+
+    
+
+// Example usage for the second set of inputs, submit button, and clear button
+setupFormValidation(
+    ['first_name-1', 'middle_name-1', 'last_name-1', 'client_birthdate-1', 'client_address-1', 'client_email-1', 'user_phone-1'],
+    'submit_Client-1',
+    'clear_form-1',
+    'close_client_modal-1'
+);
+    
+    
+
+// Example usage for the third set of inputs, submit button, and clear button
+setupFormValidation(
+    ['pet_name', 'pet_type', 'breed', 'gender', 'pet_birthdate', 'age', 'weight', 'sterilization_status'],
+    'submit_pet',
+    'clear_form-2'
+);
+
+// Example usage for the fourth set of inputs, submit button, and clear button
+setupFormValidation(
+    ['pet_name-1', 'pet_type-1', 'breed-1', 'gender-1', 'pet_birthdate-1', 'age-1', 'weight-1', 'sterilization_status-1'],
+    'submit_pet-1',
+    'clear_form-3'
+);
+
+// Example usage for the fifth set of inputs, submit button, and clear button
+setupFormValidation(
+    ['pet_name-2', 'pet_type-2', 'breed-2', 'gender-2', 'pet_birthdate-2', 'age-2', 'weight-2', 'sterilization_status-2'],
+    'submit_pet-2',
+    'clear_form-4'
+);
 
 
 
@@ -356,7 +555,23 @@ var address = document.getElementById("client_address");
 var email = document.getElementById("client_email");
 var user_phone = document.getElementById('user_phone');
 
+var firstName1 = document.getElementById("first_name-1");
+var middleName1 = document.getElementById("middle_name-1");
+var lastName1 = document.getElementById("last_name-1");
+var suffix1 = document.getElementById("suffix-1");
+var birthdate1 = document.getElementById("client_birthdate-1");
+var address1 = document.getElementById("client_address-1");
+var email1 = document.getElementById("client_email-1");
+var user_phone1 = document.getElementById('user_phone-1');
 
+var firstName2 = document.getElementById("first_name-2");
+var middleName2 = document.getElementById("middle_name-2");
+var lastName2 = document.getElementById("last_name-2");
+var suffix2 = document.getElementById("suffix-2");
+var birthdate2 = document.getElementById("client_birthdate-2");
+var address2 = document.getElementById("client_address-2");
+var email2 = document.getElementById("client_email-2");
+var user_phone2 = document.getElementById('user_phone-2');
 
 //error messages IDs
 var errorFname = document.getElementById('error-first_name');
@@ -367,7 +582,49 @@ var erroraddress = document.getElementById('error-client_address');
 var erroremail = document.getElementById('error-client_email');
 var erroruser_phone = document.getElementById('error-user_phone');
 
+var errorFname1 = document.getElementById('error-first_name-1');
+var errormiddleName1 = document.getElementById('error-middle_name-1');
+var errorlastName1 = document.getElementById('error-last_name-1');
+var errorbirthdate1 = document.getElementById('error-client_birthdate-1');
+var erroraddress1 = document.getElementById('error-client_address-1');
+var erroremail1 = document.getElementById('error-client_email-1');
+var erroruser_phone1 = document.getElementById('error-user_phone-1');
 
+// Copy error elements for the second set of inputs
+var errorFname2 = document.getElementById('error-first_name-2');
+var errormiddleName2 = document.getElementById('error-middle_name-2');
+var errorlastName2 = document.getElementById('error-last_name-2');
+var errorbirthdate2 = document.getElementById('error-client_birthdate-2');
+var erroraddress2 = document.getElementById('error-client_address-2');
+var erroremail2 = document.getElementById('error-client_email-2');
+var erroruser_phone2 = document.getElementById('error-user_phone-2');
+
+
+//guide messages IDs
+var guideFname = document.getElementById('guide-first_name');
+var guidemiddleName = document.getElementById('guide-middle_name');
+var guidelastName = document.getElementById('guide-last_name');
+var guidebirthdate = document.getElementById('guide-client_birthdate');
+var guideaddress = document.getElementById('guide-client_address');
+var guideemail = document.getElementById('guide-client_email');
+var guideuser_phone = document.getElementById('guide-user_phone');
+
+var guideFname1 = document.getElementById('guide-first_name-1');
+var guidemiddleName1 = document.getElementById('guide-middle_name-1');
+var guidelastName1 = document.getElementById('guide-last_name-1');
+var guidebirthdate1 = document.getElementById('guide-client_birthdate-1');
+var guideaddress1 = document.getElementById('guide-client_address-1');
+var guideemail1 = document.getElementById('guide-client_email-1');
+var guideuser_phone1 = document.getElementById('guide-user_phone-1');
+
+// Copy guide elements for the second set of inputs
+var guideFname2 = document.getElementById('guide-first_name-2');
+var guidemiddleName2 = document.getElementById('guide-middle_name-2');
+var guidelastName2 = document.getElementById('guide-last_name-2');
+var guidebirthdate2 = document.getElementById('guide-client_birthdate-2');
+var guideaddress2 = document.getElementById('guide-client_address-2');
+var guideemail2 = document.getElementById('guide-client_email-2');
+var guideuser_phone2 = document.getElementById('guide-user_phone-2');
 
 
 handleInputError(firstName, errorFname, guideFname)  
@@ -378,10 +635,41 @@ handleInputError(address, erroraddress, guideaddress)
 handleInputError(email, erroremail, guideemail)
 handleInputError(user_phone, erroruser_phone, guideuser_phone)
 
+handleInputError(firstName1, errorFname1, guideFname1)  
+handleInputError(middleName1, errormiddleName1, guidemiddleName1)  
+handleInputError(lastName1, errorlastName1, guidelastName1)  
+handleInputError(birthdate1, errorbirthdate1, guidebirthdate1)  
+handleInputError(address1, erroraddress1, guideaddress1)  
+handleInputError(email1, erroremail1, guideemail1)
+handleInputError(user_phone1, erroruser_phone1, guideuser_phone1) 
+
+handleInputError(firstName2, errorFname2, guideFname2);
+handleInputError(middleName2, errormiddleName2, guidemiddleName2);
+handleInputError(lastName2, errorlastName2, guidelastName2);
+handleInputError(birthdate2, errorbirthdate2, guidebirthdate2);
+handleInputError(address2, erroraddress2, guideaddress2);
+handleInputError(email2, erroremail2, guideemail2);
+handleInputError(user_phone2, erroruser_phone2, guideuser_phone2);
 
 
+// Usage example
+var pet_nameInput = document.getElementById('pet_name');
+var pet_TypeInput = document.getElementById('pet_type');
+var breedInput = document.getElementById('breed');
+var pet_GenderInput = document.getElementById('gender');
+var pet_birthdateInput = document.getElementById('pet_birthdate');
+var pet_ageInput = document.getElementById('age');
+var pet_weightInput = document.getElementById('weight');
+var pet_sterilizationStatusInput = document.getElementById('sterilization_status');
 
-
+var pet_nameInput1 = document.getElementById('pet_name-1');
+var pet_TypeInput1 = document.getElementById('pet_type-1');
+var breedInput1 = document.getElementById('breed-1');
+var pet_GenderInput1 = document.getElementById('gender-1');
+var pet_birthdateInput1 = document.getElementById('pet_birthdate-1');
+var pet_ageInput1 = document.getElementById('age-1');
+var pet_weightInput1 = document.getElementById('weight-1');
+var pet_sterilizationStatusInput1 = document.getElementById('sterilization_status-1');
 
 
 var errorPet = document.getElementById('error-pet_name');
@@ -391,8 +679,29 @@ var errorPetBreed = document.getElementById('error-breed');
 var errorPetBday = document.getElementById('error-pet_birthdate');
 var errorPetWeight = document.getElementById('error-weight');
 var errorPetStatus = document.getElementById('error-sterilization_status');
+var errorPet1 = document.getElementById('error-pet_name-1');
+var errorPetGender1 = document.getElementById('error-breed-1');
+var errorPetType1 = document.getElementById('error-pet_type-1');
+var errorPetBreed1 = document.getElementById('error-pet_type-1');
+var errorPetBday1 = document.getElementById('error-pet_birthdate-1');
+var errorPetWeight1 = document.getElementById('error-weight-1');
+var errorPetStatus1 = document.getElementById('error-sterilization_status-1');
 
+var guidePetMessage = document.getElementById('guide-pet_name');
+var guidePetGenderMessage = document.getElementById('guide-gender');
+var guidePetTypeMessage = document.getElementById('guide-pet_type');
+var guidePetBreedMessage = document.getElementById('guide-breed');
+var guidePetBdayMessage = document.getElementById('guide_pet_birthdate');
+var guidePetWeightMessage = document.getElementById('guide_pet_weight');
+var guidePetStatusMessage = document.getElementById('guide-sterilization_status');  
 
+var guidePetMessage1 = document.getElementById('guide-pet_name-1');
+var guidePetGenderMessage1 = document.getElementById('guide-gender-1');
+var guidePetTypeMessage1 = document.getElementById('guide-pet_type-1');
+var guidePetBreedMessage1 = document.getElementById('guide-breed-1');
+var guidePetBdayMessage1 = document.getElementById('guide_pet_birthdate-1');
+var guidePetWeightMessage1 = document.getElementById('guide_pet_weight-1');
+var guidePetStatusMessage1 = document.getElementById('guide-sterilization_status-1');  
 
 handleInputError(pet_nameInput, errorPet, guidePetMessage);
 handleInputError(pet_GenderInput, errorPetGender, guidePetGenderMessage);
@@ -401,11 +710,17 @@ handleInputError(breedInput, errorPetBreed, guidePetBreedMessage)
 handleInputError(pet_birthdateInput, errorPetBday, guidePetBdayMessage);
 handleInputError(pet_weightInput, errorPetWeight, guidePetWeightMessage);
 handleInputError(pet_sterilizationStatusInput, errorPetStatus, guidePetStatusMessage)
+handleInputError(pet_nameInput1, errorPet1, guidePetMessage1);
+handleInputError(pet_GenderInput1, errorPetGender1, guidePetGenderMessage1);
+handleInputError(pet_TypeInput1, errorPetType1, guidePetTypeMessage1);
+handleInputError(breedInput1, errorPetBreed1, guidePetBreedMessage1)
+handleInputError(pet_birthdateInput1, errorPetBday1, guidePetBdayMessage1);
+handleInputError(pet_weightInput1, errorPetWeight1, guidePetWeightMessage1);
+handleInputError(pet_sterilizationStatusInput1, errorPetStatus1, guidePetStatusMessage1)
 
 
 
-
-function handleInputError(input, error) {
+function handleInputError(input, error, guide) {
     function onBlur() {
     if (input.value.trim() === '' || input.value.trim() === '0') {
         error.style.display = 'flex'; // Show the error message
@@ -427,7 +742,12 @@ function handleInputError(input, error) {
 }
 
 
-
+    function onFocus() {
+        error.style.display = 'none'; // Hide the error message
+        guide.style.display = 'flex'; // Show the guide message
+        input.classList.remove('is-invalid');
+        input.classList.remove('error-border');
+    }
 
     function onBlurGuide() {
         guide.style.display = 'none'; // Hide the guide message
@@ -436,6 +756,7 @@ function handleInputError(input, error) {
     // Add event listeners to inputs
     input.addEventListener('blur', onBlur);
     input.addEventListener('focus', onFocus);
+    input.addEventListener('blur', onBlurGuide);
 }   
 // Function to check if the value is a valid email format
 function isValidEmail(email) {
@@ -443,7 +764,7 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-
+var user_phone1 = document.getElementById('user_phone-1');
     
 function PhoneNumberInputLimit(inputElement) {
     inputElement.addEventListener('input', function () {
@@ -461,6 +782,7 @@ function PhoneNumberInputLimit(inputElement) {
     
     
 PhoneNumberInputLimit(user_phone); 
+PhoneNumberInputLimit(user_phone1); 
     
  function weightInputLimit(inputElement) {
     inputElement.addEventListener('input', function () {
@@ -470,7 +792,8 @@ PhoneNumberInputLimit(user_phone);
     });
 }
     
-weightInputLimit(pet_weightInput);   
+weightInputLimit(pet_weightInput);
+weightInputLimit(pet_weightInput1);       
         
 
 // Function to check if the value is a valid email format
@@ -505,3 +828,7 @@ function setupDateValidation(inputId) {
 
 // Example usage for client_birthdate
 setupDateValidation('client_birthdate');
+
+// Example usage for client_birthdate-1
+setupDateValidation('client_birthdate-1');
+setupDateValidation('client_birthdate-2');
