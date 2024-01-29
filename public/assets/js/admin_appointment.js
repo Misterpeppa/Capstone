@@ -29,9 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var pending_appointment_tab_button = document.getElementById('pending_appointment_tab_button');
     var rejected_appointment_tab_button = document.getElementById('rejected_appointment_tab_button');
 
-    var approved_appointment_btn = document.getElementById('approved_appointment_btn');
     var pending_appointment_btn = document.getElementById('pending_appointment_btn');
-    var reject_appointment_btn = document.getElementById('reject_appointment_btn');
     var add_appointment_modal1 = new bootstrap.Modal(document.getElementById('add_appointment_modal'));
 
     approve_appointment_tab_button.addEventListener('click', function () {
@@ -609,14 +607,8 @@ document.addEventListener('DOMContentLoaded', function () {
     pending_appointment_btn.addEventListener('click', function() {
         add_appointment_modal1.show(); 
     });
-    
-    approved_appointment_btn.addEventListener('click', function() {
-        add_appointment_modal1.show(); 
-    });
 
-    reject_appointment_btn.addEventListener('click', function() {
-        add_appointment_modal1.show(); 
-    });
+
     
 
 
@@ -668,56 +660,32 @@ document.addEventListener('DOMContentLoaded', function () {
     var rejectedEmptyState = document.getElementById('rejected_appointment_empty_state');
 
     approveTab.addEventListener('click', function () {
-        approveBtn = document.getElementById('add_approve_appointment_split_btn');
         pendingBtn = document.getElementById('add_pending_appointment_split_btn');
-        rejectBtn = document.getElementById('add_rejected_appointment_split_btn');
         
         if (approvedEmptyState.style.display !== 'none') {
-            // If approved_appointment_empty_state is visible, hide all buttons
-            approveBtn.style.display = 'none';
             pendingBtn.style.display = 'none';
-            rejectBtn.style.display = 'none';
         } else {
-            // If approved_appointment_empty_state is not visible, display add_approve_appointment_split_btn
-            approveBtn.style.display = 'flex';
-            pendingBtn.style.display = 'none';
-            rejectBtn.style.display = 'none';// explicitly hide add_reject_appointment_split_btn
+            pendingBtn.style.display = 'flex';
         }
     });
         
     pendingTab.addEventListener('click', function () {
-        approveBtn = document.getElementById('add_approve_appointment_split_btn');
         pendingBtn = document.getElementById('add_pending_appointment_split_btn');
-        rejectBtn = document.getElementById('add_rejected_appointment_split_btn');
         
         if (pendingEmptyState.style.display !== 'none') {
-            // If rejected_appointment_empty_state is visible, display add_reject_appointment_split_btn
-            approveBtn.style.display = 'none';
             pendingBtn.style.display = 'none';
-            rejectBtn.style.display = 'none';
         } else {
-            // If rejected_appointment_empty_state is not visible, hide all buttons including add_reject_appointment_split_btn
-            approveBtn.style.display = 'none';
             pendingBtn.style.display = 'flex';
-            rejectBtn.style.display = 'none';
         }
     });
 
     rejectTab.addEventListener('click', function () {
-        approveBtn = document.getElementById('add_approve_appointment_split_btn');
         pendingBtn = document.getElementById('add_pending_appointment_split_btn');
-        rejectBtn = document.getElementById('add_rejected_appointment_split_btn');
         
         if (rejectedEmptyState.style.display !== 'none') {
-            // If rejected_appointment_empty_state is visible, display add_reject_appointment_split_btn
-            approveBtn.style.display = 'none';
             pendingBtn.style.display = 'none';
-            rejectBtn.style.display = 'none';
         } else {
-            // If rejected_appointment_empty_state is not visible, hide all buttons including add_reject_appointment_split_btn
-            approveBtn.style.display = 'none';
-            pendingBtn.style.display = 'none';
-            rejectBtn.style.display = 'flex';
+            pendingBtn.style.display = 'flex';
         }
     });
  
@@ -894,10 +862,7 @@ function setupDateInputRestrictions() {
     // Get the date input elements by their IDs
     var dateInputs = [
         document.getElementById('appointment_date'),
-        document.getElementById('appointment_date-1'),
-        document.getElementById('appointment_date-2'),
-        document.getElementById('appointment_date-3'),
-        document.getElementById('appointment_date-4')
+        document.getElementById('appointment_date-1')
     ];
 
     // Add event listeners to each date input
@@ -1117,6 +1082,7 @@ cancelRescheduleBtn.addEventListener('click', function() {
     resetReschedInputFields();
 });
 
+ 
 
 //reset input for reschedule
 function resetReschedInputFields1() {

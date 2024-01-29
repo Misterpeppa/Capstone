@@ -784,23 +784,23 @@
                                     <div id="error-product_categ-3" class="error-message"><span>Please select a
                                             category.</span></div>
                                 </div>
-                                <div class="form-floating w-100"><select name="item_name" class="form-select form-select"
-                                        data-id="product_name" id="editItemName">
-                                        <option value="none" selected="">Select a Product Name</option>
-                                    </select><label class="form-label form-label" for="product_name">Product
-                                        Name</label>
+                                <div class="form-floating w-100"><input class="form-control w-100" list="options" data-id="product_name" id="editItemName" name="item_name" placeholder="Owner Name">
+								<label class="form-label" for="product_name">Product Name<span>&nbsp;*</span></label>
+									<datalist id="options">
+
+									</datalist>
                                     <div id="error-product_name-3" class="error-message"><span>Please select product
                                             name.</span></div>
                                 </div>
                                 <div class="form-floating w-100"><input class="form-control" type="text"
-                                        name="product_code" id="product_code" data-id="product_code"
+                                        name="product_code" data-id="product_code"
                                         id="product_code-3" placeholder="Product Code"><label
                                         class="form-label form-label" for="product_code">Product Code</label>
                                     <div class="error-message" id="error-product_code-3"><span>Please enter product
                                             code.</span></div>
                                 </div>
                                 <div class="form-floating w-100"><input class="form-control" type="text"
-                                        name="batch_no" id="batch_number" data-id="batch_number" id="batch_number-3"
+                                        name="batch_no" id="batch_no" data-id="batch_number"
                                         placeholder="Batch Number"><label class="form-label form-label"
                                         for="batch_number">Batch Number</label>
                                     <div class="error-message" id="error-batch_number-3"><span>Please enter batch
@@ -810,7 +810,7 @@
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input
                                         class="form-control" name="manufacturing_date"
-                                        id="manufactured_date" data-id="manufactured_date" id="manufactured_date-3"
+                                        id="manufacturing_date" data-id="manufactured_date"
                                         placeholder="Manufactured Date" type="date"><label
                                         class="form-label form-label" for="manufactured_date">Manufactured
                                         Date</label>
@@ -818,16 +818,16 @@
                                             manufactured date.</span></div>
                                 </div>
                                 <div class="form-floating" style="width:100%;"><input
-                                        class="form-control form-control" name="expiration_date" id="expiration_date"
-                                        data-id="expiration_date" id="expiration_date-3"
+                                        class="form-control form-control" name="expiration_date" id="expiry_date"
+                                        data-id="expiration_date"
                                         placeholder="Expiration Date" type="date"><label
                                         class="form-label form-label" for="expiration_date">Expiration Date</label>
                                     <div class="error-message" id="error-expiration_date-3"><span>Please enter the
                                             expiration date.</span></div>
                                 </div>
                                 <div class="form-floating" style="width:100%;"><input
-                                        class="form-control form-control" name="date_stocked" id="datestocked"
-                                        data-id="datestocked" id="datestocked-3" placeholder="Expiration Date"
+                                        class="form-control form-control" name="date_stocked" id="date_stocked"
+                                        data-id="datestocked"placeholder="Expiration Date"
                                         type="date"><label class="form-label form-label" for="datestocked">Date
                                         Stocked</label>
                                     <div class="error-message" id="error-datestocked-3"><span>Please enter the date
@@ -835,7 +835,7 @@
                                 </div>
                             </div>
                             <div class="form-floating" style="width:100%;">
-                                <textarea class="form-control" id="prod_description" name="prod_desc" data-id="prod_description"
+                                <textarea class="form-control" id="prod_desc" name="prod_desc" data-id="prod_description"
                                     placeholder="Product Description"></textarea><label class="form-label form-label"
                                     for="prod_description">Product Description</label>
                                 <div id="error-prod_description-3" class="error-message"><span>Please enter product
@@ -847,7 +847,7 @@
                                     <div class="quantity_input"><button class="quantity_minus" type="button"
                                             onclick="decrementQuantity()">-</button>
                                         <input type="number" aria-labelledby="label-quantity" class="input_quantity"
-                                            data-id="quantity" id="quantity" min="0" name="quantity"
+                                            data-id="quantity" id="quantity_input" min="0" name="quantity"
                                             required="" value="0">
                                         <button class="quantity_add" type="button"
                                             onclick="incrementQuantity()">+</button>
@@ -859,7 +859,7 @@
                             <div class="mb-3 prod_detail_fields_buttons"><button class="btn cancel_edit"
                                     id="cancel_edit" type="button"><span
                                         class="cancel_edit_base">Cancel</span></button>
-                                <button class="btn edit_save_changes" id="edit_save_changes" type="submit"><span
+                                <button class="btn edit_save_changes" id="save_changes" disabled type="submit"><span
                                         class="edit_save_changes_base">Save Changes</span></button>
                             </div>
                             </form>
@@ -1003,12 +1003,13 @@
                                     <div id="error-product_categ-1" class="error-message"><span>Please select a
                                             category.</span></div>
                                 </div>
-                                <div class="form-floating" style="width: 100%;"><select
-                                        class="form-select form-select" name="item_name" data-id="product_name"
-                                        id="product_name-1">
-                                        <option value="none" selected="">Select a Product Name</option>
-                                    </select><label class="form-label form-label" for="product_name">Product
-                                        Name</label>
+                                <div class="form-floating" style="width: 100%;">
+
+                                        <input class="form-control w-100" list="options" data-id="product_name" id="product_name-1" name="item_name" placeholder="Owner Name">
+								<label class="form-label" for="product_name">Product Name<span>&nbsp;*</span></label>
+									<datalist id="options">
+
+									</datalist>
                                     <div id="error-product_name-1" class="error-message"><span>Please select product
                                             name.</span></div>
                                 </div>
@@ -1171,7 +1172,7 @@
         </div>
     </div>
     <div class="modal fade show" role="dialog" tabindex="-1" id="add_product_success">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content success_modal">
                 <div class="modal-header success_header">
                     <div class="success_icon_container"><span class="success_icon"><svg
@@ -1200,7 +1201,7 @@
         </div>
     </div>
     <div class="modal fade show" role="dialog" tabindex="-1" id="save_changes_success">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content success_modal">
                 <div class="modal-header success_header">
                     <div class="success_icon_container"><span class="success_icon"><svg
@@ -1222,14 +1223,14 @@
                 <div class="modal-body success_message">
                     <div>
                         <h1>Success!</h1>
-                        <p>Your changes have been successfully saved.</p>
+                        <p>Product was successfully added.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal fade show" role="dialog" tabindex="-1" id="add_product_discard">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content discard_modal">
                 <div class="modal-header discard_header">
                     <div class="discard_icon_container"><span class="discard_icon"><svg
@@ -1294,9 +1295,12 @@
             $('#editPhone').val(clientData.phone);
         });
             $('.viewButton').click(function() {
+                var inventory_header = document.getElementById("inventory_header");
                 var rowId = $(this).closest('tr').data('row-id');
                 const product_type = $(this).data('product-type');
                 const id = $(this).data('product-id');
+
+                inventory_header.style.display = 'none';
 
                 // Make an AJAX request to retrieve data
                 $.ajax({
@@ -1463,6 +1467,72 @@
     });
 
 });
+    </script>
+
+    <script>
+ function enableSaveChanges() {
+  var product_categ = document.getElementById("product-categ-3").value;
+  var editItemName = document.getElementById("editItemName").value;
+  var product_code = document.getElementById("product_code-3").value;
+  var batch_number = document.getElementById("batch_no").value;
+  var manufactured_date = document.getElementById("manufacturing_date").value;
+  var expiration_date = document.getElementById("expiry_date").value;
+  var datestocked = document.getElementById("date_stocked").value;
+  var prod_description = document.getElementById("prod_desc").value;
+  var quantity = document.getElementById("quantity_input").value;
+
+  var save_changes = document.getElementById("save_changes");
+
+  // Add additional validation conditions as needed
+  if (
+    product_categ.trim() !== "" &&
+    editItemName.trim() !== "" &&
+    product_code.trim() !== "" &&
+    batch_number.trim() !== "" &&
+    manufactured_date.trim() !== "" &&
+    expiration_date.trim() !== "" &&
+    datestocked.trim() !== "" &&
+    prod_description.trim() !== "" &&
+    quantity.trim() >= 1
+  ) {
+    save_changes.removeAttribute("disabled");
+  } else {
+    save_changes.setAttribute("disabled", true);
+  }
+
+  // Logging values for debugging
+  console.log('product-categ-3:', product_categ);
+  console.log('editItemName:', editItemName);
+  console.log('product_code:', product_code);
+  console.log('batch_number:', batch_number);
+  console.log('manufactured_date:', manufactured_date);
+  console.log('expiration_date:', expiration_date);
+  console.log('datestocked:', datestocked);
+  console.log('prod_description', prod_description);
+  console.log('quantity', quantity);
+  console.log('save_changes disabled:', save_changes.disabled);
+
+}
+
+
+// Example: Call enableSaveChanges() on input change events
+document.getElementById("product-categ-3").addEventListener("change", enableSaveChanges);
+document.getElementById("editItemName").addEventListener("input", enableSaveChanges);
+document.getElementById("product_code-3").addEventListener("input", enableSaveChanges);
+document.getElementById("batch_no").addEventListener("input", enableSaveChanges);
+document.getElementById("manufacturing_date").addEventListener("input", enableSaveChanges);
+document.getElementById("expiry_date").addEventListener("input", enableSaveChanges);
+document.getElementById("date_stocked").addEventListener("input", enableSaveChanges);
+document.getElementById("prod_desc").addEventListener("input", enableSaveChanges);
+document.getElementById("quantity_input").addEventListener("input", enableSaveChanges);
+
+
+
+
+
+
+
+
     </script>
 
 
