@@ -3122,7 +3122,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .card.pet_card {
     display: flex;
     padding: 24px;
-    width: 464px;
+    width: 434px;
     height: 250px;
     align-items: flex-start;
     flex-direction: row;
@@ -6101,6 +6101,14 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 
 
 @media (min-width: 577px) and (max-width: 767px){
+  .content {
+    
+    display: flex;
+    flex-direction: column;
+    background-color: #E8F0F0;
+    overflow: auto;
+    width: 100%;
+  }
 
 
   
@@ -6441,10 +6449,13 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     .landing_headers h2{
       color: var(--Colors-Main-neutral, #FFF);
       font-family: Inter;
-      font-size: 28px;
+      font-size: 24px;
       font-style: normal;
       font-weight: 600;
       line-height: 120%; /* 33.6px */
+    }
+    .card.location{
+      height: 140px;
     }
   
     .location_heading{
@@ -6465,7 +6476,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
       line-height: 120%; /* 14.4px */
     }
     .location_heading h1{
-      font-size: 24px;
+      font-size: 18px;
       margin: 0;
     }
     .frame504{
@@ -7470,8 +7481,46 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     font-size: 18px;
   }
   .landing_headers h2{
-    font-size: 24px;
+    font-size: 22px;
   }
+  .custom-book-appointment-btn {
+    display: flex;
+    height: 38px;
+    width: 100%;
+    padding: 0px var(--Spacing-spacing-m, 24px);
+    justify-content: center;
+    align-items: center;
+    gap: var(--Spacing-spacing-m, 24px);
+    border-radius: var(--radius-s, 8px);
+    background: var(--Colors-Actions-action, #045B62);
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+    color: var(--Colors-Main-neutral, #FFF);
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  .custom-btn-check-schedule {
+    display: inline-flex;
+    height: 38px;
+    padding: 16px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-spacing-m, 24px);
+    flex-shrink: 0;
+    border-radius: var(--spacing-spacing-xxs, 8px);
+    background: var(--colors-actions-action-sec, #ADCDCE);
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+    color: var(--colors-actions-action, #045B62);
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
   .next_btn, .signup_btn {
     display: flex;
     height: 36px;
