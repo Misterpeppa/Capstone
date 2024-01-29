@@ -814,11 +814,19 @@
                                     <option value="Jr">Jr</option>
                                     <option value="Sr">Sr</option>
                                     <option value="II">II</option>
-                                    <option value="">Other</option>
+                                    <option value="Other">Other</option>
                                 </select><label class="form-label" for="suffix">Suffix</label>
                                 <div id="error-suffix-4" class="error-message"><span>Please select a
                                         suffix.</span></div>
                             </div>
+                            <div id="specific_suffix-1" class="form-floating" style="width: 100%;display: none;">
+                                    <input class="form-control" type="text" name="specify_suffix"
+                                        id="specify_suffix-1" data-id="specify_suffix"
+                                        placeholder="Specify Suffix"><label class="form-label"
+                                        for="specify_suffix">Specify suffix</label>
+                                    <div id="error-specify_suffix-1" class="error-message"><span>Please specify
+                                            suffix.</span></div>
+                                </div>
                         </div>
                         <div class="form-floating" style="width:100%;"><input class="form-control"
                                 id="client_birthdate-3" data-id="manufactured_date" placeholder="Manufactured Date"
@@ -955,20 +963,20 @@
                 </div>
                 <div class="modal-body" style="width:100%;">
                 
-                    <form class="add_client"
-                        id="add_client_form-1">
+                    <form action="{{ route('client.store') }}" method="POST" class="add_client" id="add_client_form-1">
+                    @csrf
                         <div class="mb-3 input_container">
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input class="form-control"
                                         type="text" name="first_name" id="first_name-1" data-id="first_name"
-                                        placeholder="First Name"><label class="form-label" for="first_name">First
+                                        placeholder="First Name"><label class="form-label" for="first_name-1">First
                                         Name <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-first_name-1"><span>Please enter client first
                                             name.</span></div>
                                 </div>
                                 <div class="form-floating" style="width:100%;"><input class="form-control"
                                         type="text" name="middle_name" id="middle_name-1" data-id="middle_name"
-                                        placeholder="Middle Name"><label class="form-label" for="middle_name">Middle
+                                        placeholder="Middle Name"><label class="form-label" for="middle_name-1">Middle
                                         Name <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-middle_name-1"><span>Please enter client
                                             middle name.</span></div>
@@ -977,7 +985,7 @@
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input class="form-control"
                                         type="text" name="last_name" id="last_name-1" data-id="last_name"
-                                        placeholder="Last Name"><label class="form-label" for="last_name">Last
+                                        placeholder="Last Name"><label class="form-label" for="last_name-1">Last
                                         Name <span>&nbsp;*</span></label>
                                     <div id="error-last_name-1" class="error-message"><span>Please enter client last
                                             name.</span></div>
@@ -988,7 +996,7 @@
                                         <option value="Jr">Jr</option>
                                         <option value="Sr">Sr</option>
                                         <option value="II">II</option>
-                                        <option value="">Other</option>
+                                        <option value="Other">Other</option>
                                     </select><label class="form-label" for="suffix-1">Suffix</label>
                                     <div id="error-suffix-1" class="error-message"><span>Please select a
                                             suffix.</span></div>
@@ -1003,9 +1011,9 @@
                                 </div>
                             </div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
-                                    name="birthdate" id="client_birthdate-1" data-id="client_birthdate"
+                                    name="birthdate" id="client_birthdate-1" data-id="client_birthdate-1"
                                     placeholder="Birthdate" type="date"><label class="form-label"
-                                    for="client_birthdate">Birthdate <span>&nbsp;*</span></label>
+                                    for="client_birthdate-1">Birthdate <span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-client_birthdate-1"><span>Please enter the
                                         client birthdate.</span></div>
                             </div>
@@ -1017,13 +1025,13 @@
                             </div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
                                     type="email" name="email" id="client_email-1" data-id="client_email"
-                                    placeholder="Email"><label class="form-label" for="client_email">Email
+                                    placeholder="Email"><label class="form-label" for="client_email-1">Email
                                     Address <span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-client_email-1"><span>Please enter a valid
                                         email address.</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
-                                    type="tel" name="phone" id="user_phone-1" data-id="user_phone"
+                                    type="tel" name="phone" id="user_phone-1" data-id="user_phone-1"
                                     placeholder="Phone Number"><label class="form-label" for="user_phone">Phone
                                     Number <span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-user_phone-1"><span>Please enter a valid phone
@@ -1683,6 +1691,29 @@ document.getElementById("user_phone-1").addEventListener("input", enableSubmitBt
     
     
 PhoneNumberInputLimit(user_phone1); 
+
+document.getElementById("suffix-1").addEventListener("change", function () {
+        var specificSuffixInput = document.getElementById("specific_suffix-1");
+
+        // If the selected value is "Other", show the specific_suffix-1 input
+        if (this.value === "Other") {
+            specificSuffixInput.style.display = "block";
+        } else {
+            specificSuffixInput.style.display = "none";
+        }
+    });
+
+
+    document.getElementById("suffix-4").addEventListener("change", function () {
+        var specificSuffixInput = document.getElementById("specific_suffix-1");
+
+        // If the selected value is "Other", show the specific_suffix-1 input
+        if (this.value === "Other") {
+            specificSuffixInput.style.display = "block";
+        } else {
+            specificSuffixInput.style.display = "none";
+        }
+    });
 
 
     </script>
