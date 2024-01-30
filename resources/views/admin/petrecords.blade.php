@@ -1424,7 +1424,7 @@ $('#add_pet_split_btn').hide();
 $('#pet_records').hide();
 </script> 
 @endif
-@if ($medHistoryExist)
+<!-- @if ($medHistoryExist)
 <script>
 $('#medical_empty_state').hide();
 $('#add_diagnosis').css('display', 'flex');
@@ -1436,7 +1436,7 @@ $('#medical_empty_state').css('display', 'flex');
 $('#add_diagnosis').hide();
 $('#medical_history_table_container').hide();
 </script> 
-@endif
+@endif -->
 @if ($vaxHistoryExist)
 <script>
 $('#immunization_empty_state').hide();
@@ -1533,8 +1533,16 @@ $(document).ready(function() {
 				type: 'GET',
 				url: '/admin/emr/medhis/' + id, // Replace with your actual endpoint
 				success: function(data) {
-					$('#medhisto_Table tbody').empty();
-					console.log('Success: Data received', data);
+				$('#medhisto_Table tbody').empty();
+				console.log('Success: Data received', data);
+				if (data.length === 0) {
+					$('#medical_empty_state').css('display', 'flex');
+					$('#add_diagnosis').hide();
+					$('#medical_history_table').hide();
+				} else {
+					$('#medical_empty_state').hide();
+					$('#add_diagnosis').css('display', 'flex');
+					$('#medical_history_table').css('display', 'flex');
 					$.each(data, function(index, medhisto) {
 						var newRow = '<tr>' +
 							'<td>' + medhisto.diagnosis + '</td>' +
@@ -1545,55 +1553,67 @@ $(document).ready(function() {
 							'</tr>';
 						$('#medhisto_Table tbody').append(newRow);
 					});
-				},
-				error: function(xhr) {
-					console.log(xhr.responseText);
 				}
+			},
 			});
 			$.ajax({
 				type: 'GET',
 				url: '/admin/emr/vaxhis/' + id,
 				success: function(data) {
-					$('#immuno_Table tbody').empty();
+				$('#immuno_Table tbody').empty();
+				if (data.length === 0) {
+					$('#immunization_empty_state').css('display', 'flex');
+					$('#add_immunization').hide();
+					$('#immunization_history_table').hide();
+				} else {
+					$('#immunization_empty_state').hide();
+					$('#add_immunization').css('display', 'flex');
+					$('#immunization_history_table').css('display', 'flex');
 					$.each(data, function(index, vaxhisto) {
 						var newRow = '<tr>' +
-						'<td>' + vaxhisto.vaccination_date + '</td>' +
-						'<td>' + vaxhisto.vax.item_name + '</td>' +
-						'<td>' + vaxhisto.vax.prod_desc + '</td>' +
-						'<td>' + vaxhisto.revaccination_date + '</td>' +
-						'<td>' + vaxhisto.status + '</td>' +
-						'</tr>';
-					$('#immuno_Table tbody').append(newRow);
-
+							'<td>' + vaxhisto.vaccination_date + '</td>' +
+							'<td>' + vaxhisto.vax.item_name + '</td>' +
+							'<td>' + vaxhisto.vax.prod_desc + '</td>' +
+							'<td>' + vaxhisto.revaccination_date + '</td>' +
+							'<td>' + vaxhisto.status + '</td>' +
+							'</tr>';
+						$('#immuno_Table tbody').append(newRow);
 					});
-				},
-				error: function(xhr) {
-					console.log(xhr.responseText);
 				}
+			},
+			error: function(xhr) {
+				console.log(xhr.responseText);
+			}
 			});
 			$.ajax({
 				type: 'GET',
 				url: '/admin/emr/surghis/' + id,
 				success: function(data) {
-					$('#surghisto_Table tbody').empty();
+				$('#surghisto_Table tbody').empty();
+				if (data.length === 0) {
+					$('#surgery_empty_state').css('display', 'flex');
+					$('#add_surgery').hide();
+					$('#surgery_history_table').hide();
+				} else {
+					$('#surgery_empty_state').hide();
+					$('#add_surgery').css('display', 'flex');
+					$('#surgery_history_table').css('display', 'flex');
 					$.each(data, function(index, surgery){
 						var newRow = '<tr>' +
-						'<td>' + surgery.surgery_type + '</td>' +
-						'<td>' + surgery.surgery_date + '</td>' +
-						'<td>' + surgery.reason + '</td>' +
-						'<td>' + surgery.med.item_name + '</td>' +
-						'<td>' + surgery.surgery_note + '</td>' +
-						'</tr>';
-					$('#surghisto_Table tbody').append(newRow);
-
+							'<td>' + surgery.surgery_type + '</td>' +
+							'<td>' + surgery.surgery_date + '</td>' +
+							'<td>' + surgery.reason + '</td>' +
+							'<td>' + surgery.med.item_name + '</td>' +
+							'<td>' + surgery.surgery_note + '</td>' +
+							'</tr>';
+						$('#surghisto_Table tbody').append(newRow);
 					});
-				},
-				error: function(xhr) {
-					console.log(xhr.responseText);
 				}
+			},
+			error: function(xhr) {
+				console.log(xhr.responseText);
+			}
 			})
-			
-			
 		});
 });
 </script>

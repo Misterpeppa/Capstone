@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\AppointmentApproved;
+use App\Models\Admin\PetInfo;
+use App\Models\Admin\PetRecord;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User\Clients;
@@ -147,6 +149,38 @@ class ClientController extends Controller
         $client->save();
         return redirect()->back()->with('success', 'Client archived successfully.');
     }
+    public function viewPet($id)
+    {
+        $clientId = $id;
+        //$clientInfo = Clients::find($clientId);
+        $petrecords = PetRecord::with('pet')->where('owner_id', $clientId)->whereNull('archived_at')->get();
+        //$petExist = PetRecord::where('owner_id', $clientId)->exists();
 
+        return response()->json($petrecords);
+    }
+    public function addPet(Request $request)
+    {
+        $ownerId = $request->input('clientId');
+        $pet_infos = new PetInfo();
+        $pet_infos->owner_id = $ownerId;
+        $pet_infos->name = $request->input('pet_name');
+        $pet_infos->age = $request->input('pet_age');
+        $pet_infos->species = $request->input('species');
+        $pet_infos->breed = $request->input('breed');
+        $pet_infos->birthdate = $request->input('pet_birthdate');
+        $pet_infos->gender = $request->input('gender');
+        $pet_infos->weight = $request->input('weight');
+        $pet_infos->sterilization = $request->input('sterilization');
+        $pet_infos->save();
+        $petId = $pet_infos->id;
+
+        $petrecord = new PetRecord([
+            'pet_id' => $petId,
+            'owner_id' => $ownerId
+        ]);
+        $petrecord->save();
+
+        return redirect()->route('client.pet')->with('success', 'Pet Successfully Added');
+    }
 
 }

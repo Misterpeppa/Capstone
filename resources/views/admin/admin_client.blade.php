@@ -677,7 +677,6 @@
                 </div>
                 <div id="pet_card_container" class="pet_card_container">
                     <div class="card pet_card" id="pet_card" data-pet-id="pet_card_0">
-                        <div class="pet_image_container"><img src="assets/img/koda%201.png"></div>
                         <div class="card-body pet_card_body">
                             <div class="pet_detail_header">
                                 <div class="pet_detail_heading_text_container">
@@ -1087,7 +1086,8 @@
                         data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body" style="width:100%;">
-                    <form id="add_pet_form" class="add_client"><img src="assets/img/image%2010.png">
+                    <form action="{{ route('client.addpet')}}" method="POST" id="add_pet_form" class="add_client">
+                        @csrf
                         <div class="mb-3 input_container">
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input class="form-control"
@@ -1165,7 +1165,7 @@
                 </div>
                 <div class="modal-footer add_product_button"><button class="btn clear_form" id="clear_form-2"
                         aria-label="Clear Form" role="button" type="button"><span
-                            class="clear_form_base">Clear Form</span></button><button class="btn submit_pet"
+                            class="clear_form_base">Clear Form</span></button><button form="add_pet_form" class="btn submit_pet"
                         id="submit_pet" type="submit"><span class="submit_product_base">Submit</span></button>
                 </div>
             </div>
@@ -1657,6 +1657,61 @@
         $('.viewButton').click(function() {
             const id = $(this).data('container-id');
             $('#editId').val(id);
+            $('#clientId').val(id);
+            $.ajax({
+                type: 'GET',
+				url: `/admin/client/viewpet/${id}`,// Your route URL
+                success: function(data) {
+                $('#pet_card_container').empty();
+                console.log('Success: Data received', data);
+                if (data.length === 0) {
+                    $('#pet_empty_state_container').show();
+                } else {
+                    $('#pet_empty_state_container').hide();
+                    $('#pet_card_container').css('display', 'flex');
+                    $.each(data, function(index, petInfo) {
+                        var newItem = 
+                        '<div class="card pet_card">' +
+                        '<div class="card-body pet_card_body">' +
+                            '<div class="pet_detail_header">' +
+                            '<div class="pet_detail_heading_text_container">' +
+                                '<h1>' + petInfo.pet.name + '</h1>' +
+                                '<p>' + petInfo.pet.breed + '</p>' + 
+                            '</div>' +
+                            '</div>' +
+                            '<div class="pet_detail_body">' +
+                                '<div class="pet_upper_detail">' +
+                                    '<div class="pet_age_container">' +
+                                    '<h1>' + 'Gender' + '</h1>' +
+                                    '<p>' + petInfo.pet.gender + '</p>' +
+                                    '</div>' +
+                                    '<div class="pet_age_container">' +
+                                    '<h1>' + 'Age' + '</h1>' +
+                                    '<p>' + petInfo.pet.age + '</p>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div class="pet_lower_detail">' +
+                                    '<div class="pet_weight_container">' +
+                                    '<h1>' + 'Weight' + '</h1>' +
+                                    '<p>' + petInfo.pet.weight + '</p>' +
+                                    '</div>' +
+                                    '<div class="pet_sterilization_status_container">' +
+                                    '<h1>' + 'Sterilization Status' + '</h1>' +
+                                    '<p>' + petInfo.pet.sterilization + '</p>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                        '</div>';
+                        $('#pet_card_container').append(newItem);
+                    });
+                }
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+            }
+
+            });
             const clientData = {
                 'first_name' :$(this).data('first-name'),
                 'middle_name' :$(this).data('middle-name'),
