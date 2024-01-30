@@ -24,7 +24,7 @@
 </head>
 
 <body>
-	<main class="d-flex flex-row container-fluid" style="padding: 0; margin: 0;">
+	<main class="d-flex flex-row container-fluid" id="wrapper" style="padding: 0; margin: 0;">
     @php
     $activeTab = 'dashboard'; // Set the active tab
     @endphp

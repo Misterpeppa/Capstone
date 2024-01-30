@@ -2,11 +2,10 @@
 <html data-bs-theme="light" lang="en">
 
 <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-..." crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Admin | Inventory</title>
     <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
@@ -14,13 +13,15 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+    <link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <style>
@@ -482,7 +483,7 @@
                                         </defs>
                                     </svg> Add Product</span></button>
                         </div>
-                        <div id="product_table_container" class="w-100" >
+                        <div id="product_table_container" class="table-responsive w-100" style="overflow: auto; display: none;">
                             <table class="table table-responsive w-100 mt-3" style="overflow: auto;">
                                 <thead>
                                     <tr>
@@ -1549,8 +1550,10 @@ document.getElementById("quantity_input").addEventListener("input", enableSaveCh
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/inventory.js') }}"></script>
-    <script src="{{ asset('assets/js/sidebartry.js') }}"></script>
     <script src="{{ asset('assets/js/sidebar.js') }}"></script>
+    <script src="{{ asset('assets/js/sidebartry.js') }}"></script>
+    
+    
 
 </body>
 

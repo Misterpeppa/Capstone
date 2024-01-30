@@ -353,8 +353,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="table-responsive" id="archives_table_container" style="align-self:stretch;display:none;overflow:visible;">
-                        <table class="table table-responsive mt-3 w-100">
+                    <div id="archives_table_container" class="table-responsive w-100" style="overflow: auto; display: none;">
+                        <table class="table table-responsive mt-3">
                             <thead>
                                 <tr>
                                     <th><input type="radio" id="Select_All_Archive" class="checkbox"></th>
