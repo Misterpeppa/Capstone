@@ -875,7 +875,7 @@ main{
     display: flex;
     flex-direction: column;
     background-color: #E8F0F0;
-    overflow-x: hidden;
+    overflow: auto;
     width: 100%;
     height: 100vh;
   }
@@ -1018,7 +1018,7 @@ main{
     line-height: normal;
   }
   
-  .InventoryContainer, .dashboard_container {
+  .InventoryContainer, .client_container, .dashboard_container {
     display: flex;
     width: 100%;
     height: auto;
@@ -5946,7 +5946,61 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 
 
 @media (min-width: 768px) and (max-width: 991px) {
-
+  .content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #E8F0F0;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100vh;
+  }
+  .container_header{
+    display: flex;
+    flex-direction: row !important;
+  }
+  .left_part_product_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    gap: 4px;
+  }
+  .archive_button{
+    width: 40px;
+    height: 40px;
+  }
+  .search_container{
+    width: 150px;
+    height: 42px;
+  }
+  .search_input{
+    width: 100%;
+    padding: 0 !important;
+  }
+  .search_container{
+    width: 200px;
+  }
+  .filter_btn_base svg{
+    display: block;
+    height: 5px;
+    width: 5px;
+  }
+  .search_input::placeholder{
+    font-size: 10px;
+  }
+  .filter_btn, .sort_btn{
+    height: 42px;
+    width: 42px !important;
+    padding: 0 !important;
+  }
+  .filter_btn_base, .sort_btn_base{
+    display: none;
+  }
+  .pagination{
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   .frame504{
     text-align: center;
@@ -6898,7 +6952,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   }
   .inventory_header, .dashboard_header, .client_header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     padding-left: var(--radius-xs, 0px);
     justify-content: space-between;
