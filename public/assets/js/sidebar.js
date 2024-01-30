@@ -5,17 +5,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const liSpanElements = document.querySelectorAll('.sidebar li span');
     const logoLink = document.getElementById('logo_link');
     const arrowSVG = document.querySelector('.arrow-svg'); // Get the arrow SVG element
+    var menuToggle = document.getElementById('menu-toggle');
     
     const allLinks = document.querySelectorAll('.sidebar a');
 
-
-    
-
-
-    
     sidebarArrow.addEventListener('click', toggleSidebar);
     logoLink.addEventListener('click', () => {
         if (sidebar.classList.contains('collapsed')) {
+            toggleSidebar();
+        }
+    });
+    menuToggle.addEventListener('click', () => {
+        if (sidebar.classList.contains('collapsed')) {
+            toggleSidebar();
+        } else{
             toggleSidebar();
         }
     });
@@ -35,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var add_appointment_modal = new bootstrap.Modal(document.getElementById('add_client_modal'));
     var add_appointment_modal = new bootstrap.Modal(document.getElementById('add_product_modal'));
     
-
+    
 
 
     add_appointment.addEventListener('click', function () {
@@ -53,6 +56,27 @@ document.addEventListener('DOMContentLoaded', function () {
     add_product.addEventListener('click', function () {
         add_product_modal.show();
     });
+
+    function updateMenuToggleDisplay() {
+        // Assuming you have a variable menuToggle that references the #menu-toggle element
+        var menuToggle = document.getElementById('menu-toggle');
+        
+        if (sidebar.classList.contains('collapsed')) {
+            // Show the menu-toggle when the sidebar is collapsed
+            if (menuToggle) {
+                menuToggle.style.display = 'flex';
+            }
+        } else {
+            // Hide the menu-toggle when the sidebar is not collapsed
+            if (menuToggle) {
+                menuToggle.style.display = 'none';
+            }
+        }
+    }
+    
+    // Initial call to set the initial state of the menu-toggle
+    updateMenuToggleDisplay();
+    
     
     
     
@@ -60,20 +84,28 @@ document.addEventListener('DOMContentLoaded', function () {
         sidebar.classList.toggle('collapsed');
         arrowSVG.classList.toggle('rotate180'); // Rotate the arrow SVG
     
-        if (sidebar.classList.contains('collapsed')) {
-            allLinks.forEach(link => {
-                if (link !== logoLink) {
-                    link.style.display = 'none';
-                }
-            });
-            sidebarArrow.innerHTML = buttonSVGCollapsed;
-        } else {
-            allLinks.forEach(link => {
-                link.style.display = '';
-            });
-            sidebarArrow.innerHTML = buttonSVGExpanded;
-        }
+        allLinks.forEach(link => {
+            if (link !== logoLink) {
+                link.style.display = sidebar.classList.contains('collapsed') ? 'none' : '';
+            }
+        });
+    
+        sidebarArrow.innerHTML = sidebar.classList.contains('collapsed') ? buttonSVGCollapsed : buttonSVGExpanded;
+    
+        // Call the function to update the menu-toggle display
+        updateMenuToggleDisplay();
     }
     
+    // Initial call to set the initial state of the menu-toggle
+    updateMenuToggleDisplay();
     
+    
+    // Initial call to set the initial state of the menu-toggle
+updateMenuToggleDisplay();
+
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
     });
+
