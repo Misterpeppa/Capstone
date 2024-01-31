@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
+    
+
+
     var add_client = document.getElementById('add_client');
     var add_client_btn = document.getElementById('add_client_btn');
-    var add_client_btn_1 = document.getElementById('add_client_btn_1');
     var add_pet_btn = document.getElementById('add_pet_btn');
     var archive_button = document.getElementById('archive_button');
 
@@ -26,9 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
     add_client_modal.show();
   });
     
-    add_client_btn_1.addEventListener('click', function () {
-    add_client_modal.show();
-  });
+
     
     add_pet_btn.addEventListener('click', function () {
     add_pet_record_modal.show();
@@ -342,106 +342,109 @@ inputs.forEach(inputId => {
 
 
 
-    
+    function addBlurListener(input, error) {
+        input.addEventListener("blur", function () {
+          if (input.value.trim() === "none") {
+            error.style.display = "block";
+            input.classList.add("error-border");
+          } else if (input.value.trim() === "") {
+            error.style.display = "block";
+            input.classList.add("error-border");
+          } else {
+            error.style.display = "none";
+            input.classList.remove("error-border");
+          }
+        });
+      }
 
+    
+    var firstName = document.getElementById("first_name-1");
+    var middleName = document.getElementById("middle_name-1");
+    var lastName = document.getElementById("last_name-1");
+    var suffix = document.getElementById("suffix-1");
+    var birthdate = document.getElementById("client_birthdate-1");
+    var address = document.getElementById("client_address-1");
+    var email = document.getElementById("client_email-1");
+    var user_phone = document.getElementById('user_phone-1');
+    
+    
+    
+    //error messages IDs
+    var errorFname = document.getElementById('error-first_name-1');
+    var errormiddleName = document.getElementById('error-middle_name-1');
+    var errorlastName = document.getElementById('error-last_name-1');
+    var errorSuffix = document.getElementById('error-suffix-1');
+    var errorbirthdate = document.getElementById('error-client_birthdate-1');
+    var erroraddress = document.getElementById('error-client_address-1'); // Fix the typo here
+    var erroremail = document.getElementById('error-client_email-1');
+    var erroruser_phone = document.getElementById('error-user_phone-1');
+    
+    addBlurListener(firstName, errorFname); 
+    addBlurListener(middleName, errormiddleName);  
+    addBlurListener(lastName, errorlastName);  
+    addBlurListener(suffix, errorSuffix);  
+    addBlurListener(birthdate, errorbirthdate);  
+    addBlurListener(address, erroraddress);  
+    addBlurListener(email, erroremail);
+    addBlurListener(user_phone, erroruser_phone);
+
+    function clearForm() {
+        firstName.value = '';
+        middleName.value = '';
+        lastName.value = '';
+        suffix.value = '';
+        birthdate.value = '';
+        address.value = '';
+        email.value = '';
+        user_phone.value = '';
+    }
+    
+    // Assuming you have a button with the ID "clear_form-1"
+    var clearButton = document.getElementById('clear_form-1');
+    
+    // Add click event listener to the clear button
+    clearButton.addEventListener('click', clearForm);
+
+    // Assuming you have a button with the class "btn-close"
+    var closeButton = document.getElementById('close_addClient');
+
+    // Add click event listener to the close button
+    closeButton.addEventListener('click', clearForm);
+    
+    const today = new Date();
+    const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate()).toISOString().split('T')[0];
+    const minDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate()).toISOString().split('T')[0];
+
+    const dateInput = document.getElementById('client_birthdate-1');
+    dateInput.setAttribute('max', maxDate);
+    dateInput.setAttribute('min', minDate);
+
+    dateInput.addEventListener('change', function () {
+        let selectedDate = new Date(this.value);
+        if (selectedDate > today || selectedDate < new Date(today.getFullYear() - 100, today.getMonth(), today.getDate())) {
+            this.value = '';
+            alert('Please select a date between 18 and 100 years ago.');
+        }
+        // Additional validation or action can be added here if needed
+    });
+
+    dateInput.addEventListener('keydown', function (e) {
+        e.preventDefault();
+    });
  
 });
 
-var firstName = document.getElementById("first_name");
-var middleName = document.getElementById("middle_name");
-var lastName = document.getElementById("last_name");
-var suffix = document.getElementById("suffix");
-var birthdate = document.getElementById("client_birthdate");
-var address = document.getElementById("client_address");
-var email = document.getElementById("client_email");
-var user_phone = document.getElementById('user_phone');
 
 
 
-//error messages IDs
-var errorFname = document.getElementById('error-first_name');
-var errormiddleName = document.getElementById('error-middle_name');
-var errorlastName = document.getElementById('error-last_name');
-var errorbirthdate = document.getElementById('error-client_birthdate');
-var erroraddress = document.getElementById('error-client_address');
-var erroremail = document.getElementById('error-client_email');
-var erroruser_phone = document.getElementById('error-user_phone');
-
-
-
-
-handleInputError(firstName, errorFname, guideFname)  
-handleInputError(middleName, errormiddleName, guidemiddleName)  
-handleInputError(lastName, errorlastName, guidelastName)  
-handleInputError(birthdate, errorbirthdate, guidebirthdate)  
-handleInputError(address, erroraddress, guideaddress)  
-handleInputError(email, erroremail, guideemail)
-handleInputError(user_phone, erroruser_phone, guideuser_phone)
-
-
-
-
-
-
-
-var errorPet = document.getElementById('error-pet_name');
-var errorPetGender = document.getElementById('error-gender');
-var errorPetType = document.getElementById('error-pet_type');
-var errorPetBreed = document.getElementById('error-breed');
-var errorPetBday = document.getElementById('error-pet_birthdate');
-var errorPetWeight = document.getElementById('error-weight');
-var errorPetStatus = document.getElementById('error-sterilization_status');
-
-
-
-handleInputError(pet_nameInput, errorPet, guidePetMessage);
-handleInputError(pet_GenderInput, errorPetGender, guidePetGenderMessage);
-handleInputError(pet_TypeInput, errorPetType, guidePetTypeMessage);
-handleInputError(breedInput, errorPetBreed, guidePetBreedMessage)
-handleInputError(pet_birthdateInput, errorPetBday, guidePetBdayMessage);
-handleInputError(pet_weightInput, errorPetWeight, guidePetWeightMessage);
-handleInputError(pet_sterilizationStatusInput, errorPetStatus, guidePetStatusMessage)
-
-
-
-
-function handleInputError(input, error) {
-    function onBlur() {
-    if (input.value.trim() === '' || input.value.trim() === '0') {
-        error.style.display = 'flex'; // Show the error message
-        input.classList.add('is-invalid');
-        input.classList.add('error-border');
-    } else if (input.value.trim() === 'none') {
-        error.style.display = 'flex'; // Show the error message
-        input.classList.add('is-invalid');
-        input.classList.add('error-border');
-    } else if (input.type === 'email' && !isValidEmail(input.value.trim())) {
-        error.style.display = 'flex'; // Show the error message
-        input.classList.add('is-invalid');
-        input.classList.add('error-border');
-    } else {
-        error.style.display = 'none'; // Hide the error message
-        input.classList.remove('is-invalid');
-        input.classList.remove('error-border');
-    }
-}
-
-
-
-
-    function onBlurGuide() {
-        guide.style.display = 'none'; // Hide the guide message
-    }
-
-    // Add event listeners to inputs
-    input.addEventListener('blur', onBlur);
-    input.addEventListener('focus', onFocus);
-}   
-// Function to check if the value is a valid email format
+// Function to check if the value is a valid email format   
 function isValidEmail(email) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
 }
+
+
+
 
 
     

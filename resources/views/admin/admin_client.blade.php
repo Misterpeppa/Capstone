@@ -68,8 +68,7 @@
                                 Client</span></button><button
                             class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown"
                             data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-                        <div class="dropdown-menu"><a class="dropdown-item" id="add_client_btn_1"
-                                data-bs-toggle="modal">Add Client</a>
+                        <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{ route('report.client') }}">Generate Report</a>
                         </div>
                     </div>
@@ -983,7 +982,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content add_client_modal">
                 <div class="modal-header">
-                    <h1 class="modal-title">Add Client</h1><button class="btn-close" aria-label="Close"
+                    <h1 class="modal-title">Add Client</h1><button class="btn-close" id="close_addClient" aria-label="Close"
                         data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body" style="width:100%;">
@@ -1010,14 +1009,14 @@
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input class="form-control"
                                         type="text" name="last_name" id="last_name-1" data-id="last_name"
-                                        placeholder="Last Name"><label class="form-label" for="last_name-1">Last
+                                        placeholder="Last Name" onBlur="HandleInput()"><label class="form-label" for="last_name-1">Last
                                         Name <span>&nbsp;*</span></label>
                                     <div id="error-last_name-1" class="error-message"><span>Please enter client last
                                             name.</span></div>
                                 </div>
                                 <div class="form-floating" style="width:100%;"><select class="form-select"
                                         name="suffix" id="suffix-1" data-id="suffix">
-                                        <option value=" " selected="">Select a Suffix</option>
+                                        <option value="" selected="">Select a Suffix</option>
                                         <option value="Jr">Jr</option>
                                         <option value="Sr">Sr</option>
                                         <option value="II">II</option>
@@ -1030,7 +1029,7 @@
                                     <input class="form-control" type="text" name="specify_suffix"
                                         id="specify_suffix-1" data-id="specify_suffix"
                                         placeholder="Specify Suffix"><label class="form-label"
-                                        for="specify_suffix">Specify suffix</label>
+                                        for="specify_suffix-1">Specify suffix</label>
                                     <div id="error-specify_suffix-1" class="error-message"><span>Please specify
                                             suffix.</span></div>
                                 </div>
@@ -1044,7 +1043,7 @@
                             </div>
                             <div class="form-floating" style="width:100%;">
                                 <textarea class="form-control" id="client_address-1" data-id="client_address" placeholder="Address"></textarea><label class="form-label"
-                                    for="client_address">Address <span>&nbsp;*</span></label>
+                                    for="client_address-1">Address <span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-client_address"><span>Please enter client
                                         address.</span></div>
                             </div>
@@ -1056,8 +1055,8 @@
                                         email address.</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
-                                    type="tel" name="phone" id="user_phone-1" data-id="user_phone-1"
-                                    placeholder="Phone Number"><label class="form-label" for="user_phone">Phone
+                                    type="tel" name="phone" id="user_phone-1" data-id="user_phone"
+                                    placeholder="Phone Number"><label class="form-label" for="user_phone-1">Phone
                                     Number <span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-user_phone-1"><span>Please enter a valid phone
                                         number.</span></div>
@@ -1667,8 +1666,8 @@ function enableSubmitBtn() {
     last_name1.trim() !== "" &&
     client_birthdate1.trim() !== "" &&
     client_address1.trim() !== "" &&
-    client_email1.trim() !== "" &&
-    user_phone1.trim() !== ""
+    user_phone1.trim().length === 11 && // Check for 11 digits
+    (client_email1.includes("@gmail.com") || client_email.includes("@yahoo.com")) // Check for email format
   ) {
     submit_Client1.removeAttribute("disabled");
     submit_Client1.classList.remove("disabled");
@@ -1699,8 +1698,7 @@ document.getElementById("user_phone-1").addEventListener("input", enableSubmitBt
 
  var user_phone1 = document.getElementById('user_phone-1');
 
-
-    function PhoneNumberInputLimit(inputElement) {
+ function PhoneNumberInputLimit(inputElement) {
     inputElement.addEventListener('input', function () {
         if (this.value.length > 11) {
         this.value = this.value.slice(0, 11);
@@ -1712,8 +1710,9 @@ document.getElementById("user_phone-1").addEventListener("input", enableSubmitBt
         this.value = '09' + this.value.slice(2);
     }
     });
+
 }
-    
+
     
 PhoneNumberInputLimit(user_phone1); 
 
@@ -1759,6 +1758,7 @@ document.getElementById("suffix-1").addEventListener("change", function () {
             document.getElementById('searchForm').submit();
         }
     </script>
+    
 
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
