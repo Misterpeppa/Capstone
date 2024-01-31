@@ -223,7 +223,6 @@
 								</svg> Add Pet</span>
 							</button>
 						</div>
-						<div id="pet_card_container" class="pet_card_container" style="display: flex;">
 						@foreach ($petrecords as $petrecord)
 							<div class="card pet_card">
 								<div class="card-body pet_card_body">

@@ -1,4 +1,7 @@
-<div id="sidebarArrow" class="sidebar sidebar_collapsed">
+<div id="sidebar-wrapper" class="sidebar sidebar_collapsed">
+
+
+
 	<div class="logo">
 		<a id="logo_link" class="logo_link" href="#"><img src="/img/dogs&cats.png" alt="Clinic Logo"></a>
 		<button id="sidebar_arrow" class="sidebar_arrow" type="button" onclick="toggleSidebar()">
@@ -278,4 +281,7 @@
             </form>
 
         </div>
+        
     </div>
+
+    

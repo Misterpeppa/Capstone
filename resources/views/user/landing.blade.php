@@ -67,7 +67,7 @@
 
             <div class="floating-div mt-4">
                 <div class="row w-100 d-flex justify-content-center" style="padding: 0; margin: 0;">
-                    <div class="col-8 mb-3">
+                    <div class="col-4 col-sm-4 col-md-8 mb-3">
                         <div class="card service_icons">
                             <div class="card-body landingpage d-flex flex-column justify-content-center flex-sm-column flex-md-row">
                                 <div class="services">
@@ -102,7 +102,7 @@
          
                 <div class="row w-100 loc_and_working_hours d-flex justify-content-center" style="padding: 0; margin: 0;">
                 <div class="row w-100 loc_and_working_hours d-flex justify-content-center" style="padding: 0; margin: 0;">
-                    <div class="col-8 col-md-4">
+                    <div class="col-4 col-sm-4 col-md-4">
                         <div class="card location mb-4">
                             <div class="location_heading">
                                 <h1>LOCATION</h1>
@@ -124,7 +124,7 @@
                         </div>
                     </div>
 
-                    <div class="col-8 col-md-4">
+                    <div class="col-4 col-sm-4 col-md-4">
                         <div class="card location mb-4">
                             <div class="location_heading">
                                 <h1>WORKING HOURS</h1>

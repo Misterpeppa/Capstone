@@ -831,8 +831,5 @@ function setupDateValidation(inputId) {
 }
 
 // Example usage for client_birthdate
-setupDateValidation('client_birthdate');
 
-// Example usage for client_birthdate-1
-setupDateValidation('client_birthdate-1');
-setupDateValidation('client_birthdate-2');
+setupDateValidation('client_birthdate');
