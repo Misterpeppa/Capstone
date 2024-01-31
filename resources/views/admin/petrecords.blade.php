@@ -1077,7 +1077,7 @@
                                             <option value="{{ $owners->id }}">{{ $owners->first_name }} {{ $owners->middle_name }} {{ $owners->last_name }} {{ $owners->suffix }}</option>
                                         @endforeach
 									</datalist>
-                                    
+                                    <div id="error-owner" class="error-message"><span>• Please enter pet name.</span></div>
 									
                                 </div>
 							<div class="new_input_row">
@@ -1129,7 +1129,7 @@
 									<input class="form-control" value="" type="text" name="pet_age" data-bs-toggle="tooltip" data-bss-tooltip="" id="age-1" data-id="age-1" 
 									title="Please select pet type and enter the birthdate first." maxlength="3" disabled="" placeholder="Please select pet type, breed, and enter the birthdate first.">
 									<label class="form-label" for="age-1">Age</label>
-									<div id="error-age-1" class="error-message" style="color:red;"></div>
+									<div id="error-age-1" class="error-message" style="color:red;">• Please input birth date of pet</div>
 								</div>
 							</div>
 							<div class="new_input_row">

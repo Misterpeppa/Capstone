@@ -1659,7 +1659,8 @@
                             </div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
                                     type="text" id="email" data-id="email" placeholder="Email"><label
-                                    class="form-label" for="email">Email<span>&nbsp;*</span></label></div>
+                                    class="form-label" for="email">Email<span>&nbsp;*</span></label>
+                                    <div id="error-email" class="error-message"><span>• Please enter email.</span></div></div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
                                     id="pet_name" data-id="pet_name" placeholder="Pet Name"> <label class="form-label" for="pet_name">Pet
                                     Name<span>&nbsp;*</span></label>
@@ -1712,12 +1713,14 @@
                                 <div class="form-floating" style="width: 100%;"><input class="form-control"
                                         id="appointment_date" type="date" data-id="appointment_date"><label
                                         class="form-label" for="appointment_date">Date<span>&nbsp;*</span></label>
+                                        <div id="error-date" class="error-message"><span>• Please select a
+                                        date.</span></div>
                                 </div>
                                 <div class="form-floating" style="width: 100%;"><input class="form-control"
                                         id="appointment_time" type="time" data-id="appointment_time"><label
                                         class="form-label" for="appointment_time">Time<span>&nbsp;*</span></label>
                                     <div id="error-appointment_time-1" class="error-message"><span>• Please select a
-                                            breed</span></div>
+                                            time</span></div>
                                 </div>
                             </div>
                         </div>
@@ -1861,6 +1864,8 @@
                             </select>
                             <label class="form-label" for="rejection_reason">Rejection
                                 reason<span>&nbsp;*</span></label>
+                                <div id="error-rejection" class="error-message"><span>• Please select a
+                                            time</span></div>
                         </div>
                         <div id="specific_reason" class="form-floating specific_reason" style="width:100%;">
                             <textarea id="specify_reason" name="otherReason" class="form-control"></textarea>
@@ -1979,6 +1984,8 @@
                                     id="appointment_date-1" type="date">
                                 <label class="form-label form-label"
                                     for="appointment_date">Date<span>&nbsp;*</span></label>
+                                    <div id="error-date1" class="error-message"><span>• Please select a
+                                            date</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;">
                                 <input class="form-control" name="appointmentTime" data-id="appointment_time-4"
@@ -1986,7 +1993,7 @@
                                 <label class="form-label form-label"
                                     for="appointment_time-4">Time<span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-appointment_time-4"><span>• Please select a
-                                        breed</span></div>
+                                        time</span></div>
                             </div>
                         </div>
                 </div>
