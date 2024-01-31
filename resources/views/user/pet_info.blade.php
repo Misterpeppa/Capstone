@@ -123,8 +123,8 @@
 											<h1>{{ $petrecord->pet->name }}</h1>
 											<p>{{ $petrecord->pet->breed }}</p>
 										</div>
-										<div class="dropdown more_button">
-											<button class="btn dropdown-toggle more_btn" aria-expanded="false" data-bs-toggle="dropdown" type="button"><span class="more_btn_base"><svg fill="none" height="18" viewbox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"></path><path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"></path><path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"></path></svg></span></button>
+										<div class="dropdown">
+											<button class="btn btn dropdown-toggle pet_dropdown" aria-expanded="false" data-bs-toggle="dropdown" type="button"><svg fill="none" height="18" viewbox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"></path><path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"></path><path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"></path></svg></button>
 											<div class="dropdown-menu more_button" data-bs-popper="none">
 												<button class="dropdown-item View_pet" id="View" data-action="View_pet" data-container-id="{{ $petrecord->id }}">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -277,7 +277,7 @@
 							</div>
 						</div>
 					</div>
-					<div id="view_pet" class="view_pet">
+					<div id="view_pet" class="customer_side">
 						<div class="view_pet_back_btn_container">
 							<button class="btn edit_pet_back_btn" id="view_pet_back_btn" type="button"><span class="edit_pet_back_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
   <g clip-path="url(#clip0_6089_3068)" filter="url(#filter0_d_6089_3068)">

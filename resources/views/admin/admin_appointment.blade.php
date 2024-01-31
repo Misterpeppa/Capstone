@@ -37,7 +37,7 @@
         <div class="content">
             <div id="rectangle" class="rectangle justify-content-between">
                 <div>
-                    <a id="menu-toggle" class="btn menu_toggle btn-link" role="button" href="#menu-toggle"><i class="fa fa-bars"></i></a>
+                    <a id="menu-toggle" class="btn menu_toggle btn-link" role="button" href="#menu-toggle"><i class="fa fa-bars custom-bars-icon"></i></a>
                 </div>
                 <div class="d-flex flex-direction-row">
                     <button class="btn notification" id="notification" type="button"><span class="notification_base"><svg
@@ -102,14 +102,14 @@
                 <div class="d-flex flex-column align-items-start align-self-stretch"
                     style="gap: var(--Spacing-spacing-xs, 12px);">
                     <ul class="nav nav-tabs pet_nav_tabs" role="tablist">
-                        <li class="nav-item" role="presentation" id="approve_tab"><a
+                        <li class="nav-item appointment_nav_items" role="presentation" id="approve_tab"><a
                                 class="nav-link  list_tab" role="tab" data-bs-toggle="tab"
                                 href="#approved_tab">Approved<span id="approvedCounts" class="tab-count">{{ $approvedCount }}</span></a>
                         </li>
-                        <li class="nav-item" role="presentation" id="pending-tab"><a class="nav-link list_tab"
+                        <li class="nav-item appointment_nav_items" role="presentation" id="pending-tab"><a class="nav-link list_tab"
                                 role="tab" data-bs-toggle="tab" href="#pending_tab">Pending<span
                                     id="pendingCounts" class="tab-count">{{ $pendingCount}}</span></a></li>
-                        <li class="nav-item" role="presentation" id="reject_tab"><a class="nav-link list_tab"
+                        <li class="nav-item appointment_nav_items" role="presentation" id="reject_tab"><a class="nav-link list_tab"
                                 role="tab" data-bs-toggle="tab" href="#rejected_tab">Rejected<span
                                     id="rejectedCounts" class="tab-count">{{ $rejectedCount }}</span></a></li>
                     </ul>
@@ -117,8 +117,8 @@
                         <div class="tab-pane  align-self-stretch appointment_tab" role="tabpanel"
                             id="approved_tab">
                             <div class="container_header">
-                                <form action="" id="approvedForm">
-                                    <div class="left_part_product_header">
+                                <form class="w-100" action="" id="approvedForm">
+                                    <div class="left_part_product_header w-100">
                                         <div class="search_container">
                                             <input type="text" class="search_input" name="qApproved"
                                             value="{{ request('qApproved') }}" placeholder="Search Appointment">
@@ -638,8 +638,8 @@
                         </div>
                         <div class="tab-pane align-self-stretch appointment_tab" role="tabpanel" id="pending_tab">
                             <div class="container_header">
-                                <form action="" id="pendingForm">
-                                    <div class="left_part_product_header">
+                                <form class="w-100" action="" id="pendingForm">
+                                    <div class="left_part_product_header w-100">
                                         <div class="search_container">
                                             <input type="text" class="search_input" name="qPending"
                                             value="{{ request('qPending') }}" placeholder="Search Appointment">
@@ -1020,7 +1020,7 @@
                                                 <td >{{ $appointment['appointmentDate'] }} |
                                                     {{ $appointment['appointmentTime'] }}</td>
                                                 <td >{{ $appointment['appointmentType'] }}</td>
-                                                <td>
+                                                <td class="dropdown button-action">
                                                     <div class="dropdown"><button class="dropbtn" style="background-color: transparent; border:none;"
                                                             aria-expanded="false" data-bs-toggle="dropdown"
                                                             type="button"><svg xmlns="http://www.w3.org/2000/svg"
@@ -1127,8 +1127,8 @@
                         </div>
                         <div class="tab-pane align-self-stretch appointment_tab" role="tabpanel" id="rejected_tab">
                             <div class="container_header">
-                                <form action="" id="rejectForm">
-                                    <div class="left_part_product_header">
+                                <form class="w-100" action="" id="rejectForm">
+                                    <div class="left_part_product_header w-100">
                                         <div class="search_container">
                                             <input type="text" class="search_input" name="qPending"
                                             value="{{ request('qReject') }}" placeholder="Search Appointment">
@@ -1511,7 +1511,7 @@
                                                     {{ $appointment['appointmentTime'] }}</td>
                                                 <td >{{ $appointment['appointmentType'] }}</td>
                                                 <td >{{ $appointment->notes }}</td>
-                                                <td>
+                                                <td class="dropdown button-action">
                                                     <div class="dropdown"><button class="dropbtn" style="background-color: transparent; border:none;"
                                                             aria-expanded="false" data-bs-toggle="dropdown"
                                                             type="button"><svg xmlns="http://www.w3.org/2000/svg"
@@ -1659,7 +1659,8 @@
                             </div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
                                     type="text" id="email" data-id="email" placeholder="Email"><label
-                                    class="form-label" for="email">Email<span>&nbsp;*</span></label></div>
+                                    class="form-label" for="email">Email<span>&nbsp;*</span></label>
+                                    <div id="error-email" class="error-message"><span>• Please enter email.</span></div></div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
                                     id="pet_name" data-id="pet_name" placeholder="Pet Name"> <label class="form-label" for="pet_name">Pet
                                     Name<span>&nbsp;*</span></label>
@@ -1712,12 +1713,14 @@
                                 <div class="form-floating" style="width: 100%;"><input class="form-control"
                                         id="appointment_date" type="date" data-id="appointment_date"><label
                                         class="form-label" for="appointment_date">Date<span>&nbsp;*</span></label>
+                                        <div id="error-date" class="error-message"><span>• Please select a
+                                        date.</span></div>
                                 </div>
                                 <div class="form-floating" style="width: 100%;"><input class="form-control"
                                         id="appointment_time" type="time" data-id="appointment_time"><label
                                         class="form-label" for="appointment_time">Time<span>&nbsp;*</span></label>
                                     <div id="error-appointment_time-1" class="error-message"><span>• Please select a
-                                            breed</span></div>
+                                            time</span></div>
                                 </div>
                             </div>
                         </div>
@@ -1861,6 +1864,8 @@
                             </select>
                             <label class="form-label" for="rejection_reason">Rejection
                                 reason<span>&nbsp;*</span></label>
+                                <div id="error-rejection" class="error-message"><span>• Please select a
+                                            time</span></div>
                         </div>
                         <div id="specific_reason" class="form-floating specific_reason" style="width:100%;">
                             <textarea id="specify_reason" name="otherReason" class="form-control"></textarea>
@@ -1979,6 +1984,8 @@
                                     id="appointment_date-1" type="date">
                                 <label class="form-label form-label"
                                     for="appointment_date">Date<span>&nbsp;*</span></label>
+                                    <div id="error-date1" class="error-message"><span>• Please select a
+                                            date</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;">
                                 <input class="form-control" name="appointmentTime" data-id="appointment_time-4"
@@ -1986,7 +1993,7 @@
                                 <label class="form-label form-label"
                                     for="appointment_time-4">Time<span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-appointment_time-4"><span>• Please select a
-                                        breed</span></div>
+                                        time</span></div>
                             </div>
                         </div>
                 </div>
@@ -2325,7 +2332,6 @@ document.getElementById("appointmentTime").addEventListener("input", enableResch
   appointmentTime.value = "";
 
   reschedule_btn1.disabled = true;
-
 
 }
       </script>
