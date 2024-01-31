@@ -23,8 +23,8 @@ class AppointmentController extends Controller
 {
     public function showForm()
     {
-        $appointmentDates = AppointmentApproved::pluck('appointmentDate')->toArray();
-dd($appointmentDates);
+        // $appointmentDates = AppointmentApproved::pluck('appointmentDate')->toArray();
+        // dd($appointmentDates);
         $clientId = Auth::guard('clients')->id();
         $clientInfo = Clients::find($clientId);
         $today = Carbon::today();

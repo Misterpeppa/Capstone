@@ -376,6 +376,10 @@ class InvController extends Controller
         switch ($product_type) {
             case 'Medicine':
                 $med_info = MedInfo::find($id);
+                $existingQuantiy = $med_info->quantity;
+                $newQuantity = $existingQuantiy + $request->input('quantity');
+                $med_info->quantity = $newQuantity;
+                $med_info->save();
                 $med_batch = new MedBatch([
                 'batch_no' => $request->input('batch_no'),
                 'manufacturing_date' => $request->input('manufacturing_date'),
@@ -449,5 +453,25 @@ class InvController extends Controller
         return redirect('/admin/inventory');
     }
 
+    public function viewBatch($product_type, $id)
+    {
+        switch( $product_type) {
+            case 'Medicine':
+                $productInfo = MedInfo::findOrFail($id);
+                $productBatch = MedBatch::where('med_id', $id)->get();
+                break;
+            case 'Vaccine':
+                $productInfo = VaxInfo::find($id);
+                $productBatch = VaxBatch::where('vax_id', $id)->get();
+                break;
+            case 'Vitamin':
+                $productInfo = VitInfo::find($id);
+                $productBatch = VitBatch::where('vit_id', $id)->get();
+                break;
+            default:
+             return response()->json(['error' => 'Invalid Product Type']);
+        }
+        return response()->json($productBatch); 
+    }
 }
    

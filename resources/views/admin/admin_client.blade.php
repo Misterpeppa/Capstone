@@ -1063,9 +1063,13 @@
                                         client birthdate.</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;">
-                                <textarea class="form-control" id="client_address-1" data-id="client_address" placeholder="Address"></textarea><label class="form-label"
-                                    for="client_address-1">Address <span>&nbsp;*</span></label>
-                                <div class="error-message" id="error-client_address"><span>Please enter client
+<select class="form-select" id="sex" name="sex">
+    <option value=""selected="">Select Sex</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+</select></textarea><label class="form-label"
+                                    for="sex">Sex <span>&nbsp;*</span></label>
+                                <div class="error-message" id="error-sex"><span>Please enter client
                                         address.</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"

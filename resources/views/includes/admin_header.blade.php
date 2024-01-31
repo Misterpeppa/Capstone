@@ -283,5 +283,7 @@
         </div>
         
     </div>
-
-    
+@include('includes.admin_modals')
+<script>
+  
+</script>

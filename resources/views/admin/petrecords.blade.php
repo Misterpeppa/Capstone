@@ -1071,15 +1071,12 @@
                         @csrf
 						<div class="mb-3 input_container">
                             <div class="form-floating align-self-stretch">
-								<input class="admin_petInfo_select form-control w-100" list="options" id="name" name="owner_id" placeholder="Owner Name">
-								<label class="form-label" for="name">Owner Name<span>&nbsp;*</span></label>
-									<datalist id="options">
-									@foreach ($owners as $owners)
+								<select class="admin_petInfo_select form-control w-100" id="name" name="owner_id" placeholder="Owner Name">
+                                        <option value=""disabled selected>Select Owner: </option>
+                                        @foreach ($owners as $owners)
                                             <option value="{{ $owners->id }}">{{ $owners->first_name }} {{ $owners->middle_name }} {{ $owners->last_name }} {{ $owners->suffix }}</option>
                                         @endforeach
-									</datalist>
-                                    <div id="error-owner" class="error-message"><span>• Please enter pet name.</span></div>
-									
+                                    </select>
                                 </div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
