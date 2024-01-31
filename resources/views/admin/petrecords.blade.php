@@ -29,7 +29,7 @@
 		<div class="content">
 		<div id="rectangle" class="rectangle justify-content-between">
                 <div>
-                    <a id="menu-toggle" class="btn menu_toggle btn-link" role="button" href="#menu-toggle"><i class="fa fa-bars"></i></a>
+                    <a id="menu-toggle" class="btn menu_toggle btn-link" role="button" href="#menu-toggle"><i class="fa fa-bars custom-bars-icon"></i></a>
                 </div>
                 <div class="d-flex flex-direction-row">
                     <button class="btn notification" id="notification" type="button"><span class="notification_base"><svg
@@ -85,7 +85,7 @@
                                             value="{{ request('search') }}" placeholder="Search Pet Record">
                                         </div>
 
-                                        <button type="submit" form="petrecordForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+                                        <button type="submit" form="petrecordForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i><span class="filter_btn_base">Search</span></button>
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
