@@ -978,7 +978,7 @@
                         data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="add_product_form" method="POST" action="{{ route('inv.store') }}">
+                    <form id="add_product_form" class="add_client" method="POST" action="{{ route('inv.store') }}">
                         @csrf
                         <div class="mb-3 input_container">
                             <div class="new_input_row">
@@ -1088,7 +1088,7 @@
                         data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="add_product_form1" method="POST" action="{{ route('inv.store') }}">
+                    <form id="add_product_form1" class="add_client" method="POST" action="{{ route('inv.store') }}">
                         @csrf
                         <div class="mb-3 input_container">
                             <div class="new_input_row">
