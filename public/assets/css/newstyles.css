@@ -6451,6 +6451,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   flex-direction: row;
   padding: 10px;
   align-items: flex-start;
+  align-self: center;
   justify-content: center;
   gap: var(--spacing-spacing-m, 8px);
   border: none;
@@ -6608,6 +6609,9 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   }
   .nav-item .nav-link p{
     display: none;
+  }
+  .appointment_nav_items{
+    width: 30% !important;
   }
   .nav-item {
     display: flex;
@@ -7265,7 +7269,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
       align-self: stretch;
     }
 
-    .return_btn, .clear_form, .cancel_edit, .return_btn, .submit_product, .submit_diagnosis, .submit_vaccination, .submit_surgery, .submit_immunization, .submit_pet{
+    .return_btn, .confirm_complete, .archive_confirm, .clear_form, .cancel_edit, .return_btn, .submit_product, .submit_diagnosis, .submit_vaccination, .submit_surgery, .submit_immunization, .submit_pet{
       width: 50% !important;
       height: 36px;
       align-self: center;
@@ -7417,7 +7421,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   gap: 4px !important;
 }
 .submit_product, .submit_product, .clear_form, .return_btn, .discard_btn, .reject_btn, .submit_immunization, .submit_surgery, .approve_appointment_btn, .cancel_btn, .reschedule_btn, .confirm_complete, .archive_confirm, .submit_diagnosis{
-  height: 26px;
+  height: 26px !important;
   width: 50%;
 }
 .discard_btn_base, .return_btn_base, .archive_confirm_button_base, .submit_product_base, .clear_form_base{
