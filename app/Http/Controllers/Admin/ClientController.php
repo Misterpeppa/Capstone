@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\AppointmentApproved;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User\Clients;
@@ -27,11 +28,12 @@ class ClientController extends Controller
     
     public function show(Request $request)
     {
+        $lastVisit = AppointmentApproved::where('status', 'completed')->orderByDesc('appointmentDate')->first();
         $perPage = $request->input('perPage',5);
         $query = $request->input('q');
         $sort = $request->input('sortBy'); 
         $sortOrder = $request->input('sortOrder'); 
-        $clients = Clients::query()->whereNull('archived_at');
+        $clients = Clients::query()->whereNull('archived_at')->with('appointmentapproved');
         if ($query) {
             $query = explode(' ', $query);
             foreach ($query as $term) {
@@ -74,7 +76,7 @@ class ClientController extends Controller
         $clients = new LengthAwarePaginator($currentPageItems, $clients->count(), $perPage);
         $clients->withPath('/admin/client');
         
-        return view('/admin/admin_client', compact('clients', 'query'));
+        return view('/admin/admin_client', compact('clients', 'query', 'lastVisit'));
     }
     
     
