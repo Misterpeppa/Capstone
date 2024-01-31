@@ -661,34 +661,26 @@
                                 <p>You can add a pet by clicking the button below.</p>
                             </div>
                         </div>
-                    </div><button class="btn add_client_button" id="add_pet_btn" type="button"><span
-                            class="add_client_base"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" viewBox="0 0 24 24" fill="none">
-                                <g clip-path="url(#clip0_5749_19901)" filter="url(#filter0_d_5749_19901)">
-                                    <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </g>
-                                <defs>
-                                    <filter id="filter0_d_5749_19901" x="-2" y="0" width="28" height="28"
-                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                        <feColorMatrix in="SourceAlpha" type="matrix"
-                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                        <feOffset dy="2" />
-                                        <feGaussianBlur stdDeviation="1" />
-                                        <feComposite in2="hardAlpha" operator="out" />
-                                        <feColorMatrix type="matrix"
-                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-                                        <feBlend mode="normal" in2="BackgroundImageFix"
-                                            result="effect1_dropShadow_5749_19901" />
-                                        <feBlend mode="normal" in="SourceGraphic"
-                                            in2="effect1_dropShadow_5749_19901" result="shape" />
-                                    </filter>
-                                    <clipPath id="clip0_5749_19901">
-                                        <rect width="24" height="24" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg> Add Pet</span></button>
+                    </div><a href="{{ route('admin_emr') }}" role="button" class="add_client_button"><span class="add_client_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+  <g clip-path="url(#clip0_6893_11565)" filter="url(#filter0_d_6893_11565)">
+    <path d="M5.5 12H19.5M19.5 12L13.5 18M19.5 12L13.5 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <filter id="filter0_d_6893_11565" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="2"/>
+      <feGaussianBlur stdDeviation="1"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6893_11565"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6893_11565" result="shape"/>
+    </filter>
+    <clipPath id="clip0_6893_11565">
+      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
+    </clipPath>
+  </defs>
+</svg> Go to Pet Records</span></a>
                 </div>
                 <div id="pet_card_container" class="pet_card_container">
                     <div class="card pet_card" id="pet_card" data-pet-id="pet_card_0">

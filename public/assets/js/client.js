@@ -4,14 +4,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var add_client = document.getElementById('add_client');
     var add_client_btn = document.getElementById('add_client_btn');
-    var add_pet_btn = document.getElementById('add_pet_btn');
     var archive_button = document.getElementById('archive_button');
 
     var add_client_modal = new bootstrap.Modal(document.getElementById('add_client_modal'));
     var add_client_modal1 = new bootstrap.Modal(document.getElementById('add_client_modal-1'));
     var archive_modal = new bootstrap.Modal(document.getElementById('archive_modal'));
     var archive_modal1 = new bootstrap.Modal(document.getElementById('archive_modal-1'));
-    var add_pet_record_modal = new bootstrap.Modal(document.getElementById('add_pet_record_modal'));
                 
     
     var add_client_success = new bootstrap.Modal(document.getElementById('add_client_success'));
@@ -31,10 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
 
     
-    add_pet_btn.addEventListener('click', function () {
-
-    add_pet_record_modal.show();
-  });
+  
 
     
     submit_Client.addEventListener('click', function () {
