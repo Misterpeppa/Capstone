@@ -468,37 +468,23 @@ edit_pet_btn.addEventListener('click', function(){
 
 
       
-    // Function to show error message if clicked and left without a value
-function handleInputError(input, error, guide) {
-    function onBlur() {
-        if (input.value.trim() === '') {
-            error.style.display = 'flex'; // Show the error message
-            input.classList.add('is-invalid');
-            input.classList.add('error-border');
-        } else if (input.value.trim() === 'none') {
-            error.style.display = 'flex'; // Show the error message
-            input.classList.add('is-invalid');
-            input.classList.add('error-border');
-        }else {
-            error.style.display = 'none'; // Hide the error message
-            input.classList.remove('is-invalid');
-            input.classList.remove('error-border');
-        }
-    }
-
-    function onFocus() {
-        error.style.display = 'none'; // Hide the error message
-        guide.style.display = 'flex'; // Show the guide message
-        input.classList.remove('is-invalid');
-        input.classList.remove('error-border');
-    }
-
-    // Add event listeners to inputs
-    input.addEventListener('blur', onBlur);
-    input.addEventListener('focus', onFocus);
-}
+    function addBlurListener(input, error) {
+        input.addEventListener("blur", function () {
+          if (input.value.trim() === "none") {
+            error.style.display = "block";
+            input.classList.add("error-border");
+          } else if (input.value.trim() === "") {
+            error.style.display = "block";
+            input.classList.add("error-border");
+          } else {
+            error.style.display = "none";
+            input.classList.remove("error-border");
+          }
+        });
+      }
 
 
+      var ownerName = document.getElementById('name');
 var pet_nameInput = document.getElementById('pet_name-1');
 var pet_TypeInput = document.getElementById('pet_type-1');
 var breedInput = document.getElementById('breed-1');
@@ -517,42 +503,44 @@ var pet_breed = document.getElementById('pet_breed');
   
 
 
-
+var errorownerName = document.getElementById('error-owner');
 var errorPet = document.getElementById('error-pet_name-1');
 var errorPetGender = document.getElementById('error-gender-1');
 var errorPetType = document.getElementById('error-pet_type-1');
 var errorPetBreed = document.getElementById('error-breed-1');
 var errorPetBday = document.getElementById('error-pet_birthdate-1');
+var errorPetAge = document.getElementById('error-age-1');
 var errorPetWeight = document.getElementById('error-weight-1');
 var errorPetStatus = document.getElementById('error-sterilization_status-1');
 
-var errorPet = document.getElementById('edit_pet_error');
-var error_sex = document.getElementById('error_sex');
-var edit_age_error = document.getElementById('edit_age_error');
-var edit_birthdate_error = document.getElementById('edit_birthdate_error');
-var edit_pet_type_error = document.getElementById('edit_pet_type_error');
-var edit_breed_error = document.getElementById('edit_breed_error');
+var errorPet1 = document.getElementById('edit_pet_error');
+var error_sex1 = document.getElementById('error_sex');
+var edit_age_error1 = document.getElementById('edit_age_error');
+var edit_birthdate_error1 = document.getElementById('edit_birthdate_error');
+var edit_pet_type_error1 = document.getElementById('edit_pet_type_error');
+var edit_breed_error1 = document.getElementById('edit_breed_error');
 
 
 
     
 
-    
-handleInputError(pet_nameInput, errorPet);
-handleInputError(pet_GenderInput, errorPetGender);
-handleInputError(pet_TypeInput, errorPetType);
-handleInputError(breedInput, errorPetBreed);
-handleInputError(pet_birthdateInput, errorPetBday);
-handleInputError(pet_weightInput, errorPetWeight);
-handleInputError(pet_sterilizationStatusInput, errorPetStatus);
+addBlurListener(ownerName, errorownerName)
+addBlurListener(pet_nameInput, errorPet);
+addBlurListener(pet_GenderInput, errorPetGender);
+addBlurListener(pet_TypeInput, errorPetType);
+addBlurListener(breedInput, errorPetBreed);
+addBlurListener(pet_ageInput, errorPetAge)
+addBlurListener(pet_birthdateInput, errorPetBday);
+addBlurListener(pet_weightInput, errorPetWeight);
+addBlurListener(pet_sterilizationStatusInput, errorPetStatus);
 
 
-handleInputError(pet_name_edit, errorPet);
-handleInputError(pet_sex, error_sex);
-handleInputError(age_input_edit, edit_age_error);
-handleInputError(pet_birthdate_edit, edit_birthdate_error);
-handleInputError(pet_type_edit, edit_pet_type_error);
-handleInputError(pet_breed, edit_breed_error);
+addBlurListener(pet_name_edit, errorPet1);
+addBlurListener(pet_sex, error_sex1);
+addBlurListener(age_input_edit, edit_age_error1);
+addBlurListener(pet_birthdate_edit, edit_birthdate_error1);
+addBlurListener(pet_type_edit, edit_pet_type_error1);
+addBlurListener(pet_breed, edit_breed_error1);
 
 
 
