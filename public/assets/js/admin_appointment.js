@@ -688,6 +688,54 @@ document.addEventListener('DOMContentLoaded', function () {
             pendingBtn.style.display = 'flex';
         }
     });
+
+    function addBlurListener(input, error) {
+        input.addEventListener("blur", function () {
+          if (input.value.trim() === "none") {
+            error.style.display = "block";
+            input.classList.add("error-border");
+          } else if (input.value.trim() === "") {
+            error.style.display = "block";
+            input.classList.add("error-border");
+          } else {
+            error.style.display = "none";
+            input.classList.remove("error-border");
+          }
+        });
+      }
+
+      var owner_name = document.getElementById('owner_name');
+      var email = document.getElementById('email');
+      var pet_name = document.getElementById('pet_name');
+      var surgery_type = document.getElementById('surgery_type');
+      var appointment_date = document.getElementById('appointment_date');
+      var appointment_time = document.getElementById('appointment_time');
+      var rejection_reason = document.getElementById('rejection_reason');
+      var appointment_date1 = document.getElementById('appointment_date-1');
+      var appointmentTime = document.getElementById('appointmentTime');
+    
+    
+    
+    //error messages IDs
+    var errorFname = document.getElementById('error-owner_name-2');
+    var errorEmail = document.getElementById('error-email');
+    var errorPet_name = document.getElementById('error-pet_name-1');
+    var errorSurgery = document.getElementById('error-surgery_type-1');
+    var errorDate = document.getElementById('error-date');
+    var errorTime = document.getElementById('error-appointment_time-1');
+    var errorRejection = document.getElementById('error-rejection');
+    var errorDate1 = document.getElementById('error-date1');
+    var errorTime1 = document.getElementById('error-appointment_time-4');
+
+    addBlurListener(owner_name,errorFname);
+    addBlurListener(email,errorEmail);
+    addBlurListener(pet_name,errorPet_name);
+    addBlurListener(surgery_type,errorSurgery);
+    addBlurListener(appointment_date,errorDate);
+    addBlurListener(appointment_time,errorTime);
+    addBlurListener(rejection_reason,errorRejection);
+    addBlurListener(appointment_date1,errorDate1);
+    addBlurListener(appointmentTime,errorTime1);
  
 });
 

@@ -282,31 +282,36 @@
     </script>
     @endif
 <script>
-     // Dummy data for notifications
 
 
-  // Function to populate the notification dropdown
+  // Function to populate all notification dropdowns
   function populateNotifications() {
-    const dropdown = document.querySelector('.notification-dropdown');
+    const dropdowns = document.querySelectorAll('.notification-dropdown');
 
-    // Clear existing items
-    dropdown.innerHTML = '';
+    dropdowns.forEach(dropdown => {
+      // Clear existing items
+      dropdown.innerHTML = '';
 
-    // Add new notification items
-    notifications.forEach(notification => {
-      const listItem = document.createElement('li');
-      listItem.classList.add('notification-item');
-      listItem.textContent = notification;
-      dropdown.appendChild(listItem);
+      // Add new notification items
+      notifications.forEach(notification => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('notification-item');
+        listItem.innerHTML = notification; // Use innerHTML to render HTML content
+        dropdown.appendChild(listItem);
+      });
     });
   }
 
-  // Event listener for button click to populate and show the dropdown
-  const notificationButton = document.getElementById('notification');
-  notificationButton.addEventListener('click', () => {
-    populateNotifications();
+  // Event listener for button click to populate and show the dropdowns
+  const notificationButtons = document.querySelectorAll('.notification');
+  
+  notificationButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      populateNotifications();
+    });
   });
 </script>
+
 
 
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>

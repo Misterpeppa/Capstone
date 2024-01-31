@@ -29,7 +29,7 @@
 		<div class="content">
 		<div id="rectangle" class="rectangle justify-content-between">
                 <div>
-                    <a id="menu-toggle" class="btn menu_toggle btn-link" role="button" href="#menu-toggle"><i class="fa fa-bars"></i></a>
+                    <a id="menu-toggle" class="btn menu_toggle btn-link" role="button" href="#menu-toggle"><i class="fa fa-bars custom-bars-icon"></i></a>
                 </div>
                 <div class="d-flex flex-direction-row">
                     <button class="btn notification" id="notification" type="button"><span class="notification_base"><svg
@@ -84,7 +84,9 @@
                                             <input type="text" class="search_input" name="search"
                                             value="{{ request('search') }}" placeholder="Search Pet Record">
                                         </div>
-                                        <button type="submit" form="petrecordForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+
+                                        <button type="submit" form="petrecordForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i><span class="filter_btn_base">Search</span></button>
+
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
@@ -399,7 +401,7 @@
 
 					</div>
 				</div>
-				<div id="view_pet_container" class="view_pet">
+				<div id="view_pet_container" class="view_pet customer_side">
 					<div class="view_pet_back_btn_container">
 						<button class="btn edit_pet_back_btn" id="view_pet_back_btn" type="button"><span class="edit_pet_back_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
   <g clip-path="url(#clip0_6089_3068)" filter="url(#filter0_d_6089_3068)">
@@ -1076,7 +1078,7 @@
                                             <option value="{{ $owners->id }}">{{ $owners->first_name }} {{ $owners->middle_name }} {{ $owners->last_name }} {{ $owners->suffix }}</option>
                                         @endforeach
 									</datalist>
-                                    
+                                    <div id="error-owner" class="error-message"><span>• Please enter pet name.</span></div>
 									
                                 </div>
 							<div class="new_input_row">
@@ -1128,7 +1130,7 @@
 									<input class="form-control" value="" type="text" name="pet_age" data-bs-toggle="tooltip" data-bss-tooltip="" id="age-1" data-id="age-1" 
 									title="Please select pet type and enter the birthdate first." maxlength="3" disabled="" placeholder="Please select pet type, breed, and enter the birthdate first.">
 									<label class="form-label" for="age-1">Age</label>
-									<div id="error-age-1" class="error-message" style="color:red;"></div>
+									<div id="error-age-1" class="error-message" style="color:red;">• Please input birth date of pet</div>
 								</div>
 							</div>
 							<div class="new_input_row">
@@ -1175,40 +1177,25 @@
 						<div class="mb-3 input_container">
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" name="diagnosis" data-id="diagnosis" id="diagnosis" placeholder="Diagnosis">
-										<option value="" selected="">Select Diagnosis</option>
-										<option value="Diagnosis 1">Diagnosis 1</option>
-										<option value="Diagnosis 2">Diagnosis 2</option>
-										<option value="Diagnosis 3">Diagnosis 3</option>
-									</select>
-									<label class="form-label form-label" for="diagnosis">Diagnosis<span>&nbsp;*</span></label>
+									<input class="form-control" name="diagnosis" data-id="diagnosis" id="diagnosis" placeholder="Diagnosis"/>
+									<label class="form-label" for="diagnosis">Diagnosis<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_type"><span>• Please select diagnosis</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" name="diagnosis_date" data-id="diagnosis_date" id="diagnosis_date" placeholder="Date" type="date">
-									<label class="form-label form-label" for="diagnosis_date">Date<span>&nbsp;*</span></label>
+									<input class="form-control" name="diagnosis_date" data-id="diagnosis_date" id="diagnosis_date" placeholder="Date" type="date">
+									<label class="form-label" for="diagnosis_date">Date<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_birthdate"><span>• Please click the calendar icon on the right part, and select diagnosis date.</span></div>
 									
 								</div>
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" name="treatment" data-id="treatment_plan" id="treatment_plan" placeholder="Treatment Plan">
-										<option value="" selected="">Select Treatment</option>
-										<option value="Treatment 1">Treatment 1</option>
-										<option value="Treatment 2">Treatment 2</option>
-										<option value="Treatment 3">Treatment 3</option>
-									</select>
-									<label class="form-label form-label" for="diagnosis">Treatment Plan<span>&nbsp;*</span></label>
+									<input class="form-control" name="treatment" data-id="treatment_plan" id="treatment_plan" placeholder="Treatment Plan"/>	
+									<label class="form-label" for="diagnosis">Treatment Plan<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_type-3"><span>• Please select treatment plan</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select" name="medication" id="medication" data-id="medication" placeholder="Medication">
-										<option value="" disabled selected>Medication</option>
-										@foreach ($medInfo as $medInfo)
-										<option value="{{ $medInfo->id }}">{{ $medInfo->item_name }}</option>
-										@endforeach
-									</select>
+									<input class="form-control" name="medication" id="medication" data-id="medication" placeholder="Medication"/>
 									<label class="form-label form-label" for="medication">Medication<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_type-4"><span>• Please select medication</span></div>
 								</div>
@@ -1244,45 +1231,35 @@
 						<div class="mb-3 input_container">
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" name="vax_id" id="vaccination" data-id="vaccination" placeholder="Vaccination">
-										<option value=""disabled selected>Vaccine </option>
-										@foreach ($vaxInfo as $vaxInfo)
-										<option value="{{ $vaxInfo->id }}">{{ $vaxInfo->item_name }}</option>
-										@endforeach
-									</select>
-									<label class="form-label form-label" for="vaccination">Diagnosis<span>&nbsp;*</span></label>
+									<input class="form-control" name="vax_id" id="vaccination" data-id="vaccination" placeholder="Vaccination"/>
+									<label class="form-label" for="vaccination">Diagnosis<span>&nbsp;*</span></label>
 									<div id="error-vaccination" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-vaccination" class="guide-message"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" name="vaccination_date" id="vaccination_date" data-id="vaccination_date" placeholder="Date" type="date">
-									<label class="form-label form-label" for="vaccination_date">Date<span>&nbsp;*</span></label>
+									<input class="form-control" name="vaccination_date" id="vaccination_date" data-id="vaccination_date" placeholder="Date" type="date">
+									<label class="form-label" for="vaccination_date">Date<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_birthdate-2"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 									<div class="guide-message" id="guide_pet_birthdate-2"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 								</div>
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<textarea class="form-control form-control" name="vaccination_description" id="vaccination_description" placeholder="Vaccination Details"></textarea>
+									<textarea class="form-control" name="vaccination_description" id="vaccination_description" placeholder="Vaccination Details"></textarea>
 									<label class="form-label" for="vaccination_description">Vaccination Details<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_type-5"><span>• Please select pet type</span></div>
 									<div class="guide-message" id="guide-pet_type-5"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
 									<input class="form-control" id="next_schedule" name="revaccination_date" type="date" data-id="next_schedule">
-									<label class="form-label form-label" for="next_schedule">Next Schedule Date<span>&nbsp;*</span></label>
+									<label class="form-label" for="next_schedule">Next Schedule Date<span>&nbsp;*</span></label>
 									<div id="error-next_schedule" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-next_schedule" class="guide-message"><span>• Please select pet type</span></div>
 								</div>
 							</div>
 							<div class="d-flex justify-content-end align-items-end align-content-end align-self-end newinput_row" style="width: 100%;">
 								<div class="form-floating pet_status_input" style="width: 49.3%;">
-									<select class="form-select" name="status" data-id="status" id="status">
-										<option value="" selected="">Status</option>
-										<option value="Status 1">Status 1</option>
-										<option value="Status 2">Status 2</option>
-										<option value="Status 3">Status 3</option>
-									</select>
+									<input class="form-control" name="status" data-id="status" id="status"/>
 									<label class="form-label" for="status">Status<span>&nbsp;*</span></label>
 									<div id="error-next_schedule-1" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-next_schedule-1" class="guide-message"><span>• Please select pet type</span></div>
@@ -1312,50 +1289,35 @@
 						<div class="mb-3 input_container">
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select form-select" name="surgery_type" id="surgery_type" data-id="surgery_type" placeholder="Surgery">
-										<option value="" selected="">Surgery</option>
-										<option value="Surgery 1">Surgery 1</option>
-										<option value="Surgery 2">Surgery 2</option>
-										<option value="Surgery 3">Surgery 3</option>
-									</select>
-									<label class="form-label form-label" for="surgery">Surgery<span>&nbsp;*</span></label>
+									<input class="form-control" name="surgery_type" id="surgery_type" data-id="surgery_type" placeholder="Surgery"/>
+									<label class="form-label" for="surgery">Surgery<span>&nbsp;*</span></label>
 									<div id="error-vaccination-1" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-vaccination-1" class="guide-message"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control form-control" name="surgery_date" id="surgery_date" data-id="surgery_date" placeholder="Date" type="date">
-									<label class="form-label form-label" for="surgery_date">Date<span>&nbsp;*</span></label>
+									<input class="form-control" name="surgery_date" id="surgery_date" data-id="surgery_date" placeholder="Date" type="date">
+									<label class="form-label" for="surgery_date">Date<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_birthdate-3"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 									<div class="guide-message" id="guide_pet_birthdate-3"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 								</div>
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select" id="severity" name="severity" data-id="severity" placeholder="Reason for surgery">
-										<option value="" selected="">Severity</option>
-										<option value="Reason surgery 1">Low Risk</option>
-										<option value="Reason surgery 2">Intermediate Risk</option>
-										<option value="Reason surgery 3">High Risk</option>
-									</select>
-									<label class="form-label form-label" for="severity">Severity<span>&nbsp;*</span></label>
+									<input class="form-control" id="severity" name="severity" data-id="severity" placeholder="Reason for surgery"/>
+									<label class="form-label" for="severity">Severity<span>&nbsp;*</span></label>
 									<div id="error-medication-2" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-medication-2" class="guide-message"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select" id="med_id" name="med_id" data-id="med_id" placeholder="Medication">
-										<option value=""disabled selected>Medication</option>
-										@foreach ($med_info as $med_info)
-										<option value="{{ $med_info->id }}">{{ $med_info->item_name }}</option>
-										@endforeach
-									</select>
-									<label class="form-label form-label" for="med_id">Medication<span>&nbsp;*</span></label>
+									<input class="form-control" id="med_id" name="med_id" data-id="med_id" placeholder="Medication"/>
+									<label class="form-label" for="med_id">Medication<span>&nbsp;*</span></label>
 									<div id="error-medication-1" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-medication-1" class="guide-message"><span>• Please select pet type</span></div>
 								</div>
 							</div>
 							<div class="d-flex justify-content-end align-items-end align-content-end align-self-end newinput_row" style="width: 100%;">
 								<div class="form-floating" style="width: 100%;">
-									<textarea class="form-control form-control" name="surgery_note" id="notes" data-id="notes" placeholder="Notes"></textarea>
+									<textarea class="form-control" name="surgery_note" id="notes" data-id="notes" placeholder="Notes"></textarea>
 									<label class="form-label" for="notes">Notes<span>&nbsp;*</span></label>
 									<div id="error-notes" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-notes" class="guide-message"><span>• Please select pet type</span></div>

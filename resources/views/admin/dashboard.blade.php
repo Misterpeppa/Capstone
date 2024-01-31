@@ -32,7 +32,7 @@
 		<div class="content">
         <div id="rectangle" class="rectangle justify-content-between">
                 <div>
-                    <a id="menu-toggle" class="btn menu_toggle btn-link" role="button" href="#menu-toggle"><i class="fa fa-bars"></i></a>
+                    <a id="menu-toggle" class="btn menu_toggle btn-link" role="button" href="#menu-toggle"><i class="fa fa-bars custom-bars-icon"></i></a>
                 </div>
                 <div class="d-flex flex-direction-row">
                     <button class="btn notification" id="notification" type="button"><span class="notification_base"><svg
@@ -123,7 +123,7 @@
 				<div id="dashboard_table_container" class="dashboard_table_container">
 					<div class="dashboard_table_header">
 						<h1>Appointments</h1>
-						<button class="btn dashboard_view_btn" type="button"><span class="dashboard_view_btn_base">View</span></button>
+						<button class="btn dashboard_view_btn" type="button"> <a href="{{ route('admin_appointment') }}"><span class="dashboard_view_btn_base">View</span></a></button>
 					</div>
 					<div class="container_header">
                                 <form action="" id="approvedForm" style="width: 100%;">
@@ -448,7 +448,7 @@
 				<div id="inventory_table_container" class="dashboard_table_container">
 					<div class="dashboard_table_header">
 						<h1>Inventory</h1>
-						<button class="btn dashboard_view_btn" type="button"><span class="dashboard_view_btn_base">View</span></button>
+						<button class="btn dashboard_view_btn" type="button"><a href="{{ route('admin_inv') }}"><span class="dashboard_view_btn_base">View</span></a></button>
 					</div>
 
 					<div class="container_header">

@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
+    
+
+
     var add_client = document.getElementById('add_client');
     var add_client_btn = document.getElementById('add_client_btn');
-    var add_client_btn_1 = document.getElementById('add_client_btn_1');
     var add_pet_btn = document.getElementById('add_pet_btn');
     var archive_button = document.getElementById('archive_button');
 
@@ -27,11 +29,10 @@ document.addEventListener('DOMContentLoaded', function () {
     add_client_modal1.show();
   });
     
-    add_client_btn_1.addEventListener('click', function () {
-    add_client_modal1.show();
-  });
 
-  add_pet_btn.addEventListener('click', function () {
+    
+    add_pet_btn.addEventListener('click', function () {
+
     add_pet_record_modal.show();
   });
 
@@ -545,206 +546,100 @@ setupFormValidation(
 
 
 
-    
+    function addBlurListener(input, error) {
+        input.addEventListener("blur", function () {
+          if (input.value.trim() === "none") {
+            error.style.display = "block";
+            input.classList.add("error-border");
+          } else if (input.value.trim() === "") {
+            error.style.display = "block";
+            input.classList.add("error-border");
+          } else {
+            error.style.display = "none";
+            input.classList.remove("error-border");
+          }
+        });
+      }
 
+
+    
+    var firstName = document.getElementById("first_name-1");
+    var middleName = document.getElementById("middle_name-1");
+    var lastName = document.getElementById("last_name-1");
+    var suffix = document.getElementById("suffix-1");
+    var birthdate = document.getElementById("client_birthdate-1");
+    var address = document.getElementById("client_address-1");
+    var email = document.getElementById("client_email-1");
+    var user_phone = document.getElementById('user_phone-1');
+    
+    
+    
+    //error messages IDs
+    var errorFname = document.getElementById('error-first_name-1');
+    var errormiddleName = document.getElementById('error-middle_name-1');
+    var errorlastName = document.getElementById('error-last_name-1');
+    var errorSuffix = document.getElementById('error-suffix-1');
+    var errorbirthdate = document.getElementById('error-client_birthdate-1');
+    var erroraddress = document.getElementById('error-client_address-1'); // Fix the typo here
+    var erroremail = document.getElementById('error-client_email-1');
+    var erroruser_phone = document.getElementById('error-user_phone-1');
+    
+    addBlurListener(firstName, errorFname); 
+    addBlurListener(middleName, errormiddleName);  
+    addBlurListener(lastName, errorlastName);  
+    addBlurListener(suffix, errorSuffix);  
+    addBlurListener(birthdate, errorbirthdate);  
+    addBlurListener(address, erroraddress);  
+    addBlurListener(email, erroremail);
+    addBlurListener(user_phone, erroruser_phone);
+
+    function clearForm() {
+        firstName.value = '';
+        middleName.value = '';
+        lastName.value = '';
+        suffix.value = '';
+        birthdate.value = '';
+        address.value = '';
+        email.value = '';
+        user_phone.value = '';
+    }
+    
+    // Assuming you have a button with the ID "clear_form-1"
+    var clearButton = document.getElementById('clear_form-1');
+    
+    // Add click event listener to the clear button
+    clearButton.addEventListener('click', clearForm);
+
+    // Assuming you have a button with the class "btn-close"
+    var closeButton = document.getElementById('close_addClient');
+
+
+    // Add click event listener to the close button
+    closeButton.addEventListener('click', clearForm);
+    
+    const today = new Date();
+    const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate()).toISOString().split('T')[0];
+    const minDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate()).toISOString().split('T')[0];
+
+    const dateInput = document.getElementById('client_birthdate-1');
+    dateInput.setAttribute('max', maxDate);
+    dateInput.setAttribute('min', minDate);
+
+    dateInput.addEventListener('change', function () {
+        let selectedDate = new Date(this.value);
+        if (selectedDate > today || selectedDate < new Date(today.getFullYear() - 100, today.getMonth(), today.getDate())) {
+            this.value = '';
+            alert('Please select a date between 18 and 100 years ago.');
+        }
+        // Additional validation or action can be added here if needed
+    });
+
+
+    dateInput.addEventListener('keydown', function (e) {
+        e.preventDefault();
+    });
  
 });
-
-var firstName = document.getElementById("first_name");
-var middleName = document.getElementById("middle_name");
-var lastName = document.getElementById("last_name");
-var suffix = document.getElementById("suffix");
-var birthdate = document.getElementById("client_birthdate");
-var address = document.getElementById("client_address");
-var email = document.getElementById("client_email");
-var user_phone = document.getElementById('user_phone');
-
-var firstName1 = document.getElementById("first_name-1");
-var middleName1 = document.getElementById("middle_name-1");
-var lastName1 = document.getElementById("last_name-1");
-var suffix1 = document.getElementById("suffix-1");
-var birthdate1 = document.getElementById("client_birthdate-1");
-var address1 = document.getElementById("client_address-1");
-var email1 = document.getElementById("client_email-1");
-var user_phone1 = document.getElementById('user_phone-1');
-
-var firstName2 = document.getElementById("first_name-2");
-var middleName2 = document.getElementById("middle_name-2");
-var lastName2 = document.getElementById("last_name-2");
-var suffix2 = document.getElementById("suffix-2");
-var birthdate2 = document.getElementById("client_birthdate-2");
-var address2 = document.getElementById("client_address-2");
-var email2 = document.getElementById("client_email-2");
-var user_phone2 = document.getElementById('user_phone-2');
-
-//error messages IDs
-var errorFname = document.getElementById('error-first_name');
-var errormiddleName = document.getElementById('error-middle_name');
-var errorlastName = document.getElementById('error-last_name');
-var errorbirthdate = document.getElementById('error-client_birthdate');
-var erroraddress = document.getElementById('error-client_address');
-var erroremail = document.getElementById('error-client_email');
-var erroruser_phone = document.getElementById('error-user_phone');
-
-var errorFname1 = document.getElementById('error-first_name-1');
-var errormiddleName1 = document.getElementById('error-middle_name-1');
-var errorlastName1 = document.getElementById('error-last_name-1');
-var errorbirthdate1 = document.getElementById('error-client_birthdate-1');
-var erroraddress1 = document.getElementById('error-client_address-1');
-var erroremail1 = document.getElementById('error-client_email-1');
-var erroruser_phone1 = document.getElementById('error-user_phone-1');
-
-// Copy error elements for the second set of inputs
-var errorFname2 = document.getElementById('error-first_name-2');
-var errormiddleName2 = document.getElementById('error-middle_name-2');
-var errorlastName2 = document.getElementById('error-last_name-2');
-var errorbirthdate2 = document.getElementById('error-client_birthdate-2');
-var erroraddress2 = document.getElementById('error-client_address-2');
-var erroremail2 = document.getElementById('error-client_email-2');
-var erroruser_phone2 = document.getElementById('error-user_phone-2');
-
-
-//guide messages IDs
-var guideFname = document.getElementById('guide-first_name');
-var guidemiddleName = document.getElementById('guide-middle_name');
-var guidelastName = document.getElementById('guide-last_name');
-var guidebirthdate = document.getElementById('guide-client_birthdate');
-var guideaddress = document.getElementById('guide-client_address');
-var guideemail = document.getElementById('guide-client_email');
-var guideuser_phone = document.getElementById('guide-user_phone');
-
-var guideFname1 = document.getElementById('guide-first_name-1');
-var guidemiddleName1 = document.getElementById('guide-middle_name-1');
-var guidelastName1 = document.getElementById('guide-last_name-1');
-var guidebirthdate1 = document.getElementById('guide-client_birthdate-1');
-var guideaddress1 = document.getElementById('guide-client_address-1');
-var guideemail1 = document.getElementById('guide-client_email-1');
-var guideuser_phone1 = document.getElementById('guide-user_phone-1');
-
-// Copy guide elements for the second set of inputs
-var guideFname2 = document.getElementById('guide-first_name-2');
-var guidemiddleName2 = document.getElementById('guide-middle_name-2');
-var guidelastName2 = document.getElementById('guide-last_name-2');
-var guidebirthdate2 = document.getElementById('guide-client_birthdate-2');
-var guideaddress2 = document.getElementById('guide-client_address-2');
-var guideemail2 = document.getElementById('guide-client_email-2');
-var guideuser_phone2 = document.getElementById('guide-user_phone-2');
-
-
-handleInputError(firstName, errorFname, guideFname)  
-handleInputError(middleName, errormiddleName, guidemiddleName)  
-handleInputError(lastName, errorlastName, guidelastName)  
-handleInputError(birthdate, errorbirthdate, guidebirthdate)  
-handleInputError(address, erroraddress, guideaddress)  
-handleInputError(email, erroremail, guideemail)
-handleInputError(user_phone, erroruser_phone, guideuser_phone)
-
-handleInputError(firstName1, errorFname1, guideFname1)  
-handleInputError(middleName1, errormiddleName1, guidemiddleName1)  
-handleInputError(lastName1, errorlastName1, guidelastName1)  
-handleInputError(birthdate1, errorbirthdate1, guidebirthdate1)  
-handleInputError(address1, erroraddress1, guideaddress1)  
-handleInputError(email1, erroremail1, guideemail1)
-handleInputError(user_phone1, erroruser_phone1, guideuser_phone1) 
-
-handleInputError(firstName2, errorFname2, guideFname2);
-handleInputError(middleName2, errormiddleName2, guidemiddleName2);
-handleInputError(lastName2, errorlastName2, guidelastName2);
-handleInputError(birthdate2, errorbirthdate2, guidebirthdate2);
-handleInputError(address2, erroraddress2, guideaddress2);
-handleInputError(email2, erroremail2, guideemail2);
-handleInputError(user_phone2, erroruser_phone2, guideuser_phone2);
-
-
-// Usage example
-var pet_nameInput = document.getElementById('pet_name');
-var pet_TypeInput = document.getElementById('pet_type');
-var breedInput = document.getElementById('breed');
-var pet_GenderInput = document.getElementById('gender');
-var pet_birthdateInput = document.getElementById('pet_birthdate');
-var pet_ageInput = document.getElementById('age');
-var pet_weightInput = document.getElementById('weight');
-var pet_sterilizationStatusInput = document.getElementById('sterilization_status');
-
-var pet_nameInput1 = document.getElementById('pet_name-1');
-var pet_TypeInput1 = document.getElementById('pet_type-1');
-var breedInput1 = document.getElementById('breed-1');
-var pet_GenderInput1 = document.getElementById('gender-1');
-var pet_birthdateInput1 = document.getElementById('pet_birthdate-1');
-var pet_ageInput1 = document.getElementById('age-1');
-var pet_weightInput1 = document.getElementById('weight-1');
-var pet_sterilizationStatusInput1 = document.getElementById('sterilization_status-1');
-
-
-var errorPet = document.getElementById('error-pet_name');
-var errorPetGender = document.getElementById('error-gender');
-var errorPetType = document.getElementById('error-pet_type');
-var errorPetBreed = document.getElementById('error-breed');
-var errorPetBday = document.getElementById('error-pet_birthdate');
-var errorPetWeight = document.getElementById('error-weight');
-var errorPetStatus = document.getElementById('error-sterilization_status');
-var errorPet1 = document.getElementById('error-pet_name-1');
-var errorPetGender1 = document.getElementById('error-breed-1');
-var errorPetType1 = document.getElementById('error-pet_type-1');
-var errorPetBreed1 = document.getElementById('error-pet_type-1');
-var errorPetBday1 = document.getElementById('error-pet_birthdate-1');
-var errorPetWeight1 = document.getElementById('error-weight-1');
-var errorPetStatus1 = document.getElementById('error-sterilization_status-1');
-
-var guidePetMessage = document.getElementById('guide-pet_name');
-var guidePetGenderMessage = document.getElementById('guide-gender');
-var guidePetTypeMessage = document.getElementById('guide-pet_type');
-var guidePetBreedMessage = document.getElementById('guide-breed');
-var guidePetBdayMessage = document.getElementById('guide_pet_birthdate');
-var guidePetWeightMessage = document.getElementById('guide_pet_weight');
-var guidePetStatusMessage = document.getElementById('guide-sterilization_status');  
-
-var guidePetMessage1 = document.getElementById('guide-pet_name-1');
-var guidePetGenderMessage1 = document.getElementById('guide-gender-1');
-var guidePetTypeMessage1 = document.getElementById('guide-pet_type-1');
-var guidePetBreedMessage1 = document.getElementById('guide-breed-1');
-var guidePetBdayMessage1 = document.getElementById('guide_pet_birthdate-1');
-var guidePetWeightMessage1 = document.getElementById('guide_pet_weight-1');
-var guidePetStatusMessage1 = document.getElementById('guide-sterilization_status-1');  
-
-handleInputError(pet_nameInput, errorPet, guidePetMessage);
-handleInputError(pet_GenderInput, errorPetGender, guidePetGenderMessage);
-handleInputError(pet_TypeInput, errorPetType, guidePetTypeMessage);
-handleInputError(breedInput, errorPetBreed, guidePetBreedMessage)
-handleInputError(pet_birthdateInput, errorPetBday, guidePetBdayMessage);
-handleInputError(pet_weightInput, errorPetWeight, guidePetWeightMessage);
-handleInputError(pet_sterilizationStatusInput, errorPetStatus, guidePetStatusMessage)
-handleInputError(pet_nameInput1, errorPet1, guidePetMessage1);
-handleInputError(pet_GenderInput1, errorPetGender1, guidePetGenderMessage1);
-handleInputError(pet_TypeInput1, errorPetType1, guidePetTypeMessage1);
-handleInputError(breedInput1, errorPetBreed1, guidePetBreedMessage1)
-handleInputError(pet_birthdateInput1, errorPetBday1, guidePetBdayMessage1);
-handleInputError(pet_weightInput1, errorPetWeight1, guidePetWeightMessage1);
-handleInputError(pet_sterilizationStatusInput1, errorPetStatus1, guidePetStatusMessage1)
-
-
-
-function handleInputError(input, error, guide) {
-    function onBlur() {
-    if (input.value.trim() === '' || input.value.trim() === '0') {
-        error.style.display = 'flex'; // Show the error message
-        input.classList.add('is-invalid');
-        input.classList.add('error-border');
-    } else if (input.value.trim() === 'none') {
-        error.style.display = 'flex'; // Show the error message
-        input.classList.add('is-invalid');
-        input.classList.add('error-border');
-    } else if (input.type === 'email' && !isValidEmail(input.value.trim())) {
-        error.style.display = 'flex'; // Show the error message
-        input.classList.add('is-invalid');
-        input.classList.add('error-border');
-    } else {
-        error.style.display = 'none'; // Hide the error message
-        input.classList.remove('is-invalid');
-        input.classList.remove('error-border');
-    }
-}
-
 
     function onFocus() {
         error.style.display = 'none'; // Hide the error message
@@ -753,22 +648,14 @@ function handleInputError(input, error, guide) {
         input.classList.remove('error-border');
     }
 
-    function onBlurGuide() {
-        guide.style.display = 'none'; // Hide the guide message
-    }
 
-    // Add event listeners to inputs
-    input.addEventListener('blur', onBlur);
-    input.addEventListener('focus', onFocus);
-    input.addEventListener('blur', onBlurGuide);
-}   
-// Function to check if the value is a valid email format
+
 function isValidEmail(email) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
 }
 
-var user_phone1 = document.getElementById('user_phone-1');
+
     
 function PhoneNumberInputLimit(inputElement) {
     inputElement.addEventListener('input', function () {
