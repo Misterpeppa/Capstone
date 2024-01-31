@@ -117,8 +117,8 @@
                         <div class="tab-pane  align-self-stretch appointment_tab" role="tabpanel"
                             id="approved_tab">
                             <div class="container_header">
-                                <form action="" id="approvedForm">
-                                    <div class="left_part_product_header">
+                                <form class="w-100" action="" id="approvedForm">
+                                    <div class="left_part_product_header w-100">
                                         <div class="search_container">
                                             <input type="text" class="search_input" name="qApproved"
                                             value="{{ request('qApproved') }}" placeholder="Search Appointment">
@@ -638,8 +638,8 @@
                         </div>
                         <div class="tab-pane align-self-stretch appointment_tab" role="tabpanel" id="pending_tab">
                             <div class="container_header">
-                                <form action="" id="pendingForm">
-                                    <div class="left_part_product_header">
+                                <form class="w-100" action="" id="pendingForm">
+                                    <div class="left_part_product_header w-100">
                                         <div class="search_container">
                                             <input type="text" class="search_input" name="qPending"
                                             value="{{ request('qPending') }}" placeholder="Search Appointment">
@@ -1020,7 +1020,7 @@
                                                 <td >{{ $appointment['appointmentDate'] }} |
                                                     {{ $appointment['appointmentTime'] }}</td>
                                                 <td >{{ $appointment['appointmentType'] }}</td>
-                                                <td>
+                                                <td class="dropdown button-action">
                                                     <div class="dropdown"><button class="dropbtn" style="background-color: transparent; border:none;"
                                                             aria-expanded="false" data-bs-toggle="dropdown"
                                                             type="button"><svg xmlns="http://www.w3.org/2000/svg"
@@ -1127,8 +1127,8 @@
                         </div>
                         <div class="tab-pane align-self-stretch appointment_tab" role="tabpanel" id="rejected_tab">
                             <div class="container_header">
-                                <form action="" id="rejectForm">
-                                    <div class="left_part_product_header">
+                                <form class="w-100" action="" id="rejectForm">
+                                    <div class="left_part_product_header w-100">
                                         <div class="search_container">
                                             <input type="text" class="search_input" name="qPending"
                                             value="{{ request('qReject') }}" placeholder="Search Appointment">
@@ -1511,7 +1511,7 @@
                                                     {{ $appointment['appointmentTime'] }}</td>
                                                 <td >{{ $appointment['appointmentType'] }}</td>
                                                 <td >{{ $appointment->notes }}</td>
-                                                <td>
+                                                <td class="dropdown button-action">
                                                     <div class="dropdown"><button class="dropbtn" style="background-color: transparent; border:none;"
                                                             aria-expanded="false" data-bs-toggle="dropdown"
                                                             type="button"><svg xmlns="http://www.w3.org/2000/svg"
@@ -2325,7 +2325,6 @@ document.getElementById("appointmentTime").addEventListener("input", enableResch
   appointmentTime.value = "";
 
   reschedule_btn1.disabled = true;
-
 
 }
       </script>

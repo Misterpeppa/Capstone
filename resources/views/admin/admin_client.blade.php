@@ -305,7 +305,7 @@
                                 <th>Birthdate</th>
                                 <th>Visit</th>
                                 <th>Last Visit</th>
-                                <th>Action</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody id="client_table_body">
