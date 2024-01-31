@@ -28,29 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const dateStocked = document.getElementById("datestocked").value;
     const expirationDate = document.getElementById("expiration_date").value;
 
-    // Determine the status based on the input quantity
-    var status =
-      quantity === "0"
-        ? "Out of Stock"
-        : quantity <= 50
-        ? "Low Stock"
-        : "In Stock";
 
-    // Define styles for different statuses
-    var statusStyles = {
-      "Out of Stock": {
-        backgroundColor: "#DA534F",
-        color: "#fff",
-      },
-      "Low Stock": {
-        backgroundColor: "#FFA800",
-        color: "#fff",
-      },
-      "In Stock": {
-        backgroundColor: "#5CA500",
-        color: "var(--colors-main-neutral, #FFF)",
-      },
-    };
 
   }); 
     // Add an event listener for the buttons inside dropdown-content
@@ -72,13 +50,13 @@ document.addEventListener("DOMContentLoaded", function () {
           } else if (action === "View") {
             const view_product = document.getElementById("view_product");
             var product_table_container = document.getElementById("product_table_container");
-            var batch_products = document.getElementById("batch_products");
             var inventory_header = document.getElementById("inventory_header");
             var prod_info_header = document.getElementById("prod_info_header");
+            var batch_product = document.getElementById("batch_product");
             
             view_product.style.display = "flex";
             product_table_container.style.display = "none";
-            batch_products.style.display = "flex";
+            batch_product.style.display = "flex";
 
             inventory_header.style.display = "none";
             prod_info_header.style.display = "flex";
@@ -132,7 +110,9 @@ document.addEventListener("DOMContentLoaded", function () {
       var inventory_header = document.getElementById("inventory_header");
       var prod_info_header = document.getElementById("prod_info_header");
       var product_table_container = document.getElementById("product_table_container");
-
+      var batch_product = document.getElementById("batch_product");
+      
+      batch_product.style.display = "none";
       view_product.style.display = "none";
       inventory_header.style.display = "flex";
       prod_info_header.style.display = "none";
@@ -144,14 +124,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add a click event listener to the "Back" button
     prodBackButton.addEventListener("click", function () {
-      // Hide the view_product
+      // Hide the view_product 
       const prod_detail = document.querySelector(".prod_detail");
       const prod_detail_header = document.getElementById("prod_detail_header");
       const prod_info_header = document.getElementById("prod_info_header");
       const view_product = document.getElementById("view_product");
       const InventoryContainer = document.getElementById("InventoryContainer");
-
+      var product_table_container = document.getElementById("product_table_container");
+      var batch_product = document.getElementById("batch_product");
+      
+      batch_product.style.display = "flex";
       prod_detail.style.display = "none";
+      product_table_container.style.display = "none";
       prod_detail_header.style.display = "none";
       prod_info_header.style.display = "flex";
       view_product.style.display = "flex";
