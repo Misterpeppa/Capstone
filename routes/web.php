@@ -133,6 +133,10 @@ Route::middleware('admin', 'nocache')->group(function () {
     Route::post('admin/client/edit', [ClientController::class, 'editClient'])->name(('client.edit'));
     Route::get('admin/client/reports', [ReportController::class, 'clientPDF'])->name('report.client');
     Route::post('admin/client/archive', [ClientController::class, 'archiveClient'])->name('client.archive');
+    Route::post('admin/client/addpet', [ClientController::class, 'addPet'])->name('client.addpet');
+    Route::get('admin/client/viewpet/{id}', [ClientController::class, 'viewPet']);
+
+
 
     Route::get('admin/dashboard', [DashboardController::class, 'show'])->name('admin_dashboard');
     Route::post('admin/dashboard', [DashboardController::class, 'store'])->name('dashboard.client.store');
