@@ -3132,7 +3132,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .card.pet_card {
     display: flex;
     padding: 24px;
-    width: 49%;
+    width: 32%;
     height: 250px;
     align-items: flex-start;
     flex-direction: row;
@@ -3262,6 +3262,10 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     align-items: flex-start;
     align-self: stretch;
   }
+
+  .pet_lower_detail > * {
+    margin-right: 20px; /* Adjust the value as needed */
+}
   
   .pet_sex_container, .pet_age_container, .pet_weight_container, .pet_sterilization_status_container {
     display: flex;

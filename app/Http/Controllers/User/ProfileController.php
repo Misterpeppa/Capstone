@@ -14,6 +14,7 @@ use App\Models\User\Clients;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Svg\Tag\Rect;
 
 class ProfileController extends Controller
 {
@@ -40,20 +41,24 @@ class ProfileController extends Controller
         }
         return view('user/landing', compact('clientInfo'));
     }
-    public function showPetInfo()
+    public function showPetInfo(Request $request)
     {
         $clientId = Auth::guard('clients')->id();
         $clientInfo = Clients::find($clientId);
-        $petrecords = PetRecord::where('owner_id', $clientId)->whereNull('archived_at')->get();
+        $query = PetRecord::where('owner_id', $clientId)->whereNull('archived_at');
         //$petrecordExist = $petrecords->isNotEmpty();
         $petExist = PetRecord::where('owner_id', $clientId)->exists();
-        $medHistory = MedHistory::all();
-        $vaxHistory = VaxHistory::all();
-        $surgHistory = SurgHistory::all();
-        $medHistoryExist = $medHistory->isNotEmpty();
-        $vaxHistoryExist = $vaxHistory->isNotEmpty();
-        $surgHistoryExist = $surgHistory->isNotEmpty();
-        return view('user/pet_info', compact('clientInfo', 'petExist', 'petrecords', 'medHistoryExist', 'vaxHistoryExist', 'surgHistoryExist'));
+
+        $searchTerm = $request->input('search');
+
+        $query->whereHas('pet', function ($petQuery) use ($searchTerm) {
+            $petQuery->where('name', 'like', '%' . $searchTerm . '%')
+                ->orWhere('breed', 'like', '%' . $searchTerm . '%');
+        });
+
+        $petrecords = $query->get();
+
+        return view('user/pet_info', compact('clientInfo', 'petExist', 'petrecords'));
     }
     public function editProfile(Request $request)
     {

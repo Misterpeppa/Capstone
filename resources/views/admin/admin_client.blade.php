@@ -336,20 +336,35 @@
                                             <button
                                                 data-action="View"
                                                 data-container-id="{{ $clientInfo->id }}"
+                                                data-first-name="{{ $clientInfo->first_name }}"
+                                                data-middle-name="{{ $clientInfo->middle_name}}"
+                                                data-last-name="{{ $clientInfo->last_name}}"
+                                                data-suffix="{{ $clientInfo->suffix}}"
+                                                data-birthdate="{{ $clientInfo->birthdate}}"
+                                                data-email="{{ $clientInfo->email}}"
+                                                data-phone="{{ $clientInfo->phone}}"
+                                                data-gender="{{ $clientInfo->gender}}"
                                                 class="btn border-0 viewButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <g clip-path="url(#clip0_6559_23849)">
-        <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-    <defs>
-        <clipPath id="clip0_6559_23849">
-        <rect width="24" height="24" fill="white"/>
-        </clipPath>
-    </defs>
-    </svg> View</div></button>
+                                                    <g clip-path="url(#clip0_6559_23849)">
+                                                        <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_6559_23849">
+                                                        <rect width="24" height="24" fill="white"/>
+                                                        </clipPath>
+                                                    </defs>
+                                                    </svg> View</div></button>
                                                 <button 
                                                 data-action="Edit" id="editButton"
                                                 data-container-id="{{ $clientInfo->id }}"
+                                                data-first-name="{{ $clientInfo->first_name }}"
+                                                data-middle-name="{{ $clientInfo->middle_name}}"
+                                                data-last-name="{{ $clientInfo->last_name}}"
+                                                data-suffix="{{ $clientInfo->suffix}}"
+                                                data-birthdate="{{ $clientInfo->birthdate}}"
+                                                data-email="{{ $clientInfo->email}}"
+                                                data-phone="{{ $clientInfo->phone}}"
                                                 class="btn border-0 editButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_6559_23478)">
     <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -454,30 +469,32 @@
                                 </defs>
                             </svg> Back</span></button></div>
                 <div class="client_info_container">
-                    <div class="client_info"><img src="assets/img/Portrait_Placeholder%202.png">
+                    <div class="client_info">
                         <div class="client_summary">
                             <div class="client_summary_header_container">
-                                <div class="client_summary_header"><span>Client Name dito</span></div>
+                                <div class="client_summary_header client_name">
+                                    <h1></h1>
+                                </div>
                             </div>
                             <div class="client_summary_body_container">
                                 <div class="client_summary_row">
-                                    <div class="client_summary_block">
+                                    <div class="client_summary_block client_birthdate">
                                         <h1>Birthday</h1>
-                                        <p>xx-xx-xxxx</p>
+                                        <p></p>
                                     </div>
-                                    <div class="client_summary_block">
+                                    <div class="client_summary_block client_email-3">
                                         <h1>Email Address</h1>
                                         <p>xxxx@gmail.com</p>
                                     </div>
-                                    <div class="client_summary_block">
+                                    <div class="client_summary_block user_phone-3">
                                         <h1>Phone Number</h1>
-                                        <p>+xx-xxx-xxx-xxxx</p>
+                                        <p></p>
                                     </div>
                                     <div class="client_summary_block">
                                         <h1>Address</h1>
                                         <p>xxxxx, xxxxx xxxx</p>
                                     </div>
-                                    <div class="client_summary_block">
+                                    <div class="client_summary_block client_gender">
                                         <h1>Gender</h1>
                                         <p>xxxx</p>
                                     </div>
@@ -675,7 +692,6 @@
                 </div>
                 <div id="pet_card_container" class="pet_card_container">
                     <div class="card pet_card" id="pet_card" data-pet-id="pet_card_0">
-                        <div class="pet_image_container"><img src="assets/img/koda%201.png"></div>
                         <div class="card-body pet_card_body">
                             <div class="pet_detail_header">
                                 <div class="pet_detail_heading_text_container">
@@ -804,9 +820,10 @@
                                 </defs>
                             </svg> Back</span></button></div>
                 <div class="prod_detail_body">
-                    <form id="add_client_form-3" class="client_detail_fields_container"><img
-                            src="assets/img/image%2011%20(1).png">
+                    <form action="{{ route('client.edit')}}" id="add_client_form-3" class="client_detail_fields_container">
+                        @csrf
                         <div class="new_input_row">
+                            <input type="hidden" name="client_id" id="editId">
                             <div class="form-floating" style="width:100%;"><input
                                     class="form-control form-control form-control form-control" type="text"
                                     data-id="first_name" id="first_name-3" placeholder="First Name"><label
@@ -878,10 +895,13 @@
                                     number.</span></div>
                         </div>
                     </form>
-                    <div class="mb-3 prod_detail_fields_buttons"><button class="btn cancel_edit" id="cancel_edit"
-                            type="button"><span class="cancel_edit_base">Cancel</span></button><button
-                            class="btn disabled edit_save_changes" id="edit_save_changes" type="button"
-                            disabled=""><span class="edit_save_changes_base">Save Changes</span></button></div>
+                    <div class="mb-3 prod_detail_fields_buttons">
+                        <button class="btn cancel_edit" id="cancel_edit"
+                            type="button"><span class="cancel_edit_base">Cancel</span></button>
+                        <button
+                            class="btn disabled edit_save_changes" id="edit_save_changes" form="add_client_form-3" type="submit"
+                            disabled=""><span class="edit_save_changes_base">Save Changes</span></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -895,7 +915,7 @@
                         data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body" style="width:100%;">
-                    <form action="{{ route('client.store') }}" method="POST" class="add_client" id="add_client_form">
+                    <form action="#" method="POST" class="add_client" id="add_client_form">
                     @csrf
                     <div class="mb-3 input_container">
                             <div class="new_input_row">
@@ -988,7 +1008,7 @@
                 <div class="modal-body" style="width:100%;">
                 
                     <form action="{{ route('client.store') }}" method="POST" class="add_client" id="add_client_form-1">
-                    @csrf
+                        @csrf
                         <div class="mb-3 input_container">
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input class="form-control"
@@ -1017,6 +1037,7 @@
                                 <div class="form-floating" style="width:100%;"><select class="form-select"
                                         name="suffix" id="suffix-1" data-id="suffix">
                                         <option value="" selected="">Select a Suffix</option>
+
                                         <option value="Jr">Jr</option>
                                         <option value="Sr">Sr</option>
                                         <option value="II">II</option>
@@ -1070,7 +1091,7 @@
                 <div class="modal-footer add_product_button">
                     <button class="btn clear_form" id="clear_form-1" aria-label="Clear Form" role="button"
                         type="button"><span class="clear_form_base">Clear Form</span></button>
-                    <button class="btn submit_product" id="submit_Client-1" disabled><span
+                    <button class="btn submit_product" id="submit_Client-1" type="submit" form="add_client_form-1" disabled><span
                             class="submit_product_base">Submit</span></button>
                 </div>
                 </form>
@@ -1085,7 +1106,8 @@
                         data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body" style="width:100%;">
-                    <form id="add_pet_form" class="add_client"><img src="assets/img/image%2010.png">
+                    <form action="{{ route('client.addpet')}}" method="POST" id="add_pet_form" class="add_client">
+                        @csrf
                         <div class="mb-3 input_container">
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input class="form-control"
@@ -1163,7 +1185,7 @@
                 </div>
                 <div class="modal-footer add_product_button"><button class="btn clear_form" id="clear_form-2"
                         aria-label="Clear Form" role="button" type="button"><span
-                            class="clear_form_base">Clear Form</span></button><button class="btn submit_pet"
+                            class="clear_form_base">Clear Form</span></button><button form="add_pet_form" class="btn submit_pet"
                         id="submit_pet" type="submit"><span class="submit_product_base">Submit</span></button>
                 </div>
             </div>
@@ -1632,10 +1654,112 @@
     @endif
     <script>
     $(document).ready(function() {
-	$('#editButton').click(function() {
-		const id = $(this).data(container-id);
-		$('#editId').val(id);
-	});
+        $('.editButton').click(function() {
+            const id = $(this).data('container-id');
+            $('#editId').val(id);
+            const clientData = {
+                'first_name' :$(this).data('first-name'),
+                'middle_name' :$(this).data('middle-name'),
+                'last_name' :$(this).data('last-name'),
+                'suffix' :$(this).data('suffix'),
+                'birthdate' :$(this).data('birthdate'),
+                'email' :$(this).data('email'),
+                'phone' :$(this).data('phone'),
+            };      
+            $('#first_name-3').val(clientData.first_name);
+            $('#middle_name-3').val(clientData.middle_name);
+            $('#last_name-4').val(clientData.last_name);
+            $('#suffix-4').val(clientData.suffix);
+            $('#client_birthdate-3').val(clientData.birthdate);
+            $('#client_email-3').val(clientData.email);
+            $('#user_phone-3').val(clientData.phone);
+        });
+        $('.viewButton').click(function() {
+            const id = $(this).data('container-id');
+            $('#editId').val(id);
+            $('#clientId').val(id);
+            $.ajax({
+                type: 'GET',
+				url: `/admin/client/viewpet/${id}`,// Your route URL
+                success: function(data) {
+                $('#pet_card_container').empty();
+                console.log('Success: Data received', data);
+                if (data.length === 0) {
+                    $('#pet_empty_state_container').show();
+                } else {
+                    $('#pet_empty_state_container').hide();
+                    $('#pet_card_container').css('display', 'flex');
+                    $.each(data, function(index, petInfo) {
+                        var newItem = 
+                        '<div class="card pet_card">' +
+                        '<div class="card-body pet_card_body">' +
+                            '<div class="pet_detail_header">' +
+                            '<div class="pet_detail_heading_text_container">' +
+                                '<h1>' + petInfo.pet.name + '</h1>' +
+                                '<p>' + petInfo.pet.breed + '</p>' + 
+                            '</div>' +
+                            '</div>' +
+                            '<div class="pet_detail_body">' +
+                                '<div class="pet_upper_detail">' +
+                                    '<div class="pet_age_container">' +
+                                    '<h1>' + 'Gender' + '</h1>' +
+                                    '<p>' + petInfo.pet.gender + '</p>' +
+                                    '</div>' +
+                                    '<div class="pet_age_container">' +
+                                    '<h1>' + 'Age' + '</h1>' +
+                                    '<p>' + petInfo.pet.age + '</p>' +
+                                    '</div>' +
+                                '</div>' +
+                                '<div class="pet_lower_detail">' +
+                                    '<div class="pet_weight_container">' +
+                                    '<h1>' + 'Weight' + '</h1>' +
+                                    '<p>' + petInfo.pet.weight + '</p>' +
+                                    '</div>' +
+                                    '<div class="pet_sterilization_status_container">' +
+                                    '<h1>' + 'Sterilization Status' + '</h1>' +
+                                    '<p>' + petInfo.pet.sterilization + '</p>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                        '</div>';
+                        $('#pet_card_container').append(newItem);
+                    });
+                }
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+            }
+
+            });
+            const clientData = {
+                'first_name' :$(this).data('first-name'),
+                'middle_name' :$(this).data('middle-name'),
+                'last_name' :$(this).data('last-name'),
+                'suffix' :$(this).data('suffix'),
+                'birthdate' :$(this).data('birthdate'),
+                'email' :$(this).data('email'),
+                'phone' :$(this).data('phone'),
+                'gender':$(this).data('gender'),
+            };      
+            $('.client_name h1').text(clientData.first_name + ' ' + clientData.middle_name + ' ' + clientData.last_name + ' ' + clientData.suffix);
+            $('.client_birthdate p').text(clientData.birthdate);
+            $('.client_email-3 p').text(clientData.email);
+            $('.user_phone-3 p').text(clientData.phone);
+            $('.client_gender p').text(clientData.gender);
+            $('#first_name-3').val(clientData.first_name);
+            $('#middle_name-3').val(clientData.middle_name);
+            $('#last_name-4').val(clientData.last_name);
+            $('#suffix-4').val(clientData.suffix);
+            $('#client_birthdate-3').val(clientData.birthdate);
+            $('#client_email-3').val(clientData.email);
+            $('#user_phone-3').val(clientData.phone);
+        });
+        $('.archiveButton').click(function() {
+            const id = $(this).data('container-id');
+            $('#archiveId').val(id);
+        });
+
     });
     </script>
     <script>
