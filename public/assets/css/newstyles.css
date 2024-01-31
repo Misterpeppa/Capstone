@@ -5541,12 +5541,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
       max-width: 50px !important;
   }
       
-      #approvedTableBody td:nth-child(n + 3):nth-child(-n + 8), #pendingTableBody td:nth-child(n + 3):nth-child(-n + 8), #rejectedTableBody td:nth-child(n + 3):nth-child(-n + 8) {
-        max-width: 150px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+      
       .floating-div{
         height: 400px;
       }
