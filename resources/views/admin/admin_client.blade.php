@@ -1042,9 +1042,13 @@
                                         client birthdate.</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;">
-                                <textarea class="form-control" id="client_address-1" data-id="client_address" placeholder="Address"></textarea><label class="form-label"
-                                    for="client_address-1">Address <span>&nbsp;*</span></label>
-                                <div class="error-message" id="error-client_address"><span>Please enter client
+<select class="form-select" id="sex" name="sex">
+    <option value=""selected="">Select Sex</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+</select></textarea><label class="form-label"
+                                    for="sex">Sex <span>&nbsp;*</span></label>
+                                <div class="error-message" id="error-sex"><span>Please enter client
                                         address.</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
@@ -1653,7 +1657,7 @@ function enableSubmitBtn() {
   var middle_name1 = document.getElementById("middle_name-1").value;
   var last_name1 = document.getElementById("last_name-1").value;
   var client_birthdate1 = document.getElementById("client_birthdate-1").value;
-  var client_address1 = document.getElementById("client_address-1").value;
+  var sex = document.getElementById("sex").value;
   var client_email1 = document.getElementById("client_email-1").value;
   var user_phone1 = document.getElementById("user_phone-1").value;
 
@@ -1665,7 +1669,7 @@ function enableSubmitBtn() {
     middle_name1.trim() !== "" &&
     last_name1.trim() !== "" &&
     client_birthdate1.trim() !== "" &&
-    client_address1.trim() !== "" &&
+    sex.trim() !== "" &&
     user_phone1.trim().length === 11 && // Check for 11 digits
     (client_email1.includes("@gmail.com") || client_email.includes("@yahoo.com")) // Check for email format
   ) {
@@ -1681,7 +1685,7 @@ function enableSubmitBtn() {
   console.log('middle_name:', middle_name1);
   console.log('last_name:', last_name1);
   console.log('client_birthdate:', client_birthdate1);
-  console.log('client_address:', client_address1);
+  console.log('sex:', sex);
   console.log('client_email:', client_email1);
   console.log('user_phone:', user_phone1);
   console.log('submit_Client disabled:', submit_Client1.disabled);
@@ -1691,7 +1695,7 @@ document.getElementById("first_name-1").addEventListener("input", enableSubmitBt
 document.getElementById("middle_name-1").addEventListener("input", enableSubmitBtn);
 document.getElementById("last_name-1").addEventListener("input", enableSubmitBtn);
 document.getElementById("client_birthdate-1").addEventListener("input", enableSubmitBtn);
-document.getElementById("client_address-1").addEventListener("input", enableSubmitBtn);
+document.getElementById("sex").addEventListener("input", enableSubmitBtn);
 document.getElementById("client_email-1").addEventListener("input", enableSubmitBtn);
 document.getElementById("user_phone-1").addEventListener("input", enableSubmitBtn);
 

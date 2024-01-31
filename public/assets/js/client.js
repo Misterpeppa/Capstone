@@ -363,7 +363,7 @@ inputs.forEach(inputId => {
     var lastName = document.getElementById("last_name-1");
     var suffix = document.getElementById("suffix-1");
     var birthdate = document.getElementById("client_birthdate-1");
-    var address = document.getElementById("client_address-1");
+    var sex = document.getElementById("sex");
     var email = document.getElementById("client_email-1");
     var user_phone = document.getElementById('user_phone-1');
     
@@ -375,7 +375,7 @@ inputs.forEach(inputId => {
     var errorlastName = document.getElementById('error-last_name-1');
     var errorSuffix = document.getElementById('error-suffix-1');
     var errorbirthdate = document.getElementById('error-client_birthdate-1');
-    var erroraddress = document.getElementById('error-client_address-1'); // Fix the typo here
+    var errorSex = document.getElementById('error-sex'); // Fix the typo here
     var erroremail = document.getElementById('error-client_email-1');
     var erroruser_phone = document.getElementById('error-user_phone-1');
     
@@ -384,7 +384,7 @@ inputs.forEach(inputId => {
     addBlurListener(lastName, errorlastName);  
     addBlurListener(suffix, errorSuffix);  
     addBlurListener(birthdate, errorbirthdate);  
-    addBlurListener(address, erroraddress);  
+    addBlurListener(sex, errorSex);  
     addBlurListener(email, erroremail);
     addBlurListener(user_phone, erroruser_phone);
 
