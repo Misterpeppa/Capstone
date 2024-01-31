@@ -54,9 +54,12 @@
 					</div>
 					<div id="pet_container" class="pet_container">
 						<div class="container_header">
+						<form action="" method="GET" role="search" id="petrecordForm">
 							<div class="left_part_product_header">
 								<div class="search_container">
-									<input type="search" class="search_input" placeholder="Search Pet" maxlength="255">
+									<input type="text" class="search_input" name="search"
+                                    value="{{ request('search') }}" placeholder="Search Pet">
+						</form>
 								</div>
 								<button class="btn filter_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 									<g clip-path="url(#clip0_5284_15912)">
@@ -112,7 +115,6 @@
 								</svg> Add Pet</span>
 							</button>
 						</div>
-						<div id="pet_card_container" class="pet_records_container" style="display: flex;">
 						@foreach ($petrecords as $petrecord)
 							<div class="card pet_card">
 								<div class="card-body pet_card_body">
@@ -925,43 +927,8 @@
 	$('#pet_card_container').hide();
 	</script>
 	@endif
-	@if ($medHistoryExist)
-	<script>
-	$('#medical_empty_state').hide();
-	$('#medical_history_table_container').css('display', 'flex');
-	</script>
-	@else
-	<script>
-	$('#medical_empty_state').css('display', 'flex');
-	$('#medical_history_table_container').hide();
-	</script> 
-	@endif
-	@if ($vaxHistoryExist)
-	<script>
-	$('#immunization_empty_state').hide();
-	$('#add_immunization').css('display', 'flex');
-	$('#immunization_history_table_container').css('display', 'flex');
-	</script>
-	@else
-	<script>
-	$('#immunization_empty_state').css('display', 'flex');
-	$('#add_immunization').hide();
-	$('#immunization_history_table_container').hide();
-	</script> 
-	@endif
-	@if ($surgHistoryExist)
-	<script>
-	$('#surgery_empty_state').hide();
-	$('#add_surgery').css('display', 'flex');
-	$('#surgery_history_table_container').css('display', 'flex');
-	</script>
-	@else
-	<script>
-	$('#surgery_empty_state').css('display', 'flex');
-	$('#add_surgery').hide();
-	$('#surgery_history_table_container').hide();
-	</script> 
-	@endif
+	
+	
 	<script>
 	$(document).ready(function() {
 	$('.add_appointment').click(function() {
@@ -1005,15 +972,25 @@
 				success: function(data) {
 					$('#medhisto_Table tbody').empty();
 					console.log('Success: Data received', data);
-					$.each(data, function(index, medhisto) {
-						var newRow = '<tr>' +
-							'<td>' + medhisto.diagnosis + '</td>' +
-							'<td>' + medhisto.diagnosis_date + '</td>' +
-							'<td>' + medhisto.treatment + '</td>' +
-							'<td>' + medhisto.med.item_name + '</td>' +
-							'</tr>';
-						$('#medhisto_Table tbody').append(newRow);
-					});
+					if (data.length === 0) {
+						$('#medical_empty_state').css('display', 'flex');
+						$('#add_diagnosis').hide();
+						$('#medical_history_table').hide();
+					} else {
+						$('#medical_empty_state').hide();
+						$('#add_diagnosis').css('display', 'flex');
+						$('#medical_history_table').css('display', 'flex');
+						$.each(data, function(index, medhisto) {
+							var newRow = '<tr>' +
+								'<td>' + medhisto.diagnosis + '</td>' +
+								'<td>' + medhisto.diagnosis_date + '</td>' +
+								'<td>' + medhisto.treatment + '</td>' +
+								'<td>' + medhisto.med.item_name + '</td>' +
+								'<td>' + medhisto.diagnosis_desc + '</td>' +
+								'</tr>';
+							$('#medhisto_Table tbody').append(newRow);
+						});
+					}
 				},
 				error: function(xhr) {
 					console.log(xhr.responseText);
@@ -1024,16 +1001,25 @@
 				url: '/user/pet_info/vaxhis/' + id,
 				success: function(data) {
 					$('#immuno_Table tbody').empty();
-					$.each(data, function(index, vaxhisto) {
-						var newRow = '<tr>' +
-						'<td>' + vaxhisto.vaccination_date + '</td>' +
-						'<td>' + vaxhisto.vax.item_name + '</td>' +
-						'<td>' + vaxhisto.vax.prod_desc + '</td>' +
-						'<td>' + vaxhisto.revaccination_date + '</td>' +
-						'</tr>';
-					$('#immuno_Table tbody').append(newRow);
-
-					});
+					if (data.length === 0) {
+						$('#immunization_empty_state').css('display', 'flex');
+						$('#add_immunization').hide();
+						$('#immunization_history_table').hide();
+					} else {
+						$('#immunization_empty_state').hide();
+						$('#add_immunization').css('display', 'flex');
+						$('#immunization_history_table').css('display', 'flex');
+						$.each(data, function(index, vaxhisto) {
+							var newRow = '<tr>' +
+								'<td>' + vaxhisto.vaccination_date + '</td>' +
+								'<td>' + vaxhisto.vax.item_name + '</td>' +
+								'<td>' + vaxhisto.vax.prod_desc + '</td>' +
+								'<td>' + vaxhisto.revaccination_date + '</td>' +
+								'<td>' + vaxhisto.status + '</td>' +
+								'</tr>';
+							$('#immuno_Table tbody').append(newRow);
+						});
+					}
 				},
 				error: function(xhr) {
 					console.log(xhr.responseText);
@@ -1044,17 +1030,25 @@
 				url: '/user/pet_info/surghis/' + id,
 				success: function(data) {
 					$('#surghisto_Table tbody').empty();
-					$.each(data, function(index, surgery){
-						var newRow = '<tr>' +
-						'<td>' + surgery.surgery_type + '</td>' +
-						'<td>' + surgery.surgery_date + '</td>' +
-						'<td>' + surgery.reason + '</td>' +
-						'<td>' + surgery.med.item_name + '</td>' +
-						'<td>' + surgery.surgery_note + '</td>' +
-						'</tr>';
-					$('#surghisto_Table tbody').append(newRow);
-
-					});
+					if (data.length === 0) {
+						$('#surgery_empty_state').css('display', 'flex');
+						$('#add_surgery').hide();
+						$('#surgery_history_table').hide();
+					} else {
+						$('#surgery_empty_state').hide();
+						$('#add_surgery').css('display', 'flex');
+						$('#surgery_history_table').css('display', 'flex');
+						$.each(data, function(index, surgery){
+							var newRow = '<tr>' +
+								'<td>' + surgery.surgery_type + '</td>' +
+								'<td>' + surgery.surgery_date + '</td>' +
+								'<td>' + surgery.reason + '</td>' +
+								'<td>' + surgery.med.item_name + '</td>' +
+								'<td>' + surgery.surgery_note + '</td>' +
+								'</tr>';
+							$('#surghisto_Table tbody').append(newRow);
+						});
+					}
 				},
 				error: function(xhr) {
 					console.log(xhr.responseText);

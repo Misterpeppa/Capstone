@@ -7,10 +7,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var add_pet_btn = document.getElementById('add_pet_btn');
     var archive_button = document.getElementById('archive_button');
 
-    var add_client_modal = new bootstrap.Modal(document.getElementById('add_client_modal-1'));
+    var add_client_modal = new bootstrap.Modal(document.getElementById('add_client_modal'));
+    var add_client_modal1 = new bootstrap.Modal(document.getElementById('add_client_modal-1'));
     var archive_modal = new bootstrap.Modal(document.getElementById('archive_modal'));
     var archive_modal1 = new bootstrap.Modal(document.getElementById('archive_modal-1'));
-    var archive_modal2 = new bootstrap.Modal(document.getElementById('archive_modal-2'));
+    var add_pet_record_modal = new bootstrap.Modal(document.getElementById('add_pet_record_modal'));
                 
     
     var add_client_success = new bootstrap.Modal(document.getElementById('add_client_success'));
@@ -25,14 +26,16 @@ document.addEventListener('DOMContentLoaded', function () {
   });
     
     add_client_btn.addEventListener('click', function () {
-    add_client_modal.show();
+    add_client_modal1.show();
   });
     
 
     
     add_pet_btn.addEventListener('click', function () {
+
     add_pet_record_modal.show();
   });
+
     
     submit_Client.addEventListener('click', function () {
         add_client_modal.hide();
@@ -237,6 +240,7 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
         }, 2000);
       });
     
+    
     function showAddClientSplitBtn() {
     var addClientSplitBtn = document.getElementById("add_client_split_btn");
     if (addClientSplitBtn) {
@@ -273,6 +277,10 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
         edit_client.style.display = 'none';
     }
 
+ 
+        
+
+
 
        
     
@@ -299,9 +307,67 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
 
     // Add event listener to the edit_prod_detail button
     edit_client_detail.addEventListener('click', handleEditClientDetailClick);
+    
+
+
+// Add a click event listener to each "Archive" menu inside a pet_card
+document.querySelectorAll('.pet_card .dropdown-menu.more_button .dropdown-item#Archive').forEach(function (archiveMenu) {
+    archiveMenu.addEventListener('click', function (event) {
+        // Stop the event from propagating to the parent dropdown, which might hide the dropdown prematurely
+        event.stopPropagation();
+
+        // Find the closest parent with the class 'pet_card'
+        var petCard = this.closest('.pet_card');
+
+        // Check if a pet_card was found
+        if (petCard) {
+            // Get the unique ID from the pet_card's data-pet-id attribute
+            var petCardId = petCard.dataset.petId;
+
+            // Call the archivePetCard function with the specific petCardId
+            archivePetCard(petCardId);
+        }
+    });
+});
 
     
- const inputs = ['first_name-1', 'middle_name-1', 'last_name-1'];
+
+function archivePetCard(petCardId) {
+    var archive_modal2 = document.getElementById('archive_modal-2');
+
+    if (archive_modal2) {
+        // Display the modal using Bootstrap's modal methods
+        var bootstrapModal = new bootstrap.Modal(archive_modal2);
+        bootstrapModal.show();
+
+        // Optionally, you can attach an event listener to the modal's confirm button
+        var confirmButton = document.getElementById('archive_confirm_button-2');
+
+        if (confirmButton) {
+            confirmButton.addEventListener('click', function () {
+                // User confirmed the archiving action
+                // Add your logic for this action
+
+                var pet_card = document.getElementById(petCardId);
+
+                if (pet_card) {
+                    // Hide or remove the pet_card based on your requirements
+                    pet_card.style.display = 'none';
+
+                    // Optionally, you can add an animation or confirmation dialog before archiving
+                }
+
+                // Close the archive_modal after archiving
+                bootstrapModal.hide();
+            });
+        }
+    }
+
+    // You can add additional logic here to perform any other actions related to archiving
+    // For example, you might want to make an API request to update the server that the pet is archived.
+}
+    
+ const inputs = ['first_name', 'middle_name', 'last_name', 'first_name-1', 'middle_name-1', 'last_name-1', 'pet_name', 'pet_name-1', 'first_name-2', 'middle_name-2', 'last_name-2'];
 
 inputs.forEach(inputId => {
     document.getElementById(inputId).addEventListener('input', function () {
@@ -326,6 +392,144 @@ inputs.forEach(inputId => {
 });   
     
     
+    
+function setupFormValidation(inputIds, buttonId, clearButtonId, close_client_modalId) {
+    var inputs = inputIds.map(id => document.getElementById(id));
+    var submitButton = document.getElementById(buttonId);
+    var clearButton = document.getElementById(clearButtonId);
+    var close_client_btn = document.getElementById(close_client_modalId);
+
+    // Function to check if all required input fields have values
+    function areAllInputsFilled() {
+        return inputs.every(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, check if a valid option is selected
+                return input.options[input.selectedIndex].value.trim() !== '';
+            } else {
+                // For other input types, check if the value is present
+                return input.value.trim() !== '';
+            }
+        });
+    }
+
+    // Disable the submit button by default
+    submitButton.disabled = true;
+
+    // Add an event listener to each input field for the 'input' event
+    inputs.forEach(input => input.addEventListener('input', enableSubmitButton));
+
+    function enableSubmitButton() {
+        // Enable or disable the submit button based on the condition
+        submitButton.disabled = !areAllInputsFilled();
+    }
+
+    // Add an event listener to the submit button for the 'click' event
+    submitButton.addEventListener('click', function () {
+        console.log("Submit button clicked!");
+        // Add your logic for handling the form submission
+        // For example, you can call a function to process the form data
+
+        // Reset all input fields
+        inputs.forEach(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, set the selectedIndex to the default one
+                input.selectedIndex = 0;
+            } else {
+                // For other input types, set the value to an empty string
+                input.value = '';
+            }
+        });
+
+        // Disable the submit button after submission
+        submitButton.disabled = true;
+    });
+
+    // Add an event listener to the clear button for the 'click' event
+    clearButton.addEventListener('click', function () {
+        // Clear all input fields
+        inputs.forEach(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, set the selectedIndex to the default one
+                input.selectedIndex = 0;
+            } else {
+                // For other input types, set the value to an empty string
+                input.value = '';
+            }
+        });
+
+        // Disable the submit button after clearing
+        submitButton.disabled = true;
+    });
+    // Disable or enable the submit button based on the initial state of the form
+    submitButton.disabled = !areAllInputsFilled();
+    
+    close_client_btn.addEventListener('click', function () {
+        // Clear all input fields
+        inputs.forEach(input => {
+            if (input.tagName === 'SELECT') {
+                // For select elements, set the selectedIndex to the default one
+                input.selectedIndex = 0;
+            } else {
+                // For other input types, set the value to an empty string
+                input.value = '';
+            }
+        });
+
+        // Disable the submit button after clearing
+        submitButton.disabled = true;
+    });
+}
+
+
+   
+ 
+     
+
+
+
+
+
+// Example usage for the first set of inputs, submit button, and clear button
+setupFormValidation(
+    ['first_name', 'middle_name', 'last_name', 'client_birthdate', 'client_address', 'client_email', 'user_phone'],
+    'submit_Client',
+    'clear_form', 
+    'close_client_modal'
+);
+    
+
+    
+
+// Example usage for the second set of inputs, submit button, and clear button
+setupFormValidation(
+    ['first_name-1', 'middle_name-1', 'last_name-1', 'client_birthdate-1', 'client_address-1', 'client_email-1', 'user_phone-1'],
+    'submit_Client-1',
+    'clear_form-1',
+    'close_client_modal-1'
+);
+    
+    
+
+// Example usage for the third set of inputs, submit button, and clear button
+setupFormValidation(
+    ['pet_name', 'pet_type', 'breed', 'gender', 'pet_birthdate', 'age', 'weight', 'sterilization_status'],
+    'submit_pet',
+    'clear_form-2'
+);
+
+// Example usage for the fourth set of inputs, submit button, and clear button
+setupFormValidation(
+    ['pet_name-1', 'pet_type-1', 'breed-1', 'gender-1', 'pet_birthdate-1', 'age-1', 'weight-1', 'sterilization_status-1'],
+    'submit_pet-1',
+    'clear_form-3'
+);
+
+// Example usage for the fifth set of inputs, submit button, and clear button
+setupFormValidation(
+    ['pet_name-2', 'pet_type-2', 'breed-2', 'gender-2', 'pet_birthdate-2', 'age-2', 'weight-2', 'sterilization_status-2'],
+    'submit_pet-2',
+    'clear_form-4'
+);
 
 
 
@@ -356,6 +560,7 @@ inputs.forEach(inputId => {
           }
         });
       }
+
 
     
     var firstName = document.getElementById("first_name-1");
@@ -408,6 +613,7 @@ inputs.forEach(inputId => {
     // Assuming you have a button with the class "btn-close"
     var closeButton = document.getElementById('close_addClient');
 
+
     // Add click event listener to the close button
     closeButton.addEventListener('click', clearForm);
     
@@ -428,23 +634,26 @@ inputs.forEach(inputId => {
         // Additional validation or action can be added here if needed
     });
 
+
     dateInput.addEventListener('keydown', function (e) {
         e.preventDefault();
     });
  
 });
 
+    function onFocus() {
+        error.style.display = 'none'; // Hide the error message
+        guide.style.display = 'flex'; // Show the guide message
+        input.classList.remove('is-invalid');
+        input.classList.remove('error-border');
+    }
 
 
 
-// Function to check if the value is a valid email format   
 function isValidEmail(email) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
 }
-
-
-
 
 
     
@@ -464,6 +673,7 @@ function PhoneNumberInputLimit(inputElement) {
     
     
 PhoneNumberInputLimit(user_phone); 
+PhoneNumberInputLimit(user_phone1); 
     
  function weightInputLimit(inputElement) {
     inputElement.addEventListener('input', function () {
@@ -473,7 +683,8 @@ PhoneNumberInputLimit(user_phone);
     });
 }
     
-weightInputLimit(pet_weightInput);   
+weightInputLimit(pet_weightInput);
+weightInputLimit(pet_weightInput1);       
         
 
 // Function to check if the value is a valid email format
@@ -507,4 +718,5 @@ function setupDateValidation(inputId) {
 }
 
 // Example usage for client_birthdate
+
 setupDateValidation('client_birthdate');
