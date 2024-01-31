@@ -55,7 +55,12 @@ class ProfileController extends Controller
             $petQuery->where('name', 'like', '%' . $searchTerm . '%')
                 ->orWhere('breed', 'like', '%' . $searchTerm . '%');
         });
-
+        $gender = $request->input('gender');
+        if ($gender) {
+            $query->whereHas('pet', function ($petQuery) use ($gender) {
+                $petQuery->where('gender', $gender);
+            });
+        }
         $petrecords = $query->get();
 
         return view('user/pet_info', compact('clientInfo', 'petExist', 'petrecords'));

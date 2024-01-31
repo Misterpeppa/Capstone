@@ -105,6 +105,7 @@ Route::middleware('admin', 'nocache')->group(function () {
     Route::post('/admin/appointment/resched/{id}', [AppointmentController::class, 'resched'])->name('resched');
     Route::post('/admin/appointment/markascomplete/{id}', [AppointmentController::class, 'markAsComplete'])->name('appointment.complete');
     Route::post('/admin/appointment/archive/{id}', [AppointmentController::class, 'archive'])->name('appointment.archive');
+    Route::get('/admin/appointmet/report', [ReportController::class, 'appointmentPDF'])->name('appointment.pdf');
 
     Route::get('/admin/emr', [EMRController::class, 'show'])->name('admin_emr');
     Route::post('/admin/emr/petrecord', [EMRController::class, 'pet'])->name('emr.pet');
