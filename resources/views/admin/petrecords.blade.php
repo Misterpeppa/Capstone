@@ -400,7 +400,7 @@
 
 					</div>
 				</div>
-				<div id="view_pet_container" class="view_pet">
+				<div id="view_pet_container" class="view_pet customer_side">
 					<div class="view_pet_back_btn_container">
 						<button class="btn edit_pet_back_btn" id="view_pet_back_btn" type="button"><span class="edit_pet_back_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
   <g clip-path="url(#clip0_6089_3068)" filter="url(#filter0_d_6089_3068)">
