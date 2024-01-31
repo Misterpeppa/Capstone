@@ -88,9 +88,10 @@ class AppointmentApproved extends Model
     }
     public function scopeAppointment($query, $request)
     {
-         $query->where(function ($query) use ($request) {
-            $request->input('appointmentCheck')=='on';
-            $query->orWhere('source', 'LIKE', 'Appointment');
+        $query->where(function ($query) use ($request){
+            if ($request->input('appointmentCheck') == 'on') {
+                $query->where('source', 'LIKE', '&Appointment%');
+            }
         });
     }
 }

@@ -36,12 +36,13 @@ class EMRController extends Controller
 
     public function show(Request $request)
     {
-        $petrecord = PetRecord::with('pet', 'owner')
+        $query = PetRecord::species($request)->with('pet', 'owner')
         ->whereNull('pet_record.archived_at');
+        //dd($query);
         // ->join('clients', 'pet_record.owner_id', '=', 'clients.id')
         // ->join('pet_info', 'pet_record.pet_id', '=', 'pet_info.id');
         $owners = Clients::withTrashed()->get();
-        $petrecordExists = $petrecord->get()->isNotEmpty();
+        $petrecordExists = $query->get()->isNotEmpty();
         $medHistory = MedHistory::all();
         $vaxHistory = VaxHistory::all();
         $surgHistory = SurgHistory::all();
@@ -56,7 +57,7 @@ class EMRController extends Controller
             $searchTerm = $request->input('search');
         
             // Add conditions to the query based on your search requirements
-            $petrecord->whereHas('owner', function ($subQuery) use ($searchTerm) {
+            $query->whereHas('owner', function ($subQuery) use ($searchTerm) {
                 $subQuery->where('first_name', 'like', '%' . $searchTerm . '%')
                 ->orWhere('middle_name', 'like', '%' . $searchTerm . '%')
                 ->orWhere('last_name', 'like', '%' . $searchTerm . '%')
@@ -75,7 +76,7 @@ class EMRController extends Controller
         }
 
         // Retrieve the results
-        $petrecord = $petrecord->get();
+        $petrecord = $query->get()->whereNull('petrecord.archived_at');
 
         $sortItem = $request->input('sortItems');
         $sortOrder = $request->input('sortOrder');
@@ -85,9 +86,8 @@ class EMRController extends Controller
             2 => 'owner.first_name',
         ][$sortItem] ?? 'pet_info.name';
         $sortDirection = $sortOrder == 1 ? 'desc' : 'asc';
-        
-        $petrecord = $petrecord->sortBy($sortField, SORT_NATURAL, $sortOrder == 1);
-        //dd($sortItem);
+        $petrecord = $petrecord->whereNull('archived_at')->sortBy($sortField, SORT_NATURAL, $sortOrder == 1);
+        // dd($sortItem);
         
         return view('/admin/petrecords', compact('owners', 'petrecord','petrecordExists', 'medHistoryExist', 'vaxHistoryExist', 'surgHistoryExist', 
         'medInfo', 'vaxInfo', 'med_info', ));
