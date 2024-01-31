@@ -102,14 +102,14 @@
                 <div class="d-flex flex-column align-items-start align-self-stretch"
                     style="gap: var(--Spacing-spacing-xs, 12px);">
                     <ul class="nav nav-tabs pet_nav_tabs" role="tablist">
-                        <li class="nav-item" role="presentation" id="approve_tab"><a
+                        <li class="nav-item appointment_nav_items" role="presentation" id="approve_tab"><a
                                 class="nav-link  list_tab" role="tab" data-bs-toggle="tab"
                                 href="#approved_tab">Approved<span id="approvedCounts" class="tab-count">{{ $approvedCount }}</span></a>
                         </li>
-                        <li class="nav-item" role="presentation" id="pending-tab"><a class="nav-link list_tab"
+                        <li class="nav-item appointment_nav_items" role="presentation" id="pending-tab"><a class="nav-link list_tab"
                                 role="tab" data-bs-toggle="tab" href="#pending_tab">Pending<span
                                     id="pendingCounts" class="tab-count">{{ $pendingCount}}</span></a></li>
-                        <li class="nav-item" role="presentation" id="reject_tab"><a class="nav-link list_tab"
+                        <li class="nav-item appointment_nav_items" role="presentation" id="reject_tab"><a class="nav-link list_tab"
                                 role="tab" data-bs-toggle="tab" href="#rejected_tab">Rejected<span
                                     id="rejectedCounts" class="tab-count">{{ $rejectedCount }}</span></a></li>
                     </ul>
