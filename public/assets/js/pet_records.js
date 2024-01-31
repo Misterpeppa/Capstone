@@ -216,30 +216,6 @@ setupAgeCalculation('pet_birthdate-1', 'age-1', 'pet_type-1');
         });
     });
 
-        // Define the click event listener function
-    function onDiagnosisActionClick() {
-        var view_pet_container = document.getElementById('view_pet_container');
-        var client_container = document.getElementById('client_container');
-        view_pet_container.style.display = 'flex';
-        client_container.style.display = 'none';
-    }
-
-    // Define the click event listener function
-    function onVaccineActionClick() {
-        var view_pet_container = document.getElementById('view_pet_container');
-        var client_container = document.getElementById('client_container');
-        view_pet_container.style.display = 'flex';
-        client_container.style.display = 'none';
-    }
-
-    // Define the click event listener function
-    function onSurgeryActionClick() {
-        var view_pet_container = document.getElementById('view_pet_container');
-        var client_container = document.getElementById('client_container');
-        view_pet_container.style.display = 'flex';
-        client_container.style.display = 'none';
-    }
-
 // Get all elements with the class 'View_pet-action'
 var viewPetActions = document.querySelectorAll('.View_pet-action');
 
@@ -1032,6 +1008,30 @@ petBreedInput.addEventListener('change', function() {
 
 
 
+
+
+
+
+
+$(document).ready(function(){
+    // Initially hide tab_header_right
+    $("#tab_header_right").hide();
+
+    // Show/hide tab_header_right based on active tab
+    $('.nav-tabs a').on('shown.bs.tab', function (e) {
+    if ($(e.target).attr('href') === "#tab-1") {
+        $("#tab_header_right").hide();
+    } else {
+        $("#tab_header_right").show();
+    }
+    });
+});
+
+
+
+});
+
+
 function setupDateInputRestrictions() {
     // Get the current date
     var currentDate = new Date();
@@ -1106,22 +1106,3 @@ function setupFutureDateInputRestriction() {
 }
 
 setupFutureDateInputRestriction();
-
-
-$(document).ready(function(){
-    // Initially hide tab_header_right
-    $("#tab_header_right").hide();
-
-    // Show/hide tab_header_right based on active tab
-    $('.nav-tabs a').on('shown.bs.tab', function (e) {
-    if ($(e.target).attr('href') === "#tab-1") {
-        $("#tab_header_right").hide();
-    } else {
-        $("#tab_header_right").show();
-    }
-    });
-});
-
-
-
-});
