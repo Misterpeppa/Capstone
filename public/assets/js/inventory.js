@@ -1,37 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const sidebar = document.querySelector(".sidebar");
-  const sidebarArrow = document.querySelector(".sidebar_arrow");
-  const liSpanElements = document.querySelectorAll(".sidebar li span");
-  const logoLink = document.getElementById("logo_link");
-  const arrowSVG = document.querySelector(".arrow-svg"); // Get the arrow SVG element
-
-  const allLinks = document.querySelectorAll(".sidebar a");
-
-  sidebarArrow.addEventListener("click", toggleSidebar);
-  logoLink.addEventListener("click", () => {
-    if (sidebar.classList.contains("collapsed")) {
-      toggleSidebar();
-    }
-  });
-
-  function toggleSidebar() {
-    sidebar.classList.toggle("collapsed");
-    arrowSVG.classList.toggle("rotate180"); // Rotate the arrow SVG
-
-    if (sidebar.classList.contains("collapsed")) {
-      allLinks.forEach((link) => {
-        if (link !== logoLink) {
-          link.style.display = "none";
-        }
-      });
-      sidebarArrow.innerHTML = buttonSVGCollapsed;
-    } else {
-      allLinks.forEach((link) => {
-        link.style.display = "";
-      });
-      sidebarArrow.innerHTML = buttonSVGExpanded;
-    }
-  }
+  
 
   var addButton = document.getElementById("add_product");
   var split_btn = document.getElementById("split_btn");
@@ -509,6 +477,7 @@ function submitFormData(formData) {
   var manufacturing_date = document.getElementById('manufacturing_date');
   var expired_date = document.getElementById('expired_date');
   var date_stocked = document.getElementById('date_stocked');
+  var expiry_date = document.getElementById('expiry_date');
 
 
   // Set the maximum allowed date to today
@@ -519,6 +488,7 @@ function submitFormData(formData) {
   manufactured_dateInput1.max = todayString;
   expiration_dateInput.min = todayString;
   expiration_dateInput1.min = todayString;
+  expiry_date.min = todayString;
   expired_date.min = todayString;
   datestockedInput.max = todayString;
   datestockedInput1.max = todayString;
@@ -557,6 +527,9 @@ function submitFormData(formData) {
       expiration_dateInput1.focus();
       expired_date.value = "";
       expired_date.focus(); 
+
+      expiry_date.value = "";
+      expiry_date.focus();
      
       return false;
     }
@@ -595,6 +568,7 @@ function submitFormData(formData) {
     manufacturing_date,
     expired_date,
     date_stocked,
+    expiry_date,
   ];
   dateInputs.forEach((input) => {
     input.addEventListener("keydown", function (e) {

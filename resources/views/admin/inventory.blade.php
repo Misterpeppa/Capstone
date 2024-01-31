@@ -2,11 +2,10 @@
 <html data-bs-theme="light" lang="en">
 
 <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-..." crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Admin | Inventory</title>
     <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
@@ -14,13 +13,15 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+    <link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <style>
@@ -38,17 +39,27 @@
         @endphp
         @include('includes.admin_header')
         <div class="content">
-<div id="rectangle" class="rectangle"><button class="btn notification" id="notification"
-                    type="button"><span class="notification_base"><svg xmlns="http://www.w3.org/2000/svg"
-                            width="15" height="18" viewbox="0 0 15 18" fill="none">
-                            <path
-                                d="M2.29482 10.4791L2.93736 10.866L2.93903 10.8632L2.29482 10.4791ZM1.38031 11.998L0.737787 11.6112L0.737673 11.6113L1.38031 11.998ZM2.23916 14.328L1.99871 15.0385L2.00149 15.0394L2.23916 14.328ZM12.7918 14.328L12.5564 13.6159L12.5542 13.6167L12.7918 14.328ZM13.6507 11.998L14.2938 11.6121L14.2932 11.6112L13.6507 11.998ZM12.7362 10.4791L12.0864 10.854L12.0937 10.866L12.7362 10.4791ZM8.99065 2.00199L8.78522 2.7233C9.0594 2.80139 9.35415 2.71728 9.54583 2.50625C9.7375 2.29522 9.79296 1.99376 9.68894 1.72833L8.99065 2.00199ZM6.0483 2.00199L5.35001 1.72833C5.24599 1.99376 5.30145 2.29522 5.49313 2.50625C5.68481 2.71728 5.97955 2.80139 6.25374 2.7233L6.0483 2.00199ZM5.83359 16.3002L5.30286 16.8301L5.30326 16.8305L5.83359 16.3002ZM7.51948 1.02137C4.47306 1.02137 1.99811 3.49632 1.99811 6.54274H3.49811C3.49811 4.32475 5.30148 2.52137 7.51948 2.52137V1.02137ZM1.99811 6.54274V8.84096H3.49811V6.54274H1.99811ZM1.99811 8.84096C1.99811 8.99314 1.96284 9.22832 1.89124 9.48627C1.8197 9.74398 1.72858 9.96429 1.65061 10.0951L2.93903 10.8632C3.10759 10.5804 3.24311 10.2242 3.33658 9.88749C3.42999 9.551 3.49811 9.17386 3.49811 8.84096H1.99811ZM1.6523 10.0923L0.737787 11.6112L2.02284 12.3849L2.93735 10.866L1.6523 10.0923ZM0.737673 11.6113C0.34933 12.2568 0.264391 12.9889 0.507 13.6441C0.749283 14.2984 1.2894 14.7984 1.99871 15.0384L2.47961 13.6176C2.15512 13.5078 1.98351 13.3119 1.91366 13.1233C1.84415 12.9355 1.84668 12.6776 2.02295 12.3847L0.737673 11.6113ZM2.00149 15.0394C5.58318 16.236 9.44782 16.236 13.0295 15.0394L12.5542 13.6167C9.28099 14.7103 5.75001 14.7103 2.47682 13.6167L2.00149 15.0394ZM13.0272 15.0401C14.4485 14.5703 15.0644 12.8965 14.2938 11.6121L13.0076 12.3839C13.2867 12.849 13.0596 13.4496 12.5564 13.6159L13.0272 15.0401ZM14.2932 11.6112L13.3787 10.0923L12.0937 10.866L13.0082 12.3849L14.2932 11.6112ZM13.3858 10.1043C13.3086 9.97054 13.2183 9.7472 13.1473 9.48852C13.0762 9.22901 13.0408 8.99336 13.0408 8.84096H11.5408C11.5408 9.17364 11.6089 9.55031 11.7008 9.88524C11.7928 10.221 11.9252 10.5742 12.0865 10.8539L13.3858 10.1043ZM13.0408 8.84096V6.54274H11.5408V8.84096H13.0408ZM13.0408 6.54274C13.0408 3.50428 10.5579 1.02137 7.51948 1.02137V2.52137C9.72952 2.52137 11.5408 4.3327 11.5408 6.54274H13.0408ZM9.19608 1.28067C8.10014 0.968542 6.93882 0.968542 5.84287 1.28067L6.25374 2.7233C7.08111 2.48766 7.95784 2.48766 8.78522 2.7233L9.19608 1.28067ZM6.7466 2.27564C6.86777 1.96645 7.16863 1.75 7.51948 1.75V0.25C6.53434 0.25 5.69008 0.860583 5.35001 1.72833L6.7466 2.27564ZM7.51948 1.75C7.87033 1.75 8.17119 1.96645 8.29236 2.27564L9.68894 1.72833C9.34888 0.860583 8.50461 0.25 7.51948 0.25V1.75ZM9.15516 14.6143C9.15516 15.5122 8.41739 16.25 7.51948 16.25V17.75C9.24582 17.75 10.6552 16.3407 10.6552 14.6143H9.15516ZM7.51948 16.25C7.07487 16.25 6.65887 16.0648 6.36392 15.7699L5.30326 16.8305C5.86716 17.3944 6.65991 17.75 7.51948 17.75V16.25ZM6.36432 15.7703C6.05752 15.463 5.88477 15.0468 5.88379 14.6126L4.38379 14.616C4.38567 15.4465 4.71607 16.2425 5.30286 16.8301L6.36432 15.7703Z"
-                                fill="#1C1C1C"></path>
-                        </svg></span></button>
-                        <div class="dropdown admin_btn"><button class="btn dropdown-toggle admin" aria-expanded="false" data-bs-toggle="dropdown" type="button"><img src="{{ asset('assets/img/image%2011%20(1).png') }}" alt="Admin" width="40" height="40"></button>
-                    <div class="dropdown-menu"><a class="dropdown-item" href="{{ route('admin.signout') }}">Sign Out</a></div>
+            <div id="rectangle" class="rectangle justify-content-between">
+                <div>
+                    <a id="menu-toggle" class="btn menu_toggle btn-link" role="button" href="#menu-toggle"><i class="fa fa-bars"></i></a>
                 </div>
-            </div>            <div class="main_content">
+                <div class="d-flex flex-direction-row">
+                    <button class="btn notification" id="notification" type="button"><span class="notification_base"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewbox="0 0 15 18"
+                                fill="none">
+                                <path
+                                    d="M2.29482 10.4791L2.93736 10.866L2.93903 10.8632L2.29482 10.4791ZM1.38031 11.998L0.737787 11.6112L0.737673 11.6113L1.38031 11.998ZM2.23916 14.328L1.99871 15.0385L2.00149 15.0394L2.23916 14.328ZM12.7918 14.328L12.5564 13.6159L12.5542 13.6167L12.7918 14.328ZM13.6507 11.998L14.2938 11.6121L14.2932 11.6112L13.6507 11.998ZM12.7362 10.4791L12.0864 10.854L12.0937 10.866L12.7362 10.4791ZM8.99065 2.00199L8.78522 2.7233C9.0594 2.80139 9.35415 2.71728 9.54583 2.50625C9.7375 2.29522 9.79296 1.99376 9.68894 1.72833L8.99065 2.00199ZM6.0483 2.00199L5.35001 1.72833C5.24599 1.99376 5.30145 2.29522 5.49313 2.50625C5.68481 2.71728 5.97955 2.80139 6.25374 2.7233L6.0483 2.00199ZM5.83359 16.3002L5.30286 16.8301L5.30326 16.8305L5.83359 16.3002ZM7.51948 1.02137C4.47306 1.02137 1.99811 3.49632 1.99811 6.54274H3.49811C3.49811 4.32475 5.30148 2.52137 7.51948 2.52137V1.02137ZM1.99811 6.54274V8.84096H3.49811V6.54274H1.99811ZM1.99811 8.84096C1.99811 8.99314 1.96284 9.22832 1.89124 9.48627C1.8197 9.74398 1.72858 9.96429 1.65061 10.0951L2.93903 10.8632C3.10759 10.5804 3.24311 10.2242 3.33658 9.88749C3.42999 9.551 3.49811 9.17386 3.49811 8.84096H1.99811ZM1.6523 10.0923L0.737787 11.6112L2.02284 12.3849L2.93735 10.866L1.6523 10.0923ZM0.737673 11.6113C0.34933 12.2568 0.264391 12.9889 0.507 13.6441C0.749283 14.2984 1.2894 14.7984 1.99871 15.0384L2.47961 13.6176C2.15512 13.5078 1.98351 13.3119 1.91366 13.1233C1.84415 12.9355 1.84668 12.6776 2.02295 12.3847L0.737673 11.6113ZM2.00149 15.0394C5.58318 16.236 9.44782 16.236 13.0295 15.0394L12.5542 13.6167C9.28099 14.7103 5.75001 14.7103 2.47682 13.6167L2.00149 15.0394ZM13.0272 15.0401C14.4485 14.5703 15.0644 12.8965 14.2938 11.6121L13.0076 12.3839C13.2867 12.849 13.0596 13.4496 12.5564 13.6159L13.0272 15.0401ZM14.2932 11.6112L13.3787 10.0923L12.0937 10.866L13.0082 12.3849L14.2932 11.6112ZM13.3858 10.1043C13.3086 9.97054 13.2183 9.7472 13.1473 9.48852C13.0762 9.22901 13.0408 8.99336 13.0408 8.84096H11.5408C11.5408 9.17364 11.6089 9.55031 11.7008 9.88524C11.7928 10.221 11.9252 10.5742 12.0865 10.8539L13.3858 10.1043ZM13.0408 8.84096V6.54274H11.5408V8.84096H13.0408ZM13.0408 6.54274C13.0408 3.50428 10.5579 1.02137 7.51948 1.02137V2.52137C9.72952 2.52137 11.5408 4.3327 11.5408 6.54274H13.0408ZM9.19608 1.28067C8.10014 0.968542 6.93882 0.968542 5.84287 1.28067L6.25374 2.7233C7.08111 2.48766 7.95784 2.48766 8.78522 2.7233L9.19608 1.28067ZM6.7466 2.27564C6.86777 1.96645 7.16863 1.75 7.51948 1.75V0.25C6.53434 0.25 5.69008 0.860583 5.35001 1.72833L6.7466 2.27564ZM7.51948 1.75C7.87033 1.75 8.17119 1.96645 8.29236 2.27564L9.68894 1.72833C9.34888 0.860583 8.50461 0.25 7.51948 0.25V1.75ZM9.15516 14.6143C9.15516 15.5122 8.41739 16.25 7.51948 16.25V17.75C9.24582 17.75 10.6552 16.3407 10.6552 14.6143H9.15516ZM7.51948 16.25C7.07487 16.25 6.65887 16.0648 6.36392 15.7699L5.30326 16.8305C5.86716 17.3944 6.65991 17.75 7.51948 17.75V16.25ZM6.36432 15.7703C6.05752 15.463 5.88477 15.0468 5.88379 14.6126L4.38379 14.616C4.38567 15.4465 4.71607 16.2425 5.30286 16.8301L6.36432 15.7703Z"
+                                    fill="#1C1C1C"></path></svg></span></button>
+                    <div class="dropdown admin_btn">
+                        <button class="btn dropdown-toggle admin" aria-expanded="false" data-bs-toggle="dropdown"
+                            type="button"><img src="{{ asset('assets/img/image%2011%20(1).png') }}" alt="Admin"
+                                width="40" height="40"></button>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="{{ route('admin.signout') }}">Sign Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main_content">
                 <div id="inventory_container" class="inventory_container">
                     <div id="inventory_header" class="inventory_header">
                         <div class="d-flex flex-column justify-content-center align-items-start">
@@ -173,13 +184,13 @@
 
 
                                         </div>
-                                        <button type="submit" form="approvedForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+                                        <button type="submit" form="approvedForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i><span class="filter_btn_base">Search</span></button>
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                aria-expanded="false"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
+                                                aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
                                                   <g clip-path="url(#clip0_3674_15869)" filter="url(#filter0_d_3674_15869)">
-                                                    <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                   </g>
                                                   <defs>
                                                     <filter id="filter0_d_3674_15869" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
@@ -196,7 +207,7 @@
                                                       <rect width="24" height="24" fill="white"/>
                                                     </clipPath>
                                                   </defs>
-                                              </svg>Filter By</span>
+                                              </svg><span class="filter_btn_base">Filter By</span>
                                                 
                                             </button>
                                              <ul class="dropdown-menu">
@@ -258,16 +269,16 @@
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                aria-expanded="false"><span class="filter_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_6770_15021)">
-    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <defs>
     <clipPath id="clip0_6770_15021">
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg>Sort By</span>
+</svg><span class="filter_btn_base">Sort By</span>
                                             </button>
                                             <ul class="dropdown-menu">
                                       <li class="dropdown-item ">
@@ -472,7 +483,7 @@
                                         </defs>
                                     </svg> Add Product</span></button>
                         </div>
-                        <div id="product_table_container" class="w-100" >
+                        <div id="product_table_container" class="table-responsive w-100" style="overflow: auto; display: none;">
                             <table class="table table-responsive w-100 mt-3" style="overflow: auto;">
                                 <thead>
                                     <tr>
@@ -784,23 +795,23 @@
                                     <div id="error-product_categ-3" class="error-message"><span>Please select a
                                             category.</span></div>
                                 </div>
-                                <div class="form-floating w-100"><select name="item_name" class="form-select form-select"
-                                        data-id="product_name" id="editItemName">
-                                        <option value="none" selected="">Select a Product Name</option>
-                                    </select><label class="form-label form-label" for="product_name">Product
-                                        Name</label>
+                                <div class="form-floating w-100"><input class="form-control w-100" list="options" data-id="product_name" id="editItemName" name="item_name" placeholder="Owner Name">
+								<label class="form-label" for="product_name">Product Name<span>&nbsp;*</span></label>
+									<datalist id="options">
+
+									</datalist>
                                     <div id="error-product_name-3" class="error-message"><span>Please select product
                                             name.</span></div>
                                 </div>
                                 <div class="form-floating w-100"><input class="form-control" type="text"
-                                        name="product_code" id="product_code" data-id="product_code"
+                                        name="product_code" data-id="product_code"
                                         id="product_code-3" placeholder="Product Code"><label
                                         class="form-label form-label" for="product_code">Product Code</label>
                                     <div class="error-message" id="error-product_code-3"><span>Please enter product
                                             code.</span></div>
                                 </div>
                                 <div class="form-floating w-100"><input class="form-control" type="text"
-                                        name="batch_no" id="batch_number" data-id="batch_number" id="batch_number-3"
+                                        name="batch_no" id="batch_no" data-id="batch_number"
                                         placeholder="Batch Number"><label class="form-label form-label"
                                         for="batch_number">Batch Number</label>
                                     <div class="error-message" id="error-batch_number-3"><span>Please enter batch
@@ -810,7 +821,7 @@
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input
                                         class="form-control" name="manufacturing_date"
-                                        id="manufactured_date" data-id="manufactured_date" id="manufactured_date-3"
+                                        id="manufacturing_date" data-id="manufactured_date"
                                         placeholder="Manufactured Date" type="date"><label
                                         class="form-label form-label" for="manufactured_date">Manufactured
                                         Date</label>
@@ -818,16 +829,16 @@
                                             manufactured date.</span></div>
                                 </div>
                                 <div class="form-floating" style="width:100%;"><input
-                                        class="form-control form-control" name="expiration_date" id="expiration_date"
-                                        data-id="expiration_date" id="expiration_date-3"
+                                        class="form-control form-control" name="expiration_date" id="expiry_date"
+                                        data-id="expiration_date"
                                         placeholder="Expiration Date" type="date"><label
                                         class="form-label form-label" for="expiration_date">Expiration Date</label>
                                     <div class="error-message" id="error-expiration_date-3"><span>Please enter the
                                             expiration date.</span></div>
                                 </div>
                                 <div class="form-floating" style="width:100%;"><input
-                                        class="form-control form-control" name="date_stocked" id="datestocked"
-                                        data-id="datestocked" id="datestocked-3" placeholder="Expiration Date"
+                                        class="form-control form-control" name="date_stocked" id="date_stocked"
+                                        data-id="datestocked"placeholder="Expiration Date"
                                         type="date"><label class="form-label form-label" for="datestocked">Date
                                         Stocked</label>
                                     <div class="error-message" id="error-datestocked-3"><span>Please enter the date
@@ -835,7 +846,7 @@
                                 </div>
                             </div>
                             <div class="form-floating" style="width:100%;">
-                                <textarea class="form-control" id="prod_description" name="prod_desc" data-id="prod_description"
+                                <textarea class="form-control" id="prod_desc" name="prod_desc" data-id="prod_description"
                                     placeholder="Product Description"></textarea><label class="form-label form-label"
                                     for="prod_description">Product Description</label>
                                 <div id="error-prod_description-3" class="error-message"><span>Please enter product
@@ -847,7 +858,7 @@
                                     <div class="quantity_input"><button class="quantity_minus" type="button"
                                             onclick="decrementQuantity()">-</button>
                                         <input type="number" aria-labelledby="label-quantity" class="input_quantity"
-                                            data-id="quantity" id="quantity" min="0" name="quantity"
+                                            data-id="quantity" id="quantity_input" min="0" name="quantity"
                                             required="" value="0">
                                         <button class="quantity_add" type="button"
                                             onclick="incrementQuantity()">+</button>
@@ -859,7 +870,7 @@
                             <div class="mb-3 prod_detail_fields_buttons"><button class="btn cancel_edit"
                                     id="cancel_edit" type="button"><span
                                         class="cancel_edit_base">Cancel</span></button>
-                                <button class="btn edit_save_changes" id="edit_save_changes" type="submit"><span
+                                <button class="btn edit_save_changes" id="save_changes" disabled type="submit"><span
                                         class="edit_save_changes_base">Save Changes</span></button>
                             </div>
                             </form>
@@ -1003,12 +1014,13 @@
                                     <div id="error-product_categ-1" class="error-message"><span>Please select a
                                             category.</span></div>
                                 </div>
-                                <div class="form-floating" style="width: 100%;"><select
-                                        class="form-select form-select" name="item_name" data-id="product_name"
-                                        id="product_name-1">
-                                        <option value="none" selected="">Select a Product Name</option>
-                                    </select><label class="form-label form-label" for="product_name">Product
-                                        Name</label>
+                                <div class="form-floating" style="width: 100%;">
+
+                                        <input class="form-control w-100" list="options" data-id="product_name" id="product_name-1" name="item_name" placeholder="Owner Name">
+								<label class="form-label" for="product_name">Product Name<span>&nbsp;*</span></label>
+									<datalist id="options">
+
+									</datalist>
                                     <div id="error-product_name-1" class="error-message"><span>Please select product
                                             name.</span></div>
                                 </div>
@@ -1171,7 +1183,7 @@
         </div>
     </div>
     <div class="modal fade show" role="dialog" tabindex="-1" id="add_product_success">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content success_modal">
                 <div class="modal-header success_header">
                     <div class="success_icon_container"><span class="success_icon"><svg
@@ -1200,7 +1212,7 @@
         </div>
     </div>
     <div class="modal fade show" role="dialog" tabindex="-1" id="save_changes_success">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content success_modal">
                 <div class="modal-header success_header">
                     <div class="success_icon_container"><span class="success_icon"><svg
@@ -1222,14 +1234,14 @@
                 <div class="modal-body success_message">
                     <div>
                         <h1>Success!</h1>
-                        <p>Your changes have been successfully saved.</p>
+                        <p>Product was successfully added.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal fade show" role="dialog" tabindex="-1" id="add_product_discard">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content discard_modal">
                 <div class="modal-header discard_header">
                     <div class="discard_icon_container"><span class="discard_icon"><svg
@@ -1294,9 +1306,12 @@
             $('#editPhone').val(clientData.phone);
         });
             $('.viewButton').click(function() {
+                var inventory_header = document.getElementById("inventory_header");
                 var rowId = $(this).closest('tr').data('row-id');
                 const product_type = $(this).data('product-type');
                 const id = $(this).data('product-id');
+
+                inventory_header.style.display = 'none';
 
                 // Make an AJAX request to retrieve data
                 $.ajax({
@@ -1465,10 +1480,80 @@
 });
     </script>
 
+    <script>
+ function enableSaveChanges() {
+  var product_categ = document.getElementById("product-categ-3").value;
+  var editItemName = document.getElementById("editItemName").value;
+  var product_code = document.getElementById("product_code-3").value;
+  var batch_number = document.getElementById("batch_no").value;
+  var manufactured_date = document.getElementById("manufacturing_date").value;
+  var expiration_date = document.getElementById("expiry_date").value;
+  var datestocked = document.getElementById("date_stocked").value;
+  var prod_description = document.getElementById("prod_desc").value;
+  var quantity = document.getElementById("quantity_input").value;
+
+  var save_changes = document.getElementById("save_changes");
+
+  // Add additional validation conditions as needed
+  if (
+    product_categ.trim() !== "" &&
+    editItemName.trim() !== "" &&
+    product_code.trim() !== "" &&
+    batch_number.trim() !== "" &&
+    manufactured_date.trim() !== "" &&
+    expiration_date.trim() !== "" &&
+    datestocked.trim() !== "" &&
+    prod_description.trim() !== "" &&
+    quantity.trim() >= 1
+  ) {
+    save_changes.removeAttribute("disabled");
+  } else {
+    save_changes.setAttribute("disabled", true);
+  }
+
+  // Logging values for debugging
+  console.log('product-categ-3:', product_categ);
+  console.log('editItemName:', editItemName);
+  console.log('product_code:', product_code);
+  console.log('batch_number:', batch_number);
+  console.log('manufactured_date:', manufactured_date);
+  console.log('expiration_date:', expiration_date);
+  console.log('datestocked:', datestocked);
+  console.log('prod_description', prod_description);
+  console.log('quantity', quantity);
+  console.log('save_changes disabled:', save_changes.disabled);
+
+}
+
+
+// Example: Call enableSaveChanges() on input change events
+document.getElementById("product-categ-3").addEventListener("change", enableSaveChanges);
+document.getElementById("editItemName").addEventListener("input", enableSaveChanges);
+document.getElementById("product_code-3").addEventListener("input", enableSaveChanges);
+document.getElementById("batch_no").addEventListener("input", enableSaveChanges);
+document.getElementById("manufacturing_date").addEventListener("input", enableSaveChanges);
+document.getElementById("expiry_date").addEventListener("input", enableSaveChanges);
+document.getElementById("date_stocked").addEventListener("input", enableSaveChanges);
+document.getElementById("prod_desc").addEventListener("input", enableSaveChanges);
+document.getElementById("quantity_input").addEventListener("input", enableSaveChanges);
+
+
+
+
+
+
+
+
+    </script>
+
 
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/inventory.js') }}"></script>
+    <script src="{{ asset('assets/js/sidebar.js') }}"></script>
+    <script src="{{ asset('assets/js/sidebartry.js') }}"></script>
+    
+    
 
 </body>
 

@@ -27,9 +27,24 @@
 <body>
 	<main class="d-flex flex-row container-fluid" style="padding: 0;"> @php $activeTab = 'emr'; // Set the active tab @endphp @include('includes.admin_header')
 		<div class="content">
-			<div id="rectangle" class="rectangle"><button class="btn notification" id="notification" type="button"><span class="notification_base"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewbox="0 0 15 18" fill="none"><path d="M2.29482 10.4791L2.93736 10.866L2.93903 10.8632L2.29482 10.4791ZM1.38031 11.998L0.737787 11.6112L0.737673 11.6113L1.38031 11.998ZM2.23916 14.328L1.99871 15.0385L2.00149 15.0394L2.23916 14.328ZM12.7918 14.328L12.5564 13.6159L12.5542 13.6167L12.7918 14.328ZM13.6507 11.998L14.2938 11.6121L14.2932 11.6112L13.6507 11.998ZM12.7362 10.4791L12.0864 10.854L12.0937 10.866L12.7362 10.4791ZM8.99065 2.00199L8.78522 2.7233C9.0594 2.80139 9.35415 2.71728 9.54583 2.50625C9.7375 2.29522 9.79296 1.99376 9.68894 1.72833L8.99065 2.00199ZM6.0483 2.00199L5.35001 1.72833C5.24599 1.99376 5.30145 2.29522 5.49313 2.50625C5.68481 2.71728 5.97955 2.80139 6.25374 2.7233L6.0483 2.00199ZM5.83359 16.3002L5.30286 16.8301L5.30326 16.8305L5.83359 16.3002ZM7.51948 1.02137C4.47306 1.02137 1.99811 3.49632 1.99811 6.54274H3.49811C3.49811 4.32475 5.30148 2.52137 7.51948 2.52137V1.02137ZM1.99811 6.54274V8.84096H3.49811V6.54274H1.99811ZM1.99811 8.84096C1.99811 8.99314 1.96284 9.22832 1.89124 9.48627C1.8197 9.74398 1.72858 9.96429 1.65061 10.0951L2.93903 10.8632C3.10759 10.5804 3.24311 10.2242 3.33658 9.88749C3.42999 9.551 3.49811 9.17386 3.49811 8.84096H1.99811ZM1.6523 10.0923L0.737787 11.6112L2.02284 12.3849L2.93735 10.866L1.6523 10.0923ZM0.737673 11.6113C0.34933 12.2568 0.264391 12.9889 0.507 13.6441C0.749283 14.2984 1.2894 14.7984 1.99871 15.0384L2.47961 13.6176C2.15512 13.5078 1.98351 13.3119 1.91366 13.1233C1.84415 12.9355 1.84668 12.6776 2.02295 12.3847L0.737673 11.6113ZM2.00149 15.0394C5.58318 16.236 9.44782 16.236 13.0295 15.0394L12.5542 13.6167C9.28099 14.7103 5.75001 14.7103 2.47682 13.6167L2.00149 15.0394ZM13.0272 15.0401C14.4485 14.5703 15.0644 12.8965 14.2938 11.6121L13.0076 12.3839C13.2867 12.849 13.0596 13.4496 12.5564 13.6159L13.0272 15.0401ZM14.2932 11.6112L13.3787 10.0923L12.0937 10.866L13.0082 12.3849L14.2932 11.6112ZM13.3858 10.1043C13.3086 9.97054 13.2183 9.7472 13.1473 9.48852C13.0762 9.22901 13.0408 8.99336 13.0408 8.84096H11.5408C11.5408 9.17364 11.6089 9.55031 11.7008 9.88524C11.7928 10.221 11.9252 10.5742 12.0865 10.8539L13.3858 10.1043ZM13.0408 8.84096V6.54274H11.5408V8.84096H13.0408ZM13.0408 6.54274C13.0408 3.50428 10.5579 1.02137 7.51948 1.02137V2.52137C9.72952 2.52137 11.5408 4.3327 11.5408 6.54274H13.0408ZM9.19608 1.28067C8.10014 0.968542 6.93882 0.968542 5.84287 1.28067L6.25374 2.7233C7.08111 2.48766 7.95784 2.48766 8.78522 2.7233L9.19608 1.28067ZM6.7466 2.27564C6.86777 1.96645 7.16863 1.75 7.51948 1.75V0.25C6.53434 0.25 5.69008 0.860583 5.35001 1.72833L6.7466 2.27564ZM7.51948 1.75C7.87033 1.75 8.17119 1.96645 8.29236 2.27564L9.68894 1.72833C9.34888 0.860583 8.50461 0.25 7.51948 0.25V1.75ZM9.15516 14.6143C9.15516 15.5122 8.41739 16.25 7.51948 16.25V17.75C9.24582 17.75 10.6552 16.3407 10.6552 14.6143H9.15516ZM7.51948 16.25C7.07487 16.25 6.65887 16.0648 6.36392 15.7699L5.30326 16.8305C5.86716 17.3944 6.65991 17.75 7.51948 17.75V16.25ZM6.36432 15.7703C6.05752 15.463 5.88477 15.0468 5.88379 14.6126L4.38379 14.616C4.38567 15.4465 4.71607 16.2425 5.30286 16.8301L6.36432 15.7703Z" fill="#1C1C1C"></path></svg></span></button>
-                <div class="dropdown admin_btn"><button class="btn dropdown-toggle admin" aria-expanded="false" data-bs-toggle="dropdown" type="button"><img src="{{ asset('assets/img/image%2011%20(1).png') }}" alt="Admin" width="40" height="40"></button>
-                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Sign Out</a></div>
+		<div id="rectangle" class="rectangle justify-content-between">
+                <div>
+                    <a id="menu-toggle" class="btn menu_toggle btn-link" role="button" href="#menu-toggle"><i class="fa fa-bars"></i></a>
+                </div>
+                <div class="d-flex flex-direction-row">
+                    <button class="btn notification" id="notification" type="button"><span class="notification_base"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewbox="0 0 15 18"
+                                fill="none">
+                                <path
+                                    d="M2.29482 10.4791L2.93736 10.866L2.93903 10.8632L2.29482 10.4791ZM1.38031 11.998L0.737787 11.6112L0.737673 11.6113L1.38031 11.998ZM2.23916 14.328L1.99871 15.0385L2.00149 15.0394L2.23916 14.328ZM12.7918 14.328L12.5564 13.6159L12.5542 13.6167L12.7918 14.328ZM13.6507 11.998L14.2938 11.6121L14.2932 11.6112L13.6507 11.998ZM12.7362 10.4791L12.0864 10.854L12.0937 10.866L12.7362 10.4791ZM8.99065 2.00199L8.78522 2.7233C9.0594 2.80139 9.35415 2.71728 9.54583 2.50625C9.7375 2.29522 9.79296 1.99376 9.68894 1.72833L8.99065 2.00199ZM6.0483 2.00199L5.35001 1.72833C5.24599 1.99376 5.30145 2.29522 5.49313 2.50625C5.68481 2.71728 5.97955 2.80139 6.25374 2.7233L6.0483 2.00199ZM5.83359 16.3002L5.30286 16.8301L5.30326 16.8305L5.83359 16.3002ZM7.51948 1.02137C4.47306 1.02137 1.99811 3.49632 1.99811 6.54274H3.49811C3.49811 4.32475 5.30148 2.52137 7.51948 2.52137V1.02137ZM1.99811 6.54274V8.84096H3.49811V6.54274H1.99811ZM1.99811 8.84096C1.99811 8.99314 1.96284 9.22832 1.89124 9.48627C1.8197 9.74398 1.72858 9.96429 1.65061 10.0951L2.93903 10.8632C3.10759 10.5804 3.24311 10.2242 3.33658 9.88749C3.42999 9.551 3.49811 9.17386 3.49811 8.84096H1.99811ZM1.6523 10.0923L0.737787 11.6112L2.02284 12.3849L2.93735 10.866L1.6523 10.0923ZM0.737673 11.6113C0.34933 12.2568 0.264391 12.9889 0.507 13.6441C0.749283 14.2984 1.2894 14.7984 1.99871 15.0384L2.47961 13.6176C2.15512 13.5078 1.98351 13.3119 1.91366 13.1233C1.84415 12.9355 1.84668 12.6776 2.02295 12.3847L0.737673 11.6113ZM2.00149 15.0394C5.58318 16.236 9.44782 16.236 13.0295 15.0394L12.5542 13.6167C9.28099 14.7103 5.75001 14.7103 2.47682 13.6167L2.00149 15.0394ZM13.0272 15.0401C14.4485 14.5703 15.0644 12.8965 14.2938 11.6121L13.0076 12.3839C13.2867 12.849 13.0596 13.4496 12.5564 13.6159L13.0272 15.0401ZM14.2932 11.6112L13.3787 10.0923L12.0937 10.866L13.0082 12.3849L14.2932 11.6112ZM13.3858 10.1043C13.3086 9.97054 13.2183 9.7472 13.1473 9.48852C13.0762 9.22901 13.0408 8.99336 13.0408 8.84096H11.5408C11.5408 9.17364 11.6089 9.55031 11.7008 9.88524C11.7928 10.221 11.9252 10.5742 12.0865 10.8539L13.3858 10.1043ZM13.0408 8.84096V6.54274H11.5408V8.84096H13.0408ZM13.0408 6.54274C13.0408 3.50428 10.5579 1.02137 7.51948 1.02137V2.52137C9.72952 2.52137 11.5408 4.3327 11.5408 6.54274H13.0408ZM9.19608 1.28067C8.10014 0.968542 6.93882 0.968542 5.84287 1.28067L6.25374 2.7233C7.08111 2.48766 7.95784 2.48766 8.78522 2.7233L9.19608 1.28067ZM6.7466 2.27564C6.86777 1.96645 7.16863 1.75 7.51948 1.75V0.25C6.53434 0.25 5.69008 0.860583 5.35001 1.72833L6.7466 2.27564ZM7.51948 1.75C7.87033 1.75 8.17119 1.96645 8.29236 2.27564L9.68894 1.72833C9.34888 0.860583 8.50461 0.25 7.51948 0.25V1.75ZM9.15516 14.6143C9.15516 15.5122 8.41739 16.25 7.51948 16.25V17.75C9.24582 17.75 10.6552 16.3407 10.6552 14.6143H9.15516ZM7.51948 16.25C7.07487 16.25 6.65887 16.0648 6.36392 15.7699L5.30326 16.8305C5.86716 17.3944 6.65991 17.75 7.51948 17.75V16.25ZM6.36432 15.7703C6.05752 15.463 5.88477 15.0468 5.88379 14.6126L4.38379 14.616C4.38567 15.4465 4.71607 16.2425 5.30286 16.8301L6.36432 15.7703Z"
+                                    fill="#1C1C1C"></path></svg></span></button>
+                    <div class="dropdown admin_btn">
+                        <button class="btn dropdown-toggle admin" aria-expanded="false" data-bs-toggle="dropdown"
+                            type="button"><img src="{{ asset('assets/img/image%2011%20(1).png') }}" alt="Admin"
+                                width="40" height="40"></button>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="{{ route('admin.signout') }}">Sign Out</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 			<div class="main_content">
@@ -69,6 +84,7 @@
                                             <input type="text" class="search_input" name="search"
                                             value="{{ request('search') }}" placeholder="Search Pet Record">
                                         </div>
+
                                         <button type="submit" form="petrecordForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
@@ -93,7 +109,7 @@
                                                       <rect width="24" height="24" fill="white"/>
                                                     </clipPath>
                                                   </defs>
-                                              </svg>Filter By
+                                              </svg><span class="filter_btn_base">Filter By</span>
                                             </button>
                                             <ul class="dropdown-menu">
                                                 
@@ -139,8 +155,7 @@
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                aria-expanded="false"><span class="filter_btn_base">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6770_15021)">
 														<path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 													</g>
@@ -149,7 +164,8 @@
 														<rect width="24" height="24" fill="white"/>
 														</clipPath>
 													</defs>
-													</svg>Sort By 
+													</svg><span class="filter_btn_base">
+													Sort By 
 												</span>
                                                 </button>
                                             <ul class="dropdown-menu">
@@ -285,7 +301,7 @@
                                         <p>{{ $petrecord->pet->breed }}</p>
 									</div>
 									<div class="dropdown">
-										<button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button">
+										<button class="btn dropdown-toggle pet_dropdown" aria-expanded="false" data-bs-toggle="dropdown" type="button">
 											<svg fill="none" height="18" viewbox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg">
 												<path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"></path>
 												<path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"></path>
@@ -1047,19 +1063,22 @@
 			<div class="modal-content add_pet_record_modal">
 				<div class="modal-header">
 					<h1 class="modal-title">Add Pet Record</h1>
-					<button class="btn-close" id="close_pet_modal" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
+					<button class="btn-close" id="close_pet_modal" onClick="cancelSubmitPet()" aria-label="Close" data-bs-dismiss="modal" type="button"></button>
 				</div>
 				<div class="modal-body" style="width:100%;">
 					<form action="{{ route('emr.pet') }}" method="POST" id="add_pet_form-1" class="add_client">
                         @csrf
 						<div class="mb-3 input_container">
                             <div class="form-floating align-self-stretch">
-                                    <select class="admin_petInfo_select form-control w-100" id="name" name="owner_id" placeholder="Owner Name">
-                                        <option value=""disabled selected>Select Owner: </option>
-                                        @foreach ($owners as $owners)
+								<input class="admin_petInfo_select form-control w-100" list="options" id="name" name="owner_id" placeholder="Owner Name">
+								<label class="form-label" for="name">Owner Name<span>&nbsp;*</span></label>
+									<datalist id="options">
+									@foreach ($owners as $owners)
                                             <option value="{{ $owners->id }}">{{ $owners->first_name }} {{ $owners->middle_name }} {{ $owners->last_name }} {{ $owners->suffix }}</option>
                                         @endforeach
-                                    </select>
+									</datalist>
+                                    
+									
                                 </div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
@@ -1092,7 +1111,7 @@
 								</div>
 								<div class="form-floating" style="width:100%;">
 									<select class="form-select" name="breed" id="breed-1" data-id="breed-1" disabled="" placeholder="Breed">
-										<option value="none" selected="">Select a Pet Type first.</option>
+										<option value="" selected="">Select a Pet Type first.</option>
 									</select>
 									<label class="form-label" for="breed-1">Breed<span>&nbsp;*</span></label>
 									<div id="error-breed-1" class="error-message"><span>• Please select a breed.</span></div>
@@ -1135,8 +1154,8 @@
 						</div>
 				</div>
 				<div class="modal-footer add_product_button">
-					<button class="btn clear_form" id="clear_form-1" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_pet" id="submit_Pet-1" type="submit" value="submit" title="Complete the fields first to make this clickable."><span class="submit_product_base">Submit</span></button>
+					<button class="btn clear_form" id="clear_form-1" onClick="cancelSubmitPet()" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
+					<button class="btn submit_pet" id="submit_Pet-1" type="submit" disabled value="submit" title="Complete the fields first to make this clickable."><span class="submit_product_base">Submit</span></button>
 				</div>
                 </form>
 			</div>
@@ -1258,7 +1277,7 @@
 								</div>
 							</div>
 							<div class="d-flex justify-content-end align-items-end align-content-end align-self-end newinput_row" style="width: 100%;">
-								<div class="form-floating" style="width: 49.3%;">
+								<div class="form-floating pet_status_input" style="width: 49.3%;">
 									<select class="form-select" name="status" data-id="status" id="status">
 										<option value="" selected="">Status</option>
 										<option value="Status 1">Status 1</option>
@@ -1595,6 +1614,79 @@ $(document).ready(function() {
 });
 </script>
 <script>
+
+function enableSubmitPet() {
+  var name = document.getElementById("name").value;
+  var pet_name = document.getElementById("pet_name-1").value;
+  var gender = document.getElementById("gender-1").value;
+  var petType = document.getElementById("pet_type-1").value;
+  var breed = document.getElementById("breed-1").value;
+  var pet_birthdate = document.getElementById("pet_birthdate-1").value;
+  var weight = document.getElementById("weight-1").value;
+  var sterilization_status = document.getElementById("sterilization_status-1").value;
+
+  var submit_Pet = document.getElementById("submit_Pet-1");
+
+  // Add additional validation conditions as needed
+  if (
+    name.trim() !== "" &&
+    pet_name.trim() !== "" &&
+	gender.trim() !== "" &&
+	petType.trim() !== "" &&
+	breed.trim() !== "" &&
+	pet_birthdate.trim() !== "" &&
+	weight.trim() !== "" &&
+	sterilization_status.trim() !== ""
+	
+  ) {
+    submit_Pet.removeAttribute("disabled");
+    submit_Pet.classList.remove("disabled");
+  } else {
+    submit_Pet.setAttribute("disabled", true);
+    submit_Pet.classList.add("disabled");
+  }
+}
+
+// Example: Call enableSubmitButton() on input change events
+document.getElementById("name").addEventListener("change", enableSubmitPet);
+document.getElementById("pet_name-1").addEventListener("input", enableSubmitPet);
+document.getElementById("gender-1").addEventListener("change", enableSubmitPet);
+document.getElementById("pet_type-1").addEventListener("change", enableSubmitPet);
+document.getElementById("breed-1").addEventListener("change", enableSubmitPet);
+document.getElementById("pet_birthdate-1").addEventListener("input", enableSubmitPet);
+document.getElementById("weight-1").addEventListener("input", enableSubmitPet);
+document.getElementById("sterilization_status-1").addEventListener("change", enableSubmitPet);
+
+
+
+function cancelSubmitPet() {
+
+	var name = document.getElementById("name");
+  var pet_name = document.getElementById("pet_name-1");
+  var gender = document.getElementById("gender-1");
+  var age = document.getElementById("age-1");
+  var petType = document.getElementById("pet_type-1");
+  var breed = document.getElementById("breed-1");
+  var pet_birthdate = document.getElementById("pet_birthdate-1");
+  var weight = document.getElementById("weight-1");
+  var sterilization_status = document.getElementById("sterilization_status-1");
+
+  var submit_Pet = document.getElementById("submit_Pet-1");
+
+
+  submit_Pet.disabled = true;
+
+  name.value = "";
+  pet_name.value = "";
+  gender.value = "";
+  petType.value = "";
+  breed.value = "";
+  age.value = "";
+  pet_birthdate.value = "";
+  weight.value = "";
+  sterilization_status.value = "";
+}
+
 	function enableSubmitDiagnosis() {
 	var diagnosis = document.getElementById("diagnosis").value;
 	var diagnosis_date = document.getElementById("diagnosis_date").value;
@@ -1775,10 +1867,13 @@ function cancelSurgery() {
 
 </script>
 
+
+
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/sidebar.js') }}"></script>
 <script src="{{ asset('assets/js/pet_records.js') }}"></script>
+<script src="{{ asset('assets/js/sidebartry.js') }}"></script>
 
 
 </body>

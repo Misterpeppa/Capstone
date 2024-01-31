@@ -21,7 +21,10 @@ function capitalizeFirstLetterOfWords(inputElement) {
     });
 }
     
+var name = document.getElementById('name');
+
 capitalizeFirstLetterOfWords(pet_nameInput);
+capitalizeFirstLetterOfWords(name);
 
 function setupBreedOptions(petTypeId, breedId, breedOptions) {
     // Get references to the pet type and breed select elements
@@ -32,7 +35,7 @@ function setupBreedOptions(petTypeId, breedId, breedOptions) {
     petTypeSelect.addEventListener('change', function () {
         // Enable the breed select and clear its options
         breedSelect.disabled = false;
-        breedSelect.innerHTML = '<option value="none" selected>Select a Breed</option>';
+        breedSelect.innerHTML = '<option value="" selected>Select a Breed</option>';
 
         // Get the selected pet type
         const selectedPetType = petTypeSelect.value;
@@ -628,7 +631,7 @@ function setupBreedOptions(petTypeId, breedId, breedOptions) {
     petTypeSelect.addEventListener('change', function () {
         // Enable the breed select and clear its options
         breedSelect.disabled = false;
-        breedSelect.innerHTML = '<option value="none" selected>Select a Breed</option>';
+        breedSelect.innerHTML = '<option value="" selected>Select a Breed</option>';
 
         // Get the selected pet type
         const selectedPetType = petTypeSelect.value;

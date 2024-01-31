@@ -595,6 +595,8 @@ for (let i = 1; i <= lastDateofMonth; i++) {
       : "";
   let isSelected = isToday && i === date.getDate() ? "selected-date" : "";
   liTag += `<li class="${isToday} ${isSelected}" data-day="${i}">${i}</li>`;
+  
+  
 }
 
 for (let i = lastDayofMonth; i < 6; i++) {
@@ -645,18 +647,20 @@ if (selectedDate >= currentDate) {
 
     setFormHeight();
   }
+  
 }
 
 });
 
-    
 
-  // Change the cursor style for previous dates
-  const dayDate = new Date(currYear, currMonth, parseInt(day.dataset.day));
-  if (dayDate < new Date()) {
-    day.classList.add("disabled");
-    day.style.cursor = "not-allowed"; // Change the cursor style
-  }
+  // Change the cursor style for previous dates and Sundays/Saturdays
+const dayDate = new Date(currYear, currMonth, parseInt(day.dataset.day));
+
+if (dayDate < new Date() ) {
+  day.classList.add("disabled");
+  day.style.cursor = "not-allowed"; // Change the cursor style
+}
+
     checkSelectionAndEnableButton();
     
 });
@@ -744,6 +748,4 @@ if (selectedDateElement && selectedDateElement.classList.contains('selected-date
 }
 
 
-  
-  
   });

@@ -16,8 +16,16 @@ body{
   margin: 0;
   padding: 0;
 }
+
 #user{
   display: none;
+}
+.nav-item .nav-link span svg{
+  display: none;
+}
+.nav-item .nav-link p{
+  margin: 0;
+  display: flex;
 }
 .notification-dropdown {
   position: absolute;
@@ -141,6 +149,10 @@ main{
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+}
+.selected-time{
+  border-radius: var(--radius-s, 8px);
+  border: 2px solid var(--colors-actions-action-hover, #004D53) !important;
 }
 .time_options li input[type="radio"] {
   display: none;
@@ -572,7 +584,7 @@ main{
     box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
   }
   
-  .step {
+  .step, .form_step {
     display: none;
   }
   .vet_logo_and_text_container img{
@@ -583,6 +595,16 @@ main{
     display: flex;
     width: 700px;
     height: 773px;
+    padding: 48px 60px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-spacing-xl, 24px);
+    background: #F9F9F9;
+    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+  }
+  .form_step.active{
+    display: flex;
+    width: 700px;
     padding: 48px 60px;
     flex-direction: column;
     align-items: flex-start;
@@ -855,7 +877,7 @@ main{
     background-color: #E8F0F0;
     overflow: auto;
     width: 100%;
-    max-height: 300vh;
+    height: 100vh;
   }
   
   .rectangle {
@@ -907,7 +929,7 @@ main{
   
   .main_content {
     padding: 25px;
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: var(--spacing-spacing-m, 24px);
@@ -1091,7 +1113,7 @@ main{
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) inset !important;
   }
   
-  .add_product_base, .add_patient_btn_base, .add_client_base, .new_appointment_btn_base, .add_new_pet_base, .sign_in_btn_base, .user_new_pet_btn_base {
+  .submit_pet_base, .add_product_base, .add_patient_btn_base, .add_client_base, .new_appointment_btn_base, .add_new_pet_base, .sign_in_btn_base, .user_new_pet_btn_base {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1217,7 +1239,7 @@ main{
     justify-content: center;
   }
   
-  .modal-content.add_client_modal {
+  .modal-content.add_client_modal, .modal-content.add_appointment_modal {
     display: flex;
     width: 800px!important;
     padding: var(--spacing-spacing-m, 24px);
@@ -1248,6 +1270,20 @@ main{
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-spacing-l, 32px);
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-main-neutral-light, #F5F5F5);
+    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+  }
+
+  .modal-content.create_appointment_modal {
+    display: flex;
+    width: 900px;
+    min-height: 375px;
+    max-height: 924px;
+    padding: var(--spacing-spacing-m, 24px);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-l, 16px);
     border-radius: var(--radius-s, 8px);
     background: var(--colors-main-neutral-light, #F5F5F5);
     box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
@@ -1504,7 +1540,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .submit_surgery:disabled, .submit_immunization:disabled, .submit_product:disabled, .edit_save_changes:disabled, .add_stock:disabled, .add:disabled, .archive_confirm:disabled, .submit_pet:disabled, .signin_btn:disabled, .signin_btn:disabled, .reschedule_btn:disabled {
     border-radius: var(--radius-s, 8px);
     opacity: 0.7;
-    background: var(--colors-actions-action, #045B62);
+    background: var(--colors-actions-action, #045B62) !important;
   }
   
   .submit_product.disabled, .submit_diagnosis:disabled, .submit_vaccination:disabled, .submit_surgery:disabled {
@@ -2478,6 +2514,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 
 
   .sidebar {
+    z-index: 1;
     display: flex;
     width: 272px;
     padding: 24px 16px;
@@ -2488,6 +2525,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     border-right: 1px solid #FFF;
     background: var(--colors-main-neutral-light, #F5F5F5);
     box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+    transition: width 0.3s ease;
   }
   
   
@@ -2633,7 +2671,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     background: #F5F5F5;
   }
   
-  .discard_btn:hover {
+  .discard_btn:hover, .reject_btn:hover {
     border-radius: var(--radius-s, 8px);
     background: var(--colors-main-danger-dark, #C33834);
     box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
@@ -2712,10 +2750,10 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   
   .dashboard_table_container {
     display: flex;
-    padding: var(--spacing-spacing-m, 24px) var(--spacing-spacing-l, 32px);
+    padding: 12px !important;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--spacing-spacing-m, 24px);
+    gap: var(--spacing-spacing-m, 16px);
     align-self: stretch;
     border-radius: var(--radius-s, 8px);
     background: var(--colors-main-neutral-dark, #F9F9F9);
@@ -2846,8 +2884,8 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   
   .card_body_summary_count {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    justify-content: space-between;
+    align-items: end;
     gap: var(--spacing-spacing-m, 24px);
     align-self: stretch;
   }
@@ -3088,7 +3126,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .card.pet_card {
     display: flex;
     padding: 24px;
-    width: 464px;
+    width: 49%;
     height: 250px;
     align-items: flex-start;
     flex-direction: row;
@@ -3930,7 +3968,9 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     display: block;
     margin: 0 auto;
   }
-  
+  .custom-input-height {
+    height: 40px !important; /* Set your desired height */
+}
   .custom_form_floating label{
     left: 24px;
   }
@@ -5148,7 +5188,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     width: 148px;
     height: 141px;
   }
-  
+
   .appointment_tab_content {
     display: flex;
     width: 100%;
@@ -5211,7 +5251,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     margin-left: 5%;
   }
   
-  .dropdown-toggle::after {
+  .filter_btn::after, .admin::after , .pet_dropdown::after{
     display: none;
   }
   
@@ -5445,9 +5485,13 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     align-self: stretch;
   }
   
+  .menu_toggle {
+    display: none;
+  }
 
   
   @media (min-width: 1400px){
+
 
     .admin_signin_input_fields{
       display: flex;
@@ -5574,14 +5618,18 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
    }
 
   @media (min-width: 1200px) and (max-width: 1399px){
+    .card.summary{
+      height: 320px;
+    }
+
     .step.active {
       display: flex;
-      width: 700px;
-      height: 673px;
-      padding: 32px 50px;
+      width: 600px;
+      height: 640px;
+      padding: 10px var(--spacing-spacing-l, 32px);
       flex-direction: column;
       align-items: flex-start;
-      gap: var(--spacing-spacing-l, 14px);
+      gap: var(--spacing-spacing-l, 8px);
       background: #F9F9F9;
       box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
     }
@@ -5638,7 +5686,8 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     .signin {
       display: flex;
       width: 500px;
-      padding: 40px var(--spacing-spacing-xl, 24px);
+      height: 530px;
+      padding: 10px var(--spacing-spacing-xl, 24px);
       flex-direction: column;
       align-items: center;
       gap: var(--spacing-spacing-l, 16px);
@@ -5669,6 +5718,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 
   
 @media (min-width: 992px) and (max-width: 1199px){
+
 
   .signin {
     display: flex;
@@ -5896,6 +5946,61 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 
 
 @media (min-width: 768px) and (max-width: 991px) {
+  .content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #E8F0F0;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100vh;
+  }
+  .container_header{
+    display: flex;
+    flex-direction: row !important;
+  }
+  .left_part_product_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    gap: 4px;
+  }
+  .archive_button{
+    width: 40px;
+    height: 40px;
+  }
+  .search_container{
+    width: 150px;
+    height: 42px;
+  }
+  .search_input{
+    width: 100%;
+    padding: 0 !important;
+  }
+  .search_container{
+    width: 200px;
+  }
+  .filter_btn_base svg{
+    display: block;
+    height: 5px;
+    width: 5px;
+  }
+  .search_input::placeholder{
+    font-size: 10px;
+  }
+  .filter_btn, .sort_btn{
+    height: 42px;
+    width: 42px !important;
+    padding: 0 !important;
+  }
+  .filter_btn_base, .sort_btn_base{
+    display: none;
+  }
+  .pagination{
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   .frame504{
     text-align: center;
@@ -5922,8 +6027,9 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     width: 200px;
   }
   .vet_logo_and_text_container img{
-    width: 50px;
-    height: 50px;
+    width: 79.891px;
+    height: 75px;
+    flex-shrink: 0;
   }
   .signin {
     display: flex;
@@ -6063,6 +6169,116 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 
 
 @media (min-width: 577px) and (max-width: 767px){
+  .menu_toggle {
+    display: flex;
+  }
+
+  .notifications_settings {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
+    display: flex;
+    width: 400px!important;
+    padding: var(--spacing-spacing-m, 24px);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-l, 32px);
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-main-neutral-light, #F5F5F5);
+    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+  }
+
+  .modal-content.add_stock_modal {
+    display: inline-flex;
+    width: 400px;
+    padding: var(--spacing-spacing-s, 16px);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-s, 12px);
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-main-neutral-light, #F5F5F5);
+    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+  }
+  .modal-body.add_stock_modal_body{
+    width: 400px;
+    height: auto;
+  }
+  .modal-body.TnC_PP_body{
+    padding: 0;
+    height: 300px;
+  }
+  .container_header{
+    align-items: start;
+    flex-direction: column;
+  }
+  .add_stock_buttons{
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1px !important;
+  }
+  .add_stock, .cancel_btn{
+    display: flex;
+    align-self: stretch;
+  }
+  .new_input_row{
+    flex-wrap: wrap;
+  }
+
+  .add_product_button {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    gap: 1px;
+  }
+
+  .input_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-spacing-xs, 8px);
+    align-self: stretch;
+    gap: 8px;
+  }
+
+  .modal-content.success_modal, .modal-content.archive_modal {
+    display: flex;
+    width: 300px;
+    padding: var(--spacing-spacing-s, 4px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-spacing-s, 6px);
+    border-radius: var(--radius-s, 8px);
+    background: #F5F5F5;
+  }
+
+
+
+  .content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: #E8F0F0;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .sidebar.collapsed {
+    z-index: 1;
+    width: 0;
+    padding: 0 !important;
+  }
+  .sidebar.collapsed .logo, .sidebar.collapsed .items_and_button{
+    visibility: hidden;
+  }
+
+
 
   .clinic_logo p{
     display: none;
@@ -6091,6 +6307,12 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+  }
+  .nav-item .nav-link span svg{
+    display: flex;
+  }
+  .nav-item .nav-link p{
+    display: none;
   }
   .nav-item{
     display: flex;
@@ -6179,17 +6401,12 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     }
   
     .vet_logo_and_text_container h1{
-      color: #000;
-      font-family: Inter;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 120%; /* 19.2px */
-      width: 70%;
+      display: none;
     }
     .vet_logo_and_text_container img{
-      width: 50px;
-      height: 50px;
+      width: 79.891px;
+      height: 75px;
+      flex-shrink: 0;
     }
     .signin_header h1, .vet_logo_and_text_container h1, .heading h1{
       color: #000;
@@ -6212,14 +6429,16 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: var(--spacing-spacing-s, 24px);
+      gap: var(--spacing-spacing-s, 16px);
       align-self: stretch;
     }
+
+    
     .signup_inputs_container {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: var(--spacing-spacing-xs, 8px);
+      gap: var(--spacing-spacing-xs, 16px);
       align-self: stretch;
     }
 
@@ -6280,9 +6499,13 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   
   
 
+
+
     .step.active {
       display: flex;
-      width: 350px;
+      width: 400px;
+      height: 580px;
+      padding: 8px 18px;
       flex-direction: column;
       align-items: flex-start;
       gap: var(--spacing-spacing-s, 8px);
@@ -6292,9 +6515,9 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   
     .vet_logo_btn_container{
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       justify-content: space-between;
-      align-items: start;
+      align-items: center;
       align-self: stretch;
     }
   
@@ -6302,7 +6525,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
       display: flex;
       justify-content: end;
       align-items: center;
-      align-self: flex-end;
+      align-self: center;
       gap: var(--spacing-spacing-s, 8px);
     }
   
@@ -6393,10 +6616,13 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     .landing_headers h2{
       color: var(--Colors-Main-neutral, #FFF);
       font-family: Inter;
-      font-size: 28px;
+      font-size: 24px;
       font-style: normal;
       font-weight: 600;
       line-height: 120%; /* 33.6px */
+    }
+    .card.location{
+      height: 140px;
     }
   
     .location_heading{
@@ -6417,7 +6643,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
       line-height: 120%; /* 14.4px */
     }
     .location_heading h1{
-      font-size: 24px;
+      font-size: 18px;
       margin: 0;
     }
     .frame504{
@@ -6680,83 +6906,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     }
   
   
-    /* MODALS */
-    .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
-      display: flex;
-      width: 340px;
-      padding: var(--spacing-spacing-s, 8px);
-      flex-direction: column;
-      align-items: center;
-      gap: var(--spacing-spacing-s, 4px);
-      border-radius: var(--radius-s, 8px);
-      background: var(--colors-main-neutral-light, #F5F5F5);
-      box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
-    }
-    .modal-content.add_stock_modal {
-      display: inline-flex;
-      width: 400px;
-      padding: var(--spacing-spacing-s, 16px);
-      flex-direction: column;
-      align-items: center;
-      gap: var(--spacing-spacing-s, 12px);
-      border-radius: var(--radius-s, 8px);
-      background: var(--colors-main-neutral-light, #F5F5F5);
-      box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
-    }
-    .modal-body.add_stock_modal_body{
-      width: 400px;
-      height: auto;
-    }
-    .modal-body.TnC_PP_body{
-      padding: 0;
-      height: 300px;
-    }
-    .container_header{
-      align-items: start;
-      flex-direction: column;
-    }
-    .add_stock_buttons{
-      display: flex;
-      flex-direction: column-reverse;
-      gap: 1px !important;
-    }
-    .add_stock, .cancel_btn{
-      display: flex;
-      align-self: stretch;
-    }
-    .new_input_row{
-      flex-wrap: wrap;
-    }
-  
-    .add_product_button {
-      display: flex;
-      flex-direction: column-reverse;
-      justify-content: space-between;
-      align-items: center;
-      align-self: stretch;
-      gap: 1px;
-    }
-  
-    .input_container {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--spacing-spacing-xs, 8px);
-      align-self: stretch;
-      gap: 8px;
-    }
-  
-    .modal-content.success_modal, .modal-content.archive_modal {
-      display: flex;
-      width: 300px;
-      padding: var(--spacing-spacing-s, 4px);
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: var(--spacing-spacing-s, 6px);
-      border-radius: var(--radius-s, 8px);
-      background: #F5F5F5;
-    }
+    
   
   
   
@@ -6792,11 +6942,104 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 
 
 @media (max-width: 576px){
+  .appointment_tab.active{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .left_part_product_header{
+    width: 100% !important;
+  }
+  .inventory_header, .dashboard_header, .client_header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-left: var(--radius-xs, 0px);
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .modal-header h1{
+    font-size: 20px;
+  }
+  .modal-content.archive_modal, .modal-content.resched_modal, .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
+    display: flex;
+    width: 300px!important;
+    padding: var(--spacing-spacing-xs, 4px) !important;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-xs, 12px);
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-main-neutral-light, #F5F5F5);
+    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+  }
+  .resched_footer{
+    display: flex;
+    flex-direction: column-reverse !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .clear_form, .cancel_btn, .reschedule_btn, .return_btn, .submit_immunization, .submit_surgery, .approve_appointment_btn, .reject_btn, .confirm_complete, .archive_confirm, .submit_diagnosis{
+    width: 50%;
+  }
+  .date_time_container{
+    display: flex;
+    flex-direction: column;
+  }
+  .add_product_button{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .submit_product, .pet_status_input{
+    width: 100% !important;
+  }
+
+
+  thead tr th{
+    font-size: 14px !important;
+  }
+  tbody tr td{
+    font-size: 12px;
+  }
+  thead tr th, tbody tr td{
+    max-width: 200px !important;
+  }
+  .menu_toggle {
+    display: flex;
+  }
+
+  .sidebar.collapsed {
+    z-index: 1;
+    width: 0;
+    padding: 0 !important;
+  }
+  .sidebar.collapsed .logo, .sidebar.collapsed .items_and_button{
+    visibility: hidden;
+  }
+
+  .content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: #E8F0F0;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .nav-item .nav-link span svg{
+    display: flex;
+  }
+  .nav-item .nav-link p{
+    display: none;
+  }
   .pagination-menu, .pagination-items{
     display: none;
   }
   .pagination{
-    display: flex;
+    display: flex;  
+    width: 100%;
+    flex-wrap: wrap;
     justify-content: center;
   }
     .modal-content.add_stock_modal {
@@ -6838,21 +7081,11 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     height: 10px !important;
     margin-top: 20px;
 }
-.discard_icon_container, .failed_icon_container {
-  display: flex;
-  width: 20px;
-  height: 20px;
-  padding: 10px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 830px;
-  background: #F4C7C6;
-  box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
-}
-.discard_message div h1{
+
+.discard_message div h1, .archive_message form h1, .archive_message div h1{
   font-size: 16px;
 }
-.discard_message div p{
+.discard_message div p, .archive_message form p, .archive_message div p{
   font-size: 12px;
 }
 .discard_footer{
@@ -6860,26 +7093,28 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   flex-direction: column-reverse;
   gap: 4px !important;
 }
-.return_btn, .discard_btn{
+.clear_form, .return_btn, .discard_btn, .reject_btn, .submit_immunization, .submit_surgery, .approve_appointment_btn, .cancel_btn, .reschedule_btn, .confirm_complete, .archive_confirm, .submit_diagnosis{
   height: 26px;
 }
-  .modal-content.discard_modal {
-    display: flex;
-    width: 250px;
-    height: 400px;
-    padding: var(--spacing-spacing-m, 24px);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacing-spacing-s, 2px);
-    border-radius: var(--radius-s, 8px);
-    background: #F5F5F5;
-  }
+.discard_btn_base, .return_btn_base, .archive_confirm_button_base, .submit_product_base, .clear_form_base{
+  font-size: 12px;
+}
+.modal-content.discard_modal {
+  display: flex;
+  width: 300px;
+  padding: var(--spacing-spacing-xs, 4px);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-spacing-s, 12px);
+  border-radius: var(--radius-s, 8px);
+  background: #F5F5F5;
+}
 
 
   .notifications_boxes {
     display: flex;
-    width: 406px !important;
+    width: 100% !important;
     flex-direction: column ;
     align-items: center;
     gap: 20px;
@@ -6887,7 +7122,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   }
   .notification_settings {
     display: flex;
-    width: 406px;
+    width: 100%;
     flex-direction: column;
     padding: var(--Spacing-spacing-m, 24px);
     align-items: flex-start;
@@ -6896,8 +7131,25 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.25);
   }
+  .left_notification_settings {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .left_notification_settings p {
+    width: 100%;
+    color: rgba(0, 0, 0, 0.50);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
   .pass_and_security_box{
-    width: 406px;
+    width: 100%;
   }
   .pass_and_security_text h4{
     font-size: 18px;
@@ -6913,13 +7165,13 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .change_password_btn_base, .delete_acc_btn_base{
     font-size: 10px;
   }
-  .text_container{
-    width: 300px;
-  }
+  .text_container {
+    width: 73%;
+}
   .user_settings_col{
     padding: 0; margin: 0;
   }
-  .tab-content{
+  .tab-content, .client_container{
     border-left: none !important;
     display: flex;
     flex-direction: column;
@@ -6927,6 +7179,9 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     gap: 20px;
     padding: 12px !important;
     align-self: stretch;
+    border-radius: var(--radius-s, 8px);
+    background: #F9F9F9;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.10), 0px 4px 6px -2px rgba(28, 28, 28, 0.05);
   }
 
   .user_settings ul{
@@ -6992,31 +7247,102 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     font-weight: 500;
     line-height: normal;
   }
-  .nav-item{
+  .appointment_list_heading_button_container {
+    display: flex;
+    padding-left: var(--radius-xs, 4px);
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+.new_appointment_btn{
+  width: 100%;
+}
+  .pet_nav_tabs {
+    display: flex;
+    padding: 10px;
+    align-items: flex-start;
+    align-self: center !important;
+    justify-content: center;
+    gap: var(--spacing-spacing-m, 12px);
+    border: none;
+}
+
+.pet_nav_tabs li {
+  width: 100px;
+}
+
+.nav-link.active.list_tab {
+  gap: var(--spacing-spacing-xs, 2px);
+  width: 100px;
+  font-size: 12px;
+}
+.tab-count {
+  font-size: 12px;
+}
+
+.pet_nav_tabs li .list_tab{
+  gap: var(--spacing-spacing-xs, 2px);
+  width: 100px;
+  font-size: 12px;
+}
+
+
+  .view_pet_nav_tabs{
     display: flex;
     height: 42px;
-    min-width: 164px;
+    width: 20%;
     padding: 12px;
     justify-content: center;
     align-items: center;
     border-radius: var(--radius-s, 8px);
   }
-  .nav-item .nav-link{
+  .view_pet_nav_tabs .nav-link {
     display: flex;
-    min-width: 140px;
+    height: 50px;
+    width: 50px;
     align-items: center;
     gap: var(--Spacing-spacing-xs, 12px);
     color: rgba(28, 28, 28, 0.70);
     font-family: Inter;
-    font-size: 12px;
+    font-size: 12px !important;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-  }
-  .nav-item:hover{
+}
+.view_pet_nav_tabs .nav-link p{
+  display: none;
+}
+.view_pet_nav_tabs .nav-link span{
+  display: flex;
+}
+
+  .view_pet_nav_tabs:hover a{
     border-radius: var(--radius-s, 8px);
     background: #ECECEC;
+    font-size: 12px !important;
   }
+  .my_pets_header {
+    display: flex;
+    flex-direction: column;
+    padding-left: var(--radius-xs, 4px);
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+.my_pets_button{
+  align-self: stretch;
+}
+.new_input_row{
+  display: flex;
+  flex-direction: column !important;
+}
+.new_inputs_row {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column !important;
+  gap: var(--spacing-spacing-xs, 12px);
+}
   .container_header{
     display: flex;
     flex-wrap: wrap;
@@ -7024,11 +7350,124 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   }
   .left_part_product_header {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: start;
     align-items: start;
     gap: 4px;
   }
+  .empty_state {
+    display: flex;
+    flex-direction: column;
+}
+  .empty_state_container {
+    display: flex;
+    padding: 60px 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-m, 24px);
+    align-self: stretch;
+    border-radius: var(--radius-s, 8px);
+}
+.empty_state_message_container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.card.pet_card {
+  display: flex;
+  padding: 24px;
+  width: 100%;
+  height: 450px;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: var(--spacing-spacing-l, 32px);
+  border-radius: var(--radius-s, 8px);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.card-body.pet_card_body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-spacing-l, 24px);
+  flex: 1 0 0;
+  margin: 0;
+  padding: 0;
+}
+.pet_upper_detail, .pet_lower_detail {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: start;
+  align-self: stretch;
+}
+
+.pet_record {
+  display: flex;
+  height: 470px;
+  align-items: flex-start;
+  gap: var(--Spacing-spacing-xl, 64px);
+  flex: 1 0 0;
+}
+.pet_record_details {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--Spacing-spacing-l, 32px);
+  flex: 1 0 0;
+}
+.pet_record_details_first_row {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  align-self: stretch;
+  height: 300px;
+}
+.pet_other_details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  align-self: stretch;
+  height: 100%;
+}
+
+.owner_details_row {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+  align-self: stretch;
+}
+.submit_pet {
+  width: 100% !important;
+}
+.edit_pet_back_btn_container {
+  display: flex;
+  padding: 0 !important;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+}
+.pet_type_and_breed_container {
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 12px var(--spacing-spacing-xs, 12px);
+  align-self: stretch;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+}
+.species_container{
+  width: 100% !important;
+}
+
   .archive_button{
     width: 40px;
     height: 40px;
@@ -7237,8 +7676,46 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     font-size: 18px;
   }
   .landing_headers h2{
-    font-size: 24px;
+    font-size: 22px;
   }
+  .custom-book-appointment-btn {
+    display: flex;
+    height: 38px;
+    width: 100%;
+    padding: 0px var(--Spacing-spacing-m, 24px);
+    justify-content: center;
+    align-items: center;
+    gap: var(--Spacing-spacing-m, 24px);
+    border-radius: var(--radius-s, 8px);
+    background: var(--Colors-Actions-action, #045B62);
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+    color: var(--Colors-Main-neutral, #FFF);
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  .custom-btn-check-schedule {
+    display: inline-flex;
+    height: 38px;
+    padding: 16px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-spacing-m, 24px);
+    flex-shrink: 0;
+    border-radius: var(--spacing-spacing-xxs, 8px);
+    background: var(--colors-actions-action-sec, #ADCDCE);
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+    color: var(--colors-actions-action, #045B62);
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
   .next_btn, .signup_btn {
     display: flex;
     height: 36px;
@@ -7280,9 +7757,6 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     height: 24px;
     gap: 6px;
   }
-  .signup_already_user_container h1{
-    font-size: 12px;
-  }
   .next_btn, .signup_btn{
     width: 50%;
     align-self: center;
@@ -7291,8 +7765,9 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     width: 200px;
   }
   .vet_logo_and_text_container img{
-    width: 50px;
-    height: 50px;
+    width: 79.891px;
+    height: 75px;
+    flex-shrink: 0;
   }
   .vet_logo_and_text_container h1{
     color: #000;
@@ -7306,9 +7781,32 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .signup_header{
     top: 0;
   }
-  .heading p{
-    width: 320px;
+  .heading h1{
+    color: #000;
+    font-family: Inter;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; /* 25.2px */
   }
+  .signup_already_user_container h1{
+    color: rgba(28, 28, 28, 0.70);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .heading p {
+    width: 320px;
+    color: rgba(28, 28, 28, 0.70);
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
   .signin {
     display: flex;
     width: 360px;
@@ -7431,7 +7929,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     font-size: 10px;
   }
   
-  
+
   .time_options li {
     display: flex;
     width: 128px;
