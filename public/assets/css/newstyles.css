@@ -2,6 +2,10 @@
   padding: 0;
   margin: 0;
 }
+.custom-bars-icon {
+  color: black;
+  opacity: 0.7;
+}
 
 body a {
   color: inherit;
@@ -1134,7 +1138,6 @@ main{
   
   .left_part_product_header {
     display: flex;
-    width: 669px;
     justify-content: start;
     align-items: center;
     gap: 8px;
@@ -1718,8 +1721,9 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   
   .search_container {
     display: flex;
-    width: 272px;
+    width: 30%;
     height: 56px;
+    flex-wrap: wrap;
     padding: 8px 16px;
     justify-content: space-between;
     align-items: center;
@@ -5533,16 +5537,9 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
       align-self: stretch;
     }
     
-    #approvedTableBody tr td:nth-child(7) {
-      max-width: 50px !important;
-  }
+
       
-      #approvedTableBody td:nth-child(n + 3):nth-child(-n + 8), #pendingTableBody td:nth-child(n + 3):nth-child(-n + 8), #rejectedTableBody td:nth-child(n + 3):nth-child(-n + 8) {
-        max-width: 150px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+
       .floating-div{
         height: 400px;
       }
@@ -5718,6 +5715,21 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 
   
 @media (min-width: 992px) and (max-width: 1199px){
+  .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
+    display: flex;
+    width: 100%!important;
+    padding: var(--spacing-spacing-m, 24px);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-l, 32px);
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-main-neutral-light, #F5F5F5);
+    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+  }
+  .card.pet_card{
+    width: 48%;
+    height: 250px;
+  }
   .notifications_settings{
     display: flex;
     flex-direction: row;
@@ -5989,7 +6001,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   }
   .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
     display: flex;
-    width: 500px;
+    width: 100% !important;
     padding: var(--spacing-spacing-m, 24px);
     flex-direction: column;
     align-items: center;
@@ -6236,6 +6248,14 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 
 
 @media (min-width: 577px) and (max-width: 767px){
+  .card.pet_card{
+    width: 48%;
+    height: 294px;
+  }
+  .pet_lower_detail{
+    display: flex;
+    flex-direction: column;
+  }
   .menu_toggle {
     display: flex;
   }
@@ -6248,7 +6268,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 
   .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
     display: flex;
-    width: 400px!important;
+    width: 100%!important;
     padding: var(--spacing-spacing-m, 24px);
     flex-direction: column;
     align-items: center;
@@ -6397,7 +6417,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     gap: var(--Spacing-spacing-xs, 12px);
     color: rgba(28, 28, 28, 0.70);
     font-family: Inter;
-    font-size: 12px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -7003,7 +7023,11 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
       align-self: stretch;
     }
 
-
+    .clear_form, .cancel_edit, .return_btn, .submit_product, .submit_diagnosis, .submit_vaccination, .submit_surgery, .submit_immunization, .submit_pet{
+      width: 50%;
+      height: 36px;
+      align-self: center;
+    }
     
 }
 
@@ -7031,7 +7055,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   }
   .modal-content.archive_modal, .modal-content.resched_modal, .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
     display: flex;
-    width: 300px!important;
+    width: 100%!important;
     padding: var(--spacing-spacing-xs, 4px) !important;
     flex-direction: column;
     align-items: center;
@@ -7130,17 +7154,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .form-control, .form-select {
     font-size:  10px !important;
   }
-  .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
-    display: flex;
-    width: 340px;
-    padding: var(--spacing-spacing-s, 8px);
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-spacing-s, 4px);
-    border-radius: var(--radius-s, 8px);
-    background: var(--colors-main-neutral-light, #F5F5F5);
-    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
-  }
+
   .modal-header.success_header, .modal-header.discard_header, .modal-header.archive_header {
     display: flex;
     align-items: center;
@@ -7447,7 +7461,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   display: flex;
   padding: 24px;
   width: 100%;
-  height: 450px;
+  height: 250px;
   align-items: flex-start;
   flex-direction: row;
   gap: var(--spacing-spacing-l, 32px);
@@ -7463,10 +7477,17 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   margin: 0;
   padding: 0;
 }
-.pet_upper_detail, .pet_lower_detail {
+.pet_upper_detail {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  align-items: start;
+  align-self: stretch;
+}
+.pet_lower_detail {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
   align-items: start;
   align-self: stretch;
 }
@@ -7511,7 +7532,8 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   align-self: stretch;
 }
 .submit_pet {
-  width: 100% !important;
+  width: 50% !important;
+  height: 26px;
 }
 .edit_pet_back_btn_container {
   display: flex;
@@ -8038,5 +8060,13 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     align-items: flex-start;
     gap: var(--spacing-spacing-m, 24px);
     align-self: stretch;
+  }
+
+  .pet_sterilization_status_container h1, .pet_weight_container h1, .pet_sex_container h1{
+    font-size: 14px;
+  }
+
+  .pet_sterilization_status_container p, .pet_weight_container p, .pet_sex_container p{
+    font-size: 14px;
   }
 }
