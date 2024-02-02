@@ -521,6 +521,14 @@
                                                 class="btn border-0 addStock"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                             <path d="M7 10H13M10 7V13M1 10C1 11.1819 1.23279 12.3522 1.68508 13.4442C2.13738 14.5361 2.80031 15.5282 3.63604 16.364C4.47177 17.1997 5.46392 17.8626 6.55585 18.3149C7.64778 18.7672 8.8181 19 10 19C11.1819 19 12.3522 18.7672 13.4442 18.3149C14.5361 17.8626 15.5282 17.1997 16.364 16.364C17.1997 15.5282 17.8626 14.5361 18.3149 13.4442C18.7672 12.3522 19 11.1819 19 10C19 8.8181 18.7672 7.64778 18.3149 6.55585C17.8626 5.46392 17.1997 4.47177 16.364 3.63604C15.5282 2.80031 14.5361 2.13738 13.4442 1.68508C12.3522 1.23279 11.1819 1 10 1C8.8181 1 7.64778 1.23279 6.55585 1.68508C5.46392 2.13738 4.47177 2.80031 3.63604 3.63604C2.80031 4.47177 2.13738 5.46392 1.68508 6.55585C1.23279 7.64778 1 8.8181 1 10Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg> Add Stock</div></button>
+
+                                            <button
+		                                data-action="DeductStock" 
+                                            data-product-type="{{ $product->product_type }}"
+                                            data-product-id="{{ $product->id }}"
+                                                class="btn border-0 addStock"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                            <path d="M7 10H13M10 7V13M1 10C1 11.1819 1.23279 12.3522 1.68508 13.4442C2.13738 14.5361 2.80031 15.5282 3.63604 16.364C4.47177 17.1997 5.46392 17.8626 6.55585 18.3149C7.64778 18.7672 8.8181 19 10 19C11.1819 19 12.3522 18.7672 13.4442 18.3149C14.5361 17.8626 15.5282 17.1997 16.364 16.364C17.1997 15.5282 17.8626 14.5361 18.3149 13.4442C18.7672 12.3522 19 11.1819 19 10C19 8.8181 18.7672 7.64778 18.3149 6.55585C17.8626 5.46392 17.1997 4.47177 16.364 3.63604C15.5282 2.80031 14.5361 2.13738 13.4442 1.68508C12.3522 1.23279 11.1819 1 10 1C8.8181 1 7.64778 1.23279 6.55585 1.68508C5.46392 2.13738 4.47177 2.80031 3.63604 3.63604C2.80031 4.47177 2.13738 5.46392 1.68508 6.55585C1.23279 7.64778 1 8.8181 1 10Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg> Deduct Stock</div></button>
                                                 <button 
                                                 data-action="View"
                                                 data-product-type="{{ $product->product_type }}"
@@ -1245,7 +1253,7 @@
                                 <div class="quantity_input">
                                     <button class="quantity_minus" onclick="decrementQuantity2()"
                                         type="button">-</button>
-                                    <input id="quantity-2" class="input_quantity" type="number"
+                                    <input id="deduct_quantity_input" class="input_quantity" type="number"
                                         aria-labelledby="label-quantity" data-id="quantity-2" min="0"
                                         name="quantity" required value="0" />
                                     <button class="quantity_add" onclick="incrementQuantity2()"
@@ -1261,6 +1269,55 @@
                     <button class="btn cancel_btn" id="cancel_btn" onClick="cancelStock()" data-bs-dismiss="modal" type="button" role="button" aria-label="Cancel"><span
                             class="cancel_btn_base">Cancel</span></button>
                     <button id="add_stock" class="btn add_stock" type="submit" disabled><span class="add_stock_base">Add
+                            Stock</span></button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="deduct_stock_modal" class="modal fade" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content deduct_stock_modal">
+                <div class="modal-header">
+                    <h1 class="modal-title">Deduct Stock</h1><button class="btn-close" aria-label="Close"
+                        data-bs-dismiss="modal" onClick="cancelStock()" type="button"></button>
+                </div>
+                <div class="modal-body add_stock_modal_body w-100">
+                    @foreach ($products as $productInfo)
+                        <form
+                            action="{{ route('product.stock', ['product_type' => $productInfo->product_type, 'id' => $productInfo->id]) }}"
+                            method="POST" id="add_stock_form">
+                    @endforeach
+                    @csrf
+                    <input type="hidden" name="product_type" id="product_type">
+                    <input type="hidden" name="id" id="product_id">
+                    <div class="mb-3 stock_input_container">
+                        <div class="stock_image_container"><span class="product_name">Product Name</span></div>
+                        
+                        
+                        <div class="quantity_input_container d-flex justify-content-center">
+                            <h1>Quantity</h1>
+                            <div class="form-floating">
+                                <div class="quantity_input deduct">
+                                    <button class="quantity_minus" onclick="decrementQuantity2()"
+                                        type="button">-</button>
+                                    <input id="quantity-2" class="input_quantity" type="number"
+                                        aria-labelledby="label-quantity" data-id="quantity-2" min="0"
+                                        name="quantity" required value="0" />
+                                    <button class="quantity_add" onclick="incrementQuantity2()"
+                                        type="button">+</button>
+                                    <div id="error-quantity-2" class="error-message"><span>Please input a quantity
+                                            value more than 0.</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer deduct_stock_buttons">
+                    <button class="btn cancel_btn" id="cancel_btn" onClick="cancelDeductStock()" data-bs-dismiss="modal" type="button" role="button" aria-label="Cancel"><span
+                            class="cancel_btn_base">Cancel</span></button>
+                    <button id="deduct_stock" class="btn add_stock" data-bs-dismiss="modal" type="submit"><span class="add_stock_base">Deduct
                             Stock</span></button>
                 </div>
                 </form>

@@ -48,6 +48,13 @@ document.addEventListener("DOMContentLoaded", function () {
             closeDropdownMenus();
 
             modal2.show();
+          } else if(action ==="DeductStock"){
+            var deduct_stock_modal = new bootstrap.Modal(
+              document.getElementById("deduct_stock_modal")
+            );
+            closeDropdownMenus();
+            deduct_stock_modal.show();
+
           } else if (action === "View") {
             const view_product = document.getElementById("view_product");
             var product_table_container = document.getElementById("product_table_container");
@@ -932,6 +939,11 @@ function clearForm1() {
   enableSubmitButton1();
 }
 
+function cancelDeductStock(){
+  var deduct_quantity_input = document.getElementById("deduct_quantity_input");
+
+  deduct_quantity_input.value="0"; //pakipalitan ng actual quantity 
+}
 function cancelStock() {
 
   var batch_number = document.getElementById("batch_no");
