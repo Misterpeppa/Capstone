@@ -20,6 +20,10 @@ body{
   margin: 0;
   padding: 0;
 }
+
+
+
+
 #options option {
   width: 50% !important; /* Adjust the width as per your requirement */
 }

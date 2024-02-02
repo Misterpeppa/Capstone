@@ -50,7 +50,7 @@
                         <button class="btn dropdown-toggle admin" aria-expanded="false" data-bs-toggle="dropdown"
                             type="button"><img src="{{ asset('assets/img/image%2011%20(1).png') }}" alt="Admin"
                                 width="40" height="40"></button>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="{{ route('admin.signout') }}">Sign Out</a>
+                        <div class="dropdown-menu" ><a class="dropdown-item" href="{{ route('admin.signout') }}">Sign Out</a>
                         </div>
                     </div>
                 </div>
