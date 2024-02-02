@@ -93,10 +93,20 @@
 						</defs>
 					</svg> <a href="{{ route('admin_settings') }}">Settings</a></li>
 			</ul>
+
+      
 		</div>
+  
 
-
-										<button class="add" id="add" aria-expanded="false" data-bs-toggle="dropdown" type="button">
+    <div class="sidebar_bottom_btn w-100 d-flex flex-column justify-content-center" style="align-items: center;">
+    <div class="dropdown admin_btn">
+                        <button class="btn dropdown-toggle admin mb-5" aria-expanded="false" data-bs-toggle="dropdown"
+                            type="button"><img src="{{ asset('assets/img/image%2011%20(1).png') }}" alt="Admin"
+                                width="40" height="40"></button>
+                        <div class="dropdown-menu admin_signout" ><a class="dropdown-item" href="{{ route('admin.signout') }}">Sign Out</a>
+                        </div>
+                    </div>
+    <button class="add mt-2" id="add" aria-expanded="false" data-bs-toggle="dropdown" type="button">
 										<div class="add_base">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 					<g clip-path="url(#clip0_5266_11673)" filter="url(#filter0_d_5266_11673)">
@@ -116,6 +126,9 @@
 					</defs>
 				</svg> Add</div>
 										</button>
+
+                    
+                    
 										<div class="dropdown-menu more_button" data-bs-popper="none">
 										<button class="dropdown-item add_appointment_action" id="add_appointment">
 										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -167,8 +180,11 @@
   </defs>
 </svg>	Add Product
 											</button>
+                      
 										</div>
 </div>
+    </div>
+										
 </div>
 
 
