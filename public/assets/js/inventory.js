@@ -162,13 +162,13 @@ document.querySelectorAll(".dropbtn").forEach(function (button) {
 // Close dropdown menus when clicking outside the dropdown
 document.addEventListener('click', function (event) {
   // Check if the clicked element is not a dropdown button or dropdown content
-  if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-content')) {
+  if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-menu')) {
       closeDropdownMenus();
   }
 });
 
 function closeDropdownMenus() {
-  document.querySelectorAll('.dropdown-content').forEach(function (content) {
+  document.querySelectorAll('.dropdown-menu').forEach(function (content) {
       content.style.display = 'none';
   });
 }

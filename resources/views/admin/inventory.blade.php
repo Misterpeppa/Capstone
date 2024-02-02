@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="main_content">
-                <div id="inventory_container" class="inventory_container">
+                <div id="inventory_container" class="inventory_container" >
                     <div id="inventory_header" class="inventory_header">
                         <div class="d-flex flex-column justify-content-center align-items-start">
                             <h1>Inventory</h1>
@@ -482,8 +482,8 @@
                                         </defs>
                                     </svg> Add Product</span></button>
                         </div>
-                        <div id="product_table_container" class="w-100" style="overflow: auto;">
-                            <table cclass="table table-responsive mt-3 w-100" style="overflow: auto;">
+                        <div id="product_table_container" class="w-100">
+                            <table class="table table-responsive mt-3 w-100" >
                                 <thead>
                                     <tr>
                                         <th><input id="SelectAll" type="radio" class="checkbox"></th>
@@ -519,8 +519,8 @@
                                                 <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
                                                 <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
                                                 </svg></button>
-                                        <div class="dropdown-content"><div class="button-group">
-                                            <button
+                                        <div class="dropdown-menu"><div class="button-group">
+                                        <button
 		            data-action="AddStock" 
                                             data-product-type="{{ $product->product_type }}"
                                             data-product-id="{{ $product->id }}"
@@ -582,7 +582,7 @@
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="dropbtn">Actions</button>
-                                                        <div class="dropdown-content" id="dropdown-content">
+                                                        <div class="dropdown-menu" id="dropdown-content">
                                                             <button data-action="AddStock" id="addStock"
                                                                 data-product-type="{{ $medInfo->product_type }}"
                                                                 data-product-id="{{ $medInfo->id }}">

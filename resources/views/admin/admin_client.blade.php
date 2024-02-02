@@ -2,25 +2,25 @@
 <html data-bs-theme="light" lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta charset="UTF-8">
+<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" />
     <title>Admin | Client</title>
     <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
-    <link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <style>
@@ -293,8 +293,8 @@
                                 </defs>
                             </svg> Add Client</span></button>
                 </div>
-                <div id="client_table_container" class="table-responsive w-100" style="overflow: auto; display: none;">
-                    <table id="client_table" class="table approve_table">
+                <div id="client_table" class="w-100" style="overflow: auto;">
+                    <table  class="table table-responsive mt-3 w-100">
                         <thead>
                             <tr>
                                 <th><input id="SelectAll" type="radio" class="checkbox"></th>
@@ -327,13 +327,23 @@
                                         <td>No completed appointments</td>
                                     @endif
                                     <td class="dropdown button-action">
-                                        <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-  <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
-  <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
-  <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
-</svg></button>
-                                        <div class="dropdown-content"><div class="button-group">
-                                            <button
+                                                    <div class="dropdown"><button class="dropbtn" style="background-color: transparent; border:none;"
+                                                            aria-expanded="false" data-bs-toggle="dropdown"
+                                                            type="button"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                width="18" height="18" viewBox="0 0 18 18"
+                                                                fill="none">
+                                                                <path
+                                                                    d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z"
+                                                                    fill="#045B62" />
+                                                                <path
+                                                                    d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z"
+                                                                    fill="#045B62" />
+                                                                <path
+                                                                    d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z"
+                                                                    fill="#045B62" />
+                                                            </svg></button>
+                                                            <div class="dropdown-menu"><div class="button-group">
+                                                            <button
                                                 data-action="View"
                                                 data-container-id="{{ $clientInfo->id }}"
                                                 data-first-name="{{ $clientInfo->first_name }}"
@@ -391,7 +401,8 @@
                                         </div>
                                             
                                         </div>
-                                        </td>
+                                                    </div>
+                                                </td>
                                   
                                 </tr>
                             @endforeach

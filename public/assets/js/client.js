@@ -180,8 +180,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Function to close all dropdown menus
 function closeDropdownMenus() {
-    document.querySelectorAll('.dropdown-content').forEach(function (content) {
-        content.style.display = 'none';
+    document.querySelectorAll('.dropdown-menu').forEach(function (menu) {
+        menu.style.display = 'none';
     });
 }
 
@@ -192,15 +192,14 @@ document.addEventListener('click', function (event) {
     }
 });
        
+
 document.querySelectorAll('.dropbtn').forEach(function (button) {
     button.addEventListener('click', function (event) {
         event.stopPropagation(); // Prevent the click event from propagating
         const content = this.nextElementSibling;
         if (content.style.display === 'flex') {
             content.style.display = 'none';
-        } else if (content.style.display === 'flex'){
-            content.style.display = 'none';
-        }else {
+        } else {
             content.style.display = 'flex';
         }
     });

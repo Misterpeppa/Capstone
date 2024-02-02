@@ -60,7 +60,7 @@
 				<div id="summary_container" class="summary_container">
 					<div class="card summary">
 						<div class="card-body d-flex flex-column w-100">
-							<div class="card_body_img_container dog"><img src="{{ asset('assets/img/Asset%2017%201.png') }}" width="58" height="88"></div>
+							
 							<div class="card_info_container">
 								<div class="card_body_summary">
 									<div class="upper_part_summary">
@@ -80,7 +80,7 @@
 					</div>
 					<div class="card summary">
 						<div class="card-body d-flex flex-column w-100">
-							<div class="card_body_img_container"><img src="{{ asset('img/dog.png') }}"></div>
+							
 							<div class="card_info_container">
 								<div class="card_body_summary">
 									<div class="upper_part_summary">
@@ -101,7 +101,7 @@
 					</div>
 					<div class="card summary">
 						<div class="card-body d-flex flex-column w-100">
-							<div class="card_body_img_container appointments"><img src="{{ asset('assets/img/image%208.png') }}"></div>
+							
 							<div class="card_info_container">
 								<div class="card_body_summary">
 									<div class="upper_part_summary">
@@ -675,7 +675,7 @@
                                         </svg></button></div>
                             </div>
                         </div>
-					<div class="w-100" style="overflow: auto;">
+					<div class="w-100" id="product_table_container">
 					<table class="table table-responsive mt-3 w-100">
 						<thead>
 							<tr>
