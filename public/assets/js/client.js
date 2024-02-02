@@ -4,14 +4,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var add_client = document.getElementById('add_client');
     var add_client_btn = document.getElementById('add_client_btn');
-    var add_pet_btn = document.getElementById('add_pet_btn');
     var archive_button = document.getElementById('archive_button');
 
     var add_client_modal = new bootstrap.Modal(document.getElementById('add_client_modal'));
     var add_client_modal1 = new bootstrap.Modal(document.getElementById('add_client_modal-1'));
     var archive_modal = new bootstrap.Modal(document.getElementById('archive_modal'));
     var archive_modal1 = new bootstrap.Modal(document.getElementById('archive_modal-1'));
-    var add_pet_record_modal = new bootstrap.Modal(document.getElementById('add_pet_record_modal'));
                 
     
     var add_client_success = new bootstrap.Modal(document.getElementById('add_client_success'));
@@ -31,10 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
 
     
-    add_pet_btn.addEventListener('click', function () {
-
-    add_pet_record_modal.show();
-  });
+  
 
     
     submit_Client.addEventListener('click', function () {
@@ -185,8 +180,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Function to close all dropdown menus
 function closeDropdownMenus() {
-    document.querySelectorAll('.dropdown-content').forEach(function (content) {
-        content.style.display = 'none';
+    document.querySelectorAll('.dropdown-menu').forEach(function (menu) {
+        menu.style.display = 'none';
     });
 }
 
@@ -197,15 +192,14 @@ document.addEventListener('click', function (event) {
     }
 });
        
+
 document.querySelectorAll('.dropbtn').forEach(function (button) {
     button.addEventListener('click', function (event) {
         event.stopPropagation(); // Prevent the click event from propagating
         const content = this.nextElementSibling;
         if (content.style.display === 'flex') {
             content.style.display = 'none';
-        } else if (content.style.display === 'flex'){
-            content.style.display = 'none';
-        }else {
+        } else {
             content.style.display = 'flex';
         }
     });
@@ -568,7 +562,7 @@ setupFormValidation(
     var lastName = document.getElementById("last_name-1");
     var suffix = document.getElementById("suffix-1");
     var birthdate = document.getElementById("client_birthdate-1");
-    var address = document.getElementById("client_address-1");
+    var sex = document.getElementById("sex");
     var email = document.getElementById("client_email-1");
     var user_phone = document.getElementById('user_phone-1');
     
@@ -580,7 +574,7 @@ setupFormValidation(
     var errorlastName = document.getElementById('error-last_name-1');
     var errorSuffix = document.getElementById('error-suffix-1');
     var errorbirthdate = document.getElementById('error-client_birthdate-1');
-    var erroraddress = document.getElementById('error-client_address-1'); // Fix the typo here
+    var errorSex = document.getElementById('error-sex'); // Fix the typo here
     var erroremail = document.getElementById('error-client_email-1');
     var erroruser_phone = document.getElementById('error-user_phone-1');
     
@@ -589,7 +583,7 @@ setupFormValidation(
     addBlurListener(lastName, errorlastName);  
     addBlurListener(suffix, errorSuffix);  
     addBlurListener(birthdate, errorbirthdate);  
-    addBlurListener(address, erroraddress);  
+    addBlurListener(sex, errorSex);  
     addBlurListener(email, erroremail);
     addBlurListener(user_phone, erroruser_phone);
 

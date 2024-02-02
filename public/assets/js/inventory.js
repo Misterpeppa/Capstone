@@ -34,8 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add an event listener for the buttons inside dropdown-content
     document
       .querySelectorAll(".button-action button")
-      .forEach(function (button) {
-        button.addEventListener("click", function (event) {
+      .forEach(function (button) { button.addEventListener("click", function (event) {
+          closeDropdownMenus();
           event.preventDefault();
           const action = this.getAttribute("data-action");
           if (action === "AddStock") {
@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var modal2 = new bootstrap.Modal(
               document.getElementById("add_stock_modal")
             );
+            closeDropdownMenus();
 
             modal2.show();
           } else if (action === "View") {
@@ -156,27 +157,31 @@ document.addEventListener("DOMContentLoaded", function () {
     split_btn.style.display = "flex";
 
     // Toggle the visibility of dropdown-content when the Actions button is clicked
-    document.querySelectorAll(".dropbtn").forEach(function (button) {
-      button.addEventListener("click", function (event) {
-        closeDropdownMenus();
-        event.stopPropagation(); // Prevent the click event from propagating
-        const content = this.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else if (content.style.display === "flex") {
-          content.style.display = "none";
-        } else {
-          content.style.display = "flex";
-        }
-      });
-    });
-    closeDropdownMenus();
+document.querySelectorAll(".dropbtn").forEach(function (button) {
+  button.addEventListener("click", function (event) {
+      event.stopPropagation(); // Prevent the click event from propagating
 
-    function closeDropdownMenus() {
-      document.querySelectorAll('.dropdown-content').forEach(function (content) {
-          content.style.display = 'none';
-      });
-    }
+      // Get the corresponding dropdown-content
+      const content = this.nextElementSibling;
+
+      // Toggle the display property between 'none' and 'flex'
+      content.style.display = (content.style.display === "flex") ? "none" : "flex";
+  });
+});
+
+// Close dropdown menus when clicking outside the dropdown
+document.addEventListener('click', function (event) {
+  // Check if the clicked element is not a dropdown button or dropdown content
+  if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-menu')) {
+      closeDropdownMenus();
+  }
+});
+
+function closeDropdownMenus() {
+  document.querySelectorAll('.dropdown-menu').forEach(function (content) {
+      content.style.display = 'none';
+  });
+}
 
 
     
@@ -184,6 +189,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event listener to close dropdown menus when clicking outside
     document.addEventListener('click', function (event) {
       if (!event.target.matches('.dropbtn')) {
+          closeDropdownMenus();
+      }
+    });
+
+    document.addEventListener('click', function (event) {
+      if (event.target.matches('.dropbtn')) {
           closeDropdownMenus();
       }
     });
@@ -637,6 +648,7 @@ validationProductCode(productCodeInput1);
   parentElement.addEventListener("click", function (event) {
     // Check if the clicked element is the dropbtn
     if (event.target.matches("#dropbtn")) {
+      
       // Select the dropdown-content
       var dropdownContent = document.getElementById("dropdown-content");
 

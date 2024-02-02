@@ -2,25 +2,25 @@
 <html data-bs-theme="light" lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta charset="UTF-8">
+<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" />
     <title>Admin | Client</title>
     <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
-    <link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <style>
@@ -49,13 +49,7 @@
                                 <path
                                     d="M2.29482 10.4791L2.93736 10.866L2.93903 10.8632L2.29482 10.4791ZM1.38031 11.998L0.737787 11.6112L0.737673 11.6113L1.38031 11.998ZM2.23916 14.328L1.99871 15.0385L2.00149 15.0394L2.23916 14.328ZM12.7918 14.328L12.5564 13.6159L12.5542 13.6167L12.7918 14.328ZM13.6507 11.998L14.2938 11.6121L14.2932 11.6112L13.6507 11.998ZM12.7362 10.4791L12.0864 10.854L12.0937 10.866L12.7362 10.4791ZM8.99065 2.00199L8.78522 2.7233C9.0594 2.80139 9.35415 2.71728 9.54583 2.50625C9.7375 2.29522 9.79296 1.99376 9.68894 1.72833L8.99065 2.00199ZM6.0483 2.00199L5.35001 1.72833C5.24599 1.99376 5.30145 2.29522 5.49313 2.50625C5.68481 2.71728 5.97955 2.80139 6.25374 2.7233L6.0483 2.00199ZM5.83359 16.3002L5.30286 16.8301L5.30326 16.8305L5.83359 16.3002ZM7.51948 1.02137C4.47306 1.02137 1.99811 3.49632 1.99811 6.54274H3.49811C3.49811 4.32475 5.30148 2.52137 7.51948 2.52137V1.02137ZM1.99811 6.54274V8.84096H3.49811V6.54274H1.99811ZM1.99811 8.84096C1.99811 8.99314 1.96284 9.22832 1.89124 9.48627C1.8197 9.74398 1.72858 9.96429 1.65061 10.0951L2.93903 10.8632C3.10759 10.5804 3.24311 10.2242 3.33658 9.88749C3.42999 9.551 3.49811 9.17386 3.49811 8.84096H1.99811ZM1.6523 10.0923L0.737787 11.6112L2.02284 12.3849L2.93735 10.866L1.6523 10.0923ZM0.737673 11.6113C0.34933 12.2568 0.264391 12.9889 0.507 13.6441C0.749283 14.2984 1.2894 14.7984 1.99871 15.0384L2.47961 13.6176C2.15512 13.5078 1.98351 13.3119 1.91366 13.1233C1.84415 12.9355 1.84668 12.6776 2.02295 12.3847L0.737673 11.6113ZM2.00149 15.0394C5.58318 16.236 9.44782 16.236 13.0295 15.0394L12.5542 13.6167C9.28099 14.7103 5.75001 14.7103 2.47682 13.6167L2.00149 15.0394ZM13.0272 15.0401C14.4485 14.5703 15.0644 12.8965 14.2938 11.6121L13.0076 12.3839C13.2867 12.849 13.0596 13.4496 12.5564 13.6159L13.0272 15.0401ZM14.2932 11.6112L13.3787 10.0923L12.0937 10.866L13.0082 12.3849L14.2932 11.6112ZM13.3858 10.1043C13.3086 9.97054 13.2183 9.7472 13.1473 9.48852C13.0762 9.22901 13.0408 8.99336 13.0408 8.84096H11.5408C11.5408 9.17364 11.6089 9.55031 11.7008 9.88524C11.7928 10.221 11.9252 10.5742 12.0865 10.8539L13.3858 10.1043ZM13.0408 8.84096V6.54274H11.5408V8.84096H13.0408ZM13.0408 6.54274C13.0408 3.50428 10.5579 1.02137 7.51948 1.02137V2.52137C9.72952 2.52137 11.5408 4.3327 11.5408 6.54274H13.0408ZM9.19608 1.28067C8.10014 0.968542 6.93882 0.968542 5.84287 1.28067L6.25374 2.7233C7.08111 2.48766 7.95784 2.48766 8.78522 2.7233L9.19608 1.28067ZM6.7466 2.27564C6.86777 1.96645 7.16863 1.75 7.51948 1.75V0.25C6.53434 0.25 5.69008 0.860583 5.35001 1.72833L6.7466 2.27564ZM7.51948 1.75C7.87033 1.75 8.17119 1.96645 8.29236 2.27564L9.68894 1.72833C9.34888 0.860583 8.50461 0.25 7.51948 0.25V1.75ZM9.15516 14.6143C9.15516 15.5122 8.41739 16.25 7.51948 16.25V17.75C9.24582 17.75 10.6552 16.3407 10.6552 14.6143H9.15516ZM7.51948 16.25C7.07487 16.25 6.65887 16.0648 6.36392 15.7699L5.30326 16.8305C5.86716 17.3944 6.65991 17.75 7.51948 17.75V16.25ZM6.36432 15.7703C6.05752 15.463 5.88477 15.0468 5.88379 14.6126L4.38379 14.616C4.38567 15.4465 4.71607 16.2425 5.30286 16.8301L6.36432 15.7703Z"
                                     fill="#1C1C1C"></path></svg></span></button>
-                    <div class="dropdown admin_btn">
-                        <button class="btn dropdown-toggle admin" aria-expanded="false" data-bs-toggle="dropdown"
-                            type="button"><img src="{{ asset('assets/img/image%2011%20(1).png') }}" alt="Admin"
-                                width="40" height="40"></button>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="{{ route('admin.signout') }}">Sign Out</a>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="main_content">
@@ -293,8 +287,9 @@
                                 </defs>
                             </svg> Add Client</span></button>
                 </div>
-                <div id="client_table_container" class="w-100" style="display: none; overflow: auto;">
-                    <table id="client_table"  class="table-responsive w-100" style="overflow-y: hidden;" >
+
+                <div id="client_table" class="w-100" style="overflow: auto;">
+                    <table  class="table table-responsive mt-3 w-100">
                         <thead>
                             <tr>
                                 <th><input id="SelectAll" type="radio" class="checkbox"></th>
@@ -327,13 +322,23 @@
                                         <td>No completed appointments</td>
                                     @endif
                                     <td class="dropdown button-action">
-                                        <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-  <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
-  <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
-  <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
-</svg></button>
-                                        <div class="dropdown-content"><div class="button-group">
-                                            <button
+                                                    <div class="dropdown"><button class="dropbtn" style="background-color: transparent; border:none;"
+                                                            aria-expanded="false" data-bs-toggle="dropdown"
+                                                            type="button"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                width="18" height="18" viewBox="0 0 18 18"
+                                                                fill="none">
+                                                                <path
+                                                                    d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z"
+                                                                    fill="#045B62" />
+                                                                <path
+                                                                    d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z"
+                                                                    fill="#045B62" />
+                                                                <path
+                                                                    d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z"
+                                                                    fill="#045B62" />
+                                                            </svg></button>
+                                                            <div class="dropdown-menu client_menu"><div class="button-group">
+                                                            <button
                                                 data-action="View"
                                                 data-container-id="{{ $clientInfo->id }}"
                                                 data-first-name="{{ $clientInfo->first_name }}"
@@ -391,7 +396,8 @@
                                         </div>
                                             
                                         </div>
-                                        </td>
+                                                    </div>
+                                                </td>
                                   
                                 </tr>
                             @endforeach
@@ -661,34 +667,26 @@
                                 <p>You can add a pet by clicking the button below.</p>
                             </div>
                         </div>
-                    </div><button class="btn add_client_button" id="add_pet_btn" type="button"><span
-                            class="add_client_base"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" viewBox="0 0 24 24" fill="none">
-                                <g clip-path="url(#clip0_5749_19901)" filter="url(#filter0_d_5749_19901)">
-                                    <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </g>
-                                <defs>
-                                    <filter id="filter0_d_5749_19901" x="-2" y="0" width="28" height="28"
-                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                        <feColorMatrix in="SourceAlpha" type="matrix"
-                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                        <feOffset dy="2" />
-                                        <feGaussianBlur stdDeviation="1" />
-                                        <feComposite in2="hardAlpha" operator="out" />
-                                        <feColorMatrix type="matrix"
-                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-                                        <feBlend mode="normal" in2="BackgroundImageFix"
-                                            result="effect1_dropShadow_5749_19901" />
-                                        <feBlend mode="normal" in="SourceGraphic"
-                                            in2="effect1_dropShadow_5749_19901" result="shape" />
-                                    </filter>
-                                    <clipPath id="clip0_5749_19901">
-                                        <rect width="24" height="24" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg> Add Pet</span></button>
+                    </div><a href="{{ route('admin_emr') }}" role="button" class="add_client_button"><span class="add_client_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+  <g clip-path="url(#clip0_6893_11565)" filter="url(#filter0_d_6893_11565)">
+    <path d="M5.5 12H19.5M19.5 12L13.5 18M19.5 12L13.5 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <filter id="filter0_d_6893_11565" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="2"/>
+      <feGaussianBlur stdDeviation="1"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6893_11565"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6893_11565" result="shape"/>
+    </filter>
+    <clipPath id="clip0_6893_11565">
+      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
+    </clipPath>
+  </defs>
+</svg> Go to Pet Records</span></a>
                 </div>
                 <div id="pet_card_container" class="pet_card_container">
                     <div class="card pet_card" id="pet_card" data-pet-id="pet_card_0">
@@ -1781,7 +1779,7 @@ function enableSubmitBtn() {
   var middle_name1 = document.getElementById("middle_name-1").value;
   var last_name1 = document.getElementById("last_name-1").value;
   var client_birthdate1 = document.getElementById("client_birthdate-1").value;
-  var client_address1 = document.getElementById("client_address-1").value;
+  var sex = document.getElementById("sex").value;
   var client_email1 = document.getElementById("client_email-1").value;
   var user_phone1 = document.getElementById("user_phone-1").value;
 
@@ -1793,7 +1791,7 @@ function enableSubmitBtn() {
     middle_name1.trim() !== "" &&
     last_name1.trim() !== "" &&
     client_birthdate1.trim() !== "" &&
-    client_address1.trim() !== "" &&
+    sex.trim() !== "" &&
     user_phone1.trim().length === 11 && // Check for 11 digits
     (client_email1.includes("@gmail.com") || client_email.includes("@yahoo.com")) // Check for email format
   ) {
@@ -1809,7 +1807,7 @@ function enableSubmitBtn() {
   console.log('middle_name:', middle_name1);
   console.log('last_name:', last_name1);
   console.log('client_birthdate:', client_birthdate1);
-  console.log('client_address:', client_address1);
+  console.log('sex:', sex);
   console.log('client_email:', client_email1);
   console.log('user_phone:', user_phone1);
   console.log('submit_Client disabled:', submit_Client1.disabled);
@@ -1819,7 +1817,7 @@ document.getElementById("first_name-1").addEventListener("input", enableSubmitBt
 document.getElementById("middle_name-1").addEventListener("input", enableSubmitBtn);
 document.getElementById("last_name-1").addEventListener("input", enableSubmitBtn);
 document.getElementById("client_birthdate-1").addEventListener("input", enableSubmitBtn);
-document.getElementById("client_address-1").addEventListener("input", enableSubmitBtn);
+document.getElementById("sex").addEventListener("input", enableSubmitBtn);
 document.getElementById("client_email-1").addEventListener("input", enableSubmitBtn);
 document.getElementById("user_phone-1").addEventListener("input", enableSubmitBtn);
 
