@@ -33,7 +33,7 @@
         @include('includes.admin_header')
         
         <div class="content">
-          <div id="rectangle" class="rectangle justify-content-between">
+        <div id="rectangle" class="rectangle justify-content-between">
                 <div>
                     <a id="menu-toggle" class="btn menu_toggle btn-link" role="button" href="#menu-toggle"><i class="fa fa-bars custom-bars-icon"></i></a>
                 </div>
@@ -48,7 +48,7 @@
                         <button class="btn dropdown-toggle admin" aria-expanded="false" data-bs-toggle="dropdown"
                             type="button"><img src="{{ asset('assets/img/image%2011%20(1).png') }}" alt="Admin"
                                 width="40" height="40"></button>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="{{ route('admin.signout') }}">Sign Out</a>
+                        <div class="dropdown-menu" ><a class="dropdown-item" href="{{ route('admin.signout') }}">Sign Out</a>
                         </div>
                     </div>
                 </div>
