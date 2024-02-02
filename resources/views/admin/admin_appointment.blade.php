@@ -1004,10 +1004,16 @@
                                             <tr>
                                                 <td ><input type="radio" class="checkbox action-checkbox" data-id="{{ $appointment->id }}"></td>
                                                 <td >{{ $index + 1 }}</td>
-                                                <td >{{ $appointment->clients->first_name }}
-                                                    {{ $appointment->clients->middle_name }}
-                                                    {{ $appointment->clients->last_name }}
-                                                    {{ $appointment->clients->suffix }}</td>
+                                                <td>
+                                                    @if ($appointment->clients)
+                                                        {{ $appointment->clients->first_name }}
+                                                        {{ $appointment->clients->middle_name }}
+                                                        {{ $appointment->clients->last_name }}
+                                                        {{ $appointment->clients->suffix }}
+                                                    @else
+                                                        Client Not Available
+                                                    @endif
+                                                </td>
                                                 <td >{{ $appointment->status }}</td>
                                                 <td >{{ $appointment['petType'] }}
                                                     ({{ $appointment['breed'] }})</td>

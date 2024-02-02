@@ -105,6 +105,8 @@ Route::post('admin/forgotpassReset', [AdminAuthController::class, 'resetPassword
 
 Route::middleware('admin', 'nocache')->group(function () {
     Route::get('/admin/signout', [AdminAuthController::class, 'signout'])->name('admin.signout');
+    Route::post('/admin/settings/changepassword', [AdminAuthController::class, 'changePassword'])->name('admin.changepassword');
+
 
     Route::get('/admin/appointment', [AppointmentController::class, 'adminShow'])->name('admin_appointment');
     Route::post('/admin/appointment/approve/{id}', [AppointmentController::class, 'approve']);

@@ -119,4 +119,23 @@ class AdminAuthController extends Controller
 
         return redirect()->route('admin.signin')->with('success', 'Password updated successfully. You can now login with your new password.');
     }
+
+    public function changePassword(Request $request)
+    {
+        $clientId = Auth::guard('admin')->id();
+        $admin = Admin::find($clientId);
+        $currentPassword = $request->input('current_password');
+        $newPassword = $request->input('new_password');
+        $newPasswordConfirm = $request->input('new_password_confirmation');
+        dd($currentPassword);
+        if (Hash::check($currentPassword, $admin->password)) {
+            $admin->password = Hash::make($newPassword);
+            $admin->save();
+            return redirect()->route('admin_settings')->with('success', 'Password changed successfully.');
+        } else {
+            dd('Current password is incorrect');
+
+            return redirect()->back()->withErrors(['current_password' => 'Incorrect current password.']);
+        }
+    }
 }

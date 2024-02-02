@@ -553,6 +553,8 @@
                                                     </svg> Edit</div></button>
                                                 <button 
                                                 data-action="Archive"
+                                                data-product-type="{{ $product->product_type }}"
+                                                data-product-id="{{ $product->id }}"
                                                 class="btn border-0 archiveButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
                                                 <path d="M17 5C17.5304 5 18.0391 4.78929 18.4142 4.41421C18.7893 4.03914 19 3.53043 19 3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3C1 3.53043 1.21071 4.03914 1.58579 4.41421C1.96086 4.78929 2.46957 5 3 5M17 5H3M17 5V15C17 15.5304 16.7893 16.0391 16.4142 16.4142C16.0391 16.7893 15.5304 17 15 17H5C4.46957 17 3.96086 16.7893 3.58579 16.4142C3.21071 16.0391 3 15.5304 3 15V5M8 9H12" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg> Archive</div></button>
@@ -1370,25 +1372,55 @@
     </script>
     @endif
     <script>
+        function updateStatus() {
+            // Iterate over each row in the table
+            $('#inventory_table_body tr').each(function() {
+                // Get the quantity value from the second column of the current row
+                var quantity = parseInt($(this).find('td:eq(3)').text());
+
+                // Determine the status based on the quantity
+                var status;
+                if (quantity === 0) {
+                    status = "Out of Stock";
+                } else if (quantity <= 50) {
+                    status = "Low Stock";
+                } else {
+                    status = "High Stock";
+                }
+
+                var statusTd = $(this).find('.status-td');
+        statusTd.text(status); // Update status text
+
+        // Apply styles based on the status
+        if (status === "Out of Stock") {
+            statusTd.css({ backgroundColor: "#DA534F", color: "#fff" });
+        } else if (status === "Low Stock") {
+            statusTd.css({ backgroundColor: "#FFA800", color: "#fff" });
+        } else {
+            statusTd.css({ backgroundColor: "#5CA500", color: "var(--colors-main-neutral, #FFF)" });
+        }
+            });
+        }
         $(document).ready(function() {
-            $('#editButton').click(function() {
-            const invData = {
-                'item_name' :$(this).data('item_name'),
-                'prodoct_code' :$(this).data('product_code'),
-                'last_name' :$(this).data('last-name'),
-                'suffix' :$(this).data('suffix'),
-                'birthdate' :$(this).data('birthdate'),
-                'email' :$(this).data('email'),
-                'phone' :$(this).data('phone'),
-            };      
-            $('#editItemName').val(invData.item_name);
-            $('#product_code').val(invData.middle_name);
-            $('#editLastName').val(clientData.last_name);
-            $('#editSuffix').val(clientData.suffix);
-            $('#editBirthdate').val(clientData.birthdate);
-            $('#editEmail').val(clientData.email);
-            $('#editPhone').val(clientData.phone);
-        });
+            updateStatus();
+                $('#editButton').click(function() {
+                const invData = {
+                    'item_name' :$(this).data('item_name'),
+                    'prodoct_code' :$(this).data('product_code'),
+                    'last_name' :$(this).data('last-name'),
+                    'suffix' :$(this).data('suffix'),
+                    'birthdate' :$(this).data('birthdate'),
+                    'email' :$(this).data('email'),
+                    'phone' :$(this).data('phone'),
+                };      
+                $('#editItemName').val(invData.item_name);
+                $('#product_code').val(invData.middle_name);
+                $('#editLastName').val(clientData.last_name);
+                $('#editSuffix').val(clientData.suffix);
+                $('#editBirthdate').val(clientData.birthdate);
+                $('#editEmail').val(clientData.email);
+                $('#editPhone').val(clientData.phone);
+            });
             $('.viewButton').click(function() {
                 var inventory_header = document.getElementById("inventory_header");
                 var rowId = $(this).closest('tr').data('row-id');
@@ -1517,38 +1549,9 @@
                 });
             });
 
-        function populateTable(){
-            $.ajax({
-                type: 'GET',
-                url: '/admin/inventory/quantity/{{ $product->id }}', // Replace with the actual product ID
-                success: function(response) {
-                    var products = response.poducts;
-                    $.each(products, function(index, product) {
-                    var status;
-                    // Determine the status based on the quantity
-                    if (product.quantity === 0) {
-                        status = "Out of Stock";
-                    } else if (product.quantity <= 50) {
-                        status = "Low Stock";
-                    } else {
-                        status = "High Stock";
-                    }
-
-                    // Append a new row to the table with product details and status
-                    var newRow = '<tr>' +
-                        '<td>' + status + '</td>' +
-                        '</tr>';
-
-                    $('#product_table_container').append(newRow);
-                });
-            },
-            error: function(xhr) {
-                console.error('Error fetching product data:', xhr.responseText);
-            }
         });
-        }
 
-        });
+        
 
         document.querySelectorAll('#editButton').forEach(button => {
             button.addEventListener('click', function() {
