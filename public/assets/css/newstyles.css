@@ -2001,6 +2001,9 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .dropdown-menu.client_menu{
     transform: translate(-20px, 22px) !important;
   }
+  .dropdown-menu.admin_signout{
+    transform: translate(-60px, 62px) !important;
+  }
   .dropdown-menu{
     display: none;
     position: absolute;
