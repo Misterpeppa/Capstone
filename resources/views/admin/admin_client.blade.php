@@ -342,7 +342,7 @@
                                                                     d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z"
                                                                     fill="#045B62" />
                                                             </svg></button>
-                                                            <div class="dropdown-menu"><div class="button-group">
+                                                            <div class="dropdown-menu client_menu"><div class="button-group">
                                                             <button
                                                 data-action="View"
                                                 data-container-id="{{ $clientInfo->id }}"
