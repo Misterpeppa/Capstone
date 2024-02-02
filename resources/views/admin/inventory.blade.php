@@ -703,14 +703,12 @@
                             <table class="table table-responsive w-100" style="overflow: auto;" id="batch_table">
                                 <thead>
                                     <tr>
-                                        <th><input id="SelectAllMedBatch" type="radio" class="checkbox"></th>
                                         <th>Batch Number</th>
                                         <th>Product Code</th>
                                         <th>Quantity Left</th>
                                         <th>Date Stocked</th>
                                         <th>Expiration Date</th>
                                         <th>Manufacturing Date</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody id="batch_table_body">
@@ -786,7 +784,7 @@
 
                         
 
-                        <!-- <div class="pagination">
+                        <div class="pagination" id="pagination">
                                 <div class="pagination-menu">
                                     <span>Go to:</span>
                                     <select class="paginationGoToSelect" onchange="changePage(this)">
@@ -829,7 +827,7 @@
                                     </select>
                                 </div>
                             </div>
-                    </div> -->
+                    </div> 
                     <div id="prod_detail_header" class="prod_detail_header">
                         <h1>Edit Product Information</h1>
                     </div>
@@ -1429,7 +1427,6 @@
                         $('#batch_table tbody').empty();
                         $.each(data, function(index, batches) {
                             var newRow = '<tr>' +
-                            '<td>' + ' ' + '</td>' +
 							'<td>' + batches.batch_no + '</td>' +
                             '<td>' + batches.product_code + '</td>' +
                             '<td>' + batches.quantity + '</td>' +

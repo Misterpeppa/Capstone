@@ -293,8 +293,8 @@
                                 </defs>
                             </svg> Add Client</span></button>
                 </div>
-                <div id="client_table_container" class="table-responsive w-100" style="overflow: auto; display: none;">
-                    <table id="client_table" class="table approve_table">
+                <div id="client_table_container" class="w-100" style="display: none; overflow: auto;">
+                    <table id="client_table"  class="table-responsive w-100" style="overflow-y: hidden;" >
                         <thead>
                             <tr>
                                 <th><input id="SelectAll" type="radio" class="checkbox"></th>

@@ -424,7 +424,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="d-flex justify-content-between align-items-center align-self-stretch button-row d-flex mt-4" id="next-prev-buttons-1"><button class="btn btn btn-primary js-btn-prev" type="button" title="Prev" style="display: flex;height: 56px;min-width: 100px;padding: 16px var(--spacing-spacing-m, 24px);justify-content: center;align-items: center;gap: var(--spacing-spacing-m, 24px);background: transparent;border-radius: var(--radius-s, 8px);border: none;color: var(--colors-actions-action, #045B62);font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;">Previous</button>
-                                                    <button class="btn book_appointment" id="book_appointment" type="submit" onclick="submitForm()" title="Next"><span class="book_appointment_base">Book Appointment</span></button></div>
+                                                    <button class="btn book_appointment" id="book_appointments" type="submit" onclick="submitForm()" title="Next"><span class="book_appointment_base">Book Appointment</span></button></div>
                                                 </div>
                                             </div>
                                         </div>

@@ -53,12 +53,17 @@ document.addEventListener("DOMContentLoaded", function () {
             var inventory_header = document.getElementById("inventory_header");
             var prod_info_header = document.getElementById("prod_info_header");
             var batch_product = document.getElementById("batch_product");
+            var prod_pagination= document.getElementById("prod_pagination");
             const prod_detail1 = document.querySelector(".left_part_product_header");
+            const prod_detail2 = document.querySelector(".pagination");
+
 
             prod_detail1.style.display = "none";
+            prod_detail2.style.display = "none";
             view_product.style.display = "flex";
             product_table_container.style.display = "none";
             batch_product.style.display = "flex";
+            prod_pagination.style.display = "none";
 
             inventory_header.style.display = "none";
             prod_info_header.style.display = "flex";
@@ -113,6 +118,9 @@ document.addEventListener("DOMContentLoaded", function () {
       var prod_info_header = document.getElementById("prod_info_header");
       var product_table_container = document.getElementById("product_table_container");
       var batch_product = document.getElementById("batch_product");
+      var prod_pagination= document.getElementById("prod_pagination");
+      
+      prod_pagination.style.display = 'flex';
       
       batch_product.style.display = "none";
       view_product.style.display = "none";
