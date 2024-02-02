@@ -21,6 +21,12 @@ body{
   padding: 0;
 }
 
+
+
+
+#options option {
+  width: 50% !important; /* Adjust the width as per your requirement */
+}
 #user{
   display: none;
 }
@@ -1992,13 +1998,18 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     font-weight: 600;
     line-height: normal;
   }
-  
+  .dropdown-menu.client_menu{
+    transform: translate(-20px, 22px) !important;
+  }
+  .dropdown-menu.admin_signout{
+    transform: translate(-60px, 62px) !important;
+  }
   .dropdown-menu{
     display: none;
     position: absolute;
     inset: 0px 0px auto auto;
     margin: 0px;
-    transform: translate3d(-85px, 15px, 0px);
+    transform: translate3d(-20px, 20px, 0px);
     z-index: 999;
     padding: var(--spacing-spacing-xxs, 8px);
     flex-direction: column;
@@ -2848,6 +2859,9 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     box-shadow: 0px 1px 3px 0px rgba(28, 28, 28, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
     background-color: #004d53;
   }
+  .card.summary:hover .upper_part_summary p, .card.summary:hover .lower_part_summary span, .card.summary:hover .card_body_summary_count span{
+    color: #f1f1f1;
+  }
   
   .card-body.landingpage {
     display: flex;
@@ -3130,7 +3144,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .card.pet_card {
     display: flex;
     padding: 24px;
-    width: 32%;
+    width: 49%;
     height: 250px;
     align-items: flex-start;
     flex-direction: row;
@@ -4374,7 +4388,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     align-self: stretch;
     flex-wrap: wrap !important; 
     justify-content: flex-start;
-    overflow: auto;
+    overflow-x: hidden;
     position: relative;
   }
   
@@ -5638,9 +5652,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
       align-self: stretch;
       border-left: 1px solid rgba(28, 28, 28, 0.50);
   }
-    .card.summary{
-      height: 320px;
-    }
+    
 
     .step.active {
       display: flex;
@@ -5709,7 +5721,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     .signin {
       display: flex;
       width: 500px;
-      height: 530px;
+      height: auto;
       padding: 10px var(--spacing-spacing-xl, 24px);
       flex-direction: column;
       align-items: center;
@@ -5737,10 +5749,50 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .frame504, .services{
     text-align: center;
   }
+
+  
 }
 
   
 @media (min-width: 992px) and (max-width: 1199px){
+  .card.summary {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: var(--radius-s, 8px);
+    background: #F9F9F9;
+    box-shadow: 0px 1px 3px 0px rgba(28, 28, 28, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+    transition: background-color 0.3s ease;
+}
+.card_info_container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 0 0;
+  gap: 32px;
+}
+.upper_part_summary {
+display: flex;
+align-items: flex-start;
+flex-direction: column;
+gap: var(--spacing-spacing-s, 16px);
+align-self: stretch;
+}
+.lower_part_summary span{
+font-size: 24px;
+}
+.card_body_summary_count{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.card_body_summary_count span{
+  font-size: 14px;
+  width: 100%;
+}
   .pet_record {
     width: 50% !important;
   }
@@ -6168,7 +6220,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     background-color: #E8F0F0;
     overflow-x: hidden;
     width: 100%;
-    height: 100vh;
+    height: auto;
   }
   .container_header{
     display: flex;
@@ -6410,6 +6462,44 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     flex: 1 0 0;
     align-self: stretch;
     border-left: none !important;
+}
+.card.summary {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: var(--radius-s, 8px);
+  background: #F9F9F9;
+  box-shadow: 0px 1px 3px 0px rgba(28, 28, 28, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+  transition: background-color 0.3s ease;
+}
+.card_info_container {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+flex: 1 0 0;
+gap: 32px;
+}
+.upper_part_summary {
+display: flex;
+align-items: flex-start;
+flex-direction: column;
+gap: var(--spacing-spacing-s, 16px);
+align-self: stretch;
+}
+.lower_part_summary span{
+font-size: 24px;
+}
+.card_body_summary_count{
+display: flex;
+flex-direction: column;
+gap: 4px;
+}
+.card_body_summary_count span{
+font-size: 14px;
+width: 100%;
 }
 }
 
@@ -7279,10 +7369,63 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
       align-self: center;
     }
     
+
+    .card.summary {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      border-radius: var(--radius-s, 8px);
+      background: #F9F9F9;
+      box-shadow: 0px 1px 3px 0px rgba(28, 28, 28, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+      transition: background-color 0.3s ease;
+  }
+  .card_info_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+    gap: 32px;
+}
+.upper_part_summary {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: var(--spacing-spacing-s, 16px);
+  align-self: stretch;
+}
+.lower_part_summary span{
+  font-size: 24px;
+}
+  .card_body_summary_count{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .card_body_summary_count span{
+    font-size: 14px;
+    width: 100%;
+  }
 }
 
 
 @media (max-width: 576px){
+  .summary_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    gap: var(--spacing-spacing-m, 24px);
+}
+  .client_summary_row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--spacing-spacing-xs, 4px);
+    align-self: stretch;
+}
   .appointment_tab.active{
     display: flex;
     flex-direction: column;
@@ -7293,7 +7436,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   }
   .inventory_header, .dashboard_header, .client_header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     padding-left: var(--radius-xs, 0px);
     justify-content: space-between;
@@ -7303,6 +7446,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .modal-header h1{
     font-size: 20px;
   }
+
   .modal-content.archive_modal, .modal-content.resched_modal, .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
     display: flex;
     width: 100%!important;
@@ -7385,7 +7529,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   }
     .modal-content.add_stock_modal {
       display: inline-flex;
-      width: 400px;
+      width: 100% !important;
       padding: var(--spacing-spacing-s, 16px);
       flex-direction: column;
       align-items: center;
@@ -7394,15 +7538,15 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
       background: var(--colors-main-neutral-light, #F5F5F5);
       box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
     }
-    .modal-body.add_stock_modal_body{
-      width: 400px;
-      height: auto;
-    }
   .form-label{
     font-size: 10px !important;
   }
   .form-control, .form-select {
     font-size:  10px !important;
+  }
+  .quantity_input_container, .add_stock_buttons{
+    display: flex;
+    flex-direction: column-reverse;
   }
 
   .modal-header.success_header, .modal-header.discard_header, .modal-header.archive_header {
@@ -7424,11 +7568,11 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   flex-direction: column-reverse;
   gap: 4px !important;
 }
-.submit_product, .submit_product, .clear_form, .return_btn, .discard_btn, .reject_btn, .submit_immunization, .submit_surgery, .approve_appointment_btn, .cancel_btn, .reschedule_btn, .confirm_complete, .archive_confirm, .submit_diagnosis{
+.add_stock, .submit_product, .submit_product, .clear_form, .return_btn, .discard_btn, .reject_btn, .submit_immunization, .submit_surgery, .approve_appointment_btn, .cancel_btn, .reschedule_btn, .confirm_complete, .archive_confirm, .submit_diagnosis{
   height: 26px !important;
   width: 50%;
 }
-.discard_btn_base, .return_btn_base, .archive_confirm_button_base, .submit_product_base, .clear_form_base{
+.discard_btn_base, .add_stock_base, .cancel_btn_base, .return_btn_base, .archive_confirm_button_base, .submit_product_base, .clear_form_base{
   font-size: 12px;
 }
 .modal-content.discard_modal {
@@ -7442,8 +7586,21 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   border-radius: var(--radius-s, 8px);
   background: #F5F5F5;
 }
-
-
+.product_details {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-spacing-xs, 4px);
+  flex: 1 0 0;
+}
+.batchno_barcode, .manu_expi_stocked_date {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: var(--spacing-spacing-xs, 8px);
+  align-self: stretch;
+}
   .notifications_boxes {
     display: flex;
     width: 100% !important;
@@ -7709,7 +7866,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 .card.pet_card {
   display: flex;
   padding: 24px;
-  width: 100%;
+  width: 98%;
   height: auto;
   align-items: flex-start;
   flex-direction: row;
@@ -7725,6 +7882,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   flex: 1 0 0;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 .pet_upper_detail {
   display: flex;
@@ -7736,7 +7894,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
 .pet_lower_detail {
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
+  flex-direction: column;
   align-items: start;
   align-self: stretch;
 }
@@ -7843,7 +8001,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     display: none;
   }
   .modal-content.add_client_modal{
-    width: 400px!important;
+    width: 100%!important;
     height: auto;
     gap: 4px;
   }
