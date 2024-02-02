@@ -61,7 +61,7 @@
                                             </svg>
                                         </div>
                                         <div class="align-self-stretch form-floating custom_form_floating">
-                                            <input id="password_confirmation" name="password_confirmation" class="form-control custom_password" type="password" placeholder="Repeat Password" data-id="password_confirmation">
+                                            <input id="password_confirmation" class="form-control custom_password" type="password" placeholder="Repeat Password" data-id="password_confirmation">
                                             <div class="eye-icon1" onclick="togglePasswordVisibility1()">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><g opacity="0.5" clip-path="url(#clip0_6078_13948)"><path d="M21 9C18.6 11.667 15.6 13 12 13C8.4 13 5.4 11.667 3 9M3 15L5.5 11.2M20.9998 14.976L18.5078 11.2M9 17L9.5 13M15 17L14.5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g><defs>
                                                     <clipPath id="clip0_6078_13948"><rect width="24" height="24" fill="white" /> </clipPath></defs>

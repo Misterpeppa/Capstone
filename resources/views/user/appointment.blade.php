@@ -424,7 +424,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="d-flex justify-content-between align-items-center align-self-stretch button-row d-flex mt-4" id="next-prev-buttons-1"><button class="btn btn btn-primary js-btn-prev" type="button" title="Prev" style="display: flex;height: 56px;min-width: 100px;padding: 16px var(--spacing-spacing-m, 24px);justify-content: center;align-items: center;gap: var(--spacing-spacing-m, 24px);background: transparent;border-radius: var(--radius-s, 8px);border: none;color: var(--colors-actions-action, #045B62);font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;">Previous</button>
-                                                    <button class="btn book_appointment" id="book_appointment" type="submit" onclick="submitForm()" title="Next"><span class="book_appointment_base">Book Appointment</span></button></div>
+                                                    <button class="btn book_appointment" id="book_appointments" type="submit" onclick="submitForm()" title="Next"><span class="book_appointment_base">Book Appointment</span></button></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -499,22 +499,57 @@
             </div>
         </div>
     </div>
+    <div class="modal fade show" role="dialog" tabindex="-1" id="signup_error">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content success_modal">
+				<div class="modal-header success_header">
+					<div class="failed_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_3688_23848)">
+    <path d="M13.3333 13.3333L18.6667 18.6667M18.6667 13.3333L13.3333 18.6667M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#C33834" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_3688_23848">
+      <rect width="32" height="32" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></div>
+				</div>
+				<div class="modal-body success_message">
+					<div>
+						<h1>You Have Reached The Max Appointment For Today.</h1>
+						<p>Come Back Tomorrow To Make Another Appointment.&nbsp;</p>
+					</div>
+				</div>
+                <div class="modal-footer"><a class="btn sign_in_btn" role="button" href="{{ route('landing') }}" id="go_to_signin"><span class="sign_in_btn_base">Go Back</span></a></div>
+
+			</div>
+		</div>
+	</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @if (session('success'))
     <script>
         $(document).ready(function() {
-        // Show the modal
         function showModal() {
             $('#success_modal').show();
         }
-
-        // Hide the modal
         function hideModal() {
             $('#success_modal').hide();
         }
-
-        // Call showModal function when needed
+        showModal();
+    });
+    </script>
+    @endif
+    @if (session('limit'))
+    <script>
+        $(document).ready(function() {
+            console.log('Error');
+        function showModal() {
+            $('#signup_error').show();
+        }
+        function hideModal() {
+            $('#signup_error').hide();
+        }
         showModal();
     });
     </script>

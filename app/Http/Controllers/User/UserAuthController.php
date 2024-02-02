@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Mail\ForgotPass;
-use App\Mail\VerifyEmail as MailVerifyEmail;
+use App\Mail\VerifiesEmail;
 use Illuminate\Http\Request;
 use App\Models\User\Clients;
 use Illuminate\Support\Str;
@@ -78,7 +78,7 @@ class UserAuthController extends Controller
     }
     protected function sendVerificationEmail($clients)
     {
-       Mail::to($clients->email)->send(new MailVerifyEmail($clients));
+       Mail::to($clients->email)->send(new VerifiesEmail($clients));
     }
 
     public function showSignin()
@@ -113,17 +113,20 @@ class UserAuthController extends Controller
            // $this->incrementLoginAttempts($request); // Increment login attempts
             $client = Clients::where('email', $request->email)->first();
             if (!$client) {
+                session()->flash('resetSuccess', true);
                 return back()
                     ->withErrors(['email' => 'Your email address and password does not match. Please check and try again.'])
                     ->withInput($request->except('password'));
             } else {
+                session()->flash('resetSuccess', true);
+                //dd(session()->all());
                 return back()
                     ->withErrors(['password' => 'Your email address and password does not match. Please check and try again.'])
                     ->withInput($request->except('password'));
             }
 
         }
-        
+
     }
 
     public function logout(Request $request): RedirectResponse
@@ -208,7 +211,7 @@ class UserAuthController extends Controller
         $clients->update([
             'password' => Hash::make($request->input('password')),
         ]);
-
+        session()->flash('resetSuccess', true);
         return redirect()->route('client.signin')->with('success', 'Password updated successfully. You can now login with your new password.');
     }
     

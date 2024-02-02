@@ -83,7 +83,7 @@
 					</div>
 					<div class="remember_me_forget_container mt-3">
                                 
-                                <div class="d-flex align-items-center forgot_container"><a class="forgot_link" href="{{ route('client.forgotpass') }}">Forgot Password?</a></div>
+                                <div class="d-flex align-items-center forgot_container"><a class="forgot_link" href="{{ route('admin.forgotpass') }}">Forgot Password?</a></div>
                             </div>
 					<button class="btn signin_btn" type="submit"><span class="signin_btn_base">Sign In</span></button>
                 </form>

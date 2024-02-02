@@ -263,15 +263,15 @@
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
                                                 aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6770_15021)">
-    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6770_15021">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg><span class="filter_btn_base">Sort By</span>
+                                                <g clip-path="url(#clip0_6770_15021)">
+                                                    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_6770_15021">
+                                                    <rect width="24" height="24" fill="white"/>
+                                                    </clipPath>
+                                                </defs>
+                                                </svg><span class="filter_btn_base">Sort By</span>
                                             </button>
                                             <ul class="dropdown-menu">
                                       <li class="dropdown-item ">
@@ -692,18 +692,17 @@
 
                         </div>
 
+
                         <div id="batch_product" class="w-100" class="w-100" style="overflow: auto; display: none;">
                             <table class="table table-responsive mt-3 w-100">
                                 <thead>
                                     <tr>
-                                        <th><input id="SelectAllMedBatch" type="radio" class="checkbox"></th>
                                         <th>Batch Number</th>
-                                        <th>Quantity Ordered</th>
+                                        <th>Product Code</th>
                                         <th>Quantity Left</th>
                                         <th>Date Stocked</th>
                                         <th>Expiration Date</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>Manufacturing Date</th>
                                     </tr>
                                 </thead>
                                 <tbody id="batch_table_body">
@@ -725,7 +724,7 @@
                                                 </svg></button>
                                         <div class="dropdown-menu" ><div class="button-group">
                                             <button
-		            data-action="AddStock" 
+		                data-action="AddStock" 
                                             data-product-type="{{ $product->product_type }}"
                                             data-product-id="{{ $product->id }}"
                                                 class="btn border-0 addStock"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -781,7 +780,7 @@
 
                         
 
-                        <div class="pagination">
+                        <div class="pagination" id="pagination">
                                 <div class="pagination-menu">
                                     <span>Go to:</span>
                                     <select class="paginationGoToSelect" onchange="changePage(this)">
@@ -824,7 +823,7 @@
                                     </select>
                                 </div>
                             </div>
-                    </div>
+                    </div> 
                     <div id="prod_detail_header" class="prod_detail_header">
                         <h1>Edit Product Information</h1>
                     </div>
@@ -1397,7 +1396,6 @@
                 const id = $(this).data('product-id');
 
                 inventory_header.style.display = 'none';
-
                 // Make an AJAX request to retrieve data
                 $.ajax({
                     type: 'GET',
@@ -1418,6 +1416,24 @@
                         console.log(xhr.responseText);
                     }
                 });
+                $.ajax({
+                    type: 'GET',
+                    url: `/admin/inventory/viewBatch/${product_type}/${id}`,
+                    success: function(data){
+                        $('#batch_table tbody').empty();
+                        $.each(data, function(index, batches) {
+                            var newRow = '<tr>' +
+							'<td>' + batches.batch_no + '</td>' +
+                            '<td>' + batches.product_code + '</td>' +
+                            '<td>' + batches.quantity + '</td>' +
+							'<td>' + batches.date_stocked + '</td>' +
+							'<td>' + batches.expiration_date + '</td>' +
+                            '<td>' + batches.manufacturing_date + '</td>' +
+							'</tr>';
+						$('#batch_table tbody').append(newRow);
+                        });
+                    }
+                })
             });
             $('#editButton').click(function() {
                 // Get data attributes from the button
