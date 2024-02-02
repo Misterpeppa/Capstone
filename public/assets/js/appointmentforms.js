@@ -1,22 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
     
-  const book_appointment = document.getElementById('book_appointment');
-  const agree = document.getElementById('agree');
-  const disagree = document.getElementById('disagree');
-  const consent_modal = new bootstrap.Modal(document.getElementById('consent_modal'));
+  // const book_appointment = document.getElementById('book_appointment');
+  // const agree = document.getElementById('agree');
+  // const disagree = document.getElementById('disagree');
+  // const consent_modal = new bootstrap.Modal(document.getElementById('consent_modal'));
   
-  book_appointment.addEventListener('click', function () {
-      consent_modal.show();
-  });
+  // book_appointment.addEventListener('click', function () {
+  //     consent_modal.show();
+  // });
   
-  //hide consent modal
-  disagree.addEventListener('click', function () {
-      consent_modal.hide();
-  });
+  // //hide consent modal
+  // disagree.addEventListener('click', function () {
+  //     consent_modal.hide();
+  // });
   
-  agree.addEventListener('click', function () {
-      consent_modal.hide();
-  });
+  // agree.addEventListener('click', function () {
+  //     consent_modal.hide();
+  // });
   
   // Function to capitalize the first letter of each word
   function capitalizeFirstLetter(input) {

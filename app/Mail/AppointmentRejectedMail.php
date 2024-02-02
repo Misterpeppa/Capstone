@@ -16,11 +16,11 @@ class AppointmentRejectedMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public $appointment;
+    public $rejected;
 
-    public function __construct($appointment)
+    public function __construct($rejected)
     {
-        $this->appointment = $appointment;
+        $this->rejected = $rejected;
     }
 
     /**

@@ -247,13 +247,13 @@
     }
 </script>
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-@if (session('error'))
+@if (session('unverified'))
 <script>
     $(document).ready(function() {
         $('#signup_error').modal('show');
     });
     const notifications = [
-        "Please Verify Your Email Using This Link <a href='{{ route('resend', ['clientId'=>$clientInfo->id]) }}>Resend</a>"
+        "Please Verify Your Email Using This Link"
     ];
 </script>
 @endif
@@ -263,7 +263,7 @@
         $('#signup_success').modal('show');
     });
     const notifications = [
-        "Please UnVerify Your Email Using This Link <a href='{{ route('resend', ['clientId'=>$clientInfo->id]) }}>Resend</a>"
+        "You are now Verified"
     ];
 </script>
 @endif

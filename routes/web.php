@@ -135,6 +135,7 @@ Route::middleware('admin', 'nocache')->group(function () {
     Route::match(['put', 'patch'],'/admin/inventory/edit/{product_type}/{id}', [InvController::class, 'updateProduct'])->name('product.edit');
     Route::post('/admin/inventory/archive/{product_type}/{id}', [InvController::class, 'archive'])->name('product.archive');
     Route::get('/admin/inventory/viewBatch/{product_type}/{id}', [InvController::class, 'viewBatch']);
+    Route::get('/admin/inventory/quantity{productId}', [InvController::class, 'getQuantity']);
     Route::get('/admin/inventory/reports', [ReportController::class, 'invPDF'])->name('report.inventory');
 
     Route::get('admin/client', [ClientController::class, 'show'])->name('admin_client');

@@ -1517,6 +1517,37 @@
                 });
             });
 
+        function populateTable(){
+            $.ajax({
+                type: 'GET',
+                url: '/admin/inventory/quantity/{{ $product->id }}', // Replace with the actual product ID
+                success: function(response) {
+                    var products = response.poducts;
+                    $.each(products, function(index, product) {
+                    var status;
+                    // Determine the status based on the quantity
+                    if (product.quantity === 0) {
+                        status = "Out of Stock";
+                    } else if (product.quantity <= 50) {
+                        status = "Low Stock";
+                    } else {
+                        status = "High Stock";
+                    }
+
+                    // Append a new row to the table with product details and status
+                    var newRow = '<tr>' +
+                        '<td>' + status + '</td>' +
+                        '</tr>';
+
+                    $('#product_table_container').append(newRow);
+                });
+            },
+            error: function(xhr) {
+                console.error('Error fetching product data:', xhr.responseText);
+            }
+        });
+        }
+
         });
 
         document.querySelectorAll('#editButton').forEach(button => {
@@ -1640,36 +1671,36 @@ document.getElementById("quantity_input").addEventListener("input", enableSaveCh
 
 
 
-// Assuming info_quantity is a variable in your JavaScript (replace with actual variable if different)
-var info_quantity = @json($product->info_quantity);
+// // Assuming info_quantity is a variable in your JavaScript (replace with actual variable if different)
+// var info_quantity = @json($product->info_quantity);
 
-// Determine the status based on the input quantity
-var status = info_quantity === "0" ? "Out of Stock" : (info_quantity <= 50 ? "Low Stock" : "High Stock");
+// // Determine the status based on the input quantity
+// var status = info_quantity === "0" ? "Out of Stock" : (info_quantity <= 50 ? "Low Stock" : "High Stock");
 
-// Define styles for different statuses
-var statusStyles = {
-    "Out of Stock": {
-        backgroundColor: "#DA534F",
-        color: "#fff",
-    },
-    "Low Stock": {
-        backgroundColor: "#FFA800",
-        color: "#fff",
-    },
-    "High Stock": {
-        backgroundColor: "#5CA500",
-        color: "var(--colors-main-neutral, #FFF)",
-    },
-};
+// // Define styles for different statuses
+// var statusStyles = {
+//     "Out of Stock": {
+//         backgroundColor: "#DA534F",
+//         color: "#fff",
+//     },
+//     "Low Stock": {
+//         backgroundColor: "#FFA800",
+//         color: "#fff",
+//     },
+//     "High Stock": {
+//         backgroundColor: "#5CA500",
+//         color: "var(--colors-main-neutral, #FFF)",
+//     },
+// };
 
-// Update the content and style of all the status <td> elements
-var statusTdList = document.querySelectorAll('.status-td');
+// // Update the content and style of all the status <td> elements
+// var statusTdList = document.querySelectorAll('.status-td');
 
-statusTdList.forEach(function(statusTd) {
-    statusTd.textContent = status;
-    statusTd.style.backgroundColor = statusStyles[status].backgroundColor;
-    statusTd.style.color = statusStyles[status].color;
-});
+// statusTdList.forEach(function(statusTd) {
+//     statusTd.textContent = status;
+//     statusTd.style.backgroundColor = statusStyles[status].backgroundColor;
+//     statusTd.style.color = statusStyles[status].color;
+// });
 
 
 

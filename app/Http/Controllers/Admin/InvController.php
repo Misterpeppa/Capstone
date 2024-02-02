@@ -395,6 +395,10 @@ class InvController extends Controller
                 break;
             case 'Vaccine':
                 $vax_info = VaxInfo::find($id);
+                $existingQuantiy = $vax_info->quantity;
+                $newQuantity = $existingQuantiy + $request->input('quantity');
+                $vax_info->quantity = $newQuantity;
+                $vax_info->save();
                 $vax_batch = new VaxBatch([
                 'batch_no' => $request->input('batch_no'),
                 'manufacturing_date' => $request->input('manufacturing_date'),
@@ -410,6 +414,10 @@ class InvController extends Controller
                 break;
             case 'Vitamin':
                 $vit_info = VitInfo::find($id);
+                $existingQuantiy = $vit_info->quantity;
+                $newQuantity = $existingQuantiy + $request->input('quantity');
+                $vit_info->quantity = $newQuantity;
+                $vit_info->save();
                 $vit_batch = new VitBatch([
                 'batch_no' => $request->input('batch_no'),
                 'manufacturing_date' => $request->input('manufacturing_date'),
@@ -472,6 +480,24 @@ class InvController extends Controller
              return response()->json(['error' => 'Invalid Product Type']);
         }
         return response()->json($productBatch); 
+    }
+
+    public function getQuantity($productId)
+    {
+        $med_info = MedInfo::whereNull('archived_at')->where('id', $productId)->get();
+        $vax_info = VaxInfo::whereNull('archived_at')->where('id', $productId)->get();
+        $vit_info = VitInfo::whereNull('archived_at')->where('id', $productId)->get();
+
+        if ($med_info) {
+            return response()->json(['quantity' => $med_info->quantity]);
+        } elseif ($vax_info) {
+            return response()->json(['quantity' => $vax_info->quantity]);
+        } elseif ($vit_info) {
+            return response()->json(['quantity' => $vit_info->quantity]);
+        } else {
+            return response()->json(['error' => 'Product not found.'], 404);
+        }
+           
     }
 }
    
