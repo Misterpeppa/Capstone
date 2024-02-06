@@ -49,15 +49,20 @@
                                                         <div id="error-petName" class="error-message"><span>• Please enter pet name.</span></div>
                                                     </div>
                                                     <div class="pet_type_and_breed_container">
-                                                        <div class="species_container">
+                                                        <div class="species_container w-100">
                                                             <div id="dog_cat_btn" class="species" style="display: flex;align-items: flex-start;gap: var(--spacing-spacing-xs, 12px);align-self: stretch;">
                                                                 <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Dog" for="dog" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Dog</label><input type="radio" id="dog" class="custom-control-input" style="display: flex;width: 22px;height: 22px;justify-content: center;align-items: center;border-radius: 8px;background: var(--colors-main-neutral-light, #F5F5F5);box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;" name="dog"></div>
                                                                 <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Cat" for="cat" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Cat</label><input type="radio" id="cat" class="custom-control-input" style="display: flex;width: 22px;height: 22px;justify-content: center;align-items: center;border-radius: 8px;background: var(--colors-main-neutral-light, #F5F5F5);box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;" name="cat"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="align-self-stretch form-floating breed_container"><select class="form-select" id="breed" required="" style="height: 100%;" disabled=""></select><label class="form-label breed_label" for="breed">Select a breed<span>&nbsp;*</span></label>
+                                                        <div class="form-floating breed_container w-100"><select class="form-select" id="breed" required="" style="height: 100%;" disabled=""></select><label class="form-label breed_label" for="breed">Select a breed<span>&nbsp;*</span></label>
                                                             <div id="error-breed" class="error-message"><span>• Please select a breed</span></div>
                                                         </div>
+                                                        <div class="form-floating" id="specify_breed">
+                                                            <input class="form-control" id="specificBreed"/>
+                                                            <label class="form-label" for="specificBreed">Specify Breed</label>
+                                                        </div>
+
                                                     </div>
                                                     <div class="align-self-stretch form-floating"><select class="form-select form-select-sm" id="surgery_type" data-id="surgery_type">
                                                             <option value="" selected="">Select a surgery</option>
