@@ -329,9 +329,11 @@ class InvController extends Controller
                 $product->expiration_date = $request->input('expiration_date');
                 $product->manufacturing_date = $request->input('manufacturing_date');
                 $product->batch_no = $request->input('batch_no');
+                $product->archived_at = null;
                 $product->save();
                 $med_info->prod_desc = $request->input('prod_desc');
                 $med_info->quantity = $request->input('quantity');
+                $med_info->archived_at = null;
                 $med_info->save();
                 break;
             case 'Vaccine':
@@ -343,9 +345,11 @@ class InvController extends Controller
                 $product->expiration_date = $request->input('expiration_date');
                 $product->manufacturing_date = $request->input('manufacturing_date');
                 $product->batch_no = $request->input('batch_no');
+                $product->archived_at = null;
                 $product->save();
                 $vax_info->prod_desc = $request->input('prod_desc');
                 $vax_info->quantity = $request->input('quantity');
+                $vax_info->archived_at = null;
                 $vax_info->save();
                 break;
             case 'Vitamin':
@@ -357,9 +361,11 @@ class InvController extends Controller
                 $product->expiration_date = $request->input('expiration_date');
                 $product->manufacturing_date = $request->input('manufacturing_date');
                 $product->batch_no = $request->input('batch_no');
+                $product->archived_at = null;
                 $product->save();
                 $vit_info->prod_desc = $request->input('prod_desc');
                 $vit_info->quantity = $request->input('quantity');
+                $vit_info->archived_at = null;
                 $vit_info->save();
                 break;
             default:
@@ -376,6 +382,7 @@ class InvController extends Controller
         switch ($product_type) {
             case 'Medicine':
                 $med_info = MedInfo::find($id);
+                $med_info->archived_at = null;
                 $existingQuantiy = $med_info->quantity;
                 $newQuantity = $existingQuantiy + $request->input('quantity');
                 $med_info->quantity = $newQuantity;
@@ -387,11 +394,10 @@ class InvController extends Controller
                 'date_stocked' => $request->input('date_stocked'),
                 'quantity' => $request->input('quantity'),
                 ]);
+                $med_batch->archived_at = null;
                 $med_info->medBatch()->save($med_batch);
                 
-                $med_info = MedInfo::find($id);
-                $med_info->quantity += $request->input('quantity');
-                $med_info->save();
+                
                 break;
             case 'Vaccine':
                 $vax_info = VaxInfo::find($id);

@@ -3,10 +3,9 @@
 
 <head>
 <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-..." crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Admin | Inventory</title>
     <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
@@ -14,13 +13,15 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,500,600,700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+    <link rel="stylesheet" href="{{ asset('assets/css/bs-theme-overrides.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Bootstrap-4-Custom-Radio.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Toggle-Switch.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <style>
@@ -38,7 +39,7 @@
         @endphp
         @include('includes.admin_header')
         <div class="content">
-        <div id="rectangle" class="rectangle justify-content-between">
+            <div id="rectangle" class="rectangle justify-content-between">
                 <div>
                     <a id="menu-toggle" class="btn menu_toggle btn-link" role="button" href="#menu-toggle"><i class="fa fa-bars custom-bars-icon"></i></a>
                 </div>
@@ -49,11 +50,17 @@
                                 <path
                                     d="M2.29482 10.4791L2.93736 10.866L2.93903 10.8632L2.29482 10.4791ZM1.38031 11.998L0.737787 11.6112L0.737673 11.6113L1.38031 11.998ZM2.23916 14.328L1.99871 15.0385L2.00149 15.0394L2.23916 14.328ZM12.7918 14.328L12.5564 13.6159L12.5542 13.6167L12.7918 14.328ZM13.6507 11.998L14.2938 11.6121L14.2932 11.6112L13.6507 11.998ZM12.7362 10.4791L12.0864 10.854L12.0937 10.866L12.7362 10.4791ZM8.99065 2.00199L8.78522 2.7233C9.0594 2.80139 9.35415 2.71728 9.54583 2.50625C9.7375 2.29522 9.79296 1.99376 9.68894 1.72833L8.99065 2.00199ZM6.0483 2.00199L5.35001 1.72833C5.24599 1.99376 5.30145 2.29522 5.49313 2.50625C5.68481 2.71728 5.97955 2.80139 6.25374 2.7233L6.0483 2.00199ZM5.83359 16.3002L5.30286 16.8301L5.30326 16.8305L5.83359 16.3002ZM7.51948 1.02137C4.47306 1.02137 1.99811 3.49632 1.99811 6.54274H3.49811C3.49811 4.32475 5.30148 2.52137 7.51948 2.52137V1.02137ZM1.99811 6.54274V8.84096H3.49811V6.54274H1.99811ZM1.99811 8.84096C1.99811 8.99314 1.96284 9.22832 1.89124 9.48627C1.8197 9.74398 1.72858 9.96429 1.65061 10.0951L2.93903 10.8632C3.10759 10.5804 3.24311 10.2242 3.33658 9.88749C3.42999 9.551 3.49811 9.17386 3.49811 8.84096H1.99811ZM1.6523 10.0923L0.737787 11.6112L2.02284 12.3849L2.93735 10.866L1.6523 10.0923ZM0.737673 11.6113C0.34933 12.2568 0.264391 12.9889 0.507 13.6441C0.749283 14.2984 1.2894 14.7984 1.99871 15.0384L2.47961 13.6176C2.15512 13.5078 1.98351 13.3119 1.91366 13.1233C1.84415 12.9355 1.84668 12.6776 2.02295 12.3847L0.737673 11.6113ZM2.00149 15.0394C5.58318 16.236 9.44782 16.236 13.0295 15.0394L12.5542 13.6167C9.28099 14.7103 5.75001 14.7103 2.47682 13.6167L2.00149 15.0394ZM13.0272 15.0401C14.4485 14.5703 15.0644 12.8965 14.2938 11.6121L13.0076 12.3839C13.2867 12.849 13.0596 13.4496 12.5564 13.6159L13.0272 15.0401ZM14.2932 11.6112L13.3787 10.0923L12.0937 10.866L13.0082 12.3849L14.2932 11.6112ZM13.3858 10.1043C13.3086 9.97054 13.2183 9.7472 13.1473 9.48852C13.0762 9.22901 13.0408 8.99336 13.0408 8.84096H11.5408C11.5408 9.17364 11.6089 9.55031 11.7008 9.88524C11.7928 10.221 11.9252 10.5742 12.0865 10.8539L13.3858 10.1043ZM13.0408 8.84096V6.54274H11.5408V8.84096H13.0408ZM13.0408 6.54274C13.0408 3.50428 10.5579 1.02137 7.51948 1.02137V2.52137C9.72952 2.52137 11.5408 4.3327 11.5408 6.54274H13.0408ZM9.19608 1.28067C8.10014 0.968542 6.93882 0.968542 5.84287 1.28067L6.25374 2.7233C7.08111 2.48766 7.95784 2.48766 8.78522 2.7233L9.19608 1.28067ZM6.7466 2.27564C6.86777 1.96645 7.16863 1.75 7.51948 1.75V0.25C6.53434 0.25 5.69008 0.860583 5.35001 1.72833L6.7466 2.27564ZM7.51948 1.75C7.87033 1.75 8.17119 1.96645 8.29236 2.27564L9.68894 1.72833C9.34888 0.860583 8.50461 0.25 7.51948 0.25V1.75ZM9.15516 14.6143C9.15516 15.5122 8.41739 16.25 7.51948 16.25V17.75C9.24582 17.75 10.6552 16.3407 10.6552 14.6143H9.15516ZM7.51948 16.25C7.07487 16.25 6.65887 16.0648 6.36392 15.7699L5.30326 16.8305C5.86716 17.3944 6.65991 17.75 7.51948 17.75V16.25ZM6.36432 15.7703C6.05752 15.463 5.88477 15.0468 5.88379 14.6126L4.38379 14.616C4.38567 15.4465 4.71607 16.2425 5.30286 16.8301L6.36432 15.7703Z"
                                     fill="#1C1C1C"></path></svg></span></button>
-                    
+                    <div class="dropdown admin_btn">
+                        <button class="btn dropdown-toggle admin" aria-expanded="false" data-bs-toggle="dropdown"
+                            type="button"><img src="{{ asset('assets/img/image%2011%20(1).png') }}" alt="Admin"
+                                width="40" height="40"></button>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="{{ route('admin.signout') }}">Sign Out</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="main_content">
-                <div id="inventory_container" class="inventory_container" >
+                <div id="inventory_container" class="inventory_container">
                     <div id="inventory_header" class="inventory_header">
                         <div class="d-flex flex-column justify-content-center align-items-start">
                             <h1>Inventory</h1>
@@ -476,8 +483,8 @@
                                         </defs>
                                     </svg> Add Product</span></button>
                         </div>
-                        <div id="product_table_container" class="w-100">
-                            <table class="table table-responsive mt-3 w-100" >
+                        <div id="product_table_container" class="w-100" style="display: none; overflow: auto;">
+                            <table class="table table-responsive w-100 mt-3">
                                 <thead>
                                     <tr>
                                         <th><input id="SelectAll" type="radio" class="checkbox"></th>
@@ -490,7 +497,7 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody id="inventory_table_body">
+                                <tbody id="inventory_table_body" class="inventoryTableBody">
                                   
                                     @foreach ($products as $product)
                                     
@@ -513,14 +520,25 @@
                                                 <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
                                                 <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
                                                 </svg></button>
-                                        <div class="dropdown-menu"><div class="button-group">
-                                        <button
+                                        <div class="dropdown-content"><div class="button-group">
+                                            <button
 		            data-action="AddStock" 
                                             data-product-type="{{ $product->product_type }}"
                                             data-product-id="{{ $product->id }}"
                                                 class="btn border-0 addStock"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                             <path d="M7 10H13M10 7V13M1 10C1 11.1819 1.23279 12.3522 1.68508 13.4442C2.13738 14.5361 2.80031 15.5282 3.63604 16.364C4.47177 17.1997 5.46392 17.8626 6.55585 18.3149C7.64778 18.7672 8.8181 19 10 19C11.1819 19 12.3522 18.7672 13.4442 18.3149C14.5361 17.8626 15.5282 17.1997 16.364 16.364C17.1997 15.5282 17.8626 14.5361 18.3149 13.4442C18.7672 12.3522 19 11.1819 19 10C19 8.8181 18.7672 7.64778 18.3149 6.55585C17.8626 5.46392 17.1997 4.47177 16.364 3.63604C15.5282 2.80031 14.5361 2.13738 13.4442 1.68508C12.3522 1.23279 11.1819 1 10 1C8.8181 1 7.64778 1.23279 6.55585 1.68508C5.46392 2.13738 4.47177 2.80031 3.63604 3.63604C2.80031 4.47177 2.13738 5.46392 1.68508 6.55585C1.23279 7.64778 1 8.8181 1 10Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg> Add Stock</div></button>
+                                            <button
+		                                data-action="DeductStock" 
+                                            data-product-type="{{ $product->product_type }}"
+                                            data-product-id="{{ $product->id }}"
+                                                class="btn border-0 addStock"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M5 12l14 0" />
+</svg>
+
+
+ Deduct Stock</div></button>
                                                 <button 
                                                 data-action="View"
                                                 data-product-type="{{ $product->product_type }}"
@@ -553,8 +571,6 @@
                                                     </svg> Edit</div></button>
                                                 <button 
                                                 data-action="Archive"
-                                                data-product-type="{{ $product->product_type }}"
-                                                data-product-id="{{ $product->id }}"
                                                 class="btn border-0 archiveButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
                                                 <path d="M17 5C17.5304 5 18.0391 4.78929 18.4142 4.41421C18.7893 4.03914 19 3.53043 19 3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3C1 3.53043 1.21071 4.03914 1.58579 4.41421C1.96086 4.78929 2.46957 5 3 5M17 5H3M17 5V15C17 15.5304 16.7893 16.0391 16.4142 16.4142C16.0391 16.7893 15.5304 17 15 17H5C4.46957 17 3.96086 16.7893 3.58579 16.4142C3.21071 16.0391 3 15.5304 3 15V5M8 9H12" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg> Archive</div></button>
@@ -578,7 +594,7 @@
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="dropbtn">Actions</button>
-                                                        <div class="dropdown-menu" id="dropdown-content">
+                                                        <div class="dropdown-content" id="dropdown-content">
                                                             <button data-action="AddStock" id="addStock"
                                                                 data-product-type="{{ $medInfo->product_type }}"
                                                                 data-product-id="{{ $medInfo->id }}">
@@ -694,11 +710,11 @@
 
                         </div>
 
-
-                        <div id="batch_product" class="w-100" class="w-100" style="overflow: auto; display: none;">
-                            <table class="table table-responsive mt-3 w-100">
+                        <div class="w-100" id="batch_product" style="display: none;">
+                            <table class="table table-responsive w-100" style="overflow: auto;" id="batch_table">
                                 <thead>
                                     <tr>
+                                        <th></th>
                                         <th>Batch Number</th>
                                         <th>Product Code</th>
                                         <th>Quantity Left</th>
@@ -717,14 +733,12 @@
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
                                         <td class="dropdown button-action">
-                                            <button class="dropbtn" id="dropbtn"  style="background-color: transparent; border:none;"
-                                                            aria-expanded="false" data-bs-toggle="dropdown"
-                                                            type="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                            <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                                                 <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
                                                 <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
                                                 <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
                                                 </svg></button>
-                                        <div class="dropdown-menu" ><div class="button-group">
+                                        <div class="dropdown-content"><div class="button-group">
                                             <button
 		                data-action="AddStock" 
                                             data-product-type="{{ $product->product_type }}"
@@ -782,7 +796,7 @@
 
                         
 
-                        <div class="pagination" id="pagination">
+                         <div class="pagination" id="pagination">
                                 <div class="pagination-menu">
                                     <span>Go to:</span>
                                     <select class="paginationGoToSelect" onchange="changePage(this)">
@@ -825,7 +839,7 @@
                                     </select>
                                 </div>
                             </div>
-                    </div> 
+                    </div>
                     <div id="prod_detail_header" class="prod_detail_header">
                         <h1>Edit Product Information</h1>
                     </div>
@@ -974,7 +988,7 @@
                         data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="add_product_form" class="add_client" method="POST" action="{{ route('inv.store') }}">
+                    <form id="add_product_form" method="POST" action="{{ route('inv.store') }}">
                         @csrf
                         <div class="mb-3 input_container">
                             <div class="new_input_row">
@@ -1084,7 +1098,7 @@
                         data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="add_product_form1" class="add_client" method="POST" action="{{ route('inv.store') }}">
+                    <form id="add_product_form1" method="POST" action="{{ route('inv.store') }}">
                         @csrf
                         <div class="mb-3 input_container">
                             <div class="new_input_row">
@@ -1195,7 +1209,7 @@
                     <h1 class="modal-title">Add Stock</h1><button class="btn-close" aria-label="Close"
                         data-bs-dismiss="modal" onClick="cancelStock()" type="button"></button>
                 </div>
-                <div class="modal-body add_stock_modal_body w-100">
+                <div class="modal-body add_stock_modal_body">
                     @foreach ($products as $productInfo)
                         <form
                             action="{{ route('product.stock', ['product_type' => $productInfo->product_type, 'id' => $productInfo->id]) }}"
@@ -1207,7 +1221,7 @@
                     <div class="mb-3 stock_input_container">
                         <div class="stock_image_container"><span class="product_name">Product Name</span></div>
                         <div class="new_input_row">
-                            <div class="form-floating batch_number"><input id="batch_no" name="batch_no"
+                            <div class="form-floating batch_number"><input id="batch_no_1" name="batch_no"
                                     class="form-control" type="text" data-id="batch_no"
                                     placeholder="Batch Number" /><label class="form-label form-label"
                                     for="batch_number">Batch Number</label>
@@ -1216,7 +1230,7 @@
                             </div>
                         </div>
                         <div class="new_input_row">
-                            <div class="form-floating w-100" ><input id="manufacturing_date"
+                            <div class="form-floating" ><input id="manufacturing_date-1"
                                     name="manufacturing_date" class="form-control"
                                     data-id="manufacturing_date" placeholder="Manufactured Date"
                                     type="date" /><label class="form-label form-label"
@@ -1224,7 +1238,7 @@
                                 <div id="error-manufactured_date-2" class="error-message"><span>Please enter the
                                         manufactured date.</span></div>
                             </div>
-                            <div class="form-floating w-100" ><input id="expired_date"
+                            <div class="form-floating" ><input id="expired_date"
                                     name="expiration_date" class="form-control"
                                     data-id="expired_date" placeholder="Expiration Date"
                                     type="date" /><label class="form-label form-label"
@@ -1232,8 +1246,8 @@
                                 <div id="error-expiration_date-2" class="error-message"><span>Please enter the
                                         expiration date.</span></div>
                             </div>
-                            <div class="form-floating w-100" ><input id="date_stocked"
-                                    name="date_stocked" class="form-control form-control" data-id="date_stocked"
+                            <div class="form-floating" ><input id="date_stocked1"
+                                    name="date_stocked" class="form-control form-control" data-id="date_stocked1"
                                     placeholder="Expiration Date" type="date" /><label
                                     class="form-label form-label" for="datestocked">Date Stocked</label>
                                 <div id="error-datestocked-2" class="error-message"><span>Please enter the date
@@ -1262,6 +1276,56 @@
                     <button class="btn cancel_btn" id="cancel_btn" onClick="cancelStock()" data-bs-dismiss="modal" type="button" role="button" aria-label="Cancel"><span
                             class="cancel_btn_base">Cancel</span></button>
                     <button id="add_stock" class="btn add_stock" type="submit" disabled><span class="add_stock_base">Add
+                            Stock</span></button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="deduct_stock_modal" class="modal fade" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content deduct_stock_modal">
+                <div class="modal-header">
+                    <h1 class="modal-title">Deduct Stock</h1><button class="btn-close" aria-label="Close"
+                        data-bs-dismiss="modal" onClick="" type="button"></button>
+                </div>
+                <div class="modal-body add_stock_modal_body w-100">
+                    @foreach ($products as $productInfo)
+                        <form
+                            action="{{ route('product.stock', ['product_type' => $productInfo->product_type, 'id' => $productInfo->id]) }}"
+                            method="POST" id="add_stock_form">
+                    @endforeach
+                    @csrf
+                    <input type="hidden" name="product_type" id="product_type">
+                    <input type="hidden" name="id" id="product_id">
+                    <div class="mb-3 stock_input_container">
+                        <div class="stock_image_container"><span class="product_name">Product Name</span></div>
+                        
+                        
+                        <div class="quantity_input_container d-flex justify-content-center">
+                            <h1>Quantity</h1>
+                            <div class="form-floating">
+                                <div class="quantity_input deduct">
+                                    <button class="quantity_minus" onclick="decrementQuantity2()"
+                                        type="button">-</button>
+                                    <input id="deduct_quantity_input" class="input_quantity" type="number"
+                                        aria-labelledby="label-quantity" data-id="quantity" min="0"
+                                        name="quantity" required value="0" />
+                                    <button class="quantity_add" onclick="incrementQuantity2()"
+                                        type="button">+</button>
+                                    <div id="error-quantity-2" class="error-message"><span>Please input a quantity
+                                            value more than 0.</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer deduct_stock_buttons">
+                    <button class="btn cancel_btn" id="cancel_btn" onClick="cancelDeductStock()" data-bs-dismiss="modal" type="button" role="button" aria-label="Cancel"><span
+                            class="cancel_btn_base">Cancel</span></button>
+                    <button id="deduct_stock" class="btn add_stock" data-bs-dismiss="modal" type="submit"><span class="add_stock_base">Deduct
                             Stock</span></button>
                 </div>
                 </form>
@@ -1403,24 +1467,24 @@
         }
         $(document).ready(function() {
             updateStatus();
-                $('#editButton').click(function() {
-                const invData = {
-                    'item_name' :$(this).data('item_name'),
-                    'prodoct_code' :$(this).data('product_code'),
-                    'last_name' :$(this).data('last-name'),
-                    'suffix' :$(this).data('suffix'),
-                    'birthdate' :$(this).data('birthdate'),
-                    'email' :$(this).data('email'),
-                    'phone' :$(this).data('phone'),
-                };      
-                $('#editItemName').val(invData.item_name);
-                $('#product_code').val(invData.middle_name);
-                $('#editLastName').val(clientData.last_name);
-                $('#editSuffix').val(clientData.suffix);
-                $('#editBirthdate').val(clientData.birthdate);
-                $('#editEmail').val(clientData.email);
-                $('#editPhone').val(clientData.phone);
-            });
+            $('#editButton').click(function() {
+            const invData = {
+                'item_name' :$(this).data('item_name'),
+                'prodoct_code' :$(this).data('product_code'),
+                'last_name' :$(this).data('last-name'),
+                'suffix' :$(this).data('suffix'),
+                'birthdate' :$(this).data('birthdate'),
+                'email' :$(this).data('email'),
+                'phone' :$(this).data('phone'),
+            };      
+            $('#editItemName').val(invData.item_name);
+            $('#product_code').val(invData.middle_name);
+            $('#editLastName').val(clientData.last_name);
+            $('#editSuffix').val(clientData.suffix);
+            $('#editBirthdate').val(clientData.birthdate);
+            $('#editEmail').val(clientData.email);
+            $('#editPhone').val(clientData.phone);
+        });
             $('.viewButton').click(function() {
                 var inventory_header = document.getElementById("inventory_header");
                 var rowId = $(this).closest('tr').data('row-id');
@@ -1455,6 +1519,7 @@
                         $('#batch_table tbody').empty();
                         $.each(data, function(index, batches) {
                             var newRow = '<tr>' +
+                            '<td>' + ' ' + '</td>' +
 							'<td>' + batches.batch_no + '</td>' +
                             '<td>' + batches.product_code + '</td>' +
                             '<td>' + batches.quantity + '</td>' +
@@ -1550,8 +1615,6 @@
             });
 
         });
-
-        
 
         document.querySelectorAll('#editButton').forEach(button => {
             button.addEventListener('click', function() {
@@ -1674,36 +1737,36 @@ document.getElementById("quantity_input").addEventListener("input", enableSaveCh
 
 
 
-// // Assuming info_quantity is a variable in your JavaScript (replace with actual variable if different)
-// var info_quantity = @json($product->info_quantity);
+// Assuming info_quantity is a variable in your JavaScript (replace with actual variable if different)
+var info_quantity = @json($product->info_quantity);
 
-// // Determine the status based on the input quantity
-// var status = info_quantity === "0" ? "Out of Stock" : (info_quantity <= 50 ? "Low Stock" : "High Stock");
+// Determine the status based on the input quantity
+var status = info_quantity === "0" ? "Out of Stock" : (info_quantity <= 50 ? "Low Stock" : "High Stock");
 
-// // Define styles for different statuses
-// var statusStyles = {
-//     "Out of Stock": {
-//         backgroundColor: "#DA534F",
-//         color: "#fff",
-//     },
-//     "Low Stock": {
-//         backgroundColor: "#FFA800",
-//         color: "#fff",
-//     },
-//     "High Stock": {
-//         backgroundColor: "#5CA500",
-//         color: "var(--colors-main-neutral, #FFF)",
-//     },
-// };
+// Define styles for different statuses
+var statusStyles = {
+    "Out of Stock": {
+        backgroundColor: "#DA534F",
+        color: "#fff",
+    },
+    "Low Stock": {
+        backgroundColor: "#FFA800",
+        color: "#fff",
+    },
+    "High Stock": {
+        backgroundColor: "#5CA500",
+        color: "var(--colors-main-neutral, #FFF)",
+    },
+};
 
-// // Update the content and style of all the status <td> elements
-// var statusTdList = document.querySelectorAll('.status-td');
+// Update the content and style of all the status <td> elements
+var statusTdList = document.querySelectorAll('.status-td');
 
-// statusTdList.forEach(function(statusTd) {
-//     statusTd.textContent = status;
-//     statusTd.style.backgroundColor = statusStyles[status].backgroundColor;
-//     statusTd.style.color = statusStyles[status].color;
-// });
+statusTdList.forEach(function(statusTd) {
+    statusTd.textContent = status;
+    statusTd.style.backgroundColor = statusStyles[status].backgroundColor;
+    statusTd.style.color = statusStyles[status].color;
+});
 
 
 

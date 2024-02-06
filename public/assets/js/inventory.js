@@ -34,8 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add an event listener for the buttons inside dropdown-content
     document
       .querySelectorAll(".button-action button")
-      .forEach(function (button) { button.addEventListener("click", function (event) {
-          closeDropdownMenus();
+      .forEach(function (button) {
+        button.addEventListener("click", function (event) {
           event.preventDefault();
           const action = this.getAttribute("data-action");
           if (action === "AddStock") {
@@ -48,23 +48,27 @@ document.addEventListener("DOMContentLoaded", function () {
             closeDropdownMenus();
 
             modal2.show();
+          } else if(action ==="DeductStock"){
+            var deduct_stock_modal = new bootstrap.Modal(
+              document.getElementById("deduct_stock_modal")
+            );
+            closeDropdownMenus();
+            deduct_stock_modal.show();
+
           } else if (action === "View") {
             const view_product = document.getElementById("view_product");
             var product_table_container = document.getElementById("product_table_container");
             var inventory_header = document.getElementById("inventory_header");
             var prod_info_header = document.getElementById("prod_info_header");
             var batch_product = document.getElementById("batch_product");
-            var prod_pagination= document.getElementById("prod_pagination");
-            const prod_detail1 = document.querySelector(".left_part_product_header");
-            const prod_detail2 = document.querySelector(".pagination");
-
-
-            prod_detail1.style.display = "none";
-            prod_detail2.style.display = "none";
+            var pagination = document.getElementById("pagination");
+            var left_part_product_header = document.querySelector(".left_part_product_header");
+            
+            left_part_product_header.style.display = "none";
             view_product.style.display = "flex";
+            pagination.style.display = "none";
             product_table_container.style.display = "none";
             batch_product.style.display = "flex";
-            prod_pagination.style.display = "none";
 
             inventory_header.style.display = "none";
             prod_info_header.style.display = "flex";
@@ -108,80 +112,77 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       });
 
-    // Get the "Back" button sa view_product element
-    const backButton = document.querySelector(".view_back_btn");
+      const backButton = document.querySelector(".view_back_btn");
 
-    // Add a click event listener to the "Back" button
-    backButton.addEventListener("click", function () {
-      // Hide the view_product
-      var view_product = document.querySelector(".view_product");
-      var inventory_header = document.getElementById("inventory_header");
-      var prod_info_header = document.getElementById("prod_info_header");
-      var product_table_container = document.getElementById("product_table_container");
-      var batch_product = document.getElementById("batch_product");
-      var prod_pagination= document.getElementById("prod_pagination");
-      
-      prod_pagination.style.display = 'flex';
-      
-      batch_product.style.display = "none";
-      view_product.style.display = "none";
-      inventory_header.style.display = "flex";
-      prod_info_header.style.display = "none";
-      product_table_container.style.display = "flex";
-    });
-
-    // Get the "Back" button sa prod_detail element
-    const prodBackButton = document.querySelector(".product_back_btn");
-
-    // Add a click event listener to the "Back" button
-    prodBackButton.addEventListener("click", function () {
-      // Hide the view_product 
-      const prod_detail = document.querySelector(".prod_detail");
-      const prod_detail_header = document.getElementById("prod_detail_header");
-      const prod_info_header = document.getElementById("prod_info_header");
-      const view_product = document.getElementById("view_product");
-      const InventoryContainer = document.getElementById("InventoryContainer");
-      var product_table_container = document.getElementById("product_table_container");
-      var batch_product = document.getElementById("batch_product");
-      
-      batch_product.style.display = "none";
-      prod_detail.style.display = "none";
-      product_table_container.style.display = "flex";
-      prod_detail_header.style.display = "none";
-      prod_info_header.style.display = "none";
-      view_product.style.display = "none";
-      InventoryContainer.style.display = "flex";
-    });
+      // Add a click event listener to the "Back" button
+      backButton.addEventListener("click", function () {
+        // Hide the view_product
+        var view_product = document.querySelector(".view_product");
+        var inventory_header = document.getElementById("inventory_header");
+        var prod_info_header = document.getElementById("prod_info_header");
+        var product_table_container = document.getElementById("product_table_container");
+        var batch_product = document.getElementById("batch_product");
+        var pagination = document.getElementById("pagination");
+        var left_part_product_header = document.querySelector(".left_part_product_header");
+              
+        left_part_product_header.style.display = "flex";
+        pagination.style.display = "flex";
+        batch_product.style.display = "none";
+        view_product.style.display = "none";
+        inventory_header.style.display = "flex";
+        prod_info_header.style.display = "none";
+        product_table_container.style.display = "flex";
+      });
+  
+      // Get the "Back" button sa prod_detail element
+      const prodBackButton = document.querySelector(".product_back_btn");
+  
+      // Add a click event listener to the "Back" button
+      prodBackButton.addEventListener("click", function () {
+        // Hide the view_product 
+        const prod_detail = document.querySelector(".prod_detail");
+        const prod_detail_header = document.getElementById("prod_detail_header");
+        const prod_info_header = document.getElementById("prod_info_header");
+        const view_product = document.getElementById("view_product");
+        const InventoryContainer = document.getElementById("InventoryContainer");
+        var product_table_container = document.getElementById("product_table_container");
+        var batch_product = document.getElementById("batch_product");
+        
+        batch_product.style.display = "flex";
+        prod_detail.style.display = "none";
+        product_table_container.style.display = "none";
+        prod_detail_header.style.display = "none";
+        prod_info_header.style.display = "flex";
+        view_product.style.display = "flex";
+        InventoryContainer.style.display = "flex";
+        
+      });
 
     // Show the split_btn
     split_btn.style.display = "flex";
 
     // Toggle the visibility of dropdown-content when the Actions button is clicked
-document.querySelectorAll(".dropbtn").forEach(function (button) {
-  button.addEventListener("click", function (event) {
-      event.stopPropagation(); // Prevent the click event from propagating
+    document.querySelectorAll(".dropbtn").forEach(function (button) {
+      button.addEventListener("click", function (event) {
+        closeDropdownMenus();
+        event.stopPropagation(); // Prevent the click event from propagating
+        const content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else if (content.style.display === "flex") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "flex";
+        }
+      });
+    });
+    closeDropdownMenus();
 
-      // Get the corresponding dropdown-content
-      const content = this.nextElementSibling;
-
-      // Toggle the display property between 'none' and 'flex'
-      content.style.display = (content.style.display === "flex") ? "none" : "flex";
-  });
-});
-
-// Close dropdown menus when clicking outside the dropdown
-document.addEventListener('click', function (event) {
-  // Check if the clicked element is not a dropdown button or dropdown content
-  if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-menu')) {
-      closeDropdownMenus();
-  }
-});
-
-function closeDropdownMenus() {
-  document.querySelectorAll('.dropdown-menu').forEach(function (content) {
-      content.style.display = 'none';
-  });
-}
+    function closeDropdownMenus() {
+      document.querySelectorAll('.dropdown-content').forEach(function (content) {
+          content.style.display = 'none';
+      });
+    }
 
 
     
@@ -189,12 +190,6 @@ function closeDropdownMenus() {
     // Event listener to close dropdown menus when clicking outside
     document.addEventListener('click', function (event) {
       if (!event.target.matches('.dropbtn')) {
-          closeDropdownMenus();
-      }
-    });
-
-    document.addEventListener('click', function (event) {
-      if (event.target.matches('.dropbtn')) {
           closeDropdownMenus();
       }
     });
@@ -479,9 +474,10 @@ function submitFormData(formData) {
     return selectedDate <= today;
   }
 
-  var manufacturing_date = document.getElementById('manufacturing_date');
+
+  var manufacturing_date = document.getElementById('manufacturing_date-1');
   var expired_date = document.getElementById('expired_date');
-  var date_stocked = document.getElementById('date_stocked');
+  var date_stocked = document.getElementById('date_stocked1');
   var expiry_date = document.getElementById('expiry_date');
 
 
@@ -504,7 +500,7 @@ function submitFormData(formData) {
     const selectedDate = manufactured_dateInput.value;
     const selectedDate1 = manufactured_dateInput1.value;
     const selectDate2 = manufacturing_date.value;
-    if (isFutureDate(selectedDate && selectedDate1)) {
+    if (isFutureDate(selectedDate && selectedDate1 && selectDate2)) {
       alert("Please select a previous date for Manufactured Date.");
       manufactured_dateInput.value = ""; // Clear the input value
       manufactured_dateInput.focus(); // Set focus back to the input
@@ -568,18 +564,20 @@ function submitFormData(formData) {
   // Disable keyboard events for all date inputs
   const dateInputs = [
     manufactured_dateInput,
+    manufactured_dateInput1,
     expiration_dateInput,
     datestockedInput,
+    date_stocked,
     manufacturing_date,
     expired_date,
     date_stocked,
     expiry_date,
   ];
-  dateInputs.forEach((input) => {
-    input.addEventListener("keydown", function (e) {
-      e.preventDefault();
-    });
-  });
+
+
+  dateInputs.addEventListener('keydown', function (e) {
+    e.preventDefault();
+});
   
 // Function to restrict "batch_number" input to numbers 1 to 3
 function restrictBatchNumberInput(inputElement) {
@@ -648,7 +646,6 @@ validationProductCode(productCodeInput1);
   parentElement.addEventListener("click", function (event) {
     // Check if the clicked element is the dropbtn
     if (event.target.matches("#dropbtn")) {
-      
       // Select the dropdown-content
       var dropdownContent = document.getElementById("dropdown-content");
 
@@ -963,10 +960,10 @@ function cancelStock() {
 
 
 function enableAddStock() {
-  var batch_number = document.getElementById("batch_no").value;
-  var manufactured_date1 = document.getElementById("manufacturing_date").value;
+  var batch_number = document.getElementById("batch_no_1").value;
+  var manufactured_date1 = document.getElementById("manufacturing_date-1").value;
   var expiration_date = document.getElementById("expired_date").value;
-  var datestocked = document.getElementById("date_stocked").value;
+  var datestocked = document.getElementById("date_stocked1").value;
   var quantity = document.getElementById("quantity-2").value;
   var add_stock = document.getElementById("add_stock");
 
@@ -992,11 +989,13 @@ function enableAddStock() {
   console.log('add_stock.disabled:', add_stock.disabled);
 }
 
-document.getElementById("batch_no").addEventListener("input", enableAddStock);
-document.getElementById("manufacturing_date").addEventListener("input", enableAddStock);
+document.getElementById("batch_no_1").addEventListener("input", enableAddStock);
+document.getElementById("manufacturing_date-1").addEventListener("input", enableAddStock);
 document.getElementById("expired_date").addEventListener("input", enableAddStock);
-document.getElementById("date_stocked").addEventListener("input", enableAddStock);
+document.getElementById("date_stocked1").addEventListener("input", enableAddStock);
 document.getElementById("quantity-2").addEventListener("input", enableAddStock);
+
+
 
 // Triggering the function initially
 enableAddStock();
