@@ -351,7 +351,7 @@
                         <table class="table table-responsive mt-3">
                             <thead>
                                 <tr>
-                                    <th><input type="radio" id="Select_All_Archive" class="checkbox"></th>
+                                    <th><input type="checkbox" id="Select_All_Archive" class="checkbox"></th>
                                     <th>ID</th>
                                     <th>title</th>
                                     <th>source</th>
@@ -363,7 +363,7 @@
                             <tbody id="archive_table_body">
                               @foreach ($archived as $index => $record)
                                 <tr>
-                                    <td><input type="radio" class="checkbox"></td>
+                                    <td><input type="checkbox" class="checkbox"></td>
                                     <td>{{ $index + 1 }}</td>
                                     <td>
                                         @if ($record instanceof App\Models\Admin\MedInfo)
@@ -535,7 +535,7 @@
 
             SelectAll.addEventListener("click", function () {
     var tableBody = document.getElementById('archive_table_body');
-    var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
+    var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
 
     rowCheckboxes.forEach(function (checkbox) {
         checkbox.checked = !checkbox.checked; // Toggle the state

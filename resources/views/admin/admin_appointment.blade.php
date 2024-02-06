@@ -503,7 +503,7 @@
                                     <thead>
                                         <tr>
                                             <th>
-                                                <input type="radio" id="selectAll_approve" class="checkbox">
+                                                <input type="checkbox" id="selectAll_approve" class="checkbox">
                                             </th>
                                             <th>No.</th>
                                             <th>Client</th>
@@ -518,7 +518,7 @@
                                     <tbody id="approvedTableBody">
                                         @foreach ($appointment_approved as $index => $appointment)
                                             <tr data-row-id="{{ $appointment->id }}">
-                                                <td ><input type="radio" class="checkbox"></td>
+                                                <td ><input type="checkbox" class="checkbox"></td>
                                                 <td >{{ $index + 1 }}</td>
                                                 <td >{{ $appointment->clients->first_name }}
                                                     {{ $appointment->clients->middle_name }}
@@ -988,7 +988,7 @@
                                     <thead>
                                         <tr>
                                             <th>
-                                                <input type="radio" id="selectAll_pending" class="checkbox">
+                                                <input type="checkbox" id="selectAll_pending" class="checkbox">
                                             </th>
                                             <th>No.</th>
                                             <th>Client</th>
@@ -1002,7 +1002,7 @@
                                     <tbody id="pendingTableBody">
                                         @foreach ($appointment_pending as $index => $appointment)
                                             <tr>
-                                                <td ><input type="radio" class="checkbox action-checkbox" data-id="{{ $appointment->id }}"></td>
+                                                <td ><input type="checkbox" class="checkbox action-checkbox" data-id="{{ $appointment->id }}"></td>
                                                 <td >{{ $index + 1 }}</td>
                                                 <td>
                                                     @if ($appointment->clients)
@@ -1505,7 +1505,7 @@
                                     <thead>
                                         <tr>
                                             <th>
-                                                <input type="radio" id="selectAll_rejected" class="checkbox">
+                                                <input type="checkbox" id="selectAll_rejected" class="checkbox">
                                             </th>
                                             <th>No.</th>
                                             <th>Client</th>
@@ -1519,7 +1519,7 @@
                                     <tbody id="rejectedTableBody">
                                         @foreach ($appointment_rejected as $index => $appointment)
                                             <tr>
-                                                <td ><input type="radio" class="checkbox"></td></td>
+                                                <td ><input type="checkbox" class="checkbox"></td></td>
                                                 <td >{{ $index + 1 }}</td>
                                                 <td >{{ $appointment->clients->first_name }}
                                                     {{ $appointment->clients->middle_name }}
