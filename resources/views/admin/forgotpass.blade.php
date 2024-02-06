@@ -8,14 +8,93 @@
     <link rel="stylesheet" href="{{ asset('css/user/forgotPass.css') }}">
 </head>
 
-<body style="overflow:hidden; margin: 0; padding: 0;">
+<body>
     <div class="container-fluid" style="margin: 0; padding: 0;">
         <div class="bg-img">
             <div class="overlay"></div>
             <img src="{{ asset('img/clientclinic.jpg') }}" alt="Logo">
         </div>
-        <div class="row custom-row justify-content-center align-items-center">
+        <div class="row custom-row justify-content-center align-items-center mb-5 w-100">
             <div class="col-md-4 forgot-pass mt-5">
+                <div id="initialState d-none">
+                    <div class="d-flex flex-column" style="height: 100%;">
+                        <div class="d-flex justify-content-between mb-5 mt-3">
+                            <button class="custom-back-btn" onclick="goBack()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
+                                    <path d="M5.28471 1.71527L1 5.99998L5.28471 10.2847M13 5.99998H1.12" stroke="#045B62" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Back
+                            </button>
+                        </div>
+                        <div class="security-check">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" fill="none">
+                                <path d="M5.6317 9.89267L6.91987 11.2613L10.3603 7.60589M6.78385 1.69765L2.79135 3.29585C1.87123 3.6614 1.11914 4.81754 1.11914 5.85467V12.171C1.11914 13.1741 1.74322 14.4917 2.50331 15.0953L5.94374 17.8242C7.07188 18.7253 8.92812 18.7253 10.0563 17.8242L13.4967 15.0953C14.2568 14.4917 14.8809 13.1741 14.8809 12.171V5.85467C14.8809 4.80904 14.1288 3.65289 13.2087 3.28735L9.21615 1.69765C8.53607 1.43412 7.44793 1.43412 6.78385 1.69765Z" stroke="#1C1C1C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h1>Forgot Password?</h1>
+                        <p class="mb-5">No worries, we will be sending you reset instructions on your email.</p>
+
+                        <form  method="POST" action="{{ route('password.form') }}" class="mb-5">
+                            @csrf
+                            <div class="mb-3">
+                                <div class="form-group">
+
+
+                                    <div class="input-group">
+                                        <div class="input_svg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><g opacity="0.5" clip-path="url(#clip0_6488_6539)"><path d="M3 7.5C3 6.96957 3.21071 6.46086 3.58579 6.08579C3.96086 5.71071 4.46957 5.5 5 5.5H19C19.5304 5.5 20.0391 5.71071 20.4142 6.08579C20.7893 6.46086 21 6.96957 21 7.5M3 7.5V17.5C3 18.0304 3.21071 18.5391 3.58579 18.9142C3.96086 19.2893 4.46957 19.5 5 19.5H19C19.5304 19.5 20.0391 19.2893 20.4142 18.9142C20.7893 18.5391 21 18.0304 21 17.5V7.5M3 7.5L12 13.5L21 7.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_6488_6539"><rect width="24" height="24" fill="white" transform="translate(0 0.5)"/></clipPath></defs></svg></div>
+                                        <div class="form-floating custom_form_floating">
+                                            
+                                            <input name="email" id="email" class="form-control custom_email" type="email" data-id="email" placeholder="Email Address" />
+                                            <label class="form-label" for="email">Email Address<span>&nbsp;*</span></label>
+                                            
+                                            <div id="error-email" class="error-message email"><span>• Invalid email format.</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="text-center">
+                                <button class="btn custom-reset-btn" type="submit">Send Reset Instructions</button>
+                            </div>
+                        </form>
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            Email not found.
+                        </div>
+                        @endif
+                        <div id="error-message" class="error-message"></div>
+
+                    </div>
+                </div>
+                <div id="changedState" class="d-none">
+                    <div class="d-flex flex-column" style="height: 100%; width: 100%">
+                        <div class="email-icon mt-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M9.99997 17.1216H5.67564C3.08105 17.1216 1.35132 15.7432 1.35132 12.527V6.09459C1.35132 2.87838 3.08105 1.5 5.67564 1.5H14.3243C16.9189 1.5 18.6486 2.87838 18.6486 6.09459V8.85135M14.3243 6.55405L11.6173 8.85135C10.7265 9.60486 9.26483 9.60486 8.37402 8.85135L5.67564 6.55405M18.6486 18.5L17.7838 17.5811M15.3621 17.9486C16.0961 17.9486 16.8001 17.6388 17.3191 17.0874C17.8381 16.5359 18.1297 15.788 18.1297 15.0081C18.1297 14.2282 17.8381 13.4803 17.3191 12.9288C16.8001 12.3774 16.0961 12.0676 15.3621 12.0676C14.6281 12.0676 13.9242 12.3774 13.4052 12.9288C12.8861 13.4803 12.5946 14.2282 12.5946 15.0081C12.5946 15.788 12.8861 16.5359 13.4052 17.0874C13.9242 17.6388 14.6281 17.9486 15.3621 17.9486Z" stroke="#1C1C1C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="mt-4 mb-2">
+                            <h1>Email Sent!</h1>
+                            <p>We have sent password reset instructions to your email. Please check your inbox.</p>
+                        </div>
+                        <form id="resetCode_Form" method="POST" action="#">
+                            @csrf
+                            <div class="input-group group-input mb-3">
+                                <!-- Add 6 input boxes for the reset code -->
+                                <input class="form-controls" type="text" name="digit1" maxlength="1" required>
+                                <input class="form-controls" type="text" name="digit2" maxlength="1" required>
+                                <input class="form-controls" type="text" name="digit3" maxlength="1" required>
+                                <input class="form-controls" type="text" name="digit4" maxlength="1" required>
+                                <input class="form-controls" type="text" name="digit5" maxlength="1" required>
+                                <input class="form-controls" type="text" name="digit6" maxlength="1" required>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn custom-reset-btn" type="submit">Continue</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <div id="passwordState" class="d-none">
                     <div class="d-flex flex-column" style="height: 100%; width: 100%">
                         <div class="email-icon mt-5">
@@ -27,8 +106,9 @@
                             <h1>Set New Password</h1>
                             <p>Your new password must be at least 8 characters.</p>
                         </div>
-                        <form method="POST" action="{{ route('reset.password') }}">
+                        <form id="resetPassword_Form" method="POST" action="#">
                             @csrf
+
                             <div class="mb-3">
                                 <div class="form-group">
                                     <div class="input-group">
@@ -61,7 +141,7 @@
                                             </svg>
                                         </div>
                                         <div class="align-self-stretch form-floating custom_form_floating">
-                                            <input id="password_confirmation" name="password_confirmation" class="form-control custom_password" type="password" placeholder="Repeat Password" data-id="password_confirmation">
+                                            <input id="password_confirmation" class="form-control custom_password" type="password" placeholder="Repeat Password" data-id="password_confirmation">
                                             <div class="eye-icon1" onclick="togglePasswordVisibility1()">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><g opacity="0.5" clip-path="url(#clip0_6078_13948)"><path d="M21 9C18.6 11.667 15.6 13 12 13C8.4 13 5.4 11.667 3 9M3 15L5.5 11.2M20.9998 14.976L18.5078 11.2M9 17L9.5 13M15 17L14.5 13" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g><defs>
                                                     <clipPath id="clip0_6078_13948"><rect width="24" height="24" fill="white" /> </clipPath></defs>
@@ -97,13 +177,48 @@
             </div>
         </div>
     </div>
-
+	<div class="modal fade show" role="dialog" tabindex="-1" id="save_changes_success-1">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content success_modal">
+				<div class="modal-header success_header">
+					<div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+						<g clip-path="url(#clip0_5693_10654)">
+							<path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</g>
+						<defs>
+							<clipPath id="clip0_5693_10654">
+							<rect width="32" height="32" fill="white"/>
+							</clipPath>
+						</defs>
+						</svg></span>
+					</div>
+				</div>
+				<div class="modal-body success_message">
+					<div>
+						<h1>Success!</h1>
+						<p>Your changes have been successfully saved.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @if (session('success'))
+       <script>
+        $(document).ready(function () {
+            $('#save_changes_success-1').modal('show');
+
+            // Hide the modal after 2 seconds
+            setTimeout(function () {
+                $('#save_changes_success-1').modal('hide');
+            }, 2000);
+        });
+       </script> 
+    @endif
     <script>
         function goBack() {
             window.history.back();
         }
-		$('#passwordState').removeClass('d-none');
 
         $(document).ready(function () {
             $('#forgotPassword_Form').on('submit', function (event) {
@@ -143,20 +258,20 @@
             });
 
 
-    var eyeIcon = document.querySelector(".eye-icon");
-    var eyeIcon1 = document.querySelector(".eye-icon1");
-    eyeIcon.addEventListener('mousedown', function (event) {
-    // Prevent the default behavior to stop the input from losing focus
-    event.preventDefault();
-    togglePasswordVisibility();
-    });    
-    eyeIcon1.addEventListener('mousedown', function (event) {
-    // Prevent the default behavior to stop the input from losing focus
-    event.preventDefault();
-    togglePasswordVisibility1();
-    }); 
+            var eyeIcon = document.querySelector(".eye-icon");
+ var eyeIcon1 = document.querySelector(".eye-icon1");
+eyeIcon.addEventListener('mousedown', function (event) {
+// Prevent the default behavior to stop the input from losing focus
+event.preventDefault();
+togglePasswordVisibility();
+});    
+eyeIcon1.addEventListener('mousedown', function (event) {
+// Prevent the default behavior to stop the input from losing focus
+event.preventDefault();
+togglePasswordVisibility1();
+});   
 
-    function togglePasswordVisibility() {
+function togglePasswordVisibility() {
   var passwordInput = document.getElementById("password");
   var eyeIcon = document.querySelector(".eye-icon");
 
@@ -230,7 +345,9 @@ var passwordInput1 = document.getElementById("password_confirmation");
 }
         });
     </script>
-    <script>
+
+
+<script>
     var password = document.getElementById("password");
     var errorPassword = document.getElementById('error-password');
     var password_confirmation = document.getElementById("password_confirmation");

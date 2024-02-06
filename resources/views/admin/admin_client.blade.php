@@ -287,6 +287,7 @@
                                 </defs>
                             </svg> Add Client</span></button>
                 </div>
+
                 <div id="client_table" class="w-100" style="overflow: auto;">
                     <table  class="table table-responsive mt-3 w-100">
                         <thead>

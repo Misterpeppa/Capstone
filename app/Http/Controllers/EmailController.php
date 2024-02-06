@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\VerifiesEmail;
 use App\Models\User\Clients;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use App\Mail\VerifyEmail as MailVerifyEmail;
 use Illuminate\Support\Facades\Mail;
 
 class EmailController
@@ -62,7 +62,7 @@ class EmailController
             return redirect()->route('landing')->with('error', 'User not found or email is already verified.');
         }
 
-        Mail::to($clients->email)->send(new MailVerifyEmail($clients));
+        Mail::to($clients->email)->send(new VerifiesEmail($clients));
 
         event(new Verified($clients));
 

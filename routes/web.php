@@ -96,8 +96,17 @@ Route::middleware('adminauth', 'nocache')->group(function () {
     Route::post('/admin/signin',[AdminAuthController::class, 'authenticate'])->name('admin.auth');
 });
 
+Route::get('admin/forgotpassword', [AdminAuthController::class, 'showForgotpass'])->name('admin.forgotpass');
+Route::post('admin/forgotpassword', [AdminAuthController::class, 'forgotPass'])->name('admin.password.form');
+Route::post('admin/forgotpasswordcode', [AdminAuthController::class, 'checkResetCode'])->name('admin.password.code');
+Route::get('admin/forgotpasswordcode', [AdminAuthController::class, 'showCodeForm'])->name('admin.code.form');
+Route::get('admin/forgotpasswordreset', [AdminAuthController::class, 'showPasswordReset'])->name('admin.reset.form');
+Route::post('admin/forgotpassReset', [AdminAuthController::class, 'resetPassword'])->name('admin.reset.password');
+
 Route::middleware('admin', 'nocache')->group(function () {
     Route::get('/admin/signout', [AdminAuthController::class, 'signout'])->name('admin.signout');
+    Route::post('/admin/settings/changepassword', [AdminAuthController::class, 'changePassword'])->name('admin.changepassword');
+
 
     Route::get('/admin/appointment', [AppointmentController::class, 'adminShow'])->name('admin_appointment');
     Route::post('/admin/appointment/approve/{id}', [AppointmentController::class, 'approve']);
@@ -105,6 +114,7 @@ Route::middleware('admin', 'nocache')->group(function () {
     Route::post('/admin/appointment/resched/{id}', [AppointmentController::class, 'resched'])->name('resched');
     Route::post('/admin/appointment/markascomplete/{id}', [AppointmentController::class, 'markAsComplete'])->name('appointment.complete');
     Route::post('/admin/appointment/archive/{id}', [AppointmentController::class, 'archive'])->name('appointment.archive');
+    Route::get('/admin/appointmet/report', [ReportController::class, 'appointmentPDF'])->name('appointment.pdf');
 
     Route::get('/admin/emr', [EMRController::class, 'show'])->name('admin_emr');
     Route::post('/admin/emr/petrecord', [EMRController::class, 'pet'])->name('emr.pet');
@@ -126,6 +136,8 @@ Route::middleware('admin', 'nocache')->group(function () {
     Route::get('/admin/inventory/view/{product_type}/{id}', [InvController::class, 'viewProduct']);
     Route::match(['put', 'patch'],'/admin/inventory/edit/{product_type}/{id}', [InvController::class, 'updateProduct'])->name('product.edit');
     Route::post('/admin/inventory/archive/{product_type}/{id}', [InvController::class, 'archive'])->name('product.archive');
+    Route::get('/admin/inventory/viewBatch/{product_type}/{id}', [InvController::class, 'viewBatch']);
+    Route::get('/admin/inventory/quantity{productId}', [InvController::class, 'getQuantity']);
     Route::get('/admin/inventory/reports', [ReportController::class, 'invPDF'])->name('report.inventory');
 
     Route::get('admin/client', [ClientController::class, 'show'])->name('admin_client');

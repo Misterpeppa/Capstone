@@ -2,7 +2,7 @@
 <html data-bs-theme="light" lang="en">
 
 <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -89,7 +89,7 @@
                                 </svg> Add Appointment</span></button><button
                             class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown"
                             data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Generate Report</a></div>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="{{ route('appointment.pdf') }}">Generate Report</a></div>
                     </div>
                     
                 </div>
@@ -1004,10 +1004,16 @@
                                             <tr>
                                                 <td ><input type="radio" class="checkbox action-checkbox" data-id="{{ $appointment->id }}"></td>
                                                 <td >{{ $index + 1 }}</td>
-                                                <td >{{ $appointment->clients->first_name }}
-                                                    {{ $appointment->clients->middle_name }}
-                                                    {{ $appointment->clients->last_name }}
-                                                    {{ $appointment->clients->suffix }}</td>
+                                                <td>
+                                                    @if ($appointment->clients)
+                                                        {{ $appointment->clients->first_name }}
+                                                        {{ $appointment->clients->middle_name }}
+                                                        {{ $appointment->clients->last_name }}
+                                                        {{ $appointment->clients->suffix }}
+                                                    @else
+                                                        Client Not Available
+                                                    @endif
+                                                </td>
                                                 <td >{{ $appointment->status }}</td>
                                                 <td >{{ $appointment['petType'] }}
                                                     ({{ $appointment['breed'] }})</td>
@@ -1067,6 +1073,26 @@
                                                                         </clipPath>
                                                                     </defs>
                                                                 </svg> Reject</button>
+                                                                <!-- <button
+                                                                class="dropdown-item resched-action"
+                                                                data-id="{{ $appointment->id }}"><svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="24" height="24"
+                                                                    viewBox="0 0 24 24" fill="none">
+                                                                    <g clip-path="url(#clip0_6291_2186)">
+                                                                        <path
+                                                                            d="M15.5 12H12V7M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z"
+                                                                            stroke="#1C1C1C" stroke-opacity="0.7"
+                                                                            stroke-width="2" stroke-linecap="round"
+                                                                            stroke-linejoin="round" />
+                                                                    </g>
+                                                                    <defs>
+                                                                        <clipPath id="clip0_6291_2186">
+                                                                            <rect width="24" height="24"
+                                                                                fill="white" />
+                                                                        </clipPath>
+                                                                    </defs>
+                                                                </svg> Reschedule</button> -->
                                                         </div>
                                                     </div>
                                                 </td>
@@ -1124,7 +1150,7 @@
                                 <form class="w-100" action="" id="rejectForm">
                                     <div class="left_part_product_header w-100">
                                         <div class="search_container">
-                                            <input type="text" class="search_input" name="qPending"
+                                            <input type="text" class="search_input" name="qReject"
                                             value="{{ request('qReject') }}" placeholder="Search Appointment">
                                             <input type="hidden" id="rejectPageForm" name="page"
                                             value="{{ request('page') }}">
@@ -1267,7 +1293,7 @@
                                                           <button type = "reset" class="btn btn-outline-secondary btn-sm me-3">Cancel</button>
                                                       </div>
                                                       <div class="col-md-6 text-center">
-                                                          <button type="submit" form="pendingForm" class="btn btn-primary btn-sm ms-3">Apply</button>
+                                                          <button type="submit" form="rejectForm" class="btn btn-primary btn-sm ms-3">Apply</button>
                                                       </div>
                                                   </div>
                                               </li>
@@ -1521,41 +1547,7 @@
                                                                     d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z"
                                                                     fill="#045B62" />
                                                             </svg></button>
-                                                        <div class="dropdown-menu"><a
-                                                                class="dropdown-item accept-action"><svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24" height="24"
-                                                                    viewBox="0 0 24 24" fill="none">
-                                                                    <g clip-path="url(#clip0_6291_1355)">
-                                                                        <path d="M5 12L10 17L20 7" stroke="#1C1C1C"
-                                                                            stroke-opacity="0.7" stroke-width="2"
-                                                                            stroke-linecap="round"
-                                                                            stroke-linejoin="round" />
-                                                                    </g>
-                                                                    <defs>
-                                                                        <clipPath id="clip0_6291_1355">
-                                                                            <rect width="24" height="24"
-                                                                                fill="white" />
-                                                                        </clipPath>
-                                                                    </defs>
-                                                                </svg> Accept</a><a
-                                                                class="dropdown-item reject-action"><svg
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    width="24" height="24"
-                                                                    viewBox="0 0 24 24" fill="none">
-                                                                    <g clip-path="url(#clip0_6291_1893)">
-                                                                        <path d="M18 6L6 18M6 6L18 18"
-                                                                            stroke="#1C1C1C" stroke-opacity="0.7"
-                                                                            stroke-width="2" stroke-linecap="round"
-                                                                            stroke-linejoin="round" />
-                                                                    </g>
-                                                                    <defs>
-                                                                        <clipPath id="clip0_6291_1893">
-                                                                            <rect width="24" height="24"
-                                                                                fill="white" />
-                                                                        </clipPath>
-                                                                    </defs>
-                                                                </svg> Reject</a><button
+                                                        <div class="dropdown-menu"><button
                                                                 class="dropdown-item resched-action"
                                                                 data-id="{{ $appointment->id }}"><svg
                                                                     xmlns="http://www.w3.org/2000/svg"
@@ -2109,6 +2101,21 @@
     @endif
     <script>
         $(document).ready(function() {
+            $.ajax({
+            url: "{{ route('admin_appointment') }}",
+            type: 'GET',
+            success: function(response) {
+                // Update the tbody with the fetched data
+                $.each(response, function(index, item) {
+                    $('tbody').append('<tr><td>' + item.column1 + '</td><td>' + item.column2 + '</td></tr>');
+                    // Replace column1, column2 with your actual column names
+                });
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText); // Log any errors
+            }
+        });
+
             $('.action-checkbox').on('click', function(event) {
                 var appointmentId = $(this).data('id');
             });
@@ -2191,6 +2198,33 @@
                 });
             });
             $('.resched-action').click(function() {
+                var appointmentId = $(this).data('id');
+                var reschedModal1 = new bootstrap.Modal(document.getElementById('resched_modal-1'));
+                reschedModal1.show();
+                $('#reschedule_btn-1').off('click').on('click', function() {
+                    var appointmentDate = $('#appointmentDate').val();
+                    var appointmentTime = $('#appointmentTime').val();
+                    $.ajax({
+                        type: 'POST',
+                        url: '/admin/appointment/resched/' + appointmentId,
+                        data: {
+                            _token: '{{ csrf_token() }}',
+                            appointmentDate: appointmentDate,
+                            appointmentTime: appointmentTime,
+                        },
+                        success: function(response) {
+                            $('#row_' + appointmentId).remove();
+                            alert('Appointment has been rescheduled');
+                            window.location.href = '/admin/appointment';
+                        },
+                        error: function(error) {
+                            alert('An error occurred while processing the request.');
+                        }
+                    });
+                    reschedModal1.hide();
+                });
+            });
+            $('.resched-action1').click(function() {
                 var appointmentId = $(this).data('id');
                 var reschedModal1 = new bootstrap.Modal(document.getElementById('resched_modal-1'));
                 reschedModal1.show();

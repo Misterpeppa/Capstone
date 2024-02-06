@@ -36,7 +36,7 @@ class ProfileController extends Controller
         $clientId = Auth::guard('clients')->id();
         $clientInfo = Clients::find($clientId);
         if (!$clientInfo || !$clientInfo->email_verified_at) {
-            session()->flash('error', 'Please verify your email.');
+            session()->flash('unverified', 'Please verify your email.');
             return view('user/landing', compact('clientInfo'));        
         }
         return view('user/landing', compact('clientInfo'));
@@ -55,7 +55,12 @@ class ProfileController extends Controller
             $petQuery->where('name', 'like', '%' . $searchTerm . '%')
                 ->orWhere('breed', 'like', '%' . $searchTerm . '%');
         });
-
+        $gender = $request->input('gender');
+        if ($gender) {
+            $query->whereHas('pet', function ($petQuery) use ($gender) {
+                $petQuery->where('gender', $gender);
+            });
+        }
         $petrecords = $query->get();
 
         return view('user/pet_info', compact('clientInfo', 'petExist', 'petrecords'));

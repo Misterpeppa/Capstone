@@ -251,10 +251,11 @@
 									<button class="btn change_password_btn" id="change_password_btn" type="button"><span class="change_password_btn_base">Change Password</span></button>
 								</div>
 								<div class="card change_password" id="change_password">
-									<form>
+									<form action="{{ route('admin.changepassword')}}" method="POST" id="adminChangePassword">
+										@csrf
 										<div class="change_pass_input_container">
 											<div class="align-self-stretch form-floating">
-												<input class="form-control form-control form-control" type="password" data-id="old_password" id="old_password" placeholder="Old Password">
+												<input class="form-control form-control form-control" name="current_password" type="password" data-id="old_password" id="old_password" placeholder="Old Password">
 												<div id="eye-icon-old-password" class="eye-icon">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g opacity="0.5" clip-path="url(#clip0_6818_21927)">
@@ -272,7 +273,7 @@
 												<div id="guide-old_password" class="guide-message"><span>• Password must have more than 8 characters.</span><span>• Password must have at least 1 uppercase character.</span><span>• Password must have at least 1 special character.</span></div>
 											</div>
 											<div class="align-self-stretch form-floating">
-												<input class="form-control form-control form-control" type="password" data-id="new_password" id="new_password" placeholder="New Password">
+												<input class="form-control form-control form-control" name="new_password" type="password" data-id="new_password" id="new_password" placeholder="New Password">
 												<div id="eye-icon-new-password" class="eye-icon">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g opacity="0.5" clip-path="url(#clip0_6818_21927)">
@@ -290,7 +291,7 @@
 												<div id="guide-new_password" class="guide-message"><span>• Password must have more than 8 characters.</span><span>• Password must have at least 1 uppercase character.</span><span>• Password must have at least 1 special character.</span></div>
 											</div>
 											<div class="align-self-stretch form-floating">
-												<input class="form-control form-control form-control" type="password" data-id="confirm_password" id="confirm_password" placeholder="Confirm Password">
+												<input class="form-control form-control form-control" name="new_password_confirmation" type="password" data-id="confirm_password" id="confirm_password" placeholder="Confirm Password">
 												<div id="eye-icon-confirm-password" class="eye-icon">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g opacity="0.5" clip-path="url(#clip0_6818_21927)">
@@ -311,7 +312,7 @@
 									</form>
 									<div class="change_pass_buttons">
 										<button class="btn cancel_pass_btn" id="cancel_pass_btn" type="button"><span class="cancel_pass_btn_base">Cancel</span></button>
-										<button class="btn edit_save_changes" id="edit_save_changes" type="button"><span class="edit_save_changes_base">Save Changes</span></button>
+										<button class="btn edit_save_changes" id="edit_save_changes" form="adminChangePassword" type="submit"><span class="edit_save_changes_base">Save Changes</span></button>
 									</div>
 								</div>
 								<div class="card pass_and_security_card">
@@ -382,6 +383,16 @@
 			</div>
 		</div>
 	</div>
+	@if (session('success'))
+	<script>
+        $(document).ready(function() {
+            $('#save_changes_success').show();
+            setTimeout(function() {
+                $('#save_changes_success').hide();
+            }, 2000);
+        });
+    </script>
+	@endif
 	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('assets/js/bs-init.js') }}"></script>
@@ -402,20 +413,20 @@
         changePasswordDiv.style.display = 'flex';
       });
 
-	  document.getElementById('edit_save_changes').addEventListener('click', function () {
-        // Show the Bootstrap modal
-        $('#save_changes_success').modal('show');
+	//   document.getElementById('edit_save_changes').addEventListener('click', function () {
+    //     // Show the Bootstrap modal
+    //     $('#save_changes_success').modal('show');
          
-         // Hide the modal after 2 seconds
-        setTimeout(function () {
-          $('#save_changes_success').modal('hide');
-        }, 2000);
+    //      // Hide the modal after 2 seconds
+    //     setTimeout(function () {
+    //       $('#save_changes_success').modal('hide');
+    //     }, 2000);
         
-        // Reset the input values
-        document.getElementById('old_password').value = '';
-        document.getElementById('new_password').value = '';
-        document.getElementById('confirm_password').value = '';
-      });
+    //     // Reset the input values
+    //     document.getElementById('old_password').value = '';
+    //     document.getElementById('new_password').value = '';
+    //     document.getElementById('confirm_password').value = '';
+    //   });
 	</script>
 
 	<script>

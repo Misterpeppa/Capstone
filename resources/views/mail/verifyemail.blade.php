@@ -94,7 +94,7 @@ body{
                 <p>If you did not create an account, no further action is required.</p>
 
                 <p>Thanks,<br>
-                    {{ config('app.name') }}
+                    Medipaws
                 </p>
                 </div>
             </div>
@@ -110,7 +110,7 @@ body{
             </div>
             <div class="col">
                 <ul class="list-inline my-2">
-                    <li class="list-inline-item list-inline-item"><a class="link-primary" href="#">Link ng website natin</a></li>
+                    <li class="list-inline-item list-inline-item"><a class="link-primary" href="medipaws.online">Medipaws</a></li>
                 </ul>
             </div>
         </div>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\AppointmentApproved;
+use App\Models\Admin\AppointmentPending;
+use App\Models\Admin\AppointmentRejected;
 use App\Models\Admin\MedBatch;
 use App\Models\Admin\MedInfo;
 use App\Models\Admin\PetRecord;
@@ -62,5 +65,22 @@ class ReportController extends Controller
         $pdf = PDF::loadView('pdf.petrecord_reports', $data);
 
         return $pdf->download('Pet_Records.pdf');
+    }
+    public function appointmentPDF()
+    {
+        $approved = AppointmentApproved::all();
+        $pending = AppointmentPending::all();
+        $rejected = AppointmentRejected::all();
+
+        $data = [
+            'title' => 'Pet Records',
+            'approved' => $approved,
+            'pending' => $pending,
+            'rejected' => $rejected,
+        ];
+
+        $pdf = PDF::loadView('pdf.list_appointment', $data);
+
+        return $pdf->download('Appointments.pdf');
     }
 }

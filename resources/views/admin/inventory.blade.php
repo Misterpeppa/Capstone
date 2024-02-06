@@ -263,15 +263,15 @@
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
                                                 aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6770_15021)">
-    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6770_15021">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg><span class="filter_btn_base">Sort By</span>
+                                                <g clip-path="url(#clip0_6770_15021)">
+                                                    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_6770_15021">
+                                                    <rect width="24" height="24" fill="white"/>
+                                                    </clipPath>
+                                                </defs>
+                                                </svg><span class="filter_btn_base">Sort By</span>
                                             </button>
                                             <ul class="dropdown-menu">
                                       <li class="dropdown-item ">
@@ -565,6 +565,8 @@
                                                     </svg> Edit</div></button>
                                                 <button 
                                                 data-action="Archive"
+                                                data-product-type="{{ $product->product_type }}"
+                                                data-product-id="{{ $product->id }}"
                                                 class="btn border-0 archiveButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
                                                 <path d="M17 5C17.5304 5 18.0391 4.78929 18.4142 4.41421C18.7893 4.03914 19 3.53043 19 3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3C1 3.53043 1.21071 4.03914 1.58579 4.41421C1.96086 4.78929 2.46957 5 3 5M17 5H3M17 5V15C17 15.5304 16.7893 16.0391 16.4142 16.4142C16.0391 16.7893 15.5304 17 15 17H5C4.46957 17 3.96086 16.7893 3.58579 16.4142C3.21071 16.0391 3 15.5304 3 15V5M8 9H12" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg> Archive</div></button>
@@ -704,18 +706,17 @@
 
                         </div>
 
+
                         <div id="batch_product" class="w-100" class="w-100" style="overflow: auto; display: none;">
                             <table class="table table-responsive mt-3 w-100">
                                 <thead>
                                     <tr>
-                                        <th><input id="SelectAllMedBatch" type="radio" class="checkbox"></th>
                                         <th>Batch Number</th>
-                                        <th>Quantity Ordered</th>
+                                        <th>Product Code</th>
                                         <th>Quantity Left</th>
                                         <th>Date Stocked</th>
                                         <th>Expiration Date</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>Manufacturing Date</th>
                                     </tr>
                                 </thead>
                                 <tbody id="batch_table_body">
@@ -737,7 +738,7 @@
                                                 </svg></button>
                                         <div class="dropdown-menu" ><div class="button-group">
                                             <button
-		            data-action="AddStock" 
+		                data-action="AddStock" 
                                             data-product-type="{{ $product->product_type }}"
                                             data-product-id="{{ $product->id }}"
                                                 class="btn border-0 addStock"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -793,7 +794,7 @@
 
                         
 
-                        <div class="pagination">
+                        <div class="pagination" id="pagination">
                                 <div class="pagination-menu">
                                     <span>Go to:</span>
                                     <select class="paginationGoToSelect" onchange="changePage(this)">
@@ -836,7 +837,7 @@
                                     </select>
                                 </div>
                             </div>
-                    </div>
+                    </div> 
                     <div id="prod_detail_header" class="prod_detail_header">
                         <h1>Edit Product Information</h1>
                     </div>
@@ -1432,25 +1433,55 @@
     </script>
     @endif
     <script>
+        function updateStatus() {
+            // Iterate over each row in the table
+            $('#inventory_table_body tr').each(function() {
+                // Get the quantity value from the second column of the current row
+                var quantity = parseInt($(this).find('td:eq(3)').text());
+
+                // Determine the status based on the quantity
+                var status;
+                if (quantity === 0) {
+                    status = "Out of Stock";
+                } else if (quantity <= 50) {
+                    status = "Low Stock";
+                } else {
+                    status = "High Stock";
+                }
+
+                var statusTd = $(this).find('.status-td');
+        statusTd.text(status); // Update status text
+
+        // Apply styles based on the status
+        if (status === "Out of Stock") {
+            statusTd.css({ backgroundColor: "#DA534F", color: "#fff" });
+        } else if (status === "Low Stock") {
+            statusTd.css({ backgroundColor: "#FFA800", color: "#fff" });
+        } else {
+            statusTd.css({ backgroundColor: "#5CA500", color: "var(--colors-main-neutral, #FFF)" });
+        }
+            });
+        }
         $(document).ready(function() {
-            $('#editButton').click(function() {
-            const invData = {
-                'item_name' :$(this).data('item_name'),
-                'prodoct_code' :$(this).data('product_code'),
-                'last_name' :$(this).data('last-name'),
-                'suffix' :$(this).data('suffix'),
-                'birthdate' :$(this).data('birthdate'),
-                'email' :$(this).data('email'),
-                'phone' :$(this).data('phone'),
-            };      
-            $('#editItemName').val(invData.item_name);
-            $('#product_code').val(invData.middle_name);
-            $('#editLastName').val(clientData.last_name);
-            $('#editSuffix').val(clientData.suffix);
-            $('#editBirthdate').val(clientData.birthdate);
-            $('#editEmail').val(clientData.email);
-            $('#editPhone').val(clientData.phone);
-        });
+            updateStatus();
+                $('#editButton').click(function() {
+                const invData = {
+                    'item_name' :$(this).data('item_name'),
+                    'prodoct_code' :$(this).data('product_code'),
+                    'last_name' :$(this).data('last-name'),
+                    'suffix' :$(this).data('suffix'),
+                    'birthdate' :$(this).data('birthdate'),
+                    'email' :$(this).data('email'),
+                    'phone' :$(this).data('phone'),
+                };      
+                $('#editItemName').val(invData.item_name);
+                $('#product_code').val(invData.middle_name);
+                $('#editLastName').val(clientData.last_name);
+                $('#editSuffix').val(clientData.suffix);
+                $('#editBirthdate').val(clientData.birthdate);
+                $('#editEmail').val(clientData.email);
+                $('#editPhone').val(clientData.phone);
+            });
             $('.viewButton').click(function() {
                 var inventory_header = document.getElementById("inventory_header");
                 var rowId = $(this).closest('tr').data('row-id');
@@ -1458,7 +1489,6 @@
                 const id = $(this).data('product-id');
 
                 inventory_header.style.display = 'none';
-
                 // Make an AJAX request to retrieve data
                 $.ajax({
                     type: 'GET',
@@ -1479,6 +1509,24 @@
                         console.log(xhr.responseText);
                     }
                 });
+                $.ajax({
+                    type: 'GET',
+                    url: `/admin/inventory/viewBatch/${product_type}/${id}`,
+                    success: function(data){
+                        $('#batch_table tbody').empty();
+                        $.each(data, function(index, batches) {
+                            var newRow = '<tr>' +
+							'<td>' + batches.batch_no + '</td>' +
+                            '<td>' + batches.product_code + '</td>' +
+                            '<td>' + batches.quantity + '</td>' +
+							'<td>' + batches.date_stocked + '</td>' +
+							'<td>' + batches.expiration_date + '</td>' +
+                            '<td>' + batches.manufacturing_date + '</td>' +
+							'</tr>';
+						$('#batch_table tbody').append(newRow);
+                        });
+                    }
+                })
             });
             $('#editButton').click(function() {
                 // Get data attributes from the button
@@ -1563,6 +1611,8 @@
             });
 
         });
+
+        
 
         document.querySelectorAll('#editButton').forEach(button => {
             button.addEventListener('click', function() {
@@ -1685,36 +1735,36 @@ document.getElementById("quantity_input").addEventListener("input", enableSaveCh
 
 
 
-// Assuming info_quantity is a variable in your JavaScript (replace with actual variable if different)
-var info_quantity = @json($product->info_quantity);
+// // Assuming info_quantity is a variable in your JavaScript (replace with actual variable if different)
+// var info_quantity = @json($product->info_quantity);
 
-// Determine the status based on the input quantity
-var status = info_quantity === "0" ? "Out of Stock" : (info_quantity <= 50 ? "Low Stock" : "High Stock");
+// // Determine the status based on the input quantity
+// var status = info_quantity === "0" ? "Out of Stock" : (info_quantity <= 50 ? "Low Stock" : "High Stock");
 
-// Define styles for different statuses
-var statusStyles = {
-    "Out of Stock": {
-        backgroundColor: "#DA534F",
-        color: "#fff",
-    },
-    "Low Stock": {
-        backgroundColor: "#FFA800",
-        color: "#fff",
-    },
-    "High Stock": {
-        backgroundColor: "#5CA500",
-        color: "var(--colors-main-neutral, #FFF)",
-    },
-};
+// // Define styles for different statuses
+// var statusStyles = {
+//     "Out of Stock": {
+//         backgroundColor: "#DA534F",
+//         color: "#fff",
+//     },
+//     "Low Stock": {
+//         backgroundColor: "#FFA800",
+//         color: "#fff",
+//     },
+//     "High Stock": {
+//         backgroundColor: "#5CA500",
+//         color: "var(--colors-main-neutral, #FFF)",
+//     },
+// };
 
-// Update the content and style of all the status <td> elements
-var statusTdList = document.querySelectorAll('.status-td');
+// // Update the content and style of all the status <td> elements
+// var statusTdList = document.querySelectorAll('.status-td');
 
-statusTdList.forEach(function(statusTd) {
-    statusTd.textContent = status;
-    statusTd.style.backgroundColor = statusStyles[status].backgroundColor;
-    statusTd.style.color = statusStyles[status].color;
-});
+// statusTdList.forEach(function(statusTd) {
+//     statusTd.textContent = status;
+//     statusTd.style.backgroundColor = statusStyles[status].backgroundColor;
+//     statusTd.style.color = statusStyles[status].color;
+// });
 
 
 

@@ -376,6 +376,10 @@ class InvController extends Controller
         switch ($product_type) {
             case 'Medicine':
                 $med_info = MedInfo::find($id);
+                $existingQuantiy = $med_info->quantity;
+                $newQuantity = $existingQuantiy + $request->input('quantity');
+                $med_info->quantity = $newQuantity;
+                $med_info->save();
                 $med_batch = new MedBatch([
                 'batch_no' => $request->input('batch_no'),
                 'manufacturing_date' => $request->input('manufacturing_date'),
@@ -391,6 +395,10 @@ class InvController extends Controller
                 break;
             case 'Vaccine':
                 $vax_info = VaxInfo::find($id);
+                $existingQuantiy = $vax_info->quantity;
+                $newQuantity = $existingQuantiy + $request->input('quantity');
+                $vax_info->quantity = $newQuantity;
+                $vax_info->save();
                 $vax_batch = new VaxBatch([
                 'batch_no' => $request->input('batch_no'),
                 'manufacturing_date' => $request->input('manufacturing_date'),
@@ -406,6 +414,10 @@ class InvController extends Controller
                 break;
             case 'Vitamin':
                 $vit_info = VitInfo::find($id);
+                $existingQuantiy = $vit_info->quantity;
+                $newQuantity = $existingQuantiy + $request->input('quantity');
+                $vit_info->quantity = $newQuantity;
+                $vit_info->save();
                 $vit_batch = new VitBatch([
                 'batch_no' => $request->input('batch_no'),
                 'manufacturing_date' => $request->input('manufacturing_date'),
@@ -449,5 +461,43 @@ class InvController extends Controller
         return redirect('/admin/inventory');
     }
 
+    public function viewBatch($product_type, $id)
+    {
+        switch( $product_type) {
+            case 'Medicine':
+                $productInfo = MedInfo::findOrFail($id);
+                $productBatch = MedBatch::where('med_id', $id)->get();
+                break;
+            case 'Vaccine':
+                $productInfo = VaxInfo::find($id);
+                $productBatch = VaxBatch::where('vax_id', $id)->get();
+                break;
+            case 'Vitamin':
+                $productInfo = VitInfo::find($id);
+                $productBatch = VitBatch::where('vit_id', $id)->get();
+                break;
+            default:
+             return response()->json(['error' => 'Invalid Product Type']);
+        }
+        return response()->json($productBatch); 
+    }
+
+    public function getQuantity($productId)
+    {
+        $med_info = MedInfo::whereNull('archived_at')->where('id', $productId)->get();
+        $vax_info = VaxInfo::whereNull('archived_at')->where('id', $productId)->get();
+        $vit_info = VitInfo::whereNull('archived_at')->where('id', $productId)->get();
+
+        if ($med_info) {
+            return response()->json(['quantity' => $med_info->quantity]);
+        } elseif ($vax_info) {
+            return response()->json(['quantity' => $vax_info->quantity]);
+        } elseif ($vit_info) {
+            return response()->json(['quantity' => $vit_info->quantity]);
+        } else {
+            return response()->json(['error' => 'Product not found.'], 404);
+        }
+           
+    }
 }
    

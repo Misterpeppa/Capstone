@@ -70,9 +70,10 @@ class ClientController extends Controller
         $perPage = filter_var($perPage, FILTER_VALIDATE_INT);
         if ($perPage === false || $perPage < 5) {
             $perPage = 6; 
-        }else{
-            $perPage += 1;
         }
+        // else{
+        //     $perPage += 1;
+        // }
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
         $currentPageItems = $clients->slice(($currentPage - 1) * $perPage, $perPage)->all();
         $clients = new LengthAwarePaginator($currentPageItems, $clients->count(), $perPage);

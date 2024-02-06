@@ -499,19 +499,45 @@
             </div>
         </div>
     </div>
+    <div id="error_modal" class="modal fade show" role="dialog" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content success_modal" style="display: block">
+                <div class="modal-header success_header">
+                </div>
+                <div class="modal-body success_message">
+                    <div>
+                        <h1>Appointment failed!</h1>
+                        <p>You have reached the Max Appointment Limit.</p>
+                    </div>
+                </div>
+                <div class="modal-footer"><a href="{{ route('landing') }}" class="btn view_appointments" role="button"><span class="view_appointments_base">Go Back</span></a></div>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @if (session('success'))
     <script>
         $(document).ready(function() {
+            $('#success_modal').show();
+            setTimeout(function() {
+                $('#success_modal').hide();
+            }, 5000);
+
+    });
+    </script>
+    @endif
+    @if (session('error'))
+    <script>
+        $(document).ready(function() {
         // Show the modal
         function showModal() {
-            $('#success_modal').show();
+            $('#error_modal').show();
         }
 
         // Hide the modal
         function hideModal() {
-            $('#success_modal').hide();
+            $('#error_modal').hide();
         }
 
         // Call showModal function when needed
