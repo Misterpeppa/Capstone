@@ -168,7 +168,7 @@
                             <div class="left_part_product_header">
                               <div class="search_container">
                                   <input type="text" class="search_input" name="q"
-                                      value="{{ request('q') }}" placeholder="Search Client">
+                                      value="{{ request('q') }}" placeholder="Search Product">
                                   <!-- Other input fields or elements for pagination -->
                                   <input type="hidden" id="pageForm" name="page"
                                       value="{{ request('page') }}">
@@ -1108,7 +1108,7 @@
                                         <option value="Vaccine">Vaccine</option>
                                         <option value="Vitamin">Vitamin</option>
                                     </select><label class="form-label form-label" for="product-categ">Product
-                                        Category</label>
+                                        Category <span>&nbsp;*</span></label>
                                     <div id="error-product_categ-1" class="error-message"><span>Please select a
                                             category.</span></div>
                                 </div>
@@ -1126,7 +1126,7 @@
                                         class="form-control form-control" type="text" name="product_code"
                                         data-id="product_code" id="product_code-1"
                                         placeholder="Product Code"><label class="form-label form-label"
-                                        for="product_code">Product Code</label>
+                                        for="product_code">Product Code <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-product_code-1"><span>Please enter product
                                             code.</span></div>
                                 </div>
@@ -1134,7 +1134,7 @@
                                         class="form-control" type="text" name="batch_no"
                                         data-id="batch_number" id="batch_number-1"
                                         placeholder="Batch Number"><label class="form-label form-label"
-                                        for="batch_number">Batch Number</label>
+                                        for="batch_number">Batch Number <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-batch_number-1"><span>Please enter batch
                                             number.</span></div>
                                 </div>
@@ -1145,7 +1145,7 @@
                                         data-id="manufactured_date" id="manufactured_date-1"
                                         placeholder="Manufactured Date" type="date"><label
                                         class="form-label form-label" for="manufactured_date">Manufactured
-                                        Date</label>
+                                        Date <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-manufactured_date-1"><span>Please enter the
                                             manufactured date.</span></div>
                                 </div>
@@ -1153,7 +1153,7 @@
                                         class="form-control form-control" name="expiration_date"
                                         data-id="expiration_date" id="expiration_date-1"
                                         placeholder="Expiration Date" type="date"><label
-                                        class="form-label form-label" for="expiration_date">Expiration Date</label>
+                                        class="form-label form-label" for="expiration_date">Expiration Date <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-expiration_date-1"><span>Please enter the
                                             expiration date.</span></div>
                                 </div>
@@ -1161,7 +1161,7 @@
                                         class="form-control form-control" name="date_stocked"
                                         data-id="datestocked" id="datestocked-1" placeholder="Expiration Date"
                                         type="date"><label class="form-label form-label" for="datestocked">Date
-                                        Stocked</label>
+                                        Stocked <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-datestocked-1"><span>Please enter the date
                                             stocked.</span></div>
                                 </div>
@@ -1169,17 +1169,17 @@
                             <div class="form-floating" style="width:100%;">
                                 <textarea class="form-control" id="prod_description-1" name="prod_desc" data-id="prod_description"
                                     placeholder="Product Description"></textarea><label class="form-label form-label"
-                                    for="prod_description">Product Description</label>
+                                    for="prod_description">Product Description <span>&nbsp;*</span></label>
                                 <div id="error-prod_description-1" class="error-message"><span>Please enter product
                                         description.</span></div>
                             </div>
                             <div class="quantity_input_container">
-                                <h1>Quantity</h1>
+                                <h1>Quantity <span style="color: var(--bs-red);">&nbsp;*</span></h1>
                                 <div class="form-floating">
                                     <div class="quantity_input"><button class="quantity_minus" type="button"
                                             onclick="decrementQuantity1()">-</button>
                                         <input type="number" aria-labelledby="label-quantity"
-                                            class="input_quantity" data-id="quantity" id="quantity-1"
+                                            class="input_quantity form-control" data-id="quantity" id="quantity-1"
                                             min="0" name="quantity" required="" value="0"><button
                                             class="quantity_add" type="button"
                                             onclick="incrementQuantity1()">+</button>

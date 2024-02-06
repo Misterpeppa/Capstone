@@ -125,7 +125,7 @@
                                     <div class="left_part_product_header">
                                         <div class="search_container">
                                             <input type="text" class="search_input" name="search"
-                                            value="{{ request('search') }}" placeholder="Search Appointment">
+                                            value="{{ request('search') }}" placeholder="Search Item">
                                         </div>
                                         <button type="submit" form="approvedForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i><span class="filter_btn_base">Search</span></button>
                                         <div class="dropdown">
