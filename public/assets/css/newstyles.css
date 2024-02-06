@@ -1724,7 +1724,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   
   .search_container {
     display: flex;
-    width: 30%;
+    width: auto;
     height: 56px;
     flex-wrap: wrap;
     padding: 8px 16px;
@@ -2137,7 +2137,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   }
   
   .btn-group.split_btn {
-    display: none;
+    display: flex;
     height: 56px;
     align-items: center;
     border-radius: var(--radius-s, 8px);
@@ -3425,7 +3425,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     align-content: flex-start;
     gap: 12px var(--spacing-spacing-xs, 12px);
     align-self: stretch;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
   
   .species_container {
@@ -6266,16 +6266,14 @@ font-size: 24px;
     height: 40px;
   }
   .search_container{
-    width: 150px;
     height: 42px;
+    width: 200px;
   }
   .search_input{
     width: 100%;
     padding: 0 !important;
   }
-  .search_container{
-    width: 200px;
-  }
+ 
   .filter_btn_base svg{
     display: block;
     height: 5px;
@@ -7994,7 +7992,7 @@ width: 100%;
   align-content: flex-start;
   gap: 12px var(--spacing-spacing-xs, 12px);
   align-self: stretch;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: column;
   width: 100%;
 }
