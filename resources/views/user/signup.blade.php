@@ -159,7 +159,7 @@
 								</div>
 								<div class="form-floating">
 									<input id="middle_name" name="middle_name" class="form-control last_name" type="text" placeholder="Middle Name" data-id="middle_name" maxlength="50">
-									<label class="form-label" for="middle_name">Middle Name<span>&nbsp;*</span></label>
+									<label class="form-label" for="middle_name">Middle Name</label>
 									<div id="error-middle_name" class="error-message"><span>• Please enter your middle name.</span></div>
 									<div id="guide_middle_name" class="guide-message"><span>• Please enter your middle name.</span></div>
 								</div>
