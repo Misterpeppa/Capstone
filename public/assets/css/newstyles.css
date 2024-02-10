@@ -147,6 +147,107 @@ main{
 .days li.selected-date{
   color: white;
 }
+.fc-daygrid-day-frame{ 
+  display: flex !important;
+  justify-content: center !important;
+}
+.fc-daygrid-day-top{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.fc-daygrid-day-events{
+  display: none !important;
+}
+.fc-daygrid-bg-harness{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.fc-day-today{
+  border-radius: 50px !important;
+}
+.fc-highlight + .fc-daygrid-day-number {
+  color: white !important;
+}
+
+.fc-highlight{
+  background: var(--colors-actions-action-active, #004D53) !important;
+  border-radius: 50px !important;
+  display: flex !important;
+  width: 75% !important;
+  align-self: center !important;
+  justify-content: center !important;
+  left: 12% !important;
+  height: 40px !important;
+  top: 5px !important;
+}
+.fc-highlight + .fc-daygrid-day-number {
+  color: white !important;
+}
+.fc-today-button{
+  display: none !important;
+}
+.fc-toolbar-chunk:first-child > *:nth-child(2) {
+  display: none;
+}
+.fc-toolbar-chunk:nth-child(3){
+  width: 100% !important;
+}
+.fc-button-group{
+  display: flex;
+  width: 100% !important;
+  justify-content: space-between;
+  margin-left: 0 !important;
+}
+.fc-toolbar-title{
+  color: #1C1C1C !important;
+  font-family: Inter !important;
+  font-size: 28px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: normal !important;
+}
+.fc-prev-button, .fc-next-button{
+  background: none !important; 
+  border: none !important;
+}
+.fc-next-button:focus, .fc-prev-button:focus {
+  outline: none !important;
+  border: none !important;
+  /* Add any other styling overrides here */
+}
+.fc-scrollgrid-sync-table, .fc-daygrid-body {
+  width: 100% !important;
+}
+.fc-prev-button span, .fc-next-button span{
+  color: #000 !important;
+}
+.fc-scrollgrid table{
+  border: none !important;
+}
+.fc-scroller.fc-scroller-liquid-absolute, .fc-scroller {
+  overflow: hidden !important;
+}
+.fc-col-header{
+  width: 100% !important;
+}
+.fc-scrollgrid.fc-scrollgrid-liquid, .fc-view-harness.fc-view-harness-active{
+  height: 334px !important;
+}
+.fc-view-harness.fc-view-harness-active{
+  overflow: hidden !important;
+}
+.fc{
+  width: 100%;
+}
+.fc-day{
+  font-size: 12px !important;
+  border: none !important;
+}
+.fc-scrollgrid, .fc-scrollgrid thead tr th, .fc-scrollgrid tbody tr td{
+  border: none !important;
+}
 .Appointment_time-option {
   cursor: pointer;
   color: #1C1C1C;
@@ -1259,7 +1360,7 @@ main{
   .modal-content.TnC_PP_modal {
     display: flex;
     height: 510px;
-    width: 800px!important;
+    width: 800px;
     padding: var(--spacing-spacing-m, 24px);
     flex-direction: column;
     align-items: center;
@@ -1789,7 +1890,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     width: 200px;
   }
   
-  table th:first-child{
+  table th:first-child:not(:fc-col-header){
     width: 20px;
   }
   
@@ -2615,20 +2716,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     align-self: stretch;
   }
   
-  .return_btn {
-    display: flex;
-    height: 56px;
-    min-width: 100px;
-    padding: 16px var(--spacing-spacing-m, 24px);
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacing-spacing-m, 24px);
-    flex: 1 0 0;
-    border-radius: var(--radius-s, 8px);
-    border: 0.5px solid rgba(0, 0, 0, 0.15);
-    background: var(--colors-actions-action-neut, #F9F9F9);
-    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
-  }
+
   
   .return_btn_base {
     display: flex;
@@ -5259,8 +5347,16 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     align-items: center;
     border-radius: 8px;
     background: var(--Colors-Main-neutral-light, #F5F5F5);
-    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;
   }
+  input:checked {
+    accent-color: var(--colors-main-brand, #045B62) !important;
+}
+.custom-control input[type="radio"]:checked input {
+  background: var(--Colors-Main-neutral-light, #F5F5F5);
+
+}
+
+
   
   .date_time_container {
     display: flex;
@@ -5515,7 +5611,12 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .menu_toggle {
     display: none;
   }
-
+  .resched_footer{
+    display: flex;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
   
   @media (min-width: 1400px){
 
@@ -5757,6 +5858,9 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     background: var(--colors-main-neutral-light, #F5F5F5);
     box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
   }
+  .modal-content.TnC_PP_modal{
+    width: 100%;
+  }
   .quantity_input_container{
     display: flex;
     justify-content: space-between;
@@ -5881,7 +5985,9 @@ font-size: 24px;
   width: 100%;
   font-size: 16px;
 }
-
+.modal-content.TnC_PP_modal{
+  width: 100%;
+}
 
   .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
     display: flex;
@@ -6214,6 +6320,9 @@ font-size: 24px;
     display: flex;
     flex-direction: column;
     gap: 16px;
+  }
+  .modal-content.TnC_PP_modal{
+    width: 100%;
   }
   .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
     display: flex;
@@ -6599,6 +6708,12 @@ width: 100%;
     flex-direction: column;
   }
 
+  .modal-content.TnC_PP_modal{
+    width: 100%;
+  }
+  .modal-content.TnC_PP_modal{
+    width: 100%;
+  }
 
   .modal-content.resched_modal, .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
     display: flex;
@@ -7443,6 +7558,9 @@ width: 100%;
 
 
 @media (max-width: 576px){
+  .modal-content.TnC_PP_modal{
+    width: 100%;
+  }
   .deduct_stock_buttons{
     display: flex;
     justify-content: space-between;
