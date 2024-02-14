@@ -30,7 +30,7 @@
 
     <h1>PetRecord Report</h1>
 
-    <table>
+    <table class="table table-responsive mt-3 w-100">
         <thead>
             <tr>
                 <th>Owner</th>

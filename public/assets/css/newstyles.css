@@ -150,6 +150,107 @@ main{
 .days li.selected-date{
   color: white;
 }
+.fc-daygrid-day-frame{ 
+  display: flex !important;
+  justify-content: center !important;
+}
+.fc-daygrid-day-top{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.fc-daygrid-day-events{
+  display: none !important;
+}
+.fc-daygrid-bg-harness{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.fc-day-today{
+  border-radius: 50px !important;
+}
+.fc-highlight + .fc-daygrid-day-number {
+  color: white !important;
+}
+
+.fc-highlight{
+  background: var(--colors-actions-action-active, #004D53) !important;
+  border-radius: 50px !important;
+  display: flex !important;
+  width: 75% !important;
+  align-self: center !important;
+  justify-content: center !important;
+  left: 12% !important;
+  height: 40px !important;
+  top: 5px !important;
+}
+.fc-highlight + .fc-daygrid-day-number {
+  color: white !important;
+}
+.fc-today-button{
+  display: none !important;
+}
+.fc-toolbar-chunk:first-child > *:nth-child(2) {
+  display: none;
+}
+.fc-toolbar-chunk:nth-child(3){
+  width: 100% !important;
+}
+.fc-button-group{
+  display: flex;
+  width: 100% !important;
+  justify-content: space-between;
+  margin-left: 0 !important;
+}
+.fc-toolbar-title{
+  color: #1C1C1C !important;
+  font-family: Inter !important;
+  font-size: 28px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: normal !important;
+}
+.fc-prev-button, .fc-next-button{
+  background: none !important; 
+  border: none !important;
+}
+.fc-next-button:focus, .fc-prev-button:focus {
+  outline: none !important;
+  border: none !important;
+  /* Add any other styling overrides here */
+}
+.fc-scrollgrid-sync-table, .fc-daygrid-body {
+  width: 100% !important;
+}
+.fc-prev-button span, .fc-next-button span{
+  color: #000 !important;
+}
+.fc-scrollgrid table{
+  border: none !important;
+}
+.fc-scroller.fc-scroller-liquid-absolute, .fc-scroller {
+  overflow: hidden !important;
+}
+.fc-col-header{
+  width: 100% !important;
+}
+.fc-scrollgrid.fc-scrollgrid-liquid, .fc-view-harness.fc-view-harness-active{
+  height: 334px !important;
+}
+.fc-view-harness.fc-view-harness-active{
+  overflow: hidden !important;
+}
+.fc{
+  width: 100%;
+}
+.fc-day{
+  font-size: 12px !important;
+  border: none !important;
+}
+.fc-scrollgrid, .fc-scrollgrid thead tr th, .fc-scrollgrid tbody tr td{
+  border: none !important;
+}
 .Appointment_time-option {
   cursor: pointer;
   color: #1C1C1C;
@@ -351,6 +452,17 @@ main{
   align-items: flex-start;
   gap: var(--Spacing-spacing-xxs, 8px);
   flex: 1 0 0;
+}
+/* Hide spinner for number input */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Optionally hide the arrows on Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }
 .error-header {
   display: block;
@@ -1262,7 +1374,7 @@ main{
   .modal-content.TnC_PP_modal {
     display: flex;
     height: 510px;
-    width: 800px!important;
+    width: 800px;
     padding: var(--spacing-spacing-m, 24px);
     flex-direction: column;
     align-items: center;
@@ -1310,7 +1422,7 @@ main{
   }
   .modal-content.deduct_stock_modal {
     display: flex;
-    width: 360px;
+    width: 100%;
     padding: var(--Spacing-spacing-m, 24px);
     flex-direction: column;
     align-items: center;
@@ -1727,7 +1839,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   
   .search_container {
     display: flex;
-    width: 30%;
+    width: auto;
     height: 56px;
     flex-wrap: wrap;
     padding: 8px 16px;
@@ -1792,7 +1904,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     width: 200px;
   }
   
-  table th:first-child{
+  table th:first-child:not(:fc-col-header){
     width: 20px;
   }
   
@@ -2140,7 +2252,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   }
   
   .btn-group.split_btn {
-    display: none;
+    display: flex;
     height: 56px;
     align-items: center;
     border-radius: var(--radius-s, 8px);
@@ -2618,20 +2730,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     align-self: stretch;
   }
   
-  .return_btn {
-    display: flex;
-    height: 56px;
-    min-width: 100px;
-    padding: 16px var(--spacing-spacing-m, 24px);
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacing-spacing-m, 24px);
-    flex: 1 0 0;
-    border-radius: var(--radius-s, 8px);
-    border: 0.5px solid rgba(0, 0, 0, 0.15);
-    background: var(--colors-actions-action-neut, #F9F9F9);
-    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
-  }
+
   
   .return_btn_base {
     display: flex;
@@ -3429,7 +3528,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     align-content: flex-start;
     gap: 12px var(--spacing-spacing-xs, 12px);
     align-self: stretch;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
   
   .species_container {
@@ -5263,8 +5362,16 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     align-items: center;
     border-radius: 8px;
     background: var(--Colors-Main-neutral-light, #F5F5F5);
-    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;
   }
+  input:checked {
+    accent-color: var(--colors-main-brand, #045B62) !important;
+}
+.custom-control input[type="radio"]:checked input {
+  background: var(--Colors-Main-neutral-light, #F5F5F5);
+
+}
+
+
   
   .date_time_container {
     display: flex;
@@ -5519,7 +5626,12 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .menu_toggle {
     display: none;
   }
-
+  .resched_footer{
+    display: flex;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
   
   @media (min-width: 1400px){
 
@@ -5751,11 +5863,41 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     text-align: center;
   }
 
+  .modal-content.deduct_stock_modal {
+    display: inline-flex;
+    width: 100%;
+    padding: var(--spacing-spacing-m, 24px);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-l, 32px);
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-main-neutral-light, #F5F5F5);
+    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+  }
+  .modal-content.TnC_PP_modal{
+    width: 100%;
+  }
+  .quantity_input_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+  }
+  .deduct_stock_buttons{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
   
 }
 
   
 @media (min-width: 992px) and (max-width: 1199px){
+  .deduct_stock_buttons{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row !important;
+  }
   .card.summary {
     display: flex;
     width: 100%;
@@ -5859,7 +6001,9 @@ font-size: 24px;
   width: 100%;
   font-size: 16px;
 }
-
+.modal-content.TnC_PP_modal{
+  width: 100%;
+}
 
   .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
     display: flex;
@@ -6121,6 +6265,11 @@ font-size: 24px;
 
 
 @media (min-width: 768px) and (max-width: 991px) {
+  .deduct_stock_buttons{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column-reverse !important;
+  }
   .pet_record {
     width: 50% !important;
   }
@@ -6189,6 +6338,9 @@ font-size: 24px;
     flex-direction: column;
     gap: 16px;
   }
+  .modal-content.TnC_PP_modal{
+    width: 100%;
+  }
   .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
     display: flex;
     width: 100% !important;
@@ -6203,7 +6355,7 @@ font-size: 24px;
   .card.pet_card {
     display: flex;
     padding: 24px;
-    width: 48%;
+    width: 47%;
     height: 294px;
     align-items: flex-start;
     flex-direction: row;
@@ -6240,16 +6392,14 @@ font-size: 24px;
     height: 40px;
   }
   .search_container{
-    width: 150px;
     height: 42px;
+    width: 200px;
   }
   .search_input{
     width: 100%;
     padding: 0 !important;
   }
-  .search_container{
-    width: 200px;
-  }
+ 
   .filter_btn_base svg{
     display: block;
     height: 5px;
@@ -6521,6 +6671,11 @@ width: 100%;
 
 
 @media (min-width: 577px) and (max-width: 767px){
+  .deduct_stock_buttons{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column-reverse !important;
+  }
 
   .pet_record {
     display: flex;
@@ -6585,6 +6740,12 @@ width: 100%;
     flex-direction: column;
   }
 
+  .modal-content.TnC_PP_modal{
+    width: 100%;
+  }
+  .modal-content.TnC_PP_modal{
+    width: 100%;
+  }
 
   .modal-content.resched_modal, .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
     display: flex;
@@ -6600,7 +6761,7 @@ width: 100%;
 
   .modal-content.add_stock_modal {
     display: inline-flex;
-    width: 400px;
+    width: 100%;
     padding: var(--spacing-spacing-s, 16px);
     flex-direction: column;
     align-items: center;
@@ -7380,7 +7541,7 @@ width: 100%;
       align-self: stretch;
     }
 
-    .return_btn, .confirm_complete, .archive_confirm, .clear_form, .cancel_edit, .return_btn, .submit_product, .submit_diagnosis, .submit_vaccination, .submit_surgery, .submit_immunization, .submit_pet{
+    .return_btn, .confirm_complete, .archive_confirm, .cancel_btn, .clear_form, .cancel_edit, .return_btn, .add_stock, .submit_product, .submit_diagnosis, .submit_vaccination, .submit_surgery, .submit_immunization, .submit_pet{
       width: 50% !important;
       height: 36px;
       align-self: center;
@@ -7433,9 +7594,14 @@ width: 100%;
 
 
 @media (max-width: 576px){
-  .loc_and_working_hours{
-    flex-direction: column;
-    align-items: center;
+  .modal-content.TnC_PP_modal{
+    width: 100%;
+  }
+  .deduct_stock_buttons{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column-reverse !important;
+
   }
   .summary_container {
     display: flex;
@@ -7981,7 +8147,7 @@ width: 100%;
   align-content: flex-start;
   gap: 12px var(--spacing-spacing-xs, 12px);
   align-self: stretch;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: column;
   width: 100%;
 }

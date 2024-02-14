@@ -731,9 +731,7 @@ function setupAgeCalculation(birthdateId, ageId, petTypeId) {
         if (age.months > 0) {
             formattedAge += age.months + ' month' + (age.months > 1 ? 's' : '') + ' ';
         }
-        if (age.days > 0) {
-            formattedAge += age.days + ' day' + (age.days > 1 ? 's' : '');
-        }
+
 
         return formattedAge.trim();
     }

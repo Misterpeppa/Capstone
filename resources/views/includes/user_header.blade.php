@@ -46,9 +46,10 @@
             <div class="collapse navbar-collapse" id="navcol-3">
                 <ul class="navbar-nav mx-auto" style="font-family: Inter;--bs-body-font-weight: 700;">
                     <li class="nav-item"><a class="nav-link active" href="{{ route('landing') }}" style="color: #1C1C1C;">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('appointment.form') }}" style="color: #1C1C1C;">Appointments</a></li>
-                    <!--<li class="nav-item"><a class="nav-link" href="#" style="color: #1C1C1C;">Contact</a></li>-->
-                    <!--<li class="nav-item"><a class="nav-link" href="#" style="color: #1C1C1C;">About Us</a></li>-->
+                    <li class="nav-item"><a class="nav-link" href="{{ route('appointment.list') }}" style="color: #1C1C1C;">Appointments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color: #1C1C1C;">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color: #1C1C1C;">About Us</a></li>
+
                 </ul>
                 <div class="user">
                     <button class="btn dropdown notification" id="notification-1" type="button" aria-expanded="false" data-bs-toggle="dropdown">

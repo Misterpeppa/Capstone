@@ -468,13 +468,12 @@ dateInput.addEventListener('keydown', function (e) {
 checkInputs1();
 function checkInputs1() {
 const firstName = document.getElementById('first_name').value;
-const middleName = document.getElementById('middle_name').value;
 const lastName = document.getElementById('last_name').value;
 const birthdate = document.getElementById('birthdate').value;
 
 const signupButton = document.getElementById('signup_btn');
 
-if (firstName !== '' && middleName !== '' && lastName !== '' && birthdate !== '') {
+if (firstName !== '' && lastName !== '' && birthdate !== '') {
     signupButton.disabled = false;
 } else {
     signupButton.disabled = true;
