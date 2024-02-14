@@ -1065,12 +1065,14 @@
                         @csrf
 						<div class="mb-3 input_container">
                             <div class="form-floating align-self-stretch">
-								<select class="admin_petInfo_select form-control w-100" id="name" name="owner_id" placeholder="Owner Name">
-                                        <option value=""disabled selected>Select Owner: </option>
-                                        @foreach ($owners as $owners)
-                                            <option value="{{ $owners->id }}">{{ $owners->first_name }} {{ $owners->middle_name }} {{ $owners->last_name }} {{ $owners->suffix }}</option>
-                                        @endforeach
-                                    </select>
+								<select class="admin_petInfo_select" id="name" name="owner_id" placeholder="Owner Name">
+									<option value=""disabled selected>Select Owner: </option>
+									@foreach ($owners as $owners)
+										<option value="{{ $owners->id }}">
+											{{ $owners->first_name }} {{ $owners->middle_name }} {{ $owners->last_name }} {{ $owners->suffix }}
+										</option>
+									@endforeach
+                                </select>
                                 </div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
