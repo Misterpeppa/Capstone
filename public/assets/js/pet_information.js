@@ -259,88 +259,98 @@ function setupBreedOptions(petTypeId, breedId, breedOptions) {
     
 //age of pet  
 function setupAgeCalculation(birthdateId, ageId, petTypeId) {
-    const today = new Date();
-    const minDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate()).toISOString().split('T')[0];
+  const today = new Date();
+  const minDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate()).toISOString().split('T')[0];
 
-    const dateInput = document.getElementById(birthdateId);
-    dateInput.setAttribute('max', today.toISOString().split('T')[0]);  // Set max date to today
-    dateInput.setAttribute('min', minDate);
-    
-    dateInput.addEventListener('keydown', function (e) {
-        e.preventDefault();
-    });
-    const ageInput1 = document.getElementById(ageId);
-    ageInput1.addEventListener('keydown', function (e) {
-        e.preventDefault();
-    });
-    
-    var birthdateInput = document.getElementById(birthdateId);
-    var ageInput = document.getElementById(ageId);
-    var petTypeSelect = document.getElementById(petTypeId);
+  const dateInput = document.getElementById(birthdateId);
+  dateInput.setAttribute('max', today.toISOString().split('T')[0]);  // Set max date to today
+  dateInput.setAttribute('min', minDate);
 
-    birthdateInput.addEventListener('change', function () {
-        var selectedBirthdate = new Date(birthdateInput.value);
-        var petType = petTypeSelect.value;
+  // Disable keyboard input for date and age fields
+  dateInput.addEventListener('keydown', function (e) {
+      e.preventDefault();
+  });
 
-        if (petType === 'none' || !selectedBirthdate) {
-            ageInput.value = '';
-            ageInput.placeholder = 'Please select pet type, breed, and enter the birthdate first.';
-        } else {
-            var age = calculateAge(selectedBirthdate, petType);
-            ageInput.value = age;
-            ageInput.placeholder = ''; // Clear the placeholder
-            document.getElementById('error-' + ageInput.id).innerText = ''; // Clear the error message
-        }
-    });
+  const ageInput = document.getElementById(ageId);
+  ageInput.addEventListener('keydown', function (e) {
+      e.preventDefault();
+  });
 
-    ageInput.disabled = false; // Disable the input initially
+  const birthdateInput = document.getElementById(birthdateId);
+  const petTypeSelect = document.getElementById(petTypeId);
 
-    function calculateAge(birthdate, petType) {
-        var today = new Date();
-        var age;
+  birthdateInput.addEventListener('change', function () {
+      const selectedBirthdate = new Date(birthdateInput.value);
+      const petType = petTypeSelect.value;
 
-        if (petType === 'Dog') {
-            age = calculateDogAge(birthdate, today);
-        } else if (petType === 'Cat') {
-            age = calculateCatAge(birthdate, today);
-        } else {
-            age = calculateDefaultAge(birthdate, today);
-        }
+      if (petType === 'none' || !selectedBirthdate) {
+          ageInput.value = '';
+          ageInput.placeholder = 'Please select pet type, breed, and enter the birthdate first.';
+      } else {
+          const age = calculateAge(selectedBirthdate, petType);
+          ageInput.value = age.years + ' years and ' + age.months + ' months';
+          ageInput.placeholder = ''; // Clear the placeholder
+          document.getElementById('error-' + ageInput.id).innerText = ''; // Clear the error message
+      }
+  });
 
-        return age;
-    }
+  // Enable age input initially
+  ageInput.disabled = false;
 
-    function calculateDogAge(birthdate, today) {
-        var ageInMilliseconds = today - birthdate;
-        var ageInDogYears;
+  function calculateAge(birthdate, petType) {
+      const today = new Date();
+      let age;
 
-        if (ageInMilliseconds < 2 * 365 * 24 * 60 * 60 * 1000) {
-            ageInDogYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000) * 10.5;
-        } else {
-            ageInDogYears = 2 * 10.5 + (ageInMilliseconds - 2 * 365 * 24 * 60 * 60 * 1000) / (365 * 24 * 60 * 60 * 1000) * 4;
-        }
+      if (petType === 'Dog') {
+          age = calculateDogAge(birthdate, today);
+      } else if (petType === 'Cat') {
+          age = calculateCatAge(birthdate, today);
+      } else {
+          age = calculateDefaultAge(birthdate, today);
+      }
 
-        return Math.floor(ageInDogYears);
-    }
+      return age;
+  }
 
-    function calculateCatAge(birthdate, today) {
-        var ageInMilliseconds = today - birthdate;
-        var ageInCatYears;
+  function calculateDogAge(birthdate, today) {
+      const ageInMilliseconds = today - birthdate;
+      let ageInDogYears;
 
-        if (ageInMilliseconds < 2 * 365 * 24 * 60 * 60 * 1000) {
-            ageInCatYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000) * 12;
-        } else {
-            ageInCatYears = 2 * 12 + (ageInMilliseconds - 2 * 365 * 24 * 60 * 60 * 1000) / (365 * 24 * 60 * 60 * 1000) * 4;
-        }
+      if (ageInMilliseconds < 2 * 365 * 24 * 60 * 60 * 1000) {
+          ageInDogYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000) * 10.5;
+      } else {
+          ageInDogYears = 2 * 10.5 + (ageInMilliseconds - 2 * 365 * 24 * 60 * 60 * 1000) / (365 * 24 * 60 * 60 * 1000) * 4;
+      }
 
-        return Math.floor(ageInCatYears);
-    }
+      const years = Math.floor(ageInDogYears);
+      const months = Math.floor((ageInDogYears - years) * 12);
+      return { years: years, months: months };
+  }
 
-    function calculateDefaultAge(birthdate, today) {
-        var ageInMilliseconds = today - birthdate;
-        return Math.floor(ageInMilliseconds / (365 * 24 * 60 * 60 * 1000));
-    }
+  function calculateCatAge(birthdate, today) {
+      const ageInMilliseconds = today - birthdate;
+      let ageInCatYears;
+
+      if (ageInMilliseconds < 2 * 365 * 24 * 60 * 60 * 1000) {
+          ageInCatYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000) * 12;
+      } else {
+          ageInCatYears = 2 * 12 + (ageInMilliseconds - 2 * 365 * 24 * 60 * 60 * 1000) / (365 * 24 * 60 * 60 * 1000) * 4;
+      }
+
+      const years = Math.floor(ageInCatYears);
+      const months = Math.floor((ageInCatYears - years) * 12);
+      return { years: years, months: months };
+  }
+
+  function calculateDefaultAge(birthdate, today) {
+      const ageInMilliseconds = today - birthdate;
+      const years = Math.floor(ageInMilliseconds / (365 * 24 * 60 * 60 * 1000));
+      const months = Math.floor(((ageInMilliseconds / (365 * 24 * 60 * 60 * 1000)) - years) * 12);
+      return { years: years, months: months };
+  }
 }
+
+
 // Example usage for the first set of IDs
 setupAgeCalculation('pet_birthdate', 'pet_age', 'pet_type');
 
