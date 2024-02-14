@@ -450,6 +450,17 @@ main{
   gap: var(--Spacing-spacing-xxs, 8px);
   flex: 1 0 0;
 }
+/* Hide spinner for number input */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Optionally hide the arrows on Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
 .error-header {
   display: block;
   color: var(--Colors-Main-danger-dark, #C33834);
@@ -6338,7 +6349,7 @@ font-size: 24px;
   .card.pet_card {
     display: flex;
     padding: 24px;
-    width: 48%;
+    width: 47%;
     height: 294px;
     align-items: flex-start;
     flex-direction: row;
