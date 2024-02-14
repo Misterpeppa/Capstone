@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/main.min.css" rel="stylesheet">
+  
 </head>
 
 <body>
@@ -43,21 +45,27 @@
                                     @csrf
                                         <div class="d-flex flex-column justify-content-center align-items-center align-self-stretch multisteps-form__panel js-active" id="single-form-next" data-animation="scaleIn" style="gap: 25px;">
                                             <h3 class="text-start multisteps-form__title" style="align-self: stretch;color: #1C1C1C;font-family: Inter;font-size: 21px;font-style: normal;font-weight: 700;line-height: normal;">APPOINTMENT PREFERENCES</h3>
+                                            
                                             <div id="form-content" class="multisteps-form__content" style="display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 25px;align-self: stretch;max-height: 1500px;">
                                                 <div id="form_fields" class="form_fields">
                                                     <div class="align-self-stretch form-floating"><input class="form-control" type="text" id="petName" data-id="petName" placeholder="Pet Name" maxlength="32"><label class="form-label" for="petName">Pet Name<span>&nbsp;*</span></label>
                                                         <div id="error-petName" class="error-message"><span>• Please enter pet name.</span></div>
                                                     </div>
                                                     <div class="pet_type_and_breed_container">
-                                                        <div class="species_container">
+                                                        <div class="species_container w-100">
                                                             <div id="dog_cat_btn" class="species" style="display: flex;align-items: flex-start;gap: var(--spacing-spacing-xs, 12px);align-self: stretch;">
-                                                                <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Dog" for="dog" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Dog</label><input type="radio" id="dog" class="custom-control-input" style="display: flex;width: 22px;height: 22px;justify-content: center;align-items: center;border-radius: 8px;background: var(--colors-main-neutral-light, #F5F5F5);box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;" name="dog"></div>
-                                                                <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Cat" for="cat" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Cat</label><input type="radio" id="cat" class="custom-control-input" style="display: flex;width: 22px;height: 22px;justify-content: center;align-items: center;border-radius: 8px;background: var(--colors-main-neutral-light, #F5F5F5);box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;" name="cat"></div>
+                                                                <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Dog" for="dog" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Dog</label><input type="radio" id="dog" class="custom-control-input" name="dog"></div>
+                                                                <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Cat" for="cat" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Cat</label><input type="radio" id="cat" class="custom-control-input" name="cat"></div>
                                                             </div>
                                                         </div>
-                                                        <div class="align-self-stretch form-floating breed_container"><select class="form-select" id="breed" required="" style="height: 100%;" disabled=""></select><label class="form-label breed_label" for="breed">Select a breed<span>&nbsp;*</span></label>
+                                                        <div class="form-floating breed_container w-100"><select class="form-select" id="breed" required="" style="height: 100%;" disabled=""></select><label class="form-label breed_label" for="breed">Select a breed<span>&nbsp;*</span></label>
                                                             <div id="error-breed" class="error-message"><span>• Please select a breed</span></div>
                                                         </div>
+                                                        <div class="form-floating" id="specify_breed">
+                                                            <input class="form-control" id="specificBreed"/>
+                                                            <label class="form-label" for="specificBreed">Specify Breed</label>
+                                                        </div>
+
                                                     </div>
                                                     <div class="align-self-stretch form-floating"><select class="form-select form-select-sm" id="surgery_type" data-id="surgery_type">
                                                             <option value="" selected="">Select a surgery</option>
@@ -76,8 +84,8 @@
                                                     <div class="pet_type_and_breed_container">
                                                         <div class="species_container">
                                                             <div id="dog_cat_btn-1" class="species" style="display: flex;align-items: flex-start;gap: var(--spacing-spacing-xs, 12px);align-self: stretch;">
-                                                                <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Dog-1" for="dog-1" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Dog</label><input type="radio" id="dog-1" class="custom-control-input" style="display: flex;width: 22px;height: 22px;justify-content: center;align-items: center;border-radius: 8px;background: var(--colors-main-neutral-light, #F5F5F5);box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;" name="dog-1"></div>
-                                                                <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Cat-1" for="cat-1" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Cat</label><input type="radio" id="cat-1" class="custom-control-input" style="display: flex;width: 22px;height: 22px;justify-content: center;align-items: center;border-radius: 8px;background: var(--colors-main-neutral-light, #F5F5F5);box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;" name="cat-1"></div>
+                                                                <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Dog-1" for="dog-1" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Dog</label><input type="radio" id="dog-1" class="custom-control-input" name="dog-1"></div>
+                                                                <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Cat-1" for="cat-1" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Cat</label><input type="radio" id="cat-1" class="custom-control-input" name="cat-1"></div>
                                                             </div>
                                                         </div>
                                                         <div class="align-self-stretch form-floating breed_container"><select class="form-select" id="breed-1" disabled="" required="" style="height: 100%;"></select><label class="form-label" for="breed-1">Select a breed<span>&nbsp;*</span></label>
@@ -101,8 +109,8 @@
                                                     <div class="pet_type_and_breed_container">
                                                         <div class="species_container">
                                                             <div id="dog_cat_btn-2" class="species" style="display: flex;align-items: flex-start;gap: var(--spacing-spacing-xs, 12px);align-self: stretch;">
-                                                                <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Dog-2" for="dog-2" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Dog</label><input type="radio" id="dog-2" class="custom-control-input" style="display: flex;width: 22px;height: 22px;justify-content: center;align-items: center;border-radius: 8px;background: var(--colors-main-neutral-light, #F5F5F5);box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;" name="dog-2"></div>
-                                                                <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Cat-2" for="cat-2" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Cat</label><input type="radio" id="cat-2" class="custom-control-input" style="display: flex;width: 22px;height: 22px;justify-content: center;align-items: center;border-radius: 8px;background: var(--colors-main-neutral-light, #F5F5F5);box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;" name="cat-2"></div>
+                                                                <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Dog-2" for="dog-2" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Dog</label><input type="radio" id="dog-2" class="custom-control-input" name="dog-2"></div>
+                                                                <div class="custom-control custom-radio"><label class="form-label custom-control-label" id="Cat-2" for="cat-2" style="color: #1C1C1C;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin-bottom: 0px;">Cat</label><input type="radio" id="cat-2" class="custom-control-input" name="cat-2"></div>
                                                             </div>
                                                         </div>
                                                         <div class="align-self-stretch form-floating breed_container"><select class="form-select" id="breed-2" disabled="" required="" style="height: 100%;"></select><label class="form-label" for="breed-2">Select a breed<span>&nbsp;*</span></label>
@@ -245,41 +253,8 @@
                                                 <div class="d-flex flex-column align-items-start align-self-stretch multisteps-form__content" id="form-content-1" style="gap: 25px;">
                                                     <div class="d-flex justify-content-between align-items-start align-self-stretch calendar_time_container" style="padding: 0px var(--spacing-spacing-xl, 64px);">
                                                         <div class="calendar_container">
-                                                            <div class="d-flex flex-column align-items-start align-self-stretch Appointment_wrapper" style="gap: var(--spacing-spacing-s, 16px);">
-                                                                <div class="d-flex justify-content-between align-items-center align-self-stretch Appointment_icons"><span id="prev" class="prev_month"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6550_20711)">
-    <path d="M15 6L9 12L15 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6550_20711">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg></span>
-                                                                    <p class="text-center current-date"></p><span id="next" class="next_month"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-  <g clip-path="url(#clip0_6550_20715)">
-    <path d="M9.5 6L15.5 12L9.5 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6550_20715">
-      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
-    </clipPath>
-  </defs>
-</svg></span>
-                                                                </div>
-                                                                <div class="d-flex flex-column justify-content-center align-items-center align-self-stretch Appointment_calendar">
-                                                                    <ul class="text-start Appointment_weeks">
-                                                                        <li style="height: 10px;">Sun</li>
-                                                                        <li style="height: 10px;">Mon</li>
-                                                                        <li style="height: 10px;">Tue</li>
-                                                                        <li style="height: 10px;">Wed</li>
-                                                                        <li style="height: 10px;">Thu</li>
-                                                                        <li style="height: 10px;">Fri</li>
-                                                                        <li style="height: 10px;">Sat</li>
-                                                                    </ul>
-                                                                    <ul class="days"></ul>
-                                                                </div>
-                                                            </div>
+                                                        <div id="calendar"></div>
+                                                            
                                                             <div class="selected_fullyBooked" style="display: flex;padding: 10px 30px;align-items: center;gap: 20px;align-self: stretch;">
                                                                 <div class="selected_Calendar_date" style="display: flex;padding: 20px;flex-direction: column;justify-content: center;align-items: center;gap: 10px;border-radius: var(--radius-s, 8px);background: rgba(0, 0, 0, 0.10);">
                                                                     <p style="color: #045B62;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 700;line-height: normal;margin: 0;">Selected</p>
@@ -515,6 +490,94 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+
+<style>
+    .fc-day-disabled, .fc-day.past-date {
+      
+      opacity: 0.5;
+    }
+    .fc-day-past:hover{
+        cursor: not-allowed;
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const harnessElements = document.querySelectorAll('.fc-scroller-harness.fc-scroller-harness-liquid');
+    
+    harnessElements.forEach(function(element) {
+        element.classList.remove('fc-scroller-harness', 'fc-scroller-harness-liquid');
+    });
+    
+    const calendarEl = document.getElementById('calendar');
+const calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    selectable: true, // Enable date selection
+    selectAllow: function(info) { // Function to allow selection of dates
+        return info.start >= new Date(); // Allow selection of dates starting from today
+    },
+    select: function(info) { // Callback function for date selection
+            alert('Selected date: ' + info.startStr);
+            console.log('Selected date: ' + info.startStr);
+            const date_required_message = document.getElementById('date_required_message');
+            const selectedDateElement = document.getElementById('selected_date');
+            const confirmDateElement = document.getElementById('confirm_date');
+            const appointmentOptionsElement = document.getElementById('Appointment_time_options');
+            if (confirmDateElement) {
+                confirmDateElement.textContent = info.startStr;
+            }
+            if (selectedDateElement) {
+                selectedDateElement.textContent = 'Selected date: ' + info.startStr;
+            }
+            if (appointmentOptionsElement) {
+                appointmentOptionsElement.style.display = 'flex'; // Show the appointment options
+                date_required_message.style.display = 'none'; 
+            }
+            // You can perform further actions with the selected date here
+        }
+});
+
+calendar.render();
+
+
+// Event listener to check if selected date is unselected when clicking outside the calendar
+document.addEventListener('click', function(event) {
+    // Check if the clicked element is outside the calendar
+    if (!calendarEl.contains(event.target)) {
+        // The selected date is unselected
+        console.log('Selected date is unselected.');
+    }
+});
+
+
+    const toolbar = document.querySelector('.fc-toolbar'); // Select the toolbar element
+
+    if (toolbar) {
+        const buttonGroup = toolbar.querySelector('.fc-button-group'); // Select the button group element
+
+        if (buttonGroup) {
+            const title = toolbar.querySelector('.fc-toolbar-title'); // Select the title element
+
+            if (title) {
+                const nextButton = buttonGroup.querySelector('.fc-next-button'); // Select the next button
+                buttonGroup.insertBefore(title, nextButton); // Insert the title before the next button
+            }
+        }
+    }
+
+    // Get the button element
+    const backButton = document.querySelector('.fc-prev-button');
+    const nextButton = document.querySelector('.fc-next-button');
+
+    // Remove the 'fc-button' and 'fc-button-primary' classes from the class list
+    nextButton.classList.remove('fc-button', 'fc-button-primary');
+    backButton.classList.remove('fc-button', 'fc-button-primary');
+
+    
+});
+</script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @if (session('success'))
     <script>
@@ -657,6 +720,7 @@
 
 
 </script>
+
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/bs-init.js') }}"></script>

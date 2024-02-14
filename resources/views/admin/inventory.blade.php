@@ -175,7 +175,7 @@
                             <div class="left_part_product_header">
                               <div class="search_container">
                                   <input type="text" class="search_input" name="q"
-                                      value="{{ request('q') }}" placeholder="Search Client">
+                                      value="{{ request('q') }}" placeholder="Search Product">
                                   <!-- Other input fields or elements for pagination -->
                                   <input type="hidden" id="pageForm" name="page"
                                       value="{{ request('page') }}">
@@ -487,7 +487,7 @@
                             <table class="table table-responsive w-100 mt-3">
                                 <thead>
                                     <tr>
-                                        <th><input id="SelectAll" type="radio" class="checkbox"></th>
+                                        <th><input id="SelectAll" type="checkbox" class="checkbox"></th>
                                         <th>Product Name</th>
                                         <th>Category</th>
                                         <th>On Hand</th>
@@ -507,7 +507,7 @@
                                         @endphp
                                
                                         <tr data-row-id="{{ $product->id }}">
-                                          <td><input type="radio" class="checkbox"></td>
+                                          <td><input type="checkbox" class="checkbox"></td>
                                           <td>{{ $product->item_name }}</td>
                                           <td>{{ $product->product_type }}</td>
                                           <td>{{ $product->info_quantity }}</td>
@@ -529,16 +529,20 @@
                                                 class="btn border-0 addStock"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                             <path d="M7 10H13M10 7V13M1 10C1 11.1819 1.23279 12.3522 1.68508 13.4442C2.13738 14.5361 2.80031 15.5282 3.63604 16.364C4.47177 17.1997 5.46392 17.8626 6.55585 18.3149C7.64778 18.7672 8.8181 19 10 19C11.1819 19 12.3522 18.7672 13.4442 18.3149C14.5361 17.8626 15.5282 17.1997 16.364 16.364C17.1997 15.5282 17.8626 14.5361 18.3149 13.4442C18.7672 12.3522 19 11.1819 19 10C19 8.8181 18.7672 7.64778 18.3149 6.55585C17.8626 5.46392 17.1997 4.47177 16.364 3.63604C15.5282 2.80031 14.5361 2.13738 13.4442 1.68508C12.3522 1.23279 11.1819 1 10 1C8.8181 1 7.64778 1.23279 6.55585 1.68508C5.46392 2.13738 4.47177 2.80031 3.63604 3.63604C2.80031 4.47177 2.13738 5.46392 1.68508 6.55585C1.23279 7.64778 1 8.8181 1 10Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg> Add Stock</div></button>
+
                                             <button
-		                                    data-action="DeductStock" 
+		                                data-action="DeductStock" 
                                             data-product-type="{{ $product->product_type }}"
                                             data-product-id="{{ $product->id }}"
                                             data-item_name="{{ $product->item_name }}"
-                                            class="btn border-0 deductStock"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                            <path d="M5 12l14 0" />
-                                            </svg>
-                                            Deduct Stock</div></button>
+                                                class="btn border-0 addStock"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M5 12l14 0" />
+</svg>
+
+
+ Deduct Stock</div></button>
+
                                                 <button 
                                                 data-action="View"
                                                 data-product-type="{{ $product->product_type }}"
@@ -740,7 +744,7 @@
                                 </thead>
                                 <tbody id="batch_table_body">
                                     <tr>
-                                        <td><input type="radio"></td>
+                                        <td><input type="checkbox"></td>
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
@@ -1072,7 +1076,7 @@
                                         <option value="Vaccine">Vaccine</option>
                                         <option value="Vitamin">Vitamin</option>
                                     </select><label class="form-label form-label" for="product-categ">Product
-                                        Category</label>
+                                        Category <span>&nbsp;*</span></label>
                                     <div id="error-product_categ-1" class="error-message"><span>Please select a
                                             category.</span></div>
                                 </div>
@@ -1090,7 +1094,7 @@
                                         class="form-control form-control" type="text" name="product_code"
                                         data-id="product_code" id="product_code-1"
                                         placeholder="Product Code"><label class="form-label form-label"
-                                        for="product_code">Product Code</label>
+                                        for="product_code">Product Code <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-product_code-1"><span>Please enter product
                                             code.</span></div>
                                 </div>
@@ -1098,7 +1102,7 @@
                                         class="form-control" type="text" name="batch_no"
                                         data-id="batch_number" id="batch_number-1"
                                         placeholder="Batch Number"><label class="form-label form-label"
-                                        for="batch_number">Batch Number</label>
+                                        for="batch_number">Batch Number <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-batch_number-1"><span>Please enter batch
                                             number.</span></div>
                                 </div>
@@ -1109,7 +1113,7 @@
                                         data-id="manufactured_date" id="manufactured_date-1"
                                         placeholder="Manufactured Date" type="date"><label
                                         class="form-label form-label" for="manufactured_date">Manufactured
-                                        Date</label>
+                                        Date <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-manufactured_date-1"><span>Please enter the
                                             manufactured date.</span></div>
                                 </div>
@@ -1117,7 +1121,7 @@
                                         class="form-control form-control" name="expiration_date"
                                         data-id="expiration_date" id="expiration_date-1"
                                         placeholder="Expiration Date" type="date"><label
-                                        class="form-label form-label" for="expiration_date">Expiration Date</label>
+                                        class="form-label form-label" for="expiration_date">Expiration Date <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-expiration_date-1"><span>Please enter the
                                             expiration date.</span></div>
                                 </div>
@@ -1125,7 +1129,7 @@
                                         class="form-control form-control" name="date_stocked"
                                         data-id="datestocked" id="datestocked-1" placeholder="Expiration Date"
                                         type="date"><label class="form-label form-label" for="datestocked">Date
-                                        Stocked</label>
+                                        Stocked <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-datestocked-1"><span>Please enter the date
                                             stocked.</span></div>
                                 </div>
@@ -1133,17 +1137,17 @@
                             <div class="form-floating" style="width:100%;">
                                 <textarea class="form-control" id="prod_description-1" name="prod_desc" data-id="prod_description"
                                     placeholder="Product Description"></textarea><label class="form-label form-label"
-                                    for="prod_description">Product Description</label>
+                                    for="prod_description">Product Description <span>&nbsp;*</span></label>
                                 <div id="error-prod_description-1" class="error-message"><span>Please enter product
                                         description.</span></div>
                             </div>
                             <div class="quantity_input_container">
-                                <h1>Quantity</h1>
+                                <h1>Quantity <span style="color: var(--bs-red);">&nbsp;*</span></h1>
                                 <div class="form-floating">
                                     <div class="quantity_input"><button class="quantity_minus" type="button"
                                             onclick="decrementQuantity1()">-</button>
                                         <input type="number" aria-labelledby="label-quantity"
-                                            class="input_quantity" data-id="quantity" id="quantity-1"
+                                            class="input_quantity form-control" data-id="quantity" id="quantity-1"
                                             min="0" name="quantity" required="" value="0"><button
                                             class="quantity_add" type="button"
                                             onclick="incrementQuantity1()">+</button>
@@ -1222,7 +1226,7 @@
                                 <div class="quantity_input">
                                     <button class="quantity_minus" onclick="decrementQuantity2()"
                                         type="button">-</button>
-                                    <input id="quantity-2" class="input_quantity" type="number"
+                                    <input id="deduct_quantity_input" class="input_quantity" type="number"
                                         aria-labelledby="label-quantity" data-id="quantity-2" min="0"
                                         name="quantity" required value="0" />
                                     <button class="quantity_add" onclick="incrementQuantity2()"
@@ -1245,12 +1249,12 @@
         </div>
     </div>
 
-
     <div id="deduct_stock_modal" class="modal fade" role="dialog" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content deduct_stock_modal">
                 <div class="modal-header">
                     <h1 class="modal-title">Deduct Stock</h1><button class="btn-close" aria-label="Close"
+
                         data-bs-dismiss="modal" onClick="" type="button"></button>
                 </div>
                 <div class="modal-body add_stock_modal_body w-100">
@@ -1268,9 +1272,10 @@
                                 <div class="quantity_input deduct">
                                     <button class="quantity_minus" onclick="decrementQuantity2()"
                                         type="button">-</button>
-                                    <input id="deduct_quantity_input" class="input_quantity" type="number"
-                                        aria-labelledby="label-quantity" data-id="quantity" min="0"
-                                        name="deduct" required value="0" />
+                                    <input id="quantity-2" class="input_quantity" type="number"
+                                        aria-labelledby="label-quantity" data-id="quantity-2" min="0"
+                                        name="quantity" required value="0" />
+
                                     <button class="quantity_add" onclick="incrementQuantity2()"
                                         type="button">+</button>
                                     <div id="error-quantity-2" class="error-message"><span>Please input a quantity
@@ -1699,7 +1704,7 @@
 
             SelectAll.addEventListener("click", function () {
     var tableBody = document.getElementById('inventory_table_body');
-    var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
+    var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
 
     rowCheckboxes.forEach(function (checkbox) {
         checkbox.checked = !checkbox.checked; // Toggle the state

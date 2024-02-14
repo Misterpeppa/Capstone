@@ -355,71 +355,101 @@ function resetPetDetails1() {
   
 
 function makePetSelectionReusable(breedSelectId, dogRadioId, catRadioId, dogBreeds, catBreeds) {
-const breedSelect = document.getElementById(breedSelectId);
-const dogRadio = document.getElementById(dogRadioId);
-const catRadio = document.getElementById(catRadioId);
+    const breedSelect = document.getElementById(breedSelectId);
+    const dogRadio = document.getElementById(dogRadioId);
+    const catRadio = document.getElementById(catRadioId);
+    const specifyBreedContainer = document.getElementById('specify_breed');
 
-// Function to populate the breed select with options
-function populateBreeds(breeds) {
-  breedSelect.removeAttribute("disabled");
-  breedSelect.innerHTML = "";
+    // Function to populate the breed select with options
+    function populateBreeds(breeds) {
+        breedSelect.removeAttribute("disabled");
+        breedSelect.innerHTML = "";
 
-  const defaultOption = document.createElement("option");
-  defaultOption.value = "none";
-  defaultOption.textContent = "Select a breed";
-  breedSelect.appendChild(defaultOption);
+        const defaultOption = document.createElement("option");
+        defaultOption.value = "none";
+        defaultOption.textContent = "Select a breed";
+        breedSelect.appendChild(defaultOption);
 
-  breeds.forEach((breed) => {
-    const option = document.createElement("option");
-    option.value = breed;
-    option.textContent = breed;
-    breedSelect.appendChild(option);
-  });
-}
+        breeds.forEach((breed) => {
+            const option = document.createElement("option");
+            option.value = breed;
+            option.textContent = breed;
+            breedSelect.appendChild(option);
+        });
 
-// Function to handle radio button click
-function handleRadioClick(selectedRadio, breeds) {
-  if (selectedRadio.checked) {
-    populateBreeds(breeds);
-  } else {
-    breedSelect.setAttribute("disabled", "true");
-    breedSelect.innerHTML = `<option value="none">Please select type of pet first</option>`;
-  }
-  // Add any additional logic you need here
-}
+        // Trigger the change event manually
+        const event = new Event('change');
+        breedSelect.dispatchEvent(event);
+    }
 
-// Add click event listeners to radio buttons
-dogRadio.addEventListener("click", function () {
-  handleRadioClick(dogRadio, dogBreeds);
-  catRadio.checked = false; // Uncheck the cat radio button
-});
+    // Function to handle radio button click
+    function handleRadioClick(selectedRadio, breeds) {
+        if (selectedRadio.checked) {
+            populateBreeds(breeds);
+        } else {
+            breedSelect.setAttribute("disabled", "true");
+            breedSelect.innerHTML = `<option value="none">Please select type of pet first</option>`;
+            specifyBreedContainer.style.display = 'none';
+        }
+        // Add any additional logic you need here
+    }
 
-catRadio.addEventListener("click", function () {
-  handleRadioClick(catRadio, catBreeds);
-  dogRadio.checked = false; // Uncheck the dog radio button
-});
+    // Function to show/hide specify_breed based on selected breed
+    function showSpecifyBreed() {
+        if (breedSelect.value === 'Others') {
+            specifyBreedContainer.style.display = 'block';
+        } else {
+            specifyBreedContainer.style.display = 'none';
+        }
+    }
 
-// Initially, call handleRadioClick to set the initial state based on radio button selection
-handleRadioClick(dogRadio, dogBreeds);
+    // Add click event listeners to radio buttons
+    dogRadio.addEventListener("click", function () {
+        handleRadioClick(dogRadio, dogBreeds);
+        catRadio.checked = false; // Uncheck the cat radio button
+        showSpecifyBreed();
+    });
+
+    catRadio.addEventListener("click", function () {
+        handleRadioClick(catRadio, catBreeds);
+        dogRadio.checked = false; // Uncheck the dog radio button
+        showSpecifyBreed();
+    });
+
+    // Add change event listener to breed select
+    breedSelect.addEventListener('change', function () {
+        showSpecifyBreed();
+    });
+
+    // Initially, call handleRadioClick to set the initial state based on radio button selection
+    handleRadioClick(dogRadio, dogBreeds);
 }
 
 
 
   // Example usage for the first set of pet elements
-  makePetSelectionReusable("breed", "dog", "cat", ["Affenpinscher","Afghan Hound","Airedale Terrier","Akita","Alaskan Malamute","American Bulldog","American Eskimo Dog","American Foxhound","American Pit Bull Terrier","American Staffordshire Terrier","Anatolian Shepherd Dog","Australian Cattle Dog","Australian Shepherd","Australian Terrier","Basenji","Basset Hound","Beagle","Bearded Collie","Bedlington Terrier","Belgian Malinois","Belgian Sheepdog","Belgian Tervuren","Bernese Mountain Dog","Bichon Frise","Black and Tan Coonhound","Bloodhound","Border Collie","Border Terrier","Borzoi","Boston Terrier","Bouvier des Flandres","Boxer","Boykin Spaniel","Briard","Brittany","Brussels Griffon","Bull Terrier","Bulldog","Bullmastiff","Cairn Terrier","Canaan Dog","Cane Corso","Cardigan Welsh Corgi","Cavalier King Charles Spaniel","Chesapeake Bay Retriever","Chihuahua","Chinese Crested","Chinese Shar-Pei","Chow Chow","Clumber Spaniel","Cockapoo","Collie","Coonhound","Corgi","Coton de Tulear","Curly-Coated Retriever","Dachshund","Dalmatian","Dandie Dinmont Terrier","Doberman Pinscher","Dogue de Bordeaux","Dutch Shepherd","English Bulldog","English Cocker Spaniel","English Foxhound","English Setter","English Springer Spaniel","English Toy Spaniel","Entlebucher Mountain Dog","Eskimo Dog","Finnish Lapphund","Finnish Spitz","Flat-Coated Retriever","French Bulldog","German Pinscher","German Shepherd Dog","German Shorthaired Pointer","German Wirehaired Pointer","Giant Schnauzer","Glen of Imaal Terrier","Goldador","Golden Retriever","Goldendoodle","Gordon Setter","Great Dane","Great Pyrenees","Greater Swiss Mountain Dog","Greyhound","Harrier","Havanese","Hound","Hovawart","Hungarian Puli","Hungarian Shepherd","Hungarian Vizsla","Husky","Ibizan Hound","Icelandic Sheepdog","Irish Setter","Irish Terrier","Irish Water Spaniel","Irish Wolfhound","Italian Greyhound","Jack Russell Terrier","Japanese Chin","Japanese Spitz","Japanese Terrier","Keeshond","Kerry Blue Terrier","King Charles Spaniel","Klee Kai","Kuvasz","Labradoodle","Labrador Retriever","Lakeland Terrier","Lancashire Heeler","Leonberger","Lhasa Apso","Lowchen","Maltese","Manchester Terrier","Maremma Sheepdog","Mastiff","Miniature Bull Terrier","Miniature Pinscher","Miniature Schnauzer","Mixed Breed","Mountain Cur","Mountain Dog","Neapolitan Mastiff","Newfoundland","Norfolk Terrier","Norwegian Buhund","Norwegian Elkhound","Norwegian Lundehund","Norwich Terrier","Nova Scotia Duck Tolling Retriever","Old English Sheepdog","Otterhound","Papillon","Pekingese","Pembroke Welsh Corgi","Pharaoh Hound","Pinscher","Pit Bull Terrier","Plott Hound","Podenco Canario","Pointer","Polish Lowland Sheepdog","Pomeranian","Poodle","Portuguese Water Dog","Presacanario","Pug","Puggle","Puli","Pumi","Pyrenees","Redbone Coonhound","Retriever","Rhodesian Ridgeback","Rottweiler","Saint Bernard","Saluki","Samoyed","Schipperke","Scottish Deerhound","Scottish Terrier","Sealyham Terrier","Setter","Shar-Pei","Sheltie","Shiba Inu","Shih Tzu","Siberian Husky","Silky Terrier","Skye Terrier","Sloughi","Small Munsterlander Pointer","Spaniel","Spanish Water Dog","Spitz","Springer Spaniel","Staffordshire Bull Terrier","Standard Schnauzer","Sussex Spaniel","Swedish Vallhund","Terrier","Thai Ridgeback","Tibetan Mastiff","Tibetan Spaniel","Tibetan Terrier","Tosa Inu","Toy Fox Terrier","Treeing Walker Coonhound","Vizsla","Weimaraner","Welsh Corgi","Welsh Terrier","West Highland White Terrier","Whippet","White Shepherd","Wirehaired Pointing Griffon","Xoloitzcuintli","Yorkshire Terrier"]
+  makePetSelectionReusable("breed", "dog", "cat", ["Affenpinscher","Afghan Hound","Airedale Terrier","Akita","Alaskan Malamute","American Bulldog","American Eskimo Dog","American Foxhound","American Pit Bull Terrier","American Staffordshire Terrier","Anatolian Shepherd Dog","Aspin", "Australian Cattle Dog","Australian Shepherd","Australian Terrier","Basenji","Basset Hound","Beagle","Bearded Collie","Bedlington Terrier","Belgian Malinois","Belgian Sheepdog","Belgian Tervuren","Bernese Mountain Dog","Bichon Frise","Black and Tan Coonhound","Bloodhound","Border Collie","Border Terrier","Borzoi","Boston Terrier","Bouvier des Flandres","Boxer","Boykin Spaniel","Briard","Brittany","Brussels Griffon","Bull Terrier","Bulldog","Bullmastiff","Cairn Terrier","Canaan Dog","Cane Corso","Cardigan Welsh Corgi","Cavalier King Charles Spaniel","Chesapeake Bay Retriever","Chihuahua","Chinese Crested","Chinese Shar-Pei","Chow Chow","Clumber Spaniel","Cockapoo","Collie","Coonhound","Corgi","Coton de Tulear","Curly-Coated Retriever","Dachshund","Dalmatian","Dandie Dinmont Terrier","Doberman Pinscher","Dogue de Bordeaux","Dutch Shepherd","English Bulldog","English Cocker Spaniel","English Foxhound","English Setter","English Springer Spaniel","English Toy Spaniel","Entlebucher Mountain Dog","Eskimo Dog","Finnish Lapphund","Finnish Spitz","Flat-Coated Retriever","French Bulldog","German Pinscher","German Shepherd Dog","German Shorthaired Pointer","German Wirehaired Pointer","Giant Schnauzer","Glen of Imaal Terrier","Goldador","Golden Retriever","Goldendoodle","Gordon Setter","Great Dane","Great Pyrenees","Greater Swiss Mountain Dog","Greyhound","Harrier","Havanese","Hound","Hovawart","Hungarian Puli","Hungarian Shepherd","Hungarian Vizsla","Husky","Ibizan Hound","Icelandic Sheepdog","Irish Setter","Irish Terrier","Irish Water Spaniel","Irish Wolfhound","Italian Greyhound","Jack Russell Terrier","Japanese Chin","Japanese Spitz","Japanese Terrier","Keeshond","Kerry Blue Terrier","King Charles Spaniel","Klee Kai","Kuvasz","Labradoodle","Labrador Retriever","Lakeland Terrier","Lancashire Heeler","Leonberger","Lhasa Apso","Lowchen","Maltese","Manchester Terrier","Maremma Sheepdog","Mastiff","Miniature Bull Terrier","Miniature Pinscher","Miniature Schnauzer","Mixed Breed","Mountain Cur","Mountain Dog","Neapolitan Mastiff","Newfoundland","Norfolk Terrier","Norwegian Buhund","Norwegian Elkhound","Norwegian Lundehund","Norwich Terrier","Nova Scotia Duck Tolling Retriever","Old English Sheepdog","Otterhound","Papillon","Pekingese","Pembroke Welsh Corgi","Pharaoh Hound","Pinscher","Pit Bull Terrier","Plott Hound","Podenco Canario","Pointer","Polish Lowland Sheepdog","Pomeranian","Poodle","Portuguese Water Dog","Presacanario","Pug","Puggle","Puli","Pumi","Pyrenees","Redbone Coonhound","Retriever","Rhodesian Ridgeback","Rottweiler","Saint Bernard","Saluki","Samoyed","Schipperke","Scottish Deerhound","Scottish Terrier","Sealyham Terrier","Setter","Shar-Pei","Sheltie","Shiba Inu","Shih Tzu","Siberian Husky","Silky Terrier","Skye Terrier","Sloughi","Small Munsterlander Pointer","Spaniel","Spanish Water Dog","Spitz","Springer Spaniel","Staffordshire Bull Terrier","Standard Schnauzer","Sussex Spaniel","Swedish Vallhund","Terrier","Thai Ridgeback","Tibetan Mastiff","Tibetan Spaniel","Tibetan Terrier","Tosa Inu","Toy Fox Terrier","Treeing Walker Coonhound","Vizsla","Weimaraner","Welsh Corgi","Welsh Terrier","West Highland White Terrier","Whippet","White Shepherd","Wirehaired Pointing Griffon","Xoloitzcuintli","Yorkshire Terrier", "Others"]
 
-, ["Abyssinian","American Bobtail","American Curl","American Shorthair","American Wirehair","Balinese","Bengal","Birman","Bombay","British Shorthair","Burmese","Chartreux","Chausie","Cornish Rex","Cymric","Devon Rex","Egyptian Mau","European Burmese","Exotic Shorthair","Havana Brown","Himalayan","Japanese Bobtail","Javanese","Korat","LaPerm","Maine Coon","Manx","Munchkin","Nebelung","Norwegian Forest","Ocicat","Oriental","Persian","Pixie-Bob","Ragamuffin","Ragdoll","Russian Blue","Savannah","Scottish Fold","Selkirk Rex","Siamese","Siberian","Singapura","Snowshoe","Somali","Sphynx","Tonkinese","Turkish Angora","Turkish Van"]
+, ["Abyssinian","American Bobtail","American Curl","American Shorthair","American Wirehair","Balinese","Bengal","Birman","Bombay","British Shorthair","Burmese","Chartreux","Chausie","Cornish Rex","Cymric","Devon Rex","Egyptian Mau","European Burmese","Exotic Shorthair","Havana Brown","Himalayan","Japanese Bobtail","Javanese","Korat","LaPerm","Maine Coon","Manx","Munchkin","Nebelung","Norwegian Forest","Ocicat","Oriental","Persian","Pixie-Bob","Ragamuffin","Ragdoll","Russian Blue","Savannah","Scottish Fold","Selkirk Rex","Siamese","Siberian","Singapura","Snowshoe","Somali","Sphynx","Tonkinese","Turkish Angora","Turkish Van", "Others"]
 );
 
   // Example usage for the second set of pet elements
-  makePetSelectionReusable("breed-1", "dog-1", "cat-1", ["Affenpinscher","Afghan Hound","Airedale Terrier","Akita","Alaskan Malamute","American Bulldog","American Eskimo Dog","American Foxhound","American Pit Bull Terrier","American Staffordshire Terrier","Anatolian Shepherd Dog","Australian Cattle Dog","Australian Shepherd","Australian Terrier","Basenji","Basset Hound","Beagle","Bearded Collie","Bedlington Terrier","Belgian Malinois","Belgian Sheepdog","Belgian Tervuren","Bernese Mountain Dog","Bichon Frise","Black and Tan Coonhound","Bloodhound","Border Collie","Border Terrier","Borzoi","Boston Terrier","Bouvier des Flandres","Boxer","Boykin Spaniel","Briard","Brittany","Brussels Griffon","Bull Terrier","Bulldog","Bullmastiff","Cairn Terrier","Canaan Dog","Cane Corso","Cardigan Welsh Corgi","Cavalier King Charles Spaniel","Chesapeake Bay Retriever","Chihuahua","Chinese Crested","Chinese Shar-Pei","Chow Chow","Clumber Spaniel","Cockapoo","Collie","Coonhound","Corgi","Coton de Tulear","Curly-Coated Retriever","Dachshund","Dalmatian","Dandie Dinmont Terrier","Doberman Pinscher","Dogue de Bordeaux","Dutch Shepherd","English Bulldog","English Cocker Spaniel","English Foxhound","English Setter","English Springer Spaniel","English Toy Spaniel","Entlebucher Mountain Dog","Eskimo Dog","Finnish Lapphund","Finnish Spitz","Flat-Coated Retriever","French Bulldog","German Pinscher","German Shepherd Dog","German Shorthaired Pointer","German Wirehaired Pointer","Giant Schnauzer","Glen of Imaal Terrier","Goldador","Golden Retriever","Goldendoodle","Gordon Setter","Great Dane","Great Pyrenees","Greater Swiss Mountain Dog","Greyhound","Harrier","Havanese","Hound","Hovawart","Hungarian Puli","Hungarian Shepherd","Hungarian Vizsla","Husky","Ibizan Hound","Icelandic Sheepdog","Irish Setter","Irish Terrier","Irish Water Spaniel","Irish Wolfhound","Italian Greyhound","Jack Russell Terrier","Japanese Chin","Japanese Spitz","Japanese Terrier","Keeshond","Kerry Blue Terrier","King Charles Spaniel","Klee Kai","Kuvasz","Labradoodle","Labrador Retriever","Lakeland Terrier","Lancashire Heeler","Leonberger","Lhasa Apso","Lowchen","Maltese","Manchester Terrier","Maremma Sheepdog","Mastiff","Miniature Bull Terrier","Miniature Pinscher","Miniature Schnauzer","Mixed Breed","Mountain Cur","Mountain Dog","Neapolitan Mastiff","Newfoundland","Norfolk Terrier","Norwegian Buhund","Norwegian Elkhound","Norwegian Lundehund","Norwich Terrier","Nova Scotia Duck Tolling Retriever","Old English Sheepdog","Otterhound","Papillon","Pekingese","Pembroke Welsh Corgi","Pharaoh Hound","Pinscher","Pit Bull Terrier","Plott Hound","Podenco Canario","Pointer","Polish Lowland Sheepdog","Pomeranian","Poodle","Portuguese Water Dog","Presacanario","Pug","Puggle","Puli","Pumi","Pyrenees","Redbone Coonhound","Retriever","Rhodesian Ridgeback","Rottweiler","Saint Bernard","Saluki","Samoyed","Schipperke","Scottish Deerhound","Scottish Terrier","Sealyham Terrier","Setter","Shar-Pei","Sheltie","Shiba Inu","Shih Tzu","Siberian Husky","Silky Terrier","Skye Terrier","Sloughi","Small Munsterlander Pointer","Spaniel","Spanish Water Dog","Spitz","Springer Spaniel","Staffordshire Bull Terrier","Standard Schnauzer","Sussex Spaniel","Swedish Vallhund","Terrier","Thai Ridgeback","Tibetan Mastiff","Tibetan Spaniel","Tibetan Terrier","Tosa Inu","Toy Fox Terrier","Treeing Walker Coonhound","Vizsla","Weimaraner","Welsh Corgi","Welsh Terrier","West Highland White Terrier","Whippet","White Shepherd","Wirehaired Pointing Griffon","Xoloitzcuintli","Yorkshire Terrier"]
-, ["Abyssinian","American Bobtail","American Curl","American Shorthair","American Wirehair","Balinese","Bengal","Birman","Bombay","British Shorthair","Burmese","Chartreux","Chausie","Cornish Rex","Cymric","Devon Rex","Egyptian Mau","European Burmese","Exotic Shorthair","Havana Brown","Himalayan","Japanese Bobtail","Javanese","Korat","LaPerm","Maine Coon","Manx","Munchkin","Nebelung","Norwegian Forest","Ocicat","Oriental","Persian","Pixie-Bob","Ragamuffin","Ragdoll","Russian Blue","Savannah","Scottish Fold","Selkirk Rex","Siamese","Siberian","Singapura","Snowshoe","Somali","Sphynx","Tonkinese","Turkish Angora","Turkish Van"]
+  makePetSelectionReusable("breed-1", "dog-1", "cat-1", ["Affenpinscher","Afghan Hound","Airedale Terrier","Akita","Alaskan Malamute","American Bulldog","American Eskimo Dog","American Foxhound","American Pit Bull Terrier","American Staffordshire Terrier","Anatolian Shepherd Dog", "Aspin", "Australian Cattle Dog","Australian Shepherd","Australian Terrier","Basenji","Basset Hound","Beagle","Bearded Collie","Bedlington Terrier","Belgian Malinois","Belgian Sheepdog","Belgian Tervuren","Bernese Mountain Dog","Bichon Frise","Black and Tan Coonhound","Bloodhound","Border Collie","Border Terrier","Borzoi","Boston Terrier","Bouvier des Flandres","Boxer","Boykin Spaniel","Briard","Brittany","Brussels Griffon","Bull Terrier","Bulldog","Bullmastiff","Cairn Terrier","Canaan Dog","Cane Corso","Cardigan Welsh Corgi","Cavalier King Charles Spaniel","Chesapeake Bay Retriever","Chihuahua","Chinese Crested","Chinese Shar-Pei","Chow Chow","Clumber Spaniel","Cockapoo","Collie","Coonhound","Corgi","Coton de Tulear","Curly-Coated Retriever","Dachshund","Dalmatian","Dandie Dinmont Terrier","Doberman Pinscher","Dogue de Bordeaux","Dutch Shepherd","English Bulldog","English Cocker Spaniel","English Foxhound","English Setter","English Springer Spaniel","English Toy Spaniel","Entlebucher Mountain Dog","Eskimo Dog","Finnish Lapphund","Finnish Spitz","Flat-Coated Retriever","French Bulldog","German Pinscher","German Shepherd Dog","German Shorthaired Pointer","German Wirehaired Pointer","Giant Schnauzer","Glen of Imaal Terrier","Goldador","Golden Retriever","Goldendoodle","Gordon Setter","Great Dane","Great Pyrenees","Greater Swiss Mountain Dog","Greyhound","Harrier","Havanese","Hound","Hovawart","Hungarian Puli","Hungarian Shepherd","Hungarian Vizsla","Husky","Ibizan Hound","Icelandic Sheepdog","Irish Setter","Irish Terrier","Irish Water Spaniel","Irish Wolfhound","Italian Greyhound","Jack Russell Terrier","Japanese Chin","Japanese Spitz","Japanese Terrier","Keeshond","Kerry Blue Terrier","King Charles Spaniel","Klee Kai","Kuvasz","Labradoodle","Labrador Retriever","Lakeland Terrier","Lancashire Heeler","Leonberger","Lhasa Apso","Lowchen","Maltese","Manchester Terrier","Maremma Sheepdog","Mastiff","Miniature Bull Terrier","Miniature Pinscher","Miniature Schnauzer","Mixed Breed","Mountain Cur","Mountain Dog","Neapolitan Mastiff","Newfoundland","Norfolk Terrier","Norwegian Buhund","Norwegian Elkhound","Norwegian Lundehund","Norwich Terrier","Nova Scotia Duck Tolling Retriever","Old English Sheepdog","Otterhound","Papillon","Pekingese","Pembroke Welsh Corgi","Pharaoh Hound","Pinscher","Pit Bull Terrier","Plott Hound","Podenco Canario","Pointer","Polish Lowland Sheepdog","Pomeranian","Poodle","Portuguese Water Dog","Presacanario","Pug","Puggle","Puli","Pumi","Pyrenees","Redbone Coonhound","Retriever","Rhodesian Ridgeback","Rottweiler","Saint Bernard","Saluki","Samoyed","Schipperke","Scottish Deerhound","Scottish Terrier","Sealyham Terrier","Setter","Shar-Pei","Sheltie","Shiba Inu","Shih Tzu","Siberian Husky","Silky Terrier","Skye Terrier","Sloughi","Small Munsterlander Pointer","Spaniel","Spanish Water Dog","Spitz","Springer Spaniel","Staffordshire Bull Terrier","Standard Schnauzer","Sussex Spaniel","Swedish Vallhund","Terrier","Thai Ridgeback","Tibetan Mastiff","Tibetan Spaniel","Tibetan Terrier","Tosa Inu","Toy Fox Terrier","Treeing Walker Coonhound","Vizsla","Weimaraner","Welsh Corgi","Welsh Terrier","West Highland White Terrier","Whippet","White Shepherd","Wirehaired Pointing Griffon","Xoloitzcuintli","Yorkshire Terrier", "Others"]
+, ["Abyssinian","American Bobtail","American Curl","American Shorthair","American Wirehair","Balinese","Bengal","Birman","Bombay","British Shorthair","Burmese","Chartreux","Chausie","Cornish Rex","Cymric","Devon Rex","Egyptian Mau","European Burmese","Exotic Shorthair","Havana Brown","Himalayan","Japanese Bobtail","Javanese","Korat","LaPerm","Maine Coon","Manx","Munchkin","Nebelung","Norwegian Forest","Ocicat","Oriental","Persian","Pixie-Bob","Ragamuffin","Ragdoll","Russian Blue","Savannah","Scottish Fold","Selkirk Rex","Siamese","Siberian","Singapura","Snowshoe","Somali","Sphynx","Tonkinese","Turkish Angora","Turkish Van", "Others"]
 );
 
   // Example usage for the third set of pet elements
-  makePetSelectionReusable("breed-2", "dog-2", "cat-2", ["Affenpinscher","Afghan Hound","Airedale Terrier","Akita","Alaskan Malamute","American Bulldog","American Eskimo Dog","American Foxhound","American Pit Bull Terrier","American Staffordshire Terrier","Anatolian Shepherd Dog","Australian Cattle Dog","Australian Shepherd","Australian Terrier","Basenji","Basset Hound","Beagle","Bearded Collie","Bedlington Terrier","Belgian Malinois","Belgian Sheepdog","Belgian Tervuren","Bernese Mountain Dog","Bichon Frise","Black and Tan Coonhound","Bloodhound","Border Collie","Border Terrier","Borzoi","Boston Terrier","Bouvier des Flandres","Boxer","Boykin Spaniel","Briard","Brittany","Brussels Griffon","Bull Terrier","Bulldog","Bullmastiff","Cairn Terrier","Canaan Dog","Cane Corso","Cardigan Welsh Corgi","Cavalier King Charles Spaniel","Chesapeake Bay Retriever","Chihuahua","Chinese Crested","Chinese Shar-Pei","Chow Chow","Clumber Spaniel","Cockapoo","Collie","Coonhound","Corgi","Coton de Tulear","Curly-Coated Retriever","Dachshund","Dalmatian","Dandie Dinmont Terrier","Doberman Pinscher","Dogue de Bordeaux","Dutch Shepherd","English Bulldog","English Cocker Spaniel","English Foxhound","English Setter","English Springer Spaniel","English Toy Spaniel","Entlebucher Mountain Dog","Eskimo Dog","Finnish Lapphund","Finnish Spitz","Flat-Coated Retriever","French Bulldog","German Pinscher","German Shepherd Dog","German Shorthaired Pointer","German Wirehaired Pointer","Giant Schnauzer","Glen of Imaal Terrier","Goldador","Golden Retriever","Goldendoodle","Gordon Setter","Great Dane","Great Pyrenees","Greater Swiss Mountain Dog","Greyhound","Harrier","Havanese","Hound","Hovawart","Hungarian Puli","Hungarian Shepherd","Hungarian Vizsla","Husky","Ibizan Hound","Icelandic Sheepdog","Irish Setter","Irish Terrier","Irish Water Spaniel","Irish Wolfhound","Italian Greyhound","Jack Russell Terrier","Japanese Chin","Japanese Spitz","Japanese Terrier","Keeshond","Kerry Blue Terrier","King Charles Spaniel","Klee Kai","Kuvasz","Labradoodle","Labrador Retriever","Lakeland Terrier","Lancashire Heeler","Leonberger","Lhasa Apso","Lowchen","Maltese","Manchester Terrier","Maremma Sheepdog","Mastiff","Miniature Bull Terrier","Miniature Pinscher","Miniature Schnauzer","Mixed Breed","Mountain Cur","Mountain Dog","Neapolitan Mastiff","Newfoundland","Norfolk Terrier","Norwegian Buhund","Norwegian Elkhound","Norwegian Lundehund","Norwich Terrier","Nova Scotia Duck Tolling Retriever","Old English Sheepdog","Otterhound","Papillon","Pekingese","Pembroke Welsh Corgi","Pharaoh Hound","Pinscher","Pit Bull Terrier","Plott Hound","Podenco Canario","Pointer","Polish Lowland Sheepdog","Pomeranian","Poodle","Portuguese Water Dog","Presacanario","Pug","Puggle","Puli","Pumi","Pyrenees","Redbone Coonhound","Retriever","Rhodesian Ridgeback","Rottweiler","Saint Bernard","Saluki","Samoyed","Schipperke","Scottish Deerhound","Scottish Terrier","Sealyham Terrier","Setter","Shar-Pei","Sheltie","Shiba Inu","Shih Tzu","Siberian Husky","Silky Terrier","Skye Terrier","Sloughi","Small Munsterlander Pointer","Spaniel","Spanish Water Dog","Spitz","Springer Spaniel","Staffordshire Bull Terrier","Standard Schnauzer","Sussex Spaniel","Swedish Vallhund","Terrier","Thai Ridgeback","Tibetan Mastiff","Tibetan Spaniel","Tibetan Terrier","Tosa Inu","Toy Fox Terrier","Treeing Walker Coonhound","Vizsla","Weimaraner","Welsh Corgi","Welsh Terrier","West Highland White Terrier","Whippet","White Shepherd","Wirehaired Pointing Griffon","Xoloitzcuintli","Yorkshire Terrier"]
-, ["Abyssinian","American Bobtail","American Curl","American Shorthair","American Wirehair","Balinese","Bengal","Birman","Bombay","British Shorthair","Burmese","Chartreux","Chausie","Cornish Rex","Cymric","Devon Rex","Egyptian Mau","European Burmese","Exotic Shorthair","Havana Brown","Himalayan","Japanese Bobtail","Javanese","Korat","LaPerm","Maine Coon","Manx","Munchkin","Nebelung","Norwegian Forest","Ocicat","Oriental","Persian","Pixie-Bob","Ragamuffin","Ragdoll","Russian Blue","Savannah","Scottish Fold","Selkirk Rex","Siamese","Siberian","Singapura","Snowshoe","Somali","Sphynx","Tonkinese","Turkish Angora","Turkish Van"]
+  makePetSelectionReusable("breed-2", "dog-2", "cat-2", ["Affenpinscher","Afghan Hound","Airedale Terrier","Akita","Alaskan Malamute","American Bulldog","American Eskimo Dog","American Foxhound","American Pit Bull Terrier","American Staffordshire Terrier","Anatolian Shepherd Dog", "Aspin", "Australian Cattle Dog","Australian Shepherd","Australian Terrier","Basenji","Basset Hound","Beagle","Bearded Collie","Bedlington Terrier","Belgian Malinois","Belgian Sheepdog","Belgian Tervuren","Bernese Mountain Dog","Bichon Frise","Black and Tan Coonhound","Bloodhound","Border Collie","Border Terrier","Borzoi","Boston Terrier","Bouvier des Flandres","Boxer","Boykin Spaniel","Briard","Brittany","Brussels Griffon","Bull Terrier","Bulldog","Bullmastiff","Cairn Terrier","Canaan Dog","Cane Corso","Cardigan Welsh Corgi","Cavalier King Charles Spaniel","Chesapeake Bay Retriever","Chihuahua","Chinese Crested","Chinese Shar-Pei","Chow Chow","Clumber Spaniel","Cockapoo","Collie","Coonhound","Corgi","Coton de Tulear","Curly-Coated Retriever","Dachshund","Dalmatian","Dandie Dinmont Terrier","Doberman Pinscher","Dogue de Bordeaux","Dutch Shepherd","English Bulldog","English Cocker Spaniel","English Foxhound","English Setter","English Springer Spaniel","English Toy Spaniel","Entlebucher Mountain Dog","Eskimo Dog","Finnish Lapphund","Finnish Spitz","Flat-Coated Retriever","French Bulldog","German Pinscher","German Shepherd Dog","German Shorthaired Pointer","German Wirehaired Pointer","Giant Schnauzer","Glen of Imaal Terrier","Goldador","Golden Retriever","Goldendoodle","Gordon Setter","Great Dane","Great Pyrenees","Greater Swiss Mountain Dog","Greyhound","Harrier","Havanese","Hound","Hovawart","Hungarian Puli","Hungarian Shepherd","Hungarian Vizsla","Husky","Ibizan Hound","Icelandic Sheepdog","Irish Setter","Irish Terrier","Irish Water Spaniel","Irish Wolfhound","Italian Greyhound","Jack Russell Terrier","Japanese Chin","Japanese Spitz","Japanese Terrier","Keeshond","Kerry Blue Terrier","King Charles Spaniel","Klee Kai","Kuvasz","Labradoodle","Labrador Retriever","Lakeland Terrier","Lancashire Heeler","Leonberger","Lhasa Apso","Lowchen","Maltese","Manchester Terrier","Maremma Sheepdog","Mastiff","Miniature Bull Terrier","Miniature Pinscher","Miniature Schnauzer","Mixed Breed","Mountain Cur","Mountain Dog","Neapolitan Mastiff","Newfoundland","Norfolk Terrier","Norwegian Buhund","Norwegian Elkhound","Norwegian Lundehund","Norwich Terrier","Nova Scotia Duck Tolling Retriever","Old English Sheepdog","Otterhound","Papillon","Pekingese","Pembroke Welsh Corgi","Pharaoh Hound","Pinscher","Pit Bull Terrier","Plott Hound","Podenco Canario","Pointer","Polish Lowland Sheepdog","Pomeranian","Poodle","Portuguese Water Dog","Presacanario","Pug","Puggle","Puli","Pumi","Pyrenees","Redbone Coonhound","Retriever","Rhodesian Ridgeback","Rottweiler","Saint Bernard","Saluki","Samoyed","Schipperke","Scottish Deerhound","Scottish Terrier","Sealyham Terrier","Setter","Shar-Pei","Sheltie","Shiba Inu","Shih Tzu","Siberian Husky","Silky Terrier","Skye Terrier","Sloughi","Small Munsterlander Pointer","Spaniel","Spanish Water Dog","Spitz","Springer Spaniel","Staffordshire Bull Terrier","Standard Schnauzer","Sussex Spaniel","Swedish Vallhund","Terrier","Thai Ridgeback","Tibetan Mastiff","Tibetan Spaniel","Tibetan Terrier","Tosa Inu","Toy Fox Terrier","Treeing Walker Coonhound","Vizsla","Weimaraner","Welsh Corgi","Welsh Terrier","West Highland White Terrier","Whippet","White Shepherd","Wirehaired Pointing Griffon","Xoloitzcuintli","Yorkshire Terrier", "Others"]
+, ["Abyssinian","American Bobtail","American Curl","American Shorthair","American Wirehair","Balinese","Bengal","Birman","Bombay","British Shorthair","Burmese","Chartreux","Chausie","Cornish Rex","Cymric","Devon Rex","Egyptian Mau","European Burmese","Exotic Shorthair","Havana Brown","Himalayan","Japanese Bobtail","Javanese","Korat","LaPerm","Maine Coon","Manx","Munchkin","Nebelung","Norwegian Forest","Ocicat","Oriental","Persian","Pixie-Bob","Ragamuffin","Ragdoll","Russian Blue","Savannah","Scottish Fold","Selkirk Rex","Siamese","Siberian","Singapura","Snowshoe","Somali","Sphynx","Tonkinese","Turkish Angora","Turkish Van", "Others"]
 );
+
+var specifyBreedInput = document.getElementById('specificBreed');
+
+// Add focusout event listener to log value when focus is moved out
+specifyBreedInput.addEventListener('focusout', function () {
+    console.log('Specify Breed Value:', specifyBreedInput.value);
+});
+
 
   
 function displayConfirmationDetails() {
@@ -444,10 +474,31 @@ function displayConfirmationDetails() {
   var confirmSurgeryType = document.getElementById('confirm_surgery_Type');
   var confirmAdditionalNotes = document.getElementById('confirm_additional_Notes');
 
+  
+
+  // Add change event listener to breed select
+  breedSelect.addEventListener('change', function () {
+    if (breedSelect.value === 'Others') {
+        var specifyBreedInput = document.getElementById('specificBreed');
+        
+        // Add input event listener to specifyBreedInput
+        specifyBreedInput.addEventListener('input', function () {
+          if (breedSelect.value === 'Others') {
+              breedDetail.textContent = specifyBreedInput.value;
+          }
+        });
+
+    } else {
+        breedDetail.textContent = breedSelect.value;
+    }
+  });
+
+  
+
+
   // Set text content of detail elements
   petNameDetail.textContent = petNameInput.value;
   petTypeDetail.textContent = petType;
-  breedDetail.textContent = breedSelect.value;
   surgeryTypeDetail.textContent = surgeryTypeSelect.value;
   additionalNotesDetail.textContent = floatingTextareaInput.value;
 
@@ -542,151 +593,6 @@ function displayConfirmationDetails2() {
 
 
 
-const daysTag = document.querySelector(".days");
-const currentDate = document.querySelector(".current-date");
-const selectedDateElement = document.getElementById("selected_date");
-var prevNextIcon = document.querySelectorAll(".Appointment_icons span");
-
-let selectedDayElement = null;
-
-// getting new date, current year and month
-let date = new Date(),
-currYear = date.getFullYear(),
-currMonth = date.getMonth();
-
-// storing full name of all months in array
-const months = [ "January","February","March","April","May","June","July","August","September","October","November","December"
-];
-
-function checkSelectionAndEnableButton() {
-  const selectedDate = document.querySelector('.selected-date');
-  const selectedTime = document.querySelector('.selected-time');
-  const nextButton = document.getElementById('next_button');
-
-  if (selectedDate !== null && selectedTime !== null) {
-      nextButton.disabled = false;
-      nextButton.classList.remove('disabled');
-  } else {
-      nextButton.disabled = true;
-      nextButton.classList.add('disabled');
-  }
-}
-
-
-const renderCalendar = () => {
-let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(); // getting first day of month
-let lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(); // getting last date of month
-let lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(); // getting last day of month
-let lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
-let liTag = "";
-
-for (let i = firstDayofMonth; i > 0; i--) {
-  // creating li of previous month last days
-  liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
-}
-
-for (let i = 1; i <= lastDateofMonth; i++) {
-  // creating li of all days of current month
-  let isToday =
-    i === date.getDate() &&
-    currMonth === new Date().getMonth() &&
-    currYear === new Date().getFullYear()
-      ? ""
-      : "";
-  let isSelected = isToday && i === date.getDate() ? "selected-date" : "";
-  liTag += `<li class="${isToday} ${isSelected}" data-day="${i}">${i}</li>`;
-  
-  
-}
-
-for (let i = lastDayofMonth; i < 6; i++) {
-  // creating li of next month first days
-  liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
-}
-currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
-
-// Add click event listener to each day element
-daysTag.innerHTML = liTag;
-const dayElements = daysTag.querySelectorAll("li");
-
-dayElements.forEach(day => {
-  day.addEventListener("click", () => {
-// Parse the clicked day's dataset to get the day value
-const clickedDay = parseInt(day.dataset.day);
-
-// Calculate the date of the clicked day
-const selectedDate = new Date(currYear, currMonth, clickedDay);
-
-// Get the current date
-const currentDate = new Date();
-currentDate.setHours(0, 0, 0, 0); // Remove time portion for comparison
-
-// Check if the clicked day is not in the past
-if (selectedDate >= currentDate) {
-  const dayOfWeek = selectedDate.getDay(); // Get the day of the week (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
-
-  if (dayOfWeek !== 0 && dayOfWeek !== 6) { // Check if it's not Sunday (0) or Saturday (6)
-    if (selectedDayElement) {
-      selectedDayElement.classList.remove("selected-date");
-    }
-    day.classList.add("selected-date");
-    selectedDayElement = day;
-    day.dataset.selectedDate = selectedDate.toISOString(); // Store the selected date in ISO format
-
-    // Update the 'date' variable with the selected date
-    date = selectedDate;
-
-    const confirmDateElement = document.getElementById('confirm_date');
-
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    selectedDateElement.innerText = date.toLocaleDateString(undefined, options);
-    confirmDateElement.innerText = selectedDateElement.innerText; // Update the confirmDateElement with the selected date
-    
-    updateAppointmentTimeOptionsDisplay(); // Call the function after updating the selectedDayElement
-    displayConfirmationDetails1();
-
-    setFormHeight();
-  }
-  
-}
-
-});
-
-
-  // Change the cursor style for previous dates and Sundays/Saturdays
-const dayDate = new Date(currYear, currMonth, parseInt(day.dataset.day));
-
-if (dayDate < new Date() ) {
-  day.classList.add("disabled");
-  day.style.cursor = "not-allowed"; // Change the cursor style
-}
-
-    checkSelectionAndEnableButton();
-    
-});
-
-};
-renderCalendar();
-
-prevNextIcon.forEach(icon => {
-// getting prev and next icons
-icon.addEventListener("click", () => {
-  // adding click event on both icons
-  // if clicked icon is previous icon then decrement current month by 1 else increment it by 1
-  currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
-
-  if (currMonth < 0 || currMonth > 11) {
-    // if current month is less than 0 or greater than 11
-    // creating a new date of current year & month and pass it as date value
-    date = new Date(currYear, currMonth, new Date().getDate());
-    currYear = date.getFullYear(); // updating current year with new date year
-    currMonth = date.getMonth(); // updating current month with new date month
-  } else {
-    date = new Date(); // pass the current date as date value
-  }
-  renderCalendar(); // calling renderCalendar function
-});
-});
 
 
 // Retrieve all the li elements
@@ -694,32 +600,38 @@ const timeOptionsList = document.querySelectorAll('.Appointment_time-option');
 
 // Add a click event listener to each li element
 timeOptionsList.forEach(li => {
-li.addEventListener('click', function() {
-  // Remove the 'selected-time' class from all time options
-  timeOptionsList.forEach(option => {
-    option.classList.remove('selected-time');
+  li.addEventListener('click', function() {
+      // Remove the 'selected-time' class from all time options
+      timeOptionsList.forEach(option => {
+          option.classList.remove('selected-time');
+      });
+
+      // Add the 'selected-time' class to the clicked li
+      li.classList.add('selected-time');
+      console.log('Selected time:', li.innerText);
+
+      // Find the input element inside the clicked li and trigger a click event on it
+      const inputElement = li.querySelector('input[type="radio"]');
+      if (inputElement) {
+          inputElement.click();
+      }
+
+      // Update the selected time in the confirm_time element
+      const confirmTimeElement = document.querySelector('.confirm_time');
+      confirmTimeElement.innerText = li.innerText;
+
+      checkSelectionAndEnableButton();
+
+      // Check if there is a selected time and log a message
+      if (li.classList.contains('selected-time')) {
+          console.log('A time has been selected.');
+      }
   });
-
-  // Add the 'selected-time' class to the clicked li
-  li.classList.add('selected-time');
-
-  // Find the input element inside the clicked li and trigger a click event on it
-  const inputElement = li.querySelector('input[type="radio"]');
-  if (inputElement) {
-    inputElement.click();
-  }
-    
-  // Update the selected time in the confirm_time element
-  const confirmTimeElement = document.querySelector('.confirm_time');
-  confirmTimeElement.innerText = li.innerText;
-    
-    checkSelectionAndEnableButton();
 });
 
-});
 
 function checkSelectionAndEnableButton() {
-  const selectedDate = document.querySelector('.selected-date');
+  const selectedDate = document.querySelector('.selected_date');
   const selectedTime = document.querySelector('.selected-time');
   const nextButton = document.getElementById('next_button');
 
@@ -734,11 +646,11 @@ function checkSelectionAndEnableButton() {
 
 // Call this function at the end of the event listeners for selecting date and time
 function updateAppointmentTimeOptionsDisplay() {
-const selectedDateElement = document.querySelector('.selected-date');
+const selectedDateElement = document.querySelector('.selected_date');
 var timeOptionsContainer = document.getElementById('Appointment_time_options');
   var date_required_message = document.getElementById('date_required_message');
 
-if (selectedDateElement && selectedDateElement.classList.contains('selected-date')) {
+if (selectedDateElement && selectedDateElement.classList.contains('selected_date')) {
   timeOptionsContainer.classList.remove('d-none');
   timeOptionsContainer.style.display = 'flex';
     date_required_message.style.display = 'none';

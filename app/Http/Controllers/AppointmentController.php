@@ -265,7 +265,8 @@ class AppointmentController extends Controller
         $clientInfo = Clients::find($clientId);     // Get the currently authenticated user
         $appointments = AppointmentPending::where('user_id', $clientId)->get();
         $appointmentapproved = AppointmentApproved::where('user_id', $clientId)->get();
-        return view('user/appointmentlist', compact('appointments', 'appointmentapproved',  'clientInfo'));
+        $appointmentrejected = AppointmentRejected::where('user_id', $clientId)->get();
+        return view('user/appointmentlist', compact('appointments', 'appointmentapproved',  'appointmentrejected', 'clientInfo'));
     }
 
     public function markAsComplete($id)

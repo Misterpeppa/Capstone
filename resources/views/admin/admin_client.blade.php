@@ -292,7 +292,7 @@
                     <table  class="table table-responsive mt-3 w-100">
                         <thead>
                             <tr>
-                                <th><input id="SelectAll" type="radio" class="checkbox"></th>
+                                <th><input id="SelectAll" type="checkbox" class="checkbox"></th>
                                 <th>Client</th>
                                 <th>Email</th>
                                 <th>Phone Number</th>
@@ -305,7 +305,7 @@
                         <tbody id="client_table_body">
                             @foreach ($clients as $clientInfo)
                                 <tr>
-                                    <td><input type="radio"></td>
+                                    <td><input type="checkbox"></td>
                                     <td>{{ $clientInfo->first_name }} {{ $clientInfo->middle_name }}
                                         {{ $clientInfo->last_name }} {{ $clientInfo->suffix }}</td>
                                     <td>{{ $clientInfo->email }}</td>
@@ -1765,7 +1765,7 @@
 
             SelectAll.addEventListener("click", function () {
     var tableBody = document.getElementById('client_table_body');
-    var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
+    var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
 
     rowCheckboxes.forEach(function (checkbox) {
         checkbox.checked = !checkbox.checked; // Toggle the state
