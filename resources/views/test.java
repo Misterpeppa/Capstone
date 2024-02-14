@@ -36,3 +36,4 @@ public class Main {
 						+ " " + t2.c.y); 
 	} 
 }
+

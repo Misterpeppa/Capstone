@@ -238,13 +238,13 @@ class AppointmentController extends Controller
         if ($perPage === false || $perPage < 5) {
             $perPage = 5; 
         }
-        $appointment_approved = $appointment_approved->paginate($perPage, ['*'], 'approvedPage');
+        $appointment_approved = $appointment_approved->paginate($perPage, ['*'], 'approvedPage')->onEachSide(2);
         $appointment_approved->withPath('/admin/appointment');
 
-        $appointment_pending = $appointment_pending->paginate($perPage,['*'], 'pendingPage');
+        $appointment_pending = $appointment_pending->paginate($perPage,['*'], 'pendingPage')->onEachSide(2);
         $appointment_pending->withPath('/admin/appointment');
 
-        $appointment_rejected = $appointment_rejected->paginate($perPage,['*'], 'rejectPage');
+        $appointment_rejected = $appointment_rejected->paginate($perPage,['*'], 'rejectPage')->onEachSide(2);
         $appointment_rejected->withPath('/admin/appointment');
 
         $approvedExist = $appointment_approved->isNotEmpty();

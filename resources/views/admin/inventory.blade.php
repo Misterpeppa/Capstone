@@ -522,23 +522,23 @@
                                                 </svg></button>
                                         <div class="dropdown-content"><div class="button-group">
                                             <button
-		            data-action="AddStock" 
+		                                    data-action="AddStock" 
                                             data-product-type="{{ $product->product_type }}"
                                             data-product-id="{{ $product->id }}"
+                                            data-item_name="{{ $product->item_name }}"
                                                 class="btn border-0 addStock"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                             <path d="M7 10H13M10 7V13M1 10C1 11.1819 1.23279 12.3522 1.68508 13.4442C2.13738 14.5361 2.80031 15.5282 3.63604 16.364C4.47177 17.1997 5.46392 17.8626 6.55585 18.3149C7.64778 18.7672 8.8181 19 10 19C11.1819 19 12.3522 18.7672 13.4442 18.3149C14.5361 17.8626 15.5282 17.1997 16.364 16.364C17.1997 15.5282 17.8626 14.5361 18.3149 13.4442C18.7672 12.3522 19 11.1819 19 10C19 8.8181 18.7672 7.64778 18.3149 6.55585C17.8626 5.46392 17.1997 4.47177 16.364 3.63604C15.5282 2.80031 14.5361 2.13738 13.4442 1.68508C12.3522 1.23279 11.1819 1 10 1C8.8181 1 7.64778 1.23279 6.55585 1.68508C5.46392 2.13738 4.47177 2.80031 3.63604 3.63604C2.80031 4.47177 2.13738 5.46392 1.68508 6.55585C1.23279 7.64778 1 8.8181 1 10Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg> Add Stock</div></button>
                                             <button
-		                                data-action="DeductStock" 
+		                                    data-action="DeductStock" 
                                             data-product-type="{{ $product->product_type }}"
                                             data-product-id="{{ $product->id }}"
-                                                class="btn border-0 addStock"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M5 12l14 0" />
-</svg>
-
-
- Deduct Stock</div></button>
+                                            data-item_name="{{ $product->item_name }}"
+                                            class="btn border-0 deductStock"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M5 12l14 0" />
+                                            </svg>
+                                            Deduct Stock</div></button>
                                                 <button 
                                                 data-action="View"
                                                 data-product-type="{{ $product->product_type }}"
@@ -571,6 +571,8 @@
                                                     </svg> Edit</div></button>
                                                 <button 
                                                 data-action="Archive"
+                                                data-product-type="{{ $product->product_type }}"
+                                                data-product-id="{{ $product->id }}"
                                                 class="btn border-0 archiveButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
                                                 <path d="M17 5C17.5304 5 18.0391 4.78929 18.4142 4.41421C18.7893 4.03914 19 3.53043 19 3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3C1 3.53043 1.21071 4.03914 1.58579 4.41421C1.96086 4.78929 2.46957 5 3 5M17 5H3M17 5V15C17 15.5304 16.7893 16.0391 16.4142 16.4142C16.0391 16.7893 15.5304 17 15 17H5C4.46957 17 3.96086 16.7893 3.58579 16.4142C3.21071 16.0391 3 15.5304 3 15V5M8 9H12" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg> Archive</div></button>
@@ -597,7 +599,8 @@
                                                         <div class="dropdown-content" id="dropdown-content">
                                                             <button data-action="AddStock" id="addStock"
                                                                 data-product-type="{{ $medInfo->product_type }}"
-                                                                data-product-id="{{ $medInfo->id }}">
+                                                                data-product-id="{{ $medInfo->id }}"
+                                                                data-item_name="{{ $medInfo->item_name }}">
                                                                 <div class="action_button_text"
                                                                     id="action_button_text"><svg
                                                                         xmlns="http://www.w3.org/2000/svg"
@@ -619,9 +622,20 @@
                                                                         </defs>
                                                                     </svg>Add Stock</div>
                                                             </button>
+                                                            <button
+                                                                data-action="DeductStock" 
+                                                                data-product-type="{{ $medInfo->product_type }}"
+                                                                data-product-id="{{ $medInfo->id }}"
+                                                                data-item_name="{{ $medInfo->item_name }}"
+                                                                class="btn border-0 deductStock"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                                <path d="M5 12l14 0" />
+                                                                </svg>
+                                                                Deduct Stock</div></button>
                                                             <button data-action="View" class="viewButton"
                                                                 data-product-type="{{ $medInfo->product_type }}"
-                                                                data-product-id="{{ $medInfo->id }}">
+                                                                data-product-id="{{ $medInfo->id }}"
+                                                                data-item_name="{{ $medInfo->item_name }}">
                                                                 <div class="action_button_text"><svg
                                                                         xmlns="http://www.w3.org/2000/svg"
                                                                         width="24" height="24"
@@ -650,7 +664,8 @@
                                                             </button>
                                                             <button data-action="Edit" id="editButton"
                                                                 data-product-type="{{ $medInfo->product_type }}"
-                                                                data-product-id="{{ $medInfo->id }}">
+                                                                data-product-id="{{ $medInfo->id }}"
+                                                                data-item_name="{{ $medInfo->item_name }}">
                                                                 <div class="action_button_text"><svg
                                                                         xmlns="http://www.w3.org/2000/svg"
                                                                         width="24" height="24"
@@ -732,60 +747,7 @@
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
-                                        <td class="dropdown button-action">
-                                            <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                                                <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
-                                                <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
-                                                <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
-                                                </svg></button>
-                                        <div class="dropdown-content"><div class="button-group">
-                                            <button
-		                data-action="AddStock" 
-                                            data-product-type="{{ $product->product_type }}"
-                                            data-product-id="{{ $product->id }}"
-                                                class="btn border-0 addStock"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                            <path d="M7 10H13M10 7V13M1 10C1 11.1819 1.23279 12.3522 1.68508 13.4442C2.13738 14.5361 2.80031 15.5282 3.63604 16.364C4.47177 17.1997 5.46392 17.8626 6.55585 18.3149C7.64778 18.7672 8.8181 19 10 19C11.1819 19 12.3522 18.7672 13.4442 18.3149C14.5361 17.8626 15.5282 17.1997 16.364 16.364C17.1997 15.5282 17.8626 14.5361 18.3149 13.4442C18.7672 12.3522 19 11.1819 19 10C19 8.8181 18.7672 7.64778 18.3149 6.55585C17.8626 5.46392 17.1997 4.47177 16.364 3.63604C15.5282 2.80031 14.5361 2.13738 13.4442 1.68508C12.3522 1.23279 11.1819 1 10 1C8.8181 1 7.64778 1.23279 6.55585 1.68508C5.46392 2.13738 4.47177 2.80031 3.63604 3.63604C2.80031 4.47177 2.13738 5.46392 1.68508 6.55585C1.23279 7.64778 1 8.8181 1 10Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg> Add Stock</div></button>
-                                                <button 
-                                                data-action="View"
-                                                data-product-type="{{ $product->product_type }}"
-                                                data-product-id="{{ $product->id }}"
-                                                class="btn border-0 viewButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                <g clip-path="url(#clip0_6559_23708)">
-                                                    <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip0_6559_23708">
-                                                    <rect width="24" height="24" fill="white"/>
-                                                    </clipPath>
-                                                </defs>
-                                                </svg> View</div></button>
-                                                <button 
-                                                data-action="Edit" id="editButton"
-                                                data-product-type="{{ $product->product_type }}"
-                                                data-product-id="{{ $product->id }}"
-                                                data-item_name="{{ $product->item_name }}" data-product_code="{{ $product->product_code}}"
-                                                class="btn border-0"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                    <g clip-path="url(#clip0_6559_23808)">
-                                                        <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </g>
-                                                    <defs>
-                                                        <clipPath id="clip0_6559_23808">
-                                                        <rect width="24" height="24" fill="white"/>
-                                                        </clipPath>
-                                                    </defs>
-                                                    </svg> Edit</div></button>
-                                                <button 
-                                                data-action="Archive"
-                                                class="btn border-0 archiveButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
-                                                <path d="M17 5C17.5304 5 18.0391 4.78929 18.4142 4.41421C18.7893 4.03914 19 3.53043 19 3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3C1 3.53043 1.21071 4.03914 1.58579 4.41421C1.96086 4.78929 2.46957 5 3 5M17 5H3M17 5V15C17 15.5304 16.7893 16.0391 16.4142 16.4142C16.0391 16.7893 15.5304 17 15 17H5C4.46957 17 3.96086 16.7893 3.58579 16.4142C3.21071 16.0391 3 15.5304 3 15V5M8 9H12" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg> Archive</div></button>
-                                        </div>
-                                            
-                                        </div>
-
-                                        </td>
+                                       
                                     </tr>
                                     
                                 </tbody>
@@ -1219,7 +1181,7 @@
                     <input type="hidden" name="product_type" id="product_type">
                     <input type="hidden" name="id" id="product_id">
                     <div class="mb-3 stock_input_container">
-                        <div class="stock_image_container"><span class="product_name">Product Name</span></div>
+                        <div class="stock_image_container"><span class="product_name" id="addstockItemName">Product Name</span></div>
                         <div class="new_input_row">
                             <div class="form-floating batch_number"><input id="batch_no_1" name="batch_no"
                                     class="form-control" type="text" data-id="batch_no"
@@ -1292,16 +1254,12 @@
                         data-bs-dismiss="modal" onClick="" type="button"></button>
                 </div>
                 <div class="modal-body add_stock_modal_body w-100">
-                    @foreach ($products as $productInfo)
-                        <form
-                            action="{{ route('product.stock', ['product_type' => $productInfo->product_type, 'id' => $productInfo->id]) }}"
-                            method="POST" id="add_stock_form">
-                    @endforeach
+                    <form action="{{ route('deduct') }}" method="POST">
                     @csrf
-                    <input type="hidden" name="product_type" id="product_type">
-                    <input type="hidden" name="id" id="product_id">
+                    <input type="text" name="product_type" id="deductproduct_type">
+                    <input type="hidden" name="id" id="deductid">
                     <div class="mb-3 stock_input_container">
-                        <div class="stock_image_container"><span class="product_name">Product Name</span></div>
+                        <div class="stock_image_container"><span class="product_name" id="productName">Product Name</span></div>
                         
                         
                         <div class="quantity_input_container d-flex justify-content-center">
@@ -1312,7 +1270,7 @@
                                         type="button">-</button>
                                     <input id="deduct_quantity_input" class="input_quantity" type="number"
                                         aria-labelledby="label-quantity" data-id="quantity" min="0"
-                                        name="quantity" required value="0" />
+                                        name="deduct" required value="0" />
                                     <button class="quantity_add" onclick="incrementQuantity2()"
                                         type="button">+</button>
                                     <div id="error-quantity-2" class="error-message"><span>Please input a quantity
@@ -1424,6 +1382,30 @@
             </div>
         </div>
     </div>
+    <div class="modal fade show" role="dialog" tabindex="-1" id="itemName_error">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content success_modal">
+				<div class="modal-header success_header">
+					<div class="failed_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <g clip-path="url(#clip0_3688_23848)">
+                            <path d="M13.3333 13.3333L18.6667 18.6667M18.6667 13.3333L13.3333 18.6667M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#C33834" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_3688_23848">
+                            <rect width="32" height="32" fill="white"/>
+                            </clipPath>
+                        </defs>
+                        </svg></span></div>
+				</div>
+				<div class="modal-body success_message">
+					<div>
+						<h1>Adding Product failed.</h1>
+						<p>Please use a different product name.&nbsp;</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @if (session('success_product'))
     <script>
@@ -1432,6 +1414,16 @@
             setTimeout(function() {
                 $('#save_changes_success').hide();
             }, 2000);
+    });
+    </script>
+    @endif
+    @if (session('item_name'))
+    <script>
+    $(document).ready(function() {
+        $('#itemName_error').show();
+            setTimeout(function() {
+                $('#itemName_error').hide();
+            }, 3000);
     });
     </script>
     @endif
@@ -1470,14 +1462,14 @@
             $('#editButton').click(function() {
             const invData = {
                 'item_name' :$(this).data('item_name'),
-                'prodoct_code' :$(this).data('product_code'),
+                'product_code' :$(this).data('product_code'),
                 'last_name' :$(this).data('last-name'),
                 'suffix' :$(this).data('suffix'),
                 'birthdate' :$(this).data('birthdate'),
                 'email' :$(this).data('email'),
                 'phone' :$(this).data('phone'),
             };      
-            $('#editItemName').val(invData.item_name);
+            $('#editItemName').text(invData.item_name);
             $('#product_code').val(invData.middle_name);
             $('#editLastName').val(clientData.last_name);
             $('#editSuffix').val(clientData.suffix);
@@ -1536,6 +1528,10 @@
                 // Get data attributes from the button
                 const productType = $(this).data('product-type');
                 const productId = $(this).data('product-id');
+                const invData = {
+                'item_name' :$(this).data('item_name'),
+                };
+                $('#addstockItemName').val(invData.item_name);
 
                 const form = $(this).closest('tr').find('.edit_prod_form');
                 // Set the values in the form fields
@@ -1563,11 +1559,12 @@
                 });
             });
             $('.addStock').click(function() {
-                // Get data attributes from the button
-                console.log('test');
                 const productType = $(this).data('product-type');
                 const productId = $(this).data('product-id');
-
+                const invData = {
+                'item_name' :$(this).data('item_name'),
+                };
+                $('#addstockItemName').text(invData.item_name);
                 // Create a FormData object to send data to the server
                 const formData = new FormData();
                 formData.append('product_type', productType);
@@ -1613,7 +1610,40 @@
                     }
                 });
             });
+            $('.deductStock').on('click', function() {
+            var row = $(this).closest('row-id');
+            const product_type = $(this).data('product-type');
+            const id = $(this).data('product-id');
+            const invData = {
+                'item_name' :$(this).data('item_name'),
+                };
+            $('#productName').text(invData.item_name);
+            $('#deductproduct_type').val(product_type);
+            $('#deductid').val(id);
 
+            // Send an AJAX request to the Laravel controller
+            $('#deduct_stock').click(function() {
+                // Perform AJAX request
+                $.ajax({
+                    type: 'POST',
+                    url: '/admin/inventory/deduct',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                        // Add other data if needed
+                    },
+                    success: function(response) {
+                        // Handle success
+                        alert('Product quantity has been deducted');
+                        // Optionally, you can also reload the page or update the UI
+                        location.reload();
+                    },
+                    error: function(xhr) {
+                        // Handle errors
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+            });
         });
 
         document.querySelectorAll('#editButton').forEach(button => {
@@ -1734,44 +1764,7 @@ document.getElementById("expiry_date").addEventListener("input", enableSaveChang
 document.getElementById("date_stocked").addEventListener("input", enableSaveChanges);
 document.getElementById("prod_desc").addEventListener("input", enableSaveChanges);
 document.getElementById("quantity_input").addEventListener("input", enableSaveChanges);
-
-
-
-// Assuming info_quantity is a variable in your JavaScript (replace with actual variable if different)
-var info_quantity = @json($product->info_quantity);
-
-// Determine the status based on the input quantity
-var status = info_quantity === "0" ? "Out of Stock" : (info_quantity <= 50 ? "Low Stock" : "High Stock");
-
-// Define styles for different statuses
-var statusStyles = {
-    "Out of Stock": {
-        backgroundColor: "#DA534F",
-        color: "#fff",
-    },
-    "Low Stock": {
-        backgroundColor: "#FFA800",
-        color: "#fff",
-    },
-    "High Stock": {
-        backgroundColor: "#5CA500",
-        color: "var(--colors-main-neutral, #FFF)",
-    },
-};
-
-// Update the content and style of all the status <td> elements
-var statusTdList = document.querySelectorAll('.status-td');
-
-statusTdList.forEach(function(statusTd) {
-    statusTd.textContent = status;
-    statusTd.style.backgroundColor = statusStyles[status].backgroundColor;
-    statusTd.style.color = statusStyles[status].color;
-});
-
-
-
-
-    </script>
+</script>
 
 
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>

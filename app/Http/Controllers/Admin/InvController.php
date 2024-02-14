@@ -16,7 +16,7 @@ use Illuminate\Foundation\Vite;
 
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
-
+use Svg\Tag\Rect;
 
 class InvController extends Controller
 {
@@ -225,14 +225,16 @@ class InvController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->except(['archived_at']);
-
         $productType = $request->input('product_type');
     
-        // Use a switch statement to handle different product types
         switch ($productType) {
             case 'Medicine':
                 $medInfo = new MedInfo($validatedData);
                 $medInfo->archived_at = null; // Set archived_at to null
+                if (MedInfo::where('item_name', $validatedData['item_name'])->exists()) {
+                    session()->flash('item_name', 'Please verify your email.');            
+                    return back();
+                }                
                 $medInfo->save();
     
                 $medBatchData = [
@@ -247,12 +249,15 @@ class InvController extends Controller
     
                 $medBatch = new MedBatch($medBatchData);
                 $medInfo->medBatch()->save($medBatch);
-    
                 break;
     
             case 'Vaccine':
-                // Handle Vitamin data and save to VitInfo and VitBatch tables
                 $vaxInfo = new VaxInfo($validatedData);
+                $vaxInfo->archived_at = null;
+                if (VaxInfo::where('item_name', $validatedData['item_name'])->exists()) {
+                    session()->flash('item_name', 'Please verify your email.');            
+                    return back();
+                } 
                 $vaxInfo->save();
 
                 $vaxBatchData = [
@@ -265,12 +270,15 @@ class InvController extends Controller
 
                 $vaxBatch = new VaxBatch($vaxBatchData);
                 $vaxInfo->vaxBatch()->save($vaxBatch);
-
                 break;
     
             case 'Vitamin':
-                // Handle Vaccine data and save to VaxInfo and VaxBatch tables
                 $vitInfo = new VitInfo($validatedData);
+                $vitInfo->archived_at = null;
+                if (VitInfo::where('item_name', $validatedData['item_name'])->exists()) {
+                    session()->flash('item_name', 'Please verify your email.');            
+                    return back();
+                } 
                 $vitInfo->save();
 
                 $vitBatchData = [
@@ -283,7 +291,6 @@ class InvController extends Controller
 
                 $vitBatch = new VitBatch($vitBatchData);
                 $vitInfo->vitBatch()->save($vitBatch);
-
                 break;
             default:
                 // Handle the default case (if necessary)
@@ -382,7 +389,6 @@ class InvController extends Controller
         switch ($product_type) {
             case 'Medicine':
                 $med_info = MedInfo::find($id);
-                $med_info->archived_at = null;
                 $existingQuantiy = $med_info->quantity;
                 $newQuantity = $existingQuantiy + $request->input('quantity');
                 $med_info->quantity = $newQuantity;
@@ -455,11 +461,13 @@ class InvController extends Controller
                 $vax_info = VaxInfo::find($id);
                 $vax_info->update(['archived_at' => Carbon::now()]);
                 $vax_info->vaxBatch()->update(['archived_at' => Carbon::now()]);
+                return redirect()->back()->with('success', 'Product has been archived');
                 break;
             case 'Vitamin':
                 $vit_info = VitInfo::find($id);
                 $vit_info->update(['archived_at' => Carbon::now()]);
                 $vit_info->vitBatch()->update(['archived_at' => Carbon::now()]);
+                return redirect()->back()->with('success', 'Product has been archived');
                 break;
             default:
                 break;
@@ -487,23 +495,34 @@ class InvController extends Controller
         }
         return response()->json($productBatch); 
     }
-
-    public function getQuantity($productId)
+    public function deductStock(Request $request)
     {
-        $med_info = MedInfo::whereNull('archived_at')->where('id', $productId)->get();
-        $vax_info = VaxInfo::whereNull('archived_at')->where('id', $productId)->get();
-        $vit_info = VitInfo::whereNull('archived_at')->where('id', $productId)->get();
-
-        if ($med_info) {
-            return response()->json(['quantity' => $med_info->quantity]);
-        } elseif ($vax_info) {
-            return response()->json(['quantity' => $vax_info->quantity]);
-        } elseif ($vit_info) {
-            return response()->json(['quantity' => $vit_info->quantity]);
-        } else {
-            return response()->json(['error' => 'Product not found.'], 404);
+        $product_type = $request->input('product_type');
+        $id = $request->input('id');
+        switch($product_type){
+            case 'Medicine':
+                $productInfo = MedInfo::findOrFail($id);
+                $productInfo->quantity -= $request->input('deduct');
+                $productInfo->save();
+                return redirect()->back()->with('success', 'Product has been archived');
+                break;
+            case 'Vaccine':
+                $productInfo = VaxInfo::findOrFail($id);
+                $productInfo->quantity -= $request->input('deduct');
+                $productInfo->save();
+                return redirect()->back()->with('success', 'Product has been archived');
+                break;
+            case 'Vitamin':
+                $productInfo = VitInfo::findOrFail($id);
+                $productInfo->quantity -= $request->input('deduct');
+                $productInfo->save();
+                return redirect()->back()->with('success', 'Product has been archived');
+                break;
+            default:
+                break;
         }
-           
+        return redirect('admin/inventory');
     }
+
 }
    

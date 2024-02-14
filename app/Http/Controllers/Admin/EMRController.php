@@ -54,26 +54,32 @@ class EMRController extends Controller
         $vaxInfo = VaxInfo::all();
 
         if ($request->has('search')) {
-            $searchTerm = $request->input('search');
+            $searchTerm = $request->input('search'); // Get the search term
+            $searchTerm = trim($searchTerm);
+            $searchWords = explode(' ', $searchTerm);
         
             // Add conditions to the query based on your search requirements
-            $query->whereHas('owner', function ($subQuery) use ($searchTerm) {
-                $subQuery->where('first_name', 'like', '%' . $searchTerm . '%')
-                ->orWhere('middle_name', 'like', '%' . $searchTerm . '%')
-                ->orWhere('last_name', 'like', '%' . $searchTerm . '%')
-                ->orWhereHas('pet', function ($ownerQuery) use ($searchTerm) {
-                    $ownerQuery->where('breed', 'like', '%' . $searchTerm . '%');
-                });
-            })
-            ->orWhereHas('pet', function ($petQuery) use ($searchTerm) {
-                $petQuery->where('name', 'like', '%' . $searchTerm . '%')
-                    ->orWhere('breed', 'like', '%' . $searchTerm . '%');
-            })
-            ->orWhere('allergies', 'like', '%' . $searchTerm . '%')
-            ->orWhere('existing_condition', 'like', '%' . $searchTerm . '%')
-            ->orWhere('current_medication', 'like', '%' . $searchTerm . '%');
-            // Add more conditions as needed for other fields
+            $query->where(function ($query) use ($searchWords) {
+                foreach ($searchWords as $word) {
+                    $query->whereHas('owner', function ($subQuery) use ($word) {
+                        $subQuery->where('first_name', 'like', '%' . $word . '%')
+                            ->orWhere('middle_name', 'like', '%' . $word . '%')
+                            ->orWhere('last_name', 'like', '%' . $word . '%')
+                            ->orWhereHas('pet', function ($ownerQuery) use ($word) {
+                                $ownerQuery->where('breed', 'like', '%' . $word . '%');
+                            });
+                    })
+                    ->orWhereHas('pet', function ($petQuery) use ($word) {
+                        $petQuery->where('name', 'like', '%' . $word . '%')
+                            ->orWhere('breed', 'like', '%' . $word . '%');
+                    })
+                    ->orWhere('allergies', 'like', '%' . $word . '%')
+                    ->orWhere('existing_condition', 'like', '%' . $word . '%')
+                    ->orWhere('current_medication', 'like', '%' . $word . '%');
+                }
+            });
         }
+        
 
         // Retrieve the results
         $petrecord = $query->get()->whereNull('petrecord.archived_at');
