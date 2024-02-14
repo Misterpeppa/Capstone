@@ -32,7 +32,7 @@
 
     <h2>Clients List</h2>
 
-    <table>
+    <table class="table table-responsive mt-3 w-100">
         <thead>
             <tr>
                 <th>Name</th>

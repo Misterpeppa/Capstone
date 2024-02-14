@@ -5,7 +5,7 @@
 </head>
 <body>
     <h2>Approved</h2>
-        <table border="1">
+        <table border="1" class="table table-responsive mt-3 w-100">
             <thead>
                 <tr>
                     <th>User ID</th>
@@ -34,7 +34,7 @@
         </tbody>
         </table>
     <h2>Pending</h2>
-    <table border="1">
+    <table border="1" class="table table-responsive mt-3 w-100">
         <!-- Add Table Headers -->
         <thead>
         <thead>
@@ -68,7 +68,7 @@
 
     <!-- Rejected Table -->
     <h2>Rejected</h2>
-    <table border="1">
+    <table border="1" class="table table-responsive mt-3 w-100">
         <!-- Add Table Headers -->
         <thead>
         <thead>

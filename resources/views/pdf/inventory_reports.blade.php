@@ -52,7 +52,7 @@
                 <h2>Product Name: {{ $med->item_name }}</h2>
                 <h3>Description: {{ $med->prod_desc }}</h3>
             </div>
-            <table border="1">
+            <table border="1" class="table table-responsive mt-3 w-100">
                 <thead>
                     <tr>
                         <th>Batch Number</th>
@@ -80,7 +80,7 @@
                 <h2>Product Name: {{ $vax->item_name }}</h2>
                 <h3>Description: {{ $vax->prod_desc }}</h3>
             </div>
-            <table border="1">
+            <table border="1" class="table table-responsive mt-3 w-100">
                 <thead>
                     <tr>
                         <th>Batch Number</th>
@@ -108,7 +108,7 @@
                 <h2>Product Name: {{ $vit->item_name }}</h2>
                 <h3>Description: {{ $vit->prod_desc }}</h3>
             </div>
-            <table border="1">
+            <table border="1" class="table table-responsive mt-3 w-100">
                 <thead>
                     <tr>
                         <th>Batch Number</th>
