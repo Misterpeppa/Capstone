@@ -24,51 +24,99 @@ class ArchiveController extends Controller
         $client_exist = Clients::whereNotNull('archived_at')->exists();
         $dataExist = $med_exist || $vax_exist || $vit_exist || $petrecord_exist || $appointment_exist || $client_exist;
 
-        $search = $request->input('search');
+        $searchInput = $request->input('search');
+        $search = explode(' ', $searchInput);
         $sortItem = $request->input('sortItems');
         $sortOrder = $request->input('sortOrder');
         $filter = $request->input('filter');
         
-        $med_info = MedInfo::inventory($request)->whereNotNull('archived_at')
-        ->where(function ($query) use ($search) {
-            $query->where('item_name',  'LIKE', "%$search%")
-            ->orWhere('source', 'LIKE', "%$search%"); })
-            ->select('med_info.item_name as name', 'med_info.*')->get();
-
-        $vax_info = VaxInfo::inventory($request)->whereNotNull('archived_at')
-        ->where(function ($query) use ($search) {
-            $query->where('item_name', 'LIKE', "%$search%")
-            ->orWhere('source', 'LIKE', "%$search%"); })
-            ->select('vax_info.item_name as name', 'vax_info.*')->get();
-
-        $vit_info = VitInfo::inventory($request)->whereNotNull('archived_at')
-        ->where(function ($query) use ($search) {
-            $query->where('item_name', 'LIKE', "%$search%")
-            ->orWhere('source', 'LIKE', "%$search%"); })
-            ->select('vit_info.item_name as name', 'vit_info.*')->get();
+        $med_info = MedInfo::inventory($request)
+            ->whereNotNull('archived_at')
+            ->where(function ($query) use ($search) {
+                $query->where(function ($subquery) use ($search) {
+                    foreach ($search as $term) {
+                        $subquery->orWhere('item_name', 'LIKE', "%$term%")
+                            ->orWhere('source', 'LIKE', "%$term%");
+                    }
+                });
+            })
+            ->select('med_info.item_name as name', 'med_info.*')
+            ->get();
             
-        $petrecord = PetRecord::petrecord($request)->with('pet')->whereNotNull('archived_at')
-        ->where(function ($query) use ($search) {
-            $query->where('source', 'LIKE', "%$search%")
-            ->orWhereHas('pet', function ($subQuery) use ($search) {
-                $subQuery->where('name', 'LIKE', "%$search%"); });
-            })->join('pet_info', 'pet_record.pet_id', '=', 'pet_info.id')
-              ->select('pet_info.name as name', 'pet_info.*', 'pet_record.*')->get();
 
-        $appointment = AppointmentApproved::appointment($request)->with('clients')->whereNotNull('appointment_approved.archived_at')
-        ->where(function ($query) use ($search) {
-            $query->where('source', 'LIKE', "%$search%")
-            ->orWhereHas('clients', function ($subQuery) use ($search){
-                $subQuery->where('first_name', 'LIKE', "%$search%")->orWhere('middle_name', 'LIKE', "%$search%")
-                ->orWhere('last_name', 'LIKE', "%$search%")->orWhere('suffix', 'LIKE', "%$search%"); });
-            })->join('clients', 'appointment_approved.user_id', '=', 'clients.id')
-              ->select('clients.first_name as name', 'clients.*', 'appointment_approved.*')->get();
+        $vax_info = VaxInfo::inventory($request)
+            ->whereNotNull('archived_at')
+            ->where(function ($query) use ($search) {
+                $query->where(function ($subquery) use ($search) {
+                    foreach ($search as $term) {
+                        $subquery->orWhere('item_name', 'LIKE', "%$term%")
+                            ->orWhere('source', 'LIKE', "%$term%");
+                    }
+                });
+            })
+            ->select('vax_info.item_name as name', 'vax_info.*')
+            ->get();
 
-        $client = Clients::whereNotNull('archived_at')
-        ->where(function ($query) use ($search){
-            $query->where('first_name', 'LIKE', "%$search%")->orWhere('middle_name', 'LIKE', "%$search%")
-            ->orWhere('last_name', 'LIKE', "%$search%")->orWhere('suffix', 'LIKE', "%$search%"); 
-        })->select('clients.first_name as name', 'clients.*')->get();
+        $vit_info = VitInfo::inventory($request)
+            ->whereNotNull('archived_at')
+            ->where(function ($query) use ($search) {
+                $query->where(function ($subquery) use ($search) {
+                    foreach ($search as $term) {
+                        $subquery->orWhere('item_name', 'LIKE', "%$term%")
+                            ->orWhere('source', 'LIKE', "%$term%");
+                    }
+                });
+            })
+            ->select('vit_info.item_name as name', 'vit_info.*')
+            ->get();
+            
+        $petrecord = PetRecord::petrecord($request)
+            ->with('pet')
+            ->whereNotNull('archived_at')
+            ->where(function ($query) use ($search) {
+                foreach ($search as $term) {
+                    $query->where('source', 'LIKE', "%$term%")
+                          ->orWhereHas('pet', function ($subQuery) use ($term) {
+                              $subQuery->where('name', 'LIKE', "%$term%");
+                          });
+                }
+            })
+            ->join('pet_info', 'pet_record.pet_id', '=', 'pet_info.id')
+            ->select('pet_info.name as name', 'pet_info.*', 'pet_record.*')
+            ->get();
+
+        $appointment = AppointmentApproved::appointment($request)
+            ->with('clients')
+            ->whereNotNull('appointment_approved.archived_at')
+            ->where(function ($query) use ($search) {
+                $query->where(function ($subQuery) use ($search) {
+                    foreach ($search as $term) {
+                        $subQuery->where('source', 'LIKE', "%$term%")
+                            ->orWhereHas('clients', function ($subSubQuery) use ($term) {
+                                $subSubQuery->where('first_name', 'LIKE', "%$term%")
+                                    ->orWhere('middle_name', 'LIKE', "%$term%")
+                                    ->orWhere('last_name', 'LIKE', "%$term%")
+                                    ->orWhere('suffix', 'LIKE', "%$term%");
+                            });
+                    }
+                });
+            })
+            ->join('clients', 'appointment_approved.user_id', '=', 'clients.id')
+            ->select('clients.first_name as name', 'clients.*', 'appointment_approved.*')
+            ->get();
+        
+            $client = Clients::whereNotNull('archived_at')
+            ->where(function ($query) use ($search) {
+                foreach ($search as $term) {
+                    $query->where('first_name', 'LIKE', "%$term%")
+                        ->orWhere('middle_name', 'LIKE', "%$term%")
+                        ->orWhere('last_name', 'LIKE', "%$term%")
+                        ->orWhere('suffix', 'LIKE', "%$term%");
+                }
+            })
+            ->select('clients.first_name as name', 'clients.*')
+            ->get();
+        
 
         $archived = $vax_info->concat($med_info)->concat($vit_info)->concat($petrecord)->concat($appointment)->concat($client);
 

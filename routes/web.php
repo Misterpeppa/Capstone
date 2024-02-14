@@ -105,6 +105,8 @@ Route::post('admin/forgotpassReset', [AdminAuthController::class, 'resetPassword
 
 Route::middleware('admin', 'nocache')->group(function () {
     Route::get('/admin/signout', [AdminAuthController::class, 'signout'])->name('admin.signout');
+    Route::post('/admin/settings/changepassword', [AdminAuthController::class, 'changePassword'])->name('admin.changepassword');
+
 
     Route::get('/admin/appointment', [AppointmentController::class, 'adminShow'])->name('admin_appointment');
     Route::post('/admin/appointment/approve/{id}', [AppointmentController::class, 'approve']);
@@ -135,6 +137,7 @@ Route::middleware('admin', 'nocache')->group(function () {
     Route::match(['put', 'patch'],'/admin/inventory/edit/{product_type}/{id}', [InvController::class, 'updateProduct'])->name('product.edit');
     Route::post('/admin/inventory/archive/{product_type}/{id}', [InvController::class, 'archive'])->name('product.archive');
     Route::get('/admin/inventory/viewBatch/{product_type}/{id}', [InvController::class, 'viewBatch']);
+    Route::post('/admin/inventory/deduct', [InvController::class, 'deductStock'])->name('deduct');
     Route::get('/admin/inventory/reports', [ReportController::class, 'invPDF'])->name('report.inventory');
 
     Route::get('admin/client', [ClientController::class, 'show'])->name('admin_client');

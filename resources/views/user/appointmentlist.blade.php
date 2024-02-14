@@ -226,6 +226,7 @@
                                             <td class="text-style">{{ $appointmentpending['petType'] }} ({{ $appointmentpending['breed'] }})</td>
                                             <td class="text-style">{{ $appointmentpending['appointmentType'] }}</td>
                                             <td class="text-style">{{ $appointmentpending['appointmentDate'] }} {{ $appointmentpending['appointmentTime'] }}</td>
+											<td class="text-style">{{ $appointmentpending['status'] }}</td>
                                             <td class="text-style"></td>
 											<td></td>
 											<td class="dropdown button-action">

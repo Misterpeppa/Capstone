@@ -36,7 +36,7 @@ class ProfileController extends Controller
         $clientId = Auth::guard('clients')->id();
         $clientInfo = Clients::find($clientId);
         if (!$clientInfo || !$clientInfo->email_verified_at) {
-            session()->flash('error', 'Please verify your email.');
+            session()->flash('unverified', 'Please verify your email.');
             return view('user/landing', compact('clientInfo'));        
         }
         return view('user/landing', compact('clientInfo'));

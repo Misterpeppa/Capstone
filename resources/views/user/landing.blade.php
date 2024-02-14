@@ -65,29 +65,29 @@
                 </div>
             </div>
 
-            <div class="floating-div mt-4">
+            <div class="floating-div mt-4 mb-5">
                 <div class="row w-100 d-flex justify-content-center" style="padding: 0; margin: 0;">
-                    <div class="col-4 col-sm-4 col-md-8 mb-3">
+                    <div class="col-6 col-sm-6 col-md-8 mb-3">
                         <div class="card service_icons">
                             <div class="card-body landingpage d-flex flex-column justify-content-center flex-sm-column flex-md-row">
                                 <div class="services">
-                                    <div class="frame504"><svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_6528_22801)"><path d="M19.8343 19.8332L36.1676 36.1665M10.4999 29.1666L29.1666 10.4999C31.3325 8.334 34.2702 7.11719 37.3333 7.11719C40.3964 7.11719 43.334 8.334 45.4999 10.4999C47.6659 12.6659 48.8827 15.6035 48.8827 18.6666C48.8827 21.7297 47.6659 24.6673 45.4999 26.8333L26.8333 45.4999C24.6673 47.6659 21.7297 48.8827 18.6666 48.8827C15.6035 48.8827 12.6659 47.6659 10.4999 45.4999C8.334 43.334 7.11719 40.3964 7.11719 37.3333C7.11719 34.2702 8.334 31.3325 10.4999 29.1666Z" stroke="#045B62" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_6528_22801"><rect width="56" height="56" fill="white"/></clipPath></defs></svg></div>
+                                    <div class="frame504 text-center"><svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_6528_22801)"><path d="M19.8343 19.8332L36.1676 36.1665M10.4999 29.1666L29.1666 10.4999C31.3325 8.334 34.2702 7.11719 37.3333 7.11719C40.3964 7.11719 43.334 8.334 45.4999 10.4999C47.6659 12.6659 48.8827 15.6035 48.8827 18.6666C48.8827 21.7297 47.6659 24.6673 45.4999 26.8333L26.8333 45.4999C24.6673 47.6659 21.7297 48.8827 18.6666 48.8827C15.6035 48.8827 12.6659 47.6659 10.4999 45.4999C8.334 43.334 7.11719 40.3964 7.11719 37.3333C7.11719 34.2702 8.334 31.3325 10.4999 29.1666Z" stroke="#045B62" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_6528_22801"><rect width="56" height="56" fill="white"/></clipPath></defs></svg></div>
                                     <p>DEWORMING</p>
                                 </div>
                                 <div class="services">
-                                    <div class="frame504"><svg xmlns="http://www.w3.org/2000/svg" width="57" height="56" viewBox="0 0 57 56" fill="none"><g clip-path="url(#clip0_6528_7284)"><path d="M40.4167 7L49.75 16.3333M45.0833 11.6667L34.5833 22.1667M27.5833 15.1667L41.5833 29.1667M39.25 26.8333L24.0833 42H14.75M14.75 42V32.6667L29.9167 17.5M14.75 42L7.75 49M18.25 29.1667L21.75 32.6667M25.25 22.1667L28.75 25.6667" stroke="#045B62" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_6528_7284"><rect width="56" height="56" fill="white" transform="translate(0.75)"/></clipPath></defs></svg></div>
+                                    <div class="frame504 text-center"><svg xmlns="http://www.w3.org/2000/svg" width="57" height="56" viewBox="0 0 57 56" fill="none"><g clip-path="url(#clip0_6528_7284)"><path d="M40.4167 7L49.75 16.3333M45.0833 11.6667L34.5833 22.1667M27.5833 15.1667L41.5833 29.1667M39.25 26.8333L24.0833 42H14.75M14.75 42V32.6667L29.9167 17.5M14.75 42L7.75 49M18.25 29.1667L21.75 32.6667M25.25 22.1667L28.75 25.6667" stroke="#045B62" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_6528_7284"><rect width="56" height="56" fill="white" transform="translate(0.75)"/></clipPath></defs></svg></div>
                                     <p>VACCINATION</p>
                                 </div>
                                 <div class="services">
-                                    <div class="frame504"><svg xmlns="http://www.w3.org/2000/svg" width="57" height="56" viewBox="0 0 57 56" fill="none"><g clip-path="url(#clip0_6528_23470)"><path d="M14.5 9.33333H12.1667C10.929 9.33333 9.742 9.825 8.86683 10.7002C7.99167 11.5753 7.5 12.7623 7.5 14V22.1667C7.5 25.5703 8.85208 28.8345 11.2588 31.2412C13.6655 33.6479 16.9297 35 20.3333 35C23.7369 35 27.0012 33.6479 29.4079 31.2412C31.8146 28.8345 33.1667 25.5703 33.1667 22.1667V14C33.1667 12.7623 32.675 11.5753 31.7998 10.7002C30.9247 9.825 29.7377 9.33333 28.5 9.33333H26.1667M19.1667 35C19.1667 36.8385 19.5288 38.659 20.2324 40.3576C20.9359 42.0561 21.9672 43.5995 23.2672 44.8995C24.5672 46.1995 26.1105 47.2307 27.8091 47.9343C29.5077 48.6379 31.3282 49 33.1667 49C35.0052 49 36.8257 48.6379 38.5242 47.9343C40.2228 47.2307 41.7661 46.1995 43.0662 44.8995C44.3662 43.5995 45.3974 42.0561 46.101 40.3576C46.8045 38.659 47.1667 36.8385 47.1667 35V28M47.1667 28C45.929 28 44.742 27.5083 43.8668 26.6332C42.9917 25.758 42.5 24.571 42.5 23.3333C42.5 22.0957 42.9917 20.9087 43.8668 20.0335C44.742 19.1583 45.929 18.6667 47.1667 18.6667C48.4043 18.6667 49.5913 19.1583 50.4665 20.0335C51.3417 20.9087 51.8333 22.0957 51.8333 23.3333C51.8333 24.571 51.3417 25.758 50.4665 26.6332C49.5913 27.5083 48.4043 28 47.1667 28ZM26.1667 7V11.6667M14.5 7V11.6667" stroke="#045B62" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_6528_23470"><rect width="56" height="56" fill="white" transform="translate(0.5)"/></clipPath></defs></svg></div>
+                                    <div class="frame504 text-center"><svg xmlns="http://www.w3.org/2000/svg" width="57" height="56" viewBox="0 0 57 56" fill="none"><g clip-path="url(#clip0_6528_23470)"><path d="M14.5 9.33333H12.1667C10.929 9.33333 9.742 9.825 8.86683 10.7002C7.99167 11.5753 7.5 12.7623 7.5 14V22.1667C7.5 25.5703 8.85208 28.8345 11.2588 31.2412C13.6655 33.6479 16.9297 35 20.3333 35C23.7369 35 27.0012 33.6479 29.4079 31.2412C31.8146 28.8345 33.1667 25.5703 33.1667 22.1667V14C33.1667 12.7623 32.675 11.5753 31.7998 10.7002C30.9247 9.825 29.7377 9.33333 28.5 9.33333H26.1667M19.1667 35C19.1667 36.8385 19.5288 38.659 20.2324 40.3576C20.9359 42.0561 21.9672 43.5995 23.2672 44.8995C24.5672 46.1995 26.1105 47.2307 27.8091 47.9343C29.5077 48.6379 31.3282 49 33.1667 49C35.0052 49 36.8257 48.6379 38.5242 47.9343C40.2228 47.2307 41.7661 46.1995 43.0662 44.8995C44.3662 43.5995 45.3974 42.0561 46.101 40.3576C46.8045 38.659 47.1667 36.8385 47.1667 35V28M47.1667 28C45.929 28 44.742 27.5083 43.8668 26.6332C42.9917 25.758 42.5 24.571 42.5 23.3333C42.5 22.0957 42.9917 20.9087 43.8668 20.0335C44.742 19.1583 45.929 18.6667 47.1667 18.6667C48.4043 18.6667 49.5913 19.1583 50.4665 20.0335C51.3417 20.9087 51.8333 22.0957 51.8333 23.3333C51.8333 24.571 51.3417 25.758 50.4665 26.6332C49.5913 27.5083 48.4043 28 47.1667 28ZM26.1667 7V11.6667M14.5 7V11.6667" stroke="#045B62" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_6528_23470"><rect width="56" height="56" fill="white" transform="translate(0.5)"/></clipPath></defs></svg></div>
                                     <p>CHECKUP</p>
                                 </div>
                                 <div class="services">
-                                    <div class="frame504"><svg xmlns="http://www.w3.org/2000/svg" width="57" height="56" viewBox="0 0 57 56" fill="none"><g clip-path="url(#clip0_6528_17219)"><path d="M21.2513 11.6667H16.5846C15.347 11.6667 14.16 12.1583 13.2848 13.0335C12.4096 13.9087 11.918 15.0957 11.918 16.3333V44.3333C11.918 45.571 12.4096 46.758 13.2848 47.6332C14.16 48.5083 15.347 49 16.5846 49H39.918C41.1556 49 42.3426 48.5083 43.2178 47.6332C44.093 46.758 44.5846 45.571 44.5846 44.3333V16.3333C44.5846 15.0957 44.093 13.9087 43.2178 13.0335C42.3426 12.1583 41.1556 11.6667 39.918 11.6667H35.2513M21.2513 11.6667C21.2513 10.429 21.743 9.242 22.6181 8.36683C23.4933 7.49167 24.6803 7 25.918 7H30.5846C31.8223 7 33.0093 7.49167 33.8845 8.36683C34.7596 9.242 35.2513 10.429 35.2513 11.6667M21.2513 11.6667C21.2513 12.9043 21.743 14.0913 22.6181 14.9665C23.4933 15.8417 24.6803 16.3333 25.918 16.3333H30.5846C31.8223 16.3333 33.0093 15.8417 33.8845 14.9665C34.7596 14.0913 35.2513 12.9043 35.2513 11.6667M28.234 39.0833L34.6436 32.515C35.4365 31.6893 35.8792 30.589 35.8792 29.4443C35.8792 28.2996 35.4365 27.1993 34.6436 26.3736C34.2571 25.9714 33.7934 25.6513 33.2801 25.4327C32.7669 25.214 32.2148 25.1013 31.657 25.1013C31.0991 25.1013 30.547 25.214 30.0338 25.4327C29.5205 25.6513 29.0568 25.9714 28.6703 26.3736L28.2433 26.8123L27.8163 26.3713C27.4298 25.969 26.966 25.649 26.4528 25.4303C25.9396 25.2117 25.3875 25.099 24.8296 25.099C24.2718 25.099 23.7197 25.2117 23.2064 25.4303C22.6932 25.649 22.2294 25.969 21.843 26.3713C21.0496 27.1967 20.6064 28.2971 20.6064 29.442C20.6064 30.5868 21.0496 31.6873 21.843 32.5126L28.2316 39.1043L28.234 39.0833Z" stroke="#045B62" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_6528_17219"><rect width="56" height="56" fill="white" transform="translate(0.25)"/></clipPath></defs></svg></div>
+                                    <div class="frame504 text-center"><svg xmlns="http://www.w3.org/2000/svg" width="57" height="56" viewBox="0 0 57 56" fill="none"><g clip-path="url(#clip0_6528_17219)"><path d="M21.2513 11.6667H16.5846C15.347 11.6667 14.16 12.1583 13.2848 13.0335C12.4096 13.9087 11.918 15.0957 11.918 16.3333V44.3333C11.918 45.571 12.4096 46.758 13.2848 47.6332C14.16 48.5083 15.347 49 16.5846 49H39.918C41.1556 49 42.3426 48.5083 43.2178 47.6332C44.093 46.758 44.5846 45.571 44.5846 44.3333V16.3333C44.5846 15.0957 44.093 13.9087 43.2178 13.0335C42.3426 12.1583 41.1556 11.6667 39.918 11.6667H35.2513M21.2513 11.6667C21.2513 10.429 21.743 9.242 22.6181 8.36683C23.4933 7.49167 24.6803 7 25.918 7H30.5846C31.8223 7 33.0093 7.49167 33.8845 8.36683C34.7596 9.242 35.2513 10.429 35.2513 11.6667M21.2513 11.6667C21.2513 12.9043 21.743 14.0913 22.6181 14.9665C23.4933 15.8417 24.6803 16.3333 25.918 16.3333H30.5846C31.8223 16.3333 33.0093 15.8417 33.8845 14.9665C34.7596 14.0913 35.2513 12.9043 35.2513 11.6667M28.234 39.0833L34.6436 32.515C35.4365 31.6893 35.8792 30.589 35.8792 29.4443C35.8792 28.2996 35.4365 27.1993 34.6436 26.3736C34.2571 25.9714 33.7934 25.6513 33.2801 25.4327C32.7669 25.214 32.2148 25.1013 31.657 25.1013C31.0991 25.1013 30.547 25.214 30.0338 25.4327C29.5205 25.6513 29.0568 25.9714 28.6703 26.3736L28.2433 26.8123L27.8163 26.3713C27.4298 25.969 26.966 25.649 26.4528 25.4303C25.9396 25.2117 25.3875 25.099 24.8296 25.099C24.2718 25.099 23.7197 25.2117 23.2064 25.4303C22.6932 25.649 22.2294 25.969 21.843 26.3713C21.0496 27.1967 20.6064 28.2971 20.6064 29.442C20.6064 30.5868 21.0496 31.6873 21.843 32.5126L28.2316 39.1043L28.234 39.0833Z" stroke="#045B62" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_6528_17219"><rect width="56" height="56" fill="white" transform="translate(0.25)"/></clipPath></defs></svg></div>
                                     <p>LAB. EXAM</p>
                                 </div>
                                 <div class="services">
-                                    <div class="frame504"><svg xmlns="http://www.w3.org/2000/svg" width="57" height="56" viewBox="0 0 57 56" fill="none"><g clip-path="url(#clip0_6528_17886)"><path d="M7.5 44.334L42.5 9.33398L49.5 16.334L35.5 30.334L40.1667 35.0007C36.1014 39.4028 30.9036 42.6019 25.1421 44.2481C19.3806 45.8942 13.2773 45.9239 7.5 44.334Z" stroke="#045B62" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_6528_17886"><rect width="56" height="56" fill="white" transform="translate(0.5)"/></clipPath></defs></svg></div>
+                                    <div class="frame504 text-center"><svg xmlns="http://www.w3.org/2000/svg" width="57" height="56" viewBox="0 0 57 56" fill="none"><g clip-path="url(#clip0_6528_17886)"><path d="M7.5 44.334L42.5 9.33398L49.5 16.334L35.5 30.334L40.1667 35.0007C36.1014 39.4028 30.9036 42.6019 25.1421 44.2481C19.3806 45.8942 13.2773 45.9239 7.5 44.334Z" stroke="#045B62" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_6528_17886"><rect width="56" height="56" fill="white" transform="translate(0.5)"/></clipPath></defs></svg></div>
                                     <p>SURGERY</p>
                                 </div>
                             </div>
@@ -100,9 +100,9 @@
 
 
          
+ 
                 <div class="row w-100 loc_and_working_hours d-flex justify-content-center" style="padding: 0; margin: 0;">
-                <div class="row w-100 loc_and_working_hours d-flex justify-content-center" style="padding: 0; margin: 0;">
-                    <div class="col-4 col-sm-4 col-md-4">
+                    <div class="col-6 col-sm-6 col-md-4">
                         <div class="card location mb-4">
                             <div class="location_heading">
                                 <h1>LOCATION</h1>
@@ -124,7 +124,7 @@
                         </div>
                     </div>
 
-                    <div class="col-4 col-sm-4 col-md-4">
+                    <div class="col-6 col-sm-6 col-md-4">
                         <div class="card location mb-4">
                             <div class="location_heading">
                                 <h1>WORKING HOURS</h1>
@@ -147,7 +147,7 @@
                     </div>
                     
                 </div>
-            </div>
+            
 
         
         </div>
@@ -247,13 +247,13 @@
     }
 </script>
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-@if (session('error'))
+@if (session('unverified'))
 <script>
     $(document).ready(function() {
         $('#signup_error').modal('show');
     });
     const notifications = [
-        "Please Verify Your Email Using This Link <a href='{{ route('resend', ['clientId'=>$clientInfo->id]) }}>Resend</a>"
+        "Please Verify Your Email Using This Link"
     ];
 </script>
 @endif
@@ -263,7 +263,7 @@
         $('#signup_success').modal('show');
     });
     const notifications = [
-        "Please UnVerify Your Email Using This Link <a href='{{ route('resend', ['clientId'=>$clientInfo->id]) }}>Resend</a>"
+        "You are now Verified"
     ];
 </script>
 @endif

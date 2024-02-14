@@ -31,7 +31,7 @@ class AppointmentController extends Controller
         $existingAppointments = AppointmentPending::where('user_id', $clientId)
         ->whereDate('created_at', $today)
         ->count();
-       // dd($existingAppointments);
+        //dd($existingAppointments);
         if ($existingAppointments >= 3) {
             session()->flash('limit', 'Please verify your email.');
             return view('user/appointment', compact('clientInfo'));
@@ -117,7 +117,8 @@ class AppointmentController extends Controller
         return redirect()->route('appointment.form');
     }
     
-    public function approve(Request $request, $id){
+    public function approve(Request $request, $id)
+    {
         // Find the appointment details by ID
         $appointment = AppointmentPending::findOrFail($id);
 
@@ -132,8 +133,8 @@ class AppointmentController extends Controller
         // Delete the data from the "appointment_details" table
         $appointment->delete();
         
-        //$client = Clients::find($appointment->user_id);
-        // Mail::to($client->email)->send(new AppointmentApprovedMail($appointment));
+        $client = Clients::find($appointment->user_id);
+        Mail::to($client->email)->send(new AppointmentApprovedMail($appointment));
         return response()->json(['message' => 'Appointment Approved successfully.']);
 
     }
@@ -144,7 +145,7 @@ class AppointmentController extends Controller
         $reason =$request->input('reason');
         $otherReason = $request->input('otherReason');
 
-        AppointmentRejected::create([
+        $rejected = AppointmentRejected::create([
             'user_id' =>$appointment->user_id,
             'petType' => $appointment->petType,
             'breed' => $appointment->breed,
@@ -156,8 +157,8 @@ class AppointmentController extends Controller
         // Delete the data from the "appointment_details" table
         $appointment->delete();
 
-        //$client = Clients::find($appointment->user_id);
-        //Mail::to($client->email)->send(new AppointmentRejectedMail($appointment));
+        $client = Clients::find($appointment->user_id);
+        Mail::to($client->email)->send(new AppointmentRejectedMail($rejected));
 
         return response()->json(['message' => 'Appointment Rejected successfully.']);
 
@@ -237,13 +238,13 @@ class AppointmentController extends Controller
         if ($perPage === false || $perPage < 5) {
             $perPage = 5; 
         }
-        $appointment_approved = $appointment_approved->paginate($perPage, ['*'], 'approvedPage');
+        $appointment_approved = $appointment_approved->paginate($perPage, ['*'], 'approvedPage')->onEachSide(2);
         $appointment_approved->withPath('/admin/appointment');
 
-        $appointment_pending = $appointment_pending->paginate($perPage,['*'], 'pendingPage');
+        $appointment_pending = $appointment_pending->paginate($perPage,['*'], 'pendingPage')->onEachSide(2);
         $appointment_pending->withPath('/admin/appointment');
 
-        $appointment_rejected = $appointment_rejected->paginate($perPage,['*'], 'rejectPage');
+        $appointment_rejected = $appointment_rejected->paginate($perPage,['*'], 'rejectPage')->onEachSide(2);
         $appointment_rejected->withPath('/admin/appointment');
 
         $approvedExist = $appointment_approved->isNotEmpty();

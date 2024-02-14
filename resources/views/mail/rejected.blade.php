@@ -74,10 +74,11 @@
                 <div class="email_text mt-5">
                 <h1>Appointment Rejected</h1>
                 <p>Sorry For The Inconvinience.</p>
-                <p>{{ $appointment->clients->first_name}} {{ $appointment->clients->middle_name}} {{ $appointment->clients->last_name}}. </p>
-                <p>Appointment Date: {{ $appointment->appointmentDate }}</p>
-                <p>Appointment Time: {{ $appointment->appointmentTime }}</p>
+                <p>{{ $rejected->clients->first_name}} {{ $rejected->clients->middle_name}} {{ $rejected->clients->last_name}} {{ $rejected->clients->suffix }}. </p>
+                <p>Appointment Date: {{ $rejected->appointmentDate }}</p>
+                <p>Appointment Time: {{ $rejected->appointmentTime }}</p>
                 <p>Choose A Different Date and Time for an Appointment!</p>
+                <p>Reason: {{ $rejected->notes }}</p>
                 </div>
             </div>
         </div>
