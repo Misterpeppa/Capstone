@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/Multi-step-form.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/Navbar-Centered-Links-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/newstyles.css') }}">
+	<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/main.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -83,7 +84,7 @@
                                                       <rect width="24" height="24" fill="white"/>
                                                     </clipPath>
                                                   </defs>
-                                              </svg>Filter By
+                                              </svg><div class="filter_btn_base">Filter By</div> 
                                             </button>
                                             <ul class="dropdown-menu">
                                                 
@@ -129,8 +130,7 @@
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                aria-expanded="false"><span class="filter_btn_base">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g clip-path="url(#clip0_6770_15021)">
 														<path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 													</g>
@@ -139,7 +139,8 @@
 														<rect width="24" height="24" fill="white"/>
 														</clipPath>
 													</defs>
-													</svg>Sort By 
+													</svg><span class="filter_btn_base">
+													Sort By 
 												</span>
                                                 </button>
                                             <ul class="dropdown-menu">
@@ -191,7 +192,80 @@
           
                                     </div>
 							</div>
+							@foreach ($petrecords as $petrecord)
+							
+								
+								<div class="card pet_card">
+									<div class="card-body pet_card_body">
+										<div class="pet_detail_header">
+											<div class="pet_detail_heading_text_container">
+												<h1>{{ $petrecord->pet->name }}</h1>
+												<p>{{ $petrecord->pet->breed }}</p>
+											</div>
+											<div class="dropdown">
+												<button class="btn btn dropdown-toggle pet_dropdown" aria-expanded="false" data-bs-toggle="dropdown" type="button"><svg fill="none" height="18" viewbox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"></path><path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"></path><path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"></path></svg></button>
+												<div class="dropdown-menu more_button" data-bs-popper="none">
+													<button class="dropdown-item View_pet" id="View" data-action="View_pet" data-container-id="{{ $petrecord->id }}">
+														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+															<g clip-path="url(#clip0_6230_1794)">
+																<path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+																<path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
+															<defs>
+																<clipPath id="clip0_6230_1794">
+																	<rect width="24" height="24" fill="white" /> </clipPath>
+															</defs>
+														</svg>&nbsp;View</button>
+													<button class="dropdown-item Edit_pet" data-action="Edit_pet" id="Edit" data-container-id="{{ $petrecord->id }}">
+														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+															<g clip-path="url(#clip0_6230_538)">
+																<path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
+															<defs>
+																<clipPath id="clip0_6230_538">
+																	<rect width="24" height="24" fill="white" /> </clipPath>
+															</defs>
+														</svg>&nbsp;Edit</button>
+													<button class="dropdown-item add_appointment" data-action="Create_appointment" id="add_appointment">
+														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+															<g clip-path="url(#clip0_6230_1769)">
+																<path d="M9 12H15M12 9V15M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
+															<defs>
+																<clipPath id="clip0_6230_1769">
+																	<rect width="24" height="24" fill="white" /> </clipPath>
+															</defs>
+														</svg>&nbsp;Add Appointment</button>
+												</div>
+											</div>
+										</div>
+										<div class="pet_detail_body">
+											<div class="pet_upper_detail">
+												<div class="pet_sex_container">
+													<h1>Sex</h1>
+													<p>{{ $petrecord->pet->gender }}</p>
+												</div>
+												<div class="pet_age_container">
+													<h1>Age</h1>
+													<p>{{ $petrecord->pet->age }}</p>
+												</div>
+											</div>
+											<div class="pet_lower_detail">
+												<div class="pet_weight_container">
+													<h1>Weight</h1>
+													<p>{{ $petrecord->pet->weight }}kg</p>
+												</div>
+												<div class="pet_sterilization_status_container">
+													<h1>Sterilization Status</h1>
+													<p>{{ $petrecord->pet->sterilization }}</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								
+								
 						</div>
+						@endforeach
+
+						</div>
+
 						<div id="empty_state_container" class="empty_state_container">
 							<div class="empty_state">
 								<div class="empty_state_message_container">
@@ -223,76 +297,232 @@
 								</svg> Add Pet</span>
 							</button>
 						</div>
-						@foreach ($petrecords as $petrecord)
-							<div class="card pet_card">
-								<div class="card-body pet_card_body">
-									<div class="pet_detail_header">
-										<div class="pet_detail_heading_text_container">
-											<h1>{{ $petrecord->pet->name }}</h1>
-											<p>{{ $petrecord->pet->breed }}</p>
-										</div>
-										<div class="dropdown">
-											<button class="btn btn dropdown-toggle pet_dropdown" aria-expanded="false" data-bs-toggle="dropdown" type="button"><svg fill="none" height="18" viewbox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"></path><path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"></path><path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"></path></svg></button>
-											<div class="dropdown-menu more_button" data-bs-popper="none">
-												<button class="dropdown-item View_pet" id="View" data-action="View_pet" data-container-id="{{ $petrecord->id }}">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<g clip-path="url(#clip0_6230_1794)">
-															<path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-															<path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
-														<defs>
-															<clipPath id="clip0_6230_1794">
-																<rect width="24" height="24" fill="white" /> </clipPath>
-														</defs>
-													</svg>&nbsp;View</button>
-												<button class="dropdown-item Edit_pet" data-action="Edit_pet" id="Edit" data-container-id="{{ $petrecord->id }}">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<g clip-path="url(#clip0_6230_538)">
-															<path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
-														<defs>
-															<clipPath id="clip0_6230_538">
-																<rect width="24" height="24" fill="white" /> </clipPath>
-														</defs>
-													</svg>&nbsp;Edit</button>
-												<button class="dropdown-item add_appointment" data-action="Create_appointment" id="add_appointment">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<g clip-path="url(#clip0_6230_1769)">
-															<path d="M9 12H15M12 9V15M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
-														<defs>
-															<clipPath id="clip0_6230_1769">
-																<rect width="24" height="24" fill="white" /> </clipPath>
-														</defs>
-													</svg>&nbsp;Add Appointment</button>
+
+						
+						
+							
+							
+
+							<div id="view_pet" class="customer_side">
+								<div class="view_pet_back_btn_container">
+									<button class="btn edit_pet_back_btn" id="view_pet_back_btn" type="button"><span class="edit_pet_back_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+		<g clip-path="url(#clip0_6089_3068)" filter="url(#filter0_d_6089_3068)">
+			<path d="M5.5 12H19.5M5.5 12L11.5 18M5.5 12L11.5 6" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		</g>
+		<defs>
+			<filter id="filter0_d_6089_3068" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+			<feOffset dy="2"/>
+			<feGaussianBlur stdDeviation="1"/>
+			<feComposite in2="hardAlpha" operator="out"/>
+			<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+			<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6089_3068"/>
+			<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6089_3068" result="shape"/>
+			</filter>
+			<clipPath id="clip0_6089_3068">
+			<rect width="24" height="24" fill="white" transform="translate(0.5)"/>
+			</clipPath>
+		</defs>
+		</svg> Back</span></button>
+								</div>
+								<div class="pet_record_item">
+									<div class="pet_record">
+										<div class="pet_record_details">
+											<div class="pet_record_details_second_row">
+												<div class="pet_name_breed_container" id="petInfo">
+													<h1>Pet Name</h1>
+													<p>Breed</p>
+												</div>
+											</div>
+											<div class="pet_record_details_first_row">
+												<div class="pet_other_details">
+													<div class="other_details" id="sex">
+														<h1>Sex</h1>
+														<p></p>
+													</div>
+													<div class="other_details" id="birthdate">
+														<h1>Birth Date</h1>
+														<p></p>
+													</div>
+													<div class="other_details" id="age">
+														<h1>Age</h1>
+														<p></p>
+													</div>
+													<div class="other_details" id="weight">
+														<h1>Weight</h1>
+														<p></p>
+													</div>
+													<div class="other_details" id="sterilization">
+														<h1><strong>Sterilization Status</strong></h1>
+														<p></p>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
-									<div class="pet_detail_body">
-										<div class="pet_upper_detail">
-											<div class="pet_sex_container">
-												<h1>Sex</h1>
-												<p>{{ $petrecord->pet->gender }}</p>
+									<button class="btn edit_pet_btn" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+										<g clip-path="url(#clip0_6127_11956)">
+											<path d="M13.5 6.50024L17.5 10.5002M4 20.0003H8L18.5 9.5003C19.0304 8.96987 19.3284 8.25045 19.3284 7.5003C19.3284 6.75016 19.0304 6.03074 18.5 5.5003C17.9696 4.96987 17.2501 4.67188 16.5 4.67188C15.7499 4.67187 15.0304 4.96987 14.5 5.5003L4 16.0003V20.0003Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+										</g>
+										<defs>
+											<clipPath id="clip0_6127_11956">
+											<rect width="24" height="24" fill="white"/>
+											</clipPath>
+										</defs>
+										</svg>
+										</span>
+									</button>
+								</div>
+								<div class="align-self-stretch pet_records">
+									<ul class="nav nav-tabs pet_nav_tabs" role="tablist">
+										<li class="nav-item view_pet_nav_tabs" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><g clip-path="url(#clip0_1917_11691)"><path d="M9 7H15M9 11H15M9 15H13M5 5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21H7C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19V5Z" stroke="black" stroke-width="2" stroke-opacity="0.7" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1917_11691"><rect width="24" height="24" fill="white"/></clipPath></defs></svg></span><p>Information</p></a></li>
+										<li class="nav-item view_pet_nav_tabs" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><g clip-path="url(#clip0_1917_11671)"><path d="M14 12V12.01M10 12V12.01M12 10V10.01M12 14V14.01M4.49955 12.5L12.4996 4.50004C13.4278 3.57178 14.6868 3.05029 15.9996 3.05029C17.3123 3.05029 18.5713 3.57178 19.4996 4.50004C20.4278 5.4283 20.9493 6.68729 20.9493 8.00004C20.9493 9.3128 20.4278 10.5718 19.4996 11.5L11.4996 19.5C10.5713 20.4283 9.31231 20.9498 7.99955 20.9498C6.6868 20.9498 5.42781 20.4283 4.49955 19.5C3.57129 18.5718 3.0498 17.3128 3.0498 16C3.0498 14.6873 3.57129 13.4283 4.49955 12.5Z" stroke-opacity="0.7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1917_11671"><rect width="24" height="24" fill="white"/></clipPath></defs></svg></span><p>Medical History</p></a></li>
+										<li class="nav-item view_pet_nav_tabs" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><g clip-path="url(#clip0_1917_11713)"><path d="M17 3L21 7M19 5L14.5 9.5M11.5 6.5L17.5 12.5M16.5 11.5L10 18H6M6 18V14L12.5 7.5M6 18L3 21M7.5 12.5L9 14M10.5 9.5L12 11" stroke="black" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1917_11713"><rect width="24" height="24" fill="white"/></clipPath></defs></svg></span><p>Immunization History</p></a></li>
+										<li class="nav-item view_pet_nav_tabs" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-4"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><g clip-path="url(#clip0_2341_21180)"><path d="M3 19L18 4L21 7L15 13L17 15C15.2577 16.8866 13.0301 18.2577 10.5609 18.9632C8.09168 19.6687 5.47598 19.6814 3 19Z" stroke="black" stroke-width="2" stroke-opacity="0.7" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_2341_21180"><rect width="24" height="24" fill="white"/></clipPath></defs></svg></span><p>Surgeries</p></a></li>
+									</ul>
+									<div class="tab-content view_pet_content">
+										<div class="tab-pane active pet_information" role="tabpanel" id="tab-1" style="width: 100%;">
+											<div>
+												<div class="owner_information">
+													<div class="owner_info_heading">
+														<h1><strong>Owner Information</strong></h1> </div>
+												</div>
+												<div class="owner_details">
+													<div class="owner_details_row">
+														<div class="owner_detail_container" id="ownerName">
+															<h1>Name</h1>
+															<p></p>
+														</div>
+													</div>
+													<div class="owner_details_row">
+														<div class="owner_detail_container" id="ownerEmail">
+															<h1>Email</h1>
+															<p></p>
+														</div>
+														<div class="owner_detail_container" id="ownerPhone">
+															<h1>Contact Number</h1>
+															<p></p>
+														</div>
+													</div>
+												</div>
 											</div>
-											<div class="pet_age_container">
-												<h1>Age</h1>
-												<p>{{ $petrecord->pet->age }}</p>
+											<hr>
+											<div>
+												<div class="owner_information">
+													<div class="owner_info_heading">
+														<h1><strong>Health Concerns</strong></h1> </div>
+												</div>
+												<div class="owner_details">
+													<div class="owner_details_row">
+														<div class="owner_detail_container">
+															<h1><strong>Allergies</strong></h1>
+															<p><strong>None</strong></p>
+														</div>
+														<div class="owner_detail_container">
+															<h1><strong>Existing Conditions</strong></h1>
+															<p><strong>None</strong></p>
+														</div>
+													</div>
+													<div class="owner_details_row">
+														<div class="owner_detail_container">
+															<h1><strong>Current Medications</strong></h1>
+															<p><strong>None</strong></p>
+														</div>
+														<div class="owner_detail_container"></div>
+													</div>
+												</div>
 											</div>
 										</div>
-										<div class="pet_lower_detail">
-											<div class="pet_weight_container">
-												<h1>Weight</h1>
-												<p>{{ $petrecord->pet->weight }}kg</p>
+										<div class="tab-pane pet_information" role="tabpanel" id="tab-2">
+											<div id="medical_empty_state" class="pet_record_empty_state_message_container">
+												<div class="pet_info_empty_state">
+													<h1>NO MEDICAL HISTORY FOUND</h1>
+													<div class="pet_info_empty_state_p_container">
+														<p>You can add a medical history by clicking the button below.</p>
+													</div>
+												</div>
 											</div>
-											<div class="pet_sterilization_status_container">
-												<h1>Sterilization Status</h1>
-												<p>{{ $petrecord->pet->sterilization }}</p>
+											<div id="medical_history_table_container" class="medical_history_table_container">
+												<div class="table-responsive" id="medical_history_table">
+													<table class="table" id="medhisto_Table">
+														<thead>
+															<tr>
+																<th>Diagnosis</th>
+																<th>Date Diagnosed</th>
+																<th>Treatment</th>
+																<th>Medication</th>
+																<th>Note</th>
+															</tr>
+														</thead>
+														<tbody>
+															
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+										<div class="tab-pane pet_information" role="tabpanel" id="tab-3">
+											<div id="immunization_empty_state" class="pet_record_empty_state_message_container">
+												<div class="pet_info_empty_state">
+													<h1>NO IMMUNIZATION HISTORY FOUND</h1>
+													<div class="pet_info_empty_state_p_container">
+														<p>You can add an immunization&nbsp;history by clicking the button below.</p>
+													</div>
+												</div>
+											</div>
+											<div id="immunization_history_table_container" class="immunization_history_table_container">
+												<div class="table-responsive" id="immunization_history_table">
+													<table class="table" id="immuno_Table">
+														<thead>
+															<tr>
+																<th>Date</th>
+																<th>Vaccination</th>
+																<th>Details</th>
+																<th>Next Vaccination</th>
+																<th>Status</th>
+															</tr>
+														</thead>
+														<tbody>
+															
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+										<div class="tab-pane pet_information" role="tabpanel" id="tab-4">
+											<div id="surgery_empty_state" class="pet_record_empty_state_message_container">
+												<div class="pet_info_empty_state">
+													<h1>NO SURGICAL HISTORY FOUND</h1>
+													<div class="pet_info_empty_state_p_container">
+														<p>You can add a surgical history by clicking the button below.</p>
+													</div>
+												</div>
+											</div>
+											<div id="surgery_history_table_container" class="surgery_history_table_container">
+												<div class="table-responsive" id="surgery_history_table">
+													<table class="table" id="surghisto_Table">
+														<thead>
+															<tr>
+																<th>Surgery Performed</th>
+																<th>Date of Surgery</th>
+																<th>Reason</th>
+																<th>Medication</th>
+																<th>Note</th>
+															</tr>
+														</thead>
+														<tbody>
+														
+														</tbody>
+													</table>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							@endforeach
-						</div>
-					</div>
-					<div id="edit_pet" class="edit_pet">
+
+							<div id="edit_pet" class="edit_pet_container">
 						<div class="edit_pet_back_btn_container">
 							<button class="btn edit_pet_back_btn" id="edit_pet_back_btn" type="button"><span class="edit_pet_back_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
 								<g clip-path="url(#clip0_6089_3068)" filter="url(#filter0_d_6089_3068)">
@@ -351,7 +581,7 @@
 										</div>
 									</div>
 									<div class="new_input_row">
-										<div class="form-floating w-100">
+										<div class="form-floating w-50">
 											<select class="form-select" aria-label="Floating label select example">
 												<option value="" selected="">Pet Type</option>
 												<option value="Dog">Dog</option>
@@ -361,9 +591,9 @@
 											<div class="error-message"><span>• Error Message</span></div>
 											<div class="guide-message"><span>• Guide Message</span></div>
 										</div>
-										<div class="new_inputs_row w-100">
+										<div class="new_inputs_row">
 											<div class="form-floating w-100">
-												<select class="form-select w-100" id="Breed" aria-label="Floating label select example">
+												<select class="form-select" id="Breed" aria-label="Floating label select example">
 													<option value="" selected="">Breed</option>
 													<option value="Other">Other</option>
 												</select>
@@ -385,224 +615,10 @@
 							</div>
 						</div>
 					</div>
-					<div id="view_pet" class="customer_side">
-						<div class="view_pet_back_btn_container">
-							<button class="btn edit_pet_back_btn" id="view_pet_back_btn" type="button"><span class="edit_pet_back_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-  <g clip-path="url(#clip0_6089_3068)" filter="url(#filter0_d_6089_3068)">
-    <path d="M5.5 12H19.5M5.5 12L11.5 18M5.5 12L11.5 6" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <filter id="filter0_d_6089_3068" x="-1.5" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-      <feOffset dy="2"/>
-      <feGaussianBlur stdDeviation="1"/>
-      <feComposite in2="hardAlpha" operator="out"/>
-      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6089_3068"/>
-      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6089_3068" result="shape"/>
-    </filter>
-    <clipPath id="clip0_6089_3068">
-      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
-    </clipPath>
-  </defs>
-</svg> Back</span></button>
-						</div>
-						<div class="pet_record_item">
-							<div class="pet_record">
-								<div class="pet_record_details">
-									<div class="pet_record_details_second_row">
-										<div class="pet_name_breed_container" id="petInfo">
-											<h1>Pet Name</h1>
-											<p>Breed</p>
-										</div>
-									</div>
-									<div class="pet_record_details_first_row">
-										<div class="pet_other_details">
-											<div class="other_details" id="sex">
-												<h1>Sex</h1>
-												<p></p>
-											</div>
-											<div class="other_details" id="birthdate">
-												<h1>Birth Date</h1>
-												<p></p>
-											</div>
-											<div class="other_details" id="age">
-												<h1>Age</h1>
-												<p></p>
-											</div>
-											<div class="other_details" id="weight">
-												<h1>Weight</h1>
-												<p></p>
-											</div>
-											<div class="other_details" id="sterilization">
-												<h1><strong>Sterilization Status</strong></h1>
-												<p></p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<button class="btn edit_pet_btn" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-								<g clip-path="url(#clip0_6127_11956)">
-									<path d="M13.5 6.50024L17.5 10.5002M4 20.0003H8L18.5 9.5003C19.0304 8.96987 19.3284 8.25045 19.3284 7.5003C19.3284 6.75016 19.0304 6.03074 18.5 5.5003C17.9696 4.96987 17.2501 4.67188 16.5 4.67188C15.7499 4.67187 15.0304 4.96987 14.5 5.5003L4 16.0003V20.0003Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-								</g>
-								<defs>
-									<clipPath id="clip0_6127_11956">
-									<rect width="24" height="24" fill="white"/>
-									</clipPath>
-								</defs>
-								</svg>
-								</span>
-							</button>
-						</div>
-						<div class="align-self-stretch pet_records">
-							<ul class="nav nav-tabs pet_nav_tabs" role="tablist">
-								<li class="nav-item view_pet_nav_tabs" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><g clip-path="url(#clip0_1917_11691)"><path d="M9 7H15M9 11H15M9 15H13M5 5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21H7C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19V5Z" stroke="black" stroke-width="2" stroke-opacity="0.7" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1917_11691"><rect width="24" height="24" fill="white"/></clipPath></defs></svg></span><p>Information</p></a></li>
-								<li class="nav-item view_pet_nav_tabs" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><g clip-path="url(#clip0_1917_11671)"><path d="M14 12V12.01M10 12V12.01M12 10V10.01M12 14V14.01M4.49955 12.5L12.4996 4.50004C13.4278 3.57178 14.6868 3.05029 15.9996 3.05029C17.3123 3.05029 18.5713 3.57178 19.4996 4.50004C20.4278 5.4283 20.9493 6.68729 20.9493 8.00004C20.9493 9.3128 20.4278 10.5718 19.4996 11.5L11.4996 19.5C10.5713 20.4283 9.31231 20.9498 7.99955 20.9498C6.6868 20.9498 5.42781 20.4283 4.49955 19.5C3.57129 18.5718 3.0498 17.3128 3.0498 16C3.0498 14.6873 3.57129 13.4283 4.49955 12.5Z" stroke-opacity="0.7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1917_11671"><rect width="24" height="24" fill="white"/></clipPath></defs></svg></span><p>Medical History</p></a></li>
-								<li class="nav-item view_pet_nav_tabs" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><g clip-path="url(#clip0_1917_11713)"><path d="M17 3L21 7M19 5L14.5 9.5M11.5 6.5L17.5 12.5M16.5 11.5L10 18H6M6 18V14L12.5 7.5M6 18L3 21M7.5 12.5L9 14M10.5 9.5L12 11" stroke="black" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1917_11713"><rect width="24" height="24" fill="white"/></clipPath></defs></svg></span><p>Immunization History</p></a></li>
-								<li class="nav-item view_pet_nav_tabs" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-4"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><g clip-path="url(#clip0_2341_21180)"><path d="M3 19L18 4L21 7L15 13L17 15C15.2577 16.8866 13.0301 18.2577 10.5609 18.9632C8.09168 19.6687 5.47598 19.6814 3 19Z" stroke="black" stroke-width="2" stroke-opacity="0.7" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_2341_21180"><rect width="24" height="24" fill="white"/></clipPath></defs></svg></span><p>Surgeries</p></a></li>
-							</ul>
-							<div class="tab-content view_pet_content">
-								<div class="tab-pane active pet_information" role="tabpanel" id="tab-1" style="width: 100%;">
-									<div>
-										<div class="owner_information">
-											<div class="owner_info_heading">
-												<h1><strong>Owner Information</strong></h1> </div>
-										</div>
-										<div class="owner_details">
-											<div class="owner_details_row">
-												<div class="owner_detail_container" id="ownerName">
-													<h1>Name</h1>
-													<p></p>
-												</div>
-											</div>
-											<div class="owner_details_row">
-												<div class="owner_detail_container" id="ownerEmail">
-													<h1>Email</h1>
-													<p></p>
-												</div>
-												<div class="owner_detail_container" id="ownerPhone">
-													<h1>Contact Number</h1>
-													<p></p>
-												</div>
-											</div>
-										</div>
-									</div>
-									<hr>
-									<div>
-										<div class="owner_information">
-											<div class="owner_info_heading">
-												<h1><strong>Health Concerns</strong></h1> </div>
-										</div>
-										<div class="owner_details">
-											<div class="owner_details_row">
-												<div class="owner_detail_container">
-													<h1><strong>Allergies</strong></h1>
-													<p><strong>None</strong></p>
-												</div>
-												<div class="owner_detail_container">
-													<h1><strong>Existing Conditions</strong></h1>
-													<p><strong>None</strong></p>
-												</div>
-											</div>
-											<div class="owner_details_row">
-												<div class="owner_detail_container">
-													<h1><strong>Current Medications</strong></h1>
-													<p><strong>None</strong></p>
-												</div>
-												<div class="owner_detail_container"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane pet_information" role="tabpanel" id="tab-2">
-									<div id="medical_empty_state" class="pet_record_empty_state_message_container">
-										<div class="pet_info_empty_state">
-											<h1>NO MEDICAL HISTORY FOUND</h1>
-											<div class="pet_info_empty_state_p_container">
-												<p>You can add a medical history by clicking the button below.</p>
-											</div>
-										</div>
-									</div>
-									<div id="medical_history_table_container" class="medical_history_table_container">
-										<div class="table-responsive" id="medical_history_table">
-											<table class="table" id="medhisto_Table">
-												<thead>
-													<tr>
-														<th>Diagnosis</th>
-														<th>Date Diagnosed</th>
-														<th>Treatment</th>
-														<th>Medication</th>
-														<th>Note</th>
-													</tr>
-												</thead>
-												<tbody>
-													
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane pet_information" role="tabpanel" id="tab-3">
-									<div id="immunization_empty_state" class="pet_record_empty_state_message_container">
-										<div class="pet_info_empty_state">
-											<h1>NO IMMUNIZATION HISTORY FOUND</h1>
-											<div class="pet_info_empty_state_p_container">
-												<p>You can add an immunization&nbsp;history by clicking the button below.</p>
-											</div>
-										</div>
-									</div>
-									<div id="immunization_history_table_container" class="immunization_history_table_container">
-										<div class="table-responsive" id="immunization_history_table">
-											<table class="table" id="immuno_Table">
-												<thead>
-													<tr>
-														<th>Date</th>
-														<th>Vaccination</th>
-														<th>Details</th>
-														<th>Next Vaccination</th>
-														<th>Status</th>
-													</tr>
-												</thead>
-												<tbody>
-													
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane pet_information" role="tabpanel" id="tab-4">
-									<div id="surgery_empty_state" class="pet_record_empty_state_message_container">
-										<div class="pet_info_empty_state">
-											<h1>NO SURGICAL HISTORY FOUND</h1>
-											<div class="pet_info_empty_state_p_container">
-												<p>You can add a surgical history by clicking the button below.</p>
-											</div>
-										</div>
-									</div>
-									<div id="surgery_history_table_container" class="surgery_history_table_container">
-										<div class="table-responsive" id="surgery_history_table">
-											<table class="table" id="surghisto_Table">
-												<thead>
-													<tr>
-														<th>Surgery Performed</th>
-														<th>Date of Surgery</th>
-														<th>Reason</th>
-														<th>Medication</th>
-														<th>Note</th>
-													</tr>
-												</thead>
-												<tbody>
-												
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
+					
+					
 				</div>
 			</div>
 		</div>
@@ -650,51 +666,7 @@
                                                 
                                                 <div class="d-flex flex-column align-items-start align-self-stretch multisteps-form__content" id="form-content-1" style="gap: 25px;">
                                                     <div class="d-flex justify-content-between align-items-start align-self-stretch calendar_time_container" style="padding: 0px var(--spacing-spacing-xl, 64px);">
-                                                        <div class="calendar_container">
-                                                            <div class="d-flex flex-column align-items-start align-self-stretch Appointment_wrapper" style="gap: var(--spacing-spacing-s, 16px);">
-                                                                <div class="d-flex justify-content-between align-items-center align-self-stretch Appointment_icons"><span id="prev" class="prev_month"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6550_20711)">
-    <path d="M15 6L9 12L15 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6550_20711">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg></span>
-                                                                    <p class="text-center current-date"></p><span id="next" class="next_month"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-  <g clip-path="url(#clip0_6550_20715)">
-    <path d="M9.5 6L15.5 12L9.5 18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6550_20715">
-      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
-    </clipPath>
-  </defs>
-</svg></span>
-                                                                </div>
-                                                                <div class="d-flex flex-column justify-content-center align-items-center align-self-stretch Appointment_calendar">
-                                                                    <ul class="text-start Appointment_weeks">
-                                                                        <li style="height: 10px;">Sun</li>
-                                                                        <li style="height: 10px;">Mon</li>
-                                                                        <li style="height: 10px;">Tue</li>
-                                                                        <li style="height: 10px;">Wed</li>
-                                                                        <li style="height: 10px;">Thu</li>
-                                                                        <li style="height: 10px;">Fri</li>
-                                                                        <li style="height: 10px;">Sat</li>
-                                                                    </ul>
-                                                                    <ul class="days"></ul>
-                                                                </div>
-                                                            </div>
-                                                            <div class="selected_fullyBooked" style="display: flex;padding: 10px 30px;align-items: center;gap: 20px;align-self: stretch;">
-                                                                <div class="selected_Calendar_date" style="display: flex;padding: 20px;flex-direction: column;justify-content: center;align-items: center;gap: 10px;border-radius: var(--radius-s, 8px);background: rgba(0, 0, 0, 0.10);">
-                                                                    <p style="color: #045B62;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 700;line-height: normal;margin: 0;">Selected</p>
-                                                                </div>
-                                                                <div class="fully_booked" style="display: flex;padding: 20px;flex-direction: column;justify-content: center;align-items: center;gap: 10px;border-radius: var(--radius-s, 8px);background: rgba(218, 83, 79, 0.50);">
-                                                                    <p style="color: #B82319;text-align: center;font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;margin: 0;">Fully Booked</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+													<div id="calendar"></div>
                                                         <h1 id="date_required_message" class="date_required_message">Select a date to show available slots.</h1>
                                                         <div id="Appointment_time_options" class="Appointment_time_options">
                                                             <p id="selected_date" class="selected_date"></p>
@@ -712,7 +684,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div id="next-prev-buttons" class="button-row d-flex mt-4 mb-4" style="justify-content: space-between;align-items: center;align-self: stretch;"><button class="btn btn btn-primary js-btn-prev" id="prev_button" type="button" title="Prev" style="display: flex;height: 56px;min-width: 100px;padding: 16px var(--spacing-spacing-m, 24px);justify-content: center;align-items: center;gap: var(--spacing-spacing-m, 24px);background: transparent;border-radius: var(--radius-s, 8px);border: none;color: var(--colors-actions-action, #045B62);font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;">Previous</button><button class="btn btn-primary border-primary ml-auto js-btn-next" id="next_button" type="button" title="Next" style="color:var(--colors-main-neutral, #FFF);text-shadow:0px 2px 2px rgba(0, 0, 0, 0.10);font-family:Inter;font-size:16px;font-style:normal;font-weight:600;line-height:normal;display:inline-flex;height:56px;min-width:100px;padding:var(--spacing-spacing-s, 16px) var(--spacing-spacing-m, 24px);justify-content:center;align-items:center;gap:var(--spacing-spacing-m, 24px);flex-shrink:0;border-radius:var(--radius-s, 8px);background:var(--colors-actions-action, #045B62);box-shadow:0px 1px 2px 0px rgba(28, 28, 28, 0.05);--bs-primary:#045B62;--bs-primary-rgb:4,91,98;">Next</button></div>
+                                                    <div id="next-prev-buttons" class="button-row d-flex mt-4 mb-4" style="justify-content: space-between;align-items: center;align-self: stretch;"><button class="btn btn btn-primary js-btn-prev" id="prev_button" type="button" title="Prev" style="display: flex;height: 56px;min-width: 100px;padding: 16px var(--spacing-spacing-m, 24px);justify-content: center;align-items: center;gap: var(--spacing-spacing-m, 24px);background: transparent;border-radius: var(--radius-s, 8px);border: none;color: var(--colors-actions-action, #045B62);font-family: Inter;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;">Previous</button><button class="btn btn-primary border-primary disabled ml-auto js-btn-next" id="next_button" type="button" title="Next" style="color:var(--colors-main-neutral, #FFF);text-shadow:0px 2px 2px rgba(0, 0, 0, 0.10);font-family:Inter;font-size:16px;font-style:normal;font-weight:600;line-height:normal;display:inline-flex;height:56px;min-width:100px;padding:var(--spacing-spacing-s, 16px) var(--spacing-spacing-m, 24px);justify-content:center;align-items:center;gap:var(--spacing-spacing-m, 24px);flex-shrink:0;border-radius:var(--radius-s, 8px);background:var(--colors-actions-action, #045B62);box-shadow:0px 1px 2px 0px rgba(28, 28, 28, 0.05);--bs-primary:#045B62;--bs-primary-rgb:4,91,98;"disabled="">Next</button></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1022,6 +994,95 @@
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+
+<style>
+    .fc-day-disabled, .fc-day.past-date {
+      
+      opacity: 0.5;
+    }
+    .fc-day-past:hover{
+        cursor: not-allowed;
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const harnessElements = document.querySelectorAll('.fc-scroller-harness.fc-scroller-harness-liquid');
+    
+    harnessElements.forEach(function(element) {
+        element.classList.remove('fc-scroller-harness', 'fc-scroller-harness-liquid');
+    });
+    
+    const calendarEl = document.getElementById('calendar');
+const calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    selectable: true, // Enable date selection
+    selectAllow: function(info) { // Function to allow selection of dates
+        return info.start >= new Date(); // Allow selection of dates starting from today
+    },
+    select: function(info) { // Callback function for date selection
+            alert('Selected date: ' + info.startStr);
+            console.log('Selected date: ' + info.startStr);
+            const date_required_message = document.getElementById('date_required_message');
+            const selectedDateElement = document.getElementById('selected_date');
+            const confirmDateElement = document.getElementById('confirm_date');
+            const appointmentOptionsElement = document.getElementById('Appointment_time_options');
+            if (confirmDateElement) {
+                confirmDateElement.textContent = info.startStr;
+            }
+            if (selectedDateElement) {
+                selectedDateElement.textContent = 'Selected date: ' + info.startStr;
+            }
+            if (appointmentOptionsElement) {
+                appointmentOptionsElement.style.display = 'flex'; // Show the appointment options
+                date_required_message.style.display = 'none'; 
+            }
+            // You can perform further actions with the selected date here
+        }
+});
+
+calendar.render();
+
+
+// Event listener to check if selected date is unselected when clicking outside the calendar
+document.addEventListener('click', function(event) {
+    // Check if the clicked element is outside the calendar
+    if (!calendarEl.contains(event.target)) {
+        // The selected date is unselected
+        console.log('Selected date is unselected.');
+    }
+});
+
+
+    const toolbar = document.querySelector('.fc-toolbar'); // Select the toolbar element
+
+    if (toolbar) {
+        const buttonGroup = toolbar.querySelector('.fc-button-group'); // Select the button group element
+
+        if (buttonGroup) {
+            const title = toolbar.querySelector('.fc-toolbar-title'); // Select the title element
+
+            if (title) {
+                const nextButton = buttonGroup.querySelector('.fc-next-button'); // Select the next button
+                buttonGroup.insertBefore(title, nextButton); // Insert the title before the next button
+            }
+        }
+    }
+
+    // Get the button element
+    const backButton = document.querySelector('.fc-prev-button');
+    const nextButton = document.querySelector('.fc-next-button');
+
+    // Remove the 'fc-button' and 'fc-button-primary' classes from the class list
+    nextButton.classList.remove('fc-button', 'fc-button-primary');
+    backButton.classList.remove('fc-button', 'fc-button-primary');
+
+    
+});
+</script>
+
 	@if ($petExist)
 	<script>
 	$('#empty_state_container').hide();
@@ -1169,6 +1230,8 @@
 
 });
 </script>
+
+
 
 
 <script>
