@@ -1014,6 +1014,7 @@ document.addEventListener('DOMContentLoaded', function() {
     harnessElements.forEach(function(element) {
         element.classList.remove('fc-scroller-harness', 'fc-scroller-harness-liquid');
     });
+	
     
     const calendarEl = document.getElementById('calendar');
 const calendar = new FullCalendar.Calendar(calendarEl, {
@@ -1045,15 +1046,6 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
 
 calendar.render();
 
-
-// Event listener to check if selected date is unselected when clicking outside the calendar
-document.addEventListener('click', function(event) {
-    // Check if the clicked element is outside the calendar
-    if (!calendarEl.contains(event.target)) {
-        // The selected date is unselected
-        console.log('Selected date is unselected.');
-    }
-});
 
 
     const toolbar = document.querySelector('.fc-toolbar'); // Select the toolbar element
