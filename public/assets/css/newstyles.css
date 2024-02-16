@@ -6428,7 +6428,7 @@ font-size: 24px;
     width: 5px;
   }
   .search_input::placeholder{
-    font-size: 10px;
+    font-size: auto;
   }
   .filter_btn, .sort_btn{
     height: 42px;
@@ -6956,7 +6956,7 @@ width: 100%;
   }
 
   .search_input::placeholder{
-    font-size: 10px !important;
+    font-size: auto !important;
   }
   .user_settings{
     display: flex;
@@ -7470,7 +7470,7 @@ width: 100%;
       width: 5px;
     }
     .search_input::placeholder{
-      font-size: 10px;
+      font-size: auto;
     }
     .filter_btn, .sort_btn{
       height: 42px;
@@ -8198,7 +8198,7 @@ width: 100%;
   .search_input::placeholder{
     color: rgba(28, 28, 28, 0.50);
     font-family: Inter;
-    font-size: 14px !important;
+    font-size: auto !important;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
