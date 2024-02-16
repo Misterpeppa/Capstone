@@ -1106,9 +1106,9 @@ input[type=number] {
     height: var(--spacing-spacing-m, 24px);
   }
   
-  .first_group li:hover, .second_group li:hover, .third_group li:hover {
+  .first_group li:hover, .second_group li:hover, .third_group li:hover{
     border-radius: var(--radius-s, 8px);
-    background: var(--colors-actions-action-sec-hover, #A5C2C3);
+    background: var(--colors-actions-action-sec-hover, #A5C2C3) !important;
     box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
   }
   
@@ -1284,6 +1284,10 @@ input[type=number] {
     border: 0.5px solid rgba(0, 0, 0, 0.15);
     background: var(--colors-actions-action-neut-hover, #ECECEC);
     box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  }
+  .Edit_pet:hover, .View_pet:hover, .add_appointment:hover{
+    background: var(--colors-actions-action-neut-hover, #ECECEC);
+    border-radius: var(--radius-s, 8px);
   }
   
   .filter_btn_base, .sort_btn_base {
@@ -3241,6 +3245,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     display: flex;
     padding: 24px;
     width: 49%;
+    height: auto;
     align-items: flex-start;
     flex-direction: row;
     gap: var(--spacing-spacing-l, 32px);
@@ -3256,7 +3261,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     flex-direction: column;
     align-items: flex-start;
     gap: var(--spacing-spacing-l, 8px);
-    flex: 1 0 0;
+    width: 100%;
     margin: 0;
     padding: 0;
   }
@@ -4251,6 +4256,17 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     background: #F9F9F9;
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.10), 0px 4px 6px -2px rgba(28, 28, 28, 0.05);
   }
+  .edit_pet_container{
+    display: none;
+    width: 100%;
+    padding: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--Spacing-spacing-s, 16px);
+    border-radius: var(--radius-s, 8px);
+    background: #F9F9F9;
+    
+  }
   
   .edit_pet_heading, .view_pet_back_btn_container {
     display: flex;
@@ -4319,7 +4335,6 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   
   .edit_pet_back_btn_container {
     display: flex;
-    padding-left: var(--spacing-spacing-s, 16px);
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
@@ -5750,6 +5765,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
    }
 
   @media (min-width: 1200px) and (max-width: 1399px){
+    
     .user_settings .tab-content {
       display: flex;
       padding: 40px 30px;
@@ -6013,7 +6029,7 @@ font-size: 24px;
   }
   .card.pet_card{
     width: 48%;
-    height: 250px;
+    height: auto;
   }
   .notifications_settings{
     display: flex;
@@ -6259,6 +6275,13 @@ font-size: 24px;
 
 
 @media (min-width: 768px) and (max-width: 991px) {
+  .pet_upper_detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-self: start;
+  }
   .deduct_stock_buttons{
     display: flex;
     justify-content: space-between;
@@ -6335,7 +6358,7 @@ font-size: 24px;
   .modal-content.TnC_PP_modal{
     width: 100%;
   }
-  .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
+  .modal-content.add_product_modal, .modal-content.add_pet_record_modal, .create_appointment_modal {
     display: flex;
     width: 100% !important;
     padding: var(--spacing-spacing-m, 24px);
@@ -6350,7 +6373,7 @@ font-size: 24px;
     display: flex;
     padding: 24px;
     width: 47%;
-    height: 294px;
+    height: auto;
     align-items: flex-start;
     flex-direction: row;
     gap: var(--spacing-spacing-l, 32px);
@@ -6651,6 +6674,13 @@ width: 100%;
 
 
 @media (min-width: 577px) and (max-width: 767px){
+  .pet_upper_detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-self: start;
+  }
   .deduct_stock_buttons{
     display: flex;
     justify-content: space-between;
@@ -6704,7 +6734,7 @@ width: 100%;
   
   .card.pet_card{
     width: 48%;
-    height: 294px;
+    height: auto;
   }
   .pet_lower_detail{
     display: flex;
@@ -6726,7 +6756,7 @@ width: 100%;
     width: 100%;
   }
 
-  .modal-content.resched_modal, .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
+  .create_appointment_modal, .modal-content.resched_modal, .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
     display: flex;
     width: 100%!important;
     padding: var(--spacing-spacing-m, 24px);
@@ -7569,7 +7599,7 @@ width: 100%;
 
 
 @media (max-width: 576px){
-  .modal-content.TnC_PP_modal{
+  .modal-content.TnC_PP_modal, .create_appointment_modal{
     width: 100%;
   }
   .deduct_stock_buttons{
@@ -8039,16 +8069,7 @@ width: 100%;
   border-radius: var(--radius-s, 8px);
   border: 1px solid rgba(0, 0, 0, 0.25);
 }
-.card-body.pet_card_body {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--spacing-spacing-l, 24px);
-  flex: 1 0 0;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
+
 .pet_upper_detail {
   display: flex;
   justify-content: space-between;
