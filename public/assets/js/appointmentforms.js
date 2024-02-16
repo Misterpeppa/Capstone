@@ -359,6 +359,8 @@ function makePetSelectionReusable(breedSelectId, dogRadioId, catRadioId, dogBree
     const dogRadio = document.getElementById(dogRadioId);
     const catRadio = document.getElementById(catRadioId);
     const specifyBreedContainer = document.getElementById('specify_breed');
+    const specifyBreedContainer1 = document.getElementById('specify_breed-1');
+    const specifyBreedContainer2 = document.getElementById('specify_breed-2');
 
     // Function to populate the breed select with options
     function populateBreeds(breeds) {
@@ -390,31 +392,54 @@ function makePetSelectionReusable(breedSelectId, dogRadioId, catRadioId, dogBree
             breedSelect.setAttribute("disabled", "true");
             breedSelect.innerHTML = `<option value="none">Please select type of pet first</option>`;
             specifyBreedContainer.style.display = 'none';
+            specifyBreedContainer1.style.display = 'none';
+            specifyBreedContainer2.style.display = 'none';
         }
         // Add any additional logic you need here
     }
 
     // Function to show/hide specify_breed based on selected breed
+
     function showSpecifyBreed() {
-        if (breedSelect.value === 'Others') {
-            specifyBreedContainer.style.display = 'block';
-        } else {
+        if (breedSelect.value === 'Others' && breedSelect.id === 'breed-1') {
+            specifyBreedContainer1.style.display = 'block';
             specifyBreedContainer.style.display = 'none';
+            specifyBreedContainer2.style.display = 'none';
+        } else if (breedSelect.value === 'Others' && breedSelect.id === 'breed-2') {
+            specifyBreedContainer2.style.display = 'block';
+            specifyBreedContainer.style.display = 'none';
+            specifyBreedContainer1.style.display = 'none';
+        } else if (breedSelect.value === 'Others') {
+            specifyBreedContainer.style.display = 'block';
+            specifyBreedContainer1.style.display = 'none';
+            specifyBreedContainer2.style.display = 'none';
+        } else if (breedSelect.value !== 'none') {
+            specifyBreedContainer.style.display = 'none';
+            specifyBreedContainer1.style.display = 'none';
+            specifyBreedContainer2.style.display = 'none';
         }
     }
+    
+    
 
-    // Add click event listeners to radio buttons
-    dogRadio.addEventListener("click", function () {
+
+    // Add change event listeners to radio buttons
+dogRadio.addEventListener("change", function () {
+    if (dogRadio.checked) {
         handleRadioClick(dogRadio, dogBreeds);
         catRadio.checked = false; // Uncheck the cat radio button
         showSpecifyBreed();
-    });
+    }
+});
 
-    catRadio.addEventListener("click", function () {
+catRadio.addEventListener("change", function () {
+    if (catRadio.checked) {
         handleRadioClick(catRadio, catBreeds);
         dogRadio.checked = false; // Uncheck the dog radio button
         showSpecifyBreed();
-    });
+    }
+});
+
 
     // Add change event listener to breed select
     breedSelect.addEventListener('change', function () {
@@ -458,6 +483,7 @@ function displayConfirmationDetails() {
   var catRadio = document.getElementById('cat');
   var petType = dogRadio.checked ? "Dog" : catRadio.checked ? "Cat" : "";
   var breedSelect = document.getElementById('breed');
+  var specifyBreedInput = document.getElementById('specificBreed');
   var surgeryTypeSelect = document.getElementById('surgery_type');
   var floatingTextareaInput = document.getElementById('floatingTextarea');
 
@@ -474,25 +500,16 @@ function displayConfirmationDetails() {
   var confirmSurgeryType = document.getElementById('confirm_surgery_Type');
   var confirmAdditionalNotes = document.getElementById('confirm_additional_Notes');
 
-  breedDetail.textContent = breedSelect.value;
-
-
-  // Add change event listener to breed select
-  breedSelect.addEventListener('change', function () {
-    if (breedSelect.value === 'Others') {
-        var specifyBreedInput = document.getElementById('specificBreed');
-        
-        // Add input event listener to specifyBreedInput
-        specifyBreedInput.addEventListener('input', function () {
-          if (breedSelect.value === 'Others') {
-              breedDetail.textContent = specifyBreedInput.value;
-          }
-        });
-
+  if (breedSelect.value === 'Others') {
+    breedDetail.textContent = specifyBreedInput.value;
+    confirmBreed.textContent = specifyBreedInput.value;
     } else {
         breedDetail.textContent = breedSelect.value;
+        confirmBreed.textContent = breedSelect.value;
     }
-  });
+
+  
+
 
   
 
@@ -506,7 +523,7 @@ function displayConfirmationDetails() {
   // Set text content of confirmation elements
   confirmPetName.textContent = petNameInput.value;
   confirmPetType.textContent = petType;
-  confirmBreed.textContent = breedSelect.value;
+  
   confirmSurgeryType.textContent = surgeryTypeSelect.value;
   confirmAdditionalNotes.textContent = floatingTextareaInput.value;
 }
@@ -517,6 +534,7 @@ function displayConfirmationDetails1() {
   var catRadio1 = document.getElementById('cat-1');
   var petType1 = dogRadio1.checked ? "Dog" : catRadio1.checked ? "Cat" : "";
   var breedSelect1 = document.getElementById('breed-1');
+  var specifyBreedInput1 = document.getElementById('specificBreed-1');
   var surgeryTypeSelect1 = document.getElementById('surgery_type-1');
   var floatingTextareaInput1 = document.getElementById('floatingTextarea-1');
 
@@ -534,18 +552,23 @@ function displayConfirmationDetails1() {
   var confirmAdditionalNotes1 = document.getElementById('confirm_additional_Notes-1');
   
 
+  if (breedSelect1.value === 'Others') {
+    breedDetail1.textContent = specifyBreedInput1.value;
+    confirmBreed1.textContent = specifyBreedInput1.value;
+    } else {
+        breedDetail1.textContent = breedSelect1.value;
+        confirmBreed1.textContent = breedSelect1.value;
+    }
 
   // Set text content of detail elements
   petNameDetail1.textContent = petNameInput1.value;
   petTypeDetail1.textContent = petType1;
-  breedDetail1.textContent = breedSelect1.value;
   surgeryTypeDetail1.textContent = surgeryTypeSelect1.value;
   additionalNotesDetail1.textContent = floatingTextareaInput1.value;
 
   // Set text content of confirmation elements
   confirmPetName1.textContent = petNameInput1.value;
   confirmPetType1.textContent = petType1;
-  confirmBreed1.textContent = breedSelect1.value;
   confirmSurgeryType1.textContent = surgeryTypeSelect1.value;
   confirmAdditionalNotes1.textContent = floatingTextareaInput1.value;
 
@@ -558,6 +581,7 @@ function displayConfirmationDetails2() {
   var catRadio2 = document.getElementById('cat-2');
   var petType2 = dogRadio2.checked ? "Dog" : catRadio2.checked ? "Cat" : "";
   var breedSelect2 = document.getElementById('breed-2');
+  var specifyBreedInput2 = document.getElementById('specificBreed-2');
   var surgeryTypeSelect2 = document.getElementById('surgery_type-2');
   var floatingTextareaInput2 = document.getElementById('floatingTextarea-2');
 
@@ -574,18 +598,23 @@ function displayConfirmationDetails2() {
   var confirmSurgeryType2 = document.getElementById('confirm_surgery_Type-2');
   var confirmAdditionalNotes2 = document.getElementById('confirm_additional_Notes-2');
 
+  if (breedSelect2.value === 'Others') {
+    breedDetail2.textContent = specifyBreedInput2.value;
+    confirmBreed2.textContent = specifyBreedInput2.value;
+    } else {
+        breedDetail2.textContent = breedSelect2.value;
+        confirmBreed2.textContent = breedSelect2.value;
+    }
 
   // Set text content of detail elements
   petNameDetail2.textContent = petNameInput2.value;
   petTypeDetail2.textContent = petType2;
-  breedDetail2.textContent = breedSelect2.value;
   surgeryTypeDetail2.textContent = surgeryTypeSelect2.value;
   additionalNotesDetail2.textContent = floatingTextareaInput2.value;
 
   // Set text content of confirmation elements
   confirmPetName2.textContent = petNameInput2.value;
   confirmPetType2.textContent = petType2;
-  confirmBreed2.textContent = breedSelect2.value;
   confirmSurgeryType2.textContent = surgeryTypeSelect2.value;
   confirmAdditionalNotes2.textContent = floatingTextareaInput2.value;
 }
