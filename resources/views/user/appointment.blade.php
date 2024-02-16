@@ -48,7 +48,8 @@
                                             
                                             <div id="form-content" class="multisteps-form__content" style="display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 25px;align-self: stretch;max-height: 1500px;">
                                                 <div id="form_fields" class="form_fields">
-                                                    <div class="align-self-stretch form-floating"><input class="form-control" type="text" id="petName" data-id="petName" placeholder="Pet Name" maxlength="32"><label class="form-label" for="petName">Pet Name<span>&nbsp;*</span></label>
+                                                    <div class="align-self-stretch form-floating">
+                                                        <input class="form-control" type="text" id="petName" data-id="petName" placeholder="Pet Name" maxlength="32"><label class="form-label" for="petName">Pet Name<span>&nbsp;*</span></label>
                                                         <div id="error-petName" class="error-message"><span>• Please enter pet name.</span></div>
                                                     </div>
                                                     <div class="pet_type_and_breed_container">

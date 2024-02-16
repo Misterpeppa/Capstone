@@ -42,6 +42,7 @@ class EMRController extends Controller
         // ->join('clients', 'pet_record.owner_id', '=', 'clients.id')
         // ->join('pet_info', 'pet_record.pet_id', '=', 'pet_info.id');
         $owners = Clients::withTrashed()->get();
+        //dd($owners);
         $petrecordExists = $query->get()->isNotEmpty();
         $medHistory = MedHistory::all();
         $vaxHistory = VaxHistory::all();

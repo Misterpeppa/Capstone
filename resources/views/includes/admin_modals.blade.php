@@ -61,7 +61,7 @@
 
 
 
-    <div class="modal fade" role="dialog" tabindex="-1" id="add_pet_record_modal-1">
+    <div class="modal fade" role="dialog" tabindex="-1" id="add_pet_record_modal">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content add_pet_record_modal">
 				<div class="modal-header">
