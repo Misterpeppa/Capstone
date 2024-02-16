@@ -474,7 +474,8 @@ function displayConfirmationDetails() {
   var confirmSurgeryType = document.getElementById('confirm_surgery_Type');
   var confirmAdditionalNotes = document.getElementById('confirm_additional_Notes');
 
-  
+  breedDetail.textContent = breedSelect.value;
+
 
   // Add change event listener to breed select
   breedSelect.addEventListener('change', function () {
