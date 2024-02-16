@@ -229,68 +229,111 @@ class InvController extends Controller
     
         switch ($productType) {
             case 'Medicine':
-                $medInfo = new MedInfo($validatedData);
-                $medInfo->archived_at = null; // Set archived_at to null
-                if (MedInfo::where('item_name', $validatedData['item_name'])->exists()) {
-                    session()->flash('item_name', 'Please verify your email.');            
-                    return back();
-                }                
-                $medInfo->save();
-    
-                $medBatchData = [
-                    'quantity' => $validatedData['quantity'],
-                    'batch_no' => $validatedData['batch_no'],
-                    'product_code' => $validatedData['product_code'],
-                    'manufacturing_date' => $validatedData['manufacturing_date'],
-                    'expiration_date' => $validatedData['expiration_date'],
-                    'date_stocked' => $validatedData['date_stocked'],
-                    'archived_at' => null, // Set it to null explicitly
-                ];
-    
-                $medBatch = new MedBatch($medBatchData);
-                $medInfo->medBatch()->save($medBatch);
+                $existingMedInfo = MedInfo::where('item_name', $validatedData['item_name'])->first();
+                if ($existingMedInfo) {
+                    $existingMedInfo->quantity += $validatedData['quantity'];
+                    //$existingMedInfo->prod_desc = null;
+                    $existingMedInfo->save();
+                    // Create a new batch for the existing MedInfo
+                    $medBatchData = [
+                        'quantity' => $validatedData['quantity'],
+                        'batch_no' => $validatedData['batch_no'],
+                        'product_code' => $validatedData['product_code'],
+                        'manufacturing_date' => $validatedData['manufacturing_date'],
+                        'expiration_date' => $validatedData['expiration_date'],
+                        'date_stocked' => $validatedData['date_stocked'],
+                        'archived_at' => null, // Set it to null explicitly
+                    ];
+                    $medBatch = new MedBatch($medBatchData);
+                    $existingMedInfo->medBatch()->save($medBatch);
+                } else {
+                    // Create a new MedInfo instance
+                    $medInfo = new MedInfo($validatedData);
+                    $medInfo->archived_at = null; // Set archived_at to null
+                    $medInfo->save();
+                    // Create a new batch for the newly created MedInfo
+                    $medBatchData = [
+                        'quantity' => $validatedData['quantity'],
+                        'batch_no' => $validatedData['batch_no'],
+                        'product_code' => $validatedData['product_code'],
+                        'manufacturing_date' => $validatedData['manufacturing_date'],
+                        'expiration_date' => $validatedData['expiration_date'],
+                        'date_stocked' => $validatedData['date_stocked'],
+                        'archived_at' => null, // Set it to null explicitly
+                    ];
+                    $medBatch = new MedBatch($medBatchData);
+                    $medInfo->medBatch()->save($medBatch);
+                }
                 break;
     
             case 'Vaccine':
-                $vaxInfo = new VaxInfo($validatedData);
-                $vaxInfo->archived_at = null;
-                if (VaxInfo::where('item_name', $validatedData['item_name'])->exists()) {
-                    session()->flash('item_name', 'Please verify your email.');            
-                    return back();
-                } 
-                $vaxInfo->save();
-
-                $vaxBatchData = [
-                    'batch_no' => $validatedData['batch_no'],
-                    'product_code' => $validatedData['product_code'],
-                    'manufacturing_date' => $validatedData['manufacturing_date'],
-                    'expiration_date' => $validatedData['expiration_date'],
-                    'date_stocked' => $validatedData['date_stocked']
-                ];
-
-                $vaxBatch = new VaxBatch($vaxBatchData);
-                $vaxInfo->vaxBatch()->save($vaxBatch);
+                $existingVaxInfo = VaxInfo::where('item_name', $validatedData['item_name'])->first();
+                if ($existingVaxInfo) {
+                    $existingVaxInfo->quantity += $validatedData['quantity'];
+                    $existingVaxInfo->save();
+                    // If a VaxInfo with the same item_name exists, just create a new batch
+                    $vaxBatchData = [
+                        'quantity' => $validatedData['quantity'],
+                        'batch_no' => $validatedData['batch_no'],
+                        'product_code' => $validatedData['product_code'],
+                        'manufacturing_date' => $validatedData['manufacturing_date'],
+                        'expiration_date' => $validatedData['expiration_date'],
+                        'date_stocked' => $validatedData['date_stocked'],
+                    ];
+                    $vaxBatch = new VaxBatch($vaxBatchData);
+                    $existingVaxInfo->vaxBatch()->save($vaxBatch);
+                } else {
+                    $vaxInfo = new VaxInfo($validatedData);
+                    $vaxInfo->archived_at = null;
+                    $vaxInfo->save();
+                    $vaxBatchData = [
+                        'quantity' => $validatedData['quantity'],
+                        'batch_no' => $validatedData['batch_no'],
+                        'product_code' => $validatedData['product_code'],
+                        'manufacturing_date' => $validatedData['manufacturing_date'],
+                        'expiration_date' => $validatedData['expiration_date'],
+                        'date_stocked' => $validatedData['date_stocked'],
+                    ];
+                    $vaxBatch = new VaxBatch($vaxBatchData);
+                    $vaxInfo->vaxBatch()->save($vaxBatch);
+                }
+                
                 break;
     
             case 'Vitamin':
-                $vitInfo = new VitInfo($validatedData);
-                $vitInfo->archived_at = null;
-                if (VitInfo::where('item_name', $validatedData['item_name'])->exists()) {
-                    session()->flash('item_name', 'Please verify your email.');            
-                    return back();
-                } 
-                $vitInfo->save();
+                $existingVitInfo = VitInfo::where('item_name', $validatedData['item_name'])->first();
+                if ($existingVitInfo) {
+                    $existingVitInfo->quantity += $validatedData['quantity'];
+                    $existingVitInfo->save();
+                    // Create a new batch for the existing VitInfo
+                    $vitBatchData = [
+                        'quantity' => $validatedData['quantity'],
+                        'batch_no' => $validatedData['batch_no'],
+                        'product_code' => $validatedData['product_code'],
+                        'manufacturing_date' => $validatedData['manufacturing_date'],
+                        'expiration_date' => $validatedData['expiration_date'],
+                        'date_stocked' => $validatedData['date_stocked'],
+                    ];
+                    $vitBatch = new VitBatch($vitBatchData);
+                    $existingVitInfo->vitBatch()->save($vitBatch);
+                } else {
+                    // Create a new VitInfo instance
+                    $vitInfo = new VitInfo($validatedData);
+                    $vitInfo->archived_at = null; // Set archived_at to null
+                    $vitInfo->save();
+                    // Create a new batch for the newly created VitInfo
+                    $vitBatchData = [
+                        'quantity' => $validatedData['quantity'],
+                        'batch_no' => $validatedData['batch_no'],
+                        'product_code' => $validatedData['product_code'],
+                        'manufacturing_date' => $validatedData['manufacturing_date'],
+                        'expiration_date' => $validatedData['expiration_date'],
+                        'date_stocked' => $validatedData['date_stocked'],
+                    ];
+                    $vitBatch = new VitBatch($vitBatchData);
+                    $vitInfo->vitBatch()->save($vitBatch);
+                }
 
-                $vitBatchData = [
-                    'batch_no' => $validatedData['batch_no'],
-                    'product_code' => $validatedData['product_code'],
-                    'manufacturing_date' => $validatedData['manufacturing_date'],
-                    'expiration_date' => $validatedData['expiration_date'],
-                    'date_stocked' => $validatedData['date_stocked']
-                ];
-
-                $vitBatch = new VitBatch($vitBatchData);
-                $vitInfo->vitBatch()->save($vitBatch);
                 break;
             default:
                 // Handle the default case (if necessary)
