@@ -403,13 +403,13 @@ function makePetSelectionReusable(breedSelectId, dogRadioId, catRadioId, dogBree
     function showSpecifyBreed() {
         if (breedSelect.value === 'Others' && breedSelect.id === 'breed-1') {
             specifyBreedContainer1.style.display = 'block';
-            specifyBreedContainer.style.display = 'none';
+            specifyBreedContainer.style.display = 'block';
             specifyBreedContainer2.style.display = 'none';
         } else if (breedSelect.value === 'Others' && breedSelect.id === 'breed-2') {
             specifyBreedContainer2.style.display = 'block';
-            specifyBreedContainer.style.display = 'none';
-            specifyBreedContainer1.style.display = 'none';
-        } else if (breedSelect.value === 'Others') {
+            specifyBreedContainer.style.display = 'block';
+            specifyBreedContainer1.style.display = 'block';
+        } else if (breedSelect.value === 'Others' && breedSelect.id !== 'breed-1' && breedSelect.id !== 'breed-2') {
             specifyBreedContainer.style.display = 'block';
             specifyBreedContainer1.style.display = 'none';
             specifyBreedContainer2.style.display = 'none';
@@ -419,6 +419,7 @@ function makePetSelectionReusable(breedSelectId, dogRadioId, catRadioId, dogBree
             specifyBreedContainer2.style.display = 'none';
         }
     }
+    
     
     
 
