@@ -1288,7 +1288,7 @@ input[type=number] {
     background: var(--colors-actions-action-neut-hover, #ECECEC);
     box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
   }
-  .Edit_pet:hover, .View_pet:hover, .add_appointment:hover{
+  .Edit_pet:hover, .View_pet:hover, .add_appointment:hover, .dropdown-menu a:hover{
     background: var(--colors-actions-action-neut-hover, #ECECEC);
     border-radius: var(--radius-s, 8px);
   }
@@ -6280,6 +6280,16 @@ font-size: 24px;
 
 
 @media (min-width: 768px) and (max-width: 991px) {
+  .card.pass_and_security_box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 18px !important;
+  }
+  .pass_and_security_text {
+    width: 100% !important;
+    
+  }
   .pet_upper_detail{
     display: flex;
     flex-direction: column;
@@ -6693,6 +6703,21 @@ width: 100%;
 
 
 @media (min-width: 577px) and (max-width: 767px){
+
+  .card.pass_and_security_box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 18px !important;
+  }
+  .pass_and_security_text {
+    width: 100% !important;
+    
+  }
+  .card_body_row{
+    display: flex;
+    flex-direction: column;
+  }
   .pet_upper_detail{
     display: flex;
     flex-direction: column;
@@ -7623,6 +7648,22 @@ width: 100%;
 
 
 @media (max-width: 576px){
+  .card.pass_and_security_box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 18px !important;
+  }
+  .pass_and_security_text {
+    width: 100% !important;
+    
+  }
+  
+  .card_body_row{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
   .modal-content.TnC_PP_modal, .create_appointment_modal{
     width: 100%;
   }
