@@ -87,6 +87,18 @@ document.addEventListener('DOMContentLoaded', function () {
   breed2.addEventListener('change', checkEnableNextButton2);
   surgeryType2.addEventListener('input', checkEnableNextButton2);
 
+  const specificBreed = document.getElementById('specificBreed');
+  const specificBreed1 = document.getElementById('specificBreed-1');
+  const specificBreed2 = document.getElementById('specificBreed-2');
+  specificBreed.addEventListener('input', function() {
+    specificBreed.value = capitalizeFirstLetter(specificBreed.value);
+});
+specificBreed1.addEventListener('input', function() {
+    specificBreed.value = capitalizeFirstLetter(specificBreed.value);
+});
+specificBreed2.addEventListener('input', function() {
+    specificBreed.value = capitalizeFirstLetter(specificBreed.value);
+});
   
   function checkEnableNextButton() {
       // Check conditions and enable/disable the button
