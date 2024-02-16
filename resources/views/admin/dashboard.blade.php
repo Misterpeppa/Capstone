@@ -89,7 +89,6 @@
 									</div>
 									<div class="lower_part_summary"><span class="count_of_staff">{{ $pets }}</span></div>
 								</div>
-								<div class="card_body_summary_count"><span class="count_today_label">Today:</span><span class="staff_count">1304</span></div>
 							</div>
 						</div>
 					</div>
