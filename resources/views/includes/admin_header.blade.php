@@ -14,7 +14,7 @@
 		<div class="navigation_links">
 			<ul class="list-inline first_group">
 				<li class="list-inline-item {{ $activeTab === 'dashboard' ? 'active' : '' }}">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <a href="{{ route('admin_dashboard') }} "><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<g clip-path="url(#clip0_5274_11618)">
 							<path d="M4 5C4 4.73478 4.10536 4.48043 4.29289 4.29289C4.48043 4.10536 4.73478 4 5 4H9C9.26522 4 9.51957 4.10536 9.70711 4.29289C9.89464 4.48043 10 4.73478 10 5V9C10 9.26522 9.89464 9.51957 9.70711 9.70711C9.51957 9.89464 9.26522 10 9 10H5C4.73478 10 4.48043 9.89464 4.29289 9.70711C4.10536 9.51957 4 9.26522 4 9V5Z" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 							<path d="M14 5C14 4.73478 14.1054 4.48043 14.2929 4.29289C14.4804 4.10536 14.7348 4 15 4H19C19.2652 4 19.5196 4.10536 19.7071 4.29289C19.8946 4.48043 20 4.73478 20 5V9C20 9.26522 19.8946 9.51957 19.7071 9.70711C19.5196 9.89464 19.2652 10 19 10H15C14.7348 10 14.4804 9.89464 14.2929 9.70711C14.1054 9.51957 14 9.26522 14 9V5Z" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -24,21 +24,22 @@
 							<clipPath id="clip0_5274_11618">
 								<rect width="24" height="24" fill="white" /> </clipPath>
 						</defs>
-					</svg> <a href="{{ route('admin_dashboard') }} "> Dashboard</a></li>
+					</svg></a> <a class="sidebar_link" href="{{ route('admin_dashboard') }} "> Dashboard</a></li>
 				<li class="list-inline-item  {{ $activeTab === 'appointment' ? 'active' : '' }}">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <a href="{{ route('admin_appointment') }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<g clip-path="url(#clip0_5274_11624)">
 							<path d="M9 5H7C6.46957 5 5.96086 5.21071 5.58579 5.58579C5.21071 5.96086 5 6.46957 5 7V19C5 19.5304 5.21071 20.0391 5.58579 20.4142C5.96086 20.7893 6.46957 21 7 21H17C17.5304 21 18.0391 20.7893 18.4142 20.4142C18.7893 20.0391 19 19.5304 19 19V7C19 6.46957 18.7893 5.96086 18.4142 5.58579C18.0391 5.21071 17.5304 5 17 5H15M9 5C9 4.46957 9.21071 3.96086 9.58579 3.58579C9.96086 3.21071 10.4696 3 11 3H13C13.5304 3 14.0391 3.21071 14.4142 3.58579C14.7893 3.96086 15 4.46957 15 5M9 5C9 5.53043 9.21071 6.03914 9.58579 6.41421C9.96086 6.78929 10.4696 7 11 7H13C13.5304 7 14.0391 6.78929 14.4142 6.41421C14.7893 6.03914 15 5.53043 15 5M9 17V12M12 17V16M15 17V14" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
 						<defs>
 							<clipPath id="clip0_5274_11624">
 								<rect width="24" height="24" fill="white" /> </clipPath>
 						</defs>
-					</svg> <a href="{{ route('admin_appointment') }}">Appointments</a></li>
+					</svg></a>
+					 <a class="sidebar_link" href="{{ route('admin_appointment') }}">Appointments</a></li>
 			</ul>
 			<hr class="line_separator">
 			<ul class="list-inline second_group">
 				<li class="list-inline-item {{ $activeTab === 'emr' ? 'active' : '' }}">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <a href="{{ route('admin_emr') }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<g clip-path="url(#clip0_5274_11639)">
 							<path d="M14.7003 13.5C13.6003 11.5 13.2593 11 12.0003 11C10.7413 11 10.2643 11.755 9.16426 13.747C8.22226 15.45 6.31826 15.592 5.84326 17.038C5.74626 17.303 5.69826 17.715 5.70026 18C5.70026 19.176 6.48726 20 7.50026 20C8.75926 20 10.5003 19 12.0003 19C13.5003 19 15.2413 20 16.5003 20C17.5133 20 18.3003 19.177 18.3003 18C18.3003 17.715 18.2513 17.303 18.1543 17.038C17.6793 15.587 15.6423 15.203 14.7003 13.5Z" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 							<path d="M20.1882 8.082C20.0597 8.0277 19.9216 7.99981 19.7822 8H19.7672C19.0322 8.012 18.2072 8.75 17.7742 9.866C17.2552 11.201 17.4942 12.566 18.3122 12.918C18.4412 12.973 18.5792 13 18.7182 13C19.4572 13 20.2932 12.258 20.7292 11.134C21.2452 9.799 21.0012 8.434 20.1882 8.082Z" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -49,39 +50,43 @@
 							<clipPath id="clip0_5274_11639">
 								<rect width="24" height="24" fill="white" /> </clipPath>
 						</defs>
-					</svg> <a href="{{ route('admin_emr') }}">Pet Records</a></li>
+					</svg> </a>
+					<a class="sidebar_link" href="{{ route('admin_emr') }}">Pet Records</a></li>
 				<li class="list-inline-item {{ $activeTab === 'client' ? 'active' : '' }}">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <a href="{{ route('admin_client') }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<g clip-path="url(#clip0_5274_11645)">
 							<path d="M3 21V19C3 17.9391 3.42143 16.9217 4.17157 16.1716C4.92172 15.4214 5.93913 15 7 15H11C12.0609 15 13.0783 15.4214 13.8284 16.1716C14.5786 16.9217 15 17.9391 15 19V21M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88M21 21V19C20.9949 18.1172 20.6979 17.2608 20.1553 16.5644C19.6126 15.868 18.8548 15.3707 18 15.15M5 7C5 8.06087 5.42143 9.07828 6.17157 9.82843C6.92172 10.5786 7.93913 11 9 11C10.0609 11 11.0783 10.5786 11.8284 9.82843C12.5786 9.07828 13 8.06087 13 7C13 5.93913 12.5786 4.92172 11.8284 4.17157C11.0783 3.42143 10.0609 3 9 3C7.93913 3 6.92172 3.42143 6.17157 4.17157C5.42143 4.92172 5 5.93913 5 7Z" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
 						<defs>
 							<clipPath id="clip0_5274_11645">
 								<rect width="24" height="24" fill="white" /> </clipPath>
 						</defs>
-					</svg> <a href="{{ route('admin_client') }}">Clients</a></li>
+					</svg> </a>
+					<a class="sidebar_link" href="{{ route('admin_client') }}">Clients</a></li>
 				<li class="list-inline-item {{ $activeTab === 'inventory' ? 'active' : '' }}">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <a href="{{ route('admin_inv') }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<g clip-path="url(#clip0_5274_11651)">
 							<path d="M20 7.5L12 3L4 7.5M20 7.5V16.5L12 21M20 7.5L12 12M12 21L4 16.5V7.5M12 21V12M4 7.5L12 12M8.2002 9.79995L15.8002 5.19995" stroke="#004D53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
 						<defs>
 							<clipPath id="clip0_5274_11651">
 								<rect width="24" height="24" fill="white" /> </clipPath>
 						</defs>
-					</svg><a href="{{ route('admin_inv') }}">Inventory</a></li>
+					</svg></a>
+					<a class="sidebar_link" href="{{ route('admin_inv') }}">Inventory</a></li>
 			</ul>
 			<hr class="line_separator">
 			<ul class="list-inline third_group">
 			<li class="list-inline-item {{ $activeTab === 'archive' ? 'active' : '' }}">
 							<div data-bs-toggle="" data-bss-tooltip="" data-bs-placement="right" title="Settings">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <a href="{{ route('admin_archive') }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 									<g clip-path="url(#clip0_6396_1764)">
 										<path d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14" stroke="#1C1C1C" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
 									<defs>
 										<clipPath id="clip0_6396_1764">
 											<rect width="24" height="24" fill="white" /> </clipPath>
 									</defs>
-								</svg>
-							</div><a href="{{ route('admin_archive') }}">Archives</a> </li>
+								</svg></a>
+								
+							</div><a class="sidebar_link" href="{{ route('admin_archive') }}">Archives</a> </li>
 				<li class="list-inline-item {{ $activeTab === 'settings' ? 'active' : '' }}">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<g clip-path="url(#clip0_5274_11667)">
@@ -91,7 +96,7 @@
 							<clipPath id="clip0_5274_11667">
 								<rect width="24" height="24" fill="white" /> </clipPath>
 						</defs>
-					</svg> <a href="{{ route('admin_settings') }}">Settings</a></li>
+					</svg> <a class="sidebar_link" href="{{ route('admin_settings') }}">Settings</a></li>
 			</ul>
 
       

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const arrowSVG = document.querySelector('.arrow-svg'); // Get the arrow SVG element
     var menuToggle = document.getElementById('menu-toggle');
     
-    const allLinks = document.querySelectorAll('.sidebar a');
+    const allLinks = document.querySelectorAll('.sidebar .sidebar_link');
 
     sidebarArrow.addEventListener('click', toggleSidebar);
     logoLink.addEventListener('click', () => {
