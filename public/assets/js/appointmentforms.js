@@ -82,7 +82,7 @@ notes1.addEventListener('input', function() {
     checkEnableNextButton();
 });
 notes2.addEventListener('input', function() {
-    notes1.value = capitalizeFirstLetter(notes1.value);
+    notes2.value = capitalizeFirstLetter(notes2.value);
     checkEnableNextButton();
 });
   breedSelect.addEventListener('change', checkEnableNextButton);
