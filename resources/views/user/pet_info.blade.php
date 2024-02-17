@@ -192,77 +192,80 @@
           
                                     </div>
 							</div>
-							@foreach ($petrecords as $petrecord)
+							<div class="pet_records_container d-flex" id="pet_records">
+								@foreach ($petrecords as $petrecord)
+								
+									
+									<div class="card pet_card">
+										<div class="card-body pet_card_body">
+											<div class="pet_detail_header">
+												<div class="pet_detail_heading_text_container">
+													<h1>{{ $petrecord->pet->name }}</h1>
+													<p>{{ $petrecord->pet->breed }}</p>
+												</div>
+												<div class="dropdown">
+													<button class="btn btn dropdown-toggle pet_dropdown" aria-expanded="false" data-bs-toggle="dropdown" type="button"><svg fill="none" height="18" viewbox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"></path><path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"></path><path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"></path></svg></button>
+													<div class="dropdown-menu more_button" data-bs-popper="none">
+														<button class="dropdown-item View_pet" id="View" data-action="View_pet" data-container-id="{{ $petrecord->id }}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																<g clip-path="url(#clip0_6230_1794)">
+																	<path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+																	<path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
+																<defs>
+																	<clipPath id="clip0_6230_1794">
+																		<rect width="24" height="24" fill="white" /> </clipPath>
+																</defs>
+															</svg>&nbsp;View</button>
+														<button class="dropdown-item Edit_pet" data-action="Edit_pet" id="Edit" data-container-id="{{ $petrecord->id }}">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																<g clip-path="url(#clip0_6230_538)">
+																	<path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
+																<defs>
+																	<clipPath id="clip0_6230_538">
+																		<rect width="24" height="24" fill="white" /> </clipPath>
+																</defs>
+															</svg>&nbsp;Edit</button>
+														<button class="dropdown-item add_appointment" data-action="Create_appointment" id="add_appointment">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																<g clip-path="url(#clip0_6230_1769)">
+																	<path d="M9 12H15M12 9V15M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
+																<defs>
+																	<clipPath id="clip0_6230_1769">
+																		<rect width="24" height="24" fill="white" /> </clipPath>
+																</defs>
+															</svg>&nbsp;Add Appointment</button>
+													</div>
+												</div>
+											</div>
+											<div class="pet_detail_body">
+												<div class="pet_upper_detail">
+													<div class="pet_sex_container">
+														<h1>Sex</h1>
+														<p>{{ $petrecord->pet->gender }}</p>
+													</div>
+													<div class="pet_age_container">
+														<h1>Age</h1>
+														<p>{{ $petrecord->pet->age }}</p>
+													</div>
+												</div>
+												<div class="pet_lower_detail">
+													<div class="pet_weight_container">
+														<h1>Weight</h1>
+														<p>{{ $petrecord->pet->weight }}kg</p>
+													</div>
+													<div class="pet_sterilization_status_container">
+														<h1>Sterilization Status</h1>
+														<p>{{ $petrecord->pet->sterilization }}</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									
+									
+							</div>
+							@endforeach
+							</div>
 							
-								
-								<div class="card pet_card">
-									<div class="card-body pet_card_body">
-										<div class="pet_detail_header">
-											<div class="pet_detail_heading_text_container">
-												<h1>{{ $petrecord->pet->name }}</h1>
-												<p>{{ $petrecord->pet->breed }}</p>
-											</div>
-											<div class="dropdown">
-												<button class="btn btn dropdown-toggle pet_dropdown" aria-expanded="false" data-bs-toggle="dropdown" type="button"><svg fill="none" height="18" viewbox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"></path><path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"></path><path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"></path></svg></button>
-												<div class="dropdown-menu more_button" data-bs-popper="none">
-													<button class="dropdown-item View_pet" id="View" data-action="View_pet" data-container-id="{{ $petrecord->id }}">
-														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-															<g clip-path="url(#clip0_6230_1794)">
-																<path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-																<path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
-															<defs>
-																<clipPath id="clip0_6230_1794">
-																	<rect width="24" height="24" fill="white" /> </clipPath>
-															</defs>
-														</svg>&nbsp;View</button>
-													<button class="dropdown-item Edit_pet" data-action="Edit_pet" id="Edit" data-container-id="{{ $petrecord->id }}">
-														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-															<g clip-path="url(#clip0_6230_538)">
-																<path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
-															<defs>
-																<clipPath id="clip0_6230_538">
-																	<rect width="24" height="24" fill="white" /> </clipPath>
-															</defs>
-														</svg>&nbsp;Edit</button>
-													<button class="dropdown-item add_appointment" data-action="Create_appointment" id="add_appointment">
-														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-															<g clip-path="url(#clip0_6230_1769)">
-																<path d="M9 12H15M12 9V15M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
-															<defs>
-																<clipPath id="clip0_6230_1769">
-																	<rect width="24" height="24" fill="white" /> </clipPath>
-															</defs>
-														</svg>&nbsp;Add Appointment</button>
-												</div>
-											</div>
-										</div>
-										<div class="pet_detail_body">
-											<div class="pet_upper_detail">
-												<div class="pet_sex_container">
-													<h1>Sex</h1>
-													<p>{{ $petrecord->pet->gender }}</p>
-												</div>
-												<div class="pet_age_container">
-													<h1>Age</h1>
-													<p>{{ $petrecord->pet->age }}</p>
-												</div>
-											</div>
-											<div class="pet_lower_detail">
-												<div class="pet_weight_container">
-													<h1>Weight</h1>
-													<p>{{ $petrecord->pet->weight }}kg</p>
-												</div>
-												<div class="pet_sterilization_status_container">
-													<h1>Sterilization Status</h1>
-													<p>{{ $petrecord->pet->sterilization }}</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								
-								
-						</div>
-						@endforeach
 
 						</div>
 
@@ -609,7 +612,7 @@
 											</div>
 										</div>
 									</div>
-									<button class="btn submit_pet" type="submit"><span class="submit_pet_base">Submit</span></button>
+									<button class="btn submit_pet" style="align-self: end;" type="submit"><span class="submit_pet_base">Submit</span></button>
 									</form>
 								</div>
 							</div>
