@@ -78,11 +78,11 @@ document.addEventListener('DOMContentLoaded', function () {
     checkEnableNextButton();
 });
 notes1.addEventListener('input', function() {
-    notes.value = capitalizeFirstLetter(notes.value);
+    notes1.value = capitalizeFirstLetter(notes1.value);
     checkEnableNextButton();
 });
 notes2.addEventListener('input', function() {
-    notes.value = capitalizeFirstLetter(notes.value);
+    notes1.value = capitalizeFirstLetter(notes1.value);
     checkEnableNextButton();
 });
   breedSelect.addEventListener('change', checkEnableNextButton);
@@ -598,6 +598,9 @@ function displayConfirmationDetails1() {
   confirmPetType1.textContent = petType1;
   confirmSurgeryType1.textContent = surgeryTypeSelect1.value;
   confirmAdditionalNotes1.textContent = floatingTextareaInput1.value;
+
+  console.log('additionalNotesDetail element:', additionalNotesDetail1.textContent);
+  console.log('confirmAdditionalNotes element:', confirmAdditionalNotes1.textContent);
 
       
 }
