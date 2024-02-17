@@ -301,12 +301,12 @@
                                                         Descending
                                                 </li>
                                                 <li class="dropdown-item ">
-                                                  <div class="row">
-                                                      <div class="col-md-5">
+                                                  <div class="row" style="justify-content: space-around; gap: 8px;">
+                                                      <div class="col-md-5" style="display:flex; justify-content: center">
                                                           <button type = "reset" class="btn cancel_filter btn-sm me-3"><div class="cancel_filter_base">Cancel</div></button>
                                                       </div>
-                                                      <div class="col-md-5 text-center">
-                                                          <button type="submit" form="approvedForm" class="btn apply_filter btn-sm ms-3"><div class="apply_filter_base">Apply Filter</div></button>
+                                                      <div class="col-md-5 text-center" style="display:flex; justify-content: center">
+                                                          <button type="submit" form="approvedForm" class="btn apply_filter btn-sm ms-3"><div class="apply_filter_base">Apply</div></button>
                                                       </div>
                                                   </div>
                                               </li>
@@ -615,12 +615,12 @@
                                               Descending
                                       </li>
                                       <li class="dropdown-item ">
-                                        <div class="row">
-                                            <div class="col-md-5">
+                                        <div class="row" style="justify-content: space-around">
+                                            <div class="col-md-5 colButton">
                                                 <button class="btn cancel_filter btn-sm me-3"><div class="cancel_filter_base">Cancel</div></button>
                                             </div>
-                                            <div class="col-md-5 text-center">
-                                                <button type="submit" form="searchForm" class="btn apply_filter btn-sm ms-3"><div class="apply_filter_base">Apply Filter</div></button>
+                                            <div class="col-md-5 text-center colButton">
+                                                <button type="submit" form="searchForm" class="btn apply_filter btn-sm ms-3"><div class="apply_filter_base">Apply</div></button>
                                             </div>
                                         </div>
                                     </li>
@@ -668,7 +668,7 @@
                                         </svg></button></div>
                             </div>
                         </div>
-					<div class="w-100" id="product_table_container">
+					<div class="w-100" style="overflow: auto;">
 					<table class="table table-responsive mt-3 w-100">
 						<thead>
 							<tr>
