@@ -7654,6 +7654,12 @@ width: 100%;
 
 
 @media (max-width: 576px){
+  .count_today_label {
+    font-size: 12px !important;
+  }
+  .lower_part_summary span, .upper_part_summary p{
+    font-size: 18px !important;
+  }
   .card.pass_and_security_box{
     display: flex;
     flex-direction: column;
