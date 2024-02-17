@@ -1234,13 +1234,11 @@ calendar.render();
 
 
 var surgery_type = document.getElementById("surgery_type").value;
-var floatingTextarea = document.getElementById("floatingTextarea").value;
 var next_btn = document.getElementById("next_btn");
 
 // Add additional validation conditions as needed
 if (
-	surgery_type.trim() !== "" &&
-	floatingTextarea.trim() !== ""
+	surgery_type.trim() !== ""
 ) {
 	next_btn.disabled = false;
 } else {
