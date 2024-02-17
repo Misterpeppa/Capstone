@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const petNameInput = document.getElementById('petName');
   const breedSelect = document.getElementById('breed');
   const surgeryTypeSelect = document.getElementById('surgery_type');
+  const notes = document.getElementById('floatingTextarea');
+  const notes1 = document.getElementById('floatingTextarea-1');
+  const notes2 = document.getElementById('floatingTextarea-2');
 
   const errorpetName = document.getElementById('error-petName');
   addBlurListener(petName, errorpetName);
@@ -70,6 +73,18 @@ document.addEventListener('DOMContentLoaded', function () {
       petNameInput.value = capitalizeFirstLetter(petNameInput.value);
       checkEnableNextButton();
   });
+  notes.addEventListener('input', function() {
+    notes.value = capitalizeFirstLetter(notes.value);
+    checkEnableNextButton();
+});
+notes1.addEventListener('input', function() {
+    notes.value = capitalizeFirstLetter(notes.value);
+    checkEnableNextButton();
+});
+notes2.addEventListener('input', function() {
+    notes.value = capitalizeFirstLetter(notes.value);
+    checkEnableNextButton();
+});
   breedSelect.addEventListener('change', checkEnableNextButton);
   surgeryTypeSelect.addEventListener('input', checkEnableNextButton);
   
@@ -365,6 +380,7 @@ function resetPetDetails1() {
       }
   }
   
+  setFormHeight();
 
 function makePetSelectionReusable(breedSelectId, dogRadioId, catRadioId, dogBreeds, catBreeds) {
     const breedSelect = document.getElementById(breedSelectId);
@@ -521,11 +537,6 @@ function displayConfirmationDetails() {
         confirmBreed.textContent = breedSelect.value;
     }
 
-  
-
-
-  
-
 
   // Set text content of detail elements
   petNameDetail.textContent = petNameInput.value;
@@ -539,6 +550,9 @@ function displayConfirmationDetails() {
   
   confirmSurgeryType.textContent = surgeryTypeSelect.value;
   confirmAdditionalNotes.textContent = floatingTextareaInput.value;
+
+  console.log('additionalNotesDetail element:', additionalNotesDetail.textContent);
+  console.log('confirmAdditionalNotes element:', confirmAdditionalNotes.textContent);
 }
   
 function displayConfirmationDetails1() {
