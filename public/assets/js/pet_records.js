@@ -289,6 +289,8 @@ submit_diagnosis.addEventListener('click', function () {
     const add_diagnosis = document.getElementById('add_diagnosis');
     add_diagnosis.style.display = 'flex';
 });
+
+
     
 submit_vaccination.addEventListener('click', function(){
     const add_immunization_histo_success = new bootstrap.Modal(document.getElementById('add_immunization_histo_success'));
@@ -306,6 +308,17 @@ submit_vaccination.addEventListener('click', function(){
                                     
 });
     
+var edit_save_changes = document.getElementById("edit_save_changes");
+
+
+edit_save_changes.addEventListener('click', function(){
+    const save_changes_success = new bootstrap.Modal(document.getElementById('save_changes_success'));
+    save_changes_success.show()
+    setTimeout(function() {
+        $('#save_changes_success').hide();
+    }, 2000);
+});
+
 submit_surgery.addEventListener('click', function(){
     const add_surgery_histo_success = new bootstrap.Modal(document.getElementById('add_surgery_histo_success'));
     add_surgery_histo_success.show()
