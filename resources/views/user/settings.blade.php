@@ -82,20 +82,7 @@
     </clipPath>
   </defs>
 </svg> My Profile</span></a></li>
-							<li class="nav-item" role="presentation"><a class="nav-link user_settings_nav_link" href="{{ route('client.pet') }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_1917_11615)">
-    <path d="M14.7003 13.5C13.6003 11.5 13.2593 11 12.0003 11C10.7413 11 10.2643 11.755 9.16426 13.747C8.22226 15.45 6.31826 15.592 5.84326 17.038C5.74626 17.303 5.69826 17.715 5.70026 18C5.70026 19.176 6.48726 20 7.50026 20C8.75926 20 10.5003 19 12.0003 19C13.5003 19 15.2413 20 16.5003 20C17.5133 20 18.3003 19.177 18.3003 18C18.3003 17.715 18.2513 17.303 18.1543 17.038C17.6793 15.587 15.6423 15.203 14.7003 13.5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M20.1882 8.082C20.0597 8.0277 19.9216 7.99981 19.7822 8H19.7672C19.0322 8.012 18.2072 8.75 17.7742 9.866C17.2552 11.201 17.4942 12.566 18.3122 12.918C18.4412 12.973 18.5792 13 18.7182 13C19.4572 13 20.2932 12.258 20.7292 11.134C21.2452 9.799 21.0012 8.434 20.1882 8.082Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M9.47358 9C9.52858 9 9.58258 9 9.63658 8.989C10.5806 8.861 11.1696 7.643 10.9566 6.267C10.7536 4.97 9.90958 4 9.02458 4C8.96958 4 8.91558 4 8.86158 4.011C7.91758 4.139 7.32858 5.357 7.54158 6.733C7.74558 8.026 8.58958 9 9.47458 9H9.47358Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M16.4559 6.733C16.6699 5.357 16.0809 4.139 15.1359 4.011C15.0822 4.00357 15.0281 3.99989 14.9739 4C14.0889 4 13.2459 4.97 13.0439 6.267C12.8299 7.643 13.4189 8.861 14.3639 8.989C14.4179 8.996 14.4719 9 14.5259 9C15.4109 9 16.2559 8.026 16.4559 6.733Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M5.68982 12.918C6.50582 12.566 6.74382 11.199 6.22582 9.866C5.78982 8.742 4.95482 8 4.21682 8C4.07682 8 3.93982 8.027 3.80982 8.082C2.99382 8.434 2.75582 9.801 3.27382 11.134C3.70982 12.258 4.54482 13 5.28282 13C5.42282 13 5.55982 12.973 5.68982 12.918Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_1917_11615">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Pet Information</span></a></li>
+							
 							<li class="nav-item" role="presentation"><a class="nav-link user_settings_nav_link" role="tab" data-bs-toggle="tab" href="#tab-3"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_6220_14917)">
     <path d="M9 17V18C9 18.7956 9.31607 19.5587 9.87868 20.1213C10.4413 20.6839 11.2044 21 12 21C12.7956 21 13.5587 20.6839 14.1213 20.1213C14.6839 19.5587 15 18.7956 15 18V17M10 5C10 4.46957 10.2107 3.96086 10.5858 3.58579C10.9609 3.21071 11.4696 3 12 3C12.5304 3 13.0391 3.21071 13.4142 3.58579C13.7893 3.96086 14 4.46957 14 5C15.1484 5.54303 16.1274 6.38833 16.8321 7.4453C17.5367 8.50227 17.9404 9.73107 18 11V14C18.0753 14.6217 18.2954 15.2171 18.6428 15.7381C18.9902 16.2592 19.4551 16.6914 20 17H4C4.54494 16.6914 5.00981 16.2592 5.35719 15.7381C5.70457 15.2171 5.92474 14.6217 6 14V11C6.05956 9.73107 6.4633 8.50227 7.16795 7.4453C7.8726 6.38833 8.85159 5.54303 10 5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -286,86 +273,9 @@
 														<p>Get reminded prior to your scheduled appointment so you don’t miss it.</p>
 													</div>
 												</div>
-												<div class="notif_buttons_and_texts">
-													<div class="toggle_container">
-														<label class="switch">
-															<input type="checkbox" /><span class="slider round"></span></label>
-													</div>
-													<div class="text_container">
-														<h1>Pet Health Updates</h1>
-														<p>Get updated on your pet’s health.</p>
-													</div>
-												</div>
-												<div class="notif_buttons_and_texts">
-													<div class="toggle_container">
-														<label class="switch">
-															<input type="checkbox" /><span class="slider round"></span></label>
-													</div>
-													<div class="text_container">
-														<h1>Pet Care</h1>
-														<p>Get reminded of your pet’s next vaccination</p>
-													</div>
-												</div>
-												<div class="notif_buttons_and_texts">
-													<div class="toggle_container">
-														<label class="switch">
-															<input type="checkbox" /><span class="slider round"></span></label>
-													</div>
-													<div class="text_container">
-														<h1>Tips and Tricks</h1>
-														<p>Want to know tips and tricks from your veterinarians? Turn notifications on to receive emails. </p>
-													</div>
-												</div>
-												<div class="notif_buttons_and_texts">
-													<div class="toggle_container">
-														<label class="switch">
-															<input type="checkbox" /><span class="slider round"></span></label>
-													</div>
-													<div class="text_container">
-														<h1>News &amp; Events</h1>
-														<p>Feel free to participate in special events.</p>
-													</div>
-												</div>
 											</div>
 										</div>
-										<div class="card notification_settings">
-											<div class="left_notification_settings">
-												<h1>Text notifications</h1>
-												<p>Get text messages to stay updated on your appointments. You can turn these off.</p>
-											</div>
-											<div class="right_notification_settings">
-												<div class="notif_buttons_and_texts">
-													<div class="toggle_container">
-														<label class="switch">
-															<input type="checkbox" /><span class="slider round"></span></label>
-													</div>
-													<div class="text_container">
-														<h1>Appointment Confirmation/Cancellation</h1>
-														<p>Get to know if your appointment has been approved.</p>
-													</div>
-												</div>
-												<div class="notif_buttons_and_texts">
-													<div class="toggle_container">
-														<label class="switch">
-															<input type="checkbox" /><span class="slider round"></span></label>
-													</div>
-													<div class="text_container">
-														<h1>Appointment Reminders</h1>
-														<p>Get reminded prior to your scheduled appointment so you don’t miss it.</p>
-													</div>
-												</div>
-												<div class="notif_buttons_and_texts">
-													<div class="toggle_container">
-														<label class="switch">
-															<input type="checkbox" /><span class="slider round"></span></label>
-													</div>
-													<div class="text_container">
-														<h1>Pet Health Updates</h1>
-														<p>Get updated on your pet’s health.</p>
-													</div>
-												</div>
-											</div>
-										</div>
+										
 									</div>
 								</div>
 							</div>
