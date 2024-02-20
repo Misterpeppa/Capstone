@@ -1676,7 +1676,8 @@
                                         required="" style="height:100%;"></select><label class="form-label"
                                         for="breed">Select a breed<span>&nbsp;*</span></label>
                                     <div id="error-breed-1" class="error-message"><span>• Please select a
-                                            breed</span></div>
+                                            breed</span>
+                                        </div>
                                 </div>
                             </div>
                             <div class="form-floating" style="width:100%;"><select class="form-select"
@@ -1907,8 +1908,8 @@
                                 type="time">
                             <label class="form-label form-label"
                                 for="appointment_time-3">Time<span>&nbsp;*</span></label>
-                            <div class="error-message" id="error-appointment_time-3"><span>• Please select a
-                                    breed</span></div>
+                            <div class="error-message" id="error-appointment_time-3"><span>• Please select time
+                                    </span></div>
                         </div>
                     </div>
                     <div class="form-floating" style="width:100%;">
