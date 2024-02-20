@@ -140,7 +140,7 @@
                                                 <p></p>
                                             </div>
                                             <div class="status">
-                                                <h1>Status</h1>
+                                                <h1></h1>
                                                 <p></p>
                                             </div>
                                         </div>
@@ -736,6 +736,7 @@
                                         <th>Batch Number</th>
                                         <th>Product Code</th>
                                         <th>Quantity Left</th>
+                                        <th>Status</th>
                                         <th>Date Stocked</th>
                                         <th>Expiration Date</th>
                                         <th>Manufacturing Date</th>
@@ -747,6 +748,7 @@
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
+                                        <td class="status-td"></td>
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
@@ -1452,7 +1454,7 @@
 			</div>
 		</div>
 	</div>
-    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @if (session('success_product'))
     <script>
@@ -1561,6 +1563,7 @@
                             '<td>' + ' ' + '</td>' +
 							'<td>' + batches.batch_no + '</td>' +
                             '<td>' + batches.product_code + '</td>' +
+                            '<td>' + batches.quantity + '</td>' +
                             '<td>' + batches.quantity + '</td>' +
 							'<td>' + batches.date_stocked + '</td>' +
 							'<td>' + batches.expiration_date + '</td>' +

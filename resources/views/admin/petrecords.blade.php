@@ -739,8 +739,7 @@
 								<div class="align-self-stretch form-floating">
 									<input type="text" class="form-control" name="pet_name" id="editPetName">
 									<label class="form-label" for="pet_name">Pet Name</label>
-									<div class="error-message" id="edit_pet_error"><span>• Error Message</span></div>
-									<div class="guide-message"><span>• Guide Message</span></div>
+									
 								</div>
 								<div class="align-self-stretch form-floating">
 									<select aria-label="Floating label select example" name="gender" class="form-select editGender" id="editGender">
@@ -749,15 +748,13 @@
 										<option value="2">Female</option>
 									</select>
 									<label class="form-label" for="pet_sex">Sex</label>
-									<div id="error_sex" class="error-message"><span>• Error Message</span></div>
-									<div id="guide_sex" class="guide-message"><span>• Guide Message</span></div>
+									
 								</div>
 								<div class="new_input_row">
 									<div class="form-floating" style="width: 100%;">
 										<input class="form-control" id="editBirthdate" name="pet_birthday" type="date">
 										<label class="form-label">Birth Date</label>
-										<div class="error-message" id="edit_birthdate_error"><span>• Error Message</span></div>
-										<div class="guide-message"></div>
+										
 									</div>
 									<div class="form-floating" id="pet_age_edit" style="width: 100%;">
 										<input class="form-control" type="text" id="editAge" name="pet_age"  readonly>
@@ -765,31 +762,28 @@
 									</div>
 								</div>
 								<div class="new_input_row">
-									<div class="form-floating">
+									<div class="form-floating w-50">
 										<select class="form-select" id="editSpecies" name="species" aria-label="Floating label select example">
 											<option value="" selected="">Pet Type</option>
 											<option value="Dog">Dog</option>
 											<option value="Cat">Cat</option>
 										</select>
 										<label class="form-label" for="">Pet Type</label>
-										<div class="error-message" id="edit_pet_type_error"><span>• Please select a breed</span></div>
+										
 										
 									</div>
-									<div class="new_inputs_row">
+									<div class="new_inputs_row w-100">
 										<div class="form-floating" style="width: 100%;">
-											<select class="form-select" id="editBreed" name="breed" aria-label="Floating label select example">
+											<select class="form-select" id="editBreed" disabled name="breed" aria-label="Floating label select example">
 												<option value="" selected="">Breed</option>
 												<option value="other">Other</option>
 											</select>
 											<label class="form-label" for="">Breed</label>
-											<div class="error-message" id="edit_breed_error"><span>• Error Message</span></div>
-											<div class="guide-message"><span>• Guide Message</span></div>
 										</div>
 										<div class="form-floating" id="pet_breed_specify" style="width: 100%; display: none;">
 											<input type="text" class="form-control" id="pet_breed1" placeholder="Specify Breed">
 											<label class="form-label" for="pet_breed1">Specify Breed</label>
-											<div class="error-message" id="edit_breed_error1"><span>• Error Message</span></div>
-											<div class="guide-message"><span>• Guide Message</span></div>
+											
 										</div>
 									</div>
 								</div>
@@ -800,9 +794,7 @@
 										<option value="Spayed">Spayed</option>
 										<option value="Neutered">Neutered</option>
 									</select>
-									<label class="form-label" for="sterilization_status_edit">Sterilization Status<span>&nbsp;*</span></label>
-									<div id="error-sterilization_status_edit" class="error-message"><span>• Please select a sterilization status.</span></div>
-									
+									<label class="form-label" for="sterilization_status_edit">Sterilization Status</label>
 								</div>
 							</div>
 						</div>
