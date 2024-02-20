@@ -371,7 +371,7 @@
 				</div>
 				<div class="modal-footer discard_footer">
 					<button class="btn return_btn" data-bs-dismiss="modal" id="return_btn" type="button"><span class="return_btn_base">Return</span></button>
-					<button class="btn discard_btn" id="discard_btn" type="button" data-bs-dismiss="modal"><span class="discard_btn_base">Discard</span></button>
+					<button class="btn discard_btn" id="edit_discard_btn" type="button" data-bs-dismiss="modal"><span class="discard_btn_base">Discard</span></button>
 				</div>
 			</div>
 		</div>
@@ -411,6 +411,20 @@ edit_save_changes.addEventListener('click', function(){
         cancel_pass_btn.addEventListener('click', function(){
           edit_discard.show();
         });
+
+        var edit_discard_btn = document.getElementById('edit_discard_btn');
+
+        edit_discard_btn.addEventListener('click', function(){
+    var old_password = document.getElementById('old_password');
+    var new_password = document.getElementById('new_password');
+    var confirm_password = document.getElementById('confirm_password');
+
+    // Clear the values
+    old_password.value = "";
+    new_password.value = "";
+    confirm_password.value = "";
+});
+
         
 
 
