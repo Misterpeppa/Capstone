@@ -58,8 +58,9 @@
 					<div class="appointment_list_tabs">
 						<ul class="nav nav-tabs appointment_list_tab_items" role="tablist">
 							<li class="nav-item" role="presentation"><a class="nav-link active list_tab" role="tab" data-bs-toggle="tab" href="#tab-1">Approved<span id="upcoming-counter" class="counter counter-upcoming">0</span></a></li>
-							<li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-2">Pending<span id="history-counter" class="counter counter-recent">0</span></a></li>
+							<li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-2">Pending<span id="recent-counter" class="counter counter-recent">0</span></a></li>
 							<li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-3">Rejected<span id="rejected-counter" class="counter counter-rejected">0</span></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-4">History<span id="history-counter" class="counter counter-history">0</span></a></li>
 						</ul>
 						<div class="tab-content" style="width: 100%;">
 							<div class="tab-pane active appointment_list_container" role="tabpanel" id="tab-1" style="overflow:auto;">
@@ -68,9 +69,6 @@
 									<table class="table table-responsive mt-3 w-100">
 										<thead>
 											<tr>
-												<th>
-													<input id="SelectAll" type="checkbox" class="checkbox">
-												</th>
 												<th>No.</th>
 												<th>Patient Info</th>
 												<th>Surgery Type</th>
@@ -81,7 +79,6 @@
 										<tbody id="appointment_table_body">
                                         @foreach ($appointmentapproved as $index => $appointment)
                                         <tr>
-                                            <td class="text-style"><input type="checkbox" class="checkbox"></td> 
                                             <td class="text-style">{{ $index + 1 }}</td>
                                             <td class="text-style">{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
                                             <td class="text-style">{{ $appointment['appointmentType'] }}</td>
@@ -103,14 +100,10 @@
 								<table class="table table-responsive mt-3 w-100" id="approved_table">
 										<thead>
 											<tr>
-												<th>
-													<input id="SelectAllPending" type="checkbox" class="checkbox">
-												</th>
-												<th></th>
+												<th>No.</th>
 												<th>Patient Info</th>
 												<th>Surgery Type</th>
 												<th>Appointment</th>
-												<th>Status</th>
 												<th>Additional Notes</th>
 												<th>Actions</th>
 											</tr>
@@ -118,12 +111,10 @@
 										<tbody id="appointment_pending_table_body">
 										@foreach ($appointments as $index => $appointmentpending)
                                         <tr>
-                                            <td class="text-style"><input type="checkbox" class="checkbox"></td> 
                                             <td class="text-style">{{ $index + 1 }}</td>
                                             <td class="text-style">{{ $appointmentpending['petType'] }} ({{ $appointmentpending['breed'] }})</td>
                                             <td class="text-style">{{ $appointmentpending['appointmentType'] }}</td>
                                             <td class="text-style">{{ $appointmentpending['appointmentDate'] }} {{ $appointmentpending['appointmentTime'] }}</td>
-											<td class="text-style">{{ $appointmentpending['status'] }}</td>
 											<td></td>
 											<td class="dropdown button-action">
                                                 <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"
@@ -178,12 +169,11 @@
 												<th>
 													<input id="SelectAllrejected" type="checkbox" class="checkbox">
 												</th>
-												<th></th>
+												<th>No.</th>
 												<th>Patient Info</th>
 												<th>Surgery Type</th>
 												<th>Appointment</th>
-												<th>Status</th>
-												<th>Additional Notes</th>
+												<th>Reason</th>
 											</tr>
 										</thead>
 										<tbody id="appointment_rejected_table_body">
@@ -192,13 +182,38 @@
                                             <td class="text-style"><input type="checkbox" class="checkbox"></td> 
                                             <td class="text-style">{{ $index + 1 }}</td>
                                             <td class="text-style">{{ $appointmentrejected['petType'] }} ({{ $appointmentrejected['breed'] }})</td>
-                                            <td class="text-style">{{ $appointmentrejected['appointmentType'] }}</td>
-                                            <td class="text-style">{{ $appointmentrejected['appointmentDate'] }} {{ $appointmentrejected['appointmentTime'] }}</td>
-											<td class="text-style">{{ $appointmentrejected['status'] }}</td>
+                                            <td class="text-style">{{ $appointmentrejected['appointmentType'] }} {{ $appointmentrejected['appointmentDate'] }} {{ $appointmentrejected['appointmentTime'] }}</td>
+                                            <td class="text-style"></td>
 											<td></td>
 											
                                         </tr>
                                         @endforeach
+										</tbody>
+									</table>
+									
+						</div>
+                        <div class="tab-pane appointment_list_container" role="tabpanel" id="tab-4" style="overflow:auto;">
+								
+								<table class="table table-responsive mt-3 w-100" id="history_table">
+										<thead>
+											<tr>
+												<th>No.</th>
+												<th>Patient Info</th>
+												<th>Surgery Type</th>
+												<th>Appointment</th>
+												<th>Additional Notes</th>
+											</tr>
+										</thead>
+										<tbody id="appointment_history_table_body">
+										
+                                        <tr>
+                                            <td class="text-style">{{ $index + 1 }}</td>
+                                            <td class="text-style"></td>
+                                            <td class="text-style"></td>
+                                            <td class="text-style"></td>
+											<td></td>
+											
+                                        </tr>
 										</tbody>
 									</table>
 									
