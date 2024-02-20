@@ -809,7 +809,7 @@
 					</div>
 					<div class="mb-3 prod_detail_fields_buttons">
 						<button id="cancel_edit" class="btn cancel_edit" type="button"><span class="cancel_edit_base">Cancel</span></button>
-						<button id="edit_save_changes" class="btn edit_save_changes" type="submit"><span class="edit_save_changes_base">Save Changes</span></button>
+						<button id="edit_save_changes" class="btn edit_save_changes" type="submit" disabled><span class="edit_save_changes_base">Save Changes</span></button>
 					</div>
 				</div>
 				</form>
@@ -1070,7 +1070,7 @@
 						<div class="mb-3 input_container">
 							<div class="form-floating align-self-stretch">
 								
-								<select class="admin_petInfo_select form-control w-100" id="name" name="owner_id" placeholder="Owner">
+								<select class="admin_petInfo_select form-control w-100" id="Name" name="owner_id" placeholder="Owner">
 									<option value=" "disabled selected>Select</option>
 									@foreach ($owners as $owner)
 										<option value="{{ $owner->id }}">
@@ -1082,38 +1082,38 @@
                                 </div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" type="text" name="pet_name" id="pet_name-1" placeholder="Pet Name" maxlength="255" autocapitalize="pet_name-1">
+									<input class="form-control" type="text" name="pet_name" id="Pet_name-1" placeholder="Pet Name" maxlength="255" style="text-transform: capitalize">
 									<label class="form-label" for="pet_name-1">Pet Name<span>&nbsp;*</span></label>
 									<div id="error-pet_name-1" class="error-message"><span>• Please enter pet name.</span></div>
 									
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select" name="gender" id="gender-1" placeholder="Gender">
+									<select class="form-select" name="gender" id="Gender-1" placeholder="Gender">
 										<option value="" selected="">Select Sex</option>
 										<option value="Male">Male</option>
 										<option value="Female">Female</option>
 									</select>
-									<label class="form-label" for="gender-1">Sex<span>&nbsp;*</span></label>
+									<label class="form-label" for="Gender-1">Sex<span>&nbsp;*</span></label>
 									<div id="error-gender-1" class="error-message"><span>• Please select gender of pet.</span></div>
 									
 								</div>
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select" name="species" id="pet_type-1" placeholder="Pet Type">
+									<select class="form-select" name="species" id="pet_Type-1" placeholder="Pet Type">
 										<option value="" selected="">Select Pet Type</option>
 										<option value="Dog">Dog</option>
 										<option value="Cat">Cat</option>
 									</select>
-									<label class="form-label" for="pet_type-1">Pet Type<span>&nbsp;*</span></label>
+									<label class="form-label" for="pet_Type-1">Pet Type<span>&nbsp;*</span></label>
 									<div id="error-pet_type-1" class="error-message"><span>• Please select pet type</span></div>
 									
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select" name="breed" id="breed-1" disabled="" placeholder="Breed">
+									<select class="form-select" name="breed" id="Breed-1" disabled="" placeholder="Breed">
 										<option value="" selected="">Select a Pet Type first.</option>
 									</select>
-									<label class="form-label" for="breed-1">Breed<span>&nbsp;*</span></label>
+									<label class="form-label" for="Breed-1">Breed<span>&nbsp;*</span></label>
 
 									<div id="error-breed-1" class="error-message"><span>• Please select a breed.</span></div>
 									
@@ -1121,33 +1121,33 @@
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" name="pet_birthday" id="pet_birthdate-1" placeholder="Birthdate" type="date">
-									<label class="form-label" for="pet_birthdate-1">Birthdate<span>&nbsp;*</span></label>
+									<input class="form-control" name="pet_birthday" id="Pet_birthdate-1" placeholder="Birthdate" type="date">
+									<label class="form-label" for="Pet_birthdate-1">Birthdate<span>&nbsp;*</span></label>
 									<div id="error-pet_birthdate-1" class="error-message"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 									
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" value="" type="text" name="pet_age" data-bs-toggle="tooltip" id="age-1"
+									<input class="form-control" value="" type="text" name="pet_age" data-bs-toggle="tooltip" id="Age-1"
 									title="Please select pet type and enter the birthdate first." maxlength="3" disabled="" placeholder="Please select pet type, breed, and enter the birthdate first.">
-									<label class="form-label" for="age-1">Age</label>
+									<label class="form-label" for="Age-1">Age</label>
 									<div id="error-age-1" class="error-message" style="color:red;">• Please input birth date of pet</div>
 								</div>
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" type="number" name="weight" id="weight-1" maxlength="10" placeholder="Weight">
-									<label class="form-label" for="weight-1">Weight (kg)<span>&nbsp;*</span></label>
+									<input class="form-control" type="number" name="weight" id="Weight-1" maxlength="10" placeholder="Weight">
+									<label class="form-label" for="Weight-1">Weight (kg)<span>&nbsp;*</span></label>
 									<div id="error-weight-1" class="error-message"><span>• Please enter weight of pet.</span><span>• Only numerical inputs will be accepted</span></div>
 									
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select" name="sterilization" id="sterilization_status-1" placeholder="Sterilization Status">
+									<select class="form-select" name="sterilization" id="Sterilization_status-1" placeholder="Sterilization Status">
 										<option value="" selected="">Select Status</option>
 										<option value="None">None</option>
 										<option value="Spayed">Spayed</option>
 										<option value="Neutered">Neutered</option>
 									</select>
-									<label class="form-label" for="sterilization_status-1">Sterilization Status<span>&nbsp;*</span></label>
+									<label class="form-label" for="Sterilization_status-1">Sterilization Status<span>&nbsp;*</span></label>
 									<div id="error-sterilization_status-1" class="error-message"><span>• Please select a sterilization status.</span></div>
 									
 								</div>
@@ -1156,7 +1156,7 @@
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_form-1"  aria-label="Clear Pet Form" role="button" type="reset"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_pet" id="submit_Pet-1" type="submit" disabled title="Complete the fields first to make this clickable."><span class="submit_product_base">Submit</span></button>
+					<button class="btn submit_pet" id="submit_pet-1" type="submit" disabled title="Complete the fields first to make this clickable."><span class="submit_product_base">Submit</span></button>
 				</div>
                 </form>
 			</div>
@@ -1598,58 +1598,120 @@ $(document).ready(function() {
 
 
 function enableSubmitPet() {
-	var name = document.getElementById("name").value;
-	var pet_name = document.getElementById("pet_name-1").value;
-	var gender = document.getElementById("gender-1").value;
-	var petType = document.getElementById("pet_type-1").value;
-	var breed = document.getElementById("breed-1").value;
-	var pet_birthdate = document.getElementById("pet_birthdate-1").value;
-	var weight = document.getElementById("weight-1").value;
-	var sterilization_status = document.getElementById("sterilization_status-1").value;
+    var name = document.getElementById("Name").value;
+    var pet_name = document.getElementById("Pet_name-1").value;
+    var gender = document.getElementById("Gender-1").value;
+    var petType = document.getElementById("pet_Type-1").value;
+    var breed = document.getElementById("Breed-1").value;
+    var pet_birthdate = document.getElementById("Pet_birthdate-1").value;
+	var age= document.getElementById("Age-1").value;
+    var weight = document.getElementById("Weight-1").value;
+    var sterilization_status = document.getElementById("Sterilization_status-1").value;
 
-	var submit_Pet = document.getElementById("submit_Pet-1");
+    var submit_Pet = document.getElementById("submit_pet-1");
 
-	console.log("Name input changed");
-	// Add additional validation conditions as needed
-	if (
-	  name.trim() !== "" &&
-	  pet_name.trim() !== "" &&
-	  gender.trim() !== "" &&
-	  petType.trim() !== "" &&
-	  breed.trim() !== "" &&
-	  pet_birthdate.trim() !== "" &&
-	  weight.trim() !== "" &&
-	  sterilization_status.trim() !== ""
-	) {
-	  submit_Pet.removeAttribute("disabled");
-	  submit_Pet.classList.remove("disabled");
-	} else {
-	  submit_Pet.setAttribute("disabled", true);
-	  submit_Pet.classList.add("disabled");
-	}
-
-	console.log('name:', name);
-	
-	console.log('pet_name:', pet_name);
-	console.log('gender:', gender);
-	console.log('next_schedule:', petType);
-	console.log('breed:', breed);
-	console.log('pet_birthdate:', pet_birthdate);
-	console.log('weight:', weight);
-	console.log('sterilization_status:', sterilization_status);
+    console.log("Name input changed");
+    // Add additional validation conditions as needed
+    if (
+        name.trim() !== "" &&
+        pet_name.trim() !== "" &&
+        gender.trim() !== "" &&
+        petType.trim() !== "" &&
+        breed.trim() !== "" &&
+        pet_birthdate.trim() !== "" &&
+		age.trim() !== "" &&
+        weight.trim() !== "" &&
+        sterilization_status.trim() !== ""
+    ) {
+        submit_Pet.disabled = false;
+		console.log('submit_Pet:', submit_Pet.disabled);
+  } else {
+    submit_Pet.disabled = true;
+	console.log('submit_Pet:', submit_Pet.disabled);
   }
 
-  // Example: Call enableSubmitButton() on input change events
-  document.getElementById("name").addEventListener("change", enableSubmitPet);
-  document.getElementById("pet_name-1").addEventListener("input", enableSubmitPet);
-  document.getElementById("gender-1").addEventListener("change", enableSubmitPet);
-  document.getElementById("pet_type-1").addEventListener("change", enableSubmitPet);
-  document.getElementById("breed-1").addEventListener("change", enableSubmitPet);
-  document.getElementById("pet_birthdate-1").addEventListener("input", enableSubmitPet);
-  document.getElementById("weight-1").addEventListener("input", enableSubmitPet);
-  document.getElementById("sterilization_status-1").addEventListener("change", enableSubmitPet);
+    console.log('name:', name);
+    console.log('pet_name:', pet_name);
+    console.log('gender:', gender);
+    console.log('next_schedule:', petType);
+    console.log('breed:', breed);
+    console.log('pet_birthdate:', pet_birthdate);
+	console.log('age:', age);
+    console.log('weight:', weight);
+    console.log('sterilization_status:', sterilization_status);
+}
 
-	
+// Example: Call enableSubmitButton() on input change events
+document.getElementById("Name").addEventListener("change", enableSubmitPet);
+document.getElementById("Pet_name-1").addEventListener("input", enableSubmitPet);
+document.getElementById("Gender-1").addEventListener("change", enableSubmitPet);
+document.getElementById("pet_Type-1").addEventListener("change", enableSubmitPet);
+document.getElementById("Breed-1").addEventListener("change", enableSubmitPet);
+document.getElementById("Pet_birthdate-1").addEventListener("input", enableSubmitPet);
+document.getElementById("Age-1").addEventListener("input", enableSubmitPet);
+document.getElementById("Weight-1").addEventListener("input", enableSubmitPet);
+document.getElementById("Sterilization_status-1").addEventListener("change", enableSubmitPet);
+
+
+function enableSaveChangesButton() {
+    var editPetName = document.getElementById("editPetName").value;
+    var editGender = document.getElementById("editGender").value;
+    var editBirthdate = document.getElementById("editBirthdate").value;
+    var editAge = document.getElementById("editAge").value;
+    var editSpecies = document.getElementById("editSpecies").value;
+    var editBreed = document.getElementById("editBreed").value;
+    var sterilization_status_edit = document.getElementById("sterilization_status_edit").value;
+
+    var edit_save_changes = document.getElementById("edit_save_changes");
+
+    if (
+        editPetName.trim() !== "" ||
+        editGender.trim() !== "" ||
+        editBirthdate.trim() !== "" ||
+        editAge.trim() !== "" ||
+        editSpecies.trim() !== "" ||
+        editBreed.trim() !== "" ||
+        sterilization_status_edit.trim() !== ""
+    ) {
+        edit_save_changes.disabled = false;
+    } else {
+        edit_save_changes.disabled = true;
+    }
+}
+
+// Attach event listeners to input fields
+document.getElementById("editPetName").addEventListener("change", enableSaveChangesButton);
+document.getElementById("editGender").addEventListener("change", enableSaveChangesButton);
+document.getElementById("editBirthdate").addEventListener("change", enableSaveChangesButton);
+document.getElementById("editAge").addEventListener("change", enableSaveChangesButton);
+document.getElementById("editSpecies").addEventListener("change", enableSaveChangesButton);
+document.getElementById("editBreed").addEventListener("change", enableSaveChangesButton);
+document.getElementById("sterilization_status_edit").addEventListener("change", enableSaveChangesButton);
+
+
+// Function to reset form fields to their initial values
+function resetFormFields() {
+    document.getElementById("editPetName").value = ""; // Set initial value for editPetName
+    document.getElementById("editGender").value = ""; // Set initial value for editGender
+    document.getElementById("editBirthdate").value = ""; // Set initial value for editBirthdate
+    document.getElementById("editAge").value = ""; // Set initial value for editAge
+    document.getElementById("editSpecies").value = ""; // Set initial value for editSpecies
+    document.getElementById("editBreed").value = ""; // Set initial value for editBreed
+    document.getElementById("sterilization_status_edit").value = ""; // Set initial value for sterilization_status_edit
+    
+    // Disable the edit_save_changes button
+    document.getElementById("edit_save_changes").disabled = true;
+    
+    // After resetting the form fields, call enableSaveChangesButton to update the save changes button state
+    enableSaveChangesButton();
+}
+
+// Attach event listener to the Cancel button
+document.getElementById("discard_btn").addEventListener("click", function() {
+    resetFormFields(); // Call resetFormFields when the Cancel button is clicked
+});
+
+
 
 	function enableSubmitDiagnosis() {
 	var diagnosis = document.getElementById("diagnosis").value;
@@ -1771,13 +1833,14 @@ document.getElementById("notes").addEventListener("input", enableSubmitSurgery);
 
 
 
+
 </script>
 
 
 
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('assets/js/pet_records.js') }}" defer></script>
+<script src="{{ asset('assets/js/pet_records.js') }}" ></script>
 <script src="{{ asset('assets/js/sidebar.js') }}"></script>
 <script src="{{ asset('assets/js/sidebartry.js') }}"></script>
 
