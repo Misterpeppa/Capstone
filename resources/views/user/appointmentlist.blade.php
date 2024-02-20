@@ -446,7 +446,7 @@
 				</div>
 				<div class="modal-footer discard_footer">
 					<button class="btn return_btn" data-bs-dismiss="modal" id="return_btn" type="button"><span class="return_btn_base">Return</span></button>
-					<button class="btn discard_btn" id="discard_btn" type="button" data-bs-dismiss="modal"><span class="discard_btn_base">Cancel</span></button>
+					<button class="btn discard_btn" id="cancel_appointment_btn" type="button" data-bs-dismiss="modal"><span class="discard_btn_base">Cancel</span></button>
 				</div>
 			</div>
 		</div>
