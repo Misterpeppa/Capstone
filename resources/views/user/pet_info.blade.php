@@ -560,8 +560,8 @@ Add Appointment</button>
 							<div class="detail_body">
 								<div class="pet_details_container">
 									<div class="align-self-stretch form-floating">
-										<input type="text" class="form-control" id="edit_pet_name" style="text-transform: capitalize;">
-										<label class="form-label" for="pet_name">Pet Name</label>
+										<input type="text" class="form-control" id="edit_pet_name" style="text-transform: capitalize;" placeholder="Pet Name"/>
+										<label class="form-label" for="edit_pet_name">Pet Name</label>
 										<div class="error-message"><span>• Error Message</span></div>
 										<div class="guide-message"><span>• Guide Message</span></div>
 									</div>
