@@ -1661,7 +1661,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
   }
   
-  .archive_confirm, .agree {
+  .agree {
     display: flex;
     height: 56px;
     min-width: 100px;
@@ -1669,7 +1669,18 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     justify-content: center;
     align-items: center;
     gap: var(--spacing-spacing-m, 24px);
-    flex: 1 0 0;
+    border-radius: var(--spacing-spacing-xxs, 8px);
+    background: var(--colors-actions-action, #045B62);
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+  }
+  .archive_confirm {
+    display: flex;
+    height: 56px;
+    min-width: 100px;
+    padding: 16px var(--spacing-spacing-m, 24px);
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-spacing-m, 24px);
     border-radius: var(--spacing-spacing-xxs, 8px);
     background: var(--colors-actions-action, #045B62);
     box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
@@ -2807,7 +2818,6 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     justify-content: center;
     align-items: center;
     gap: var(--spacing-spacing-m, 24px);
-    flex: 1 0 0;
     border-radius: var(--spacing-spacing-xxs, 8px);
     background: #DA534F;
     box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
