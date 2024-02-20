@@ -277,22 +277,22 @@
 						<div class="mb-3 input_container">
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" type="text" id="first_name" name="first_name" data-id="first_name" placeholder="First Name">
-									<label class="form-label" for="first_name">First Name<span>&nbsp;*</span></label>
+									<input class="form-control" type="text" id="Fname" name="first_name" data-id="first_name" placeholder="First Name" style="text-transform: capitalize;">
+									<label class="form-label" for="Fname">First Name<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-first_name"><span>• Please enter client first name.</span></div>
 									<div id="guide-first_name" class="guide-message"><span>• Please enter client first name.</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" type="text" id="middle_name" name="middle_name" data-id="middle_name" placeholder="Middle Name">
-									<label class="form-label" for="middle_name">Middle Name<span>&nbsp;*</span></label>
+									<input class="form-control" type="text" id="Mname" name="middle_name" data-id="middle_name" placeholder="Middle Name" style="text-transform: capitalize;">
+									<label class="form-label" for="Mname">Middle Name</label>
 									<div class="error-message" id="error-middle_name"><span>• Please enter client middle name.</span></div>
 									<div id="guide-middle_name" class="guide-message"><span>• Please enter client middle name.</span></div>
 								</div>
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" type="text" id="last_name" name="last_name" data-id="last_name" placeholder="Last Name">
-									<label class="form-label" for="last_name">Last Name<span>&nbsp;*</span></label>
+									<input class="form-control" type="text" id="Lname" name="last_name" data-id="last_name" placeholder="Last Name" style="text-transform: capitalize;">
+									<label class="form-label" for="Lname">Last Name<span>&nbsp;*</span></label>
 									<div id="error-last_name" class="error-message"><span>• Please enter client last name.</span></div>
 									<div id="guide-last_name" class="guide-message"><span>• Please enter client last name.</span></div>
 								</div>
@@ -314,34 +314,34 @@
 								</div>
 							</div>
 							<div class="form-floating" style="width:100%;">
-								<input class="form-control" id="client_birthdate" name="birthdate" data-id="client_birthdate" placeholder="Birthdate" type="date">
-								<label class="form-label" for="client_birthdate">Birthdate<span>&nbsp;*</span></label>
+								<input class="form-control" id="Client_birthdate" name="birthdate" data-id="client_birthdate" placeholder="Birthdate" type="date">
+								<label class="form-label" for="Client_birthdate">Birthdate<span>&nbsp;*</span></label>
 								<div class="error-message" id="error-client_birthdate"><span>• Please click the calendar icon to select client birth date.</span></div>
 								<div id="guide-client_birthdate" class="guide-message"><span>• Please click the calendar icon to select client birth date.</span></div>
 							</div>
 							<div class="form-floating" style="width:100%;">
-								<input class="form-control" type="text" id="client_address" data-id="client_address" placeholder="Address">
-								<label class="form-label" for="client_address">Address<span>&nbsp;*</span></label>
+								<input class="form-control" type="text" id="Client_address" data-id="client_address" placeholder="Address">
+								<label class="form-label" for="Client_address">Address<span>&nbsp;*</span></label>
 								<div class="error-message" id="error-client_address"><span>• Please enter client address.</span></div>
 								<div id="guide-client_address" class="guide-message"><span>• Please enter client address.</span></div>
 							</div>
 							<div class="form-floating" style="width:100%;">
-								<input class="form-control" type="email" id="client_email" name="email" data-id="client_email" placeholder="Email" required="">
-								<label class="form-label" for="client_email">Email Address<span>&nbsp;*</span></label>
+								<input class="form-control" type="email" id="Client_email" name="email" data-id="client_email" placeholder="Email" required="">
+								<label class="form-label" for="Client_email">Email Address<span>&nbsp;*</span></label>
 								<div class="error-message" id="error-client_email"><span>• Please enter Email Address of the client.</span><span>• Invalid email format.</span></div>
 								<div id="guide-client_email" class="guide-message"><span>• Please enter Email Address of the client.</span><span>•&nbsp;(e.g. pogiako@gmail.com/pogiako@yahoo.com)</span></div>
 							</div>
 							<div class="form-floating" style="width:100%;">
-								<input class="form-control" type="number" id="user_phone" name="phone" data-id="user_phone" placeholder="Phone Number">
-								<label class="form-label" for="user_phone">Phone Number<span>&nbsp;*</span></label>
+								<input class="form-control" type="number" id="User_phone" name="phone" data-id="user_phone" placeholder="Phone Number">
+								<label class="form-label" for="User_phone">Phone Number<span>&nbsp;*</span></label>
 								<div class="error-message" id="error-user_phone"><span>• Please enter 11 digits only. (e.g., 09172839117)</span><span>• Please enter a valid phone number.</span></div>
 								<div id="guide-user_phone" class="guide-message"><span>• Please enter 11 digits only. (e.g., 09172839117)</span></div>
 							</div>
 						</div>
 				</div>
 				<div class="modal-footer add_product_button">
-					<button class="btn clear_form" id="clear_form" onClick="cancelSubmit()" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_product disabled" id="submit_client"  type="submit" ><span class="submit_product_base">Submit</span></button>
+					<button class="btn clear_form" id="clear_form" aria-label="Clear Form" role="button" type="reset"><span class="clear_form_base">Clear Form</span></button>
+					<button class="btn submit_product" id="Submit_client"  disabled type="submit" ><span class="submit_product_base">Submit</span></button>
 				</div>
                 </form>
 			</div>
@@ -380,60 +380,20 @@ checkbox.checked = !checkbox.checked; // Toggle the state
 });
     </script>
           <script>
-function enableSubmitBtn() {
-  var first_name = document.getElementById("first_name").value;
-  var middle_name = document.getElementById("middle_name").value;
-  var last_name = document.getElementById("last_name").value;
-  var client_birthdate = document.getElementById("client_birthdate").value;
-  var client_address = document.getElementById("client_address").value;
-  var client_email = document.getElementById("client_email").value;
-  var user_phone = document.getElementById("user_phone").value;
 
-  var submit_client = document.getElementById("submit_client");
-
-  // Add additional validation conditions as needed
-  if (
-    first_name.trim() !== "" &&
-    middle_name.trim() !== "" &&
-    last_name.trim() !== "" &&
-    client_birthdate.trim() !== "" &&
-    client_address.trim() !== "" &&
-    client_email.trim() !== "" &&
-    user_phone.trim().length === 11 && // Check for 11 digits
-    (client_email.includes("@gmail.com") || client_email.includes("@yahoo.com")) // Check for email format
-  ) {
-    submit_client.classList.remove("disabled");
-
-  } else {
-    submit_client.classList.add("disabled");
-  }
-
-  // Logging values for debugging
-  console.log('first_name:', first_name);
-  console.log('middle_name:', middle_name);
-  console.log('last_name:', last_name);
-  console.log('client_birthdate:', client_birthdate);
-  console.log('client_address:', client_address);
-  console.log('client_email:', client_email);
-  console.log('user_phone:', user_phone);
-  console.log('submit_client disabled:', submit_client.disabled);
-}
-
-// Attach event listeners to each input field
-["first_name", "middle_name", "last_name", "client_birthdate", "client_address", "client_email", "user_phone"]
-  .forEach(id => document.getElementById(id).addEventListener("input", enableSubmitBtn));
 
 
 
 function cancelSubmit() {
 
-    var first_name = document.getElementById("first_name");
-var middle_name = document.getElementById("middle_name");
-var last_name = document.getElementById("last_name");
-var client_birthdate = document.getElementById("client_birthdate");
-var client_address = document.getElementById("client_address");
-var client_email = document.getElementById("client_email");
-var user_phone = document.getElementById("user_phone");
+    var first_name = document.getElementById("Fname");
+var middle_name = document.getElementById("Mname");
+var last_name = document.getElementById("Lname");
+var client_birthdate = document.getElementById("Client_birthdate");
+var client_address = document.getElementById("Client_address");
+var client_email = document.getElementById("Client_email");
+var user_phone = document.getElementById("User_phone");
+
 var submit_product = document.getElementById("submit_product");
 
 

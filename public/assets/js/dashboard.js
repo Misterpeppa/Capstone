@@ -180,29 +180,6 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
 
 });
 
- const inputs = ['first_name', 'middle_name', 'last_name'];
-
-inputs.forEach(inputId => {
-    document.getElementById(inputId).addEventListener('input', function () {
-        let inputValue = this.value;
-        let regex = /^[a-zA-Z0-9\s]*$/;  // Allow letters, numbers, and spaces
-
-        // Check if the input matches the regex
-        if (regex.test(inputValue)) {
-            // Capitalize the first letter of each word
-            inputValue = inputValue.replace(/\b\w/g, firstLetter => firstLetter.toUpperCase());
-        } else {
-            // If the input doesn't match the regex, remove the last character
-            inputValue = inputValue.substring(0, inputValue.length - 1);
-        }
-
-        // Set the updated value to the input
-        this.value = inputValue;
-
-        // Perform any additional checks or actions
-        checkInputs();
-    });
-});   
     
     
     
@@ -232,7 +209,7 @@ function setupDateValidation(inputId) {
 }
 
 // Example usage for client_birthdate
-setupDateValidation('client_birthdate');
+setupDateValidation('Client_birthdate');
 
     
     var firstName = document.getElementById("first_name");
@@ -319,22 +296,27 @@ function isValidEmail(email) {
 }
 
     
+var user_phone = document.getElementById('User_phone');
+
 function PhoneNumberInputLimit(inputElement) {
     inputElement.addEventListener('input', function () {
-        if (this.value.length > 11) {
-        this.value = this.value.slice(0, 11);
-    }
+        // Remove any non-digit characters, including 'e'
+        this.value = this.value.replace(/[^\d]/g, '');
 
-    // Ensure the first two characters are '09'
-    if (this.value.length >= 2 && this.value.slice(0, 2) !== '09') {
-        // Adjust the input to start with '09'
-        this.value = '09' + this.value.slice(2);
-    }
+        // Limit to 11 digits
+        if (this.value.length > 11) {
+            this.value = this.value.slice(0, 11);
+        }
+
+        // Ensure the first two characters are '09'
+        if (this.value.length >= 2 && this.value.slice(0, 2) !== '09') {
+            // Adjust the input to start with '09'
+            this.value = '09' + this.value.slice(2);
+        }
     });
 }
-    
-    
-PhoneNumberInputLimit(user_phone); 
+
+PhoneNumberInputLimit(user_phone);
     
         
 
@@ -346,82 +328,39 @@ function isValidEmail(email) {
 
 
 
+function enableSubmit() {
 
 
+  var first_name = document.getElementById("Fname").value;
+  var middle_name = document.getElementById("Mname").value;
+  var last_name = document.getElementById("Lname").value;
+  var Client_birthdate = document.getElementById("Client_birthdate").value;
+  var client_address = document.getElementById("Client_address").value;
+  var client_email = document.getElementById("Client_email").value;
+  var user_phone = document.getElementById("User_phone").value;
 
-function setupFormValidation(inputIds, buttonClass, clearButtonId, formId) {
-  var inputs = inputIds.map(id => document.getElementById(id));
-  var submitButton = document.querySelector('.' + buttonClass);
-  var clearButton = document.getElementById(clearButtonId);
-  var form = document.getElementById(formId);
+  var submit_client = document.getElementById("Submit_client");
 
-  function areAllInputsFilled() {
-      return inputs.every(input => {
-          if (input.tagName === 'SELECT') {
-              return input.options[input.selectedIndex].value.trim() !== '';
-          } else {
-              return input.value.trim() !== '';
-          }
-      });
+  // Add additional validation conditions as needed
+  if (
+    first_name.trim() !== "" &&
+    middle_name.trim() !== "" &&
+    last_name.trim() !== "" &&
+    Client_birthdate.trim() !== "" &&
+    client_address.trim() !== "" &&
+    client_email.trim() !== "" &&
+    user_phone.trim() !== "" 
+  ) {
+    submit_client.disabled = false;
+  } else {
+    submit_client.disabled = true;
   }
-
-  submitButton.disabled = true;
-
-  inputs.forEach(input => input.addEventListener('input', enableSubmitButton));
-
-  function enableSubmitButton() {
-      submitButton.disabled = !areAllInputsFilled();
-  }
-
-  submitButton.type = 'submit';
-
-  submitButton.addEventListener('click', function (event) {
-      console.log("Submit button clicked!");
-      
-      if (areAllInputsFilled()) {
-          // Your logic for handling the form submission
-          // For example, you can submit the form programmatically
-          form.submit();
-          
-          // Clear input fields
-          inputs.forEach(input => {
-              if (input.tagName === 'SELECT') {
-                  input.selectedIndex = 0;
-              } else {
-                  input.value = '';
-              }
-          });
-
-          // Disable the submit button again
-          submitButton.disabled = true;
-      }
-
-      // Prevent the default form submission behavior
-      event.preventDefault();
-  }); 
-
-  clearButton.addEventListener('click', function () {
-      console.log("Clear button clicked!");
-      inputs.forEach(input => {
-          if (input.tagName === 'SELECT') {
-              input.selectedIndex = 0;
-          } else {
-              input.value = '';
-          }
-      });
-
-      // After clearing, also disable the submit button
-      submitButton.disabled = true;
-  });
-
-  // Disable or enable the submit button based on the initial state of the form
-  console.log("Initial form state:", areAllInputsFilled());
-  submitButton.disabled = !areAllInputsFilled();
 }
 
-setupFormValidation(
-['first_name','middle_name', 'last_name', 'client_birthdate', 'client_address', 'client_email', 'user_phone'],
-'submit_client',
-'clear_form'
-
-);
+document.getElementById("Fname").addEventListener("input", enableSubmit);
+document.getElementById("Mname").addEventListener("input", enableSubmit);
+document.getElementById("Lname").addEventListener("input", enableSubmit);
+document.getElementById("Client_birthdate").addEventListener("input", enableSubmit);
+document.getElementById("Client_address").addEventListener("input", enableSubmit);
+document.getElementById("Client_email").addEventListener("input", enableSubmit);
+document.getElementById("User_phone").addEventListener("input", enableSubmit);
