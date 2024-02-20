@@ -68,11 +68,9 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 
         var empty_state_container = document.getElementById('empty_state_container');
-         var client_table_container = document.getElementById('client_table_container');
         
         //hide empty state and show table container
         empty_state_container.style.display = 'none';
-        client_table_container.style.display = 'flex';
         //get reference IDs
         showAddClientSplitBtn();
 
@@ -233,6 +231,7 @@ document.querySelectorAll('.dropbtn').forEach(function (button) {
             save_changes_success.hide();
         }, 2000);
       });
+      
     
     
     function showAddClientSplitBtn() {
@@ -360,170 +359,9 @@ function archivePetCard(petCardId) {
     // You can add additional logic here to perform any other actions related to archiving
     // For example, you might want to make an API request to update the server that the pet is archived.
 }
-    
- const inputs = ['first_name', 'middle_name', 'last_name', 'first_name-1', 'middle_name-1', 'last_name-1', 'pet_name', 'pet_name-1', 'first_name-2', 'middle_name-2', 'last_name-2'];
-
-inputs.forEach(inputId => {
-    document.getElementById(inputId).addEventListener('input', function () {
-        let inputValue = this.value;
-        let regex = /^[a-zA-Z0-9\s]*$/;  // Allow letters, numbers, and spaces
-
-        // Check if the input matches the regex
-        if (regex.test(inputValue)) {
-            // Capitalize the first letter of each word
-            inputValue = inputValue.replace(/\b\w/g, firstLetter => firstLetter.toUpperCase());
-        } else {
-            // If the input doesn't match the regex, remove the last character
-            inputValue = inputValue.substring(0, inputValue.length - 1);
-        }
-
-        // Set the updated value to the input
-        this.value = inputValue;
-
-        // Perform any additional checks or actions
-        checkInputs();
-    });
-});   
-    
-    
-    
-function setupFormValidation(inputIds, buttonId, clearButtonId, close_client_modalId) {
-    var inputs = inputIds.map(id => document.getElementById(id));
-    var submitButton = document.getElementById(buttonId);
-    var clearButton = document.getElementById(clearButtonId);
-    var close_client_btn = document.getElementById(close_client_modalId);
-
-    // Function to check if all required input fields have values
-    function areAllInputsFilled() {
-        return inputs.every(input => {
-            if (input.tagName === 'SELECT') {
-                // For select elements, check if a valid option is selected
-                return input.options[input.selectedIndex].value.trim() !== '';
-            } else {
-                // For other input types, check if the value is present
-                return input.value.trim() !== '';
-            }
-        });
-    }
-
-    // Disable the submit button by default
-    submitButton.disabled = true;
-
-    // Add an event listener to each input field for the 'input' event
-    inputs.forEach(input => input.addEventListener('input', enableSubmitButton));
-
-    function enableSubmitButton() {
-        // Enable or disable the submit button based on the condition
-        submitButton.disabled = !areAllInputsFilled();
-    }
-
-    // Add an event listener to the submit button for the 'click' event
-    submitButton.addEventListener('click', function () {
-        console.log("Submit button clicked!");
-        // Add your logic for handling the form submission
-        // For example, you can call a function to process the form data
-
-        // Reset all input fields
-        inputs.forEach(input => {
-            if (input.tagName === 'SELECT') {
-                // For select elements, set the selectedIndex to the default one
-                input.selectedIndex = 0;
-            } else {
-                // For other input types, set the value to an empty string
-                input.value = '';
-            }
-        });
-
-        // Disable the submit button after submission
-        submitButton.disabled = true;
-    });
-
-    // Add an event listener to the clear button for the 'click' event
-    clearButton.addEventListener('click', function () {
-        // Clear all input fields
-        inputs.forEach(input => {
-            if (input.tagName === 'SELECT') {
-                // For select elements, set the selectedIndex to the default one
-                input.selectedIndex = 0;
-            } else {
-                // For other input types, set the value to an empty string
-                input.value = '';
-            }
-        });
-
-        // Disable the submit button after clearing
-        submitButton.disabled = true;
-    });
-    // Disable or enable the submit button based on the initial state of the form
-    submitButton.disabled = !areAllInputsFilled();
-    
-    close_client_btn.addEventListener('click', function () {
-        // Clear all input fields
-        inputs.forEach(input => {
-            if (input.tagName === 'SELECT') {
-                // For select elements, set the selectedIndex to the default one
-                input.selectedIndex = 0;
-            } else {
-                // For other input types, set the value to an empty string
-                input.value = '';
-            }
-        });
-
-        // Disable the submit button after clearing
-        submitButton.disabled = true;
-    });
-}
-
-
-   
- 
-     
-
-
-
-
-
-// Example usage for the first set of inputs, submit button, and clear button
-setupFormValidation(
-    ['first_name', 'middle_name', 'last_name', 'client_birthdate', 'client_address', 'client_email', 'user_phone'],
-    'submit_Client',
-    'clear_form', 
-    'close_client_modal'
-);
-    
 
     
 
-// Example usage for the second set of inputs, submit button, and clear button
-setupFormValidation(
-    ['first_name-1', 'middle_name-1', 'last_name-1', 'client_birthdate-1', 'client_address-1', 'client_email-1', 'user_phone-1'],
-    'submit_Client-1',
-    'clear_form-1',
-    'close_client_modal-1'
-);
-    
-    
-
-// Example usage for the third set of inputs, submit button, and clear button
-setupFormValidation(
-    ['pet_name', 'pet_type', 'breed', 'gender', 'pet_birthdate', 'age', 'weight', 'sterilization_status'],
-    'submit_pet',
-    'clear_form-2'
-);
-
-// Example usage for the fourth set of inputs, submit button, and clear button
-setupFormValidation(
-    ['pet_name-1', 'pet_type-1', 'breed-1', 'gender-1', 'pet_birthdate-1', 'age-1', 'weight-1', 'sterilization_status-1'],
-    'submit_pet-1',
-    'clear_form-3'
-);
-
-// Example usage for the fifth set of inputs, submit button, and clear button
-setupFormValidation(
-    ['pet_name-2', 'pet_type-2', 'breed-2', 'gender-2', 'pet_birthdate-2', 'age-2', 'weight-2', 'sterilization_status-2'],
-    'submit_pet-2',
-    'clear_form-4'
-);
 
 
 
@@ -557,14 +395,14 @@ setupFormValidation(
 
 
     
-    var firstName = document.getElementById("first_name-1");
-    var middleName = document.getElementById("middle_name-1");
-    var lastName = document.getElementById("last_name-1");
+    var firstName = document.getElementById("First_name-1");
+    var middleName = document.getElementById("Middle_name-1");
+    var lastName = document.getElementById("Last_name-1");
     var suffix = document.getElementById("suffix-1");
-    var birthdate = document.getElementById("client_birthdate-1");
-    var sex = document.getElementById("sex");
-    var email = document.getElementById("client_email-1");
-    var user_phone = document.getElementById('user_phone-1');
+    var birthdate = document.getElementById("Client_birthdate-1");
+    var sex = document.getElementById("Sex");
+    var email = document.getElementById("Client_email-1");
+    var user_phone = document.getElementById('User_phone-1');
     
     
     
@@ -615,7 +453,7 @@ setupFormValidation(
     const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate()).toISOString().split('T')[0];
     const minDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate()).toISOString().split('T')[0];
 
-    const dateInput = document.getElementById('client_birthdate-1');
+    const dateInput = document.getElementById('Client_birthdate-1');
     dateInput.setAttribute('max', maxDate);
     dateInput.setAttribute('min', minDate);
 
@@ -649,36 +487,29 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
+var user_phone = document.getElementById('User_phone-1');
 
-    
 function PhoneNumberInputLimit(inputElement) {
     inputElement.addEventListener('input', function () {
-        if (this.value.length > 11) {
-        this.value = this.value.slice(0, 11);
-    }
+        // Remove any non-digit characters, including 'e'
+        this.value = this.value.replace(/[^\d]/g, '');
 
-    // Ensure the first two characters are '09'
-    if (this.value.length >= 2 && this.value.slice(0, 2) !== '09') {
-        // Adjust the input to start with '09'
-        this.value = '09' + this.value.slice(2);
-    }
-    });
-}
-    
-    
-PhoneNumberInputLimit(user_phone); 
-PhoneNumberInputLimit(user_phone1); 
-    
- function weightInputLimit(inputElement) {
-    inputElement.addEventListener('input', function () {
-        if (inputElement.value.length > 10) {
-            inputElement.value = inputElement.value.slice(0, 10);
+        // Limit to 11 digits
+        if (this.value.length > 11) {
+            this.value = this.value.slice(0, 11);
+        }
+
+        // Ensure the first two characters are '09'
+        if (this.value.length >= 2 && this.value.slice(0, 2) !== '09') {
+            // Adjust the input to start with '09'
+            this.value = '09' + this.value.slice(2);
         }
     });
 }
-    
-weightInputLimit(pet_weightInput);
-weightInputLimit(pet_weightInput1);       
+
+PhoneNumberInputLimit(user_phone);
+
+
         
 
 // Function to check if the value is a valid email format
