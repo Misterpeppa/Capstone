@@ -176,12 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
 
 
-// Function to close all dropdown menus
-function closeDropdownMenus() {
-    document.querySelectorAll('.dropdown-menu').forEach(function (menu) {
-        menu.style.display = 'none';
-    });
-}
+
 
 // Event listener to close dropdown menus when clicking outside
 document.addEventListener('click', function (event) {
@@ -190,18 +185,30 @@ document.addEventListener('click', function (event) {
     }
 });
        
+// Function to close all dropdown menus
+function closeDropdownMenus() {
+    document.querySelectorAll('.dropdown-content').forEach(function (menu) {
+        menu.style.display = 'none';
+    });
+}
 
 document.querySelectorAll('.dropbtn').forEach(function (button) {
     button.addEventListener('click', function (event) {
         event.stopPropagation(); // Prevent the click event from propagating
         const content = this.nextElementSibling;
-        if (content.style.display === 'flex') {
-            content.style.display = 'none';
-        } else {
-            content.style.display = 'flex';
+        const isVisible = window.getComputedStyle(content).display === 'flex';
+        closeDropdownMenus(); // Close all dropdowns first
+        if (!isVisible) {
+            content.style.display = 'flex'; // Show if not already visible
         }
     });
 });
+
+// Close dropdown menus when clicking outside
+document.addEventListener('click', function () {
+    closeDropdownMenus();
+});
+
 
         
 
