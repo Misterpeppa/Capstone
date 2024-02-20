@@ -114,6 +114,21 @@
                                             <h1></h1>
                                             <p></p>
                                         </div>
+                                        <button class="btn edit_prod_detail" id="edit_prod_detail" data-action="Edit"
+                                    type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none">
+                                            <g clip-path="url(#clip0_5345_10250)">
+                                                <path
+                                                    d="M13.5 6.50024L17.5 10.5002M4 20.0003H8L18.5 9.5003C19.0304 8.96987 19.3284 8.25045 19.3284 7.5003C19.3284 6.75016 19.0304 6.03074 18.5 5.5003C17.9696 4.96987 17.2501 4.67188 16.5 4.67188C15.7499 4.67187 15.0304 4.96987 14.5 5.5003L4 16.0003V20.0003Z"
+                                                    stroke="#1C1C1C" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_5345_10250">
+                                                    <rect width="24" height="24" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg></span></button>
                                     </div>
                                     <div class="prod_detail_body">
                                         <div class="batchno_barcode">
@@ -123,6 +138,10 @@
                                             </div>
                                             <div class="bar_code">
                                                 <h1>Product Code</h1>
+                                                <p></p>
+                                            </div>
+                                            <div class="status">
+                                                <h1>Status</h1>
                                                 <p></p>
                                             </div>
                                         </div>
@@ -145,21 +164,7 @@
                                             <p></p>
                                         </div>
                                     </div>
-                                </div><button class="btn edit_prod_detail" id="edit_prod_detail"
-                                    type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                            height="24" viewBox="0 0 24 24" fill="none">
-                                            <g clip-path="url(#clip0_5345_10250)">
-                                                <path
-                                                    d="M13.5 6.50024L17.5 10.5002M4 20.0003H8L18.5 9.5003C19.0304 8.96987 19.3284 8.25045 19.3284 7.5003C19.3284 6.75016 19.0304 6.03074 18.5 5.5003C17.9696 4.96987 17.2501 4.67188 16.5 4.67188C15.7499 4.67187 15.0304 4.96987 14.5 5.5003L4 16.0003V20.0003Z"
-                                                    stroke="#1C1C1C" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5345_10250">
-                                                    <rect width="24" height="24" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg></span></button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -509,12 +514,13 @@
                                           <td>{{ $product->expiration_date }}</td>
                                           <td class="status-td"></td>
                                           <td class="dropdown button-action">
-                                            <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                            <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;" aria-expanded="false" data-bs-toggle="dropdown"
+                                                            type="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                                                 <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
                                                 <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
                                                 <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
                                                 </svg></button>
-                                        <div class="dropdown-content"><div class="button-group">
+                                        <div class="dropdown-content">
                                             <button
 		                                    data-action="AddStock" 
                                             data-product-type="{{ $product->product_type }}"
@@ -574,7 +580,7 @@
                                                 class="btn border-0 archiveButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
                                                 <path d="M17 5C17.5304 5 18.0391 4.78929 18.4142 4.41421C18.7893 4.03914 19 3.53043 19 3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3C1 3.53043 1.21071 4.03914 1.58579 4.41421C1.96086 4.78929 2.46957 5 3 5M17 5H3M17 5V15C17 15.5304 16.7893 16.0391 16.4142 16.4142C16.0391 16.7893 15.5304 17 15 17H5C4.46957 17 3.96086 16.7893 3.58579 16.4142C3.21071 16.0391 3 15.5304 3 15V5M8 9H12" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg> Archive</div></button>
-                                        </div>
+                                        
                                             
                                         </div>
 
@@ -723,7 +729,7 @@
 
                         </div>
 
-                        <div class="w-100" id="batch_product" style="display: none;">
+                        <div class="w-100" id="batch_product" style="display: none; overflow: auto;">
                             <table class="table table-responsive w-100" style="overflow: auto;" id="batch_table">
                                 <thead>
                                     <tr>
@@ -846,17 +852,16 @@
                             <div class="new_input_row">
                                 <div class="form-floating w-100"><select name="produt_type" class="form-select form-select"
                                         data-id="product-categ" id="product-categ-3">
-                                        <option value="none" selected="">Select a Product</option>
+                                        <option value="" selected disabled>Select</option>
                                         <option value="Medicine">Medicine</option>
                                         <option value="Vaccine">Vaccine</option>
                                         <option value="Vitamin">Vitamin</option>
-                                    </select><label class="form-label form-label" for="product-categ">Product
-                                        Category</label>
+                                    </select><label class="form-label form-label" for="product-categ">Product</label>
                                     <div id="error-product_categ-3" class="error-message"><span>Please select a
                                             category.</span></div>
                                 </div>
                                 <div class="form-floating w-100"><input class="form-control w-100" list="options" data-id="product_name" id="editItemName" name="item_name" placeholder="Owner Name">
-								<label class="form-label" for="product_name">Product Name<span>&nbsp;*</span></label>
+								<label class="form-label" for="product_name">Brand<span>&nbsp;*</span></label>
 									<datalist id="options">
 
 									</datalist>
@@ -870,10 +875,19 @@
                                     <div class="error-message" id="error-product_code-3"><span>Please enter product
                                             code.</span></div>
                                 </div>
-                                <div class="form-floating w-100"><input class="form-control" type="text"
-                                        name="batch_no" id="batch_no" data-id="batch_number"
-                                        placeholder="Batch Number"><label class="form-label form-label"
-                                        for="batch_number">Batch Number</label>
+                                <div class="form-floating w-100">
+                                        
+                                        <select class="form-select w-100" name="batch_no" id="batch_no" placeholder="Batch">
+                                            <option value="" selected disabled>Select Batch</option>
+                                            <option value="batch1">Batch 1</option>
+                                            <option value="batch2">Batch 2</option>
+                                            <option value="batch3">Batch 3</option>
+                                            <!-- Add more options as needed -->
+                                        </select>
+
+                                        
+                                        <label class="form-label form-label"
+                                        for="batch_no">Batch Number</label>
                                     <div class="error-message" id="error-batch_number-3"><span>Please enter batch
                                             number.</span></div>
                                 </div>
@@ -912,22 +926,22 @@
                                 <div id="error-prod_description-3" class="error-message"><span>Please enter product
                                         description.</span></div>
                             </div>
-                            <div class="quantity_input_container_edit">
+                            <div class="quantity_input_container_edit d-flex justify-content-end" style="gap: 8px;">
                                 <h1>Quantity</h1>
                                 <div class="form-floating">
                                     <div class="quantity_input"><button class="quantity_minus" type="button"
-                                            onclick="decrementQuantity()">-</button>
+                                            onclick="decrementQuantity3()">-</button>
                                         <input type="number" aria-labelledby="label-quantity" class="input_quantity"
                                             data-id="quantity" id="quantity_input" min="0" name="quantity"
                                             required="" value="0">
                                         <button class="quantity_add" type="button"
-                                            onclick="incrementQuantity()">+</button>
+                                            onclick="incrementQuantity3()">+</button>
                                         <div id="error-quantity-3" class="error-message"><span>Please input a quantity
                                                 value more than 0.</span></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-3 prod_detail_fields_buttons"><button class="btn cancel_edit"
+                            <div class="mb-3 prod_detail_fields_buttons p-0"><button class="btn cancel_edit"
                                     id="cancel_edit" type="button"><span
                                         class="cancel_edit_base">Cancel</span></button>
                                 <button class="btn edit_save_changes" id="save_changes" disabled type="submit"><span
@@ -1052,9 +1066,9 @@
     </div>
     <div class="modal fade" role="dialog" tabindex="-1" id="add_product_modal-1">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content add_client_modal">
+            <div class="modal-content new_product_modal">
                 <div class="modal-header">
-                    <h1 class="modal-title">Add New Product</h1><button class="btn-close" aria-label="Close"
+                    <h1 class="modal-title">Add New Product</h1><button class="btn-close" onclick="clearForm1()" aria-label="Close"
                         data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body">
@@ -1065,23 +1079,22 @@
                                 <div class="form-floating" style="width: 100%;"><select
                                         class="form-select form-select" name="product_type"
                                         data-id="product-categ" id="product-categ-1">
-                                        <option value="none" selected="">Select a product</option>
+                                        <option value="none" selected="">Select</option>
                                         <option value="Medicine">Medicine</option>
                                         <option value="Vaccine">Vaccine</option>
                                         <option value="Vitamin">Vitamin</option>
-                                    </select><label class="form-label form-label" for="product-categ">Product
-                                        Category <span>&nbsp;*</span></label>
+                                    </select><label class="form-label form-label" for="product-categ">Category <span>&nbsp;*</span></label>
                                     <div id="error-product_categ-1" class="error-message"><span>Please select a
                                             category.</span></div>
                                 </div>
                                 <div class="form-floating" style="width: 100%;">
 
                                         <input class="form-control w-100" list="options" data-id="product_name" id="product_name-1" name="item_name" placeholder="Owner Name">
-								<label class="form-label" for="product_name">Product Name<span>&nbsp;*</span></label>
+								<label class="form-label" for="product_name">Name<span>&nbsp;*</span></label>
 									<datalist id="options">
 
 									</datalist>
-                                    <div id="error-product_name-1" class="error-message"><span>Please select product
+                                    <div id="error-product_name-1" class="error-message"><span>Please input product
                                             name.</span></div>
                                 </div>
                                 <div class="form-floating" style="width: 100%;"><input
@@ -1131,11 +1144,11 @@
                             <div class="form-floating" style="width:100%;">
                                 <textarea class="form-control" id="prod_description-1" name="prod_desc" data-id="prod_description"
                                     placeholder="Product Description"></textarea><label class="form-label form-label"
-                                    for="prod_description">Product Description <span>&nbsp;*</span></label>
+                                    for="prod_description">Description <span>&nbsp;*</span></label>
                                 <div id="error-prod_description-1" class="error-message"><span>Please enter product
                                         description.</span></div>
                             </div>
-                            <div class="quantity_input_container">
+                            <div class="quantity_input_container d-flex justify-content-end">
                                 <h1>Quantity <span style="color: var(--bs-red);">&nbsp;*</span></h1>
                                 <div class="form-floating">
                                     <div class="quantity_input"><button class="quantity_minus" type="button"
@@ -1152,8 +1165,8 @@
                             </div>
                         </div>
                 </div>
-                <div class="modal-footer add_product_button"><button class="btn clear_form" type="button"
-                        role="button" aria-label="Clear Form" onclick="clearForm1()"><span
+                <div class="modal-footer add_product_button"><button class="btn clear_form" type="reset"
+                        role="button" aria-label="Clear Form"><span
                             class="clear_form_base">Clear Form</span></button>
                     <button class="btn disabled submit_product" id="submit_product-1" type="submit"
                         disabled=""><span class="submit_product_base">Submit</span></button>
@@ -1181,24 +1194,22 @@
                     <div class="mb-3 stock_input_container">
                         <div class="stock_image_container"><span class="product_name" id="addstockItemName">Product Name</span></div>
                         <div class="new_input_row">
-                            <div class="form-floating batch_number"><input id="batch_no_1" name="batch_no"
-                                    class="form-control" type="text" data-id="batch_no"
-                                    placeholder="Batch Number" /><label class="form-label form-label"
-                                    for="batch_number">Batch Number</label>
-                                <div id="error-batch_number-2" class="error-message"><span>Please enter batch
-                                        number.</span></div>
+                            <div class="form-floating batch_number"><input id="prod_code" name="prod_code"
+                                    class="form-control" type="text" data-id="prod_code"
+                                    placeholder="Product Code" readonly><label class="form-label"
+                                    for="batch_number">Product Code</label>
                             </div>
                         </div>
                         <div class="new_input_row">
-                            <div class="form-floating" ><input id="manufacturing_date-1"
+                            <div class="form-floating w-100" ><input id="manufacturing_date-1"
                                     name="manufacturing_date" class="form-control"
                                     data-id="manufacturing_date" placeholder="Manufactured Date"
-                                    type="date" /><label class="form-label form-label"
+                                    type="date" /><label class="form-label"
                                     for="manufacturing_date">Manufactured Date</label>
                                 <div id="error-manufactured_date-2" class="error-message"><span>Please enter the
                                         manufactured date.</span></div>
                             </div>
-                            <div class="form-floating" ><input id="expired_date"
+                            <div class="form-floating w-100" ><input id="expired_date"
                                     name="expiration_date" class="form-control"
                                     data-id="expired_date" placeholder="Expiration Date"
                                     type="date" /><label class="form-label form-label"
@@ -1206,7 +1217,7 @@
                                 <div id="error-expiration_date-2" class="error-message"><span>Please enter the
                                         expiration date.</span></div>
                             </div>
-                            <div class="form-floating" ><input id="date_stocked1"
+                            <div class="form-floating w-100" ><input id="date_stocked1"
                                     name="date_stocked" class="form-control form-control" data-id="date_stocked1"
                                     placeholder="Expiration Date" type="date" /><label
                                     class="form-label form-label" for="datestocked">Date Stocked</label>
@@ -1220,8 +1231,8 @@
                                 <div class="quantity_input">
                                     <button class="quantity_minus" onclick="decrementQuantity2()"
                                         type="button">-</button>
-                                    <input id="deduct_quantity_input" class="input_quantity" type="number"
-                                        aria-labelledby="label-quantity" data-id="quantity-2" min="0"
+                                    <input id="quantity-2" class="input_quantity" type="number"
+                                        aria-labelledby="label-quantity" data-id="quantity" min="0"
                                         name="quantity" required value="0" />
                                     <button class="quantity_add" onclick="incrementQuantity2()"
                                         type="button">+</button>
@@ -1230,10 +1241,11 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="modal-footer add_stock_buttons">
-                    <button class="btn cancel_btn" id="cancel_btn" onClick="cancelStock()" data-bs-dismiss="modal" type="button" role="button" aria-label="Cancel"><span
+                    <button class="btn cancel_btn" id="cancel_btn" data-bs-dismiss="modal" type="reset" role="button" aria-label="Cancel"><span
                             class="cancel_btn_base">Cancel</span></button>
                     <button id="add_stock" class="btn add_stock" type="submit" disabled><span class="add_stock_base">Add
                             Stock</span></button>
@@ -1254,35 +1266,42 @@
                 <div class="modal-body add_stock_modal_body w-100">
                     <form action="{{ route('deduct') }}" method="POST">
                     @csrf
-                    <input type="text" name="product_type" id="deductproduct_type">
-                    <input type="hidden" name="id" id="deductid">
+                    
                     <div class="mb-3 stock_input_container">
-                        <div class="stock_image_container"><span class="product_name" id="productName">Product Name</span></div>
-                        
+                        <div class="stock_image_container"><span class="product_name" id="productName">Product Name</span><span name="product_type" class="product_category" id="deductproduct_type"></span></div>
+                        <div class="form-floating w-50"><select class="form-select" id="product_batch_no" placeholder="Batch">
+                                <option value="" selected disabled>Select Batch</option>
+                                <option value="batch1">Batch 1</option>
+                                <option value="batch2">Batch 2</option>
+                                <option value="batch3">Batch 3</option>
+                                <!-- Add more options as needed -->
+                            </select>
+
+                        <label class="form-label" for="product_batch_no">Batch</label></div>
                         
                         <div class="quantity_input_container d-flex justify-content-center">
-                            <h1>Quantity</h1>
-                            <div class="form-floating">
-                                <div class="quantity_input deduct">
-                                    <button class="quantity_minus" onclick="decrementQuantity2()"
-                                        type="button">-</button>
-                                    <input id="quantity-2" class="input_quantity" type="number"
-                                        aria-labelledby="label-quantity" data-id="quantity-2" min="0"
-                                        name="quantity" required value="0" />
+                            
+                        <div class="quantity_input deduct ">
+                                    <button class="quantity_minus"
+                                        type="button" onclick="decrementQuantity()">-</button>
+                                        <div class="form-floating">
+                                    <input id="deduct_quantity_input" class="form-control input_quantity" type="number"
+                                        aria-labelledby="label-quantity" data-id="deduct_quantity_input" min="0"
+                                        name="quantity" required value="0" placeholder="Quantity">
+                                        <label class="form-label" for="deduct_quantity_input">Quantity</label></div>
 
-                                    <button class="quantity_add" onclick="incrementQuantity2()"
-                                        type="button">+</button>
+                                    <button class="quantity_add"
+                                        type="button" onclick="incrementQuantity()">+</button>
                                     <div id="error-quantity-2" class="error-message"><span>Please input a quantity
                                             value more than 0.</span></div>
-                                </div>
-                            </div>
+                                </div> 
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer deduct_stock_buttons">
                     <button class="btn cancel_btn" id="cancel_btn" onClick="cancelDeductStock()" data-bs-dismiss="modal" type="button" role="button" aria-label="Cancel"><span
                             class="cancel_btn_base">Cancel</span></button>
-                    <button id="deduct_stock" class="btn add_stock" data-bs-dismiss="modal" type="submit"><span class="add_stock_base">Deduct
+                    <button id="deduct_stock" class="btn add_stock" data-bs-dismiss="modal" type="submit" disabled><span class="add_stock_base">Deduct
                             Stock</span></button>
                 </div>
                 </form>
@@ -1376,7 +1395,7 @@
                 <div class="modal-footer discard_footer"><button class="btn return_btn" id="return_btn"
                         data-bs-dismiss="modal" type="button"><span
                             class="return_btn_base">Return</span></button><button class="btn discard_btn"
-                        id="discard_btn" type="button"><span class="discard_btn_base">Discard</span></button>
+                        id="discard_btn" type="reset"><span class="discard_btn_base">Discard</span></button>
                 </div>
             </div>
         </div>
@@ -1617,7 +1636,7 @@
                 'item_name' :$(this).data('item_name'),
                 };
             $('#productName').text(invData.item_name);
-            $('#deductproduct_type').val(product_type);
+            $('#deductproduct_type').text('(' + product_type + ')');
             $('#deductid').val(id);
 
             // Send an AJAX request to the Laravel controller
@@ -1694,18 +1713,38 @@
     </script>
 
 <script>
-            var SelectAll = document.getElementById("SelectAll");
-
-            SelectAll.addEventListener("click", function () {
+    var SelectAll = document.getElementById("SelectAll");
     var tableBody = document.getElementById('inventory_table_body');
     var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
 
-    rowCheckboxes.forEach(function (checkbox) {
-        checkbox.checked = !checkbox.checked; // Toggle the state
+    // Function to toggle all checkboxes
+    function toggleAllCheckboxes(checked) {
+        rowCheckboxes.forEach(function (checkbox) {
+            checkbox.checked = checked;
+        });
+    }
+
+    // Click event listener for "SelectAll"
+    SelectAll.addEventListener("click", function () {
+        toggleAllCheckboxes(SelectAll.checked);
     });
 
-});
-    </script>
+    // Click event listener for individual checkboxes
+    rowCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("click", function () {
+            var allChecked = true;
+            rowCheckboxes.forEach(function (cb) {
+                if (!cb.checked) {
+                    allChecked = false;
+                }
+            });
+            SelectAll.checked = allChecked;
+        });
+    });
+</script>
+
+
+
 
     <script>
  function enableSaveChanges() {
@@ -1721,22 +1760,17 @@
 
   var save_changes = document.getElementById("save_changes");
 
-  // Add additional validation conditions as needed
-  if (
-    product_categ.trim() !== "" &&
-    editItemName.trim() !== "" &&
-    product_code.trim() !== "" &&
-    batch_number.trim() !== "" &&
-    manufactured_date.trim() !== "" &&
-    expiration_date.trim() !== "" &&
-    datestocked.trim() !== "" &&
-    prod_description.trim() !== "" &&
-    quantity.trim() >= 1
-  ) {
-    save_changes.removeAttribute("disabled");
-  } else {
-    save_changes.setAttribute("disabled", true);
-  }
+  // Check if any field has changed its value or its value has been removed
+  var anyChanges = false;
+  var fieldsToCheck = [product_categ, editItemName, product_code, batch_number, manufactured_date, expiration_date, datestocked, prod_description, quantity];
+  fieldsToCheck.forEach(function(fieldValue) {
+    if (fieldValue.trim() !== "") {
+      anyChanges = true;
+    }
+  });
+
+  // Enable or disable the Save Changes button based on changes
+  save_changes.disabled = !anyChanges;
 
   // Logging values for debugging
   console.log('product-categ-3:', product_categ);
@@ -1749,9 +1783,7 @@
   console.log('prod_description', prod_description);
   console.log('quantity', quantity);
   console.log('save_changes disabled:', save_changes.disabled);
-
 }
-
 
 // Example: Call enableSaveChanges() on input change events
 document.getElementById("product-categ-3").addEventListener("change", enableSaveChanges);
@@ -1763,6 +1795,7 @@ document.getElementById("expiry_date").addEventListener("input", enableSaveChang
 document.getElementById("date_stocked").addEventListener("input", enableSaveChanges);
 document.getElementById("prod_desc").addEventListener("input", enableSaveChanges);
 document.getElementById("quantity_input").addEventListener("input", enableSaveChanges);
+
 </script>
 
 
