@@ -1,13 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
     function countDataRows() {
         var upcomingRowCount = $('#appointment_table_body tr').length;
-        var historyRowCount = $('#appointment_pending_table_body tr').length;
+        var recentRowCount = $('#appointment_pending_table_body tr').length;
         var rejectedRowCount = $('#appointment_rejected_table_body tr').length;
+        var historyCount = $('#appointment_history_table_body tr').length;
 
         // Update the counters with the counts
         $('#upcoming-counter').text(upcomingRowCount);
-        $('#history-counter').text(historyRowCount);
+        $('#recent-counter').text(recentRowCount);
         $('#rejected-counter').text(rejectedRowCount);
+        $('#history-counter').text(historyCount);
     }
 
     // Call the function when needed, for example, on page load
