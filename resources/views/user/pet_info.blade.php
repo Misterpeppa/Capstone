@@ -226,14 +226,18 @@
 																</defs>
 															</svg>&nbsp;Edit</button>
 														<button class="dropdown-item add_appointment" data-action="Create_appointment" id="add_appointment">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<g clip-path="url(#clip0_6230_1769)">
-																	<path d="M9 12H15M12 9V15M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
-																<defs>
-																	<clipPath id="clip0_6230_1769">
-																		<rect width="24" height="24" fill="white" /> </clipPath>
-																</defs>
-															</svg>&nbsp;Add Appointment</button>
+														<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
+  <path d="M16 3v4" />
+  <path d="M8 3v4" />
+  <path d="M4 11h16" />
+  <path d="M11 15h1" />
+  <path d="M12 15v3" />
+</svg>
+
+
+Add Appointment</button>
 													</div>
 												</div>
 											</div>
@@ -308,7 +312,7 @@
 
 							<div id="view_pet" class="customer_side">
 								<div class="view_pet_back_btn_container">
-									<button class="btn edit_pet_back_btn" id="view_pet_back_btn" type="button"><span class="edit_pet_back_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+									<button class="btn edit_pet_back_btn" id="view_pet_back_btn" data-container-id="{{ $petrecord->id }}" type="button"><span class="edit_pet_back_btn_base"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
 		<g clip-path="url(#clip0_6089_3068)" filter="url(#filter0_d_6089_3068)">
 			<path d="M5.5 12H19.5M5.5 12L11.5 18M5.5 12L11.5 6" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 		</g>
@@ -364,7 +368,7 @@
 											</div>
 										</div>
 									</div>
-									<button class="btn edit_pet_btn" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+									<button class="btn edit_pet_btn" id="edit_pet_btn" data-action="Edit_pet" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 										<g clip-path="url(#clip0_6127_11956)">
 											<path d="M13.5 6.50024L17.5 10.5002M4 20.0003H8L18.5 9.5003C19.0304 8.96987 19.3284 8.25045 19.3284 7.5003C19.3284 6.75016 19.0304 6.03074 18.5 5.5003C17.9696 4.96987 17.2501 4.67188 16.5 4.67188C15.7499 4.67187 15.0304 4.96987 14.5 5.5003L4 16.0003V20.0003Z" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 										</g>
@@ -556,7 +560,7 @@
 							<div class="detail_body">
 								<div class="pet_details_container">
 									<div class="align-self-stretch form-floating">
-										<input type="text" class="form-control">
+										<input type="text" class="form-control" id="edit_pet_name" style="text-transform: capitalize;">
 										<label class="form-label" for="pet_name">Pet Name</label>
 										<div class="error-message"><span>• Error Message</span></div>
 										<div class="guide-message"><span>• Guide Message</span></div>
@@ -573,19 +577,19 @@
 									</div>
 									<div class="new_input_row">
 										<div class="form-floating" style="width: 100%;">
-											<input class="form-control" type="date">
+											<input class="form-control" type="date" id="edit_birthdate">
 											<label class="form-label">Birth Date</label>
 											<div class="error-message"></div>
 											<div class="guide-message"></div>
 										</div>
 										<div class="form-floating" style="width: 100%;">
-											<input type="text" class="form-control">
+											<input type="text" class="form-control" id="edit_pet_age" readonly>
 											<label class="form-label">Age</label>
 										</div>
 									</div>
 									<div class="new_input_row">
 										<div class="form-floating w-50">
-											<select class="form-select" aria-label="Floating label select example">
+											<select class="form-select" aria-label="Floating label select example" id="edit_pet_type">
 												<option value="" selected="">Pet Type</option>
 												<option value="Dog">Dog</option>
 												<option value="Cat">Cat</option>
@@ -596,7 +600,7 @@
 										</div>
 										<div class="new_inputs_row">
 											<div class="form-floating w-100">
-												<select class="form-select" id="Breed" aria-label="Floating label select example">
+												<select class="form-select" id="edit_Breed" aria-label="Floating label select example">
 													<option value="" selected="">Breed</option>
 													<option value="Other">Other</option>
 												</select>
@@ -618,7 +622,12 @@
 										<div id="error-sterilization_status_edit" class="error-message"><span>• Please select a sterilization status.</span></div>
 										
 									</div>
-									<button class="btn submit_pet" style="align-self: end;" type="submit"><span class="submit_pet_base">Submit</span></button>
+
+									<div class="mb-3 prod_detail_fields_buttons">
+										<button id="Cancel_edit" class="btn cancel_edit" type="button"><span class="cancel_edit_base">Cancel</span></button>
+										<button id="save_changes" class="btn edit_save_changes" type="submit" disabled=""><span class="edit_save_changes_base">Save Changes</span></button>
+									</div>
+									
 									</form>
 								</div>
 							</div>
@@ -925,7 +934,7 @@
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
 									<input class="form-control form-control" type="text" data-id="pet_name" name="pet_name" id="pet_name-1" maxlength="255" placeholder="Pet Name">
-									<label class="form-label form-label" for="pet_name">Pet Name<span>&nbsp;*</span></label>
+									<label class="form-label form-label" for="pet_name-1">Pet Name<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_name-1"><span>• Please enter pet name.</span></div>
 									<div class="guide-message" id="guide-pet_name-1"><span>• Please enter pet name.</span></div>
 								</div>
@@ -1002,6 +1011,61 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="modal fade show" role="dialog" tabindex="-1" id="save_changes_success">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content success_modal">
+				<div class="modal-header success_header">
+					<div class="success_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_5693_10654)">
+    <path d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#5BB85A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5693_10654">
+      <rect width="32" height="32" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></div>
+				</div>
+				<div class="modal-body success_message">
+					<div>
+						<h1>Success!</h1>
+						<p>Your changes have been successfully saved.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade show" role="dialog" tabindex="-1" id="Edit_discard">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content discard_modal">
+				<div class="modal-header discard_header">
+					<div class="discard_icon_container"><span class="discard_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_5693_21111)">
+    <path d="M13.3333 13.3333L18.6667 18.6667M18.6667 13.3333L13.3333 18.6667M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#DA534F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5693_21111">
+      <rect width="32" height="32" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></div>
+				</div>
+				<div class="modal-body discard_message">
+					<div>
+						<h1>Discard changes?</h1>
+						<p>Any unsaved progress will be lost.</p>
+					</div>
+				</div>
+				<div class="modal-footer discard_footer">
+					<button class="btn return_btn" data-bs-dismiss="modal" id="return_btn" type="button"><span class="return_btn_base">Return</span></button>
+					<button class="btn discard_btn" id="discard_btn" type="button" data-bs-dismiss="modal"><span class="discard_btn_base">Discard</span></button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
@@ -1107,6 +1171,10 @@ calendar.render();
 		$('#editId').val(id);
 	});
 	$('.Edit_pet').click(function() {
+		const id = $(this).data('container-id');
+		$('#editId').val(id);
+	});
+	$('.edit_pet_btn').click(function() {
 		const id = $(this).data('container-id');
 		$('#editId').val(id);
 	});
@@ -1236,6 +1304,8 @@ calendar.render();
 
 
 <script>
+
+
 		function enableNextBtn() {
 
 
@@ -1326,6 +1396,48 @@ function displayDetails() {
   confirmSurgeryType.innerText = surgeryTypeSelect.value;
   confirm_additional_Notes.innerText = floatingTextareaInput.value;
 }
+
+
+
+function enableSaveChangesButton() {
+    var edit_pet_name = document.getElementById("edit_pet_name").value;
+    var pet_sex = document.getElementById("pet_sex").value;
+    var edit_birthdate = document.getElementById("edit_birthdate").value;
+    var edit_pet_type = document.getElementById("edit_pet_type").value;
+    var edit_Breed = document.getElementById("edit_Breed").value;
+
+    var edit_save_changes = document.getElementById("save_changes");
+
+    if (
+        edit_pet_name.trim() !== "" ||
+        pet_sex.trim() !== "" ||
+        edit_birthdate.trim() !== "" ||
+        edit_pet_type.trim() !== "" ||
+        edit_Breed.trim() !== ""
+    ) {
+        edit_save_changes.disabled = false;
+    } else {
+        edit_save_changes.disabled = true;
+    }
+}
+
+// Attach event listeners to input fields
+document.getElementById("edit_pet_name").addEventListener("change", enableSaveChangesButton);
+document.getElementById("pet_sex").addEventListener("change", enableSaveChangesButton);
+document.getElementById("edit_birthdate").addEventListener("change", enableSaveChangesButton);
+document.getElementById("edit_pet_type").addEventListener("change", enableSaveChangesButton);
+document.getElementById("edit_Breed").addEventListener("change", enableSaveChangesButton);
+
+var save_changes = document.getElementById("save_changes");
+var save_changes_success = new bootstrap.Modal(document.getElementById('save_changes_success'));
+save_changes.addEventListener('click', function () {
+	save_changes_success.show();
+	setTimeout(function () {
+        save_changes_success.hide();
+    }, 2000);
+      });  
+
+
 
 
 
