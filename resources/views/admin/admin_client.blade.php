@@ -1760,19 +1760,37 @@
 
     });
     </script>
-    <script>
-            var SelectAll = document.getElementById("SelectAll");
-
-            SelectAll.addEventListener("click", function () {
+<script>
+    var SelectAll = document.getElementById("SelectAll");
     var tableBody = document.getElementById('client_table_body');
     var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
 
-    rowCheckboxes.forEach(function (checkbox) {
-        checkbox.checked = !checkbox.checked; // Toggle the state
+    // Function to toggle all checkboxes
+    function toggleAllCheckboxes(checked) {
+        rowCheckboxes.forEach(function (checkbox) {
+            checkbox.checked = checked;
+        });
+    }
+
+    // Click event listener for "SelectAll"
+    SelectAll.addEventListener("click", function () {
+        toggleAllCheckboxes(SelectAll.checked);
     });
 
-});
-    </script>
+    // Click event listener for individual checkboxes
+    rowCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("click", function () {
+            var allChecked = true;
+            rowCheckboxes.forEach(function (cb) {
+                if (!cb.checked) {
+                    allChecked = false;
+                }
+            });
+            SelectAll.checked = allChecked;
+        });
+    });
+</script>
+
     <script>
 function enableSubmitBtn() {
   var first_name1 = document.getElementById("first_name-1").value;
