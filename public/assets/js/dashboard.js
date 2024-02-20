@@ -332,7 +332,6 @@ function enableSubmit() {
 
 
   var first_name = document.getElementById("Fname").value;
-  var middle_name = document.getElementById("Mname").value;
   var last_name = document.getElementById("Lname").value;
   var Client_birthdate = document.getElementById("Client_birthdate").value;
   var client_address = document.getElementById("Client_address").value;
@@ -344,7 +343,6 @@ function enableSubmit() {
   // Add additional validation conditions as needed
   if (
     first_name.trim() !== "" &&
-    middle_name.trim() !== "" &&
     last_name.trim() !== "" &&
     Client_birthdate.trim() !== "" &&
     client_address.trim() !== "" &&
@@ -358,7 +356,6 @@ function enableSubmit() {
 }
 
 document.getElementById("Fname").addEventListener("input", enableSubmit);
-document.getElementById("Mname").addEventListener("input", enableSubmit);
 document.getElementById("Lname").addEventListener("input", enableSubmit);
 document.getElementById("Client_birthdate").addEventListener("input", enableSubmit);
 document.getElementById("Client_address").addEventListener("input", enableSubmit);
