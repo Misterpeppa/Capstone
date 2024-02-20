@@ -583,7 +583,7 @@ Add Appointment</button>
 											<div class="guide-message"></div>
 										</div>
 										<div class="form-floating" style="width: 100%;">
-											<input type="text" class="form-control" id="edit_pet_age" readonly>
+											<input type="text" class="form-control" id="edit_pet_age" readonly disabled>
 											<label class="form-label">Age</label>
 										</div>
 									</div>
@@ -617,7 +617,7 @@ Add Appointment</button>
 										</div>
 									</div>
 									<div class="form-floating" style="width:100%;">
-										<input class="form-select" name="sterilization" id="sterilization_status_edit" placeholder="Sterilization Status" readonly/>
+										<input class="form-select" name="sterilization" id="sterilization_status_edit" disabled placeholder="Sterilization Status" readonly/>
 										<label class="form-label" for="sterilization_status_edit">Sterilization Status</label>
 										<div id="error-sterilization_status_edit" class="error-message"><span>• Please select a sterilization status.</span></div>
 										

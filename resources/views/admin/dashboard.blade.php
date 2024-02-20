@@ -123,9 +123,6 @@
 						<table class="table table-responsive w-100 mt-3 ">
 							<thead>
 								<tr>
-									<th>
-										<input id="SelectAllClients" type="checkbox" class="checkbox">
-									</th>
 									<th>No.</th>
 									<th>Client</th>
 									<th>Patient Info</th>
@@ -137,7 +134,6 @@
 							<tbody id="dashboard_appointments_table_body">
 							@foreach ($appointment_approved as $index => $appointment)
 								<tr>
-								<td > <input type="checkbox" class="checkbox"></td> 
 								<td >{{ $index + 1 }}</td>
 								<td >{{ $appointment->clients->first_name }} {{ $appointment->clients->last_name }}</td> 
 								<td >{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
@@ -201,9 +197,6 @@
 					<table class="table table-responsive mt-3 w-100">
 						<thead>
 							<tr>
-								<th>
-									<input id="SelectAllProducts" type="checkbox" class="checkbox">
-								</th>
 								<th>No.</th>
 								<th>Product Name</th>
 								<th>Category</th>
@@ -216,7 +209,6 @@
 						<tbody id="dashboard_product_table_body" class="dashboard_table_body">
 							@foreach ($products as $product)
                             <tr>
-							<td><input type="checkbox" class="checkbox"></td>
                             <td >{{ $loop->index + 1 }}</td>
                             <td >{{ $product->item_name }}</td> 
 							<td>{{ $product->item_name }}</td>
@@ -224,8 +216,6 @@
 							<td>{{ $product->info_quantity }}</td>
 							<td>{{ $product->date_stocked }}</td>
 							<td>{{ $product->expiration_date }}</td>
-							
-                            
                             </tr>
                         @endforeach 
                         </tbody>

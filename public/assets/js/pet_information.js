@@ -305,7 +305,7 @@ function setupAgeCalculation(birthdateId, ageId, petTypeId) {
   });
 
   // Enable age input initially
-  ageInput.disabled = false;
+  ageInput.disabled = true;
 
   function calculateAge(birthdate, petType) {
       const today = new Date();
@@ -366,6 +366,8 @@ setupAgeCalculation('pet_birthdate', 'pet_age', 'pet_type');
 
 // Example usage for the second set of IDs
 setupAgeCalculation('pet_birthdate-1', 'age-1', 'pet_type-1');
+
+setupAgeCalculation('edit_birthdate', 'edit_pet_age', 'edit_pet_type');
 
 submit_Pet.addEventListener('click', function (event) {
     //paalis nalang nito if needed
