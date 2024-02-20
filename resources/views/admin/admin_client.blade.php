@@ -100,7 +100,7 @@
   </defs>
 </svg><span class="filter_btn_base">Sort By</span>
                                     </button>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-content">
                                         <li class="dropdown-item ">
                                             <input class="form-check-input me-1" type="radio" id = "radio1"
                                                 name="sortBy"{{ request()->input('sortBy', '0') == '0' ? 'checked' : '' }}  value="0">
@@ -337,7 +337,7 @@
                                                                     d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z"
                                                                     fill="#045B62" />
                                                             </svg></button>
-                                                            <div class="dropdown-menu client_menu"><div class="button-group">
+                                                            <div class="dropdown-content client_menu"><div class="button-group">
                                                             <button
                                                 data-action="View"
                                                 data-container-id="{{ $clientInfo->id }}"
@@ -712,7 +712,7 @@
                                                     d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z"
                                                     fill="#045B62"></path>
                                             </svg></span></button>
-                                    <div class="dropdown-menu more_button" data-bs-popper="none"><a
+                                    <div class="dropdown-content more_button" data-bs-popper="none"><a
                                             class="dropdown-item" id="View"><svg
                                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none">
