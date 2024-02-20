@@ -531,17 +531,21 @@
   </script>  
   @endif
   <script>
-            var SelectAll = document.getElementById("Select_All_Archive");
-
-            SelectAll.addEventListener("click", function () {
-    var tableBody = document.getElementById('archive_table_body');
+// Function to toggle all checkboxes
+function toggleAllCheckboxes(tableBody, selectAllCheckbox) {
     var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
-
     rowCheckboxes.forEach(function (checkbox) {
-        checkbox.checked = !checkbox.checked; // Toggle the state
+        checkbox.checked = selectAllCheckbox.checked;
     });
+}
 
+var selectAll = document.getElementById("Select_All_Archive");
+var archivedTableBody = document.getElementById('archive_table_body');
+
+selectAll.addEventListener("click", function () {
+    toggleAllCheckboxes(archivedTableBody, selectAll);
 });
+
     </script>
 
   <script>
