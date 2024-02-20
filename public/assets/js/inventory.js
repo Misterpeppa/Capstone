@@ -395,11 +395,7 @@ function submitFormData(formData) {
       $("#add_product_discard").hide();
     });
 
-    // When the "Add Product" menu item is clicked, show the modal
-    $("#add_Product_btn_1").click(function () {
-      // Trigger the modal manually
-      $("#add_product_modal-1").modal("show");
-    });
+
 
     $("#edit_save_changes").click(function () {
       $("#save_changes_success").show();
