@@ -612,6 +612,12 @@
 											</div>
 										</div>
 									</div>
+									<div class="form-floating" style="width:100%;">
+										<input class="form-select" name="sterilization" id="sterilization_status_edit" placeholder="Sterilization Status" readonly/>
+										<label class="form-label" for="sterilization_status_edit">Sterilization Status</label>
+										<div id="error-sterilization_status_edit" class="error-message"><span>• Please select a sterilization status.</span></div>
+										
+									</div>
 									<button class="btn submit_pet" style="align-self: end;" type="submit"><span class="submit_pet_base">Submit</span></button>
 									</form>
 								</div>
