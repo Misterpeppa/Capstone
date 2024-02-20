@@ -820,40 +820,42 @@ rejection_reason1.addEventListener('change', function () {
 
 
 
-var selectAllapproved = document.getElementById("selectAll_approve");
+        
+        
 
-selectAllapproved.addEventListener("click", function () {
-    var tableBody = document.getElementById('approvedTableBody');
+
+
+// Function to toggle all checkboxes
+function toggleAllCheckboxes(tableBody, selectAllCheckbox) {
     var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
-
     rowCheckboxes.forEach(function (checkbox) {
-        checkbox.checked = !checkbox.checked; // Toggle the state
+        checkbox.checked = selectAllCheckbox.checked;
     });
+}
 
+var selectAllApproved = document.getElementById("selectAll_approve");
+var approvedTableBody = document.getElementById('approvedTableBody');
+
+selectAllApproved.addEventListener("click", function () {
+    toggleAllCheckboxes(approvedTableBody, selectAllApproved);
 });
 
+// Click event listener for "selectAll_pending"
+var selectAllPending = document.getElementById("selectAll_pending");
+var pendingTableBody = document.getElementById('pendingTableBody');
 
-var selectAllpending = document.getElementById("selectAll_pending");
-
-selectAllpending.addEventListener("click", function () {
-    var tableBody = document.getElementById('pendingTableBody');
-    var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
-
-    rowCheckboxes.forEach(function (checkbox) {
-        checkbox.checked = !checkbox.checked; // Toggle the state
-    });
+selectAllPending.addEventListener("click", function () {
+    toggleAllCheckboxes(pendingTableBody, selectAllPending);
 });
 
-var selectAllreject = document.getElementById("selectAll_rejected");
+// Click event listener for "selectAll_rejected"
+var selectAllRejected = document.getElementById("selectAll_rejected");
+var rejectedTableBody = document.getElementById('rejectedTableBody');
 
-selectAllreject.addEventListener("click", function () {
-    var tableBody = document.getElementById('rejectedTableBody');
-    var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
-
-    rowCheckboxes.forEach(function (checkbox) {
-        checkbox.checked = !checkbox.checked; // Toggle the state
-    });
+selectAllRejected.addEventListener("click", function () {
+    toggleAllCheckboxes(rejectedTableBody, selectAllRejected);
 });
+
 
 
 function setupEmailValidation() {
