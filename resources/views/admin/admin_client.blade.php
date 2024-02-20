@@ -1089,7 +1089,7 @@
                 </div>
                 <div class="modal-footer add_product_button">
                     <button class="btn clear_form" id="clear_form-1" aria-label="Clear Form" role="button"
-                        type="button"><span class="clear_form_base">Clear Form</span></button>
+                        type="reset"><span class="clear_form_base">Clear Form</span></button>
                     <button class="btn submit_product" id="submit_client-1" type="submit" form="add_client_form-1" disabled><span
                             class="submit_product_base">Submit</span></button>
                 </div>

@@ -436,11 +436,7 @@ function archivePetCard(petCardId) {
         user_phone.value = '';
     }
     
-    // Assuming you have a button with the ID "clear_form-1"
-    var clearButton = document.getElementById('clear_form-1');
-    
-    // Add click event listener to the clear button
-    clearButton.addEventListener('click', clearForm);
+
 
     // Assuming you have a button with the class "btn-close"
     var closeButton = document.getElementById('close_addClient');
