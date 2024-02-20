@@ -21,7 +21,14 @@ body{
   padding: 0;
 }
 
-
+.form-label {
+  color: rgba(28, 28, 28, 0.50);
+  font-family: Inter;
+  font-size: auto;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal ;
+}
 .colButton{
   display: flex;
   align-items: center;
@@ -1340,7 +1347,9 @@ input[type=number] {
   .modal-header {
     border-bottom: none;
   }
-  
+  .modal-body{
+    width: 100%;
+  }
   .modal-header.success_header, .modal-header.discard_header, .modal-header.archive_header {
     display: flex;
     align-items: center;
@@ -1366,10 +1375,32 @@ input[type=number] {
     align-items: center;
     justify-content: center;
   }
-  
-  .modal-content.add_client_modal, .modal-content.add_appointment_modal {
+  .modal-content.new_product_modal{
+    width: 750px;
+    display: flex;
+    padding: var(--spacing-spacing-m, 24px);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-l, 32px);
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-main-neutral-light, #F5F5F5);
+    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+  }
+
+  .modal-content.add_client_modal {
     display: flex;
     width: 800px!important;
+    padding: var(--spacing-spacing-m, 24px);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-l, 32px);
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-main-neutral-light, #F5F5F5);
+    box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+  }
+  .modal-content.add_appointment_modal {
+    display: flex;
+    width: 100%!important;
     padding: var(--spacing-spacing-m, 24px);
     flex-direction: column;
     align-items: center;
@@ -2149,7 +2180,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     inset: 0px 0px auto auto;
     margin: 0px;
     transform: translate3d(-30px, 15px, 0px);
-    z-index: 999;
+    z-index: 999 !important;
     padding: var(--spacing-spacing-xxs, 8px);
     flex-direction: column;
     align-items: flex-start;
@@ -2241,7 +2272,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     flex-shrink: 0;
   }
   
-  .success_message h1, .discard_message h1 {
+  .success_message h1 {
     align-self: stretch;
     color: #1C1C1C;
     font-family: Inter;
@@ -2250,6 +2281,16 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     font-weight: 700;
     line-height: normal;
   }
+  .discard_message h1 {
+    align-self: stretch;
+    color: rgb(218, 83, 79);
+    font-family: Inter;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  
   
   .success_message p, .discard_message p {
     align-self: stretch;
@@ -2414,6 +2455,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   
   .product_details {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: flex-start;
     gap: var(--spacing-spacing-m, 24px);
@@ -2443,6 +2485,8 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .prod_detail_head {
     display: flex;
     align-items: center;
+    align-self: stretch;
+    justify-content: space-between;
     gap: 8px;
   }
   
@@ -2450,7 +2494,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--spacing-spacing-m, 24px);
+    gap: var(--spacing-spacing-m, 4px);
     align-self: stretch;
   }
   
@@ -2485,16 +2529,16 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .batchno_barcode {
     display: flex;
     align-items: flex-start;
-    gap: var(--spacing-spacing-xxl, 128px);
+    justify-content: space-between;
     align-self: stretch;
   }
   
   .manu_expi_stocked_date {
     display: flex;
     align-items: flex-start;
-    gap: var(--spacing-spacing-xxl, 128px);
+    justify-content: space-between;
     align-self: stretch;
-  }
+}
   
   .product_Description {
     display: flex;
@@ -2504,7 +2548,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     align-self: stretch;
   }
   
-  .batch_number, .bar_code, .date_stocked, .expiration_date, .manufactured_date {
+  .batch_number, .bar_code, .status, .date_stocked, .expiration_date, .manufactured_date {
     display: flex;
     width: 155px;
     flex-direction: column;
@@ -2512,7 +2556,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     gap: 10px;
   }
   
-  .batch_number p, .bar_code p, .date_stocked p, .expiration_date p, .manufactured_date p {
+  .batch_number p, .bar_code p, .status p, .date_stocked p, .expiration_date p, .manufactured_date p {
     color: #1C1C1C;
     font-family: Inter;
     font-size: 16px;
@@ -2522,7 +2566,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     margin: 0;
   }
   
-  .batch_number h1, .bar_code h1, .date_stocked h1, .expiration_date h1, .manufactured_date h1 {
+  .batch_number h1, .bar_code h1, .status h1, .date_stocked h1, .expiration_date h1, .manufactured_date h1 {
     color: rgba(28, 28, 28, 0.50);
     font-family: Inter;
     font-size: 16px;
@@ -2681,7 +2725,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--spacing-spacing-m, 24px);
+    gap: var(--spacing-spacing-m, 4px);
     align-self: stretch;
   }
   
@@ -2840,6 +2884,15 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     font-size: 21px;
     font-style: normal;
     font-weight: 700;
+    line-height: normal;
+  }
+  .product_category {
+    color: rgba(28, 28, 28, 0.80);
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
     line-height: normal;
   }
   
@@ -3164,6 +3217,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   .client_summary_header_container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 8px;
   }
   
@@ -3197,7 +3251,8 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     display: flex;
     align-items: flex-start;
     gap: var(--spacing-spacing-xl, 64px);
-    align-self: stretch;
+    width: 100%;
+    flex-wrap: wrap;
   }
   
   .client_summary_block {
@@ -3393,7 +3448,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-    flex: 1 0 0;
+    width: 100%;
   }
   
   .pet_sex_container h1, .pet_age_container h1, .pet_weight_container h1, .pet_sterilization_status_container h1 {
@@ -4728,10 +4783,12 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   }
 
   tbody tr td:last-child {
-    text-align: end !important; /* Align text to the end (right) for the last child */
+    text-align: start;
     overflow: visible;
   }
-
+  .inventoryTableBody tr td:last-child, #client_table_body tr td:last-child, #approvedTableBody tr td:last-child, #pendingTableBody tr td:last-child, #rejectedTableBody tr td:last-child, #appointment_pending_table_body tr td:last-child{
+    text-align: end !important; /* Align text to the end (right) for the last child */
+  }
   .owner_details {
     display: flex;
     flex-direction: column;
@@ -5386,10 +5443,6 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   input:checked, .form-check-input:checked {
     accent-color: var(--colors-main-brand, #045B62) !important;
 }
-.custom-control input[type="radio"]:checked input {
-  background: var(--Colors-Main-neutral-light, #F5F5F5);
-
-}
 
 
   
@@ -5823,7 +5876,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     .pass_and_security_box {
       display: flex;
       padding: 24px;
-      width: 90%;
+      width: 100%;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
@@ -5831,7 +5884,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     }
     .notifications_boxes {
       display: flex;
-      width: 90% !important;
+      width: 100% !important;
       flex-direction: column;
       align-items: center;
       gap: 20px;
@@ -5840,7 +5893,7 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
     }
     .notification_settings {
       display: flex;
-      width: 92%;
+      width: 100%;
       flex-direction: column;
       padding: var(--Spacing-spacing-m, 24px);
       align-items: flex-start;
@@ -6026,7 +6079,7 @@ font-size: 24px;
   width: 100%;
 }
 
-  .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
+.modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
     display: flex;
     width: 100%!important;
     padding: var(--spacing-spacing-m, 24px);
@@ -6288,6 +6341,7 @@ font-size: 24px;
 @media (min-width: 768px) and (max-width: 991px) {
   .card.pass_and_security_box{
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: flex-start !important;
     gap: 18px !important;
@@ -6705,13 +6759,35 @@ width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
+.modal-content.add_client_modal {
+  display: flex;
+  width: 100%!important;
+  padding: var(--spacing-spacing-m, 24px);
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-spacing-l, 32px);
+  border-radius: var(--radius-s, 8px);
+  background: var(--colors-main-neutral-light, #F5F5F5);
+  box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+}
 }
 
 
 @media (min-width: 577px) and (max-width: 767px){
-
+  .notification_settings{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .notifications_boxes{
+    width: 100%;
+  }
+  .text_container {
+    width: 80%;
+  }
   .card.pass_and_security_box{
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: flex-start !important;
     gap: 18px !important;
@@ -6807,7 +6883,7 @@ width: 100%;
     width: 100%;
   }
 
-  .modal-content.create_appointment_modal, .modal-content.resched_modal, .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
+  .modal-content.create_appointment_modal, .modal-content.resched_modal, .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal, .modal-content.new_product_modal {
     display: flex;
     width: 100%!important;
     padding: var(--spacing-spacing-m, 24px);
@@ -7662,6 +7738,7 @@ width: 100%;
   }
   .card.pass_and_security_box{
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: flex-start !important;
     gap: 18px !important;
@@ -7720,7 +7797,7 @@ width: 100%;
     font-size: 20px;
   }
 
-  .modal-content.archive_modal, .modal-content.resched_modal, .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
+  .modal-content.new_product_modal, .modal-content.archive_modal, .modal-content.resched_modal, .modal-content.add_client_modal, .modal-content.add_appointment_modal, .modal-content.add_product_modal, .modal-content.add_pet_record_modal {
     display: flex;
     width: 100%!important;
     padding: var(--spacing-spacing-xs, 4px) !important;
@@ -7811,9 +7888,7 @@ width: 100%;
       background: var(--colors-main-neutral-light, #F5F5F5);
       box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
     }
-  .form-label{
-    font-size: 10px !important;
-  }
+
   .form-control, .form-select {
     font-size:  10px !important;
   }
@@ -8264,7 +8339,7 @@ width: 100%;
   .filter_btn_base, .sort_btn_base{
     display: none;
   }
-  .modal-content.add_client_modal{
+  .modal-content.add_client_modal, .modal-content.new_product_modal{
     width: 100%!important;
     height: auto;
     gap: 4px;
@@ -8353,7 +8428,7 @@ width: 100%;
   .form-label {
     color: rgba(28, 28, 28, 0.50);
     font-family: Inter;
-    font-size: 14px;
+    font-size: auto;
     font-style: normal;
     font-weight: 500;
     line-height: normal ;
