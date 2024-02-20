@@ -163,80 +163,14 @@
 														<input type="checkbox"><span class="slider round"></span></label>
 												</div>
 												<div class="text_container">
-													<h1>Pet Health Updates</h1>
-													<p>Get updated on your pet’s health.</p>
+													<h1>Inventory Updates</h1>
+													<p>Get reminded when stocks get low or expired.</p>
 												</div>
 											</div>
-											<div class="notif_buttons_and_texts">
-												<div class="toggle_container">
-													<label class="form-label switch">
-														<input type="checkbox"><span class="slider round"></span></label>
-												</div>
-												<div class="text_container">
-													<h1>Pet Care</h1>
-													<p>Get reminded of your pet’s next vaccination</p>
-												</div>
-											</div>
-											<div class="notif_buttons_and_texts">
-												<div class="toggle_container">
-													<label class="form-label switch">
-														<input type="checkbox"><span class="slider round"></span></label>
-												</div>
-												<div class="text_container">
-													<h1>Tips and Tricks</h1>
-													<p>Want to know tips and tricks from your veterinarians? Turn notifications on to receive emails. </p>
-												</div>
-											</div>
-											<div class="notif_buttons_and_texts">
-												<div class="toggle_container">
-													<label class="form-label switch">
-														<input type="checkbox"><span class="slider round"></span></label>
-												</div>
-												<div class="text_container">
-													<h1>News &amp; Events</h1>
-													<p>Feel free to participate in special events.</p>
-												</div>
-											</div>
+											
 										</div>
 									</div>
-									<div class="card notifications_settings">
-										<div class="left_notification_settings">
-											<h1>Text notifications</h1>
-											<p>Get text messages to stay updated on your appointments. You can turn these off.</p>
-										</div>
-										<div class="right_notification_settings">
-											<div class="notif_buttons_and_texts">
-												<div class="toggle_container">
-													<label class="form-label switch">
-														<input type="checkbox"><span class="slider round"></span></label>
-												</div>
-												<div class="text_container">
-													<h1>Appointment Confirmation/Cancellation</h1>
-													<p>Get to know if your appointment has been approved.</p>
-												</div>
-											</div>
-											<div class="notif_buttons_and_texts">
-												<div class="toggle_container">
-													<label class="form-label switch">
-														<input type="checkbox"><span class="slider round"></span></label>
-												</div>
-												<div class="text_container">
-													<h1>Appointment Reminders</h1>
-													<p>Get reminded prior to your scheduled appointment so you don’t miss it.</p>
-												</div>
-											</div>
-											<div class="notif_buttons_and_texts">
-												<div class="toggle_container">
-													<label class="form-label switch">
-														<input type="checkbox"><span class="slider round"></span></label>
-												</div>
-												<div class="text_container">
-													<h1>Pet Health Updates</h1>
-													<p>Get updated on your pet’s health.</p>
-												</div>
-											</div>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 						</div>
