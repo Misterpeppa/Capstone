@@ -82,8 +82,7 @@
                                             <td class="text-style">{{ $index + 1 }}</td>
                                             <td class="text-style">{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
                                             <td class="text-style">{{ $appointment['appointmentType'] }}</td>
-                                            <td class="text-style">{{ $appointment['appointmentDate'] }}</td>
-                                            <td class="text-style">{{ $appointment['appointmentTime'] }}</td>
+                                            <td class="text-style">{{ $appointment['appointmentDate'] }} {{ $appointment['appointmentTime'] }}</td>
                                         </tr>
                                         @endforeach
                                         </tbody>
@@ -104,7 +103,7 @@
 												<th>Patient Info</th>
 												<th>Surgery Type</th>
 												<th>Appointment</th>
-												<th>Additional Notes</th>
+												<th>Additional Note</th>
 												<th>Actions</th>
 											</tr>
 										</thead>
@@ -153,6 +152,17 @@
                                                                         </clipPath>
                                                                     </defs>
                                                                 </svg> Reschedule</button>
+                                                                <button
+                                                                data-id=""
+																data-action="cancel_appointment"
+                                                                class="dropdown-item cancel_appointment-action"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M18 6l-12 12" />
+  <path d="M6 6l12 12" />
+</svg>
+
+
+ Cancel</button>
                                                         </div>
                                                 </td>
                                         </tr>
@@ -166,9 +176,6 @@
 								<table class="table table-responsive mt-3 w-100" id="approved_table">
 										<thead>
 											<tr>
-												<th>
-													<input id="SelectAllrejected" type="checkbox" class="checkbox">
-												</th>
 												<th>No.</th>
 												<th>Patient Info</th>
 												<th>Surgery Type</th>
@@ -179,12 +186,11 @@
 										<tbody id="appointment_rejected_table_body">
 										@foreach ($appointmentrejected as $index => $appointmentrejected)
                                         <tr>
-                                            <td class="text-style"><input type="checkbox" class="checkbox"></td> 
                                             <td class="text-style">{{ $index + 1 }}</td>
                                             <td class="text-style">{{ $appointmentrejected['petType'] }} ({{ $appointmentrejected['breed'] }})</td>
-                                            <td class="text-style">{{ $appointmentrejected['appointmentType'] }} {{ $appointmentrejected['appointmentDate'] }} {{ $appointmentrejected['appointmentTime'] }}</td>
-                                            <td class="text-style"></td>
-											<td></td>
+                                            <td class="text-style">{{ $appointmentrejected['appointmentType'] }}</td>
+                                            <td class="text-style">{{ $appointmentrejected['appointmentDate'] }} {{ $appointmentrejected['appointmentTime'] }}</td>
+											<td class="text-style"></td>
 											
                                         </tr>
                                         @endforeach
@@ -201,7 +207,7 @@
 												<th>Patient Info</th>
 												<th>Surgery Type</th>
 												<th>Appointment</th>
-												<th>Additional Notes</th>
+												<th>Note</th>
 											</tr>
 										</thead>
 										<tbody id="appointment_history_table_body">
