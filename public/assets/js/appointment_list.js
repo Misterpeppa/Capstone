@@ -33,7 +33,12 @@ document.addEventListener('DOMContentLoaded', function () {
             );
 
             modal2.show();
-          } 
+          } else if(action === "cancel_appointment"){
+            var cancel_appointment = new bootstrap.Modal(document.getElementById("cancel_appointment_modal"));
+            cancel_appointment.show();
+
+
+          }
         });
       });
 
