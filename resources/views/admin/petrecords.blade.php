@@ -1082,7 +1082,7 @@
                                 </div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" type="text" name="pet_name" id="pet_name-1" placeholder="Pet Name" maxlength="255">
+									<input class="form-control" type="text" name="pet_name" id="pet_name-1" placeholder="Pet Name" maxlength="255" autocapitalize="pet_name-1">
 									<label class="form-label" for="pet_name-1">Pet Name<span>&nbsp;*</span></label>
 									<div id="error-pet_name-1" class="error-message"><span>• Please enter pet name.</span></div>
 									
@@ -1128,7 +1128,7 @@
 								</div>
 								<div class="form-floating" style="width:100%;">
 									<input class="form-control" value="" type="text" name="pet_age" data-bs-toggle="tooltip" id="age-1"
-									title="Please select pet type and enter the birthdate first." maxlength="3" placeholder="Please select pet type, breed, and enter the birthdate first." disabled readonly>
+									title="Please select pet type and enter the birthdate first." maxlength="3" disabled="" placeholder="Please select pet type, breed, and enter the birthdate first.">
 									<label class="form-label" for="age-1">Age</label>
 									<div id="error-age-1" class="error-message" style="color:red;">• Please input birth date of pet</div>
 								</div>
