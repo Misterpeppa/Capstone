@@ -528,7 +528,7 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
         return info.start >= new Date(); // Allow selection of dates starting from today
     },
     select: function(info) { // Callback function for date selection
-            alert('Selected date: ' + info.startStr);
+            
             console.log('Selected date: ' + info.startStr);
             const date_required_message = document.getElementById('date_required_message');
             const selectedDateElement = document.getElementById('selected_date');
