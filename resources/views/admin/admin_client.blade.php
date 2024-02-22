@@ -140,12 +140,12 @@
                                                 Descending
                                         </li>
                                         <li class="dropdown-item ">
-                                          <div class="row">
-                                              <div class="col-md-6">
-                                                  <button class="btn btn-outline-secondary btn-sm me-3">Cancel</button>
+                                          <div class="row" style="justify-content: space-around; gap: 8px;">
+                                              <div class="col-md-5 colButton" style="display:flex; justify-content: center">
+                                                  <button class="btn cancel_filter btn-sm me-3"><span class="cancel_filter_base">Cancel</span></button>
                                               </div>
-                                              <div class="col-md-6 text-center">
-                                                  <button type="submit" form="searchForm" class="btn btn-primary btn-sm ms-3">Apply</button>
+                                              <div class="col-md-5 text-center colButton" style="display:flex; justify-content: center">
+                                                  <button type="submit" form="searchForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply Sort</span></button>
                                               </div>
                                           </div>
                                       </li>

@@ -35,7 +35,7 @@
                     <a id="menu-toggle" class="btn menu_toggle btn-link" role="button" href="#menu-toggle"><i class="fa fa-bars custom-bars-icon"></i></a>
                 </div>
                 <div class="d-flex flex-direction-row">
-                    <button class="btn notification" id="notification" type="button"><span class="notification_base"><svg
+                    <button class="btn notification d-none" id="notification" type="button"><span class="notification_base"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewbox="0 0 15 18"
                                 fill="none">
                                 <path
@@ -80,7 +80,7 @@
 									<div class="upper_part_summary">
 										<div class="staff_icon_container">
 											<div class="staff_icon">
-												<svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
 													<path d="M13.1616 0H5.61962C2.34362 0 0.390625 1.953 0.390625 5.229V12.771C0.390625 15.3 1.55162 17.037 3.59462 17.694C4.18862 17.901 4.87262 18 5.61962 18H13.1616C13.9086 18 14.5926 17.901 15.1866 17.694C17.2296 17.037 18.3906 15.3 18.3906 12.771V5.229C18.3906 1.953 16.4376 0 13.1616 0ZM17.0406 12.771C17.0406 14.697 16.2846 15.912 14.7636 16.416C13.8906 14.697 11.8206 13.473 9.39062 13.473C6.96062 13.473 4.89963 14.688 4.01763 16.416H4.00862C2.50563 15.93 1.74062 14.706 1.74062 12.78V5.229C1.74062 2.691 3.08162 1.35 5.61962 1.35H13.1616C15.6996 1.35 17.0406 2.691 17.0406 5.229V12.771Z" fill="#045B62" />
 													<path d="M9.39242 5.4C7.61042 5.4 6.17042 6.84 6.17042 8.622C6.17042 10.404 7.61042 11.853 9.39242 11.853C11.1744 11.853 12.6144 10.404 12.6144 8.622C12.6144 6.84 11.1744 5.4 9.39242 5.4Z" fill="#045B62" /> </svg>
 											</div>
@@ -118,288 +118,36 @@
 						<h1>Appointments</h1>
 						<button class="btn dashboard_view_btn" type="button"> <a href="{{ route('admin_appointment') }}"><span class="dashboard_view_btn_base">View</span></a></button>
 					</div>
-					<div class="container_header">
-                                <form action="" id="approvedForm" style="width: 100%;">
-                                    <div class="left_part_product_header">
-                                        <div class="search_container">
-                                            <input type="text" class="search_input" name="qApproved"
-                                            value="{{ request('qApproved') }}" placeholder="Search Appointment">
-                                            <input type="hidden" id="pageForm" name="page"
-                                            value="{{ request('page') }}">
-                                            <input type="hidden" id="perPageForm" name="perPage"
-                                                value="{{ request('perPage') }}">
 
-                                        </div>
-                                        <button type="submit" form="approvedForm" class="btn filter_btn fw-bold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_1917_11674)">
-    <path d="M21 21L15 15M3 10C3 10.9193 3.18106 11.8295 3.53284 12.6788C3.88463 13.5281 4.40024 14.2997 5.05025 14.9497C5.70026 15.5998 6.47194 16.1154 7.32122 16.4672C8.1705 16.8189 9.08075 17 10 17C10.9193 17 11.8295 16.8189 12.6788 16.4672C13.5281 16.1154 14.2997 15.5998 14.9497 14.9497C15.5998 14.2997 16.1154 13.5281 16.4672 12.6788C16.8189 11.8295 17 10.9193 17 10C17 9.08075 16.8189 8.1705 16.4672 7.32122C16.1154 6.47194 15.5998 5.70026 14.9497 5.05025C14.2997 4.40024 13.5281 3.88463 12.6788 3.53284C11.8295 3.18106 10.9193 3 10 3C9.08075 3 8.1705 3.18106 7.32122 3.53284C6.47194 3.88463 5.70026 4.40024 5.05025 5.05025C4.40024 5.70026 3.88463 6.47194 3.53284 7.32122C3.18106 8.1705 3 9.08075 3 10Z" stroke="black" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_1917_11674">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg><span class="filter_btn_base">Search</span></button>
-                                        <div class="dropdown">
-                                            <button class="filter_btn dropdown-toggle fw-bold" type="button"
-                                                id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
-                                                  <g clip-path="url(#clip0_3674_15869)" filter="url(#filter0_d_3674_15869)">
-                                                    <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                  </g>
-                                                  <defs>
-                                                    <filter id="filter0_d_3674_15869" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                                      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                                                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                                      <feOffset dy="2"/>
-                                                      <feGaussianBlur stdDeviation="1"/>
-                                                      <feComposite in2="hardAlpha" operator="out"/>
-                                                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-                                                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3674_15869"/>
-                                                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3674_15869" result="shape"/>
-                                                    </filter>
-                                                    <clipPath id="clip0_3674_15869">
-                                                      <rect width="24" height="24" fill="white"/>
-                                                    </clipPath>
-                                                  </defs>
-                                              </svg><span class="filter_btn_base">Filter By</span>
-                                                
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li class="dropdown-item ">
-                                                  <div class="form-check form-switch">
-                                                    <!-- Size of the default switch will increase 1.8 times -->
-                                                    <input class="form-check-input my-3"
-                                                          {{ request()->input('approvedCheck') == 'on' ? 'checked' : '' }}
-                                                           name ="approvedCheck" 
-                                                           type="checkbox" 
-                                                           role="switch" 
-                                                           id="approvedCheck" 
-                                                           style="transform: scale(1.5);"
-                                                           >
-                                                    <label class="form-check-label fs-6 my-1" 
-                                                           for="approvedCheck" 
-                                                           >Approved</label>
-                                                  </div>
-                                          
-                                                </li>
-                                                <li class="dropdown-item ">
-                                                  <div class="form-check form-switch">
-                                                    <!-- Size of the default switch will increase 1.8 times -->
-                                                    <input class="form-check-input my-3"
-                                                          {{ request()->input('completedCheck') == 'on' ? 'checked' : '' }}
-                                                           name ="completedCheck" 
-                                                           type="checkbox" 
-                                                           role="switch" 
-                                                           id="completedCheck" 
-                                                           style="transform: scale(1.5);"
-                                                           >
-                                                  
-                                                    <label class="form-check-label fs-6 my-1" 
-                                                           for="completedCheck" 
-                                                           >Completed</label>
-                                                  </div>
-                                                </li>
-                                                <li class="dropdown-item ">
-                                                  <div class="form-check form-switch">
-                                                    <!-- Size of the default switch will increase 1.8 times -->
-                                                    <input class="form-check-input my-3"
-                                                          {{ request()->input('dogCheck') == 'on' ? 'checked' : '' }}
-                                                           name ="dogCheck" 
-                                                           type="checkbox" 
-                                                           role="switch" 
-                                                           id="dogCheck" 
-                                                           style="transform: scale(1.5);"
-                                                           >
-                                                  
-                                                    <label class="form-check-label fs-6 my-1" 
-                                                           for="dogCheck" 
-                                                           >Dog</label>
-                                                  </div>
-                                          
-                                                </li>
-                                                <li class="dropdown-item ">
-                                                    <div class="form-check form-switch">
-                                                      <!-- Size of the default switch will increase 1.8 times -->
-                                                      <input class="form-check-input my-3"
-                                                            {{ request()->input('catCheck') == 'on' ? 'checked' : '' }}
-                                                             name ="catCheck" 
-                                                             type="checkbox" 
-                                                             role="switch" 
-                                                             id="catCheck" 
-                                                             style="transform: scale(1.5);"
-                                                             >
-                                                    
-                                                      <label class="form-check-label fs-6 my-1" 
-                                                             for="catCheck" 
-                                                             >Cat</label>
-                                                    </div>
-                                            
-                                                  </li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="dropdown">
-                                            <button class="filter_btn dropdown-toggle fw-bold" type="button"
-                                                id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                                aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6857_8626)">
-    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6857_8626">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg><span class="filter_btn_base">Sort By</span>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li class="dropdown-item ">
-                                                    <input class="checkbox me-1" type="radio" id = "radio1"
-                                                        name="sortItems"{{ request()->input('sortItems', '0') == '0' ? 'checked' : '' }}  value="0">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio1">
-                                                        Appointment
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio2"
-                                                        name="sortItems" {{ request()->input('sortItems') == '1' ? 'checked' : '' }} value="1">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio2">
-                                                        Status
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio3"
-                                                        name="sortItems" {{ request()->input('sortItems') == '2' ? 'checked' : '' }} value="2">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio3">
-                                                        Patient
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio4"
-                                                        name="sortItems" {{ request()->input('sortItems') == '3' ? 'checked' : '' }} value="3">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio4">
-                                                        Client
-                                                </li>
-                                                <li>
-                                                  <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio5"
-                                                        name="sortItems" {{ request()->input('sortItems') == '4' ? 'checked' : '' }} value="4">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio5">
-                                                        Surgery Type
-                                                </li>
-                                                <li>
-                                                    <hr class="dropdown-divider me-2 ms-2">
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio6"
-                                                        name="sortOrder" {{ request()->input('sortOrder') == '0' ? 'checked' : '' }} value="0">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio6">
-                                                        Ascending
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <input class="checkbox me-1" type="radio" id = "radio7"
-                                                        name="sortOrder" {{ request()->input('sortOrder', '1') == '1' ? 'checked' : '' }} value="1">
-                                                    <label class="form-check-label ms-1 fs-6" for="radio7">
-                                                        Descending
-                                                </li>
-                                                <li class="dropdown-item ">
-                                                  <div class="row">
-                                                      <div class="col-md-5">
-                                                          <button type = "reset" class="btn cancel_filter btn-sm me-3"><div class="cancel_filter_base">Cancel</div></button>
-                                                      </div>
-                                                      <div class="col-md-5 text-center">
-                                                          <button type="submit" form="approvedForm" class="btn apply_filter btn-sm ms-3"><div class="apply_filter_base">Apply Filter</div></button>
-                                                      </div>
-                                                  </div>
-                                              </li>
-                                            </ul>
-                                        </div>
-          
-                                    </div>
-                                </form>
-
-
-                            </div>
 					<div class="w-100" style="overflow: auto;">
 						<table class="table table-responsive w-100 mt-3 ">
 							<thead>
 								<tr>
-									<th>
-										<input id="SelectAllClients" type="radio" class="checkbox">
-									</th>
 									<th>No.</th>
 									<th>Client</th>
 									<th>Patient Info</th>
 									<th>Appointment Date</th>
 									<th>Appointment Time</th>
 									<th>Surgery Type</th>
-									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody id="dashboard_appointments_table_body">
 							@foreach ($appointment_approved as $index => $appointment)
 								<tr>
-								<td > <input type="radio" class="checkbox"></td> 
 								<td >{{ $index + 1 }}</td>
 								<td >{{ $appointment->clients->first_name }} {{ $appointment->clients->last_name }}</td> 
 								<td >{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
 								<td >{{ $appointment['appointmentDate'] }}</td>
 								<td>{{ \Carbon\Carbon::parse($appointment['appointmentTime'])->format('g:ia') }}</td>
 								<td >{{ $appointment['appointmentType'] }}</td>
-								<td class="dropdown button-action">
-                                                <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"
-                                                            aria-expanded="false" data-bs-toggle="dropdown"
-                                                            type="button"><svg xmlns="http://www.w3.org/2000/svg"
-                                                                width="18" height="18" viewBox="0 0 18 18"
-                                                                fill="none">
-                                                                <path
-                                                                    d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z"
-                                                                    fill="#045B62" />
-                                                                <path
-                                                                    d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z"
-                                                                    fill="#045B62" />
-                                                                <path
-                                                                    d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z"
-                                                                    fill="#045B62" />
-                                                            </svg></button>
-                                                        <div class="dropdown-menu"><button
-                                                                data-id="{{ $appointment->id }}"
-                                                                class="dropdown-item complete-action"><svg
-                                                                    xmlns="http://www.w3.org/2000/svg" width="22"
-                                                                    height="12" viewBox="0 0 22 12"
-                                                                    fill="none">
-                                                                    <path d="M6 6L11 11L21 1M1 6L6 11M11 6L16 1"
-                                                                        stroke="#1C1C1C" stroke-opacity="0.7"
-                                                                        stroke-width="2" stroke-linecap="round"
-                                                                        stroke-linejoin="round" />
-                                                                </svg> Mark as complete</button>
-                                                            <hr />
-                                                            <a class="dropdown-item archive-action"
-                                                                data-id="{{ $appointment->id }}"><svg
-                                                                    xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                    height="24" viewBox="0 0 24 24"
-                                                                    fill="none">
-                                                                    <g clip-path="url(#clip0_6291_1005)">
-                                                                        <path
-                                                                            d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14"
-                                                                            stroke="#1C1C1C" stroke-opacity="0.7"
-                                                                            stroke-width="2" stroke-linecap="round"
-                                                                            stroke-linejoin="round" />
-                                                                    </g>
-                                                                    <defs>
-                                                                        <clipPath id="clip0_6291_1005">
-                                                                            <rect width="24" height="24"
-                                                                                fill="white" />
-                                                                        </clipPath>
-                                                                    </defs>
-                                                                </svg> Archive</a>
-                                                        </div>
-                                                </td>
+								
 								</tr>
 							@endforeach 
 							</tbody>
 						</table>
 					</div>
 					
-					<div class="pagination">
+					<div class="pagination d-none">
 						<div class="pagination-menu">
                                     <span>Go to:</span>
                                     <select class="paginationGoToSelect" onchange="changePage(this)">
@@ -444,237 +192,11 @@
 						<button class="btn dashboard_view_btn" type="button"><a href="{{ route('admin_inv') }}"><span class="dashboard_view_btn_base">View</span></a></button>
 					</div>
 
-					<div class="container_header">
-                          <form action="" method="GET" role="search" id="searchForm">
-                            <div class="left_part_product_header">
-                              <div class="search_container">
-                                  <input type="text" class="search_input" name="q"
-                                      value="{{ request('q') }}" placeholder="Search Product">
-                                  <!-- Other input fields or elements for pagination -->
-                                  <input type="hidden" id="pageForm" name="page"
-                                      value="{{ request('page') }}">
-                                  <input type="hidden" id="perPageForm" name="perPage"
-                                      value="{{ request('perPage') }}">
-
-                              </div>
-                              <button type="submit" form="searchForm" class="btn filter_btn"> 
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_1917_11674)">
-    <path d="M21 21L15 15M3 10C3 10.9193 3.18106 11.8295 3.53284 12.6788C3.88463 13.5281 4.40024 14.2997 5.05025 14.9497C5.70026 15.5998 6.47194 16.1154 7.32122 16.4672C8.1705 16.8189 9.08075 17 10 17C10.9193 17 11.8295 16.8189 12.6788 16.4672C13.5281 16.1154 14.2997 15.5998 14.9497 14.9497C15.5998 14.2997 16.1154 13.5281 16.4672 12.6788C16.8189 11.8295 17 10.9193 17 10C17 9.08075 16.8189 8.1705 16.4672 7.32122C16.1154 6.47194 15.5998 5.70026 14.9497 5.05025C14.2997 4.40024 13.5281 3.88463 12.6788 3.53284C11.8295 3.18106 10.9193 3 10 3C9.08075 3 8.1705 3.18106 7.32122 3.53284C6.47194 3.88463 5.70026 4.40024 5.05025 5.05025C4.40024 5.70026 3.88463 6.47194 3.53284 7.32122C3.18106 8.1705 3 9.08075 3 10Z" stroke="black" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_1917_11674">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg><span class="filter_btn_base">Search</span>
-                                  
-                                </button>
-                                <div class="dropdown">
-                                  <button class="filter_btn dropdown-toggle" type="button"
-                                      id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                      aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
-                                                  <g clip-path="url(#clip0_3674_15869)" filter="url(#filter0_d_3674_15869)">
-                                                    <path d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                  </g>
-                                                  <defs>
-                                                    <filter id="filter0_d_3674_15869" x="-2" y="0" width="28" height="28" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                                      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                                                      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                                      <feOffset dy="2"/>
-                                                      <feGaussianBlur stdDeviation="1"/>
-                                                      <feComposite in2="hardAlpha" operator="out"/>
-                                                      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-                                                      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3674_15869"/>
-                                                      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3674_15869" result="shape"/>
-                                                    </filter>
-                                                    <clipPath id="clip0_3674_15869">
-                                                      <rect width="24" height="24" fill="white"/>
-                                                    </clipPath>
-                                                  </defs>
-                                              </svg><span class="filter_btn_base">Filter By</span>
-                                      
-                                  </button>
-                                  <ul class="dropdown-menu">
-                                      <li class="dropdown-item ">
-                                        <div class="form-check form-switch">
-                                          <!-- Size of the default switch will increase 1.8 times -->
-                                          <input class="form-check-input my-3"
-                                                {{ request()->input('medSwitch') == 'on' ? 'checked' : '' }}
-                                                 name ="medSwitch" 
-                                                 type="checkbox" 
-                                                 role="switch" 
-                                                 id="medSwitch" 
-                                                 style="transform: scale(1.5);"
-                                                 >
-                                          <label class="form-check-label fs-6 my-1" 
-                                                 for="medSwitch" 
-                                                 >Medicine</label>
-                                        </div>
-                                
-                                      </li>
-                                      <li class="dropdown-item ">
-                                        <div class="form-check form-switch">
-                                          <!-- Size of the default switch will increase 1.8 times -->
-                                          <input class="form-check-input my-3"
-                                                {{ request()->input('vaxSwitch') == 'on' ? 'checked' : '' }}
-                                                 name ="vaxSwitch" 
-                                                 type="checkbox" 
-                                                 role="switch" 
-                                                 id="vaxSwitch" 
-                                                 style="transform: scale(1.5);"
-                                                 >
-                                        
-                                          <label class="form-check-label fs-6 my-1" 
-                                                 for="vaxSwitch" 
-                                                 >Vaccine</label>
-                                        </div>
-                                      </li>
-                                      <li class="dropdown-item ">
-                                        <div class="form-check form-switch">
-                                          <!-- Size of the default switch will increase 1.8 times -->
-                                          <input class="form-check-input my-3"
-                                                {{ request()->input('vitSwitch') == 'on' ? 'checked' : '' }}
-                                                 name ="vitSwitch" 
-                                                 type="checkbox" 
-                                                 role="switch" 
-                                                 id="vitSwitch" 
-                                                 style="transform: scale(1.5);"
-                                                 >
-                                        
-                                          <label class="form-check-label fs-6 my-1" 
-                                                 for="vitSwitch" 
-                                                 >Vitamin</label>
-                                        </div>
-                                
-                                      </li>
-                                  </ul>
-                              </div>
-
-
-
-                              <div class="dropdown">
-                                  <button class="filter_btn dropdown-toggle" type="button"
-                                      id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                                      aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6770_4127)">
-    <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6" stroke="black" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6770_4127">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> <span class="filter_btn_base">Sort By</span>
-                                  </button>
-                                  <ul class="dropdown-menu">
-                                      <li class="dropdown-item ">
-                                          <input class="checkbox me-1" type="radio" id = "radio1"
-                                              name="sortItems"{{ request()->input('sortItems', '0') == '0' ? 'checked' : '' }}  value="0">
-                                          <label class="form-check-label ms-1 fs-6" for="radio1">
-                                              Product Name
-                                      </li>
-                                      <li class="dropdown-item">
-                                          <input class="checkbox me-1" type="radio" id = "radio2"
-                                              name="sortItems" {{ request()->input('sortItems') == '1' ? 'checked' : '' }} value="1">
-                                          <label class="form-check-label ms-1 fs-6" for="radio2">
-                                              Category
-                                      </li>
-                                      <li class="dropdown-item">
-                                          <input class="checkbox me-1" type="radio" id = "radio3"
-                                              name="sortItems" {{ request()->input('sortItems') == '2' ? 'checked' : '' }} value="2">
-                                          <label class="form-check-label ms-1 fs-6" for="radio3">
-                                              On Hand
-                                      </li>
-                                      <li class="dropdown-item">
-                                          <input class="checkbox me-1" type="radio" id = "radio4"
-                                              name="sortItems" {{ request()->input('sortItems') == '3' ? 'checked' : '' }} value="3">
-                                          <label class="form-check-label ms-1 fs-6" for="radio4">
-                                              Date Stocked
-                                      </li>
-                                      <li>
-                                        <li class="dropdown-item">
-                                          <input class="checkbox me-1" type="radio" id = "radio5"
-                                              name="sortItems" {{ request()->input('sortItems') == '4' ? 'checked' : '' }} value="4">
-                                          <label class="form-check-label ms-1 fs-6" for="radio5">
-                                              Expiration Date
-                                      </li>
-                                      <li>
-                                          <hr class="dropdown-divider">
-                                      </li>
-                                      <li class="dropdown-item">
-                                          <input class="checkbox me-1" type="radio" id = "radio6"
-                                              name="sortOrder" {{ request()->input('sortOrder', '0') == '0' ? 'checked' : '' }} value="0">
-                                          <label class="form-check-label ms-1 fs-6" for="radio6">
-                                              Ascending
-                                      </li>
-                                      <li class="dropdown-item">
-                                          <input class="checkbox me-1" type="radio" id = "radio7"
-                                              name="sortOrder" {{ request()->input('sortOrder') == '1' ? 'checked' : '' }} value="1">
-                                          <label class="form-check-label ms-1 fs-6" for="radio7">
-                                              Descending
-                                      </li>
-                                      <li class="dropdown-item ">
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <button class="btn cancel_filter btn-sm me-3"><div class="cancel_filter_base">Cancel</div></button>
-                                            </div>
-                                            <div class="col-md-5 text-center">
-                                                <button type="submit" form="searchForm" class="btn apply_filter btn-sm ms-3"><div class="apply_filter_base">Apply Filter</div></button>
-                                            </div>
-                                        </div>
-                                    </li>
-                                  </ul>
-                              </div>
-
-
-
-                          </div>
-
-                          </form>
-       
-                            <div class="right_part_product_header">
-                                <div class="inventory_header_right_btn_icon_container"><button
-                                        class="btn inventory_header_left_btn" type="button"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none">
-                                            <g clip-path="url(#clip0_1917_11682)">
-                                                <path
-                                                    d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z"
-                                                    stroke="black" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_1917_11682">
-                                                    <rect width="24" height="24" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg></button></div>
-                                <div class="inventory_header_right_btn_icon_container"><button
-                                        class="btn inventory_header_right_btn" type="button"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none">
-                                            <g clip-path="url(#clip0_3686_18447)">
-                                                <path
-                                                    d="M19 8C19.5304 8 20.0391 7.78929 20.4142 7.41421C20.7893 7.03914 21 6.53043 21 6C21 5.46957 20.7893 4.96086 20.4142 4.58579C20.0391 4.21071 19.5304 4 19 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6C3 6.53043 3.21071 7.03914 3.58579 7.41421C3.96086 7.78929 4.46957 8 5 8M19 8H5M19 8V18C19 18.5304 18.7893 19.0391 18.4142 19.4142C18.0391 19.7893 17.5304 20 17 20H7C6.46957 20 5.96086 19.7893 5.58579 19.4142C5.21071 19.0391 5 18.5304 5 18V8M10 12H14"
-                                                    stroke="black" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_3686_18447">
-                                                    <rect width="24" height="24" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg></button></div>
-                            </div>
-                        </div>
-					<div class="w-100" id="product_table_container">
+					
+					<div class="w-100" style="overflow: auto;">
 					<table class="table table-responsive mt-3 w-100">
 						<thead>
 							<tr>
-								<th>
-									<input id="SelectAllProducts" type="radio" class="checkbox">
-								</th>
 								<th>No.</th>
 								<th>Product Name</th>
 								<th>Category</th>
@@ -682,13 +204,11 @@
 								<th>Date Stocked</th>
 								<th>Expiration Date</th>
 								<th>Status</th>
-								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody id="dashboard_product_table_body" class="dashboard_table_body">
 							@foreach ($products as $product)
                             <tr>
-							<td><input type="radio" class="checkbox"></td>
                             <td >{{ $loop->index + 1 }}</td>
                             <td >{{ $product->item_name }}</td> 
 							<td>{{ $product->item_name }}</td>
@@ -696,69 +216,13 @@
 							<td>{{ $product->info_quantity }}</td>
 							<td>{{ $product->date_stocked }}</td>
 							<td>{{ $product->expiration_date }}</td>
-							<td class="dropdown button-action">
-							<button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"
-                                                            aria-expanded="false" data-bs-toggle="dropdown"
-                                                            type="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-  <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
-  <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
-  <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
-</svg></button>
-                                        <div class="dropdown-menu"><div class="button-group">
-                                            <button
-		            data-action="AddStock" 
-                                            data-product-type="{{ $product->product_type }}"
-                                            data-product-id="{{ $product->id }}"
-                                                class="btn border-0 addStock"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-  <path d="M7 10H13M10 7V13M1 10C1 11.1819 1.23279 12.3522 1.68508 13.4442C2.13738 14.5361 2.80031 15.5282 3.63604 16.364C4.47177 17.1997 5.46392 17.8626 6.55585 18.3149C7.64778 18.7672 8.8181 19 10 19C11.1819 19 12.3522 18.7672 13.4442 18.3149C14.5361 17.8626 15.5282 17.1997 16.364 16.364C17.1997 15.5282 17.8626 14.5361 18.3149 13.4442C18.7672 12.3522 19 11.1819 19 10C19 8.8181 18.7672 7.64778 18.3149 6.55585C17.8626 5.46392 17.1997 4.47177 16.364 3.63604C15.5282 2.80031 14.5361 2.13738 13.4442 1.68508C12.3522 1.23279 11.1819 1 10 1C8.8181 1 7.64778 1.23279 6.55585 1.68508C5.46392 2.13738 4.47177 2.80031 3.63604 3.63604C2.80031 4.47177 2.13738 5.46392 1.68508 6.55585C1.23279 7.64778 1 8.8181 1 10Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg> Add Stock</div></button>
-                                                <button 
-                                                data-action="View"
-                                                data-product-type="{{ $product->product_type }}"
-                                                data-product-id="{{ $product->id }}"
-                                                class="btn border-0 viewButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6559_23708)">
-    <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6559_23708">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> View</div></button>
-                                                <button 
-                                                data-action="Edit" id="editButton"
-                                                data-product-type="{{ $product->product_type }}"
-                                                data-product-id="{{ $product->id }}"
-                                                class="btn border-0"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <g clip-path="url(#clip0_6559_23808)">
-    <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <defs>
-    <clipPath id="clip0_6559_23808">
-      <rect width="24" height="24" fill="white"/>
-    </clipPath>
-  </defs>
-</svg> Edit</div></button>
-                                                <button 
-                                                data-action="Archive"
-                                                class="btn border-0"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
-  <path d="M17 5C17.5304 5 18.0391 4.78929 18.4142 4.41421C18.7893 4.03914 19 3.53043 19 3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3C1 3.53043 1.21071 4.03914 1.58579 4.41421C1.96086 4.78929 2.46957 5 3 5M17 5H3M17 5V15C17 15.5304 16.7893 16.0391 16.4142 16.4142C16.0391 16.7893 15.5304 17 15 17H5C4.46957 17 3.96086 16.7893 3.58579 16.4142C3.21071 16.0391 3 15.5304 3 15V5M8 9H12" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg> Archive</div></button>
-                                        </div>
-                                            
-                                            
-
-                                        </td>
-                            
                             </tr>
                         @endforeach 
                         </tbody>
 					</table>
 					</div>
 					
-					<div class="pagination">
+					<div class="pagination d-none">
 					<div class="pagination-menu">
                                     <span>Go to:</span>
                                     <select class="paginationGoToSelect" onchange="changePage(this)">
@@ -813,22 +277,22 @@
 						<div class="mb-3 input_container">
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" type="text" id="first_name" name="first_name" data-id="first_name" placeholder="First Name">
-									<label class="form-label" for="first_name">First Name<span>&nbsp;*</span></label>
+									<input class="form-control" type="text" id="Fname" name="first_name" data-id="first_name" placeholder="First Name" style="text-transform: capitalize;">
+									<label class="form-label" for="Fname">First Name<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-first_name"><span>• Please enter client first name.</span></div>
 									<div id="guide-first_name" class="guide-message"><span>• Please enter client first name.</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" type="text" id="middle_name" name="middle_name" data-id="middle_name" placeholder="Middle Name">
-									<label class="form-label" for="middle_name">Middle Name<span>&nbsp;*</span></label>
+									<input class="form-control" type="text" id="Mname" name="middle_name" data-id="middle_name" placeholder="Middle Name" style="text-transform: capitalize;">
+									<label class="form-label" for="Mname">Middle Name</label>
 									<div class="error-message" id="error-middle_name"><span>• Please enter client middle name.</span></div>
 									<div id="guide-middle_name" class="guide-message"><span>• Please enter client middle name.</span></div>
 								</div>
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" type="text" id="last_name" name="last_name" data-id="last_name" placeholder="Last Name">
-									<label class="form-label" for="last_name">Last Name<span>&nbsp;*</span></label>
+									<input class="form-control" type="text" id="Lname" name="last_name" data-id="last_name" placeholder="Last Name" style="text-transform: capitalize;">
+									<label class="form-label" for="Lname">Last Name<span>&nbsp;*</span></label>
 									<div id="error-last_name" class="error-message"><span>• Please enter client last name.</span></div>
 									<div id="guide-last_name" class="guide-message"><span>• Please enter client last name.</span></div>
 								</div>
@@ -850,34 +314,34 @@
 								</div>
 							</div>
 							<div class="form-floating" style="width:100%;">
-								<input class="form-control" id="client_birthdate" name="birthdate" data-id="client_birthdate" placeholder="Birthdate" type="date">
-								<label class="form-label" for="client_birthdate">Birthdate<span>&nbsp;*</span></label>
+								<input class="form-control" id="Client_birthdate" name="birthdate" data-id="client_birthdate" placeholder="Birthdate" type="date">
+								<label class="form-label" for="Client_birthdate">Birthdate<span>&nbsp;*</span></label>
 								<div class="error-message" id="error-client_birthdate"><span>• Please click the calendar icon to select client birth date.</span></div>
 								<div id="guide-client_birthdate" class="guide-message"><span>• Please click the calendar icon to select client birth date.</span></div>
 							</div>
 							<div class="form-floating" style="width:100%;">
-								<input class="form-control" type="text" id="client_address" data-id="client_address" placeholder="Address">
-								<label class="form-label" for="client_address">Address<span>&nbsp;*</span></label>
+								<input class="form-control" type="text" id="Client_address" data-id="client_address" placeholder="Address">
+								<label class="form-label" for="Client_address">Address<span>&nbsp;*</span></label>
 								<div class="error-message" id="error-client_address"><span>• Please enter client address.</span></div>
 								<div id="guide-client_address" class="guide-message"><span>• Please enter client address.</span></div>
 							</div>
 							<div class="form-floating" style="width:100%;">
-								<input class="form-control" type="email" id="client_email" name="email" data-id="client_email" placeholder="Email" required="">
-								<label class="form-label" for="client_email">Email Address<span>&nbsp;*</span></label>
+								<input class="form-control" type="email" id="Client_email" name="email" data-id="client_email" placeholder="Email" required="">
+								<label class="form-label" for="Client_email">Email Address<span>&nbsp;*</span></label>
 								<div class="error-message" id="error-client_email"><span>• Please enter Email Address of the client.</span><span>• Invalid email format.</span></div>
 								<div id="guide-client_email" class="guide-message"><span>• Please enter Email Address of the client.</span><span>•&nbsp;(e.g. pogiako@gmail.com/pogiako@yahoo.com)</span></div>
 							</div>
 							<div class="form-floating" style="width:100%;">
-								<input class="form-control" type="number" id="user_phone" name="phone" data-id="user_phone" placeholder="Phone Number">
-								<label class="form-label" for="user_phone">Phone Number<span>&nbsp;*</span></label>
+								<input class="form-control" type="number" id="User_phone" name="phone" data-id="user_phone" placeholder="Phone Number">
+								<label class="form-label" for="User_phone">Phone Number<span>&nbsp;*</span></label>
 								<div class="error-message" id="error-user_phone"><span>• Please enter 11 digits only. (e.g., 09172839117)</span><span>• Please enter a valid phone number.</span></div>
 								<div id="guide-user_phone" class="guide-message"><span>• Please enter 11 digits only. (e.g., 09172839117)</span></div>
 							</div>
 						</div>
 				</div>
 				<div class="modal-footer add_product_button">
-					<button class="btn clear_form" id="clear_form" onClick="cancelSubmit()" aria-label="Clear Form" role="button" type="button"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_product disabled" id="submit_client"  type="submit" ><span class="submit_product_base">Submit</span></button>
+					<button class="btn clear_form" id="clear_form" aria-label="Clear Form" role="button" type="reset"><span class="clear_form_base">Clear Form</span></button>
+					<button class="btn submit_product" id="Submit_client"  disabled type="submit" ><span class="submit_product_base">Submit</span></button>
 				</div>
                 </form>
 			</div>
@@ -895,7 +359,7 @@
 
             SelectAllClients.addEventListener("click", function () {
     var tableBody = document.getElementById('dashboard_appointments_table_body');
-    var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
+    var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
 
     rowCheckboxes.forEach(function (checkbox) {
         checkbox.checked = !checkbox.checked; // Toggle the state
@@ -907,7 +371,7 @@ var SelectAllProducts = document.getElementById("SelectAllProducts");
 
 SelectAllProducts.addEventListener("click", function () {
 var tableBody = document.getElementById('dashboard_product_table_body');
-var rowCheckboxes = tableBody.querySelectorAll("input[type='radio']");
+var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
 
 rowCheckboxes.forEach(function (checkbox) {
 checkbox.checked = !checkbox.checked; // Toggle the state
@@ -916,60 +380,20 @@ checkbox.checked = !checkbox.checked; // Toggle the state
 });
     </script>
           <script>
-function enableSubmitBtn() {
-  var first_name = document.getElementById("first_name").value;
-  var middle_name = document.getElementById("middle_name").value;
-  var last_name = document.getElementById("last_name").value;
-  var client_birthdate = document.getElementById("client_birthdate").value;
-  var client_address = document.getElementById("client_address").value;
-  var client_email = document.getElementById("client_email").value;
-  var user_phone = document.getElementById("user_phone").value;
 
-  var submit_client = document.getElementById("submit_client");
-
-  // Add additional validation conditions as needed
-  if (
-    first_name.trim() !== "" &&
-    middle_name.trim() !== "" &&
-    last_name.trim() !== "" &&
-    client_birthdate.trim() !== "" &&
-    client_address.trim() !== "" &&
-    client_email.trim() !== "" &&
-    user_phone.trim().length === 11 && // Check for 11 digits
-    (client_email.includes("@gmail.com") || client_email.includes("@yahoo.com")) // Check for email format
-  ) {
-    submit_client.classList.remove("disabled");
-
-  } else {
-    submit_client.classList.add("disabled");
-  }
-
-  // Logging values for debugging
-  console.log('first_name:', first_name);
-  console.log('middle_name:', middle_name);
-  console.log('last_name:', last_name);
-  console.log('client_birthdate:', client_birthdate);
-  console.log('client_address:', client_address);
-  console.log('client_email:', client_email);
-  console.log('user_phone:', user_phone);
-  console.log('submit_client disabled:', submit_client.disabled);
-}
-
-// Attach event listeners to each input field
-["first_name", "middle_name", "last_name", "client_birthdate", "client_address", "client_email", "user_phone"]
-  .forEach(id => document.getElementById(id).addEventListener("input", enableSubmitBtn));
 
 
 
 function cancelSubmit() {
 
-    var first_name = document.getElementById("first_name");
-var middle_name = document.getElementById("middle_name");
-var last_name = document.getElementById("last_name");
-var client_birthdate = document.getElementById("client_birthdate");
-var client_address = document.getElementById("client_address");
-var client_email = document.getElementById("client_email");
-var user_phone = document.getElementById("user_phone");
+    var first_name = document.getElementById("Fname");
+var middle_name = document.getElementById("Mname");
+var last_name = document.getElementById("Lname");
+var client_birthdate = document.getElementById("Client_birthdate");
+var client_address = document.getElementById("Client_address");
+var client_email = document.getElementById("Client_email");
+var user_phone = document.getElementById("User_phone");
+
 var submit_product = document.getElementById("submit_product");
 
 

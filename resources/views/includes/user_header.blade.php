@@ -47,8 +47,7 @@
                 <ul class="navbar-nav mx-auto" style="font-family: Inter;--bs-body-font-weight: 700;">
                     <li class="nav-item"><a class="nav-link active" href="{{ route('landing') }}" style="color: #1C1C1C;">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('appointment.list') }}" style="color: #1C1C1C;">Appointments</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="color: #1C1C1C;">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="color: #1C1C1C;">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('client.pet') }}" style="color: #1C1C1C;">Pet Information</a></li>
 
                 </ul>
                 <div class="user">

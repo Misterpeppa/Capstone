@@ -65,20 +65,42 @@ class PetInfoController extends Controller
     public function appointmentPet(Request $request)
     {
         $clientId = Auth::guard('clients')->id();
-        $petId = $request->input('pet_id');
-        $pet_infos = PetInfo::find($petId);
-        $appointment = new AppointmentApproved();
+        // $petId = $request->input('petId');
+        // $pet_infos = PetInfo::where('owner_id', $clientId)
+        // ->where('id', $petId)
+        // ->first();
+        $appointment = new AppointmentPending();
         $appointment->user_id = $clientId;
-        $appointment->petName = $pet_infos->name;
-        $appointment->petType = $pet_infos->species;
-        $appointment->breed = $pet_infos->breed;
+        $appointment->petName = $request->input('petName');
+        $appointment->petType = $request->input('petType');
+        $appointment->breed = $request->input('breed');
+        $appointment->notes = $request->input('notes');
         $appointment->appointmentType = $request->input('appointmentType');
         $appointment->appointmentDate = $request->input('appointmentDate');
         $appointment->appointmentTime = $request->input('appointmentTime');
         $appointment->save();
 
-        return redirect()->route('client.pet')->with('appointment_success', 'Appointment Successfull');
+        return redirect()->route('appointment.list')->with('appointment_success', 'Appointment Successfull');
     }
+    public function petInfo($id)
+    {
+        // Get the owner ID from the authenticated client
+        $ownerId = Auth::guard('clients')->id();
+        // Find the pet information using the owner ID and the provided $id
+        $petInfo = PetRecord::where('owner_id', $ownerId)
+                        ->where('id', $id)
+                        ->with('pet') // Eager load the associated pet
+                        ->first();
+        // Check if the pet info exists
+        if ($petInfo) {
+            // Return the pet info as JSON
+            return response()->json($petInfo);
+        } else {
+            // Return an error message if the pet info is not found
+            return response()->json(['error' => 'Pet information not found'], 404);
+        }
+    }
+
     public function viewRecord($id)
     {
         $petrecord = PetRecord::with('owner', 'pet')->find($id);

@@ -17,12 +17,11 @@ return new class extends Migration
             $table->string('diagnosis');
             $table->date('diagnosis_date');
             $table->string('treatment');
-            $table->unsignedBigInteger('med_id');
+            $table->string('med_id');
             $table->string('diagnosis_desc');
             $table->timestamps();
 
             $table->foreign('petrecord_id')->references('id')->on('pet_record');
-            $table->foreign('med_id')->references('id')->on('med_info');
         });
     }
 
