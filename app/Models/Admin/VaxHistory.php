@@ -13,6 +13,7 @@ class VaxHistory extends Model
     protected $table = 'vax_history';
     protected $fillable = [
         'vax_id',
+        'vax_desc',
         'petrecord_id',
         'vaccination_date',
         'revaccination_date',

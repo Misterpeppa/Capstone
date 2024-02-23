@@ -279,6 +279,9 @@ class InvController extends Controller
                 $existingVaxInfo = VaxInfo::where('item_name', $validatedData['item_name'])->first();
                 if ($existingVaxInfo) {
                     $existingVaxInfo->quantity += $validatedData['quantity'];
+                    if ($existingVaxInfo->archived_at !== null) {
+                        $existingVaxInfo->archived_at = null;
+                    }
                     $existingVaxInfo->save();
                     $highestBatchNo = $existingVaxInfo->vaxBatch()->max('batch_no');
                     $newBatchNo = $highestBatchNo + 1;
@@ -315,6 +318,9 @@ class InvController extends Controller
                 $existingVitInfo = VitInfo::where('item_name', $validatedData['item_name'])->first();
                 if ($existingVitInfo) {
                     $existingVitInfo->quantity += $validatedData['quantity'];
+                    if ($existingVitInfo->archived_at !== null) {
+                        $existingVitInfo->archived_at = null;
+                    }
                     $existingVitInfo->save();
                     // Determine the highest existing batch number
                     $highestBatchNo = $existingVitInfo->vitBatch()->max('batch_no');

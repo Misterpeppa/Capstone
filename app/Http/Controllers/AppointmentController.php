@@ -139,9 +139,10 @@ class AppointmentController extends Controller
 
     }
 
-    public function reject(Request $request, $id)
+    public function reject(Request $request)
     {
-        $appointment = AppointmentPending::findOrFail($id);
+        $rejectId =$request->input('rejectId');
+        $appointment = AppointmentPending::findOrFail($rejectId);
         $reason =$request->input('reason');
         $otherReason = $request->input('otherReason');
 
@@ -166,7 +167,8 @@ class AppointmentController extends Controller
 
     public function resched(Request $request, $id)
     {
-        $appointment = AppointmentRejected::findOrFail($id);
+        $reschedId = $request->input('reschedId');
+        $appointment = AppointmentRejected::findOrFail($reschedId);
         AppointmentPending::create([
             'user_id' =>$appointment->user_id,
             'petType' => $appointment->petType,

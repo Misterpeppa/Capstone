@@ -466,37 +466,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn new_appointment_btn" id="approve_appointment_tab_button"
-                                    type="button" data-bs-dismiss="modal"><span
-                                        class="new_appointment_btn_base"><svg xmlns="http://www.w3.org/2000/svg"
-                                            width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <g clip-path="url(#clip0_5910_1403)" filter="url(#filter0_d_5910_1403)">
-                                                <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </g>
-                                            <defs>
-                                                <filter id="filter0_d_5910_1403" x="-2" y="0" width="28"
-                                                    height="28" filterUnits="userSpaceOnUse"
-                                                    color-interpolation-filters="sRGB">
-                                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                                    <feColorMatrix in="SourceAlpha" type="matrix"
-                                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                                                        result="hardAlpha" />
-                                                    <feOffset dy="2" />
-                                                    <feGaussianBlur stdDeviation="1" />
-                                                    <feComposite in2="hardAlpha" operator="out" />
-                                                    <feColorMatrix type="matrix"
-                                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-                                                    <feBlend mode="normal" in2="BackgroundImageFix"
-                                                        result="effect1_dropShadow_5910_1403" />
-                                                    <feBlend mode="normal" in="SourceGraphic"
-                                                        in2="effect1_dropShadow_5910_1403" result="shape" />
-                                                </filter>
-                                                <clipPath id="clip0_5910_1403">
-                                                    <rect width="24" height="24" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg> New Appointment</span></button>
+                                
                             </div>
                             <div id="approved_table" class="w-100" style="overflow: auto;">
                                 <table class="table table-responsive mt-3 w-100">
@@ -951,37 +921,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn new_appointment_btn" id="pending_appointment_tab_button"
-                                    type="button"><span class="new_appointment_btn_base"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none">
-                                            <g clip-path="url(#clip0_5910_1403)" filter="url(#filter0_d_5910_1403)">
-                                                <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </g>
-                                            <defs>
-                                                <filter id="filter0_d_5910_1403" x="-2" y="0" width="28"
-                                                    height="28" filterUnits="userSpaceOnUse"
-                                                    color-interpolation-filters="sRGB">
-                                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                                    <feColorMatrix in="SourceAlpha" type="matrix"
-                                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                                                        result="hardAlpha" />
-                                                    <feOffset dy="2" />
-                                                    <feGaussianBlur stdDeviation="1" />
-                                                    <feComposite in2="hardAlpha" operator="out" />
-                                                    <feColorMatrix type="matrix"
-                                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-                                                    <feBlend mode="normal" in2="BackgroundImageFix"
-                                                        result="effect1_dropShadow_5910_1403" />
-                                                    <feBlend mode="normal" in="SourceGraphic"
-                                                        in2="effect1_dropShadow_5910_1403" result="shape" />
-                                                </filter>
-                                                <clipPath id="clip0_5910_1403">
-                                                    <rect width="24" height="24" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg> New Appointment</span></button>
+
                             </div>
                             <div id="pending_table" class="w-100" style="overflow: auto;">
                                 <table class="table table-responsive mt-3 w-100">
@@ -1468,37 +1408,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn new_appointment_btn" id="rejected_appointment_tab_button"
-                                    type="button" data-bs-dismiss="modal"><span
-                                        class="new_appointment_btn_base"><svg xmlns="http://www.w3.org/2000/svg"
-                                            width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <g clip-path="url(#clip0_5910_1403)" filter="url(#filter0_d_5910_1403)">
-                                                <path d="M12 5V19M5 12H19" stroke="white" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </g>
-                                            <defs>
-                                                <filter id="filter0_d_5910_1403" x="-2" y="0" width="28"
-                                                    height="28" filterUnits="userSpaceOnUse"
-                                                    color-interpolation-filters="sRGB">
-                                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                                    <feColorMatrix in="SourceAlpha" type="matrix"
-                                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                                                        result="hardAlpha" />
-                                                    <feOffset dy="2" />
-                                                    <feGaussianBlur stdDeviation="1" />
-                                                    <feComposite in2="hardAlpha" operator="out" />
-                                                    <feColorMatrix type="matrix"
-                                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-                                                    <feBlend mode="normal" in2="BackgroundImageFix"
-                                                        result="effect1_dropShadow_5910_1403" />
-                                                    <feBlend mode="normal" in="SourceGraphic"
-                                                        in2="effect1_dropShadow_5910_1403" result="shape" />
-                                                </filter>
-                                                <clipPath id="clip0_5910_1403">
-                                                    <rect width="24" height="24" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg> New Appointment</span></button>
+                                
                             </div>
                             <div id="rejected_table" class="w-100" style="overflow: auto;">
                                 <table class="table table-responsive mt-3 w-100">
@@ -1835,8 +1745,9 @@
                                 </defs>
                             </svg></span></div>
                 </div>
-                <form action="{{ route('reject', ['id' => $appointment->id]) }}" method="POST">
+                <form action="{{ route('reject') }}" method="POST">
                     @csrf
+                    <input type="hidden" id="rejectId" name="rejectId">
                     <div class="modal-body discard_message">
                         <div>
                             <h1>Reject appointment</h1>
@@ -1958,8 +1869,9 @@
                             </svg></span></div>
                 </div>
                 <div class="modal-body archive_message">
-                    <form action="{{ route('resched', ['id' => $appointment->id]) }}" method="POST">
+                    <form action="{{ route('resched') }}" method="POST">
                         @csrf
+                        <input type="hidden" id="reschedId" name="reschedId">
                         <div>
                             <h1><strong>Reschedule appointment</strong></h1>
                             <p>You are about to reschedule an appointment. Please make sure that all information are
@@ -2165,6 +2077,7 @@
             });
             $('.reject-action').click(function() {
                 var appointmentId = $(this).data('id');
+                $('#rejectId').val(appointmentId);
                 var rejectModal = new bootstrap.Modal(document.getElementById('reject_modal'));
                 rejectModal.show();
                 $('#reject_btn').off('click').on('click', function() {
@@ -2180,7 +2093,7 @@
                     }
                     $.ajax({
                         type: 'POST',
-                        url: '/admin/appointment/reject/' + appointmentId,
+                        url: '/admin/appointment/reject/',
                         data: {
                             _token: '{{ csrf_token() }}',
                             reason: reason,
@@ -2200,6 +2113,7 @@
             });
             $('.resched-action').click(function() {
                 var appointmentId = $(this).data('id');
+                $('#reschedId').val(appointmentId);
                 var reschedModal1 = new bootstrap.Modal(document.getElementById('resched_modal-1'));
                 reschedModal1.show();
                 $('#reschedule_btn-1').off('click').on('click', function() {
@@ -2207,7 +2121,7 @@
                     var appointmentTime = $('#appointmentTime').val();
                     $.ajax({
                         type: 'POST',
-                        url: '/admin/appointment/resched/' + appointmentId,
+                        url: '/admin/appointment/resched/',
                         data: {
                             _token: '{{ csrf_token() }}',
                             appointmentDate: appointmentDate,
