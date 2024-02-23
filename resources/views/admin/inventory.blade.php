@@ -182,7 +182,7 @@
 
 
                                         </div>
-                                        <button type="submit" form="approvedForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i><span class="filter_btn_base">Search</span></button>
+                                        <button type="submit" form="searchForm" class="btn filter_btn fw-bold"><i class="fa-solid fa-magnifying-glass"></i><span class="filter_btn_base">Search</span></button>
                                         <div class="dropdown">
                                             <button class="filter_btn dropdown-toggle fw-bold" type="button"
                                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" data-bs-auto-close="false"
@@ -261,6 +261,14 @@
                                         </div>
                                 
                                       </li>
+                                      <div class="row" style="display:flex; justify-content: space-around; gap: 8px;">
+                                            <div class="col-md-5 colButton" style="display:flex; justify-content: center">
+                                                <button class="btn cancel_filter btn-sm me-3"><span class="cancel_filter_base">Cancel</span></button>
+                                            </div>
+                                            <div class="col-md-5 text-center colButton" style="display:flex; justify-content: center">
+                                                <button type="submit" form="searchForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply</span></button>
+                                            </div>
+                                        </div>
                                   </ul>
                                         </div>
                                         
@@ -510,7 +518,7 @@
                                           <td>{{ $product->product_type }}</td>
                                           <td>{{ $product->info_quantity }}</td>
                                           <td>{{ $product->date_stocked }}</td>
-                                          <td>{{ $product->expiration_date }}</td>
+                                          <td class="exp_date-td">{{ $product->expiration_date }}</td>
                                           <td class="status-td"></td>
                                           <td class="dropdown button-action">
                                             <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;" aria-expanded="false" data-bs-toggle="dropdown"
@@ -1441,8 +1449,8 @@
 				</div>
 				<div class="modal-body archive_message">
 					<div>
-						<h1>Archive client?</h1>
-						<p>You can restore archived clients at a later time.</p>
+                        <h1 style="color: red; font-weight: bold;">Warning: Archiving this product will remove it from active inventory</h1>
+						<p>Are you sure you want to proceed?</p>
 					</div>
 				</div>
 				<div class="modal-footer discard_footer">
@@ -1489,12 +1497,8 @@
     @endif
     <script>
         function updateStatus() {
-            // Iterate over each row in the table
             $('#inventory_table_body tr').each(function() {
-                // Get the quantity value from the second column of the current row
                 var quantity = parseInt($(this).find('td:eq(3)').text());
-
-                // Determine the status based on the quantity
                 var status;
                 if (quantity === 0) {
                     status = "Out of Stock";
@@ -1503,22 +1507,20 @@
                 } else {
                     status = "High Stock";
                 }
-
                 var statusTd = $(this).find('.status-td');
-        statusTd.text(status); // Update status text
-
-        // Apply styles based on the status
-        if (status === "Out of Stock") {
-            statusTd.css({ backgroundColor: "#DA534F", color: "#fff" });
-        } else if (status === "Low Stock") {
-            statusTd.css({ backgroundColor: "#FFA800", color: "#fff" });
-        } else {
-            statusTd.css({ backgroundColor: "#5CA500", color: "var(--colors-main-neutral, #FFF)" });
-        }
-            });
-        }
+                statusTd.text(status); // Update status text
+                if (status === "Out of Stock") {
+                    statusTd.css({ backgroundColor: "#DA534F", color: "#fff" });
+                } else if (status === "Low Stock") {
+                    statusTd.css({ backgroundColor: "#FFA800", color: "#fff" });
+                } else {
+                    statusTd.css({ backgroundColor: "#5CA500", color: "var(--colors-main-neutral, #FFF)" });
+                }
+                });
+                }
         $(document).ready(function() {
             updateStatus();
+            updateExp();
             // $('#editButton').click(function() {
             // const invData = {
             //     'item_name' :$(this).data('item_name'),
@@ -1685,14 +1687,12 @@
             var row = $(this).closest('row-id');
             const product_type = $(this).data('product-type');
             const id = $(this).data('product-id');
+            $('#archive_confirm_button').on('click', function() {
                 $.ajax({
                     type: 'POST',
                     url: `/admin/inventory/archive/${product_type}/${id}`,
                     data: {_token: '{{ csrf_token() }}'},
                     success: function(response) {
-                        // Handle success, e.g., show a success message
-                        alert('Product has been archived');
-                        // Optionally, you can also reload the page or update the UI
                         location.reload();
                     },
                     error: function(xhr) {
@@ -1700,6 +1700,7 @@
                         console.error(xhr.responseText);
                     }
                 });
+            });
             });
             $('.deductStock').on('click', function() {
             var row = $(this).closest('row-id');

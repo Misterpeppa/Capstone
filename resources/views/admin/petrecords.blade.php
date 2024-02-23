@@ -789,7 +789,6 @@
 								</div>
 								<div class="form-floating" style="width:100%;">
 									<select class="form-select" id="editSterile" name="sterilization" id="sterilization_status_edit" placeholder="Sterilization Status">
-
 										<option value="" selected="">Select Status</option>
 										<option value="None">None</option>
 										<option value="Spayed">Spayed</option>
@@ -802,7 +801,7 @@
 					</div>
 					<div class="mb-3 prod_detail_fields_buttons">
 						<button id="cancel_edit" class="btn cancel_edit" type="button"><span class="cancel_edit_base">Cancel</span></button>
-						<button id="edit_save_changes" class="btn edit_save_changes" type="submit" disabled><span class="edit_save_changes_base">Save Changes</span></button>
+						<button id="edit_save_changes" class="btn edit_save_changes" type="submit"><span class="edit_save_changes_base">Save Changes</span></button>
 					</div>
 				</div>
 				</form>
@@ -1170,12 +1169,12 @@
 						<div class="mb-3 input_container">
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" name="diagnosis" data-id="diagnosis" id="diagnosis" placeholder="Diagnosis"/>
+									<input class="form-control" name="diagnosis" data-id="diagnosis" id="diagnosis" placeholder="Diagnosis"/ required>
 									<label class="form-label" for="diagnosis">Diagnosis<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_type"><span>• Please select diagnosis</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" name="diagnosis_date" data-id="diagnosis_date" id="diagnosis_date" placeholder="Date" type="date">
+									<input class="form-control" name="diagnosis_date" data-id="diagnosis_date" id="diagnosis_date" placeholder="Date" type="date" required>
 									<label class="form-label" for="diagnosis_date">Date<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_birthdate"><span>• Please click the calendar icon on the right part, and select diagnosis date.</span></div>
 									
@@ -1183,19 +1182,19 @@
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" name="treatment" data-id="treatment_plan" id="treatment_plan" placeholder="Treatment Plan"/>	
+									<input class="form-control" name="treatment" data-id="treatment_plan" id="treatment_plan" placeholder="Treatment Plan"/ required>	
 									<label class="form-label" for="diagnosis">Treatment Plan<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_type-3"><span>• Please select treatment plan</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" name="medication" id="medication" data-id="medication" placeholder="Medication"/>
+									<input class="form-control" name="medication" id="medication" data-id="medication" placeholder="Medication"/ required>
 									<label class="form-label form-label" for="medication">Medication<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_type-4"><span>• Please select medication</span></div>
 								</div>
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<textarea class="form-control form-control" name="diagnosis_desc" data-id="diagnosis_description" id="diagnosis_description" placeholder="Diagnosis Description"></textarea>
+									<textarea class="form-control form-control" name="diagnosis_desc" data-id="diagnosis_description" id="diagnosis_description" placeholder="Diagnosis Description" required></textarea>
 									<label class="form-label form-label" for="diagnosis_description">Diagnosis Description<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-diagnosis_description"><span>• Please enter diagnosis description.</span></div>
 								</div>
@@ -1204,8 +1203,7 @@
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_diagnosis" aria-label="Clear Form" role="button" type="reset"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_diagnosis" id="submit_diagnosis" type="submit" ><span class="submit_product_base">Submit</span></button>
-
+					<button class="btn submit_diagnosis" id="submit_diagnosis" type="submit" disabled><span class="submit_product_base">Submit</span></button>
 				</div>
 				</form>
 			</div>
@@ -1225,13 +1223,13 @@
 						<div class="mb-3 input_container">
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" name="vax_id" id="vaccination" data-id="vaccination" placeholder="Vaccination"/>
+									<input class="form-control" name="vax_id" id="vaccination" data-id="vaccination" placeholder="Vaccination"/ required>
 									<label class="form-label" for="vaccination">Diagnosis<span>&nbsp;*</span></label>
 									<div id="error-vaccination" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-vaccination" class="guide-message"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" name="vaccination_date" id="vaccination_date" data-id="vaccination_date" placeholder="Date" type="date">
+									<input class="form-control" name="vaccination_date" id="vaccination_date" data-id="vaccination_date" placeholder="Date" type="date" required>
 									<label class="form-label" for="vaccination_date">Date<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_birthdate-2"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 									<div class="guide-message" id="guide_pet_birthdate-2"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
@@ -1239,13 +1237,13 @@
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<textarea class="form-control" name="vaccination_description" id="vaccination_description" placeholder="Vaccination Details"></textarea>
+									<textarea class="form-control" name="vaccination_description" id="vaccination_description" placeholder="Vaccination Details" required></textarea>
 									<label class="form-label" for="vaccination_description">Vaccination Details<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_type-5"><span>• Please select pet type</span></div>
 									<div class="guide-message" id="guide-pet_type-5"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" id="next_schedule" name="revaccination_date" type="date" data-id="next_schedule">
+									<input class="form-control" id="next_schedule" name="revaccination_date" type="date" data-id="next_schedule" required>
 									<label class="form-label" for="next_schedule">Next Schedule Date<span>&nbsp;*</span></label>
 									<div id="error-next_schedule" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-next_schedule" class="guide-message"><span>• Please select pet type</span></div>
@@ -1253,7 +1251,7 @@
 							</div>
 							<div class="d-flex justify-content-end align-items-end align-content-end align-self-end newinput_row" style="width: 100%;">
 								<div class="form-floating pet_status_input" style="width: 49.3%;">
-									<input class="form-control" name="status" data-id="status" id="status"/>
+									<input class="form-control" name="status" data-id="status" id="status"/ required>
 									<label class="form-label" for="status">Status<span>&nbsp;*</span></label>
 									<div id="error-next_schedule-1" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-next_schedule-1" class="guide-message"><span>• Please select pet type</span></div>
@@ -1263,8 +1261,7 @@
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_vaccination"aria-label="Clear Form" role="button" type="reset"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_immunization" id="submit_vaccination" type="submit"><span class="submit_product_base">Submit</span></button>
-
+					<button class="btn submit_immunization" id="submit_vaccination" type="submit" ><span class="submit_product_base">Submit</span></button>
 				</div>
 				</form>
 			</div>
@@ -1284,13 +1281,13 @@
 						<div class="mb-3 input_container">
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" name="surgery_type" id="surgeryType" data-id="surgery_type" placeholder="Surgery"/>
+									<input class="form-control" name="surgery_type" id="surgeryType" data-id="surgery_type" placeholder="Surgery"/ required>
 									<label class="form-label" for="surgery">Surgery<span>&nbsp;*</span></label>
 									<div id="error-vaccination-1" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-vaccination-1" class="guide-message"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" name="surgery_date" id="surgery_date" data-id="surgery_date" placeholder="Date" type="date">
+									<input class="form-control" name="surgery_date" id="surgery_date" data-id="surgery_date" placeholder="Date" type="date" required>
 									<label class="form-label" for="surgery_date">Date<span>&nbsp;*</span></label>
 									<div class="error-message" id="error-pet_birthdate-3"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
 									<div class="guide-message" id="guide_pet_birthdate-3"><span>• Please click the calendar icon on the right part, and select your pet birthdate.</span></div>
@@ -1298,13 +1295,13 @@
 							</div>
 							<div class="new_input_row">
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" id="severity" name="severity" data-id="severity" placeholder="Reason for surgery"/>
+									<input class="form-control" id="severity" name="severity" data-id="severity" placeholder="Reason for surgery"/ required>
 									<label class="form-label" for="severity">Severity<span>&nbsp;*</span></label>
 									<div id="error-medication-2" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-medication-2" class="guide-message"><span>• Please select pet type</span></div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<input class="form-control" id="med_id" name="med_id" data-id="med_id" placeholder="Medication"/>
+									<input class="form-control" id="med_id" name="med_id" data-id="med_id" placeholder="Medication"/ required>
 									<label class="form-label" for="med_id">Medication<span>&nbsp;*</span></label>
 									<div id="error-medication-1" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-medication-1" class="guide-message"><span>• Please select pet type</span></div>
@@ -1312,7 +1309,7 @@
 							</div>
 							<div class="d-flex justify-content-end align-items-end align-content-end align-self-end newinput_row" style="width: 100%;">
 								<div class="form-floating" style="width: 100%;">
-									<textarea class="form-control" name="surgery_note" id="notes" data-id="notes" placeholder="Notes"></textarea>
+									<textarea class="form-control" name="surgery_note" id="notes" data-id="notes" placeholder="Notes" required></textarea>
 									<label class="form-label" for="notes">Notes<span>&nbsp;*</span></label>
 									<div id="error-notes" class="error-message"><span>• Please select pet type</span></div>
 									<div id="guide-notes" class="guide-message"><span>• Please select pet type</span></div>
@@ -1322,8 +1319,7 @@
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_surgery" aria-label="Clear Form" role="button" type="reset"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_surgery" id="submit_surgery" type="submit" ><span class="submit_product_base">Submit</span></button>
-
+					<button class="btn submit_surgery" id="submit_surgery" type="submit" disabled><span class="submit_product_base">Submit</span></button>
 				</div>
 				</form>
 			</div>
@@ -1558,7 +1554,7 @@ $(document).ready(function() {
 							'<td>' + medhisto.diagnosis + '</td>' +
 							'<td>' + medhisto.diagnosis_date + '</td>' +
 							'<td>' + medhisto.treatment + '</td>' +
-							'<td>' + medhisto.med.item_name + '</td>' +
+							'<td>' + medhisto.med_id + '</td>' +
 							'<td>' + medhisto.diagnosis_desc + '</td>' +
 							'</tr>';
 						$('#medhisto_Table tbody').append(newRow);
@@ -1582,8 +1578,8 @@ $(document).ready(function() {
 					$.each(data, function(index, vaxhisto) {
 						var newRow = '<tr>' +
 							'<td>' + vaxhisto.vaccination_date + '</td>' +
-							'<td>' + vaxhisto.vax.item_name + '</td>' +
-							'<td>' + vaxhisto.vax.prod_desc + '</td>' +
+							'<td>' + vaxhisto.vax_id + '</td>' +
+							'<td>' + vaxhisto.vax_desc + '</td>' +
 							'<td>' + vaxhisto.revaccination_date + '</td>' +
 							'<td>' + vaxhisto.status + '</td>' +
 							'</tr>';
@@ -1613,7 +1609,7 @@ $(document).ready(function() {
 							'<td>' + surgery.surgery_type + '</td>' +
 							'<td>' + surgery.surgery_date + '</td>' +
 							'<td>' + surgery.reason + '</td>' +
-							'<td>' + surgery.med.item_name + '</td>' +
+							'<td>' + surgery.med_id + '</td>' +
 							'<td>' + surgery.surgery_note + '</td>' +
 							'</tr>';
 						$('#surghisto_Table tbody').append(newRow);

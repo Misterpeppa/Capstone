@@ -352,7 +352,6 @@
                             <thead>
                                 <tr>
                                     <th><input type="checkbox" id="Select_All_Archive" class="checkbox"></th>
-                                    <th>ID</th>
                                     <th>title</th>
                                     <th>source</th>
                                     <th>created</th>
@@ -364,7 +363,6 @@
                               @foreach ($archived as $index => $record)
                                 <tr>
                                     <td><input type="checkbox" class="checkbox"></td>
-                                    <td>{{ $index + 1 }}</td>
                                     <td>
                                         @if ($record instanceof App\Models\Admin\MedInfo)
                                             {{ $record->item_name }} <!-- Display MedInfo-specific field -->
@@ -410,7 +408,7 @@
                                         </svg></span>
                                       </button>
                                       @elseif ($record instanceof App\Models\Admin\VaxInfo)
-                                      <button class="btn unarchive_vax" id="unarchive_vax" type="button" data-product-type="{{ $record->product_type }}" data-product-id="{{ $record->id }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                      <button class="btn unarchive_vax" id="unarchive_vax" type="button" data-product-type="{{ $record->product_type }}" data-record-id="{{ $record->id }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                         <g clip-path="url(#clip0_6404_6376)">
                                           <path d="M9 14L5 10M5 10L9 6M5 10H16C17.0609 10 18.0783 10.4214 18.8284 11.1716C19.5786 11.9217 20 12.9391 20 14C20 15.0609 19.5786 16.0783 18.8284 16.8284C18.0783 17.5786 17.0609 18 16 18H15" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </g>
@@ -422,7 +420,7 @@
                                         </svg></span>
                                       </button>
                                       @elseif  ($record instanceof App\Models\Admin\VitInfo)
-                                      <button class="btn unarchive_vit" id="unarchive_vit" type="button" data-product-type="{{ $record->product_type }}" data-product-id="{{ $record->id }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                      <button class="btn unarchive_vit" id="unarchive_vit" type="button" data-product-type="{{ $record->product_type }}" data-record-id="{{ $record->id }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                         <g clip-path="url(#clip0_6404_6376)">
                                           <path d="M9 14L5 10M5 10L9 6M5 10H16C17.0609 10 18.0783 10.4214 18.8284 11.1716C19.5786 11.9217 20 12.9391 20 14C20 15.0609 19.5786 16.0783 18.8284 16.8284C18.0783 17.5786 17.0609 18 16 18H15" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </g>
