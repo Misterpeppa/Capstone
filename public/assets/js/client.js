@@ -1,3 +1,88 @@
+// Add an event listener for the buttons inside dropdown-content
+document.querySelectorAll('.button-action button').forEach(function (button) {
+    button.addEventListener('click', function (event) {
+        closeDropdownMenus();
+        event.preventDefault();
+        const action = this.getAttribute('data-action');
+        if (action === 'View'){
+            const client_container = document.getElementById('client_container');
+            const view_client = document.getElementById('view_client');
+            
+            client_container.style.display = 'none';
+            view_client.style.display= 'flex';
+            
+        }else if (action === 'Edit') {
+            const edit_client_detail_header = document.getElementById('edit_client_detail_header');
+            const edit_client = document.getElementById('edit_client');
+            const client_header = document.getElementById('client_header');
+            const client_container = document.getElementById('client_container');
+                            
+            client_header.style.display = 'none';
+            client_container.style.display = 'none';
+            edit_client_detail_header.style.display = 'flex';
+            edit_client.style.display = 'flex';
+            
+        }else if (action === 'Archive') {
+            // Handle the "Archive" action here
+            // Add your logic for this action
+
+            // Show the archive_modal
+            var archive_modal = document.getElementById('archive_modal');
+            if (archive_modal) {
+                // Display the modal using Bootstrap's modal methods
+                var bootstrapModal = new bootstrap.Modal(archive_modal);
+                bootstrapModal.show();
+
+                // Optionally, you can attach an event listener to the modal's confirm button
+                var confirmButton = document.getElementById('archive_confirm_button');
+                if (confirmButton) {
+                    confirmButton.addEventListener('click', function() {
+                        // User confirmed the archiving action
+                        // Add your logic for this action
+
+                        var row = button.closest('tr');
+                        // Optionally, you can add an animation or confirmation dialog before archiving
+                        // Perform the archiving logic (e.g., hide the row)
+                        row.style.display = 'none';
+
+                        // Close the archive_modal after archiving
+                        bootstrapModal.hide();
+                    });
+                }
+            }
+        }
+
+    });
+});
+        
+
+
+// Function to close all dropdown menus
+function closeDropdownMenus() {
+    document.querySelectorAll('.dropdown-menu').forEach(function (menu) {
+        menu.style.display = 'none';
+    });
+}
+
+// Event listener to close dropdown menus when clicking outside
+document.addEventListener('click', function (event) {
+    if (!event.target.matches('.dropbtn')) {
+        closeDropdownMenus();
+    }
+});
+       
+
+document.querySelectorAll('.dropbtn').forEach(function (button) {
+    button.addEventListener('click', function (event) {
+        event.stopPropagation(); // Prevent the click event from propagating
+        const content = this.nextElementSibling;
+        if (content.style.display === 'flex') {
+            content.style.display = 'none';
+        } else {
+            content.style.display = 'flex';
+        }
+    });
+});
 document.addEventListener('DOMContentLoaded', function () {
     
 

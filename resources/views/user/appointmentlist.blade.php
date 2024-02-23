@@ -57,10 +57,11 @@
                         </div>
 					<div class="appointment_list_tabs">
 						<ul class="nav nav-tabs appointment_list_tab_items" role="tablist">
-							<li class="nav-item" role="presentation"><a class="nav-link active list_tab" role="tab" data-bs-toggle="tab" href="#tab-1">Approved<span id="upcoming-counter" class="counter counter-upcoming">0</span></a></li>
-							<li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-2">Pending<span id="recent-counter" class="counter counter-recent">0</span></a></li>
-							<li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-3">Rejected<span id="rejected-counter" class="counter counter-rejected">0</span></a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-4">History<span id="history-counter" class="counter counter-history">0</span></a></li>
+							<li class="nav-item" role="presentation"><a class="nav-link active list_tab" role="tab" data-bs-toggle="tab" href="#tab-1">Approved<span id="upcoming-counters" class="counter counter-upcoming">{{ $approvedCount }}</span></a></li>
+							<li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-2">Pending<span id="recent-counters" class="counter counter-recent">{{ $pendingCount }}</span></a></li>
+							<li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-3">Rejected<span id="rejected-counters" class="counter counter-rejected">{{ $rejectedCount }}</span></a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-4">History<span id="history-counters" class="counter counter-history">{{ $completedCount }}</span></a></li>
+
 						</ul>
 						<div class="tab-content" style="width: 100%;">
 							<div class="tab-pane active appointment_list_container" role="tabpanel" id="tab-1" style="overflow:auto;">
@@ -190,6 +191,35 @@
                                             <td class="text-style">{{ $appointmentrejected['petType'] }} ({{ $appointmentrejected['breed'] }})</td>
                                             <td class="text-style">{{ $appointmentrejected['appointmentType'] }}</td>
                                             <td class="text-style">{{ $appointmentrejected['appointmentDate'] }} {{ $appointmentrejected['appointmentTime'] }}</td>
+                                            <td class="text-style">{{ $appointmentrejected['notes'] }}</td>
+											<td class="text-style"></td>
+											
+                                        </tr>
+                                        @endforeach
+										</tbody>
+									</table>
+									
+						</div>
+                        <div class="tab-pane appointment_list_container" role="tabpanel" id="tab-4" style="overflow:auto;">
+								
+								<table class="table table-responsive mt-3 w-100" id="history_table">
+										<thead>
+											<tr>
+												<th>No.</th>
+												<th>Patient Info</th>
+												<th>Surgery Type</th>
+												<th>Appointment</th>
+												<th>Status</th>
+											</tr>
+										</thead>
+										<tbody id="appointment_history_table_body">
+                                        @foreach ($appointmentCompleted as $index => $appointmentrejected)
+                                        <tr>
+                                            <td class="text-style">{{ $index + 1 }}</td>
+                                            <td class="text-style">{{ $appointmentrejected['petType'] }} ({{ $appointmentrejected['breed'] }})</td>
+                                            <td class="text-style">{{ $appointmentrejected['appointmentType'] }}</td>
+                                            <td class="text-style">{{ $appointmentrejected['appointmentDate'] }} {{ $appointmentrejected['appointmentTime'] }}</td>
+                                            <td class="text-style">{{ $appointmentrejected['status'] }}</td>
 											<td class="text-style"></td>
 											
                                         </tr>

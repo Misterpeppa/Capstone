@@ -561,8 +561,8 @@
                                                 data-action="Edit" id="editButton"
                                                 data-product-type="{{ $product->product_type }}"
                                                 data-product-id="{{ $product->id }}"
-                                                data-item_name="{{ $product->item_name }}" data-product_code="{{ $product->product_code}}"
-                                                class="btn border-0"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                data-item_name="{{ $product->item_name }}" data-prod_desc="{{ $product->prod_desc }}""
+                                                class="btn border-0 editButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                     <g clip-path="url(#clip0_6559_23808)">
                                                         <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                     </g>
@@ -691,7 +691,8 @@
                                                             </button>
                                                             <button data-action="Archive" id="archive"
                                                                 data-product-type="{{ $medInfo->product_type }}"
-                                                                data-product-id="{{ $medInfo->id }}">
+                                                                data-product-id="{{ $medInfo->id }}"
+                                                                data-prod_desc="{{ $medInfo->prod_desc }}">
                                                                 <div class="action_button_text"><svg
                                                                         xmlns="http://www.w3.org/2000/svg"
                                                                         width="24" height="24"
@@ -748,7 +749,8 @@
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
-                                        <td class="status-td"></td>
+                                        <td class="status-td1"></td>
+
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
@@ -843,13 +845,12 @@
                                         </defs>
                                     </svg> Back</span></button></div>
                         <div class="prod_detail_body">
-                            @foreach ($products as $productInfo)
                                 <form
-                                    action="{{ route('product.edit', ['product_type' => $productInfo->product_type, 'id' => $productInfo->id]) }}"
+                                    action="{{ route('product.edit') }}"
                                     method="POST" class="mb-3 prod_detail_fields_container" id="edit_prod_form">
-                            @endforeach
                             @csrf
-                            @method('PUT')
+                            <input type="hidden" id="editProduct_type" name="editProduct_type">
+                            <input type="hidden" id="productIdInput" name="editId">
                             <div class="new_input_row">
                                 <div class="form-floating w-100"><select name="produt_type" class="form-select form-select"
                                         data-id="product-categ" id="product-categ-3">
@@ -861,7 +862,9 @@
                                     <div id="error-product_categ-3" class="error-message"><span>Please select a
                                             category.</span></div>
                                 </div>
-                                <div class="form-floating w-100"><input class="form-control w-100" list="options" data-id="product_name" id="editItemName" name="item_name" placeholder="Owner Name">
+                                <div class="form-floating w-100"><input class="form-control w-100" list="options" data-id="product_name" id="editItemName" 
+                                name="item_name" placeholder="Owner Name">
+
 								<label class="form-label" for="product_name">Brand<span>&nbsp;*</span></label>
 									<datalist id="options">
 
@@ -913,7 +916,7 @@
                                 </div>
                                 <div class="form-floating" style="width:100%;"><input
                                         class="form-control form-control" name="date_stocked" id="date_stocked"
-                                        data-id="datestocked"placeholder="Expiration Date"
+                                        data-id="datestocked" placeholder="Expiration Date"
                                         type="date"><label class="form-label form-label" for="datestocked">Date
                                         Stocked</label>
                                     <div class="error-message" id="error-datestocked-3"><span>Please enter the date
@@ -1106,14 +1109,7 @@
                                     <div class="error-message" id="error-product_code-1"><span>Please enter product
                                             code.</span></div>
                                 </div>
-                                <div class="form-floating" style="width: 100%;"><input
-                                        class="form-control" type="text" name="batch_no"
-                                        data-id="batch_number" id="batch_number-1"
-                                        placeholder="Batch Number"><label class="form-label form-label"
-                                        for="batch_number">Batch Number <span>&nbsp;*</span></label>
-                                    <div class="error-message" id="error-batch_number-1"><span>Please enter batch
-                                            number.</span></div>
-                                </div>
+                                
                             </div>
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input
@@ -1197,7 +1193,8 @@
                         <div class="new_input_row">
                             <div class="form-floating batch_number"><input id="prod_code" name="prod_code"
                                     class="form-control" type="text" data-id="prod_code"
-                                    placeholder="Product Code" readonly><label class="form-label"
+                                    placeholder="Product Code"><label class="form-label"
+
                                     for="batch_number">Product Code</label>
                             </div>
                         </div>
@@ -1288,7 +1285,8 @@
                                         <div class="form-floating">
                                     <input id="deduct_quantity_input" class="form-control input_quantity" type="number"
                                         aria-labelledby="label-quantity" data-id="deduct_quantity_input" min="0"
-                                        name="quantity" required value="0" placeholder="Quantity">
+                                        name="deduct" required value="0" placeholder="Quantity">
+
                                         <label class="form-label" for="deduct_quantity_input">Quantity</label></div>
 
                                     <button class="quantity_add"
@@ -1456,6 +1454,19 @@
 	</div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @if ($productExists)
+    <script>
+    $('#empty_state_container').css('display', 'none');
+    $('#split_btn').css('display', 'flex');
+    $('#product_table_container').css('display', 'flex');
+    </script>
+    @else
+    <script>
+    $('#empty_state_container').css('display', 'flex');
+    $('#split_btn').hide();
+    $('#product_table_container').css('display', 'none');
+    </script> 
+    @endif
     @if (session('success_product'))
     <script>
     $(document).ready(function() {
@@ -1508,24 +1519,15 @@
         }
         $(document).ready(function() {
             updateStatus();
-            $('#editButton').click(function() {
-            const invData = {
-                'item_name' :$(this).data('item_name'),
-                'product_code' :$(this).data('product_code'),
-                'last_name' :$(this).data('last-name'),
-                'suffix' :$(this).data('suffix'),
-                'birthdate' :$(this).data('birthdate'),
-                'email' :$(this).data('email'),
-                'phone' :$(this).data('phone'),
-            };      
-            $('#editItemName').text(invData.item_name);
-            $('#product_code').val(invData.middle_name);
-            $('#editLastName').val(clientData.last_name);
-            $('#editSuffix').val(clientData.suffix);
-            $('#editBirthdate').val(clientData.birthdate);
-            $('#editEmail').val(clientData.email);
-            $('#editPhone').val(clientData.phone);
-        });
+            // $('#editButton').click(function() {
+            // const invData = {
+            //     'item_name' :$(this).data('item_name'),
+            //     'product_code' :$(this).data('product_code'),
+            // };      
+            // $('#editItemName').text(invData.item_name);
+            // $('#product_code').val(invData.middle_name);
+
+            // });
             $('.viewButton').click(function() {
                 var inventory_header = document.getElementById("inventory_header");
                 var rowId = $(this).closest('tr').data('row-id');
@@ -1559,12 +1561,29 @@
                     success: function(data){
                         $('#batch_table tbody').empty();
                         $.each(data, function(index, batches) {
+                            var status;
+                            if (batches.quantity === 0) {
+                                status = "Out of Stock";
+                            } else if (batches.quantity <= 50) {
+                                status = "Low Stock";
+                            } else {
+                                status = "High Stock";
+                            }
+                            var statusColor;
+                            if (status === "Out of Stock") {
+                                statusColor = "#DA534F";
+                            } else if (status === "Low Stock") {
+                                statusColor = "#FFA800";
+                            } else {
+                                statusColor = "#5CA500";
+                            }
                             var newRow = '<tr>' +
                             '<td>' + ' ' + '</td>' +
 							'<td>' + batches.batch_no + '</td>' +
                             '<td>' + batches.product_code + '</td>' +
                             '<td>' + batches.quantity + '</td>' +
-                            '<td>' + batches.quantity + '</td>' +
+                            '<td style="background-color: ' + statusColor + ';">' + status + '</td>' + // Include status here
+
 							'<td>' + batches.date_stocked + '</td>' +
 							'<td>' + batches.expiration_date + '</td>' +
                             '<td>' + batches.manufacturing_date + '</td>' +
@@ -1574,38 +1593,63 @@
                     }
                 })
             });
-            $('#editButton').click(function() {
-                // Get data attributes from the button
-                const productType = $(this).data('product-type');
-                const productId = $(this).data('product-id');
+            $('.editButton').click(function() {
+                var row = $(this).closest('row-id');
+                const product_type = $(this).data('product-type');
+                const id = $(this).data('product-id');
+                $('#editProduct_type').val(product_type);
+                $('#editId').val(id);
                 const invData = {
                 'item_name' :$(this).data('item_name'),
+                'product_type' :$(this).data('product_type'),
+                'prod_desc' :$(this).data('prod_desc'),
                 };
-                $('#addstockItemName').val(invData.item_name);
-
-                const form = $(this).closest('tr').find('.edit_prod_form');
-                // Set the values in the form fields
-                form.find('.productTypeInput').val(productType);
-                form.find('.productIdInput').val(productId);
-
+                $('#editItemName').val(invData.item_name);
+                $('#product-categ-3').empty();
+					const typeOptions = ['Medicine', 'Vaccine', 'Vitamin'];
+					typeOptions.forEach(function(option) {
+						const $option = $('<option></option>').attr('value', option).text(option);
+						if (option === invData.gender) {
+							$option.attr('selected', 'selected');
+						}
+						$('#product-categ-3').append($option);
+					});
+                $('#prod_desc').val(invData.prod_desc);
+                $('#productTypeInput').text(product_type);
+                $('#productIdInput').val(id);
                 $.ajax({
                     type: 'GET',
-                    url: `/admin/inventory/view/${product_type}/${id}`,
-                    success: function(data) {
-                        // Update the HTML elements with the retrieved data
-                        $('.prod_head_info h1').text(data.productInfo.item_name);
-                        $('.prod_head_info p').text(data.productInfo.product_type);
-                        $('.batch_number p').text(data.productBatch.batch_no);
-                        $('.bar_code p').text(data.productBatch.product_code);
-                        $('.manufactured_date p').text(data.productBatch.manufacturing_date);
-                        $('.expiration_date p').text(data.productBatch.expiration_date);
-                        $('.date_stocked p').text(data.productBatch.date_stocked);
-                        $('.product_Description p').text(data.productInfo.prod_desc);
+                    url: `/admin/inventory/viewBatch/${product_type}/${id}`,
+                    success: function(data){
+                        $('#batch_no').empty(); // Clear existing options
+                        $('#batch_no').append('<option value="" selected disabled>Select Batch</option>'); // Add default option
+                        $.each(data, function(index, batch) {
+                            $('#batch_no').append('<option value="' + batch.batch_no + '">'+ "Batch No. " + batch.batch_no + '</option>');
+                        });
                     },
-                    error: function(xhr) {
-                        // Handle errors
-                        console.log(xhr.responseText);
+                    error: function(xhr, status, error) {
+                        // Handle error
+                        console.error(error);
                     }
+                });
+                $('#batch_no').on('change', function() {
+                    var batchNo = $(this).val();
+                    // Make another AJAX request to fetch details of the selected batch
+                    $.ajax({
+                        type: 'GET',
+                        url: `/admin/inventory/batchDetails/${product_type}/${id}/${batchNo}`, // Adjust the URL as per your application
+                        success: function(data) {
+                            $('#product_code-3').val(data.product_code); 
+                            $('#manufacturing_date').val(data.manufacturing_date);
+                            $('#expiry_date').val(data.expiration_date);
+                            $('#date_stocked').val(data.date_stocked);
+                            $('#quantity_input').val(data.quantity);
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle error
+                            console.error(error);
+                        }
+                    });
                 });
             });
             $('.addStock').click(function() {
@@ -1619,7 +1663,6 @@
                 const formData = new FormData();
                 formData.append('product_type', productType);
                 formData.append('id', productId);
-
                 // Perform an AJAX request to the server
                 $.ajax({
                     url: `/admin/inventory/addStock/${product_type}/${productId}`, // Adjust the URL to your actual route
@@ -1642,8 +1685,6 @@
             var row = $(this).closest('row-id');
             const product_type = $(this).data('product-type');
             const id = $(this).data('product-id');
-
-            // Send an AJAX request to the Laravel controller
                 $.ajax({
                     type: 'POST',
                     url: `/admin/inventory/archive/${product_type}/${id}`,
@@ -1668,9 +1709,23 @@
                 'item_name' :$(this).data('item_name'),
                 };
             $('#productName').text(invData.item_name);
-            $('#deductproduct_type').text('(' + product_type + ')');
-            $('#deductid').val(id);
+            $('#deductproudct_type').text(product_type);
 
+            $('#deductid').val(id);
+            $.ajax({
+                type: 'GET',
+                url: `/admin/inventory/viewBatch/${product_type}/${id}`,
+                success: function(data) {
+                    $('#product_batch_no').empty();
+                    $('#product_batch_no').append('<option value="" selected disabled>Select Batch</option>');
+                    $.each(data, function(index, batch) {
+                        $('#product_batch_no').append('<option value="' + batch.batch_no + '">'+ "Batch No. " + batch.batch_no + '</option>');
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching batch numbers:', error);
+                }
+            });
             // Send an AJAX request to the Laravel controller
             $('#deduct_stock').click(function() {
                 // Perform AJAX request
@@ -1696,21 +1751,21 @@
             });
         });
 
-        document.querySelectorAll('#editButton').forEach(button => {
-            button.addEventListener('click', function() {
-                // Extract data from the button's data attributes
-                const productType = this.getAttribute('data-product-type');
-                const productId = this.getAttribute('data-product-id');
+        // document.querySelectorAll('#editButton').forEach(button => {
+        //     button.addEventListener('click', function() {
+        //         // Extract data from the button's data attributes
+        //         const productType = this.getAttribute('data-product-type');
+        //         const productId = this.getAttribute('data-product-id');
 
-                // Set the form's action based on the data
-                const editForm = document.querySelector('#edit_prod_form');
-                editForm.action = `/admin/inventory/edit/${productType}/${productId}`;
+        //         // Set the form's action based on the data
+        //         const editForm = document.querySelector('#edit_prod_form');
+        //         editForm.action = `/admin/inventory/edit/${productType}/${productId}`;
 
-                // Optionally, you can also populate form fields based on the data
-                document.querySelector('#edit-product-type').value = productType;
-                document.querySelector('#edit-product-id').value = productId;
-            });
-        });
+        //         // Optionally, you can also populate form fields based on the data
+        //         document.querySelector('#edit-product-type').value = productType;
+        //         document.querySelector('#edit-product-id').value = productId;
+        //     });
+        // });
 
         document.querySelectorAll('.addStock').forEach(button => {
             button.addEventListener('click', function() {

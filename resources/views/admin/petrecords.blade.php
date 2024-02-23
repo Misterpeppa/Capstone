@@ -742,7 +742,7 @@
 									
 								</div>
 								<div class="align-self-stretch form-floating">
-									<select aria-label="Floating label select example" name="gender" class="form-select editGender" id="editGender">
+									<select aria-label="Floating label select example" name="gender" class="form-select" id="editGender">
 										<option value="" selected="">Select sex</option>
 										<option value="1">Male</option>
 										<option value="2">Female</option>
@@ -788,7 +788,8 @@
 									</div>
 								</div>
 								<div class="form-floating" style="width:100%;">
-									<select class="form-select" name="sterilization" id="sterilization_status_edit" placeholder="Sterilization Status">
+									<select class="form-select" id="editSterile" name="sterilization" id="sterilization_status_edit" placeholder="Sterilization Status">
+
 										<option value="" selected="">Select Status</option>
 										<option value="None">None</option>
 										<option value="Spayed">Spayed</option>
@@ -1203,7 +1204,8 @@
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_diagnosis" aria-label="Clear Form" role="button" type="reset"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_diagnosis" id="submit_diagnosis" type="submit" disabled><span class="submit_product_base">Submit</span></button>
+					<button class="btn submit_diagnosis" id="submit_diagnosis" type="submit" ><span class="submit_product_base">Submit</span></button>
+
 				</div>
 				</form>
 			</div>
@@ -1261,7 +1263,8 @@
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_vaccination"aria-label="Clear Form" role="button" type="reset"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_immunization" id="submit_vaccination" type="submit" disabled><span class="submit_product_base">Submit</span></button>
+					<button class="btn submit_immunization" id="submit_vaccination" type="submit"><span class="submit_product_base">Submit</span></button>
+
 				</div>
 				</form>
 			</div>
@@ -1319,7 +1322,8 @@
 				</div>
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_surgery" aria-label="Clear Form" role="button" type="reset"><span class="clear_form_base">Clear Form</span></button>
-					<button class="btn submit_surgery" id="submit_surgery" type="submit" disabled><span class="submit_product_base">Submit</span></button>
+					<button class="btn submit_surgery" id="submit_surgery" type="submit" ><span class="submit_product_base">Submit</span></button>
+
 				</div>
 				</form>
 			</div>
@@ -1449,14 +1453,51 @@ $(document).ready(function() {
 			'species' :$(this).data('species'),
 			'breed' :$(this).data('breed'),
 			'gender' :$(this).data('gender'),
+			'sterilzation' :$(this).data('sterilization'),
 		};
 		$('#editPetName').val(petrecData.pet_name);
-		$('.editGender').val(petrecData.gender);
+		$('#editGender').empty();
+					const genderOptions = ['Male', 'Female']; // Your species options
+					genderOptions.forEach(function(option) {
+						const $option = $('<option></option>').attr('value', option).text(option);
+						if (option === petrecData.gender) {
+							$option.attr('selected', 'selected');
+						}
+						$('#editGender').append($option);
+					});
 		$('#editBirthdate').val(petrecData.birthdate);
 		$('#editAge').val(petrecData.age);
-		$('#editSpecies').val(petrecData.species);
-		$('#editBreed').val(petrecData.breed);
-	});
+		
+		$('#editSterile').empty();
+					const sterileOptions = ['None','Spayed', 'Neuter']; // Your species options
+					sterileOptions.forEach(function(option) {
+						const $option = $('<option></option>').attr('value', option).text(option);
+						if (option === petrecData.sterilzation) {
+							$option.attr('selected', 'selected');
+						}
+						$('#editSterile').append($option);
+					});
+		$('#editSpecies').empty();
+			const speciesOptions = ['Dog', 'Cat']; // Your species options
+			speciesOptions.forEach(function(option) {
+				const $option = $('<option></option>').attr('value', option).text(option);
+				if (option === petrecData.species) {
+					$option.attr('selected', 'selected');
+				}
+				$('#editSpecies').append($option);
+			});
+		// Clear previous breed options
+		$('#editBreed').empty();
+
+		// Populate breed options
+		if (petrecData.breed) {
+			// Add the breed option from data
+			$('#editBreed').append(`<option value="${petrecData.breed}" selected>${petrecData.breed}</option>`);
+		}
+		// Add an option for "Other"
+		$('#editBreed').append(`<option value="other">Other</option>`);
+		// Enable the select element
+		$('#editBreed').prop('disabled', false);	});
 	$('.add_diagnosis-action').click(function() {
 		const id = $(this).data('container-id');
 		$('#medhisId').val(id);

@@ -1097,6 +1097,3 @@ function incrementQuantity3() {
     quantityInput.dispatchEvent(new Event('input'));
   }
 }
-
-
-

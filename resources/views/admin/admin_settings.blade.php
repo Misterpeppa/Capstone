@@ -123,11 +123,10 @@
 				</div>
 				<div class="d-flex flex-column align-items-start align-self-stretch" style="gap: var(--Spacing-spacing-xs, 12px);">
 					<ul class="nav nav-tabs pet_nav_tabs" role="tablist">
-						<li class="nav-item" role="presentation"><a class="nav-link active list_tab" role="tab" data-bs-toggle="tab" href="#notifications"><span class="Notifications_tab"><strong>Notifications</strong></span></a></li>
-						<li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#pass_and_security"><span class="Notifications_tab">Password and Security</span></a></li>
+						<li class="nav-item" role="presentation"><a class="nav-link active list_tab" role="tab" data-bs-toggle="tab" href="#pass_and_security"><span class="Notifications_tab">Password and Security</span></a></li>
 					</ul>
 					<div class="tab-content appointment_tab_content">
-						<div class="tab-pane active align-self-stretch appointment_tab" role="tabpanel" id="notifications">
+						<div class="tab-pane  align-self-stretch appointment_tab" role="tabpanel" id="notifications">
 							<div class="notifications_content">
 								<h1>Notification Settings</h1>
 								<div class="Notifications">
@@ -174,7 +173,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="tab-pane align-self-stretch appointment_tab" role="tabpanel" id="pass_and_security">
+						<div class="tab-pane active align-self-stretch appointment_tab" role="tabpanel" id="pass_and_security">
 							<div class="pass_and_security_content">
 								<h1>Password and Security</h1>
 								<div class="card pass_and_security_card" id="pass_and_security_box">
@@ -249,14 +248,7 @@
 										<button class="btn edit_save_changes" id="edit_save_changes" form="adminChangePassword" type="submit"><span class="edit_save_changes_base">Save Changes</span></button>
 									</div>
 								</div>
-								<div class="card pass_and_security_card">
-									<div class="pass_and_security_text">
-										<h4>2-step verification</h4>
-										<p>Make your account extra secure by enable 2-step verification.</p>
-									</div>
-									<label class="form-label form-label switch">
-										<input type="checkbox"><span class="slider round"></span></label>
-								</div>
+								
 							</div>
 						</div>
 					</div>

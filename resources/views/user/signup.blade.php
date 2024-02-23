@@ -217,7 +217,7 @@
 							<div class="input-group">
 								<div id="birthdate-container" name="birthdate" class="align-self-stretch form-floating">
 									<input id="birthdate" class="form-control" type="date" name="birthdate" placeholder=" " data-id="birthdate">
-									<label class="form-label" for="birthdate">Birthdate<span>&nbsp;*</span></label>
+									<label class="form-label" for="birthdate">Birthdate</label>
 									<div id="error-birthdate" class="error-message"><span>• Please enter your birthdate.</span></div>
 									<div id="guide_birthdate" class="guide-message"><span>• Please click the calendar icon on the right part, and select your birthdate.</span><span>• User must be 18 years old and above.</span></div>
 								</div>

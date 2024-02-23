@@ -102,7 +102,7 @@ class UserAuthController extends Controller
             // Authentication passed
             $request->session()->regenerate();
             $client = Auth::guard('clients')->user();
-            Auth::login($client,$remember = true);
+            Auth::login($client);
             // Check if the email is already verified
             if ($client->email_verified_at === null) {
                 $this->sendVerificationEmail($client);

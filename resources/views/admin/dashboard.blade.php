@@ -35,7 +35,7 @@
                     <a id="menu-toggle" class="btn menu_toggle btn-link" role="button" href="#menu-toggle"><i class="fa fa-bars custom-bars-icon"></i></a>
                 </div>
                 <div class="d-flex flex-direction-row">
-                    <button class="btn notification" id="notification" type="button"><span class="notification_base"><svg
+                    <button class="btn notification d-none" id="notification" type="button"><span class="notification_base"><svg
                                 xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewbox="0 0 15 18"
                                 fill="none">
                                 <path

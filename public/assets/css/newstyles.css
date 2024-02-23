@@ -20,6 +20,7 @@ body{
   margin: 0;
   padding: 0;
 }
+
 .form-select{
   padding-right: 40px;
   -webkit-appearance: auto;
@@ -1440,7 +1441,7 @@ input[type=number] {
   .modal-content.create_appointment_modal {
     display: flex;
     width: 900px;
-    min-height: 375px;
+    min-height: 456px;
     max-height: 924px;
     padding: var(--spacing-spacing-m, 24px);
     flex-direction: column;

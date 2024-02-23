@@ -183,62 +183,7 @@
 												</div>
 											</div>
 											</form>
-											<div class="card my_profile_cards">
-												<div class="card_header">
-													<h1>Address</h1>
-													<button id="edit_profile_address" class="btn edit_profile" type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
-                                            <path d="M7.91187 3.33001C8.08095 4.4114 8.60433 5.40602 9.39986 6.15776C10.1954 6.9095 11.218 7.37579 12.3072 7.48343M0.742188 17H15.259M9.01676 2.1606L2.39549 9.16899C2.14548 9.43513 1.90353 9.95935 1.85514 10.3223L1.55674 12.9353C1.4519 13.8789 2.12935 14.5241 3.06488 14.3628L5.66177 13.9192C6.02469 13.8547 6.53278 13.5886 6.78279 13.3143L13.4041 6.30596C14.5493 5.09622 15.0654 3.71713 13.2831 2.03157C11.5088 0.362135 10.162 0.950872 9.01676 2.1606Z" stroke="#1C1C1C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg></span></button>
-												</div>
-												<div class="card_body user_settings_card">
-													<div class="card_body_row">
-														<div class="form-floating" style="width: 100%;">
-															<input id="user_house_unit" class="form-control" type="text" data-id="user_house_unit" maxlength="255" placeholder="Address" disabled />
-															<label class="form-label" for="user_house_unit">House Unit No. and Street <span> *</span></label>
-															<div id="error-user_address" class="error-message"><span>• Please enter your first name.</span></div>
-															<div id="guide-user_address" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
-														</div>
-													</div>
-													<div class="card_body_row">
-														<div class="form-floating" style="width: 100%;">
-															<input id="user_city" class="form-control" type="text" data-id="user_city" maxlength="255" placeholder="City" disabled />
-															<label class="form-label" for="user_city">City <span> *</span></label>
-															<div id="error-user_city" class="error-message"><span>• Please enter your first name.</span></div>
-															<div id="guide-user_city" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
-														</div>
-														<div class="form-floating" style="width: 100%;">
-															<input id="user_state" class="form-control" type="number" data-id="user_state" maxlength="255" placeholder="State" disabled />
-															<label class="form-label" for="user_city">State <span> *</span></label>
-															<div id="error-user_state" class="error-message"><span>• Please enter your first name.</span></div>
-															<div id="guide-user_state" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
-														</div>
-													</div>
-													<div class="card_body_row">
-														<div class="form-floating" style="width: 100%;">
-															<input id="user_zip_code" class="form-control" type="number" data-id="user_zip_code" maxlength="255" placeholder="ZIP Code" disabled />
-															<label class="form-label" for="user_zip_code">ZIP Code <span> *</span></label>
-															<div id="error-user_zip_code" class="error-message"><span>• Please enter your first name.</span></div>
-															<div id="guide-user_zip_code" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
-														</div>
-														<div class="form-floating" style="width: 100%;">
-															<select id="user_country" class="form-control" data-id="user_country" placeholder="Country" disabled>
-																<optgroup label="This is a group">
-																	<option value="none" selected>Country select</option>
-																	<option value="13">This is item 2</option>
-																	<option value="14">This is item 3</option>
-																</optgroup>
-															</select>
-															<label class="form-label" for="user_country">Country <span> *</span></label>
-															<div id="error-user_country" class="error-message"><span>• Please enter your first name.</span></div>
-															<div id="guide-user_country" class="guide-message"><span>• Please enter your first name only.<br />(ex. Harold)</span></div>
-														</div>
-													</div>
-												</div>
-												<div id="edit_address_buttons" class="change_pass_buttons mt-3" style="display: none;">
-													<button id="cancel_edit_profile-2" class="btn cancel_pass_btn" type="button"><span class="cancel_pass_btn_base">Cancel</span></button>
-													<button id="edit_save_changes-2" class="btn edit_save_changes" type="button"><span class="edit_save_changes_base">Save Changes</span></button>
-												</div>
-											</div>
+											
 										</div>
 									</div>
 								</div>
@@ -274,6 +219,12 @@
 													</div>
 												</div>
 											</div>
+											
+										</div>
+										<div id="edit_personal_info_buttons" class="change_pass_buttons mt-3" style="display: flex;">
+													<button id="cancel_edit_profile" class="btn cancel_pass_btn" type="button"><span class="cancel_pass_btn_base">Cancel</span></button>
+													<button id="edit_save_changes-1" class="btn edit_save_changes" type="submit"><span class="edit_save_changes_base">Save Changes</span></button>
+												</div>
 										</div>
 										
 									</div>
@@ -354,14 +305,6 @@
 											<button id="edit_save_changes" class="btn edit_save_changes" type="submit"><span class="edit_save_changes_base">Save Changes</span></button>
 										</div>
 										</form>
-									</div>
-									<div class="card pass_and_security_box">
-										<div class="pass_and_security_text">
-											<h4>2-step verification</h4>
-											<p>Make your account extra secure by enable 2-step verification.</p>
-										</div>
-										<label class="switch">
-											<input type="checkbox" /><span class="slider round"></span></label>
 									</div>
 									<div class="card pass_and_security_box">
 										<div class="pass_and_security_text">

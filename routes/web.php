@@ -73,10 +73,13 @@ Route::middleware(['clients', 'nocache'])->group(function () {
     Route::post('/user/profile/delete', [ProfileController::class, 'deleteAccnt'])->name('client.delete');
     Route::post('/user/profile/changepassword', [ProfileController::class, 'changePassword'])->name('client.changepassword');
     Route::get('/user/password', [ProfileController::class, 'showPass'])->name('client.password');
+
     Route::get('/user/pet_info', [ProfileController::class, 'showPetInfo'])->name('client.pet');
     Route::post('/user/pet_info', [PetInfoController::class, 'addPet'])->name('client.addPet');
     Route::post('/user/pet_info/edit', [PetInfoController::class, 'editPet'])->name('client_pet.edit');
     Route::get('/user/pet_info/view/{id}', [PetInfoController::class, 'viewRecord']);
+    Route::post('/user/pet_info/appointment', [PetInfoController::class, 'appointmentPet'])->name('appointment.pet');
+    Route::get('/user/pet_info/appointment/pet/{id}', [PetInfoController::class, 'petInfo']);
     Route::get('/user/pet_info/medhis/{id}', [PetInfoController::class, 'showMedHis']);
     Route::get('/user/pet_info/vaxhis/{id}', [PetInfoController::class, 'showVaxHis']);
     Route::get('/user/pet_info/surghis/{id}', [PetInfoController::class, 'showSurgHis']);
@@ -134,9 +137,10 @@ Route::middleware('admin', 'nocache')->group(function () {
     Route::post('/admin/inventory', [InvController::class, 'store'])->name('inv.store');
     Route::post('/admin/inventory/addStock/{product_type}/{id}', [InvController::class, 'addStock'])->name('product.stock');
     Route::get('/admin/inventory/view/{product_type}/{id}', [InvController::class, 'viewProduct']);
-    Route::match(['put', 'patch'],'/admin/inventory/edit/{product_type}/{id}', [InvController::class, 'updateProduct'])->name('product.edit');
+    Route::post('/admin/inventory/edit', [InvController::class, 'updateProduct'])->name('product.edit');
     Route::post('/admin/inventory/archive/{product_type}/{id}', [InvController::class, 'archive'])->name('product.archive');
     Route::get('/admin/inventory/viewBatch/{product_type}/{id}', [InvController::class, 'viewBatch']);
+    Route::get('/admin/inventory/batchDetails/{product_type}/{id}/{batchNo}', [InvController::class, 'batchDetails']);
     Route::post('/admin/inventory/deduct', [InvController::class, 'deductStock'])->name('deduct');
     Route::get('/admin/inventory/reports', [ReportController::class, 'invPDF'])->name('report.inventory');
 
