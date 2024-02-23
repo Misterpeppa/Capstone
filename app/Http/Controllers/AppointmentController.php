@@ -266,7 +266,19 @@ class AppointmentController extends Controller
         $appointments = AppointmentPending::where('user_id', $clientId)->get();
         $appointmentapproved = AppointmentApproved::where('user_id', $clientId)->get();
         $appointmentrejected = AppointmentRejected::where('user_id', $clientId)->get();
-        return view('user/appointmentlist', compact('appointments', 'appointmentapproved',  'appointmentrejected', 'clientInfo'));
+        $appointmentCompleted = AppointmentApproved::where('user_id', $clientId)
+            ->where('status', 'Completed') // Filter by status "Completed"
+            ->get();
+
+        $pendingCount = AppointmentPending::where('user_id', $clientId)->count();
+        $approvedCount = AppointmentApproved::where('user_id', $clientId)->count();
+        $rejectedCount = AppointmentRejected::where('user_id', $clientId)->count();
+        $completedCount = AppointmentApproved::where('user_id', $clientId)
+        ->where('status', 'Completed') // Filter by status "Completed"
+        ->count();
+
+        return view('user/appointmentlist', compact('appointments', 'appointmentapproved',  'appointmentrejected', 'appointmentCompleted', 'clientInfo',
+        'pendingCount', 'approvedCount', 'rejectedCount', 'completedCount'));
     }
 
     public function markAsComplete($id)

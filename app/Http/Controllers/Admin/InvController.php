@@ -207,6 +207,10 @@ class InvController extends Controller
 
 
     $productBatch = $med_batch->concat($vax_batch)->concat($vit_batch);
+    $medInfo = MedInfo::get();
+    $vaxInfo = VaxInfo::get();
+    $vitInfo = VitInfo::get();
+    $inventory = $medInfo->concat($vaxInfo)->concat($vitInfo);
     // $dataExists = false;
     // if ($vit_info->isNotEmpty()) {
     //     // Data exists
@@ -215,10 +219,9 @@ class InvController extends Controller
     // $resposne = [
     //     'dataExists' => $dataExists,
     // ];
-    
+    $productExists = $inventory->isEmpty();
 
-
-    return view('admin/inventory', compact('productBatch', 'products', 'vax_info', 'med_info', 'vit_info', 'med_batch', 'vax_batch', 'vit_batch'));
+    return view('admin/inventory', compact('productBatch', 'products', 'productExists', 'vax_info', 'med_info', 'vit_info', 'med_batch', 'vax_batch', 'vit_batch'));
 }
 
 
@@ -226,18 +229,24 @@ class InvController extends Controller
     {
         $validatedData = $request->except(['archived_at']);
         $productType = $request->input('product_type');
-    
         switch ($productType) {
             case 'Medicine':
                 $existingMedInfo = MedInfo::where('item_name', $validatedData['item_name'])->first();
                 if ($existingMedInfo) {
                     $existingMedInfo->quantity += $validatedData['quantity'];
+                    // Check if archived_at is not null and set it to null
+                    if ($existingMedInfo->archived_at !== null) {
+                        $existingMedInfo->archived_at = null;
+                    }
                     //$existingMedInfo->prod_desc = null;
                     $existingMedInfo->save();
-                    // Create a new batch for the existing MedInfo
+                    // Determine the highest existing batch number
+                    $highestBatchNo = $existingMedInfo->medBatch()->max('batch_no');
+                    // Increment the highest batch number by 1
+                    $newBatchNo = $highestBatchNo + 1;
                     $medBatchData = [
                         'quantity' => $validatedData['quantity'],
-                        'batch_no' => $validatedData['batch_no'],
+                        'batch_no' => $newBatchNo,
                         'product_code' => $validatedData['product_code'],
                         'manufacturing_date' => $validatedData['manufacturing_date'],
                         'expiration_date' => $validatedData['expiration_date'],
@@ -251,10 +260,11 @@ class InvController extends Controller
                     $medInfo = new MedInfo($validatedData);
                     $medInfo->archived_at = null; // Set archived_at to null
                     $medInfo->save();
+                    $batch_no = 1;
                     // Create a new batch for the newly created MedInfo
                     $medBatchData = [
                         'quantity' => $validatedData['quantity'],
-                        'batch_no' => $validatedData['batch_no'],
+                        'batch_no' => $batch_no,
                         'product_code' => $validatedData['product_code'],
                         'manufacturing_date' => $validatedData['manufacturing_date'],
                         'expiration_date' => $validatedData['expiration_date'],
@@ -265,16 +275,16 @@ class InvController extends Controller
                     $medInfo->medBatch()->save($medBatch);
                 }
                 break;
-    
             case 'Vaccine':
                 $existingVaxInfo = VaxInfo::where('item_name', $validatedData['item_name'])->first();
                 if ($existingVaxInfo) {
                     $existingVaxInfo->quantity += $validatedData['quantity'];
                     $existingVaxInfo->save();
-                    // If a VaxInfo with the same item_name exists, just create a new batch
+                    $highestBatchNo = $existingVaxInfo->vaxBatch()->max('batch_no');
+                    $newBatchNo = $highestBatchNo + 1;
                     $vaxBatchData = [
                         'quantity' => $validatedData['quantity'],
-                        'batch_no' => $validatedData['batch_no'],
+                        'batch_no' => $newBatchNo,
                         'product_code' => $validatedData['product_code'],
                         'manufacturing_date' => $validatedData['manufacturing_date'],
                         'expiration_date' => $validatedData['expiration_date'],
@@ -286,9 +296,10 @@ class InvController extends Controller
                     $vaxInfo = new VaxInfo($validatedData);
                     $vaxInfo->archived_at = null;
                     $vaxInfo->save();
+                    $batch_no = 1;
                     $vaxBatchData = [
                         'quantity' => $validatedData['quantity'],
-                        'batch_no' => $validatedData['batch_no'],
+                        'batch_no' => $batch_no,
                         'product_code' => $validatedData['product_code'],
                         'manufacturing_date' => $validatedData['manufacturing_date'],
                         'expiration_date' => $validatedData['expiration_date'],
@@ -305,10 +316,14 @@ class InvController extends Controller
                 if ($existingVitInfo) {
                     $existingVitInfo->quantity += $validatedData['quantity'];
                     $existingVitInfo->save();
+                    // Determine the highest existing batch number
+                    $highestBatchNo = $existingVitInfo->vitBatch()->max('batch_no');
+                    // Increment the highest batch number by 1
+                    $newBatchNo = $highestBatchNo + 1;
                     // Create a new batch for the existing VitInfo
                     $vitBatchData = [
                         'quantity' => $validatedData['quantity'],
-                        'batch_no' => $validatedData['batch_no'],
+                        'batch_no' => $newBatchNo,
                         'product_code' => $validatedData['product_code'],
                         'manufacturing_date' => $validatedData['manufacturing_date'],
                         'expiration_date' => $validatedData['expiration_date'],
@@ -321,10 +336,11 @@ class InvController extends Controller
                     $vitInfo = new VitInfo($validatedData);
                     $vitInfo->archived_at = null; // Set archived_at to null
                     $vitInfo->save();
+                    $batch_no = 1;
                     // Create a new batch for the newly created VitInfo
                     $vitBatchData = [
                         'quantity' => $validatedData['quantity'],
-                        'batch_no' => $validatedData['batch_no'],
+                        'batch_no' => $batch_no,
                         'product_code' => $validatedData['product_code'],
                         'manufacturing_date' => $validatedData['manufacturing_date'],
                         'expiration_date' => $validatedData['expiration_date'],
@@ -366,23 +382,27 @@ class InvController extends Controller
         ]);    
     }
 
-    public function updateProduct(Request $request, $product_type, $id)
+    public function updateProduct(Request $request)
     {
-        // Depending on the product_type, create and store data in the respective table
+        $product_type = $request->input('editProduct_type');
+        $id = $request->input('editId');
         switch ($product_type) {
             case 'Medicine':
                 $product = MedBatch::where('med_id', $id)->first();
                 $med_info = MedInfo::find($id);
-
+                $oldQuantity = $product->quantity; // Get the old quantity
                 $product->product_code = $request->input('product_code');
                 $product->date_stocked = $request->input('date_stocked');
                 $product->expiration_date = $request->input('expiration_date');
                 $product->manufacturing_date = $request->input('manufacturing_date');
-                $product->batch_no = $request->input('batch_no');
+                $product->quantity = $request->input('quantity');
                 $product->archived_at = null;
                 $product->save();
+                if ($oldQuantity != $request->input('quantity')) {
+                    $med_info->quantity = $request->input('quantity');
+                    $med_info->save();
+                }
                 $med_info->prod_desc = $request->input('prod_desc');
-                $med_info->quantity = $request->input('quantity');
                 $med_info->archived_at = null;
                 $med_info->save();
                 break;
@@ -422,13 +442,32 @@ class InvController extends Controller
                 // Handle the case where the product type is not recognized, e.g., show an error or redirect
                 break;
         }
-
-        // Redirect to a page after successful update
-        return redirect()->route('admin_inv');
+        return redirect()->back()->with('success', 'Product updated successfully');
+    }
+    public function batchDetails($product_type, $id, $batchNo)
+    {
+        switch( $product_type) {
+            case 'Medicine':
+                $productInfo = MedInfo::findOrFail($id);
+                $selectedBatch = MedBatch::where('med_id', $id)->where('batch_no', $batchNo)->first();
+                break;
+            case 'Vaccine':
+                $productInfo = VaxInfo::find($id);
+                $selectedBatch = VaxBatch::where('vax_id', $id)->where('batch_no', $batchNo)->first();
+                break;
+            case 'Vitamin':
+                $productInfo = VitInfo::find($id);
+                $selectedBatch = VitBatch::where('vit_id', $id)->where('batch_no', $batchNo)->first();
+                break;
+            default:
+             return response()->json(['error' => 'Invalid Product Type']);
+        }
+        return response()->json($selectedBatch); 
     }
 
     public function addStock(Request $request, $product_type, $id)
     {
+        $batch_no = $request->input('batch_no');
         switch ($product_type) {
             case 'Medicine':
                 $med_info = MedInfo::find($id);
@@ -436,8 +475,11 @@ class InvController extends Controller
                 $newQuantity = $existingQuantiy + $request->input('quantity');
                 $med_info->quantity = $newQuantity;
                 $med_info->save();
+                $highestBatchNo = $med_info->medBatch()->max('batch_no');
+                    // Increment the highest batch number by 1
+                $newBatchNo = $highestBatchNo + 1;
                 $med_batch = new MedBatch([
-                'batch_no' => $request->input('batch_no'),
+                'batch_no' => $newBatchNo,
                 'manufacturing_date' => $request->input('manufacturing_date'),
                 'expiration_date' => $request->input('expiration_date'),
                 'date_stocked' => $request->input('date_stocked'),
@@ -446,7 +488,6 @@ class InvController extends Controller
                 $med_batch->archived_at = null;
                 $med_info->medBatch()->save($med_batch);
                 
-                
                 break;
             case 'Vaccine':
                 $vax_info = VaxInfo::find($id);
@@ -454,18 +495,17 @@ class InvController extends Controller
                 $newQuantity = $existingQuantiy + $request->input('quantity');
                 $vax_info->quantity = $newQuantity;
                 $vax_info->save();
+                $highestBatchNo = $vax_info->medBatch()->max('batch_no');
+                    // Increment the highest batch number by 1
+                $newBatchNo = $highestBatchNo + 1;
                 $vax_batch = new VaxBatch([
-                'batch_no' => $request->input('batch_no'),
+                'batch_no' => $newBatchNo,
                 'manufacturing_date' => $request->input('manufacturing_date'),
                 'expiration_date' => $request->input('expiration_date'),
                 'date_stocked' => $request->input('date_stocked'),
                 'quantity' => $request->input('quantity'),
                 ]);
                 $vax_info->vaxBatch()->save($vax_batch);
-
-                $vax_info = VaxInfo::find($id);
-                $vax_info->quantity += $request->input('quantity');
-                $vax_info->save();
                 break;
             case 'Vitamin':
                 $vit_info = VitInfo::find($id);
@@ -473,8 +513,11 @@ class InvController extends Controller
                 $newQuantity = $existingQuantiy + $request->input('quantity');
                 $vit_info->quantity = $newQuantity;
                 $vit_info->save();
+                $highestBatchNo = $vit_info->medBatch()->max('batch_no');
+                // Increment the highest batch number by 1
+                $newBatchNo = $highestBatchNo + 1;
                 $vit_batch = new VitBatch([
-                'batch_no' => $request->input('batch_no'),
+                'batch_no' => $newBatchNo,
                 'manufacturing_date' => $request->input('manufacturing_date'),
                 'expiration_date' => $request->input('expiration_date'),
                 'date_stocked' => $request->input('date_stocked'),
@@ -542,29 +585,51 @@ class InvController extends Controller
     {
         $product_type = $request->input('product_type');
         $id = $request->input('id');
+        //dd($product_type);
+        $batch_no = $request->input('batch_no');
         switch($product_type){
             case 'Medicine':
                 $productInfo = MedInfo::findOrFail($id);
                 $productInfo->quantity -= $request->input('deduct');
                 $productInfo->save();
+                $medBatch = MedBatch::where('batch_no', $batch_no)
+                            ->where('med_id', $productInfo->id)
+                            ->firstOrFail();
+                $medBatch->quantity -= $request->input('deduct');
+                $medBatch->save();
                 return redirect()->back()->with('success', 'Product has been archived');
                 break;
             case 'Vaccine':
                 $productInfo = VaxInfo::findOrFail($id);
                 $productInfo->quantity -= $request->input('deduct');
                 $productInfo->save();
+                $vaxBatch = VaxBatch::where('batch_no', $batch_no)
+                            ->where('vax_id', $productInfo->id)
+                            ->firstOrFail();
+                $vaxBatch->quantity -= $request->input('deduct');
+                $vaxBatch->save();
                 return redirect()->back()->with('success', 'Product has been archived');
                 break;
             case 'Vitamin':
                 $productInfo = VitInfo::findOrFail($id);
                 $productInfo->quantity -= $request->input('deduct');
                 $productInfo->save();
+                $vitBatch = VitBatch::where('batch_no', $batch_no)
+                            ->where('vit_id', $productInfo->id)
+                            ->firstOrFail();
+                $vitBatch->quantity -= $request->input('deduct');
+                $vitBatch->save();
                 return redirect()->back()->with('success', 'Product has been archived');
                 break;
             default:
                 break;
         }
         return redirect('admin/inventory');
+    }
+
+    public function displayBatch($product_type, $id)
+    {
+        
     }
 
 }

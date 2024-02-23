@@ -40,7 +40,6 @@ var errorConfirmPassword = document.getElementById('error-password_confirmation'
 function checkInputs() {
         if (
             (emailInput.value.trim().endsWith('@gmail.com') || emailInput.value.trim().endsWith('@yahoo.com')) &&
-            phone_number.value.match(/^\d{11}$/) &&
             passwordInput.value !== '' &&
             confirmPasswordInput.value !== '' &&
             passwordInput.value === confirmPasswordInput.value
@@ -103,18 +102,18 @@ checkInputs();
  
 
  
-phone_number.addEventListener('blur', function () {
-  checkInputs();
-var phoneNumberValue = phone_number.value.trim();
+//phone_number.addEventListener('blur', function () {
+//  checkInputs();
+//var phoneNumberValue = phone_number.value.trim();
 
-if (phoneNumberValue === '') {
-    displayPhoneError('• Please enter your phone number.');
-} else if (phoneNumberValue.length !== 11) {
-    displayPhoneError('• Please enter 11 digits only. (e.g., 09172839117)');
-} else {
-    hidePhoneError();
-} 
-});
+//if (phoneNumberValue === '') {
+  //  displayPhoneError('• Please enter your phone number.');
+//} else if (phoneNumberValue.length !== 11) {
+  //  displayPhoneError('• Please enter 11 digits only. (e.g., 09172839117)');
+//} else {
+  //  hidePhoneError();
+//} 
+//});
 
 function displayPhoneError(message) {
 errorPhoneNumber.textContent = message;

@@ -92,6 +92,10 @@
                                                         <div class="align-self-stretch form-floating breed_container"><select class="form-select" id="breed-1" disabled="" required="" style="height: 100%;"></select><label class="form-label" for="breed-1">Select a breed<span>&nbsp;*</span></label>
                                                             <div id="error-breed-1" class="error-message"><span>• Please select a breed</span></div>
                                                         </div>
+                                                        <div class="form-floating" id="specify_breed-1">
+                                                            <input class="form-control" id="specificBreed-1"/>
+                                                            <label class="form-label" for="specificBreed">Specify Breed</label>
+                                                        </div>
                                                     </div>
                                                     <div class="align-self-stretch form-floating"><select class="form-select form-select-sm" id="surgery_type-1" data-id="surgery_type-1">
                                                             <option value="none" selected="">Select a surgery</option>
@@ -116,6 +120,10 @@
                                                         </div>
                                                         <div class="align-self-stretch form-floating breed_container"><select class="form-select" id="breed-2" disabled="" required="" style="height: 100%;"></select><label class="form-label" for="breed-2">Select a breed<span>&nbsp;*</span></label>
                                                             <div id="error-breed-2" class="error-message"><span>• Please select a breed</span></div>
+                                                        </div>
+                                                        <div class="form-floating" id="specify_breed-2">
+                                                            <input class="form-control" id="specificBreed-2"/>
+                                                            <label class="form-label" for="specificBreed">Specify Breed</label>
                                                         </div>
                                                     </div>
                                                     <div class="align-self-stretch form-floating"><select class="form-select form-select-sm" id="surgery_type-2" data-id="surgery_type-2">
@@ -520,7 +528,7 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
         return info.start >= new Date(); // Allow selection of dates starting from today
     },
     select: function(info) { // Callback function for date selection
-            alert('Selected date: ' + info.startStr);
+            
             console.log('Selected date: ' + info.startStr);
             const date_required_message = document.getElementById('date_required_message');
             const selectedDateElement = document.getElementById('selected_date');

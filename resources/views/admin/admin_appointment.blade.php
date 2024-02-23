@@ -286,12 +286,12 @@
                                                         Descending
                                                 </li>
                                                 <li class="dropdown-item ">
-                                                  <div class="row">
-                                                      <div class="col-md-6">
-                                                          <button type = "reset" class="btn btn-outline-secondary btn-sm me-3">Cancel</button>
+                                                  <div class="row" style="justify-content: space-around; gap: 8px;">
+                                                      <div class="col-md-5" style="display:flex; justify-content: center">
+                                                          <button type = "reset" class="btn cancel_filter btn-sm me-3"><span class="cancel_filter_base">Cancel</span></button>
                                                       </div>
-                                                      <div class="col-md-6 text-center">
-                                                          <button type="submit" form="approvedForm" class="btn btn-primary btn-sm ms-3">Apply</button>
+                                                      <div class="col-md-5 text-center" style="display:flex; justify-content: center">
+                                                          <button type="submit" form="approvedForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply</span></button>
                                                       </div>
                                                   </div>
                                               </li>
@@ -772,12 +772,12 @@
                                                         Descending
                                                 </li>
                                                 <li class="dropdown-item ">
-                                                  <div class="row">
-                                                      <div class="col-md-6">
-                                                          <button type = "reset" class="btn btn-outline-secondary btn-sm me-3">Cancel</button>
+                                                  <div class="row" style="justify-content: space-around; gap: 8px;">
+                                                      <div class="col-md-5 colButton" style="display:flex; justify-content: center">
+                                                          <button type = "reset" class="btn cancel_filter btn-sm me-3"><span class="cancel_filter_base">Cancel</span></button>
                                                       </div>
-                                                      <div class="col-md-6 text-center">
-                                                          <button type="submit" form="pendingForm" class="btn btn-primary btn-sm ms-3">Apply</button>
+                                                      <div class="col-md-5 text-center colButton" style="display:flex; justify-content: center">
+                                                          <button type="submit" form="pendingForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply</span></button>
                                                       </div>
                                                   </div>
                                               </li>
@@ -1288,12 +1288,12 @@
                                                         Descending
                                                 </li>
                                                 <li class="dropdown-item ">
-                                                  <div class="row">
-                                                      <div class="col-md-6">
-                                                          <button type = "reset" class="btn btn-outline-secondary btn-sm me-3">Cancel</button>
+                                                  <div class="row" style="justify-content: space-around; gap: 8px;">
+                                                      <div class="col-md-5" style="display:flex; justify-content: center">
+                                                          <button type = "reset" class="btn cancel_filter btn-sm me-3"><span class="cancel_filter_base">Cancel</span></button>
                                                       </div>
-                                                      <div class="col-md-6 text-center">
-                                                          <button type="submit" form="rejectForm" class="btn btn-primary btn-sm ms-3">Apply</button>
+                                                      <div class="col-md-5 text-center" style="display:flex; justify-content: center"> 
+                                                          <button type="submit" form="rejectForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply</span></button>
                                                       </div>
                                                   </div>
                                               </li>
@@ -1676,7 +1676,8 @@
                                         required="" style="height:100%;"></select><label class="form-label"
                                         for="breed">Select a breed<span>&nbsp;*</span></label>
                                     <div id="error-breed-1" class="error-message"><span>• Please select a
-                                            breed</span></div>
+                                            breed</span>
+                                        </div>
                                 </div>
                             </div>
                             <div class="form-floating" style="width:100%;"><select class="form-select"
@@ -1907,8 +1908,8 @@
                                 type="time">
                             <label class="form-label form-label"
                                 for="appointment_time-3">Time<span>&nbsp;*</span></label>
-                            <div class="error-message" id="error-appointment_time-3"><span>• Please select a
-                                    breed</span></div>
+                            <div class="error-message" id="error-appointment_time-3"><span>• Please select time
+                                    </span></div>
                         </div>
                     </div>
                     <div class="form-floating" style="width:100%;">

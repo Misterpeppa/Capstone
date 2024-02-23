@@ -224,7 +224,8 @@
 																	<rect width="24" height="24" fill="white" /> </clipPath>
 															</defs>
 														</svg>&nbsp;Edit</button>
-													<button class="dropdown-item add_appointment" data-action="Create_appointment" id="add_appointment">
+													<button class="dropdown-item add_appointment" data-action="Create_appointment" 
+													data-container-id="{{ $petrecord->id }}" data-pet="{{ $petrecord->pet->id }}" id="add_appointment">
 														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 															<g clip-path="url(#clip0_6230_1769)">
 																<path d="M9 12H15M12 9V15M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </g>
@@ -640,7 +641,7 @@
                             </div>
                             <div id="multistep-start-row" class="row" style="display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 25px;align-self: stretch;">
                                 <div id="multistep-start-column" class="col-12 col-lg-8 m-auto" style="width: 100%;">
-                                <form action="{{ route('appointment.store') }}" method="POST" id="main-form" class="multisteps-form__form">
+                                <form action="{{ route('appointment.pet') }}" method="POST" id="main-form" class="multisteps-form__form">
                                     @csrf
                                         <div class="d-flex flex-column justify-content-center align-items-center align-self-stretch multisteps-form__panel js-active" id="single-form-next" data-animation="scaleIn" style="gap: 25px;">
                                             <h3 class="text-start multisteps-form__title" style="align-self: stretch;color: #1C1C1C;font-family: Inter;font-size: 21px;font-style: normal;font-weight: 700;line-height: normal;">APPOINTMENT PREFERENCES</h3>
@@ -695,16 +696,16 @@
                                                         <p class="confirmation_details">APPOINTMENT PREFERENCES</p>
                                                         <div class="d-flex flex-column align-items-start align-self-stretch details" id="details">
                                                             <div class="d-flex align-items-center align-self-stretch details_confirmation_1strow" id="details_confirmation_1strow">
-                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
-                                                                    <input type="text" name="count" id="click_count" class="d-none">
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation" id="display_petName">
+                                                                    <input type="text" name="petrecordId" id="petId" class="d-none">
                                                                     <h1>Pet Name</h1>
                                                                     <p id="confirm_Pet_Name" class="confirm_Pet_Name">Pet Name</p>
                                                                     <input type="hidden" name="petName" id="hidden_petName">                                                                </div>
-                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation" id="display_petType">
                                                                     <h1>Pet Type</h1>
                                                                     <p id="confirm_Pet_type" class="confirm_Pet_type">Pet Type</p>
                                                                     <input type="hidden" name="petType" id="hidden_petType" value="">                                                                </div>
-                                                                <div class="d-flex flex-column align-items-start detail_confirmation">
+                                                                <div class="d-flex flex-column align-items-start detail_confirmation" id="display_breed">
                                                                     <h1>Breed</h1>
                                                                     <p id="confirm_breed" class="confirm_breed">Breed</p>
                                                                     <input type="hidden" name="breed" id="hidden_breed">                                                                </div>
@@ -1014,6 +1015,7 @@ document.addEventListener('DOMContentLoaded', function() {
     harnessElements.forEach(function(element) {
         element.classList.remove('fc-scroller-harness', 'fc-scroller-harness-liquid');
     });
+	
     
     const calendarEl = document.getElementById('calendar');
 const calendar = new FullCalendar.Calendar(calendarEl, {
@@ -1045,15 +1047,6 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
 
 calendar.render();
 
-
-// Event listener to check if selected date is unselected when clicking outside the calendar
-document.addEventListener('click', function(event) {
-    // Check if the clicked element is outside the calendar
-    if (!calendarEl.contains(event.target)) {
-        // The selected date is unselected
-        console.log('Selected date is unselected.');
-    }
-});
 
 
     const toolbar = document.querySelector('.fc-toolbar'); // Select the toolbar element
@@ -1099,11 +1092,58 @@ document.addEventListener('click', function(event) {
 	
 	
 	<script>
+	document.addEventListener("DOMContentLoaded", function () {
+         // Get references to the <span> elements
+         const petNameId = document.getElementById("confirm_Pet_Name");
+         const petTypeId = document.getElementById("confirm_Pet_type");
+         const breedId = document.getElementById("confirm_breed");
+         const appointmentTypeId = document.getElementById("confirm_surgery_Type");
+         const notesId = document.getElementById("confirm_additional_Notes");
+         const appointmentDateId = document.getElementById("confirm_date");
+         const appointmentTimeId = document.getElementById("confirm_time");
+
+		 const petNameInput = document.getElementById("hidden_petName");
+         const petTypeInput = document.getElementById("hidden_petType");
+         const breedInput = document.getElementById("hidden_breed");
+         const appointmentTypeInput = document.getElementById("hidden_appointmentType");
+         const notesInput = document.getElementById("hidden_notes");
+         const appointmentDateInput = document.getElementById("hidden_appointmentDate");
+         const appointmentTimeInput = document.getElementById("hidden_appointmentTime");
+
+
+         document.getElementById('book_appointment').addEventListener("click", function () {
+
+			petNameInput.value = petNameId.innerText;
+			petTypeInput.value = petTypeId.innerText;
+			breedInput.value = breedId.innerText;
+			appointmentTypeInput.value = appointmentTypeId.innerText;
+			notesInput.value = notesId.innerText;
+			appointmentDateInput.value = appointmentDateId.innerText;
+			appointmentTimeInput.value = appointmentTimeId.innerText;
+
+		 });
+	});
 	$(document).ready(function() {
 	$('.add_appointment').click(function() {
 		const id = $(this).data('container-id');
+		const petId = $(this).data('pet');
 		$('#create_appointment_modal').css('display', 'flex');
-		$('#editId').val(id);
+		$('#petId').val(petId);
+
+		$.ajax({
+        type: 'GET',
+        url: '/user/pet_info/appointment/pet/' + id, // Replace with your route for fetching pet info
+        success: function(response) {
+            // Update corresponding elements with pet info
+            $('#display_petName p').text(response.pet.name);
+            $('#display_petType p').text(response.pet.species);
+            $('#display_breed p').text(response.pet.breed);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching pet information:', error);
+        }
+    });
+
 	});
 	$('.Edit_pet').click(function() {
 		const id = $(this).data('container-id');
@@ -1244,8 +1284,8 @@ var next_btn = document.getElementById("next_btn");
 
 // Add additional validation conditions as needed
 if (
-	surgery_type.trim() !== "" &&
-	floatingTextarea.trim() !== ""
+	surgery_type.trim() !== "" 
+
 ) {
 	next_btn.disabled = false;
 } else {
@@ -1324,7 +1364,7 @@ function displayDetails() {
   var confirm_additional_Notes = document.getElementById('confirm_additional_Notes');
 
   // Display values in the placeholder variables
-  confirmSurgeryType.innerText = surgeryTypeSelect.value;
+  confirm_surgery_Type.innerText = surgeryTypeSelect.value;
   confirm_additional_Notes.innerText = floatingTextareaInput.value;
 }
 

@@ -123,11 +123,10 @@
 				</div>
 				<div class="d-flex flex-column align-items-start align-self-stretch" style="gap: var(--Spacing-spacing-xs, 12px);">
 					<ul class="nav nav-tabs pet_nav_tabs" role="tablist">
-						<li class="nav-item" role="presentation"><a class="nav-link active list_tab" role="tab" data-bs-toggle="tab" href="#notifications"><span class="Notifications_tab"><strong>Notifications</strong></span></a></li>
-						<li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#pass_and_security"><span class="Notifications_tab">Password and Security</span></a></li>
+						<li class="nav-item" role="presentation"><a class="nav-link active list_tab" role="tab" data-bs-toggle="tab" href="#pass_and_security"><span class="Notifications_tab">Password and Security</span></a></li>
 					</ul>
 					<div class="tab-content appointment_tab_content">
-						<div class="tab-pane active align-self-stretch appointment_tab" role="tabpanel" id="notifications">
+						<div class="tab-pane  align-self-stretch appointment_tab" role="tabpanel" id="notifications">
 							<div class="notifications_content">
 								<h1>Notification Settings</h1>
 								<div class="Notifications">
@@ -163,84 +162,18 @@
 														<input type="checkbox"><span class="slider round"></span></label>
 												</div>
 												<div class="text_container">
-													<h1>Pet Health Updates</h1>
-													<p>Get updated on your pet’s health.</p>
+													<h1>Inventory Updates</h1>
+													<p>Get reminded when stocks get low or expired.</p>
 												</div>
 											</div>
-											<div class="notif_buttons_and_texts">
-												<div class="toggle_container">
-													<label class="form-label switch">
-														<input type="checkbox"><span class="slider round"></span></label>
-												</div>
-												<div class="text_container">
-													<h1>Pet Care</h1>
-													<p>Get reminded of your pet’s next vaccination</p>
-												</div>
-											</div>
-											<div class="notif_buttons_and_texts">
-												<div class="toggle_container">
-													<label class="form-label switch">
-														<input type="checkbox"><span class="slider round"></span></label>
-												</div>
-												<div class="text_container">
-													<h1>Tips and Tricks</h1>
-													<p>Want to know tips and tricks from your veterinarians? Turn notifications on to receive emails. </p>
-												</div>
-											</div>
-											<div class="notif_buttons_and_texts">
-												<div class="toggle_container">
-													<label class="form-label switch">
-														<input type="checkbox"><span class="slider round"></span></label>
-												</div>
-												<div class="text_container">
-													<h1>News &amp; Events</h1>
-													<p>Feel free to participate in special events.</p>
-												</div>
-											</div>
+											
 										</div>
 									</div>
-									<div class="card notifications_settings">
-										<div class="left_notification_settings">
-											<h1>Text notifications</h1>
-											<p>Get text messages to stay updated on your appointments. You can turn these off.</p>
-										</div>
-										<div class="right_notification_settings">
-											<div class="notif_buttons_and_texts">
-												<div class="toggle_container">
-													<label class="form-label switch">
-														<input type="checkbox"><span class="slider round"></span></label>
-												</div>
-												<div class="text_container">
-													<h1>Appointment Confirmation/Cancellation</h1>
-													<p>Get to know if your appointment has been approved.</p>
-												</div>
-											</div>
-											<div class="notif_buttons_and_texts">
-												<div class="toggle_container">
-													<label class="form-label switch">
-														<input type="checkbox"><span class="slider round"></span></label>
-												</div>
-												<div class="text_container">
-													<h1>Appointment Reminders</h1>
-													<p>Get reminded prior to your scheduled appointment so you don’t miss it.</p>
-												</div>
-											</div>
-											<div class="notif_buttons_and_texts">
-												<div class="toggle_container">
-													<label class="form-label switch">
-														<input type="checkbox"><span class="slider round"></span></label>
-												</div>
-												<div class="text_container">
-													<h1>Pet Health Updates</h1>
-													<p>Get updated on your pet’s health.</p>
-												</div>
-											</div>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 						</div>
-						<div class="tab-pane align-self-stretch appointment_tab" role="tabpanel" id="pass_and_security">
+						<div class="tab-pane active align-self-stretch appointment_tab" role="tabpanel" id="pass_and_security">
 							<div class="pass_and_security_content">
 								<h1>Password and Security</h1>
 								<div class="card pass_and_security_card" id="pass_and_security_box">
@@ -315,14 +248,7 @@
 										<button class="btn edit_save_changes" id="edit_save_changes" form="adminChangePassword" type="submit"><span class="edit_save_changes_base">Save Changes</span></button>
 									</div>
 								</div>
-								<div class="card pass_and_security_card">
-									<div class="pass_and_security_text">
-										<h4>2-step verification</h4>
-										<p>Make your account extra secure by enable 2-step verification.</p>
-									</div>
-									<label class="form-label form-label switch">
-										<input type="checkbox"><span class="slider round"></span></label>
-								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -383,6 +309,65 @@
 			</div>
 		</div>
 	</div>
+
+  <div class="modal fade show" role="dialog" tabindex="-1" id="save_changes_success">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content success_modal">
+                <div class="modal-header success_header">
+                    <div class="success_icon_container"><span class="success_icon"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                viewBox="0 0 32 32" fill="none">
+                                <g clip-path="url(#clip0_5693_10654)">
+                                    <path
+                                        d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z"
+                                        stroke="#5BB85A" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_5693_10654">
+                                        <rect width="32" height="32" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg></span></div>
+                </div>
+                <div class="modal-body success_message">
+                    <div>
+                        <h1>Success!</h1>
+                        <p>Your changes have been successfully saved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <div class="modal fade show" role="dialog" tabindex="-1" id="edit_discard">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content discard_modal">
+				<div class="modal-header discard_header">
+					<div class="discard_icon_container"><span class="discard_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_5693_21111)">
+    <path d="M13.3333 13.3333L18.6667 18.6667M18.6667 13.3333L13.3333 18.6667M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#DA534F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_5693_21111">
+      <rect width="32" height="32" fill="white"/>
+    </clipPath>
+  </defs>
+</svg></span></div>
+				</div>
+				<div class="modal-body discard_message">
+					<div>
+						<h1>Discard changes?</h1>
+						<p>Any unsaved progress will be lost.</p>
+					</div>
+				</div>
+				<div class="modal-footer discard_footer">
+					<button class="btn return_btn" data-bs-dismiss="modal" id="return_btn" type="button"><span class="return_btn_base">Return</span></button>
+					<button class="btn discard_btn" id="edit_discard_btn" type="button" data-bs-dismiss="modal"><span class="discard_btn_base">Discard</span></button>
+				</div>
+			</div>
+		</div>
+	</div>
 	@if (session('success'))
 	<script>
         $(document).ready(function() {
@@ -400,6 +385,41 @@
 	<script src="{{ asset('assets/js/sidebartry.js') }}"></script>
 
 	<script>
+
+var edit_save_changes = document.getElementById('edit_save_changes');
+var save_changes_success = new bootstrap.Modal(document.getElementById('save_changes_success'));
+
+edit_save_changes.addEventListener('click', function(){
+  save_changes_success.show();
+  setTimeout(function () {
+    save_changes_success.hide(); // Use Bootstrap modal's hide() method
+  }, 2000);
+});
+
+
+        var cancel_pass_btn = document.getElementById('cancel_pass_btn');
+        var edit_discard = new bootstrap.Modal(document.getElementById('edit_discard'));
+
+        cancel_pass_btn.addEventListener('click', function(){
+          edit_discard.show();
+        });
+
+        var edit_discard_btn = document.getElementById('edit_discard_btn');
+
+        edit_discard_btn.addEventListener('click', function(){
+    var old_password = document.getElementById('old_password');
+    var new_password = document.getElementById('new_password');
+    var confirm_password = document.getElementById('confirm_password');
+
+    // Clear the values
+    old_password.value = "";
+    new_password.value = "";
+    confirm_password.value = "";
+});
+
+        
+
+
 		// Get references to the elements
 		const passAndSecurityBox = document.getElementById('pass_and_security_box');
       const changePasswordDiv = document.getElementById('change_password');

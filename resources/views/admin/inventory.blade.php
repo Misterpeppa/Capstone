@@ -50,13 +50,7 @@
                                 <path
                                     d="M2.29482 10.4791L2.93736 10.866L2.93903 10.8632L2.29482 10.4791ZM1.38031 11.998L0.737787 11.6112L0.737673 11.6113L1.38031 11.998ZM2.23916 14.328L1.99871 15.0385L2.00149 15.0394L2.23916 14.328ZM12.7918 14.328L12.5564 13.6159L12.5542 13.6167L12.7918 14.328ZM13.6507 11.998L14.2938 11.6121L14.2932 11.6112L13.6507 11.998ZM12.7362 10.4791L12.0864 10.854L12.0937 10.866L12.7362 10.4791ZM8.99065 2.00199L8.78522 2.7233C9.0594 2.80139 9.35415 2.71728 9.54583 2.50625C9.7375 2.29522 9.79296 1.99376 9.68894 1.72833L8.99065 2.00199ZM6.0483 2.00199L5.35001 1.72833C5.24599 1.99376 5.30145 2.29522 5.49313 2.50625C5.68481 2.71728 5.97955 2.80139 6.25374 2.7233L6.0483 2.00199ZM5.83359 16.3002L5.30286 16.8301L5.30326 16.8305L5.83359 16.3002ZM7.51948 1.02137C4.47306 1.02137 1.99811 3.49632 1.99811 6.54274H3.49811C3.49811 4.32475 5.30148 2.52137 7.51948 2.52137V1.02137ZM1.99811 6.54274V8.84096H3.49811V6.54274H1.99811ZM1.99811 8.84096C1.99811 8.99314 1.96284 9.22832 1.89124 9.48627C1.8197 9.74398 1.72858 9.96429 1.65061 10.0951L2.93903 10.8632C3.10759 10.5804 3.24311 10.2242 3.33658 9.88749C3.42999 9.551 3.49811 9.17386 3.49811 8.84096H1.99811ZM1.6523 10.0923L0.737787 11.6112L2.02284 12.3849L2.93735 10.866L1.6523 10.0923ZM0.737673 11.6113C0.34933 12.2568 0.264391 12.9889 0.507 13.6441C0.749283 14.2984 1.2894 14.7984 1.99871 15.0384L2.47961 13.6176C2.15512 13.5078 1.98351 13.3119 1.91366 13.1233C1.84415 12.9355 1.84668 12.6776 2.02295 12.3847L0.737673 11.6113ZM2.00149 15.0394C5.58318 16.236 9.44782 16.236 13.0295 15.0394L12.5542 13.6167C9.28099 14.7103 5.75001 14.7103 2.47682 13.6167L2.00149 15.0394ZM13.0272 15.0401C14.4485 14.5703 15.0644 12.8965 14.2938 11.6121L13.0076 12.3839C13.2867 12.849 13.0596 13.4496 12.5564 13.6159L13.0272 15.0401ZM14.2932 11.6112L13.3787 10.0923L12.0937 10.866L13.0082 12.3849L14.2932 11.6112ZM13.3858 10.1043C13.3086 9.97054 13.2183 9.7472 13.1473 9.48852C13.0762 9.22901 13.0408 8.99336 13.0408 8.84096H11.5408C11.5408 9.17364 11.6089 9.55031 11.7008 9.88524C11.7928 10.221 11.9252 10.5742 12.0865 10.8539L13.3858 10.1043ZM13.0408 8.84096V6.54274H11.5408V8.84096H13.0408ZM13.0408 6.54274C13.0408 3.50428 10.5579 1.02137 7.51948 1.02137V2.52137C9.72952 2.52137 11.5408 4.3327 11.5408 6.54274H13.0408ZM9.19608 1.28067C8.10014 0.968542 6.93882 0.968542 5.84287 1.28067L6.25374 2.7233C7.08111 2.48766 7.95784 2.48766 8.78522 2.7233L9.19608 1.28067ZM6.7466 2.27564C6.86777 1.96645 7.16863 1.75 7.51948 1.75V0.25C6.53434 0.25 5.69008 0.860583 5.35001 1.72833L6.7466 2.27564ZM7.51948 1.75C7.87033 1.75 8.17119 1.96645 8.29236 2.27564L9.68894 1.72833C9.34888 0.860583 8.50461 0.25 7.51948 0.25V1.75ZM9.15516 14.6143C9.15516 15.5122 8.41739 16.25 7.51948 16.25V17.75C9.24582 17.75 10.6552 16.3407 10.6552 14.6143H9.15516ZM7.51948 16.25C7.07487 16.25 6.65887 16.0648 6.36392 15.7699L5.30326 16.8305C5.86716 17.3944 6.65991 17.75 7.51948 17.75V16.25ZM6.36432 15.7703C6.05752 15.463 5.88477 15.0468 5.88379 14.6126L4.38379 14.616C4.38567 15.4465 4.71607 16.2425 5.30286 16.8301L6.36432 15.7703Z"
                                     fill="#1C1C1C"></path></svg></span></button>
-                    <div class="dropdown admin_btn">
-                        <button class="btn dropdown-toggle admin" aria-expanded="false" data-bs-toggle="dropdown"
-                            type="button"><img src="{{ asset('assets/img/image%2011%20(1).png') }}" alt="Admin"
-                                width="40" height="40"></button>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="{{ route('admin.signout') }}">Sign Out</a>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="main_content">
@@ -70,8 +64,7 @@
                                     Product</span></button><button
                                 class="btn dropdown-toggle dropdown-toggle-split add_product_dropdown"
                                 data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-                            <div class="dropdown-menu"><a class="dropdown-item" id="add_Product_btn_1"
-                                    data-bs-toggle="modal">Add Product</a><a class="dropdown-item"
+                            <div class="dropdown-menu"><a class="dropdown-item"
                                     href="{{ route('report.inventory') }}">Generate Report</a></div>
                         </div>
                     </div>
@@ -120,6 +113,21 @@
                                             <h1></h1>
                                             <p></p>
                                         </div>
+                                        <button class="btn edit_prod_detail" id="edit_prod_detail" data-action="Edit"
+                                    type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none">
+                                            <g clip-path="url(#clip0_5345_10250)">
+                                                <path
+                                                    d="M13.5 6.50024L17.5 10.5002M4 20.0003H8L18.5 9.5003C19.0304 8.96987 19.3284 8.25045 19.3284 7.5003C19.3284 6.75016 19.0304 6.03074 18.5 5.5003C17.9696 4.96987 17.2501 4.67188 16.5 4.67188C15.7499 4.67187 15.0304 4.96987 14.5 5.5003L4 16.0003V20.0003Z"
+                                                    stroke="#1C1C1C" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_5345_10250">
+                                                    <rect width="24" height="24" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg></span></button>
                                     </div>
                                     <div class="prod_detail_body">
                                         <div class="batchno_barcode">
@@ -129,6 +137,10 @@
                                             </div>
                                             <div class="bar_code">
                                                 <h1>Product Code</h1>
+                                                <p></p>
+                                            </div>
+                                            <div class="status">
+                                                <h1></h1>
                                                 <p></p>
                                             </div>
                                         </div>
@@ -151,21 +163,7 @@
                                             <p></p>
                                         </div>
                                     </div>
-                                </div><button class="btn edit_prod_detail" id="edit_prod_detail"
-                                    type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                            height="24" viewBox="0 0 24 24" fill="none">
-                                            <g clip-path="url(#clip0_5345_10250)">
-                                                <path
-                                                    d="M13.5 6.50024L17.5 10.5002M4 20.0003H8L18.5 9.5003C19.0304 8.96987 19.3284 8.25045 19.3284 7.5003C19.3284 6.75016 19.0304 6.03074 18.5 5.5003C17.9696 4.96987 17.2501 4.67188 16.5 4.67188C15.7499 4.67187 15.0304 4.96987 14.5 5.5003L4 16.0003V20.0003Z"
-                                                    stroke="#1C1C1C" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_5345_10250">
-                                                    <rect width="24" height="24" fill="white" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg></span></button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -328,12 +326,12 @@
                                               Descending
                                       </li>
                                       <li class="dropdown-item ">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <button class="btn btn-outline-secondary btn-sm me-3">Cancel</button>
+                                        <div class="row" style="display:flex; justify-content: space-around; gap: 8px;">
+                                            <div class="col-md-5 colButton" style="display:flex; justify-content: center">
+                                                <button class="btn cancel_filter btn-sm me-3"><span class="cancel_filter_base">Cancel</span></button>
                                             </div>
-                                            <div class="col-md-6 text-center">
-                                                <button type="submit" form="searchForm" class="btn btn-primary btn-sm ms-3">Apply</button>
+                                            <div class="col-md-5 text-center colButton" style="display:flex; justify-content: center">
+                                                <button type="submit" form="searchForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply</span></button>
                                             </div>
                                         </div>
                                     </li>
@@ -515,12 +513,13 @@
                                           <td>{{ $product->expiration_date }}</td>
                                           <td class="status-td"></td>
                                           <td class="dropdown button-action">
-                                            <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                            <button class="dropbtn" id="dropbtn" style="background-color: transparent; border:none;" aria-expanded="false" data-bs-toggle="dropdown"
+                                                            type="button"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                                                 <path d="M9 5C7.61929 5 6.5 3.88071 6.5 2.5C6.5 1.11929 7.61929 -6.03528e-08 9 0C10.3807 6.03528e-08 11.5 1.11929 11.5 2.5C11.5 3.88071 10.3807 5 9 5Z" fill="#045B62"/>
                                                 <path d="M9 11.5C7.61929 11.5 6.5 10.3807 6.5 9C6.5 7.61929 7.61929 6.5 9 6.5C10.3807 6.5 11.5 7.61929 11.5 9C11.5 10.3807 10.3807 11.5 9 11.5Z" fill="#045B62"/>
                                                 <path d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z" fill="#045B62"/>
                                                 </svg></button>
-                                        <div class="dropdown-content"><div class="button-group">
+                                        <div class="dropdown-content">
                                             <button
 		                                    data-action="AddStock" 
                                             data-product-type="{{ $product->product_type }}"
@@ -562,8 +561,8 @@
                                                 data-action="Edit" id="editButton"
                                                 data-product-type="{{ $product->product_type }}"
                                                 data-product-id="{{ $product->id }}"
-                                                data-item_name="{{ $product->item_name }}" data-product_code="{{ $product->product_code}}"
-                                                class="btn border-0"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                data-item_name="{{ $product->item_name }}" data-prod_desc="{{ $product->prod_desc }}""
+                                                class="btn border-0 editButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                                     <g clip-path="url(#clip0_6559_23808)">
                                                         <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                     </g>
@@ -580,7 +579,7 @@
                                                 class="btn border-0 archiveButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
                                                 <path d="M17 5C17.5304 5 18.0391 4.78929 18.4142 4.41421C18.7893 4.03914 19 3.53043 19 3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H3C2.46957 1 1.96086 1.21071 1.58579 1.58579C1.21071 1.96086 1 2.46957 1 3C1 3.53043 1.21071 4.03914 1.58579 4.41421C1.96086 4.78929 2.46957 5 3 5M17 5H3M17 5V15C17 15.5304 16.7893 16.0391 16.4142 16.4142C16.0391 16.7893 15.5304 17 15 17H5C4.46957 17 3.96086 16.7893 3.58579 16.4142C3.21071 16.0391 3 15.5304 3 15V5M8 9H12" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg> Archive</div></button>
-                                        </div>
+                                        
                                             
                                         </div>
 
@@ -692,7 +691,8 @@
                                                             </button>
                                                             <button data-action="Archive" id="archive"
                                                                 data-product-type="{{ $medInfo->product_type }}"
-                                                                data-product-id="{{ $medInfo->id }}">
+                                                                data-product-id="{{ $medInfo->id }}"
+                                                                data-prod_desc="{{ $medInfo->prod_desc }}">
                                                                 <div class="action_button_text"><svg
                                                                         xmlns="http://www.w3.org/2000/svg"
                                                                         width="24" height="24"
@@ -729,7 +729,7 @@
 
                         </div>
 
-                        <div class="w-100" id="batch_product" style="display: none;">
+                        <div class="w-100" id="batch_product" style="display: none; overflow: auto;">
                             <table class="table table-responsive w-100" style="overflow: auto;" id="batch_table">
                                 <thead>
                                     <tr>
@@ -737,6 +737,7 @@
                                         <th>Batch Number</th>
                                         <th>Product Code</th>
                                         <th>Quantity Left</th>
+                                        <th>Status</th>
                                         <th>Date Stocked</th>
                                         <th>Expiration Date</th>
                                         <th>Manufacturing Date</th>
@@ -748,6 +749,7 @@
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
+                                        <td class="status-td1"></td>
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
@@ -842,27 +844,26 @@
                                         </defs>
                                     </svg> Back</span></button></div>
                         <div class="prod_detail_body">
-                            @foreach ($products as $productInfo)
                                 <form
-                                    action="{{ route('product.edit', ['product_type' => $productInfo->product_type, 'id' => $productInfo->id]) }}"
+                                    action="{{ route('product.edit') }}"
                                     method="POST" class="mb-3 prod_detail_fields_container" id="edit_prod_form">
-                            @endforeach
                             @csrf
-                            @method('PUT')
+                            <input type="hidden" id="editProduct_type" name="editProduct_type">
+                            <input type="hidden" id="productIdInput" name="editId">
                             <div class="new_input_row">
                                 <div class="form-floating w-100"><select name="produt_type" class="form-select form-select"
                                         data-id="product-categ" id="product-categ-3">
-                                        <option value="none" selected="">Select a Product</option>
+                                        <option value="" selected disabled>Select</option>
                                         <option value="Medicine">Medicine</option>
                                         <option value="Vaccine">Vaccine</option>
                                         <option value="Vitamin">Vitamin</option>
-                                    </select><label class="form-label form-label" for="product-categ">Product
-                                        Category</label>
+                                    </select><label class="form-label form-label" for="product-categ">Product</label>
                                     <div id="error-product_categ-3" class="error-message"><span>Please select a
                                             category.</span></div>
                                 </div>
-                                <div class="form-floating w-100"><input class="form-control w-100" list="options" data-id="product_name" id="editItemName" name="item_name" placeholder="Owner Name">
-								<label class="form-label" for="product_name">Product Name<span>&nbsp;*</span></label>
+                                <div class="form-floating w-100"><input class="form-control w-100" list="options" data-id="product_name" id="editItemName" 
+                                name="item_name" placeholder="Owner Name">
+								<label class="form-label" for="product_name">Brand<span>&nbsp;*</span></label>
 									<datalist id="options">
 
 									</datalist>
@@ -876,10 +877,19 @@
                                     <div class="error-message" id="error-product_code-3"><span>Please enter product
                                             code.</span></div>
                                 </div>
-                                <div class="form-floating w-100"><input class="form-control" type="text"
-                                        name="batch_no" id="batch_no" data-id="batch_number"
-                                        placeholder="Batch Number"><label class="form-label form-label"
-                                        for="batch_number">Batch Number</label>
+                                <div class="form-floating w-100">
+                                        
+                                        <select class="form-select w-100" name="batch_no" id="batch_no" placeholder="Batch">
+                                            <option value="" selected disabled>Select Batch</option>
+                                            <option value="batch1">Batch 1</option>
+                                            <option value="batch2">Batch 2</option>
+                                            <option value="batch3">Batch 3</option>
+                                            <!-- Add more options as needed -->
+                                        </select>
+
+                                        
+                                        <label class="form-label form-label"
+                                        for="batch_no">Batch Number</label>
                                     <div class="error-message" id="error-batch_number-3"><span>Please enter batch
                                             number.</span></div>
                                 </div>
@@ -904,7 +914,7 @@
                                 </div>
                                 <div class="form-floating" style="width:100%;"><input
                                         class="form-control form-control" name="date_stocked" id="date_stocked"
-                                        data-id="datestocked"placeholder="Expiration Date"
+                                        data-id="datestocked" placeholder="Expiration Date"
                                         type="date"><label class="form-label form-label" for="datestocked">Date
                                         Stocked</label>
                                     <div class="error-message" id="error-datestocked-3"><span>Please enter the date
@@ -918,22 +928,22 @@
                                 <div id="error-prod_description-3" class="error-message"><span>Please enter product
                                         description.</span></div>
                             </div>
-                            <div class="quantity_input_container_edit">
+                            <div class="quantity_input_container_edit d-flex justify-content-end" style="gap: 8px;">
                                 <h1>Quantity</h1>
                                 <div class="form-floating">
                                     <div class="quantity_input"><button class="quantity_minus" type="button"
-                                            onclick="decrementQuantity()">-</button>
+                                            onclick="decrementQuantity3()">-</button>
                                         <input type="number" aria-labelledby="label-quantity" class="input_quantity"
                                             data-id="quantity" id="quantity_input" min="0" name="quantity"
                                             required="" value="0">
                                         <button class="quantity_add" type="button"
-                                            onclick="incrementQuantity()">+</button>
+                                            onclick="incrementQuantity3()">+</button>
                                         <div id="error-quantity-3" class="error-message"><span>Please input a quantity
                                                 value more than 0.</span></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-3 prod_detail_fields_buttons"><button class="btn cancel_edit"
+                            <div class="mb-3 prod_detail_fields_buttons p-0"><button class="btn cancel_edit"
                                     id="cancel_edit" type="button"><span
                                         class="cancel_edit_base">Cancel</span></button>
                                 <button class="btn edit_save_changes" id="save_changes" disabled type="submit"><span
@@ -1058,9 +1068,9 @@
     </div>
     <div class="modal fade" role="dialog" tabindex="-1" id="add_product_modal-1">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content add_client_modal">
+            <div class="modal-content new_product_modal">
                 <div class="modal-header">
-                    <h1 class="modal-title">Add New Product</h1><button class="btn-close" aria-label="Close"
+                    <h1 class="modal-title">Add New Product</h1><button class="btn-close" onclick="clearForm1()" aria-label="Close"
                         data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body">
@@ -1071,23 +1081,22 @@
                                 <div class="form-floating" style="width: 100%;"><select
                                         class="form-select form-select" name="product_type"
                                         data-id="product-categ" id="product-categ-1">
-                                        <option value="none" selected="">Select a product</option>
+                                        <option value="none" selected="">Select</option>
                                         <option value="Medicine">Medicine</option>
                                         <option value="Vaccine">Vaccine</option>
                                         <option value="Vitamin">Vitamin</option>
-                                    </select><label class="form-label form-label" for="product-categ">Product
-                                        Category <span>&nbsp;*</span></label>
+                                    </select><label class="form-label form-label" for="product-categ">Category <span>&nbsp;*</span></label>
                                     <div id="error-product_categ-1" class="error-message"><span>Please select a
                                             category.</span></div>
                                 </div>
                                 <div class="form-floating" style="width: 100%;">
 
                                         <input class="form-control w-100" list="options" data-id="product_name" id="product_name-1" name="item_name" placeholder="Owner Name">
-								<label class="form-label" for="product_name">Product Name<span>&nbsp;*</span></label>
+								<label class="form-label" for="product_name">Name<span>&nbsp;*</span></label>
 									<datalist id="options">
 
 									</datalist>
-                                    <div id="error-product_name-1" class="error-message"><span>Please select product
+                                    <div id="error-product_name-1" class="error-message"><span>Please input product
                                             name.</span></div>
                                 </div>
                                 <div class="form-floating" style="width: 100%;"><input
@@ -1098,14 +1107,7 @@
                                     <div class="error-message" id="error-product_code-1"><span>Please enter product
                                             code.</span></div>
                                 </div>
-                                <div class="form-floating" style="width: 100%;"><input
-                                        class="form-control" type="text" name="batch_no"
-                                        data-id="batch_number" id="batch_number-1"
-                                        placeholder="Batch Number"><label class="form-label form-label"
-                                        for="batch_number">Batch Number <span>&nbsp;*</span></label>
-                                    <div class="error-message" id="error-batch_number-1"><span>Please enter batch
-                                            number.</span></div>
-                                </div>
+                                
                             </div>
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input
@@ -1137,11 +1139,11 @@
                             <div class="form-floating" style="width:100%;">
                                 <textarea class="form-control" id="prod_description-1" name="prod_desc" data-id="prod_description"
                                     placeholder="Product Description"></textarea><label class="form-label form-label"
-                                    for="prod_description">Product Description <span>&nbsp;*</span></label>
+                                    for="prod_description">Description <span>&nbsp;*</span></label>
                                 <div id="error-prod_description-1" class="error-message"><span>Please enter product
                                         description.</span></div>
                             </div>
-                            <div class="quantity_input_container">
+                            <div class="quantity_input_container d-flex justify-content-end">
                                 <h1>Quantity <span style="color: var(--bs-red);">&nbsp;*</span></h1>
                                 <div class="form-floating">
                                     <div class="quantity_input"><button class="quantity_minus" type="button"
@@ -1158,8 +1160,8 @@
                             </div>
                         </div>
                 </div>
-                <div class="modal-footer add_product_button"><button class="btn clear_form" type="button"
-                        role="button" aria-label="Clear Form" onclick="clearForm1()"><span
+                <div class="modal-footer add_product_button"><button class="btn clear_form" type="reset"
+                        role="button" aria-label="Clear Form"><span
                             class="clear_form_base">Clear Form</span></button>
                     <button class="btn disabled submit_product" id="submit_product-1" type="submit"
                         disabled=""><span class="submit_product_base">Submit</span></button>
@@ -1187,24 +1189,22 @@
                     <div class="mb-3 stock_input_container">
                         <div class="stock_image_container"><span class="product_name" id="addstockItemName">Product Name</span></div>
                         <div class="new_input_row">
-                            <div class="form-floating batch_number"><input id="batch_no_1" name="batch_no"
-                                    class="form-control" type="text" data-id="batch_no"
-                                    placeholder="Batch Number" /><label class="form-label form-label"
-                                    for="batch_number">Batch Number</label>
-                                <div id="error-batch_number-2" class="error-message"><span>Please enter batch
-                                        number.</span></div>
+                            <div class="form-floating batch_number"><input id="prod_code" name="prod_code"
+                                    class="form-control" type="text" data-id="prod_code"
+                                    placeholder="Product Code"><label class="form-label"
+                                    for="batch_number">Product Code</label>
                             </div>
                         </div>
                         <div class="new_input_row">
-                            <div class="form-floating" ><input id="manufacturing_date-1"
+                            <div class="form-floating w-100" ><input id="manufacturing_date-1"
                                     name="manufacturing_date" class="form-control"
                                     data-id="manufacturing_date" placeholder="Manufactured Date"
-                                    type="date" /><label class="form-label form-label"
+                                    type="date" /><label class="form-label"
                                     for="manufacturing_date">Manufactured Date</label>
                                 <div id="error-manufactured_date-2" class="error-message"><span>Please enter the
                                         manufactured date.</span></div>
                             </div>
-                            <div class="form-floating" ><input id="expired_date"
+                            <div class="form-floating w-100" ><input id="expired_date"
                                     name="expiration_date" class="form-control"
                                     data-id="expired_date" placeholder="Expiration Date"
                                     type="date" /><label class="form-label form-label"
@@ -1212,7 +1212,7 @@
                                 <div id="error-expiration_date-2" class="error-message"><span>Please enter the
                                         expiration date.</span></div>
                             </div>
-                            <div class="form-floating" ><input id="date_stocked1"
+                            <div class="form-floating w-100" ><input id="date_stocked1"
                                     name="date_stocked" class="form-control form-control" data-id="date_stocked1"
                                     placeholder="Expiration Date" type="date" /><label
                                     class="form-label form-label" for="datestocked">Date Stocked</label>
@@ -1226,8 +1226,8 @@
                                 <div class="quantity_input">
                                     <button class="quantity_minus" onclick="decrementQuantity2()"
                                         type="button">-</button>
-                                    <input id="deduct_quantity_input" class="input_quantity" type="number"
-                                        aria-labelledby="label-quantity" data-id="quantity-2" min="0"
+                                    <input id="quantity-2" class="input_quantity" type="number"
+                                        aria-labelledby="label-quantity" data-id="quantity" min="0"
                                         name="quantity" required value="0" />
                                     <button class="quantity_add" onclick="incrementQuantity2()"
                                         type="button">+</button>
@@ -1236,10 +1236,11 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="modal-footer add_stock_buttons">
-                    <button class="btn cancel_btn" id="cancel_btn" onClick="cancelStock()" data-bs-dismiss="modal" type="button" role="button" aria-label="Cancel"><span
+                    <button class="btn cancel_btn" id="cancel_btn" data-bs-dismiss="modal" type="reset" role="button" aria-label="Cancel"><span
                             class="cancel_btn_base">Cancel</span></button>
                     <button id="add_stock" class="btn add_stock" type="submit" disabled><span class="add_stock_base">Add
                             Stock</span></button>
@@ -1260,35 +1261,42 @@
                 <div class="modal-body add_stock_modal_body w-100">
                     <form action="{{ route('deduct') }}" method="POST">
                     @csrf
-                    <input type="text" name="product_type" id="deductproduct_type">
-                    <input type="hidden" name="id" id="deductid">
+                    
                     <div class="mb-3 stock_input_container">
-                        <div class="stock_image_container"><span class="product_name" id="productName">Product Name</span></div>
-                        
+                        <div class="stock_image_container"><span class="product_name" id="productName">Product Name</span><span name="product_type" class="product_category" id="deductproduct_type"></span></div>
+                        <div class="form-floating w-50"><select class="form-select" id="product_batch_no" placeholder="Batch">
+                                <option value="" selected disabled>Select Batch</option>
+                                <option value="batch1">Batch 1</option>
+                                <option value="batch2">Batch 2</option>
+                                <option value="batch3">Batch 3</option>
+                                <!-- Add more options as needed -->
+                            </select>
+
+                        <label class="form-label" for="product_batch_no">Batch</label></div>
                         
                         <div class="quantity_input_container d-flex justify-content-center">
-                            <h1>Quantity</h1>
-                            <div class="form-floating">
-                                <div class="quantity_input deduct">
-                                    <button class="quantity_minus" onclick="decrementQuantity2()"
-                                        type="button">-</button>
-                                    <input id="quantity-2" class="input_quantity" type="number"
-                                        aria-labelledby="label-quantity" data-id="quantity-2" min="0"
-                                        name="quantity" required value="0" />
+                            
+                        <div class="quantity_input deduct ">
+                                    <button class="quantity_minus"
+                                        type="button" onclick="decrementQuantity()">-</button>
+                                        <div class="form-floating">
+                                    <input id="deduct_quantity_input" class="form-control input_quantity" type="number"
+                                        aria-labelledby="label-quantity" data-id="deduct_quantity_input" min="0"
+                                        name="deduct" required value="0" placeholder="Quantity">
+                                        <label class="form-label" for="deduct_quantity_input">Quantity</label></div>
 
-                                    <button class="quantity_add" onclick="incrementQuantity2()"
-                                        type="button">+</button>
+                                    <button class="quantity_add"
+                                        type="button" onclick="incrementQuantity()">+</button>
                                     <div id="error-quantity-2" class="error-message"><span>Please input a quantity
                                             value more than 0.</span></div>
-                                </div>
-                            </div>
+                                </div> 
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer deduct_stock_buttons">
                     <button class="btn cancel_btn" id="cancel_btn" onClick="cancelDeductStock()" data-bs-dismiss="modal" type="button" role="button" aria-label="Cancel"><span
                             class="cancel_btn_base">Cancel</span></button>
-                    <button id="deduct_stock" class="btn add_stock" data-bs-dismiss="modal" type="submit"><span class="add_stock_base">Deduct
+                    <button id="deduct_stock" class="btn add_stock" data-bs-dismiss="modal" type="submit" disabled><span class="add_stock_base">Deduct
                             Stock</span></button>
                 </div>
                 </form>
@@ -1382,7 +1390,7 @@
                 <div class="modal-footer discard_footer"><button class="btn return_btn" id="return_btn"
                         data-bs-dismiss="modal" type="button"><span
                             class="return_btn_base">Return</span></button><button class="btn discard_btn"
-                        id="discard_btn" type="button"><span class="discard_btn_base">Discard</span></button>
+                        id="discard_btn" type="reset"><span class="discard_btn_base">Discard</span></button>
                 </div>
             </div>
         </div>
@@ -1411,7 +1419,50 @@
 			</div>
 		</div>
 	</div>
+
+    <div class="modal fade show" role="dialog" tabindex="-1" id="archive_modal">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content archive_modal">
+				<div class="modal-header archive_header">
+					<div class="archive_icon_container"><span class="success_icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <g clip-path="url(#clip0_5693_10845)">
+    <path d="M16 10.6667V16M16 21.3333H16.0133M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 12.8174 26.7357 9.76516 24.4853 7.51472C22.2348 5.26428 19.1826 4 16 4C12.8174 4 9.76516 5.26428 7.51472 7.51472C5.26428 9.76516 4 12.8174 4 16Z" stroke="#045B62" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  </g>
+  <defs>
+    <clipPath id="clip0_5693_10845">
+      <rect width="32" height="32" fill="white"></rect>
+    </clipPath>
+  </defs>
+</svg></span></div>
+				</div>
+				<div class="modal-body archive_message">
+					<div>
+						<h1>Archive client?</h1>
+						<p>You can restore archived clients at a later time.</p>
+					</div>
+				</div>
+				<div class="modal-footer discard_footer">
+					<button class="btn return_btn" data-bs-dismiss="modal" type="button"><span class="return_btn_base">Cancel</span></button>
+					<button class="btn archive_confirm" id="archive_confirm_button" type="button"><span class="archive_confirm_button_base">Archive</span></button>
+				</div>
+			</div>
+		</div>
+	</div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @if ($productExists)
+    <script>
+    $('#empty_state_container').css('display', 'none');
+    $('#split_btn').css('display', 'flex');
+    $('#product_table_container').css('display', 'flex');
+    </script>
+    @else
+    <script>
+    $('#empty_state_container').css('display', 'flex');
+    $('#split_btn').hide();
+    $('#product_table_container').css('display', 'none');
+    </script> 
+    @endif
     @if (session('success_product'))
     <script>
     $(document).ready(function() {
@@ -1464,24 +1515,15 @@
         }
         $(document).ready(function() {
             updateStatus();
-            $('#editButton').click(function() {
-            const invData = {
-                'item_name' :$(this).data('item_name'),
-                'product_code' :$(this).data('product_code'),
-                'last_name' :$(this).data('last-name'),
-                'suffix' :$(this).data('suffix'),
-                'birthdate' :$(this).data('birthdate'),
-                'email' :$(this).data('email'),
-                'phone' :$(this).data('phone'),
-            };      
-            $('#editItemName').text(invData.item_name);
-            $('#product_code').val(invData.middle_name);
-            $('#editLastName').val(clientData.last_name);
-            $('#editSuffix').val(clientData.suffix);
-            $('#editBirthdate').val(clientData.birthdate);
-            $('#editEmail').val(clientData.email);
-            $('#editPhone').val(clientData.phone);
-        });
+            // $('#editButton').click(function() {
+            // const invData = {
+            //     'item_name' :$(this).data('item_name'),
+            //     'product_code' :$(this).data('product_code'),
+            // };      
+            // $('#editItemName').text(invData.item_name);
+            // $('#product_code').val(invData.middle_name);
+
+            // });
             $('.viewButton').click(function() {
                 var inventory_header = document.getElementById("inventory_header");
                 var rowId = $(this).closest('tr').data('row-id');
@@ -1515,11 +1557,28 @@
                     success: function(data){
                         $('#batch_table tbody').empty();
                         $.each(data, function(index, batches) {
+                            var status;
+                            if (batches.quantity === 0) {
+                                status = "Out of Stock";
+                            } else if (batches.quantity <= 50) {
+                                status = "Low Stock";
+                            } else {
+                                status = "High Stock";
+                            }
+                            var statusColor;
+                            if (status === "Out of Stock") {
+                                statusColor = "#DA534F";
+                            } else if (status === "Low Stock") {
+                                statusColor = "#FFA800";
+                            } else {
+                                statusColor = "#5CA500";
+                            }
                             var newRow = '<tr>' +
                             '<td>' + ' ' + '</td>' +
 							'<td>' + batches.batch_no + '</td>' +
                             '<td>' + batches.product_code + '</td>' +
                             '<td>' + batches.quantity + '</td>' +
+                            '<td style="background-color: ' + statusColor + ';">' + status + '</td>' + // Include status here
 							'<td>' + batches.date_stocked + '</td>' +
 							'<td>' + batches.expiration_date + '</td>' +
                             '<td>' + batches.manufacturing_date + '</td>' +
@@ -1529,38 +1588,63 @@
                     }
                 })
             });
-            $('#editButton').click(function() {
-                // Get data attributes from the button
-                const productType = $(this).data('product-type');
-                const productId = $(this).data('product-id');
+            $('.editButton').click(function() {
+                var row = $(this).closest('row-id');
+                const product_type = $(this).data('product-type');
+                const id = $(this).data('product-id');
+                $('#editProduct_type').val(product_type);
+                $('#editId').val(id);
                 const invData = {
                 'item_name' :$(this).data('item_name'),
+                'product_type' :$(this).data('product_type'),
+                'prod_desc' :$(this).data('prod_desc'),
                 };
-                $('#addstockItemName').val(invData.item_name);
-
-                const form = $(this).closest('tr').find('.edit_prod_form');
-                // Set the values in the form fields
-                form.find('.productTypeInput').val(productType);
-                form.find('.productIdInput').val(productId);
-
+                $('#editItemName').val(invData.item_name);
+                $('#product-categ-3').empty();
+					const typeOptions = ['Medicine', 'Vaccine', 'Vitamin'];
+					typeOptions.forEach(function(option) {
+						const $option = $('<option></option>').attr('value', option).text(option);
+						if (option === invData.gender) {
+							$option.attr('selected', 'selected');
+						}
+						$('#product-categ-3').append($option);
+					});
+                $('#prod_desc').val(invData.prod_desc);
+                $('#productTypeInput').text(product_type);
+                $('#productIdInput').val(id);
                 $.ajax({
                     type: 'GET',
-                    url: `/admin/inventory/view/${product_type}/${id}`,
-                    success: function(data) {
-                        // Update the HTML elements with the retrieved data
-                        $('.prod_head_info h1').text(data.productInfo.item_name);
-                        $('.prod_head_info p').text(data.productInfo.product_type);
-                        $('.batch_number p').text(data.productBatch.batch_no);
-                        $('.bar_code p').text(data.productBatch.product_code);
-                        $('.manufactured_date p').text(data.productBatch.manufacturing_date);
-                        $('.expiration_date p').text(data.productBatch.expiration_date);
-                        $('.date_stocked p').text(data.productBatch.date_stocked);
-                        $('.product_Description p').text(data.productInfo.prod_desc);
+                    url: `/admin/inventory/viewBatch/${product_type}/${id}`,
+                    success: function(data){
+                        $('#batch_no').empty(); // Clear existing options
+                        $('#batch_no').append('<option value="" selected disabled>Select Batch</option>'); // Add default option
+                        $.each(data, function(index, batch) {
+                            $('#batch_no').append('<option value="' + batch.batch_no + '">'+ "Batch No. " + batch.batch_no + '</option>');
+                        });
                     },
-                    error: function(xhr) {
-                        // Handle errors
-                        console.log(xhr.responseText);
+                    error: function(xhr, status, error) {
+                        // Handle error
+                        console.error(error);
                     }
+                });
+                $('#batch_no').on('change', function() {
+                    var batchNo = $(this).val();
+                    // Make another AJAX request to fetch details of the selected batch
+                    $.ajax({
+                        type: 'GET',
+                        url: `/admin/inventory/batchDetails/${product_type}/${id}/${batchNo}`, // Adjust the URL as per your application
+                        success: function(data) {
+                            $('#product_code-3').val(data.product_code); 
+                            $('#manufacturing_date').val(data.manufacturing_date);
+                            $('#expiry_date').val(data.expiration_date);
+                            $('#date_stocked').val(data.date_stocked);
+                            $('#quantity_input').val(data.quantity);
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle error
+                            console.error(error);
+                        }
+                    });
                 });
             });
             $('.addStock').click(function() {
@@ -1574,7 +1658,6 @@
                 const formData = new FormData();
                 formData.append('product_type', productType);
                 formData.append('id', productId);
-
                 // Perform an AJAX request to the server
                 $.ajax({
                     url: `/admin/inventory/addStock/${product_type}/${productId}`, // Adjust the URL to your actual route
@@ -1597,8 +1680,6 @@
             var row = $(this).closest('row-id');
             const product_type = $(this).data('product-type');
             const id = $(this).data('product-id');
-
-            // Send an AJAX request to the Laravel controller
                 $.ajax({
                     type: 'POST',
                     url: `/admin/inventory/archive/${product_type}/${id}`,
@@ -1623,9 +1704,22 @@
                 'item_name' :$(this).data('item_name'),
                 };
             $('#productName').text(invData.item_name);
-            $('#deductproduct_type').val(product_type);
+            $('#deductproudct_type').text(product_type);
             $('#deductid').val(id);
-
+            $.ajax({
+                type: 'GET',
+                url: `/admin/inventory/viewBatch/${product_type}/${id}`,
+                success: function(data) {
+                    $('#product_batch_no').empty();
+                    $('#product_batch_no').append('<option value="" selected disabled>Select Batch</option>');
+                    $.each(data, function(index, batch) {
+                        $('#product_batch_no').append('<option value="' + batch.batch_no + '">'+ "Batch No. " + batch.batch_no + '</option>');
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching batch numbers:', error);
+                }
+            });
             // Send an AJAX request to the Laravel controller
             $('#deduct_stock').click(function() {
                 // Perform AJAX request
@@ -1651,21 +1745,21 @@
             });
         });
 
-        document.querySelectorAll('#editButton').forEach(button => {
-            button.addEventListener('click', function() {
-                // Extract data from the button's data attributes
-                const productType = this.getAttribute('data-product-type');
-                const productId = this.getAttribute('data-product-id');
+        // document.querySelectorAll('#editButton').forEach(button => {
+        //     button.addEventListener('click', function() {
+        //         // Extract data from the button's data attributes
+        //         const productType = this.getAttribute('data-product-type');
+        //         const productId = this.getAttribute('data-product-id');
 
-                // Set the form's action based on the data
-                const editForm = document.querySelector('#edit_prod_form');
-                editForm.action = `/admin/inventory/edit/${productType}/${productId}`;
+        //         // Set the form's action based on the data
+        //         const editForm = document.querySelector('#edit_prod_form');
+        //         editForm.action = `/admin/inventory/edit/${productType}/${productId}`;
 
-                // Optionally, you can also populate form fields based on the data
-                document.querySelector('#edit-product-type').value = productType;
-                document.querySelector('#edit-product-id').value = productId;
-            });
-        });
+        //         // Optionally, you can also populate form fields based on the data
+        //         document.querySelector('#edit-product-type').value = productType;
+        //         document.querySelector('#edit-product-id').value = productId;
+        //     });
+        // });
 
         document.querySelectorAll('.addStock').forEach(button => {
             button.addEventListener('click', function() {
@@ -1700,18 +1794,38 @@
     </script>
 
 <script>
-            var SelectAll = document.getElementById("SelectAll");
-
-            SelectAll.addEventListener("click", function () {
+    var SelectAll = document.getElementById("SelectAll");
     var tableBody = document.getElementById('inventory_table_body');
     var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
 
-    rowCheckboxes.forEach(function (checkbox) {
-        checkbox.checked = !checkbox.checked; // Toggle the state
+    // Function to toggle all checkboxes
+    function toggleAllCheckboxes(checked) {
+        rowCheckboxes.forEach(function (checkbox) {
+            checkbox.checked = checked;
+        });
+    }
+
+    // Click event listener for "SelectAll"
+    SelectAll.addEventListener("click", function () {
+        toggleAllCheckboxes(SelectAll.checked);
     });
 
-});
-    </script>
+    // Click event listener for individual checkboxes
+    rowCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("click", function () {
+            var allChecked = true;
+            rowCheckboxes.forEach(function (cb) {
+                if (!cb.checked) {
+                    allChecked = false;
+                }
+            });
+            SelectAll.checked = allChecked;
+        });
+    });
+</script>
+
+
+
 
     <script>
  function enableSaveChanges() {
@@ -1727,22 +1841,17 @@
 
   var save_changes = document.getElementById("save_changes");
 
-  // Add additional validation conditions as needed
-  if (
-    product_categ.trim() !== "" &&
-    editItemName.trim() !== "" &&
-    product_code.trim() !== "" &&
-    batch_number.trim() !== "" &&
-    manufactured_date.trim() !== "" &&
-    expiration_date.trim() !== "" &&
-    datestocked.trim() !== "" &&
-    prod_description.trim() !== "" &&
-    quantity.trim() >= 1
-  ) {
-    save_changes.removeAttribute("disabled");
-  } else {
-    save_changes.setAttribute("disabled", true);
-  }
+  // Check if any field has changed its value or its value has been removed
+  var anyChanges = false;
+  var fieldsToCheck = [product_categ, editItemName, product_code, batch_number, manufactured_date, expiration_date, datestocked, prod_description, quantity];
+  fieldsToCheck.forEach(function(fieldValue) {
+    if (fieldValue.trim() !== "") {
+      anyChanges = true;
+    }
+  });
+
+  // Enable or disable the Save Changes button based on changes
+  save_changes.disabled = !anyChanges;
 
   // Logging values for debugging
   console.log('product-categ-3:', product_categ);
@@ -1755,9 +1864,7 @@
   console.log('prod_description', prod_description);
   console.log('quantity', quantity);
   console.log('save_changes disabled:', save_changes.disabled);
-
 }
-
 
 // Example: Call enableSaveChanges() on input change events
 document.getElementById("product-categ-3").addEventListener("change", enableSaveChanges);
@@ -1769,6 +1876,7 @@ document.getElementById("expiry_date").addEventListener("input", enableSaveChang
 document.getElementById("date_stocked").addEventListener("input", enableSaveChanges);
 document.getElementById("prod_desc").addEventListener("input", enableSaveChanges);
 document.getElementById("quantity_input").addEventListener("input", enableSaveChanges);
+
 </script>
 
 

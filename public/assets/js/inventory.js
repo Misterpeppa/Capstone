@@ -1,3 +1,25 @@
+function validationProductCode(inputElement) {
+  inputElement.addEventListener('input', function () {
+      const inputValue = this.value;
+
+      // Remove non-numeric characters
+      const numericValue = inputValue.replace(/\D/g, '');
+
+      // Limit the input to 12 digits
+      const truncatedValue = numericValue.substring(0, 12);
+
+      // Update the input value
+      this.value = truncatedValue;
+  })
+}
+const productCodeInput = document.getElementById('prod_code');
+const productCodeInput1 = document.getElementById('product_code-1');
+const productCodeInput2 = document.getElementById('product_code-3');
+
+
+validationProductCode(productCodeInput);
+validationProductCode(productCodeInput1);
+validationProductCode(productCodeInput2);
 document.addEventListener("DOMContentLoaded", function () {
   
 
@@ -167,15 +189,14 @@ document.addEventListener("DOMContentLoaded", function () {
         closeDropdownMenus();
         event.stopPropagation(); // Prevent the click event from propagating
         const content = this.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else if (content.style.display === "flex") {
-          content.style.display = "none";
-        } else {
+        if (content.style.display === "none" || content.style.display === "") {
           content.style.display = "flex";
+        } else {
+          content.style.display = "none";
         }
       });
     });
+    
     closeDropdownMenus();
 
     function closeDropdownMenus() {
@@ -239,9 +260,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const errorBatch_number = document.getElementById("error-batch_number");
   addBlurListener(batch_numberInput, errorBatch_number);
 
-  const batch_numberInput1 = document.getElementById("batch_number-1");
-  const errorBatch_number1 = document.getElementById("error-batch_number-1");
-  addBlurListener(batch_numberInput1, errorBatch_number1);
+  //const batch_numberInput1 = document.getElementById("batch_number-1");
+  //const errorBatch_number1 = document.getElementById("error-batch_number-1");
+  //addBlurListener(batch_numberInput1, errorBatch_number1);
 
   const manufactured_dateInput = document.getElementById("manufactured_date");
   const errorManufactured_date = document.getElementById("error-manufactured_date");
@@ -256,9 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
   addBlurListener(expiration_dateInput, errorExpiration_date);
 
   const expiration_dateInput1 = document.getElementById("expiration_date-1");
-  const errorExpiration_date1 = document.getElementById(
-    "error-expiration_date-1"
-  );
+  const errorExpiration_date1 = document.getElementById("error-expiration_date-1");
   addBlurListener(expiration_dateInput1, errorExpiration_date1);
 
   const datestockedInput = document.getElementById("datestocked");
@@ -274,9 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
   addBlurListener(product_descInput, errorProduct_desc);
 
   const product_descInput1 = document.getElementById("prod_description-1");
-  const errorProduct_desc1 = document.getElementById(
-    "error-prod_description-1"
-  );
+  const errorProduct_desc1 = document.getElementById("error-prod_description-1");
   addBlurListener(product_descInput1, errorProduct_desc1);
 
   const quantityInput = document.getElementById("quantity");
@@ -288,6 +305,20 @@ document.addEventListener("DOMContentLoaded", function () {
   addBlurListener(quantityInput1, errorQuantity1);
 
 
+//capitalize first letter
+  function capitalizeFirstLetter(input) {
+    return input.replace(/\b\w/g, char => char.toUpperCase());
+}
+product_nameInput1.addEventListener('input', function() {
+  this.value = capitalizeFirstLetter(this.value);
+});
+//capitalize first letter of each sentece
+function capitalizeFirstLetterSentence(input) {
+  return input.replace(/(^\w|\.\s+\w)/g, char => char.toUpperCase());
+}
+product_descInput1.addEventListener('input', function() {
+  this.value = capitalizeFirstLetterSentence(this.value);
+});
 function submitForm() {
 // Create FormData object from the form
 var formData = new FormData($('#add_product_form')[0]);
@@ -337,39 +368,7 @@ function submitFormData(formData) {
       }
   });
     //divs will appear after hitting submit_product button
-    $("#submit_product").click(function () {
-        var formData = $("#add_product_form").serialize();
-
-        // Make an AJAX request
-        $.ajax({
-            url: '/admin/inventory', // Replace with your actual route URL
-            method: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-                if (response.success) {
-                    console.log('Form data submitted successfully.');
-                } else {
-                    console.error('Data submission failed.');
-                }
-            },
-            error: function () {
-                console.error('Error in AJAX request.');
-            }
-        });
-      // Hide the empty state container
-      $("#empty_state_container").hide();
-
-      // Show the product table and apply the display: flex property
-      $("#product_table_container").show();
-
-      // Show the add_product_success and hide it after 3 seconds
-      $("#add_product_success").show();
-      setTimeout(function () {
-        $("#add_product_success").hide();
-      }, 2000);
-    });
+    
     
     //discard pop up
     $("#cancel_edit").click(function () {
@@ -386,11 +385,7 @@ function submitFormData(formData) {
       $("#add_product_discard").hide();
     });
 
-    // When the "Add Product" menu item is clicked, show the modal
-    $("#add_Product_btn_1").click(function () {
-      // Trigger the modal manually
-      $("#add_product_modal-1").modal("show");
-    });
+
 
     $("#edit_save_changes").click(function () {
       $("#save_changes_success").show();
@@ -404,61 +399,9 @@ function submitFormData(formData) {
     });
   });
 
-  function initializeDependentSelect(categorySelectId, nameSelectId, options) {
-    const categorySelect = document.getElementById(categorySelectId);
-    const nameSelect = document.getElementById(nameSelectId);
 
-    // Initially disable the "Product Name" select element
-    nameSelect.disabled = true;
 
-    // Listen for changes in the product category selection
-    categorySelect.addEventListener("change", function () {
-      const selectedCategory = this.value;
-      updateProductNameOptions(nameSelect, selectedCategory, options);
-
-      // Enable the "Product Name" select element when a category is selected
-      nameSelect.disabled = false;
-    });
-
-    // Function to update the product name select options based on the selected category
-    function updateProductNameOptions(select, category, options) {
-      // Clear existing options
-      select.innerHTML =
-        '<option value="" disabled selected>Select a Product Name</option>';
-
-      let categoryOptions = options[category] || [];
-
-      categoryOptions.forEach((option) => {
-        const optionElement = document.createElement("option");
-        optionElement.value = option;
-        optionElement.textContent = option;
-        select.appendChild(optionElement);
-      });
-    }
-
-    // Listen for changes in the product category selection (initial call)
-    categorySelect.addEventListener("change", function () {
-      const selectedCategory = this.value;
-      updateProductNameOptions(nameSelect, selectedCategory, options);
-    });
-  }
-
-  // Define the options for each category
-  const categoryOptions = {
-    Medicine: ["Medicine 1", "Medicine 2", "Medicine 3"],
-    Vaccine: ["Vaccine 1", "Vaccine 2", "Vaccine 3"],
-    Vitamin: ["Vitamin 1", "Vitamin 2", "Vitamin 3"],
-  };
-
-  // Initialize the first set of dependent selects
-  initializeDependentSelect("product-categ", "product_name", categoryOptions);
-
-  // Initialize the second set of dependent selects
-  initializeDependentSelect(
-    "product-categ-1",
-    "product_name-1",
-    categoryOptions
-  );
+ 
 
   // Function to check if a date is in the future
   function isFutureDate(date) {
@@ -475,10 +418,12 @@ function submitFormData(formData) {
   }
 
 
-  var manufacturing_date = document.getElementById('manufacturing_date-1');
-  var expired_date = document.getElementById('expired_date');
-  var date_stocked = document.getElementById('date_stocked1');
-  var expiry_date = document.getElementById('expiry_date');
+  const manufacturing_date = document.getElementById('manufacturing_date-1');
+  const expired_date = document.getElementById('expired_date');
+  const date_stocked = document.getElementById('date_stocked1');
+  const date_stocked1 = document.getElementById('datestocked-1');
+  const expiry_date = document.getElementById('expiry_date');
+  const expiration_date1 = document.getElementById('expiration_date-1');
 
 
   // Set the maximum allowed date to today
@@ -566,8 +511,10 @@ function submitFormData(formData) {
     manufactured_dateInput,
     manufactured_dateInput1,
     expiration_dateInput,
+    expiration_date1,
     datestockedInput,
     date_stocked,
+    date_stocked1,
     manufacturing_date,
     expired_date,
     date_stocked,
@@ -575,9 +522,11 @@ function submitFormData(formData) {
   ];
 
 
-  dateInputs.addEventListener('keydown', function (e) {
-    e.preventDefault();
-});
+  dateInputs.forEach(input => {
+    input.addEventListener('keydown', function (e) {
+      e.preventDefault();
+    });
+  });
   
 // Function to restrict "batch_number" input to numbers 1 to 3
 function restrictBatchNumberInput(inputElement) {
@@ -595,7 +544,7 @@ function restrictBatchNumberInput(inputElement) {
   }
   // Get the "batch_number" input element by its ID
   const batchNumberInput = document.getElementById('batch_number');
-  const batchNumberInput1 = document.getElementById('batch_number-1');
+  //const batchNumberInput1 = document.getElementById('batch_number-1');
   // Call the function to restrict input to numbers 1 to 3
   restrictBatchNumberInput(batchNumberInput);
   restrictBatchNumberInput(batchNumberInput1);
@@ -616,9 +565,13 @@ function validationProductCode(inputElement) {
 }
 const productCodeInput = document.getElementById('product_code');
 const productCodeInput1 = document.getElementById('product_code-1');
+const productCodeInput2 = document.getElementById('product_code-3');
+
 
 validationProductCode(productCodeInput);
 validationProductCode(productCodeInput1);
+validationProductCode(productCodeInput2);
+
 
   // Add event listeners to the manufactured_date input
   manufactured_dateInput.addEventListener("blur", function () {
@@ -660,9 +613,34 @@ validationProductCode(productCodeInput1);
       }
     }
   });
+
+  
 });
 
+//show prod details clickign view
+function handleEditProdDetailClick() {
+  console.log("function called");
+  var prodDetail = document.getElementById("prod_detail");
+  var viewProduct = document.getElementById("view_product");
+  var inventoryContainer = document.getElementById("InventoryContainer");
+  var prod_info_header = document.getElementById("prod_info_header");
+  var prod_detail_header = document.getElementById("prod_detail_header");
 
+  // Show prod_detail
+  prodDetail.style.display = "flex";
+  prod_detail_header.style.display = "flex";
+
+  // Hide view_product and InventoryContainer
+  viewProduct.style.display = "none";
+  inventoryContainer.style.display = "none";
+  prod_info_header.style.display = "none";
+}
+
+// Get the edit_prod_detail button element
+var editProdDetailButton = document.getElementById("edit_prod_detail");
+
+// Add event listener to the edit_prod_detail button
+editProdDetailButton.addEventListener("click", handleEditProdDetailClick);
 
 function clearForm() {
   // Clear product-categ, product_name, and quantity
@@ -704,7 +682,8 @@ function clearForm() {
 
 // Function to decrement quantity
 function decrementQuantity() {
-  var quantityInput = document.getElementById("quantity");
+  enableDeductStock()
+  var quantityInput = document.getElementById("deduct_quantity_input");
   var currentQuantity = parseInt(quantityInput.value);
 
   // Ensure the quantity is not less than 1
@@ -712,18 +691,33 @@ function decrementQuantity() {
     quantityInput.value = currentQuantity - 1;
     updateQuantityErrorMessage();
   }
-  enableSubmitButton();
 }
 
-// Function to increment quantity
 function incrementQuantity() {
-  var quantityInput = document.getElementById("quantity");
-  var currentQuantity = parseInt(quantityInput.value);
+  var quantityInput = document.getElementById("deduct_quantity_input");
+  var currentValue = quantityInput.value.trim(); // Trim whitespace
 
-  // Increment the quantity
-  quantityInput.value = currentQuantity + 1;
-  updateQuantityErrorMessage();
-  enableSubmitButton();
+  // Check if the current value is not an empty string
+  if (currentValue !== "") {
+    var currentQuantity = parseInt(currentValue);
+
+    // Check if the current quantity is a valid number
+    if (!isNaN(currentQuantity)) {
+      // Increment the quantity
+      quantityInput.value = currentQuantity + 1;
+      updateQuantityErrorMessage1();
+
+      // Trigger the input event manually
+      quantityInput.dispatchEvent(new Event('input'));
+    } else {
+      console.error("Current quantity is not a valid number.");
+    }
+  } else {
+    // If the value is empty, set it to 0 and increment
+    quantityInput.value = 1;
+    updateQuantityErrorMessage1();
+    quantityInput.dispatchEvent(new Event('input'));
+  }
 }
 
 // Function to update quantity error message visibility
@@ -738,6 +732,20 @@ function updateQuantityErrorMessage() {
     errorQuantity.style.display = "none";
   }
 }
+function enableDeductStock() {
+  var deduct_quantity = document.getElementById("deduct_quantity_input").value;
+  var deduct_stock_button = document.getElementById("deduct_stock");
+
+  // Enable or disable the Deduct Stock button based on the value of deduct_quantity
+  deduct_stock_button.disabled = (deduct_quantity.trim() === "");
+
+  // Logging for debugging
+  console.log('Deduct Quantity:', deduct_quantity);
+  console.log('Deduct Stock button disabled:', deduct_stock_button.disabled);
+}
+
+// Example: Call enableDeductStock() on input change events
+document.getElementById("deduct_quantity_input").addEventListener("input", enableDeductStock);
 
 
 
@@ -852,7 +860,7 @@ function enableSubmitButton1() {
   var productCateg1 = document.getElementById("product-categ-1").value;
   var productName1 = document.getElementById("product_name-1").value;
   var productCode1 = document.getElementById("product_code-1").value;
-  var batchNumber1 = document.getElementById("batch_number-1").value;
+  //var batchNumber1 = document.getElementById("batch_number-1").value;
   var manufacturedDate1 = document.getElementById("manufactured_date-1").value;
   var expirationDate1 = document.getElementById("expiration_date-1").value;
   var dateStocked1 = document.getElementById("datestocked-1").value;
@@ -865,7 +873,7 @@ function enableSubmitButton1() {
     productCateg1 !== "none" &&
     productName1 !== "none" &&
     productCode1.trim() !== "" &&
-    batchNumber1.trim() !== "" &&
+    //batchNumber1.trim() !== "" &&
     manufacturedDate1.trim() !== "" &&
     expirationDate1.trim() !== "" &&
     dateStocked1.trim() !== "" &&
@@ -909,27 +917,22 @@ document
   .getElementById("quantity-1")
   .addEventListener("input", enableSubmitButton1);
 
+
+
 function clearForm1() {
   // Clear product-categ, product_name, and quantity
   var productCategSelect = document.getElementById("product-categ-1");
-  var productNameSelect = document.getElementById("product_name-1");
   var quantityInput = document.getElementById("quantity-1");
 
   productCategSelect.selectedIndex = 0;
-  productNameSelect.innerHTML =
-    '<option value="" disabled selected>Select a Product Name</option>';
+
   quantityInput.value = 0;
 
-  // Disable product_name if product-categ is none
-  if (productCategSelect.value === "none") {
-    productNameSelect.disabled = true;
-  } else {
-    productNameSelect.disabled = false;
-  }
 
   // Clear other input and textarea elements
+  document.getElementById("product_name-1").value = "";
   document.getElementById("product_code-1").value = "";
-  document.getElementById("batch_number-1").value = "";
+  //document.getElementById("batch_number-1").value = "";
   document.getElementById("manufactured_date-1").value = "";
   document.getElementById("expiration_date-1").value = "";
   document.getElementById("datestocked-1").value = "";
@@ -944,19 +947,63 @@ function cancelDeductStock(){
 
   deduct_quantity_input.value="0"; //pakipalitan ng actual quantity 
 }
+
+// Function to decrement quantity
+function decrementQuantity2() {
+  var quantityInput = document.getElementById("quantity-2");
+  var currentQuantity = parseInt(quantityInput.value);
+
+  // Ensure the quantity is not less than 1
+  if (currentQuantity > 0) {
+    quantityInput.value = currentQuantity - 1;
+    updateQuantityErrorMessage1();
+    
+    // Trigger the input event manually
+    quantityInput.dispatchEvent(new Event('input'));
+  }
+}
+
+// Function to increment quantity
+function incrementQuantity2() {
+  var quantityInput = document.getElementById("quantity-2");
+  var currentValue = quantityInput.value.trim(); // Trim whitespace
+
+  // Check if the current value is not an empty string
+  if (currentValue !== "") {
+    var currentQuantity = parseInt(currentValue);
+
+    // Check if the current quantity is a valid number
+    if (!isNaN(currentQuantity)) {
+      // Increment the quantity
+      quantityInput.value = currentQuantity + 1;
+      updateQuantityErrorMessage1();
+
+      // Trigger the input event manually
+      quantityInput.dispatchEvent(new Event('input'));
+    } else {
+      console.error("Current quantity is not a valid number.");
+    }
+  } else {
+    // If the value is empty, set it to 0 and increment
+    quantityInput.value = 1;
+    updateQuantityErrorMessage1();
+    quantityInput.dispatchEvent(new Event('input'));
+  }
+}
+
+
+
 function cancelStock() {
 
-  var batch_number = document.getElementById("batch_no");
-  var manufactured_date1 = document.getElementById("manufacturing_date");
+  var manufactured_date1 = document.getElementById("manufacturing_date-1");
   var expiration_date = document.getElementById("expired_date");
-  var datestocked = document.getElementById("date_stocked");
+  var datestocked = document.getElementById("date_stocked1");
   var quantityInput = document.getElementById("quantity-2");
 
   var add_stock = document.getElementById("add_stock");
 
   add_stock.disabled = true;
 
-  batch_number.value = "";
   manufactured_date1.value = "";
   expiration_date.value = "";
   datestocked.value = "";
@@ -964,8 +1011,9 @@ function cancelStock() {
 }
 
 
+
+
 function enableAddStock() {
-  var batch_number = document.getElementById("batch_no_1").value;
   var manufactured_date1 = document.getElementById("manufacturing_date-1").value;
   var expiration_date = document.getElementById("expired_date").value;
   var datestocked = document.getElementById("date_stocked1").value;
@@ -974,11 +1022,10 @@ function enableAddStock() {
 
   // Add additional validation conditions as needed
   if (
-      batch_number.trim() !== "" &&
       manufactured_date1.trim() !== "" &&
       expiration_date.trim() !== "" &&
       datestocked.trim() !== "" &&
-      quantity >= 1
+      quantity > 0
   ) {
       add_stock.disabled = false;
   } else {
@@ -986,7 +1033,6 @@ function enableAddStock() {
   }
 
   // Logging values for debugging
-  console.log('batch_number:', batch_number);
   console.log('manufactured_date1:', manufactured_date1);
   console.log('expired_date:', expiration_date);
   console.log('datestocked:', datestocked);
@@ -994,7 +1040,6 @@ function enableAddStock() {
   console.log('add_stock.disabled:', add_stock.disabled);
 }
 
-document.getElementById("batch_no_1").addEventListener("input", enableAddStock);
 document.getElementById("manufacturing_date-1").addEventListener("input", enableAddStock);
 document.getElementById("expired_date").addEventListener("input", enableAddStock);
 document.getElementById("date_stocked1").addEventListener("input", enableAddStock);
@@ -1002,13 +1047,13 @@ document.getElementById("quantity-2").addEventListener("input", enableAddStock);
 
 
 
-// Triggering the function initially
-enableAddStock();
 
 
-function decrementQuantity2() {
-  enableAddStock();
-  var quantityInput = document.getElementById("quantity-2");
+
+
+function decrementQuantity3() {
+  enableSaveChanges();
+  var quantityInput = document.getElementById("quantity_input");
   var currentQuantity = parseInt(quantityInput.value);
 
   // Ensure the quantity is not less than 1
@@ -1016,72 +1061,33 @@ function decrementQuantity2() {
     quantityInput.value = currentQuantity - 1;
     updateQuantityErrorMessage1();
   }
-
-  // Trigger the input event manually
-  var inputEvent = new Event('input', { bubbles: true });
-  quantityInput.dispatchEvent(inputEvent);
-
-  
-
-  // Logging for debugging
-  console.log('Decrement - currentQuantity:', quantityInput.value);
+  enableSubmitButton1();
 }
 
-function incrementQuantity2() {
-  enableAddStock();
-  var quantityInput = document.getElementById("quantity-2");
-  var currentQuantity = parseInt(quantityInput.value);
+// Function to increment quantity
+function incrementQuantity3() {
+  var quantityInput = document.getElementById("quantity_input");
+  var currentValue = quantityInput.value.trim(); // Trim whitespace
 
-  // Increment the quantity
-  quantityInput.value = currentQuantity + 1;
-  quantityInput.setAttribute('value', quantityInput.value); // Update the attribute as well
-  updateQuantityErrorMessage1();
+  // Check if the current value is not an empty string
+  if (currentValue !== "") {
+    var currentQuantity = parseInt(currentValue);
 
-  // Trigger the input event manually
-  var inputEvent = new Event('input', { bubbles: true });
-  quantityInput.dispatchEvent(inputEvent);
+    // Check if the current quantity is a valid number
+    if (!isNaN(currentQuantity)) {
+      // Increment the quantity
+      quantityInput.value = currentQuantity + 1;
+      updateQuantityErrorMessage1();
 
-  
-
-  // Logging for debugging
-  console.log('Increment - currentQuantity:', quantityInput.value);
-}
-
-
-//show prod details clickign view
-function handleEditProdDetailClick() {
-  var prodDetail = document.getElementById("prod_detail");
-  var viewProduct = document.getElementById("view_product");
-  var inventoryContainer = document.getElementById("InventoryContainer");
-  var prod_info_header = document.getElementById("prod_info_header");
-  var prod_detail_header = document.getElementById("prod_detail_header");
-
-  // Show prod_detail
-  prodDetail.style.display = "flex";
-  prod_detail_header.style.display = "flex";
-
-  // Hide view_product and InventoryContainer
-  viewProduct.style.display = "none";
-  inventoryContainer.style.display = "none";
-  prod_info_header.style.display = "none";
-}
-
-// Get the edit_prod_detail button element
-var editProdDetailButton = document.getElementById("edit_prod_detail");
-
-// Add event listener to the edit_prod_detail button
-editProdDetailButton.addEventListener("click", handleEditProdDetailClick);
-
-// Get a reference to the "SelectAll" checkbox
-const selectAllCheckbox = document.getElementById('SelectAll');
-
-// Get a reference to the table body
-const tableBody = document.getElementById('inventoryTableBody');
-
-// Function to handle the "SelectAll" checkbox
-function handleSelectAll() {
-  const checkboxes = tableBody.querySelectorAll('input[type="checkbox"]');
-  checkboxes.forEach((checkbox) => {
-    checkbox.checked = selectAllCheckbox.checked;
-  });
+      // Trigger the input event manually
+      quantityInput.dispatchEvent(new Event('input'));
+    } else {
+      console.error("Current quantity is not a valid number.");
+    }
+  } else {
+    // If the value is empty, set it to 0 and increment
+    quantityInput.value = 1;
+    updateQuantityErrorMessage1();
+    quantityInput.dispatchEvent(new Event('input'));
+  }
 }
