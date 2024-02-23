@@ -750,6 +750,7 @@
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
                                         <td class="status-td1"></td>
+
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
                                         <td>Cell 2</td>
@@ -863,6 +864,7 @@
                                 </div>
                                 <div class="form-floating w-100"><input class="form-control w-100" list="options" data-id="product_name" id="editItemName" 
                                 name="item_name" placeholder="Owner Name">
+
 								<label class="form-label" for="product_name">Brand<span>&nbsp;*</span></label>
 									<datalist id="options">
 
@@ -1192,6 +1194,7 @@
                             <div class="form-floating batch_number"><input id="prod_code" name="prod_code"
                                     class="form-control" type="text" data-id="prod_code"
                                     placeholder="Product Code"><label class="form-label"
+
                                     for="batch_number">Product Code</label>
                             </div>
                         </div>
@@ -1283,6 +1286,7 @@
                                     <input id="deduct_quantity_input" class="form-control input_quantity" type="number"
                                         aria-labelledby="label-quantity" data-id="deduct_quantity_input" min="0"
                                         name="deduct" required value="0" placeholder="Quantity">
+
                                         <label class="form-label" for="deduct_quantity_input">Quantity</label></div>
 
                                     <button class="quantity_add"
@@ -1579,6 +1583,7 @@
                             '<td>' + batches.product_code + '</td>' +
                             '<td>' + batches.quantity + '</td>' +
                             '<td style="background-color: ' + statusColor + ';">' + status + '</td>' + // Include status here
+
 							'<td>' + batches.date_stocked + '</td>' +
 							'<td>' + batches.expiration_date + '</td>' +
                             '<td>' + batches.manufacturing_date + '</td>' +
@@ -1705,6 +1710,7 @@
                 };
             $('#productName').text(invData.item_name);
             $('#deductproudct_type').text(product_type);
+
             $('#deductid').val(id);
             $.ajax({
                 type: 'GET',

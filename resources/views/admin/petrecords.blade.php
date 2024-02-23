@@ -789,6 +789,7 @@
 								</div>
 								<div class="form-floating" style="width:100%;">
 									<select class="form-select" id="editSterile" name="sterilization" id="sterilization_status_edit" placeholder="Sterilization Status">
+
 										<option value="" selected="">Select Status</option>
 										<option value="None">None</option>
 										<option value="Spayed">Spayed</option>
@@ -801,7 +802,7 @@
 					</div>
 					<div class="mb-3 prod_detail_fields_buttons">
 						<button id="cancel_edit" class="btn cancel_edit" type="button"><span class="cancel_edit_base">Cancel</span></button>
-						<button id="edit_save_changes" class="btn edit_save_changes" type="submit"><span class="edit_save_changes_base">Save Changes</span></button>
+						<button id="edit_save_changes" class="btn edit_save_changes" type="submit" disabled><span class="edit_save_changes_base">Save Changes</span></button>
 					</div>
 				</div>
 				</form>
@@ -1204,6 +1205,7 @@
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_diagnosis" aria-label="Clear Form" role="button" type="reset"><span class="clear_form_base">Clear Form</span></button>
 					<button class="btn submit_diagnosis" id="submit_diagnosis" type="submit" ><span class="submit_product_base">Submit</span></button>
+
 				</div>
 				</form>
 			</div>
@@ -1262,6 +1264,7 @@
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_vaccination"aria-label="Clear Form" role="button" type="reset"><span class="clear_form_base">Clear Form</span></button>
 					<button class="btn submit_immunization" id="submit_vaccination" type="submit"><span class="submit_product_base">Submit</span></button>
+
 				</div>
 				</form>
 			</div>
@@ -1320,6 +1323,7 @@
 				<div class="modal-footer add_product_button">
 					<button class="btn clear_form" id="clear_surgery" aria-label="Clear Form" role="button" type="reset"><span class="clear_form_base">Clear Form</span></button>
 					<button class="btn submit_surgery" id="submit_surgery" type="submit" ><span class="submit_product_base">Submit</span></button>
+
 				</div>
 				</form>
 			</div>

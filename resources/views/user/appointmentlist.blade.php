@@ -61,6 +61,7 @@
 							<li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-2">Pending<span id="recent-counters" class="counter counter-recent">{{ $pendingCount }}</span></a></li>
 							<li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-3">Rejected<span id="rejected-counters" class="counter counter-rejected">{{ $rejectedCount }}</span></a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link list_tab" role="tab" data-bs-toggle="tab" href="#tab-4">History<span id="history-counters" class="counter counter-history">{{ $completedCount }}</span></a></li>
+
 						</ul>
 						<div class="tab-content" style="width: 100%;">
 							<div class="tab-pane active appointment_list_container" role="tabpanel" id="tab-1" style="overflow:auto;">
@@ -82,8 +83,7 @@
                                             <td class="text-style">{{ $index + 1 }}</td>
                                             <td class="text-style">{{ $appointment['petType'] }} ({{ $appointment['breed'] }})</td>
                                             <td class="text-style">{{ $appointment['appointmentType'] }}</td>
-                                            <td class="text-style">{{ $appointment['appointmentDate'] }}</td>
-                                            <td class="text-style">{{ $appointment['appointmentTime'] }}</td>
+                                            <td class="text-style">{{ $appointment['appointmentDate'] }} {{ $appointment['appointmentTime'] }}</td>
                                         </tr>
                                         @endforeach
                                         </tbody>
@@ -224,6 +224,32 @@
 											
                                         </tr>
                                         @endforeach
+										</tbody>
+									</table>
+									
+						</div>
+                        <div class="tab-pane appointment_list_container" role="tabpanel" id="tab-4" style="overflow:auto;">
+								
+								<table class="table table-responsive mt-3 w-100" id="history_table">
+										<thead>
+											<tr>
+												<th>No.</th>
+												<th>Patient Info</th>
+												<th>Surgery Type</th>
+												<th>Appointment</th>
+												<th>Note</th>
+											</tr>
+										</thead>
+										<tbody id="appointment_history_table_body">
+										
+                                        <tr>
+                                            <td class="text-style">{{ $index + 1 }}</td>
+                                            <td class="text-style"></td>
+                                            <td class="text-style"></td>
+                                            <td class="text-style"></td>
+											<td></td>
+											
+                                        </tr>
 										</tbody>
 									</table>
 									
