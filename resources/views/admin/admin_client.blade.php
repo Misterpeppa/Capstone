@@ -370,6 +370,7 @@
                                                 data-birthdate="{{ $clientInfo->birthdate}}"
                                                 data-email="{{ $clientInfo->email}}"
                                                 data-phone="{{ $clientInfo->phone}}"
+                                                data-gender="{{ $clientInfo->gender}}"
                                                 class="btn border-0 editButton"style="color:gray"><div class="action_button_text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_6559_23478)">
     <path d="M13.5 6.5L17.5 10.5M4 20.0001H8L18.5 9.50006C19.0304 8.96963 19.3284 8.2502 19.3284 7.50006C19.3284 6.74991 19.0304 6.03049 18.5 5.50006C17.9696 4.96963 17.2501 4.67163 16.5 4.67163C15.7499 4.67163 15.0304 4.96963 14.5 5.50006L4 16.0001V20.0001Z" stroke="#1C1C1C" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -496,10 +497,6 @@
                                         <h1>Phone Number</h1>
                                         <p></p>
                                     </div>
-                                    <div class="client_summary_block">
-                                        <h1>Address</h1>
-                                        <p>xxxxx, xxxxx xxxx</p>
-                                    </div>
                                     <div class="client_summary_block client_gender">
                                         <h1>Gender</h1>
                                         <p>xxxx</p>
@@ -525,36 +522,7 @@
                 </div>
                 <div class="container_header">
                     <div class="left_part_product_header">
-                        <div class="search_container">
-                            <input type="search" class="search_input" placeholder="Search Client" value="">
-                        </div><button class="btn filter_btn" type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="24" viewBox="0 0 24 24" fill="none">
-                                    <g clip-path="url(#clip0_5284_15912)">
-                                        <path
-                                            d="M4 4H20V6.172C19.9999 6.70239 19.7891 7.21101 19.414 7.586L15 12V19L9 21V12.5L4.52 7.572C4.18545 7.20393 4.00005 6.7244 4 6.227V4Z"
-                                            stroke="black" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_5284_15912">
-                                            <rect width="24" height="24" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg><span class="filter_btn_base">Filter by</span></button><button class="btn sort_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="24" viewBox="0 0 24 24" fill="none">
-                                    <g clip-path="url(#clip0_5284_15919)">
-                                        <path d="M4 6H13M4 12H11M4 18H11M15 15L18 18M18 18L21 15M18 18V6"
-                                            stroke="black" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </g>
-                                    <defs>
-                                        <clipPath id="clip0_5284_15919">
-                                            <rect width="24" height="24" fill="white" />
-                                        </clipPath>
-                                    </defs>
-                                </svg><span
-                                class="filter_btn_base">Sort by</span></button>
+                        
                     </div>
                     <div class="right_part_product_header"><button class="btn add_pet_button" id="add_pet_button"
                             type="button"><span><svg xmlns="http://www.w3.org/2000/svg" width="24"
@@ -1668,6 +1636,7 @@
                 'birthdate' :$(this).data('birthdate'),
                 'email' :$(this).data('email'),
                 'phone' :$(this).data('phone'),
+                'gender' :$(this).data('gender'),
             };      
             $('#first_name-3').val(clientData.first_name);
             $('#middle_name-3').val(clientData.middle_name);
@@ -1756,7 +1725,7 @@
             $('#suffix-4').val(clientData.suffix);
             $('#client_birthdate-3').val(clientData.birthdate);
             $('#client_email-3').val(clientData.email);
-            $('#user_phone-3').val(clientData.phone);
+            $('#client_gender').val(clientData.gender);
         });
         $('.archiveButton').click(function() {
             const id = $(this).data('container-id');
