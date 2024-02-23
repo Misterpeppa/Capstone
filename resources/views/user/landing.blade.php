@@ -46,15 +46,15 @@
     <main>
     
         <div class="container-fluid" style="padding:0; margin:0;">
-            <div class="customized-row row d-flex align-items-center justify-content-end">
-                <div class="customized-col col-8 col-md-6 mt-4 mt-md-0 d-flex flex-column justify-content-center align-items-start">
-                    <div class="landing_btns">
+            <div class="customized-row row d-flex align-items-center justify-content-start">
+                <div class="customized-col col-8 col-md-6 mt-4 mt-md-0 d-flex flex-column justify-content-center align-items-start" style="margin-left: 17%;">
+                    <div class="landing_welcome">
                     <div class="landing_headers">
                         <h1>Welcome to</h1>
                         <h2>Tagapo Dogs &amp; Cats Veterinary Clinic</h2>
                     </div>
 
-                    <div class="landing_btns">
+                    <div class="landing_btns w-100">
                         <a class="btn custom-book-appointment-btn" role="button" href="{{ route('appointment.form') }}">
                             BOOK AN APPOINTMENT
                         </a>
