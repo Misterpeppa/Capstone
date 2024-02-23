@@ -284,12 +284,12 @@
                                                         Descending
                                                 </li>
                                                 <li class="dropdown-item ">
-                                                  <div class="row">
-                                                      <div class="col-md-5">
+                                                  <div class="row" style="display:flex; justify-content: space-around; gap: 9px;">
+                                                      <div class="col-md-5 colButton" style="display:flex; justify-content: center">
                                                           <button type = "reset" class="btn cancel_filter btn-sm me-3"><span class="cancel_filter_base">Cancel</span></button>
                                                       </div>
-                                                      <div class="col-md-5 text-center">
-                                                          <button type="submit" form="archivedForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply Sort</span></button>
+                                                      <div class="col-md-5 text-center colButton" style="display:flex; justify-content: center">
+                                                          <button type="submit" form="archivedForm" class="btn apply_filter btn-sm ms-3"><span class="apply_filter_base">Apply</span></button>
                                                       </div>
                                                   </div>
                                               </li>
@@ -529,17 +529,21 @@
   </script>  
   @endif
   <script>
-            var SelectAll = document.getElementById("Select_All_Archive");
-
-            SelectAll.addEventListener("click", function () {
-    var tableBody = document.getElementById('archive_table_body');
+// Function to toggle all checkboxes
+function toggleAllCheckboxes(tableBody, selectAllCheckbox) {
     var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
-
     rowCheckboxes.forEach(function (checkbox) {
-        checkbox.checked = !checkbox.checked; // Toggle the state
+        checkbox.checked = selectAllCheckbox.checked;
     });
+}
 
+var selectAll = document.getElementById("Select_All_Archive");
+var archivedTableBody = document.getElementById('archive_table_body');
+
+selectAll.addEventListener("click", function () {
+    toggleAllCheckboxes(archivedTableBody, selectAll);
 });
+
     </script>
 
   <script>

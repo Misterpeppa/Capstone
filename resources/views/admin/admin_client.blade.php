@@ -100,7 +100,7 @@
   </defs>
 </svg><span class="filter_btn_base">Sort By</span>
                                     </button>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-content">
                                         <li class="dropdown-item ">
                                             <input class="form-check-input me-1" type="radio" id = "radio1"
                                                 name="sortBy"{{ request()->input('sortBy', '0') == '0' ? 'checked' : '' }}  value="0">
@@ -154,7 +154,7 @@
 </form>
                     </div>
                     <div class="right_part_product_header">
-                        <button class="btn archive_button" id="archive_button"
+                        <button class="btn archive_button d-none" id="archive_button"
                             type="button"><i class="fa-solid fa-boxes-stacked"></i>
                         </button>
                         </div>
@@ -337,7 +337,7 @@
                                                                     d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z"
                                                                     fill="#045B62" />
                                                             </svg></button>
-                                                            <div class="dropdown-menu client_menu"><div class="button-group">
+                                                            <div class="dropdown-content client_menu"><div class="button-group">
                                                             <button
                                                 data-action="View"
                                                 data-container-id="{{ $clientInfo->id }}"
@@ -475,12 +475,27 @@
                                 </defs>
                             </svg> Back</span></button></div>
                 <div class="client_info_container">
-                    <div class="client_info">
-                        <div class="client_summary">
-                            <div class="client_summary_header_container">
+                    <div class="client_info w-100">
+                        <div class="client_summary  w-100">
+                            <div class="client_summary_header_container w-100">
                                 <div class="client_summary_header client_name">
                                     <h1></h1>
                                 </div>
+                                <button class="btn edit_prod_detail" id="edit_client_detail" type="button"><span><svg
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <g clip-path="url(#clip0_5345_10250)">
+                                    <path
+                                        d="M13.5 6.50024L17.5 10.5002M4 20.0003H8L18.5 9.5003C19.0304 8.96987 19.3284 8.25045 19.3284 7.5003C19.3284 6.75016 19.0304 6.03074 18.5 5.5003C17.9696 4.96987 17.2501 4.67188 16.5 4.67188C15.7499 4.67187 15.0304 4.96987 14.5 5.5003L4 16.0003V20.0003Z"
+                                        stroke="#1C1C1C" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_5345_10250">
+                                        <rect width="24" height="24" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg></span></button>
                             </div>
                             <div class="client_summary_body_container">
                                 <div class="client_summary_row">
@@ -498,7 +513,7 @@
                                     </div>
                                     <div class="client_summary_block">
                                         <h1>Address</h1>
-                                        <p>xxxxx, xxxxx xxxx</p>
+                                        <p></p>
                                     </div>
                                     <div class="client_summary_block client_gender">
                                         <h1>Gender</h1>
@@ -507,21 +522,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div><button class="btn edit_prod_detail" id="edit_client_detail" type="button"><span><svg
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none">
-                                <g clip-path="url(#clip0_5345_10250)">
-                                    <path
-                                        d="M13.5 6.50024L17.5 10.5002M4 20.0003H8L18.5 9.5003C19.0304 8.96987 19.3284 8.25045 19.3284 7.5003C19.3284 6.75016 19.0304 6.03074 18.5 5.5003C17.9696 4.96987 17.2501 4.67188 16.5 4.67188C15.7499 4.67187 15.0304 4.96987 14.5 5.5003L4 16.0003V20.0003Z"
-                                        stroke="#1C1C1C" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_5345_10250">
-                                        <rect width="24" height="24" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg></span></button>
+                    </div>
                 </div>
                 <div class="container_header">
                     <div class="left_part_product_header">
@@ -711,7 +712,7 @@
                                                     d="M9 18C7.61929 18 6.5 16.8807 6.5 15.5C6.5 14.1193 7.61929 13 9 13C10.3807 13 11.5 14.1193 11.5 15.5C11.5 16.8807 10.3807 18 9 18Z"
                                                     fill="#045B62"></path>
                                             </svg></span></button>
-                                    <div class="dropdown-menu more_button" data-bs-popper="none"><a
+                                    <div class="dropdown-content more_button" data-bs-popper="none"><a
                                             class="dropdown-item" id="View"><svg
                                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none">
@@ -823,17 +824,17 @@
                         <div class="new_input_row">
                             <input type="hidden" name="client_id" id="editId">
                             <div class="form-floating" style="width:100%;"><input
-                                    class="form-control form-control form-control form-control" type="text"
-                                    data-id="first_name" id="first_name-3" placeholder="First Name"><label
-                                    class="form-label form-label form-label form-label" for="first_name">First
+                                    class="form-control" type="text"
+                                    data-id="first_name" id="edit_first_name" placeholder="First Name"><label
+                                    class="form-label form-label form-label form-label" for="edit_first_name">First
                                     Name</label>
                                 <div id="error-first_name-3" class="error-message"><span>Please enter your first
                                         name.</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;"><input
-                                    class="form-control form-control form-control form-control" type="text"
-                                    data-id="middle_name" id="middle_name-3" placeholder="Middle Name"><label
-                                    class="form-label form-label form-label form-label" for="middle_name">Middle
+                                    class="form-control" type="text"
+                                    data-id="middle_name" id="edit_middle_name" placeholder="Middle Name"><label
+                                    class="form-label form-label form-label form-label" for="edit_middle_name">Middle
                                     Name</label>
                                 <div id="error-middle_name-3" class="error-message"><span>Please enter your middle
                                         name.</span></div>
@@ -841,20 +842,20 @@
                         </div>
                         <div class="new_input_row">
                             <div class="form-floating" style="width:100%;"><input class="form-control"
-                                    type="text" id="last_name-4" data-id="last_name"
-                                    placeholder="Last Name"><label class="form-label" for="last_name">Last
+                                    type="text" id="edit_last_name" data-id="last_name"
+                                    placeholder="Last Name"><label class="form-label" for="edit_last_name">Last
                                     Name</label>
                                 <div id="error-last_name-4" class="error-message"><span>Please enter your last
                                         name.</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;"><select class="form-select"
-                                    id="suffix-4" data-id="suffix">
+                                    id="edit_suffix" data-id="suffix">
                                     <option value="none" selected="">Select a Suffix</option>
                                     <option value="Jr">Jr</option>
                                     <option value="Sr">Sr</option>
                                     <option value="II">II</option>
                                     <option value="Other">Other</option>
-                                </select><label class="form-label" for="suffix">Suffix</label>
+                                </select><label class="form-label" for="edit_suffix">Suffix</label>
                                 <div id="error-suffix-4" class="error-message"><span>Please select a
                                         suffix.</span></div>
                             </div>
@@ -868,36 +869,36 @@
                                 </div>
                         </div>
                         <div class="form-floating" style="width:100%;"><input class="form-control"
-                                id="client_birthdate-3" data-id="manufactured_date" placeholder="Manufactured Date"
-                                type="date"><label class="form-label" for="client_birthdate">Birthdate</label>
+                                id="edit_birthdate" data-id="birthdate" placeholder="Birth Date"
+                                type="date"><label class="form-label" for="edit_birthdate">Birthdate</label>
                             <div id="error-client_birthdate-3" class="error-message"><span>Please enter the
                                     manufactured date.</span></div>
                         </div>
                         <div class="form-floating" style="width:100%;">
-                            <textarea class="form-control" id="client_address-3" data-id="client_address" placeholder="Address"></textarea><label class="form-label" for="client_address">Address</label>
+                            <textarea class="form-control" id="edit_client_address" data-id="client_address" placeholder="Address"></textarea><label class="form-label" for="edit_client">Address</label>
                             <div id="error-client_address-3" class="error-message"><span>Please enter your
                                     address.</span></div>
                         </div>
                         <div class="form-floating" style="width:100%;"><input class="form-control" type="email"
-                                id="client_email-3" data-id="client_email" placeholder="Email"><label
-                                class="form-label" for="client_email">Email
+                                id="edit_email" data-id="client_email" placeholder="Email"><label
+                                class="form-label" for="edit_email">Email
                                 Address</label>
                             <div id="error-client_email-3" class="error-message"><span>Please enter a valid email
                                     address.</span></div>
                         </div>
                         <div class="form-floating" style="width:100%;"><input class="form-control" type="tel"
-                                id="user_phone-3" data-id="user_phone" placeholder="Phone Number"><label
-                                class="form-label" for="user_phone">Phone
+                                id="edit_phone" data-id="user_phone" placeholder="Phone Number"><label
+                                class="form-label" for="edit_phone">Phone
                                 Number</label>
                             <div id="error-user_phone-3" class="error-message"><span>Please enter a valid phone
                                     number.</span></div>
                         </div>
                     </form>
-                    <div class="mb-3 prod_detail_fields_buttons">
+                    <div class="mb-3 mt-3 prod_detail_fields_buttons">
                         <button class="btn cancel_edit" id="cancel_edit"
                             type="button"><span class="cancel_edit_base">Cancel</span></button>
                         <button
-                            class="btn disabled edit_save_changes" id="edit_save_changes" form="add_client_form-3" type="submit"
+                            class="btn edit_save_changes" id="edit_save_changes" form="add_client_form-3" type="submit"
                             disabled=""><span class="edit_save_changes_base">Save Changes</span></button>
                     </div>
                 </div>
@@ -1010,15 +1011,15 @@
                         <div class="mb-3 input_container">
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input class="form-control"
-                                        type="text" name="first_name" id="first_name-1" data-id="first_name"
-                                        placeholder="First Name"><label class="form-label" for="first_name-1">First
+                                        type="text" name="first_name" id="First_name-1" data-id="first_name"
+                                        placeholder="First Name" style="text-transform: capitalize;"><label class="form-label" for="first_name-1">First
                                         Name <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-first_name-1"><span>Please enter client first
                                             name.</span></div>
                                 </div>
                                 <div class="form-floating" style="width:100%;"><input class="form-control"
-                                        type="text" name="middle_name" id="middle_name-1" data-id="middle_name"
-                                        placeholder="Middle Name"><label class="form-label" for="middle_name-1">Middle
+                                        type="text" name="middle_name" id="Middle_name-1" data-id="middle_name"
+                                        placeholder="Middle Name" style="text-transform: capitalize;"><label class="form-label" for="middle_name-1">Middle
                                         Name <span>&nbsp;*</span></label>
                                     <div class="error-message" id="error-middle_name-1"><span>Please enter client
                                             middle name.</span></div>
@@ -1026,8 +1027,8 @@
                             </div>
                             <div class="new_input_row">
                                 <div class="form-floating" style="width:100%;"><input class="form-control"
-                                        type="text" name="last_name" id="last_name-1" data-id="last_name"
-                                        placeholder="Last Name" onBlur="HandleInput()"><label class="form-label" for="last_name-1">Last
+                                        type="text" name="last_name" id="Last_name-1" data-id="last_name"
+                                        placeholder="Last Name" onBlur="HandleInput()" style="text-transform: capitalize;"><label class="form-label" for="last_name-1">Last
                                         Name <span>&nbsp;*</span></label>
                                     <div id="error-last_name-1" class="error-message"><span>Please enter client last
                                             name.</span></div>
@@ -1054,14 +1055,14 @@
                                 </div>
                             </div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
-                                    name="birthdate" id="client_birthdate-1" data-id="client_birthdate-1"
+                                    name="birthdate" id="Client_birthdate-1" data-id="client_birthdate-1"
                                     placeholder="Birthdate" type="date"><label class="form-label"
                                     for="client_birthdate-1">Birthdate <span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-client_birthdate-1"><span>Please enter the
                                         client birthdate.</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;">
-<select class="form-select" id="sex" name="sex">
+<select class="form-select" id="Sex" name="sex">
     <option value=""selected="">Select Sex</option>
     <option value="male">Male</option>
     <option value="female">Female</option>
@@ -1071,15 +1072,15 @@
                                         address.</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
-                                    type="email" name="email" id="client_email-1" data-id="client_email"
+                                    type="email" name="email" id="Client_email-1" data-id="client_email"
                                     placeholder="Email"><label class="form-label" for="client_email-1">Email
                                     Address <span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-client_email-1"><span>Please enter a valid
                                         email address.</span></div>
                             </div>
                             <div class="form-floating" style="width:100%;"><input class="form-control"
-                                    type="tel" name="phone" id="user_phone-1" data-id="user_phone"
-                                    placeholder="Phone Number"><label class="form-label" for="user_phone-1">Phone
+                                    type="tel" name="phone" id="User_phone-1" data-id="user_phone"
+                                    placeholder="Phone Number" maxlength="11"><label class="form-label" for="user_phone-1">Phone
                                     Number <span>&nbsp;*</span></label>
                                 <div class="error-message" id="error-user_phone-1"><span>Please enter a valid phone
                                         number.</span></div>
@@ -1088,8 +1089,8 @@
                 </div>
                 <div class="modal-footer add_product_button">
                     <button class="btn clear_form" id="clear_form-1" aria-label="Clear Form" role="button"
-                        type="button"><span class="clear_form_base">Clear Form</span></button>
-                    <button class="btn submit_product" id="submit_Client-1" type="submit" form="add_client_form-1" disabled><span
+                        type="reset"><span class="clear_form_base">Clear Form</span></button>
+                    <button class="btn submit_product" id="submit_client-1" type="submit" form="add_client_form-1" disabled><span
                             class="submit_product_base">Submit</span></button>
                 </div>
                 </form>
@@ -1601,7 +1602,21 @@
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content success_modal">
 				<div class="modal-header success_header">
-					<div class="failed_icon_container"><span class="success_icon"><svg fill="none" height="32" viewbox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg"><path d="M13.3333 13.3333L18.6667 18.6667M18.6667 13.3333L13.3333 18.6667M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z" stroke="#DA534F" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><rect fill="white" height="32" width="32"></rect></svg></span></div>
+					<div class="failed_icon_container"><span class="success_icon"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                viewBox="0 0 32 32" fill="none">
+                                <g clip-path="url(#clip0_5693_21111)">
+                                    <path
+                                        d="M13.3333 13.3333L18.6667 18.6667M18.6667 13.3333L13.3333 18.6667M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z"
+                                        stroke="#DA534F" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_5693_21111">
+                                        <rect width="32" height="32" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg></span></div>
 				</div>
 				<div class="modal-body success_message">
 					<div>
@@ -1642,6 +1657,9 @@
     <script>
         $(document).ready(function() {
             $('#signup_error').modal('show');
+            setTimeout(function() {
+                $('#signup_error').hide();
+            }, 2000);
         });
     </script>
     @endif
@@ -1669,13 +1687,13 @@
                 'email' :$(this).data('email'),
                 'phone' :$(this).data('phone'),
             };      
-            $('#first_name-3').val(clientData.first_name);
-            $('#middle_name-3').val(clientData.middle_name);
-            $('#last_name-4').val(clientData.last_name);
-            $('#suffix-4').val(clientData.suffix);
-            $('#client_birthdate-3').val(clientData.birthdate);
-            $('#client_email-3').val(clientData.email);
-            $('#user_phone-3').val(clientData.phone);
+            $('#edit_first_name').val(clientData.first_name);
+            $('#edit_middle_name').val(clientData.middle_name);
+            $('#edit_last_name').val(clientData.last_name);
+            $('#edit_suffix').val(clientData.suffix);
+            $('#edit_birthdate').val(clientData.birthdate);
+            $('#edit_email').val(clientData.email);
+            $('#edit_phone').val(clientData.phone);
         });
         $('.viewButton').click(function() {
             const id = $(this).data('container-id');
@@ -1750,13 +1768,13 @@
             $('.client_email-3 p').text(clientData.email);
             $('.user_phone-3 p').text(clientData.phone);
             $('.client_gender p').text(clientData.gender);
-            $('#first_name-3').val(clientData.first_name);
-            $('#middle_name-3').val(clientData.middle_name);
-            $('#last_name-4').val(clientData.last_name);
-            $('#suffix-4').val(clientData.suffix);
-            $('#client_birthdate-3').val(clientData.birthdate);
-            $('#client_email-3').val(clientData.email);
-            $('#user_phone-3').val(clientData.phone);
+            $('#edit_first_name').val(clientData.first_name);
+            $('#edit_middle_name').val(clientData.middle_name);
+            $('#edit_last_name').val(clientData.last_name);
+            $('#edit_suffix').val(clientData.suffix);
+            $('#edit_birthdate').val(clientData.birthdate);
+            $('#edit_email').val(clientData.email);
+            $('#edit_phone').val(clientData.phone);
         });
         $('.archiveButton').click(function() {
             const id = $(this).data('container-id');
@@ -1765,30 +1783,48 @@
 
     });
     </script>
-    <script>
-            var SelectAll = document.getElementById("SelectAll");
-
-            SelectAll.addEventListener("click", function () {
+<script>
+    var SelectAll = document.getElementById("SelectAll");
     var tableBody = document.getElementById('client_table_body');
     var rowCheckboxes = tableBody.querySelectorAll("input[type='checkbox']");
 
-    rowCheckboxes.forEach(function (checkbox) {
-        checkbox.checked = !checkbox.checked; // Toggle the state
+    // Function to toggle all checkboxes
+    function toggleAllCheckboxes(checked) {
+        rowCheckboxes.forEach(function (checkbox) {
+            checkbox.checked = checked;
+        });
+    }
+
+    // Click event listener for "SelectAll"
+    SelectAll.addEventListener("click", function () {
+        toggleAllCheckboxes(SelectAll.checked);
     });
 
-});
-    </script>
+    // Click event listener for individual checkboxes
+    rowCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("click", function () {
+            var allChecked = true;
+            rowCheckboxes.forEach(function (cb) {
+                if (!cb.checked) {
+                    allChecked = false;
+                }
+            });
+            SelectAll.checked = allChecked;
+        });
+    });
+</script>
+
     <script>
 function enableSubmitBtn() {
-  var first_name1 = document.getElementById("first_name-1").value;
-  var middle_name1 = document.getElementById("middle_name-1").value;
-  var last_name1 = document.getElementById("last_name-1").value;
-  var client_birthdate1 = document.getElementById("client_birthdate-1").value;
-  var sex = document.getElementById("sex").value;
-  var client_email1 = document.getElementById("client_email-1").value;
-  var user_phone1 = document.getElementById("user_phone-1").value;
+  var first_name1 = document.getElementById("First_name-1").value;
+  var middle_name1 = document.getElementById("Middle_name-1").value;
+  var last_name1 = document.getElementById("Last_name-1").value;
+  var client_birthdate1 = document.getElementById("Client_birthdate-1").value;
+  var sex = document.getElementById("Sex").value;
+  var client_email1 = document.getElementById("Client_email-1").value;
+  var user_phone1 = document.getElementById("User_phone-1").value;
 
-  var submit_Client1 = document.getElementById("submit_Client-1");
+  var submit_Client1 = document.getElementById("submit_client-1");
 
   // Add additional validation conditions as needed
   if (
@@ -1818,13 +1854,13 @@ function enableSubmitBtn() {
   console.log('submit_Client disabled:', submit_Client1.disabled);
 }
 
-document.getElementById("first_name-1").addEventListener("input", enableSubmitBtn);
-document.getElementById("middle_name-1").addEventListener("input", enableSubmitBtn);
-document.getElementById("last_name-1").addEventListener("input", enableSubmitBtn);
-document.getElementById("client_birthdate-1").addEventListener("input", enableSubmitBtn);
-document.getElementById("sex").addEventListener("input", enableSubmitBtn);
-document.getElementById("client_email-1").addEventListener("input", enableSubmitBtn);
-document.getElementById("user_phone-1").addEventListener("input", enableSubmitBtn);
+document.getElementById("First_name-1").addEventListener("input", enableSubmitBtn);
+document.getElementById("Middle_name-1").addEventListener("input", enableSubmitBtn);
+document.getElementById("Last_name-1").addEventListener("input", enableSubmitBtn);
+document.getElementById("Client_birthdate-1").addEventListener("input", enableSubmitBtn);
+document.getElementById("Sex").addEventListener("input", enableSubmitBtn);
+document.getElementById("Client_email-1").addEventListener("input", enableSubmitBtn);
+document.getElementById("User_phone-1").addEventListener("input", enableSubmitBtn);
 
 
  var user_phone1 = document.getElementById('user_phone-1');
@@ -1888,6 +1924,48 @@ document.getElementById("suffix-1").addEventListener("change", function () {
         function submitForm(){
             document.getElementById('searchForm').submit();
         }
+
+
+        function enableSaveChangesButton() {
+            var edit_first_name = document.getElementById("edit_first_name").value;
+            var edit_middle_name = document.getElementById("edit_middle_name").value;
+            var edit_last_name = document.getElementById("edit_last_name").value;
+            var edit_suffix = document.getElementById("edit_suffix").value;
+            var edit_birthdate = document.getElementById("edit_birthdate").value;
+            var edit_client_address = document.getElementById("edit_client_address").value;
+            var edit_email = document.getElementById("edit_email").value;
+            var edit_phone = document.getElementById("edit_phone").value;
+
+            var edit_save_changes = document.getElementById("edit_save_changes");
+
+            if (
+                edit_first_name.trim() !== "" ||
+                edit_middle_name.trim() !== "" ||
+                edit_last_name.trim() !== "" ||
+                edit_suffix.trim() !== "" ||
+                edit_birthdate.trim() !== "" ||
+                edit_client_address.trim() !== "" ||
+                edit_email.trim() !== "" ||
+                edit_phone.trim() !== ""
+            ) {
+                edit_save_changes.disabled = false;
+            } else {
+                edit_save_changes.disabled = true;
+            }
+        }
+
+        // Attach event listeners to input fields
+
+        document.getElementById("edit_first_name").addEventListener("change", enableSaveChangesButton);
+        document.getElementById("edit_middle_name").addEventListener("change", enableSaveChangesButton);
+        document.getElementById("edit_last_name").addEventListener("change", enableSaveChangesButton);
+        document.getElementById("edit_suffix").addEventListener("change", enableSaveChangesButton);
+        document.getElementById("edit_birthdate").addEventListener("change", enableSaveChangesButton);
+        document.getElementById("edit_client_address").addEventListener("change", enableSaveChangesButton);
+        document.getElementById("edit_email").addEventListener("change", enableSaveChangesButton);
+        document.getElementById("edit_phone").addEventListener("change", enableSaveChangesButton);
+
+
     </script>
     
 

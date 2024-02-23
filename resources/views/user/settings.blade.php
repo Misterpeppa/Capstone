@@ -225,6 +225,8 @@
 													<button id="cancel_edit_profile" class="btn cancel_pass_btn" type="button"><span class="cancel_pass_btn_base">Cancel</span></button>
 													<button id="edit_save_changes-1" class="btn edit_save_changes" type="submit"><span class="edit_save_changes_base">Save Changes</span></button>
 												</div>
+										</div>
+										
 									</div>
 								</div>
 							</div>

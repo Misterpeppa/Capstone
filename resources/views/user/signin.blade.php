@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Sign In</title>
+    <title>Medipaws Login page</title>
     <link rel="icon" href="/img/dogs&cats.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter&amp;display=swap">
@@ -122,7 +122,7 @@
                         <div class="bottom_btns">
                             <a class="create_account" type="button" href="{{ url('/user/signup') }}"><span class="create_account_base">Create Account</span></a>
                             <button id="signin_btn" class="disabled border-success signin_btn" type="submit" style="--bs-success: #004D53;--bs-success-rgb: 0,77,83;" disabled>
-                            <div class="signin_btn_base">Sign In</div></button>
+                            <div class="signin_btn_base">Login</div></button>
                         </div>
                         
                     </form>

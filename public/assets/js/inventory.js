@@ -1,25 +1,3 @@
-function validationProductCode(inputElement) {
-  inputElement.addEventListener('input', function () {
-      const inputValue = this.value;
-
-      // Remove non-numeric characters
-      const numericValue = inputValue.replace(/\D/g, '');
-
-      // Limit the input to 12 digits
-      const truncatedValue = numericValue.substring(0, 12);
-
-      // Update the input value
-      this.value = truncatedValue;
-  })
-}
-const productCodeInput = document.getElementById('prod_code');
-const productCodeInput1 = document.getElementById('product_code-1');
-const productCodeInput2 = document.getElementById('product_code-3');
-
-
-validationProductCode(productCodeInput);
-validationProductCode(productCodeInput1);
-validationProductCode(productCodeInput2);
 document.addEventListener("DOMContentLoaded", function () {
   
 
@@ -260,9 +238,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const errorBatch_number = document.getElementById("error-batch_number");
   addBlurListener(batch_numberInput, errorBatch_number);
 
-  //const batch_numberInput1 = document.getElementById("batch_number-1");
-  //const errorBatch_number1 = document.getElementById("error-batch_number-1");
-  //addBlurListener(batch_numberInput1, errorBatch_number1);
+  const batch_numberInput1 = document.getElementById("batch_number-1");
+  const errorBatch_number1 = document.getElementById("error-batch_number-1");
+  addBlurListener(batch_numberInput1, errorBatch_number1);
 
   const manufactured_dateInput = document.getElementById("manufactured_date");
   const errorManufactured_date = document.getElementById("error-manufactured_date");
@@ -368,7 +346,39 @@ function submitFormData(formData) {
       }
   });
     //divs will appear after hitting submit_product button
-    
+    $("#submit_product").click(function () {
+        var formData = $("#add_product_form").serialize();
+
+        // Make an AJAX request
+        $.ajax({
+            url: '/admin/inventory', // Replace with your actual route URL
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.success) {
+                    console.log('Form data submitted successfully.');
+                } else {
+                    console.error('Data submission failed.');
+                }
+            },
+            error: function () {
+                console.error('Error in AJAX request.');
+            }
+        });
+      // Hide the empty state container
+      $("#empty_state_container").hide();
+
+      // Show the product table and apply the display: flex property
+      $("#product_table_container").show();
+
+      // Show the add_product_success and hide it after 3 seconds
+      $("#add_product_success").show();
+      setTimeout(function () {
+        $("#add_product_success").hide();
+      }, 2000);
+    });
     
     //discard pop up
     $("#cancel_edit").click(function () {
@@ -544,7 +554,7 @@ function restrictBatchNumberInput(inputElement) {
   }
   // Get the "batch_number" input element by its ID
   const batchNumberInput = document.getElementById('batch_number');
-  //const batchNumberInput1 = document.getElementById('batch_number-1');
+  const batchNumberInput1 = document.getElementById('batch_number-1');
   // Call the function to restrict input to numbers 1 to 3
   restrictBatchNumberInput(batchNumberInput);
   restrictBatchNumberInput(batchNumberInput1);
@@ -565,13 +575,9 @@ function validationProductCode(inputElement) {
 }
 const productCodeInput = document.getElementById('product_code');
 const productCodeInput1 = document.getElementById('product_code-1');
-const productCodeInput2 = document.getElementById('product_code-3');
-
 
 validationProductCode(productCodeInput);
 validationProductCode(productCodeInput1);
-validationProductCode(productCodeInput2);
-
 
   // Add event listeners to the manufactured_date input
   manufactured_dateInput.addEventListener("blur", function () {
@@ -860,7 +866,7 @@ function enableSubmitButton1() {
   var productCateg1 = document.getElementById("product-categ-1").value;
   var productName1 = document.getElementById("product_name-1").value;
   var productCode1 = document.getElementById("product_code-1").value;
-  //var batchNumber1 = document.getElementById("batch_number-1").value;
+  var batchNumber1 = document.getElementById("batch_number-1").value;
   var manufacturedDate1 = document.getElementById("manufactured_date-1").value;
   var expirationDate1 = document.getElementById("expiration_date-1").value;
   var dateStocked1 = document.getElementById("datestocked-1").value;
@@ -873,7 +879,7 @@ function enableSubmitButton1() {
     productCateg1 !== "none" &&
     productName1 !== "none" &&
     productCode1.trim() !== "" &&
-    //batchNumber1.trim() !== "" &&
+    batchNumber1.trim() !== "" &&
     manufacturedDate1.trim() !== "" &&
     expirationDate1.trim() !== "" &&
     dateStocked1.trim() !== "" &&
@@ -932,7 +938,7 @@ function clearForm1() {
   // Clear other input and textarea elements
   document.getElementById("product_name-1").value = "";
   document.getElementById("product_code-1").value = "";
-  //document.getElementById("batch_number-1").value = "";
+  document.getElementById("batch_number-1").value = "";
   document.getElementById("manufactured_date-1").value = "";
   document.getElementById("expiration_date-1").value = "";
   document.getElementById("datestocked-1").value = "";
