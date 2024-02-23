@@ -20,7 +20,11 @@ body{
   margin: 0;
   padding: 0;
 }
-
+.form-select{
+  padding-right: 40px;
+  -webkit-appearance: auto;
+  -moz-appearance: auto;
+}
 .form-label {
   color: rgba(28, 28, 28, 0.50);
   font-family: Inter;
@@ -143,7 +147,7 @@ main{
 .landing_btns{
   display: inline-flex;
   padding-top: 10px;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: flex-start;
   gap: var(--Spacing-spacing-s, 16px);
@@ -186,7 +190,7 @@ main{
 }
 
 .fc-highlight{
-  background: var(--colors-actions-action-active, #004D53) !important;
+  background: var(--colors-actions-action-active, #BEE7BD) !important;
   border-radius: 50px !important;
   display: flex !important;
   width: 75% !important;
@@ -347,7 +351,6 @@ main{
   justify-content: center;
   align-items: center;
   gap: var(--spacing-spacing-m, 24px);
-  flex-shrink: 0;
   border-radius: var(--spacing-spacing-xxs, 8px);
   background: var(--colors-actions-action-sec, #ADCDCE);
   box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
@@ -423,10 +426,10 @@ main{
   flex-shrink: 0;
 }
 .custom-book-appointment-btn {
-  display: flex;
-  height: 72px;
-  min-width: 120px;
-  padding: 0px var(--Spacing-spacing-m, 24px);
+  display: inline-flex;
+  height: 60px;
+  width: 100%;
+  padding: 16px 24px;
   justify-content: center;
   align-items: center;
   gap: var(--Spacing-spacing-m, 24px);
@@ -436,7 +439,7 @@ main{
   color: var(--Colors-Main-neutral, #FFF);
   text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
   font-family: Inter;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -4723,21 +4726,15 @@ box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0,
   
   .pet_other_details {
     display: flex;
+    justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
-    align-self: stretch;
-  }
-  
-  .pet_other_details {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    align-self: stretch;
-  }
+    width: 100%;
+}
   
   .other_details {
     display: flex;
-    width: 120px;
+    align-self: stretch;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;

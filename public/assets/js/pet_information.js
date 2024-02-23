@@ -38,11 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function handleInputError(input, error, guide) {
     function onBlur() {
-        if (input.value.trim() === '') {
-            error.style.display = 'flex'; // Show the error message
-            input.classList.add('is-invalid');
-            input.classList.add('error-border');
-        } else if (input.value.trim() === 'none') {
+        if (input.value.trim() === '' | input.value.trim() === 'none') {
             error.style.display = 'flex'; // Show the error message
             input.classList.add('is-invalid');
             input.classList.add('error-border');
@@ -68,6 +64,11 @@ function handleInputError(input, error, guide) {
     input.addEventListener('blur', onBlur);
     input.addEventListener('focus', onFocus);
     input.addEventListener('blur', onBlurGuide);
+
+    // Add event listeners to select elements
+    if (input.tagName.toLowerCase() === 'select') {
+        input.addEventListener('change', onBlur);
+    }
 }
 
 // Usage example
@@ -714,53 +715,57 @@ breedSelect.addEventListener('change', function () {
     }
 });
 
+
+
+
 // Retrieve all the li elements
 const timeOptionsList = document.querySelectorAll('.Appointment_time-option');
 
 // Add a click event listener to each li element
 timeOptionsList.forEach(li => {
-  li.addEventListener('click', function() {
-      // Remove the 'selected-time' class from all time options
-      timeOptionsList.forEach(option => {
-          option.classList.remove('selected-time');
-      });
-
-      // Add the 'selected-time' class to the clicked li
-      li.classList.add('selected-time');
-      console.log('Selected time:', li.innerText);
-
-      // Find the input element inside the clicked li and trigger a click event on it
-      const inputElement = li.querySelector('input[type="radio"]');
-      if (inputElement) {
-          inputElement.click();
-      }
-
-      // Update the selected time in the confirm_time element
-      const confirmTimeElement = document.querySelector('.confirm_time');
-      confirmTimeElement.innerText = li.innerText;
-
-      checkSelectionAndEnableButton();
-
-      // Check if there is a selected time and log a message
-      if (li.classList.contains('selected-time')) {
-          console.log('A time has been selected.');
-      }
+    li.addEventListener('click', function() {
+        // Remove the 'selected-time' class from all time options
+        timeOptionsList.forEach(option => {
+            option.classList.remove('selected-time');
+        });
+  
+        // Add the 'selected-time' class to the clicked li
+        li.classList.add('selected-time');
+        console.log('Selected time:', li.innerText);
+  
+        // Find the input element inside the clicked li and trigger a click event on it
+        const inputElement = li.querySelector('input[type="radio"]');
+        if (inputElement) {
+            inputElement.click();
+        }
+  
+        // Update the selected time in the confirm_time element
+        const confirmTimeElement = document.querySelector('.confirm_time');
+        confirmTimeElement.innerText = li.innerText;
+  
+        checkSelectionAndEnableButton();
+  
+        // Check if there is a selected time and log a message
+        if (li.classList.contains('selected-time')) {
+            console.log('A time has been selected.');
+        }
+    });
   });
-});
-
-function checkSelectionAndEnableButton() {
-  const selectedDate = document.querySelector('.selected_date');
-  const selectedTime = document.querySelector('.selected-time');
-  const nextButton = document.getElementById('next_button');
-
-  if (selectedDate !== null && selectedTime !== null) {
-      nextButton.disabled = false;
-      nextButton.classList.remove('disabled');
-  } else {
-      nextButton.disabled = true;
-      nextButton.classList.add('disabled');
+  
+  
+  function checkSelectionAndEnableButton() {
+    const selectedDate = document.querySelector('.selected_date');
+    const selectedTime = document.querySelector('.selected-time');
+    const nextButton = document.getElementById('next_button');
+  
+    if (selectedDate !== null && selectedTime !== null) {
+        nextButton.disabled = false;
+        nextButton.classList.remove('disabled');
+    } else {
+        nextButton.disabled = true;
+        nextButton.classList.add('disabled');
+    }
   }
-}
 
 // Call this function at the end of the event listeners for selecting date and time
 function updateAppointmentTimeOptionsDisplay() {
