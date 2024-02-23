@@ -1514,6 +1514,9 @@
                             </svg></span></div>
                 </div>
                 <div class="modal-body archive_message">
+                    <form action="{{ route('client.archive') }}" method="POST" id="archiveForm">
+                    @csrf
+                    <input type="hidden" id="archiveId" name="client_id">
                     <div>
                         <h1>Archive client?</h1>
                         <p>You can restore archived clients at a later time.</p>
@@ -1521,8 +1524,10 @@
                 </div>
                 <div class="modal-footer discard_footer"><button class="btn return_btn" data-bs-dismiss="modal"
                         type="button"><span class="return_btn_base">Cancel</span></button><button
-                        class="btn archive_confirm" id="archive_confirm_button" type="button"><span
-                            class="archive_confirm_button_base">Archive</span></button></div>
+                        class="btn archive_confirm" id="archive_confirm_button" type="submit"><span
+                            class="archive_confirm_button_base">Archive</span></button>
+                </div>
+                </form>
             </div>
         </div>
     </div>
