@@ -30,7 +30,7 @@
 						<div class="signup_already_user_container">
 							<h1>Already a user?</h1>
                             <a href="{{ route('client.signin') }}">
-							<button id="sign_in" class="sign_in" type="button" >Sign In</button></a>
+							<button id="sign_in" class="sign_in" type="button" >Login</button></a>
 						</div>
 					</div>
 					<div class="heading">
@@ -188,14 +188,14 @@
 								</div>
 								<div class="form-floating">
 									<select id="suffix" name="suffix" class="form-select">
-										<option value="" selected="">Select a suffix (optional)</option>
+										<option value="" selected="">Select</option>
 										<option value="I">I</option>
 										<option value="II">II</option>
 										<option value="III">III</option>
 										<option value="IV">IV</option>
 										<option value="Other">Other</option>
 									</select>
-									<label class="form-label" for="suffix">Suffix</label>
+									<label class="form-label" for="suffix">Suffix (optional)</label>
 								</div>
 								<div class="form-floating specify_suffix" style="display:none;">
 									<input id="specify_suffix" class="form-control" type="text" name="specify_suffix" placeholder="Specify suffix" data-id="specify_suffix">
@@ -207,11 +207,11 @@
 							<div class="input-group">
 								<div class="align-self-stretch form-floating">
 									<select id="gender" name="gender" class="form-select">
-										<option value="Prefer not to say" selected="">Sex (optional)</option>
+										<option value="Prefer not to say" selected="">Sex</option>
 										<option value="Male">Male</option>
 										<option value="Female">Female</option>
 									</select>
-									<label class="form-label" for="gender">Gender</label>
+									<label class="form-label" for="gender">Sex (optional)</label>
 								</div>
 							</div>
 							<div class="input-group">
@@ -255,7 +255,7 @@
 						<p>You have successfully created an account!</p>
 					</div>
 				</div>
-				<div class="modal-footer"><a class="btn sign_in_btn" role="button" href="{{ route('client.signin') }}" id="go_to_signin"><span class="sign_in_btn_base">Sign In</span></a></div>
+				<div class="modal-footer"><a class="btn sign_in_btn" role="button" href="{{ route('client.signin') }}" id="go_to_signin"><span class="sign_in_btn_base">Login</span></a></div>
 			</div>
 		</div>
 	</div>

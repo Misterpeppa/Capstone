@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var add_pet_modal1 = new bootstrap.Modal(document.getElementById('add_pet_modal-1'));
     var add_pet_success = new bootstrap.Modal(document.getElementById('add_pet_success'));
     var add_pet_success = new bootstrap.Modal(document.getElementById('add_pet_success'));
+
+    var cancel_edit = document.getElementById("Cancel_edit");
+	var edit_discard = new bootstrap.Modal(document.getElementById('Edit_discard'));
+	cancel_edit.addEventListener('click', function () {
+		edit_discard.show();
+	});
     
     var archive_pet_modal = new bootstrap.Modal(document.getElementById('archive_pet_modal'));
     
@@ -32,11 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function handleInputError(input, error, guide) {
     function onBlur() {
-        if (input.value.trim() === '') {
-            error.style.display = 'flex'; // Show the error message
-            input.classList.add('is-invalid');
-            input.classList.add('error-border');
-        } else if (input.value.trim() === 'none') {
+        if (input.value.trim() === '' | input.value.trim() === 'none') {
             error.style.display = 'flex'; // Show the error message
             input.classList.add('is-invalid');
             input.classList.add('error-border');
@@ -62,6 +64,11 @@ function handleInputError(input, error, guide) {
     input.addEventListener('blur', onBlur);
     input.addEventListener('focus', onFocus);
     input.addEventListener('blur', onBlurGuide);
+
+    // Add event listeners to select elements
+    if (input.tagName.toLowerCase() === 'select') {
+        input.addEventListener('change', onBlur);
+    }
 }
 
 // Usage example
@@ -210,7 +217,7 @@ function resetPetForm(nameInput, genderInput, typeInput, breedInput, pet_weightI
     close_pet_modal1.addEventListener('click', resetPetForm.bind(null, pet_nameInput1, pet_GenderInput1, pet_TypeInput1, breedInput1, pet_weightInput1, pet_sterilizationStatusInput1, pet_birthdateInput1, pet_ageInput1));
    
     
-//for breed
+//for breed para lilitaw ang mga options depending kung dog or cat
 function setupBreedOptions(petTypeId, breedId, breedOptions) {
         // Get references to the pet type and breed select elements
         var petTypeSelect = document.getElementById(petTypeId);
@@ -254,6 +261,10 @@ function setupBreedOptions(petTypeId, breedId, breedOptions) {
         'Cat': ["Abyssinian","American Bobtail","American Curl","American Shorthair","American Wirehair","Balinese","Bengal","Birman","Bombay","British Shorthair","Burmese","Chartreux","Chausie","Cornish Rex","Cymric","Devon Rex","Egyptian Mau","European Burmese","Exotic Shorthair","Havana Brown","Himalayan","Japanese Bobtail","Javanese","Korat","LaPerm","Maine Coon","Manx","Munchkin","Nebelung","Norwegian Forest","Ocicat","Oriental","Persian","Pixie-Bob","Ragamuffin","Ragdoll","Russian Blue","Savannah","Scottish Fold","Selkirk Rex","Siamese","Siberian","Singapura","Snowshoe","Somali","Sphynx","Tonkinese","Turkish Angora","Turkish Van"]
     });
 
+    setupBreedOptions('edit_pet_type', 'edit_Breed',{
+'Dog': ["Affenpinscher","Afghan Hound","Airedale Terrier","Akita","Alaskan Malamute","American Bulldog","American Eskimo Dog","American Foxhound","American Pit Bull Terrier","American Staffordshire Terrier","Anatolian Shepherd Dog", "Aspin/Asnoy", "Australian Cattle Dog","Australian Shepherd","Australian Terrier","Basenji","Basset Hound","Beagle","Bearded Collie","Bedlington Terrier","Belgian Malinois","Belgian Sheepdog","Belgian Tervuren","Bernese Mountain Dog","Bichon Frise","Black and Tan Coonhound","Bloodhound","Border Collie","Border Terrier","Borzoi","Boston Terrier","Bouvier des Flandres","Boxer","Boykin Spaniel","Briard","Brittany","Brussels Griffon","Bull Terrier","Bulldog","Bullmastiff","Cairn Terrier","Canaan Dog","Cane Corso","Cardigan Welsh Corgi","Cavalier King Charles Spaniel","Chesapeake Bay Retriever","Chihuahua","Chinese Crested","Chinese Shar-Pei","Chow Chow","Clumber Spaniel","Cockapoo","Collie","Coonhound","Corgi","Coton de Tulear","Curly-Coated Retriever","Dachshund","Dalmatian","Dandie Dinmont Terrier","Doberman Pinscher","Dogue de Bordeaux","Dutch Shepherd","English Bulldog","English Cocker Spaniel","English Foxhound","English Setter","English Springer Spaniel","English Toy Spaniel","Entlebucher Mountain Dog","Eskimo Dog","Finnish Lapphund","Finnish Spitz","Flat-Coated Retriever","French Bulldog","German Pinscher","German Shepherd Dog","German Shorthaired Pointer","German Wirehaired Pointer","Giant Schnauzer","Glen of Imaal Terrier","Goldador","Golden Retriever","Goldendoodle","Gordon Setter","Great Dane","Great Pyrenees","Greater Swiss Mountain Dog","Greyhound","Harrier","Havanese","Hound","Hovawart","Hungarian Puli","Hungarian Shepherd","Hungarian Vizsla","Husky","Ibizan Hound","Icelandic Sheepdog","Irish Setter","Irish Terrier","Irish Water Spaniel","Irish Wolfhound","Italian Greyhound","Jack Russell Terrier","Japanese Chin","Japanese Spitz","Japanese Terrier","Keeshond","Kerry Blue Terrier","King Charles Spaniel","Klee Kai","Kuvasz","Labradoodle","Labrador Retriever","Lakeland Terrier","Lancashire Heeler","Leonberger","Lhasa Apso","Lowchen","Maltese","Manchester Terrier","Maremma Sheepdog","Mastiff","Miniature Bull Terrier","Miniature Pinscher","Miniature Schnauzer","Mixed Breed","Mountain Cur","Mountain Dog","Neapolitan Mastiff","Newfoundland","Norfolk Terrier","Norwegian Buhund","Norwegian Elkhound","Norwegian Lundehund","Norwich Terrier","Nova Scotia Duck Tolling Retriever","Old English Sheepdog","Otterhound","Papillon","Pekingese","Pembroke Welsh Corgi","Pharaoh Hound","Pinscher","Pit Bull Terrier","Plott Hound","Podenco Canario","Pointer","Polish Lowland Sheepdog","Pomeranian","Poodle","Portuguese Water Dog","Presacanario","Pug","Puggle","Puli","Pumi","Pyrenees","Redbone Coonhound","Retriever","Rhodesian Ridgeback","Rottweiler","Saint Bernard","Saluki","Samoyed","Schipperke","Scottish Deerhound","Scottish Terrier","Sealyham Terrier","Setter","Shar-Pei","Sheltie","Shiba Inu","Shih Tzu","Siberian Husky","Silky Terrier","Skye Terrier","Sloughi","Small Munsterlander Pointer","Spaniel","Spanish Water Dog","Spitz","Springer Spaniel","Staffordshire Bull Terrier","Standard Schnauzer","Sussex Spaniel","Swedish Vallhund","Terrier","Thai Ridgeback","Tibetan Mastiff","Tibetan Spaniel","Tibetan Terrier","Tosa Inu","Toy Fox Terrier","Treeing Walker Coonhound","Vizsla","Weimaraner","Welsh Corgi","Welsh Terrier","West Highland White Terrier","Whippet","White Shepherd","Wirehaired Pointing Griffon","Xoloitzcuintli","Yorkshire Terrier"],
+        'Cat': ["Abyssinian","American Bobtail","American Curl","American Shorthair","American Wirehair","Balinese","Bengal","Birman","Bombay","British Shorthair","Burmese","Chartreux","Chausie","Cornish Rex","Cymric","Devon Rex","Egyptian Mau","European Burmese","Exotic Shorthair","Havana Brown","Himalayan","Japanese Bobtail","Javanese","Korat","LaPerm","Maine Coon","Manx","Munchkin","Nebelung","Norwegian Forest","Ocicat","Oriental","Persian","Pixie-Bob","Ragamuffin","Ragdoll","Russian Blue","Savannah","Scottish Fold","Selkirk Rex","Siamese","Siberian","Singapura","Snowshoe","Somali","Sphynx","Tonkinese","Turkish Angora","Turkish Van"]
+    });
 
 
     
@@ -295,7 +306,7 @@ function setupAgeCalculation(birthdateId, ageId, petTypeId) {
   });
 
   // Enable age input initially
-  ageInput.disabled = false;
+  ageInput.disabled = true;
 
   function calculateAge(birthdate, petType) {
       const today = new Date();
@@ -356,6 +367,8 @@ setupAgeCalculation('pet_birthdate', 'pet_age', 'pet_type');
 
 // Example usage for the second set of IDs
 setupAgeCalculation('pet_birthdate-1', 'age-1', 'pet_type-1');
+
+setupAgeCalculation('edit_birthdate', 'edit_pet_age', 'edit_pet_type');
 
 submit_Pet.addEventListener('click', function (event) {
     //paalis nalang nito if needed
@@ -594,6 +607,19 @@ submit_pet1.addEventListener('click', function() {
 });
 
 
+const edit_pet_btn = document.getElementById('edit_pet_btn');
+
+
+
+edit_pet_btn.addEventListener('click', function(){
+    var view_pet_container = document.getElementById("view_pet_container");
+    var edit_pet_container = document.getElementById("edit_pet_container");
+        // Hide the edit_pet_container
+        edit_pet_container.style.display = 'flex';
+    
+    // Show the view_pet_container
+    view_pet_container.style.display = 'none';
+})
 
 
 var editPetBackButton = document.getElementById("edit_pet_back_btn");
@@ -633,9 +659,6 @@ function showArchiveModal() {
 
 // Assuming you have a list of pet cards with the class 'pet-card' and 'archiveButton' for the Archive button
 var petCards = document.querySelectorAll('.pet_card');
-var view_pets = document.querySelectorAll('.view_pet');
-
-
 
 
 document.querySelectorAll('.more_button button').forEach(function (button) {
@@ -671,18 +694,7 @@ document.querySelectorAll('.more_button button').forEach(function (button) {
     });
 });
 
-view_pets.forEach(view_pet => {
-    var edit_pet_btn = view_pet.querySelector('.edit_pet_btn');
 
-    edit_pet_btn.addEventListener('click', function() {
-        // Show the editPetSection section
-        editPetSection.style.display = 'flex';
-        appointmentListContainer.style.display = 'none';
-        viewPetSection.style.display = 'none';
-        previousSection = currentSection;
-        currentSection = editPetSection;
-    });
-});
 
 
 // Get the select element
@@ -703,53 +715,57 @@ breedSelect.addEventListener('change', function () {
     }
 });
 
+
+
+
 // Retrieve all the li elements
 const timeOptionsList = document.querySelectorAll('.Appointment_time-option');
 
 // Add a click event listener to each li element
 timeOptionsList.forEach(li => {
-  li.addEventListener('click', function() {
-      // Remove the 'selected-time' class from all time options
-      timeOptionsList.forEach(option => {
-          option.classList.remove('selected-time');
-      });
-
-      // Add the 'selected-time' class to the clicked li
-      li.classList.add('selected-time');
-      console.log('Selected time:', li.innerText);
-
-      // Find the input element inside the clicked li and trigger a click event on it
-      const inputElement = li.querySelector('input[type="radio"]');
-      if (inputElement) {
-          inputElement.click();
-      }
-
-      // Update the selected time in the confirm_time element
-      const confirmTimeElement = document.querySelector('.confirm_time');
-      confirmTimeElement.innerText = li.innerText;
-
-      checkSelectionAndEnableButton();
-
-      // Check if there is a selected time and log a message
-      if (li.classList.contains('selected-time')) {
-          console.log('A time has been selected.');
-      }
+    li.addEventListener('click', function() {
+        // Remove the 'selected-time' class from all time options
+        timeOptionsList.forEach(option => {
+            option.classList.remove('selected-time');
+        });
+  
+        // Add the 'selected-time' class to the clicked li
+        li.classList.add('selected-time');
+        console.log('Selected time:', li.innerText);
+  
+        // Find the input element inside the clicked li and trigger a click event on it
+        const inputElement = li.querySelector('input[type="radio"]');
+        if (inputElement) {
+            inputElement.click();
+        }
+  
+        // Update the selected time in the confirm_time element
+        const confirmTimeElement = document.querySelector('.confirm_time');
+        confirmTimeElement.innerText = li.innerText;
+  
+        checkSelectionAndEnableButton();
+  
+        // Check if there is a selected time and log a message
+        if (li.classList.contains('selected-time')) {
+            console.log('A time has been selected.');
+        }
+    });
   });
-});
-
-function checkSelectionAndEnableButton() {
-  const selectedDate = document.querySelector('.selected_date');
-  const selectedTime = document.querySelector('.selected-time');
-  const nextButton = document.getElementById('next_button');
-
-  if (selectedDate !== null && selectedTime !== null) {
-      nextButton.disabled = false;
-      nextButton.classList.remove('disabled');
-  } else {
-      nextButton.disabled = true;
-      nextButton.classList.add('disabled');
+  
+  
+  function checkSelectionAndEnableButton() {
+    const selectedDate = document.querySelector('.selected_date');
+    const selectedTime = document.querySelector('.selected-time');
+    const nextButton = document.getElementById('next_button');
+  
+    if (selectedDate !== null && selectedTime !== null) {
+        nextButton.disabled = false;
+        nextButton.classList.remove('disabled');
+    } else {
+        nextButton.disabled = true;
+        nextButton.classList.add('disabled');
+    }
   }
-}
 
 // Call this function at the end of the event listeners for selecting date and time
 function updateAppointmentTimeOptionsDisplay() {
