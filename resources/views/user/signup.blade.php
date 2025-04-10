@@ -34,6 +34,7 @@
                             <h1>Already a user?</h1>
                             <a href="{{ route('client.signin') }}">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 							<button id="sign_in" class="sign_in" type="button" >Login</button></a>
 						</div>
 					</div>
@@ -47,6 +48,8 @@
                                 viewBox="0 0 32 32" fill="none">
                                 <g clip-path="url(#clip0_5519_15576)">
 =======
+=======
+>>>>>>> Stashed changes
                                 <button id="sign_in" class="sign_in" type="button">Sign In</button></a>
                         </div>
                     </div>
@@ -376,6 +379,9 @@
                                 xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
                                 fill="none">
                                 <g clip-path="url(#clip0_5693_10654)">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                                     <path
                                         d="M12 16L14.6667 18.6667L20 13.3333M4 16C4 17.5759 4.31039 19.1363 4.91345 20.5922C5.5165 22.0481 6.40042 23.371 7.51472 24.4853C8.62902 25.5996 9.95189 26.4835 11.4078 27.0866C12.8637 27.6896 14.4241 28 16 28C17.5759 28 19.1363 27.6896 20.5922 27.0866C22.0481 26.4835 23.371 25.5996 24.4853 24.4853C25.5996 23.371 26.4835 22.0481 27.0866 20.5922C27.6896 19.1363 28 17.5759 28 16C28 14.4241 27.6896 12.8637 27.0866 11.4078C26.4835 9.95189 25.5996 8.62902 24.4853 7.51472C23.371 6.40042 22.0481 5.5165 20.5922 4.91345C19.1363 4.31039 17.5759 4 16 4C14.4241 4 12.8637 4.31039 11.4078 4.91345C9.95189 5.5165 8.62902 6.40042 7.51472 7.51472C6.40042 8.62902 5.5165 9.95189 4.91345 11.4078C4.31039 12.8637 4 14.4241 4 16Z"
@@ -387,6 +393,7 @@
                                         <rect width="32" height="32" fill="white" />
                                     </clipPath>
                                 </defs>
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
                             </svg>{{ $message }}</span></div>
 					
@@ -636,6 +643,23 @@
             </div>
         </div>
     </div>
+=======
+                            </svg></span>
+                    </div>
+                </div>
+                <div class="modal-body success_message">
+                    <div>
+                        <h1>Welcome to the family!</h1>
+                        <p>You have successfully created an account!</p>
+                    </div>
+                </div>
+                <div class="modal-footer"><a class="btn sign_in_btn" role="button"
+                        href="{{ route('client.signin') }}" id="go_to_signin"><span class="sign_in_btn_base">Sign
+                            In</span></a></div>
+            </div>
+        </div>
+    </div>
+>>>>>>> Stashed changes
     <div class="modal fade show" role="dialog" tabindex="-1" id="signup_error">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content success_modal">
@@ -666,6 +690,9 @@
         </div>
     </div>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     @if ($errors->has('email'))
         <script>
