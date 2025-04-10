@@ -464,8 +464,7 @@
                                         <h1>NO APPROVED APPOINTMENTS FOUND</h1>
                                         <div class="pet_info_empty_state_p_container">
                                             <p>Looks like there’s no approved appointments yet.</p>
-                                            <p>You can add view pending appointments by clicking the tab above, or you
-                                                can create one by yourself by clicking the button below.</p>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -920,7 +919,7 @@
                                         <h1>NO PENDING APPOINTMENTS YET</h1>
                                     </div>
                                 </div>
-
+                                
                             </div>
                             <div id="pending_table" class="w-100" style="overflow: auto;">
                                 <table class="table table-responsive mt-3 w-100">
@@ -1402,12 +1401,11 @@
                                         <h1>NO REJECTED APPOINTMENTS YET</h1>
                                         <div class="pet_info_empty_state_p_container">
                                             <p>You haven’t rejected any appointments yet.</p>
-                                            <p>However, you can add one by yourself by clicking the pending tab above,
-                                                or you can create an appointment by clicking the button below.</p>
+                                            
                                         </div>
                                     </div>
                                 </div>
-                                
+                               
                             </div>
                             <div id="rejected_table" class="w-100" style="overflow: auto;">
                                 <table class="table table-responsive mt-3 w-100">
@@ -2178,7 +2176,7 @@
                     <div class="modal-footer discard_footer">
                         <button class="btn return_btn" data-bs-dismiss="modal" id="return_btn"
                             type="button"><span class="return_btn_base">Cancel</span></button>
-                        <button class="btn reject_btn" id="reject_btn" type="button"><span
+                        <button class="btn reject_btn" id="reject_btn" type="submit"><span
                                 class="discard_btn_base">Reject</span></button>
                     </div>
                 </form>
@@ -2274,8 +2272,8 @@
                 </div>
                 <div class="modal-body archive_message">
                     <form action="{{ route('resched') }}" method="POST">
-                        @csrf
-                        <input type="hidden" id="reschedId" name="reschedId">
+                    @csrf
+                    <input type="hidden" id="reschedId" name="reschedId">
                         <div>
                             <h1><strong>Reschedule appointment</strong></h1>
                             <p>You are about to reschedule an appointment. Please make sure that all information are
@@ -2303,7 +2301,7 @@
                 <div class="modal-footer resched_footer d-flex justify-content-end align-items-center align-self-stretch">
                     <button class="btn return_btn" data-bs-dismiss="modal" id="cancel_reschedule_btn-1"
                         type="button" onClick="cancelReschedule()"><span class="return_btn_base">Cancel</span></button>
-                    <button id="reschedule_btn-1" class="btn reschedule_btn" type="button"
+                    <button id="reschedule_btn-1" class="btn reschedule_btn" type="submit"
                         data-bs-dismiss="modal" disabled><span class="archive_confirm_button_base">Reschedule</span></button>
                 </div>
                 </form>
@@ -2485,40 +2483,9 @@
                 $('#rejectId').val(appointmentId);
                 var rejectModal = new bootstrap.Modal(document.getElementById('reject_modal'));
                 rejectModal.show();
-                $('#reject_btn').off('click').on('click', function() {
-                    var reason = $('#rejection_reason').val();
-                    console.log('Reason: ', reason);
-                    if (reason === 'other') {
-                        // If 'other' is selected, get the value from the textarea
-                        var otherReason = $('#specify_reason').val();
-                        if (!otherReason.trim()) {
-                            alert('Please specify the other reason.');
-                            return;
-                        }
-                    }
-                    $.ajax({
-                        type: 'POST',
-                        url: '/admin/appointment/reject/',
-                        data: {
-                            _token: '{{ csrf_token() }}',
-                            reason: reason,
-                            otherReason: otherReason,
-                        },
-                        success: function(response) {
-                            $('#row_' + appointmentId).remove();
-                            alert('Appointment has been rejected');
-                            window.location.href = '/admin/appointment';
-                        },
-                        error: function(error) {
-                            alert('An error occurred while processing the request.');
-                        }
-                    });
-                    rejectModal.hide();
-                });
             });
             $('.resched-action').click(function() {
                 var appointmentId = $(this).data('id');
-                $('#reschedId').val(appointmentId);
                 var reschedModal1 = new bootstrap.Modal(document.getElementById('resched_modal-1'));
                 reschedModal1.show();
                 $('#reschedule_btn-1').off('click').on('click', function() {
@@ -2526,7 +2493,7 @@
                     var appointmentTime = $('#appointmentTime').val();
                     $.ajax({
                         type: 'POST',
-                        url: '/admin/appointment/resched/',
+                        url: '/admin/appointment/resched/' + appointmentId,
                         data: {
                             _token: '{{ csrf_token() }}',
                             appointmentDate: appointmentDate,

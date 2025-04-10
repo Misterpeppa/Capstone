@@ -9,6 +9,7 @@ use App\Models\Admin\AppointmentPending;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin\AppointmentApproved;
 use App\Models\Admin\AppointmentRejected;
+use App\Models\Admin\PetInfo;
 use App\Models\User\Clients;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
@@ -62,11 +63,25 @@ class AppointmentController extends Controller
         ]);
         $appointmentDate = $request->input('appointmentDate');
         $appointmentTime = $request->input('appointmentTime');
+        $petInfo = PetInfo::where(function ($query) use ($validatedData, $clientId) {
+            $query->where('name', $validatedData['petName'])
+                  ->orWhere('name', $validatedData['petName1'])
+                  ->orWhere('name', $validatedData['petName2']);
+        })
+        ->where('owner_id', $clientId)
+        ->first();
         $existingAppointments = AppointmentPending::where('user_id', $clientId)
             ->whereDate('appointmentDate', $appointmentDate)
             ->get();
         if ($existingAppointments->count() >= 3) {
-            return redirect()->back()->with('error', 'You have reached the maximum limit of appointments for today.');
+            return redirect()->back()->with('limit', 'You have reached the maximum limit of appointments for today.');
+        }
+        if (!$petInfo) {
+            $petInfo = PetInfo::create([
+                'name' => $validatedData['petName'],
+                'species' => $validatedData['petType'],
+                'breed' => $validatedData['breed'],
+            ]);
         }
         AppointmentPending::create([
             'user_id' => $clientId,
@@ -124,6 +139,7 @@ class AppointmentController extends Controller
 
         AppointmentApproved::create([
             'user_id' =>$appointment->user_id,
+            'petName' =>$appointment->petName,
             'petType' => $appointment->petType,
             'breed' => $appointment->breed,
             'appointmentType' => $appointment->appointmentType,
@@ -141,13 +157,14 @@ class AppointmentController extends Controller
 
     public function reject(Request $request)
     {
-        $rejectId =$request->input('rejectId');
-        $appointment = AppointmentPending::findOrFail($rejectId);
+        $id = $request->input('rejectId');
+        $appointment = AppointmentPending::findOrFail($id);
         $reason =$request->input('reason');
         $otherReason = $request->input('otherReason');
 
-        $rejected = AppointmentRejected::create([
+        AppointmentRejected::create([
             'user_id' =>$appointment->user_id,
+            'petName' =>$appointment->petName,
             'petType' => $appointment->petType,
             'breed' => $appointment->breed,
             'appointmentType' => $appointment->appointmentType,
@@ -157,18 +174,15 @@ class AppointmentController extends Controller
         ]);
         // Delete the data from the "appointment_details" table
         $appointment->delete();
-
         $client = Clients::find($appointment->user_id);
-        Mail::to($client->email)->send(new AppointmentRejectedMail($rejected));
+        Mail::to($client->email)->send(new AppointmentRejectedMail($appointment));
 
-        return response()->json(['message' => 'Appointment Rejected successfully.']);
-
+        return redirect()->back()->with('success', 'Appointment marked as completed.');
     }
 
     public function resched(Request $request, $id)
     {
-        $reschedId = $request->input('reschedId');
-        $appointment = AppointmentRejected::findOrFail($reschedId);
+        $appointment = AppointmentRejected::findOrFail($id);
         AppointmentPending::create([
             'user_id' =>$appointment->user_id,
             'petType' => $appointment->petType,
