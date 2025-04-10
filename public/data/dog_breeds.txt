@@ -1,0 +1,45 @@
+Akita
+Australian Cattle Dog
+Australian Shepherd
+Basset Hound
+Beagle
+Bernese Mountain Dog
+Bichon Frise
+Bloodhound
+Bulldog
+Bull Terrier
+Boston Terrier
+Boxer
+Chihuahua
+Chow Chow
+Cocker Spaniel
+Collie
+Corgi
+Dachshund
+Doberman Pinscher
+English Setter
+French Bulldog
+German Shepherd
+Golden Retriever
+Great Dane
+Irish Wolfhound
+Labrador Retriever
+Maltese
+Miniature Schnauzer
+Newfoundland
+Pekingese
+Pembroke Welsh Corgi
+Pomeranian
+Poodle
+Pug
+Rhodesian Ridgeback
+Rottweiler
+Saint Bernard
+Shetland Sheepdog
+Shiba Inu
+Shih Tzu
+Siberian Husky
+Vizsla
+Weimaraner
+West Highland White Terrier
+Yorkshire Terrier

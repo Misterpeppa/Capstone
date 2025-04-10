@@ -1,0 +1,695 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 180px;
+    padding: 24px 20px;
+    flex-shrink: 0;
+    border-right: 1px solid #FFF;
+    background: #F5F5F5;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+    padding: 5px 15px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar li.active {
+    display: inline-flex;
+    height: 26px;
+    padding: 4px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    color: #045B62;
+    border-radius: 12px;
+    background: var(--colors-main-secondary-dark, #ADCDCE);
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+
+.sidebar li.active a {
+    color: #045B62;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.sidebar a:hover {
+    color: rgba(28, 28, 28, 0.70);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: rgba(28, 28, 28, 0.50);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar a .icon {
+    margin-right: 10px;
+}
+
+.sidebar hr {
+    margin: 10px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #E8F0F0;
+    overflow: auto;
+}
+.rectangle {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    direction: row; 
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid #FFF;
+    background: #F7F7F7;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    gap: 10px;
+}
+.icon-button{
+    display: flex;
+    width: 27px;
+    height: 28px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.icon-notification{
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.user{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 40px;
+}
+.frame202{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.frame417{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.icon-arrow{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.main-content {
+    padding: 20px;
+}
+.frame268{
+    display: flex;
+    padding-left: 0px;
+    justify-content: space-between;
+    align-items: center;
+}
+.frame269{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.frame269 p{
+    color: #000;
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.addRecordButton{
+    display: flex;
+    height: 60px;
+    padding: 16px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-spacing-m, 24px);
+    border-radius: var(--radius-s, 8px);
+    background: var(--colors-actions-action, #045B62);
+
+    /* Shadow-xs */
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+    color: #FFF;
+    text-align: center;
+    text-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.10);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.pet-records-container{
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    border-radius: var(--radius-s, 8px);
+    background: #F9F9F9;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.10), 0px 4px 6px -2px rgba(28, 28, 28, 0.05);
+}
+
+.search-filter-sort{
+    display: flex;
+align-items: center;
+align-self: stretch;
+}
+
+.frame485 {
+    display: inline-flex;
+    flex-wrap: wrap; /* This will wrap child elements to the next line */
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+    /* Optional: Add a specific width or max-width to limit the container size */
+    max-width: 100%;
+  }
+
+
+.pet-record-item {
+    flex: 1 1 calc(50% - 10px);
+    display: flex;
+    padding: 24px;
+    align-items: flex-start;
+    gap: var(--spacing-spacing-l, 32px);
+    /* Avoid using 'flex: 1 0 0;' as it will override the previous 'flex' property */
+    border-radius: var(--radius-s, 8px);
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    min-width: 450px;
+    max-width: 1000px;
+  }
+.koda{
+    display: flex;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+.frame484{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    flex: 1 0 0;
+}
+.frame482{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+}
+.Frame486{
+    display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 8px;
+flex: 1 0 0;
+}
+.more-button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.frame426{
+    display: flex;
+width: 30px;
+height: 30px;
+padding: 10px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 30px;
+}
+.frame383{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: var(--spacing-spacing-s, 16px);
+align-self: stretch;
+}
+.frame226{
+    display: flex;
+justify-content: space-between;
+align-items: center;
+align-self: stretch;
+}
+.frame369{
+    display: flex;
+justify-content: space-between;
+align-items: flex-start;
+align-self: stretch;
+}
+.frame216{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+flex: 1 0 0;
+}
+.frame218{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+flex: 1 0 0;
+}
+.frame219{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+flex: 1 0 0;
+}
+
+
+
+/* MENU OPTION*/
+
+/* Add position: relative to the container of the button */
+.more-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative; /* Add this */
+}
+
+/* Add position: absolute and top: -100% to the menu */
+.menu-options {
+    display: none;
+    width: 130px;
+    position: absolute; /* Add this */
+    top: 80%; /* Add this */
+    right: 30px; /* Adjust this as needed */
+    background-color: #FFF; /* Adjust the background color as needed */
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px -2px rgba(28, 28, 28, 0.05);
+    padding: 10px;
+    z-index: 1; /* Set a higher z-index to make sure the menu appears above other elements */
+}
+
+.menu-options ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-options li {
+    margin-bottom: 8px;
+}
+
+.menu-options a {
+    text-decoration: none;
+    color: rgba(28, 28, 28, 0.50);
+    font-weight: bold;
+}
+
+.menu-options a:hover {
+    color: rgba(28, 28, 28, 0.70);
+}
+
+
+/*MODA*/
+
+/* Styling for the modal */
+.addPetmodal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.modal-content {
+    display: flex;
+    width: 800px;
+    padding: 24px;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-l, 32px);
+    border-radius: var(--radius-s, 8px);
+background: var(--colors-main-neutral-light, #F5F5F5);
+
+/* Shadow-m */
+box-shadow: 0px 2px 4px -1px rgba(28, 28, 28, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.08);
+}
+
+.frame490{
+    display: flex;
+justify-content: space-between;
+align-items: center;
+align-self: stretch;
+}
+.frame523{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-spacing-xs, 12px);
+    align-self: stretch;
+}
+
+.form-input{
+    display: flex;
+    height: 5px;
+    padding: 20px 30px 20px 20px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-radius: var(--radius-s, 8px);
+    border: 0.5px solid rgba(0, 0, 0, 0.30);
+    background: #FFF;
+    box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.form-input input, .form-input select{
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-spacing-xs, 12px);
+    flex: 1 0 0;
+    border: none;
+    outline: none; /* This will remove the outline when the element is focused */
+    /* Optionally, you can add more styles to customize the appearance */
+    padding: 8px; /* Add padding to improve visual appearance */
+    font-size: 16px; /* Set font size for better readability */
+    /* You can add more styles here as needed */
+}
+input[type="text"], input[type="number"], input[type="date"] {
+    border: none;
+    outline: none; /* This will remove the outline when the element is focused */
+}
+
+.frame46, .frame47, .frame48{
+    display: flex;
+align-items: flex-start;
+gap: 12px;
+align-self: stretch;
+}
+.frame46 .frame46input{
+    display: flex;
+    height: 5px;
+    padding: 20px 30px 20px 20px;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 0 0;
+}
+.frame47 .frame47input{
+    display: flex;
+    height: 5px;
+    padding: 20px 30px 20px 20px;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 0 0;
+}
+.frame48 .frame48input{
+    display: flex;
+    height: 5px;
+    padding: 20px 30px 20px 20px;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 0 0;
+}
+.input-width{
+    display: flex;
+align-items: center;
+gap: var(--spacing-spacing-xs, 12px);
+flex: 1 0 0;
+}
+.modal button {
+    margin-top: 10px;
+}
+.frame494{
+    display: flex;
+justify-content: space-between;
+align-items: center;
+align-self: stretch;
+}
+.frame494 .save-button{
+    display: flex;
+height: 30px;
+padding: 16px 24px;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-m, 24px);
+border-radius: var(--spacing-spacing-xxs, 8px);
+background: var(--colors-actions-action, #045B62);
+
+/* Shadow-xs */
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+color: #FFF;
+text-align: center;
+text-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.10);
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.frame494 .clear-button{
+    display: flex;
+height: 30px;
+padding: 16px 24px;
+justify-content: center;
+align-items: center;
+gap: var(--spacing-spacing-m, 24px);
+border-radius: var(--spacing-spacing-xxs, 8px);
+border: 0.5px solid rgba(0, 0, 0, 0.15);
+background: var(--colors-actions-action-neut, #F9F9F9);
+
+/* Shadow-xs */
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+color: #1C1C1C;
+text-align: center;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.pet-record-modal{
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    border-radius: var(--radius-s, 8px);
+    background: #F9F9F9;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.10), 0px 4px 6px -2px rgba(28, 28, 28, 0.05);
+}
+.pet-record-modal .frame410{
+    display: flex;
+padding-left: 0px;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+align-self: stretch;
+}
+.pet-record-modal .PetRecordItem{
+    display: flex;
+padding: 24px;
+align-items: flex-start;
+gap: var(--spacing-spacing-xl, 64px);
+align-self: stretch;
+border-radius: var(--radius-s, 8px);
+}
+
+.pet-record-modal .frame522{
+    display: flex;
+align-items: flex-start;
+gap: var(--spacing-spacing-xl, 64px);
+flex: 1 0 0;
+}
+.pet-record-modal  .PetRecordItem .icon-button{
+    display: flex;
+width: 60px;
+height: 60px;
+padding: 10px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 30px;
+border: 0.5px solid rgba(0, 0, 0, 0.15);
+background: var(--colors-actions-action-neut, #F9F9F9);
+
+/* Shadow-xs */
+box-shadow: 0px 1px 2px 0px rgba(28, 28, 28, 0.05);
+}
+.pet-record-modal  .cloud{
+    display: flex;
+width: 136px;
+height: 136px;
+justify-content: center;
+align-items: center;
+border-radius: 100px;
+}
+.pet-record-modal  .frame484{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 32px;
+flex: 1 0 0;
+}
+.pet-record-modal  .frame482{
+    display: flex;
+align-items: center;
+gap: 8px;
+}
+.pet-record-modal  .frame483{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: var(--spacing-spacing-s, 16px);
+align-self: stretch;
+}
+.pet-record-modal  .frame482 .frame485{
+    display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 8px;
+}
+.pet-record-modal  .frame483 .frame370{
+    display: flex;
+align-items: flex-start;
+gap: 20px;
+align-self: stretch;
+}
+
+.pet-record-modal  .recordtabs{
+    width: 100%;
+    max-width: 1000px; /* Set the maximum width of the container */
+    margin: 0 auto; /* Center the container horizontally */
+}
+.pet-record-modal  .nav-tabs {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    /* Add any necessary styling for the tabs container */
+    padding-bottom: 12px;
+}
+
+.pet-record-modal  .nav-item {
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: #F5F5F5;
+    /* Add any necessary styling for the individual tab items */
+}
+
+.pet-record-modal .nav-item.active {
+    background-color: #045B62;
+    color: #FFF;
+    /* Add any necessary styling for the active tab item */
+}
+
+
+/* Styling for the tab content container */
+
+/* Styling for the tab content */
+.pet-record-modal .tab-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    border-radius: var(--radius-s, 8px);
+    border: 0.8px solid rgba(0, 0, 0, 0.30);
+}
+
+.pet-record-modal .tab-pane {
+    display: none;
+    padding: var(--spacing-spacing-xxs, 8px) 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+}
+
+.pet-record-modal .tab-pane.active {
+    display: flex;
+}
+
+/* Styling for the table */
+.pet-record-modal .frame487 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #f5f5f5;
+}
+
+thead th {
+    padding: 12px;
+    text-align: left;
+}
+
+tbody td {
+    padding: 12px;
+}
+
+/* Add your other CSS styles here */
